@@ -1,0 +1,6 @@
+rofi.theme: ~/.config/rofi/nord.rasi
+rofi.width: 20
+rofi.font: Noto Mono 12
+rofi.bw: 0
+rofi.hide-scrollbar: true
+rofi.lines: 8
