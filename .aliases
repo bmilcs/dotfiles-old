@@ -1,0 +1,167 @@
+#======================================================================================================
+#===  bmilcs: aliases  ================================================================================
+#======================================================================================================
+#   rm -rf ~/_bmilcs ~/.bm* ~/.dir_colors ~/.hosts && rm -rf ~/.bm && git clone https://github.com/bmilcs/linux.git ~/.bmilcs && chmod -R +x ~/.bmilcs && cd ~/.bmilcs/dotfiles &&	./install.sh &&	source ~/.bashrc
+
+alias dgit ='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dgitp = 'dgit push'
+
+
+alias gap='nano ~/.config/i3/config'
+
+alias dot='nano ~/.aliases'
+
+alias pm='sudo pacman'
+alias pacman='sudo pacman'
+alias pacls='echo "sudo pacman -Qe" && pacman -Qe'
+
+alias rex='sudo systemctl restart display-manager'
+
+alias fehbg='feh -g 640x480 -d -S filename ~/wallpapers'
+
+alias rcr='source ~/.zshrc'
+alias rc='nano ~/.zshrc'
+
+#---------------------------------  directories & files  ---------------------------------#
+alias ls='ls --color -lhF --group-directories-first'
+alias l="ls"
+alias ll="ls -nA" #long, all, # puid
+alias lll="ls -A" # long, all, abc puid
+alias lsf="ls | grep -v '^d'"	#ls files,,
+alias lsg="ls | grep" #search in dir
+alias lsd="ls -ld */"   # ls, long, dir
+alias mv='mv -i' #confirmation
+alias cp='cp -i' #confirmation
+alias ln='ln -i' #confirmation
+alias grep='grep --color=auto'			# color
+
+#-----------------------------------------  apt  -----------------------------------------#
+alias apt-get="sudo apt-get --yes"	# auto sudo
+alias apt="sudo apt --yes"					# auto sudo
+alias wget='wget -c'								# autoresume
+
+#---------------------------------  file/dir navigation  ---------------------------------#
+alias c="clear"
+alias bm="su bmilcs"	# only while root
+alias rt="sudo -s"
+alias rd="cd / && c && l"
+alias h="cd ~ && c && l"
+alias d="cd ~/docker && c && l"
+alias ..="cd ..&& c && l"
+alias ...="cd ../.. && c && l"
+alias ....="cd ../../.. && c && l"
+alias sshg="ssh-keygen -t rsa -b 4096"
+alias syslogg="sudo cat /var/log/syslog | grep "
+alias syslogls="sudo cat /var/log/syslog" 
+alias pid="cat /etc/passwd"
+#---------------------------------------  services  ---------------------------------------#
+alias svls="sudo systemctl list-units --type=service --all"
+alias svlsa="sudo systemctl list-units --type=service"
+alias svg="sudo systemctl list-units --type=service --all | grep"
+alias svstart="sudo systemctl start"
+alias svr="sudo systemctl status"
+alias svstop="sudo systemctl stop"
+#--------------------------------------  debian os  --------------------------------------#
+alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
+#------------------------------  rsnapshot backup scripting  ------------------------------#
+alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
+alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
+alias ibakadd="sudo /bin/bash ~/.bmilcs/script/backup.sh add"
+alias rsnap="sudo nano /etc/rsnapshot.conf"
+#-------------------------------------  github repo  -------------------------------------#
+alias a="alias | sed 's/=.*//'"
+alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
+#-------------------------------------  file sharing  -------------------------------------#
+alias nfs='sudo nano /etc/exports'
+alias nfsr='sudo systemctl restart nfs-kernel-server'
+alias fstab='sudo nano /etc/fstab'
+alias fstest='sudo findmnt --verify --verbose'
+alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
+alias infs='
+	sudo apt install nfs-kernel-server 
+	echo && echo "====================================================================================================="
+	echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
+	echo "sudo nano /etc/exports"
+	echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
+	echo "-----------------------------------------------------------------------------------------------------"'
+alias ismb='
+	sudo apt install samba
+	echo && echo "====================================================================================================="
+	echo "====  bmilcs: samba instructions  ==================================================================="
+	echo "=====================================================================================================" && echo
+	echo "sudo nano /etc/samba/smb.conf"
+	echo "#       workgroup = BM"
+	echo "#       interfaces = 192.168.1.0/24 eth0"
+	echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
+	echo "# [docker]"
+	echo "#         comment = docker vm config files"
+	echo "#         path = /home/bmilcs/docker"
+	echo "#         browseable = yes"
+	echo "#         read only = no"
+	echo "#         guest ok = no"
+	echo "#         valid users = bmilcs"
+	echo "-----------------------------------------------------------------------------------------------------"		'
+alias smb='sudo nano /etc/samba/smb.conf'
+#----  network  ----------------------------------------------------------------------------------------
+
+#----  github  -----------------------------------------------------------------------------------------
+alias gitkeys='
+	git config --global user.name bmilcs
+	git config --global user.email bmilcs@yahoo.com
+	git config --global color.ui auto
+	mkdir -m 700 -p ~/.ssh
+	curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+	eval "$(ssh-agent -s)"
+	echo "> enter github private key as follows:"
+	echo "  ssh-add ~/.ssh/id_github"'
+alias rnet="sudo /etc/init.d/networking restart"
+alias enet="sudo nano /etc/network/interfaces"
+#----  bmilcs docker  ----------------------------------------------------------------------------------
+# remove unused: containers | vol | networks | etc
+alias drmu='docker system prune -a'
+# remove all containers
+alias drmc='docker rm $(docker ps -a -q)'
+# remove all images
+alias drmi='docker rmi $(docker images -a -q)'
+# stop all containres
+alias dstop='docker stop $(docker ps -a -q)'
+# clean up docker system
+alias dcln='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
+# remove nfs share volumes
+alias dvol='
+	volz="audiobooks cloud dl movies music plexlog podcasts tv"
+	for vz in $volz
+	do
+		docker volume rm docker_${vz}
+	done
+	'
+# remove: containers | volumes
+alias dnew='
+	dstop
+	drmc
+	dvol
+	'
+# nuke all
+alias dnuke='
+	dstop
+	drmc
+	dvol
+	drmi
+	'
+# docker logs
+alias dclog='docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
+# run docker-compose (github)
+# alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
+alias dcs="docker-compose stop"
+alias dcre="docker-compose restart"
+alias dcd="docker-compose down"
+# list all dockers
+alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
+alias dnet='docker network ls'
+# letsencrypt restart
+alias le="docker restart swag && docker logs -f swag"
+alias swag="docker restart swag && docker logs -f swag"
+#----  docker  -----------------------------------------------------------------------------------------
+alias ddf='docker system df'
