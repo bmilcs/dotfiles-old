@@ -3,10 +3,19 @@
 #=====================================================================================================
 
 # ----  services  ---------------------------------------------------------------------------------------" && echo
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;33m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+
 function gita() {
-	gitd add $@
-	gitd commit -m "Added $@"
-	gitp
+	gitt add $@
+	gitt commit -m "Added $@"
 }
 
 function sstart() {
@@ -73,7 +82,14 @@ function dre() {
 	docker logs -f $@
 }
 
-function colors() {
+function colorr() {
+	for letter in {a..z}; do
+	print -P "$letter: %$letter"
+	done
+}
+
+function colorrr() {
+for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""
 T='gYw'   # The test text
 echo -e "\n                 40m     41m     42m     43m\
     44m     45m     46m     47m";
