@@ -1,5 +1,5 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.history
+HISTFILE=~/.zshistory
 HISTSIZE=5000
 SAVEHIST=5000
 setopt autocd beep extendedglob nomatch
@@ -15,9 +15,12 @@ compinit
 
 # bmilcs dotfiles
 source $HOME/.aliases
-#source $HOME/.env
-#source $HOME/.dir_colors
 source $HOME/.functions
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+
+#promptq
+#PROMPT="${BLUE}%n@%m | %d $ "
+PROMPT='%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~  %b%f%k'
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -47,6 +50,9 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"    beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}" reverse-menu-complete
+
+# autoload colors
+autoload Uz colors && colors
 
 # partial command search up/down
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
