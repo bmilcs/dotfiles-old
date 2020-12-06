@@ -1,26 +1,29 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.zshistory
+#installer:
+HISTFILE=~/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 setopt autocd beep extendedglob nomatch
 bindkey -e
-# End of lines configured by zsh-newuser-install
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/bmilcs/.zshrc'
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# bmilcs ---------------------------------------
 
+# zinit plugin manager
+source ~/.zinit/bin/zinit.zsh
 
-# bmilcs dotfiles
+# dotfiles, dir_colors
 source $HOME/.aliases
 source $HOME/.functions
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-#promptq
-#PROMPT="${BLUE}%n@%m | %d $ "
-PROMPT='%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~  %b%f%k'
+#plugins	(zsh-completions zsh-autosuggestions)
+#source /home/bmilcs/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# prompt
+NL=$'\n'
+PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~  ${NL}%b%f%k"
+
+# auto corrections
+ENABLE_CORRECTION="true"
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo

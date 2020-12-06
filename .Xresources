@@ -41,18 +41,18 @@
 *.color14: nord7
 *.color15: nord6
 
-URxvt*termName:            		rxvt-unicode-256color
-URxvt*loginShell:          		true
-URxvt*scrollBar:           		false
-URxvt.scrollStyle: 			plain
+URxvt*termName:            	rxvt-unicode-256color
+URxvt*loginShell:          	true
+URxvt*scrollBar:           	false
+URxvt.scrollStyle: 					plain
 URxvt.secondaryScroll: 			true
-URxvt*cursorBlink:         		true
-URxvt*scrollTtyOutput:          	false
-URxvt*scrollWithBuffer:         	true
-URxvt*scrollTtyKeypress:        	true
+URxvt*cursorBlink:         	true
+URxvt*scrollTtyOutput:     	false
+URxvt*scrollWithBuffer:    	true
+URxvt*scrollTtyKeypress:   	true
 
 URxvt*saveLines:           		16384
-URxvt*colorUL: 				yellow
+URxvt*colorUL: 								yellow
 Xft.antialias:             		true
 Xft.autohint:              		false
 Xft.hinting:               		true
