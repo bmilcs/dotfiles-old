@@ -1,0 +1,7 @@
+#let script exit if a command fails
+	
+	set -o errexit 
+	OR
+	set -e
+
+	
