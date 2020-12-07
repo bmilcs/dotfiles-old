@@ -13,6 +13,16 @@ man() {
     command man "$@"
 }
 
+function sshgen() {
+
+	read -p 'Hostname: ' hosty
+	read -sp 'Passkey: ' passy
+	
+	ssh-keygen -t rsa -b 4096 -f ~/ssh/id_$hosty -P $passy || echo "booooo" ; exit 1
+	
+	echo "let's proceed..."
+}
+
 function gita() {
 	gitt add $@
 	gitt commit -m "Added $@"
