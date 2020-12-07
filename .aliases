@@ -45,10 +45,6 @@ alias mv='mv -i' #confirmation
 alias cp='cp -i' #confirmation
 alias ln='ln -i' #confirmation
 alias grep='grep --color=auto'			# color
-
-#-----------------------------------------  apt  -----------------------------------------#
-alias apt-get="sudo apt-get --yes"	# auto sudo
-alias apt="sudo apt --yes"					# auto sudo
 alias wget='wget -c'								# autoresume
 #---------------------------------  file/dir navigation  ---------------------------------#
 alias c="clear"
