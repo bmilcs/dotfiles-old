@@ -16,7 +16,7 @@ alias mount='sudo mount'
 alias umount='sudo umount'
 
 # git
-alias gitp='gitt commit -a -m "update" && gitt push'
+alias gitp='gita ~/scripts/* && gitt commit -a -m "update" && gitt push'
 alias gitt='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # configs
