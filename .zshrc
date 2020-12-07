@@ -11,10 +11,12 @@ bindkey -e
 source ~/.zinit/bin/zinit.zsh
 
 # dotfiles, dir_colors
-source $HOME/.aliases
-source $HOME/.functions
-test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+[ -f "$HOME/.aliases" ] && source $HOME/.aliases
+[ -f "$HOME/.functions" ] && source $HOME/.functions
+[ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
+[ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
 
+# ZINIT = managing extensions
 #plugins	(zsh-completions zsh-autosuggestions)
 #source /home/bmilcs/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -25,8 +27,7 @@ PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~  
 # auto corrections
 ENABLE_CORRECTION="true"
 
-# create a zkbd compatible hash;
-# to add other keys to this hash, see: man 5 terminfo
+# create a zkbd compatible hash; # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
