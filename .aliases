@@ -16,8 +16,8 @@ alias mount='sudo mount'
 alias umount='sudo umount'
 
 # git
-alias gitp='gita ~/scripts/* && gitt commit -a -m "update" && gitt push'
-alias gitt='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias gitp='gita ~/scripts/* ; gitt commit -a -m "update" && gitt push'
+alias gitt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
 
 # configs
 alias gap='nano ~/.config/i3/config'
