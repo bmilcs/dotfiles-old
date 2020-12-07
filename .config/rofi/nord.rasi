@@ -39,7 +39,6 @@
     alternate-urgent-foreground:    @red;
     alternate-urgent-background:    @lightbg;
     spacing:                        5;
-    
 }
 #window {
     background-color: @black1;
