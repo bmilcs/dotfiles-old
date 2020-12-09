@@ -7,18 +7,17 @@ bindkey -e
 
 # bmilcs ---------------------------------------
 
-# zinit plugin manager
-source ~/.zinit/bin/zinit.zsh
+# zplugin manager
+source ~/.zplugin/bin/zplugin.zsh
 
 # dotfiles, dir_colors
+
 [ -f "$HOME/.aliases" ] && source $HOME/.aliases
 [ -f "$HOME/.functions" ] && source $HOME/.functions
 [ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
 [ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
 
-# ZINIT = managing extensions
 #plugins	(zsh-completions zsh-autosuggestions)
-#source /home/bmilcs/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # prompt
 NL=$'\n'
