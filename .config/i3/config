@@ -23,23 +23,39 @@ exec --no-startup-id exec bash $HOME/.fehbg
 exec --no-startup-id "picom --config /home/bmilcs/.config/picom/config"
 # polybar
 exec_always --no-startup-id /home/bmilcs/.config/polybar/launch.sh &
+# clipit
+exec --no-startup-id clipit
 # networkmanager
 exec --no-startup-id nm-applet
 # kdeconnect
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
+# layout
+# exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/bmilcs/.config/i3/ws1.json'"
+# exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/bmilcs/.config/i3/ws2.json'"
 # messaging apps
 exec --no-startup-id telegram-desktop
 exec --no-startup-id thunderbird
 exec --no-startup-id android-messages-desktop 
 exec --no-startup-id discord
+exec --no-startup-id code
+exec --no-startup-id firefox
+exec --no-startup-id i3-sensible-terminal
+exec --no-startup-id i3-sensible-terminal
+
 
 # window management  ##########################################################
 
-assign [class="Thunderbird"] 2
-assign [class="discord"] 2
-assign [class="android-*"] 2
-assign [class="Telegram*"] 2
+# assign [class="code"] 1
+# assign [class="firefox"] 1
+
+assign [class="Thunderbird"] 3
+assign [class="discord"] 3
+assign [class="android-*"] 3
+assign [class="Telegram*"] 3
+
+
+
 
 # hotkeys #####################################################################
 
@@ -47,14 +63,12 @@ assign [class="Telegram*"] 2
 set $mod Mod4
 set $mod2 Mod1
 # log out / restart / reload
-bindsym  $mod+Control+Escape exec "i3-msg exit"
+bindsym  $mod+Escape exec "i3-msg exit"
 bindcode $mod+Control+49 reload
 bindcode $mod+49 restart
 bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
-bindsym $mod+Return exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
-bindsym $mod+Shift+Return exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
-bindsym $mod+Control+Return exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
+bindcode $mod+23 exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
 # audio control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -65,8 +79,9 @@ floating_modifier $mod
 # fav apps
 bindcode $mod+48 exec firefox 
 bindcode $mod+47 exec code
-bindcode $mod+51 exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym Print exec flameshot gui
+bindcode $mod+51 exec flameshot gui
 # navigation & core functionality
 bindsym $mod+q kill
 bindsym $mod+d focus right
@@ -77,10 +92,10 @@ bindsym $mod+w focus up
 bindsym $mod+Control+w move up
 bindsym $mod+s focus down
 bindsym $mod+Control+s move down
-bindsym $mod+z mode "resize"
-bindsym $mod+x mode "$mode_gaps"
+bindsym $mod+x mode "resize"
+bindsym $mod+Control+x mode "$mode_gaps"
 bindsym $mod+c split v
-bindsym $mod+Shift+x split h
+bindsym $mod+Control+c split h
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -93,9 +108,11 @@ bindsym $mod+Control+Up move up
 bindsym $mod+Control+Right move right
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# resize
+bindsym $mod+
 
 # visuals  ####################################################################
-workspace_auto_back_and_forth yes
+# workspace_auto_back_and_forth yes
 
 # font
 font pango:Source Code Pro 12
@@ -193,62 +210,78 @@ mode "resize" {
         bindsym Up resize shrink height 2 px or 2 ppt
         bindsym Right resize grow width 2 px or 2 ppt
         bindsym Return mode "default"
-        bindsym q mode "default"
         bindcode 49 mode "default"
         bindsym Escape mode "default"
 }
-set $mode_gaps Gaps: (w|o) outer, (s|i) inner, (a) preset skinny
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift & +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift & +|-|0 (global)
+
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym w      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym s      mode "$mode_gaps_inner"
-        bindsym x gaps inner all set 0; gaps outer all set 0; mode "default"
-        bindsym a gaps inner all set 5; gaps outer all set 10; mode "default"
-        bindsym z gaps inner all set 25; gaps outer all set 25; mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym q mode "default"
-        bindcode 49 mode "default"
-}
-mode "$mode_gaps_inner" {
         bindsym w gaps inner all plus 2
         bindsym s gaps inner all minus 2
-        bindsym x gaps inner all set 0
-        bindsym Control+w gaps inner current plus 2
-        bindsym Control+s gaps inner current minus 2
-        bindsym Control+x gaps inner current set 0
-        bindsym plus  gaps inner all plus 2
-        bindsym minus gaps inner all minus 2
-        bindsym 0     gaps inner all set 0
-        bindsym Shift+plus  gaps inner current plus 2
-        bindsym Shift+minus gaps inner current minus 2
-        bindsym Shift+0     gaps inner current set 0
+        bindsym d gaps outer all plus 2
+        bindsym a gaps outer all minus 2
+        bindsym x gaps inner all set 0; gaps outer all set 0; mode "default"
+        bindsym z gaps inner all set 5; gaps outer all set 10; mode "default"
+        bindsym c gaps inner all set 25; gaps outer all set 25; mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym q mode "default"
         bindcode 49 mode "default"
 }
-mode "$mode_gaps_outer" {
-        bindsym w gaps outer all plus 2
-        bindsym s gaps outer all minus 2
-        bindsym x gaps outer all set 0
-        bindsym Control+w gaps outer current plus 2
-        bindsym Control+s gaps outer current minus 2
-        bindsym Control+x gaps outer current set 0
-        bindsym plus  gaps outer all plus 2
-        bindsym minus gaps outer all minus 2
-        bindsym 0     gaps outer all set 0
-        bindsym Shift+plus  gaps outer current plus 2
-        bindsym Shift+minus gaps outer current minus 2
-        bindsym Shift+0     gaps outer current set 0
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym q mode "default"
-        bindcode 49 mode "default"
-}
+
+# set $mode_gaps Gaps: (w|o) outer, (s|i) inner, (a) preset skinny
+# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift & +|-|0 (global)
+# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift & +|-|0 (global)
+# set $mode_gaps 
+# set $mode_gaps Gaps: (w|o) outer, (s|i) inner, (a) preset skinny
+# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift & +|-|0 (global)
+# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift & +|-|0 (global)
+# mode "$mode_gaps" {
+#         bindsym o      mode "$mode_gaps_outer"
+#         bindsym w      mode "$mode_gaps_outer"
+#         bindsym i      mode "$mode_gaps_inner"
+#         bindsym s      mode "$mode_gaps_inner"
+#         bindsym x gaps inner all set 0; gaps outer all set 0; mode "default"
+#         bindsym a gaps inner all set 5; gaps outer all set 10; mode "default"
+#         bindsym z gaps inner all set 25; gaps outer all set 25; mode "default"
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+#         bindcode 49 mode "default"
+# }
+# mode "$mode_gaps_inner" {
+#         bindsym w gaps inner all plus 2
+#         bindsym s gaps inner all minus 2
+#         bindsym x gaps inner all set 0
+#         bindsym Control+w gaps inner current plus 2
+#         bindsym Control+s gaps inner current minus 2
+#         bindsym Control+x gaps inner current set 0
+#         bindsym plus  gaps inner all plus 2
+#         bindsym minus gaps inner all minus 2
+#         bindsym 0     gaps inner all set 0
+#         bindsym Shift+plus  gaps inner current plus 2
+#         bindsym Shift+minus gaps inner current minus 2
+#         bindsym Shift+0     gaps inner current set 0
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+#         bindsym q mode "default"
+#         bindcode 49 mode "default"
+# }
+# mode "$mode_gaps_outer" {
+#         bindsym w gaps outer all plus 2
+#         bindsym s gaps outer all minus 2
+#         bindsym x gaps outer all set 0
+#         bindsym Control+w gaps outer current plus 2
+#         bindsym Control+s gaps outer current minus 2
+#         bindsym Control+x gaps outer current set 0
+#         bindsym plus  gaps outer all plus 2
+#         bindsym minus gaps outer all minus 2
+#         bindsym 0     gaps outer all set 0
+#         bindsym Shift+plus  gaps outer current plus 2
+#         bindsym Shift+minus gaps outer current minus 2
+#         bindsym Shift+0     gaps outer current set 0
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+#         bindsym q mode "default"
+#         bindcode 49 mode "default"
+# }
 
 ### i3status
 # bar {

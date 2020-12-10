@@ -8,16 +8,22 @@ bindkey -e
 # bmilcs ---------------------------------------
 
 # zplugin manager
+# plugins	(zsh-completions zsh-autosuggestions)
 source ~/.zplugin/bin/zplugin.zsh
+zplugin light zsh-users/zsh-completions 
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zdharma/fast-syntax-highlighting
+zplugin load zdharma/history-search-multi-word
+zplugin load b4b4r07/enhancd
 
 # dotfiles, dir_colors
-
 [ -f "$HOME/.aliases" ] && source $HOME/.aliases
 [ -f "$HOME/.functions" ] && source $HOME/.functions
 [ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
 [ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
 
-#plugins	(zsh-completions zsh-autosuggestions)
+# autostart mpd
+[ ! -s ~/.config/mpd/pid ] && mpd
 
 # prompt
 NL=$'\n'

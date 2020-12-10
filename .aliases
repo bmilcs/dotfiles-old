@@ -4,46 +4,51 @@
 
 #---------------------------------  archlinux specific  ----------------------------------#
 # packages | pacman | yay
-alias pacman='sudo pacman'
-alias pm='pacman'
-alias up='pm -Syyuu ; yay -Syyuu'
-alias pmls='pacman -Qe | less'
+alias pacman="sudo pacman"
+alias pm="pacman"
+alias up="pm -Syyuu ; yay -Syyuu"
+alias pmls="pacman -Qe | less"
 
 # mount | umount
-alias mount='sudo mount'
-alias umount='sudo umount'
+alias mount="sudo mount"
+alias umount="sudo umount"
 
 # git
-alias gitp='gita ~/scripts/* ; gitt commit -a -m "update" && gitt push'
-alias gitt='/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME'
+alias gitp="gita ~/scripts/* ; gitt commit -a -m 'update' && gitt push"
+alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 
 # configs
-alias gap='nano ~/.config/i3/config'
-alias dot='nano ~/.aliases'
+alias gap="nano ~/.config/i3/config"
+alias dot="nano ~/.aliases"
 
 # zsh
-alias rcr='source ~/.zshrc'
-alias rc='nano ~/.zshrc'
+alias rcr="source ~/.zshrc"
+alias rc="nano ~/.zshrc"
 
 # logout
-alias rex='sudo systemctl restart display-manager'
+alias rex="sudo systemctl restart display-manager"
 
 # wallpaper
-alias fehbg='feh -g 640x480 -d -S filename ~/wallpapers'
+alias fehbg="feh -g 640x480 -d -S filename ~/wallpapers"
+
+# save dir to notes
+alias sdir="echo $PWD >> ~/notes"
+alias onotes="vim ~/notes"
+
 
 #---------------------------------  directories & files  ---------------------------------#
-alias ls='ls --color -lhF --group-directories-first'
+alias ls="ls --color -lhF --group-directories-first"
 alias l="ls"
 alias ll="ls -nA" #long, all, # puid
 alias lll="ls -A" # long, all, abc puid
 alias lsf="ls | grep -v '^d'"	#ls files,,
 alias lsg="ls | grep" #search in dir
 alias lsd="ls -ld */"   # ls, long, dir
-alias mv='mv -i' #confirmation
-alias cp='cp -i' #confirmation
-alias ln='ln -i' #confirmation
-alias grep='grep --color=auto'			# color
-alias wget='wget -c'								# autoresume
+alias mv="mv -i" #confirmation
+alias cp="cp -i" #confirmation
+alias ln="ln -i" #confirmation
+alias grep="grep --color=auto"			# color
+alias wget="wget -c"								# autoresume
 #---------------------------------  file/dir navigation  ---------------------------------#
 alias c="clear"
 alias bm="su bmilcs"	# only while root
@@ -57,7 +62,7 @@ alias ....="cd ../../.. && c && l"
 alias syslogg="sudo cat /var/log/syslog | grep "
 alias syslogls="sudo cat /var/log/syslog" 
 alias pid="cat /etc/passwd"
-alias ip='ip -color=auto'
+alias ip="ip -color=auto"
 
 #---------------------------------------  services  ---------------------------------------#
 alias svls="sudo systemctl list-units --type=service --all"
@@ -78,10 +83,10 @@ alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 #-------------------------------------  file sharing  -------------------------------------#
-alias nfs='sudo nano /etc/exports'
-alias nfsr='sudo systemctl restart nfs-kernel-server'
-alias fstab='sudo nano /etc/fstab'
-alias fstest='sudo findmnt --verify --verbose'
+alias nfs="sudo nano /etc/exports"
+alias nfsr="sudo systemctl restart nfs-kernel-server"
+alias fstab="sudo nano /etc/fstab"
+alias fstest="sudo findmnt --verify --verbose"
 alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
 alias infs='
 	sudo apt install nfs-kernel-server 
