@@ -18,12 +18,12 @@ alias gitp="gita ~/scripts/* ; gitt commit -a -m 'update' && gitt push"
 alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 
 # configs
-alias gap="nano ~/.config/i3/config"
-alias dot="nano ~/.aliases"
+alias gap="vim ~/.config/i3/config"
+alias dot="vim ~/.aliases"
 
 # zsh
 alias rcr="source ~/.zshrc"
-alias rc="nano ~/.zshrc"
+alias rc="vim ~/.zshrc"
 
 # logout
 alias rex="sudo systemctl restart display-manager"
@@ -49,6 +49,7 @@ alias cp="cp -i" #confirmation
 alias ln="ln -i" #confirmation
 alias grep="grep --color=auto"			# color
 alias wget="wget -c"								# autoresume
+
 #---------------------------------  file/dir navigation  ---------------------------------#
 alias c="clear"
 alias bm="su bmilcs"	# only while root
@@ -73,26 +74,29 @@ alias svr="sudo systemctl status"
 alias svstop="sudo systemctl stop"
 #--------------------------------------  debian os  --------------------------------------#
 alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
+
 #------------------------------  rsnapshot backup scripting  ------------------------------#
 alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
 alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
 alias ibakadd="sudo /bin/bash ~/.bmilcs/script/backup.sh add"
-alias rsnap="sudo nano /etc/rsnapshot.conf"
+alias rsnap="sudo vim /etc/rsnapshot.conf"
+
 #-------------------------------------  github repo  -------------------------------------#
 alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
+
 #-------------------------------------  file sharing  -------------------------------------#
-alias nfs="sudo nano /etc/exports"
+alias nfs="sudo vim /etc/exports"
 alias nfsr="sudo systemctl restart nfs-kernel-server"
-alias fstab="sudo nano /etc/fstab"
+alias fstab="sudo vim /etc/fstab"
 alias fstest="sudo findmnt --verify --verbose"
 alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
 alias infs='
 	sudo apt install nfs-kernel-server 
 	echo && echo "====================================================================================================="
 	echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-	echo "sudo nano /etc/exports"
+	echo "sudo vim /etc/exports"
 	echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
 	echo "-----------------------------------------------------------------------------------------------------"'
 alias ismb='
@@ -100,7 +104,7 @@ alias ismb='
 	echo && echo "====================================================================================================="
 	echo "====  bmilcs: samba instructions  ==================================================================="
 	echo "=====================================================================================================" && echo
-	echo "sudo nano /etc/samba/smb.conf"
+	echo "sudo vim /etc/samba/smb.conf"
 	echo "#       workgroup = BM"
 	echo "#       interfaces = 192.168.1.0/24 eth0"
 	echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
@@ -112,7 +116,7 @@ alias ismb='
 	echo "#         guest ok = no"
 	echo "#         valid users = bmilcs"
 	echo "-----------------------------------------------------------------------------------------------------"		'
-alias smb='sudo nano /etc/samba/smb.conf'
+alias smb='sudo vim /etc/samba/smb.conf'
 #----  network  ----------------------------------------------------------------------------------------
 
 #----  github  -----------------------------------------------------------------------------------------
@@ -127,7 +131,7 @@ alias gitkeys='
 	echo "> enter github private key as follows:"
 	echo "  ssh-add ~/.ssh/id_github"'
 alias rnet="sudo /etc/init.d/networking restart"
-alias enet="sudo nano /etc/network/interfaces"
+alias enet="sudo vim /etc/network/interfaces"
 #----  bmilcs docker  ----------------------------------------------------------------------------------
 # remove unused: containers | vol | networks | etc
 alias drmu='docker system prune -a'
@@ -148,21 +152,11 @@ alias dvol='
 	done
 	'
 # remove: containers | volumes
-alias dnew='
-	dstop
-	drmc
-	dvol
-	'
+alias dnew="dstop;drmc;dvol;"
 # nuke all
-alias dnuke='
-	dstop
-	drmc
-	dvol
-	drmi
-	'
+alias dnuke="dstop;drmc;dvol;drmi"
 # docker logs
 alias dclog='docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
-# run docker-compose (github)
 # alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
 alias dcs="docker-compose stop"
 alias dcre="docker-compose restart"

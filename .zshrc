@@ -27,7 +27,7 @@ zplugin load b4b4r07/enhancd
 
 # prompt
 NL=$'\n'
-PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~  ${NL}%b%f%k"
+PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  ${NL}%b%f%k"
 
 # auto corrections
 ENABLE_CORRECTION="true"
@@ -93,3 +93,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
+# fix locale issue : xselfont
+LC_ALL=C
+export LC_ALL

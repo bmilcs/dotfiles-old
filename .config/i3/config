@@ -10,10 +10,28 @@
 ##############################################################################
 
 # autostart ###################################################################
+exec --no-startup-id i3-msg 'workspace 2; append_layout /home/bmilcs/.config/i3/ws2.json'
+# layouts
+exec --no-startup-id i3-msg 'workspace 2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
+exec --no-startup-id "telegram-desktop"
+exec --no-startup-id "thunderbird --name bmtb"
+exec --no-startup-id "android-messages-desktop"
+exec --no-startup-id "discord"
+
+# exec --no-startup-id "i3-msg 'workspace 1; exec urxvt --name neofetch -e bash -c 'neofetch && bash'"
+
+exec --no-startup-id i3-msg 'workspace 1; append_layout /home/bmilcs/.config/i3/ws1.json'
+exec --no-startup-id i3-msg 'workspace 1; exec urxvt -name neofetch -e zsh -c "neofetch && zsh"; exec urxvt -name ranger -e zsh -c "ranger && zsh"'
+exec --no-startup-id i3-msg 'workspace 1; firefox -new-window https://github.com/bmilcs/dotfiles'
+exec --no-startup-id i3-msg 'exec firefox --class=\"github\" -new-window https://www.reddit.com'
+exec --no-startup-id "code"
+
+# exec_always --no-startup-id i3-msg "workspace $ws8; exec urxvt -name neofetch -e bash -c 'neofetch && bash'"
+# i3-msg "workspace number 1; append_layout /home/elen/.config/i3/1.json" && kitty & kitty & chromium
 
 # stock gaps
-gaps inner 7
-gaps outer 20
+gaps inner 1
+gaps outer 1
 # audio
 exec --no-startup-id pulseaudio --start
 # wallpaper: feh
@@ -22,7 +40,7 @@ exec --no-startup-id exec bash $HOME/.fehbg
 # compositor: picom
 exec --no-startup-id "picom --config /home/bmilcs/.config/picom/config"
 # polybar
-exec_always --no-startup-id /home/bmilcs/.config/polybar/launch.sh &
+exec --no-startup-id /home/bmilcs/.config/polybar/launch.sh &
 # clipit
 exec --no-startup-id clipit
 # networkmanager
@@ -30,32 +48,20 @@ exec --no-startup-id nm-applet
 # kdeconnect
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
-# layout
-# exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/bmilcs/.config/i3/ws1.json'"
-# exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/bmilcs/.config/i3/ws2.json'"
-# messaging apps
-exec --no-startup-id telegram-desktop
-exec --no-startup-id thunderbird
-exec --no-startup-id android-messages-desktop 
-exec --no-startup-id discord
-exec --no-startup-id code
-exec --no-startup-id firefox
-exec --no-startup-id i3-sensible-terminal
-exec --no-startup-id i3-sensible-terminal
 
 
 # window management  ##########################################################
 
+#1
 # assign [class="code"] 1
 # assign [class="firefox"] 1
 
-assign [class="Thunderbird"] 3
-assign [class="discord"] 3
-assign [class="android-*"] 3
-assign [class="Telegram*"] 3
-
-
-
+#2
+assign [class="Thunderbird"] 2
+assign [class="discord"] 2
+assign [class="android-*"] 2
+assign [class="Telegram*"] 2
+# assign [class="firefox"] 2
 
 # hotkeys #####################################################################
 
@@ -91,9 +97,11 @@ bindsym $mod+Control+a move left
 bindsym $mod+w focus up
 bindsym $mod+Control+w move up
 bindsym $mod+s focus down
+bindsym $mod+g focus parent
+bindsym $mod+j focus child
 bindsym $mod+Control+s move down
-bindsym $mod+x mode "resize"
-bindsym $mod+Control+x mode "$mode_gaps"
+bindsym $mod+x mode "$mode_gaps"
+bindsym $mod+z mode "resize"
 bindsym $mod+c split v
 bindsym $mod+Control+c split h
 # alternatively, you can use the cursor keys:
@@ -109,7 +117,7 @@ bindsym $mod+Control+Right move right
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # resize
-bindsym $mod+
+# ADD PAGE UP
 
 # visuals  ####################################################################
 # workspace_auto_back_and_forth yes
@@ -315,8 +323,3 @@ mode "$mode_gaps" {
 # change focus between tiling / floating windows
 #  bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+g focus parent
-
-#focus the child container
-bindsym $mod+j focus child

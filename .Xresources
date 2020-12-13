@@ -41,28 +41,30 @@
 *.color14: nord7
 *.color15: nord6
 
-URxvt*termName:            	rxvt-unicode-256color
-URxvt*loginShell:          	true
-URxvt*scrollBar:           	false
-URxvt.scrollStyle: 					plain
-URxvt.secondaryScroll: 			true
-URxvt*cursorBlink:         	true
-URxvt*scrollTtyOutput:     	false
-URxvt*scrollWithBuffer:    	true
-URxvt*scrollTtyKeypress:   	true
+URxvt*termName:								rxvt-unicode-256color
+URxvt*loginShell:							true
+URxvt*scrollBar:							false
+URxvt.scrollStyle:						plain
+URxvt.secondaryScroll:				true
+URxvt*cursorBlink:						true
+URxvt*scrollTtyOutput:				false
+URxvt*scrollWithBuffer:				true
+URxvt*scrollTtyKeypress:			true
+URxvt*saveLines:							16384
+URxvt*colorUL:								yellow
+Xft.antialias:								true
+Xft.autohint:									false
+Xft.hinting:									true
+Xft.hintstyle:								hintslight
+Xft.dpi:											96
+Xft.rgba:											rgb
+Xft.lcdfilter:								lcdlight
 
-URxvt*saveLines:           		16384
-URxvt*colorUL: 								yellow
-Xft.antialias:             		true
-Xft.autohint:              		false
-Xft.hinting:               		true
-Xft.hintstyle:             		hintslight
-Xft.dpi:                   		96
-Xft.rgba:                  		rgb
-Xft.lcdfilter:             		lcdlight
 
-URxvt.font:     xft:source code pro:size=10:antialias=true
-URxvt.boldFont: xft:source code pro:bold:size=10:antialias=true
+! URxvt.font: 								xft:Iosevka Term:size=10:antialias=true
+! URxvt.boldFont: 						xft:Iosevka Term:bold:size=10:antialias=true
+URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
+URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
