@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-center '/home/bmilcs/gits/snakedye-wlr_config/wallpapers/mountain-nord.jpg'
