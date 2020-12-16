@@ -1,3 +1,4 @@
+
 ### bmilcs i3-gaps  ###########################################################
                 #  ______________________               #
                 # ( bmilcs dotfiles ftw. )              #
@@ -30,8 +31,8 @@ exec --no-startup-id "code"
 # i3-msg "workspace number 1; append_layout /home/elen/.config/i3/1.json" && kitty & kitty & chromium
 
 # stock gaps
-gaps inner 1
-gaps outer 1
+gaps inner 10
+gaps outer 18
 # audio
 exec --no-startup-id pulseaudio --start
 # wallpaper: feh
@@ -52,10 +53,6 @@ exec --no-startup-id kdeconnect-indicator
 
 # window management  ##########################################################
 
-#1
-# assign [class="code"] 1
-# assign [class="firefox"] 1
-
 #2
 assign [class="Thunderbird"] 2
 assign [class="discord"] 2
@@ -63,45 +60,63 @@ assign [class="android-*"] 2
 assign [class="Telegram*"] 2
 # assign [class="firefox"] 2
 
+for_window [class="Pidgin"] floating enable
+
+
 # hotkeys #####################################################################
 
 #mods
 set $mod Mod4
 set $mod2 Mod1
 # log out / restart / reload
-bindsym  $mod+Escape exec "i3-msg exit"
+bindsym  $mod+Alt+Escape exec "i3-msg exit"
 bindcode $mod+Control+49 reload
 bindcode $mod+49 restart
 bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
 bindcode $mod+23 exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
 # audio control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 # move floating windows
 floating_modifier $mod
 # fav apps
+bindsym $mod+Control+Return move scratchpad
+bindsym $mod+Return scratchpad show
+
 bindcode $mod+48 exec firefox 
 bindcode $mod+47 exec code
-bindsym $mod+Return exec i3-sensible-terminal
 bindsym Print exec flameshot gui
-bindcode $mod+51 exec flameshot gui
+bindcode $mod+51 exec i3-sensible-terminal
 # navigation & core functionality
 bindsym $mod+q kill
 bindsym $mod+d focus right
-bindsym $mod+Control+d move right
 bindsym $mod+a focus left
-bindsym $mod+Control+a move left
 bindsym $mod+w focus up
-bindsym $mod+Control+w move up
 bindsym $mod+s focus down
-bindsym $mod+g focus parent
-bindsym $mod+j focus child
-bindsym $mod+Control+s move down
-bindsym $mod+x mode "$mode_gaps"
-bindsym $mod+z mode "resize"
+bindsym $mod+e focus parent
+bindsym $mod+r focus child
+bindsym $mod+Shift+d move right
+bindsym $mod+Control+d move right 50 px
+bindsym $mod+Control+a move left  50 px
+bindsym $mod+Control+w move up  50 px
+bindsym $mod+Control+s move down  50 px
+
+bindsym $mod+j resize shrink height 1 px or 1 ppt
+bindsym $mod+k resize grow height 1 px or 1 ppt
+bindsym $mod+h resize shrink width 1 px or 1 ppt
+bindsym $mod+l resize grow width 1 px or 1 ppt
+bindsym $mod+Control+j gaps outer all plus 2
+bindsym $mod+Control+k gaps outer all minus 2
+bindsym $mod+Control+h gaps inner all plus 2
+bindsym $mod+Control+l gaps inner all minus 2
+bindsym $mod+x mode "$modee_gaps"
+bindsym $mod+z mode "$mode_resize"
 bindsym $mod+c split v
 bindsym $mod+Control+c split h
 # alternatively, you can use the cursor keys:
@@ -126,9 +141,9 @@ bindsym $mod+f fullscreen toggle
 font pango:Source Code Pro 12
 
 # borders
-default_border pixel 3
-default_floating_border pixel 3
-for_window [class=".*"] border pixel 3
+default_border pixel 1
+default_floating_border pixel 1
+for_window [class=".*"] border pixel 1
 
 # color codes
 set $black              #2E3440
@@ -149,7 +164,7 @@ set $green              #A3BE8C
 set $purple             #B48EAD
 # -----------------------------
 set $bg                 #81A1C1
-set $inactive-bg        #3B4252
+set $inactive-bg        #2E3440
 set $urgent-bg          #EBCB8B
 set $text               #D8DEE9
 set $inactive-text      #3B4252
@@ -208,15 +223,17 @@ bindsym $mod+Control+0 move container to workspace number $ws10
 # resizing & gaps #############################################################
 smart_gaps on
 smart_borders no_gaps
-mode "resize" {
-        bindsym a resize shrink width 2 px or 2 ppt
-        bindsym d resize grow width 2 px or 2 ppt
-        bindsym w resize grow height 2 px or 2 ppt
-        bindsym s resize shrink height 2 px or 2 ppt
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize grow height 2 px or 2 ppt
-        bindsym Up resize shrink height 2 px or 2 ppt
-        bindsym Right resize grow width 2 px or 2 ppt
+set $mode_resize SIZE
+set $mode_gaps GAPS
+mode "$mode_resize" {
+        bindsym a resize shrink width 1 px or 1 ppt
+        bindsym d resize grow width 1 px or 1 ppt
+        bindsym w resize grow height 1 px or 1 ppt
+        bindsym s resize shrink height 1 px or 1 ppt
+        bindsym $mod+a resize shrink width 10 px or 10 ppt
+        bindsym $mod+d resize grow width 10 px or 10 ppt
+        bindsym $mod+w resize grow height 10 px or 10 ppt
+        bindsym $mod+s resize shrink height 10 px or 10 ppt
         bindsym Return mode "default"
         bindcode 49 mode "default"
         bindsym Escape mode "default"

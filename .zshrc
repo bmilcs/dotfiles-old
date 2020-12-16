@@ -1,4 +1,3 @@
-#installer:
 HISTFILE=~/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
@@ -9,6 +8,7 @@ bindkey -e
 
 # zplugin manager
 # plugins	(zsh-completions zsh-autosuggestions)
+
 source ~/.zplugin/bin/zplugin.zsh
 zplugin light zsh-users/zsh-completions 
 zplugin light zsh-users/zsh-autosuggestions
@@ -17,19 +17,23 @@ zplugin load zdharma/history-search-multi-word
 zplugin load b4b4r07/enhancd
 
 # dotfiles, dir_colors
+
 [ -f "$HOME/.aliases" ] && source $HOME/.aliases
 [ -f "$HOME/.functions" ] && source $HOME/.functions
 [ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
 [ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
 
 # autostart mpd
+
 [ ! -s ~/.config/mpd/pid ] && mpd
 
 # prompt
+
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  ${NL}%b%f%k"
 
 # auto corrections
+
 ENABLE_CORRECTION="true"
 
 # create a zkbd compatible hash; # to add other keys to this hash, see: man 5 terminfo
