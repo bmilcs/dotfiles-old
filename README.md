@@ -2,7 +2,7 @@
 
 welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & committing to a dual boot configeration on my primary workstation. 
 
-### todo
+### TODO
 
 
 - [ ] improve README.md
