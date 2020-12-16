@@ -11,7 +11,7 @@ export $blue2="#81A1C1"
 export $blue1="#5E81AC"
 export $red="#BF616A"
 export $orange="#D08770"
-export $yellow="#EBCB8B"
+export Q$yellow="#EBCB8B"
 export $green="#A3BE8C"
 export $purple="#B48EAD"
 
