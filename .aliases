@@ -9,6 +9,9 @@ alias pm="pacman"
 alias up="pm -Syyuu ; yay -Syyuu"
 alias pmls="pacman -Qe | less"
 
+# enforce vim
+alias nano="vim"
+
 # mount | umount
 alias mount="sudo mount"
 alias umount="sudo umount"
