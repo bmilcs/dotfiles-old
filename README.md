@@ -22,8 +22,12 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     [ ] vim?
 [ ] integrate github into terminal
 
-#### completed
+### completed
 [x] ssh config variable host/rsa key
 	  hostname *
 	  	user: bmilcs
 	  	authorizedkey: id_%h
+
+### links
+
+- https://guides.github.com/features/mastering-markdown/ 
