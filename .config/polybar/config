@@ -2,10 +2,14 @@
 ;    -bmilcs
 ;-----------------------------------------------------
 [colors]
-background = ${xrdb:color0}
-background-alt = ${xrdb:color7}
-foreground = ${xrdb:color4}
-foreground-alt = ${xrdb:color6}
+background = #2e3440
+background-alt = #434c5e
+foreground = #81a1c1
+foreground-alt = #88C0D0
+; background = ${xrdb:color0}
+; background-alt = ${xrdb:color7}
+; foreground = ${xrdb:color4}
+; foreground-alt = ${xrdb:color10}
 
 ; #2E3440
 ; #3B4252
@@ -79,9 +83,9 @@ offset-x = 38.5%
 foreground = ${colors.foreground}
 background = ${colors.background}
 inherit = bar/base
-width = 10%
-modules-right = pulseaudio time 
-offset-x = 89.8%
+width = 20%
+modules-right = pulseaudio date time 
+offset-x = 79.8%
 
 [bar/dummy]
 enable-ipc = true
@@ -125,26 +129,26 @@ ws-icon-default = 
 format = <label-state> <label-mode>
 format-font = 0
 label-mode = %mode%
-label-mode-padding = 1
+label-mode-padding = 5
 label-mode-background = ${colors.background}
 label-mode-foreground = ${colors.background}
 ; FOCUSED -----------------------
 label-focused = 
 label-focused-foreground = ${colors.foreground-alt}
-label-focused-padding = 1
+label-focused-padding = 5
 ; UNFOCUSED -----------------------
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused = %icon%
-label-unfocused-padding = 1
+label-unfocused-padding = 5
 ; VISIBLE -----------------------
 label-visible = %icon% 
 label-visible-underline = ${colors.foreground}
-label-visible-padding = 1
+label-visible-padding = 5
 ; URGENT -----------------------
 label-urgent = %icon%
 label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.background}
-label-urgent-padding = 1
+label-urgent-padding = 5
 ; Separator in between workspaces
 label-separator = 
 label-separator-padding = 0
@@ -258,10 +262,20 @@ type = internal/date
 interval = 1
 format-padding = 1
 time = "%r"
+label = %time%
+label-padding = 5
+label-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 100
+format-padding = 1
+; time = "%r"
 date = "%A %B %d"
-label = %date%, %time%
-label-padding = 0
+label = %date%
+label-padding = 5
 label-foreground = ${colors.foreground}
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
