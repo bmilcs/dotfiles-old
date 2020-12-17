@@ -5,6 +5,7 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
 ### TODO
 
 
+- [ ] neomutt - email
 - [ ] improve README.md
     - [ ] add screenshots
     - [ ] add table of contents
@@ -31,3 +32,5 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
 ### links
 
 - https://guides.github.com/features/mastering-markdown/ 
+
+
