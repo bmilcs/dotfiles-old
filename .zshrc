@@ -14,7 +14,7 @@ zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zdharma/fast-syntax-highlighting
 zplugin load zdharma/history-search-multi-word
-zplugin load b4b4r07/enhancd
+# zplugin load b4b4r07/enhancd
 
 # dotfiles, dir_colors
 
@@ -36,7 +36,7 @@ NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}%b%f%k"
 
 # auto corrections
-
+CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
 
 # create a zkbd compatible hash; # to add other keys to this hash, see: man 5 terminfo
@@ -88,8 +88,12 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
 # prompt themes
-autoload -Uz promptinit
+autoload -Uz promptinit compinit
 promptinit
+compinit
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
+zstyle ':completion::complete:*' gain-privileges 1
 
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
@@ -103,3 +107,22 @@ fi
 # fix locale issue : xselfont
 LC_ALL=C
 export LC_ALL
+
+# coax into rehashing its own command cache once out of date
+# needed by /etc/pacman.d/hooks/zsh.hook (arch manual - bmilcs)
+zshcache_time="$(date +%s%N)"
+
+autoload -Uz add-zsh-hook
+
+rehash_precmd() {
+  if [[ -a /var/cache/zsh/pacman ]]; then
+    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+    if (( zshcache_time < paccache_time )); then
+      rehash
+      zshcache_time="$paccache_time"
+    fi
+  fi
+}
+
+add-zsh-hook -Uz precmd rehash_precmd
+

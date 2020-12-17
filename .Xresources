@@ -78,7 +78,7 @@ URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.perl-ext-common: default,clipboard
+! URxvt.perl-ext-common: default,clipboard
 
 ! disable annoying ISO/screen capture shift/ctrl issue
 URxvt.iso14755: false

@@ -5,11 +5,14 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+" enable nord scheme
+colorscheme nord
 " Enable Colorizer plug-in automatically
-:let g:colorizer_auto_color = 1
+" :let g:colorizer_auto_color = 1
 
 " Enable truecolors
 " set termguicolors

@@ -16,7 +16,7 @@ exec --no-startup-id i3-msg 'workspace 1; firefox -new-window https://github.com
 exec --no-startup-id i3-msg 'exec firefox --class=\"github\" -new-window https://www.reddit.com'
 exec --no-startup-id "code"
 # 2. core components
-exec --no-startup-id pulseaudio --start
+exec_always --no-startup-id pulseaudio --start
 hide_edge_borders both
 exec --no-startup-id exec bash $HOME/.fehbg
 exec --no-startup-id "picom --config /home/bmilcs/.config/picom/config"
@@ -47,16 +47,16 @@ for_window [class="Pidgin"] floating enable
 set $mod Mod4
 set $mod2 Mod1
 # log out / restart / reload
-bindsym  $mod+Alt+Escape exec "i3-msg exit"
+bindsym  $mod+$mod2+Escape exec "i3-msg exit"
 bindcode $mod+Control+49 reload
 bindcode $mod+49 restart
 bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
 bindcode $mod+23 exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
 # audio control
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl -- set-sink-volume 0 +5%" 
+bindsym XF86AudioLowerVolume exec "pactl -- set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0"
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -64,13 +64,13 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 # move floating windows
 floating_modifier $mod
 # fav apps
-bindsym $mod+Control+Return move scratchpad
-bindsym $mod+Return scratchpad show
 
+bindsym $mod+Return exec i3-sensible-terminal
+bindcode $mod+51 scratchpad show
+bindcode $mod+Control+51 move scratchpad
 bindcode $mod+48 exec firefox 
 bindcode $mod+47 exec code
 bindsym Print exec flameshot gui
-bindcode $mod+51 exec i3-sensible-terminal
 # navigation & core functionality
 bindsym $mod+q kill
 bindsym $mod+d focus right
@@ -79,7 +79,10 @@ bindsym $mod+w focus up
 bindsym $mod+s focus down
 bindsym $mod+e focus parent
 bindsym $mod+r focus child
-bindsym $mod+Shift+d move right
+bindsym $mod+Shift+d resize grow width 1 px or 1 ppt
+bindsym $mod+Shift+a resize shrink width 1 px or 1 ppt
+bindsym $mod+Shift+w resize grow height 1 px or 1 ppt
+bindsym $mod+Shift+s resize shrink height 1 px or 1 ppt
 bindsym $mod+Control+d move right 50 px
 bindsym $mod+Control+a move left  50 px
 bindsym $mod+Control+w move up  50 px
