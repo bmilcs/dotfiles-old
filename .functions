@@ -130,19 +130,19 @@ vim() {
   if [ -d "$@" ]; then
     echo "error: \"$@\" is a DIRECTORY. Denied."
   elif [ -w $@ ]; then
-  #  echo "\"$@\" exists and writeable. VIM TIME!"
-    command vim "$@"
+  #  echo "\"$@\" exists and writeable. nvim TIME!"
+    command nvim "$@"
   elif [ -e $@ ]; then
-    #echo "\"$@\" exists BUT not writeable. SUDO VIM it is!"
-    sudo vim "$@"
+    #echo "\"$@\" exists BUT not writeable. SUDO nvim it is!"
+    sudo nvim "$@"
   else
     # echo "\"$@\" doesn't exist."
     if touch $@; then
-      # echo vim \"$@\"
-      command vim "$@"
+      # echo nvim \"$@\"
+      command nvim "$@"
     else
-      # echo sudo vim $@
-      sudo vim \"$@\"
+      # echo sudo nvim $@
+      sudo nvim \"$@\"
     fi
   fi
 }

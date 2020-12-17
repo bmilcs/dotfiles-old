@@ -2,8 +2,8 @@
 # ( bmilcs dotfiles ftw. )
 #  ----------------------
 
-# autostart ###################################################################
-
+###################################################### autostart ###############
+# 1. software
 exec --no-startup-id i3-msg 'workspace 2; append_layout /home/bmilcs/.config/i3/ws2.json'
 exec --no-startup-id i3-msg 'workspace 2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
 exec --no-startup-id "telegram-desktop"
@@ -15,9 +15,9 @@ exec --no-startup-id i3-msg 'workspace 1; exec urxvt -name neofetch -e zsh -c "n
 exec --no-startup-id i3-msg 'workspace 1; firefox -new-window https://github.com/bmilcs/dotfiles'
 exec --no-startup-id i3-msg 'exec firefox --class=\"github\" -new-window https://www.reddit.com'
 exec --no-startup-id "code"
-
+# 2. core components
 exec --no-startup-id pulseaudio --start
-# hide_edge_borders both
+hide_edge_borders both
 exec --no-startup-id exec bash $HOME/.fehbg
 exec --no-startup-id "picom --config /home/bmilcs/.config/picom/config"
 exec --no-startup-id /home/bmilcs/.config/polybar/launch.sh &
@@ -316,4 +316,3 @@ mode "$mode_gaps" {
 
 # change focus between tiling / floating windows
 #  bindsym $mod+space focus mode_toggle
-

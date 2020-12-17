@@ -1,145 +1,34 @@
 polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
 polybar|error: Disabling module "pulseaudio" (reason: Could not connect to pulseaudio server.)
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Propolybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0,polybar|notice:  Loaded font "Source Sans Ppolybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
--source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
 polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|notice:  Termination signal received, shutting down...
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-polybar|warn:  Dropping unmatched character ‎ (U+200e) in '  ‎Telegram Messenger on the App Store — Mozilla Firefox  '
-reason: Could not connect pulseaudio context.)
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-while reading header)
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
-polybar|notice:  Loaded font "Source Sans Pro:size=11" (name=Source Sans Pro, offset=2, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
-polybar|notice:  Loaded font "Material Icons:size=13" (name=Material Icons, offset=3, file=/usr/share/fonts/TTF/MaterialIcons-Regular.ttf)
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Unexpected EOF while reading header)
+polybar|notice:  Loaded font "Material Iconspolybar|warn:  module/i3: Attempting to reconnect socket (reason: Unexpected EOF while reading header)
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
 polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
-polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x8: errno 22 (Invalid argument))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
+polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
+polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
+polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
+polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))
+polybar|error: module/i3: Failed to reconnect socket (reason: Failed to connect to i3: errno 2 (No such file or directory))
+polybar|warn:  module/i3: Attempting to reconnect socket (reason: Failed to read header from socket 0x9: errno 22 (Invalid argument))

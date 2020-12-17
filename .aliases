@@ -22,8 +22,9 @@ alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 alias readme="vim ~/README.md"
 
 # configs
-alias gap="vim ~/.config/i3/config"
-alias dot="vim ~/.aliases"
+alias gaps="vim ~/.config/i3/config"
+alias ali="vim ~/.aliases"
+alias fun="vim ~/.functions"
 
 # zsh
 alias rcr="source ~/.zshrc"

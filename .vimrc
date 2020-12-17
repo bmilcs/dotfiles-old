@@ -4,6 +4,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'chrisbra/Colorizer'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
