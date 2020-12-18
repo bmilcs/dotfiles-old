@@ -90,7 +90,7 @@ bindkey '^[[3;5~' kill-word
 # prompt themes
 autoload -Uz promptinit compinit
 promptinit
-compinit
+compinit -d /home/bmilcs/.config/zsh/.zcompdump
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1

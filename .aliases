@@ -26,7 +26,7 @@ alias readme="vim ~/README.md"
 alias gaps="vim ~/.config/i3/config"
 alias ali="vim ~/.aliases"
 alias fun="vim ~/.functions"
-
+alias pad="vim ~/.notepad"
 # zsh
 alias rcr="source ~/.zshrc"
 alias rc="vim ~/.zshrc"
