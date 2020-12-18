@@ -81,8 +81,13 @@ urxvt*boldFont: xft:Hack-Bold:size=10
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.perl-ext-common: default,clipboard
-
+URxvt.perl-ext-common: default,clipboard,keyboard-select
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.C-Down:  resize-font:smaller
+URxvt.keysym.C-Up:    resize-font:bigger
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
 ! disable annoying ISO/screen capture shift/ctrl issue
 URxvt.iso14755: false
 URxvt.iso14755_52: false

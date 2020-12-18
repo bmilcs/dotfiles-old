@@ -6,6 +6,7 @@ background = #2e3440
 background-alt = #434c5e
 foreground = #81a1c1
 foreground-alt = #88C0D0
+
 ; background = ${xrdb:color0}
 ; background-alt = ${xrdb:color7}
 ; foreground = ${xrdb:color4}
@@ -83,20 +84,18 @@ foreground = ${colors.foreground}
 background = ${colors.background}
 inherit = bar/base
 width = 20%
-modules-right = pulseaudio date time 
+modules-right = pulseaudio-control date time 
 offset-x = 79.8%
 
 [bar/dummy]
 enable-ipc = true
 ; wm-restack = i3
 override-redirect = 
-height = 35`x
+height = 35
 width=100%
 offset-y = 0
 background = #0000
 modules-center = dummy-module
-monitor = DP-0
-dpi = 96
 
 ; MODULES --------------------------------------------
 
@@ -257,6 +256,18 @@ label = %date%
 label-padding = 5
 label-foreground = ${colors.foreground}
 
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo.monitor:  Speakers" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -368,3 +379,5 @@ margin-bottom = 0
 
 ; vim:ft=dosini
                       
+; set-default-sink output alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo.monitor
+; set-default-source alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 

@@ -17,7 +17,6 @@ exec --no-startup-id i3-msg 'exec firefox --class=\"github\" -new-window https:/
 exec --no-startup-id "code"
 # 2. core components
 exec_always --no-startup-id pulseaudio --start
-hide_edge_borders both
 exec --no-startup-id exec bash $HOME/.fehbg
 exec --no-startup-id "picom --config /home/bmilcs/.config/picom/config"
 exec --no-startup-id /home/bmilcs/.config/polybar/launch.sh &
@@ -28,6 +27,7 @@ exec --no-startup-id kdeconnect-indicator
 
 # window management  ##########################################################
 
+hide_edge_borders both
 gaps inner 10
 gaps outer 18
 
@@ -97,7 +97,7 @@ bindsym $mod+Control+j gaps outer all plus 2
 bindsym $mod+Control+k gaps outer all minus 2
 bindsym $mod+Control+h gaps inner all plus 2
 bindsym $mod+Control+l gaps inner all minus 2
-bindsym $mod+x mode "$modee_gaps"
+bindsym $mod+x mode "$mode_gaps"
 bindsym $mod+z mode "$mode_resize"
 bindsym $mod+c split v
 bindsym $mod+Control+c split h

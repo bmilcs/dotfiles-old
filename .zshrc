@@ -6,6 +6,9 @@ bindkey -e
 
 # bmilcs ---------------------------------------
 
+# add custom path var // for polybar pulseaudio-control script
+export PATH="$PATH:/home/bmilcs/path"
+
 # zplugin manager
 # plugins	(zsh-completions zsh-autosuggestions)
 

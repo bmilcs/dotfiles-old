@@ -4,7 +4,7 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
 
 ### TODO
 
-
+- [ ] shortcut - restart to windows from archlinux
 - [ ] neomutt - email
 - [ ] improve README.md
     - [ ] add screenshots
@@ -18,10 +18,14 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] bspwm
     - [ ] openbox?
     - [ ] xfce
-- [ ] vs code replacement
-    - [ ] neovim?
-    - [ ] vim?
+- [x] vs code replacement
+    - [x] neovim?
+    - [x] vim?
 - [ ] integrate github into terminal
+- [ ] research vim additions
+    - [ ] file browser
+    - [ ] git browser
+    - [ ] moving lines up/down 
 
 ### completed
 [x] ssh config variable host/rsa key
@@ -32,5 +36,5 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
 ### links
 
 - https://guides.github.com/features/mastering-markdown/ 
-
+- https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
 
