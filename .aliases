@@ -21,12 +21,13 @@ alias umount="sudo umount"
 alias gitp="gita ~/scripts/* ; gitt commit -a -m 'update' && gitt push"
 alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 alias readme="vim ~/README.md"
+alias pad="vim ~/NOTES.md"
 
 # configs
 alias gaps="vim ~/.config/i3/config"
 alias ali="vim ~/.aliases"
 alias fun="vim ~/.functions"
-alias pad="vim ~/.notepad"
+
 # zsh
 alias rcr="source ~/.zshrc"
 alias rc="vim ~/.zshrc"
