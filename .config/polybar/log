@@ -1,5 +1,15 @@
 polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/config
 polybar|notice:  Loaded font "Hack Nerd Mono Font:size=10" (name=DejaVu Sans, offset=3, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
 polybar|notice:  Loaded font "Font Awesome:size=13" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
-e=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Loaded font "Font Awesome:size=13" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character ༽ (U+0f3d) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character ༽ (U+0f3d) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character ༽ (U+0f3d) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character ༽ (U+0f3d) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
+polybar|warn:  Dropping unmatched character つ (U+3064) in '  つ ◕_◕ ༽つ Low prices take my energy つ ◕_◕ ༽つ — Mozilla Firefox  '
