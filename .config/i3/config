@@ -1,18 +1,18 @@
 #  ______________________               
 # ( bmilcs dotfiles ftw. )
 #  ----------------------
-
 ###################################################### autostart ###############
 # 1. software
-exec --no-startup-id i3-msg 'workspace 2; append_layout /home/bmilcs/.config/i3/ws2.json'
-exec --no-startup-id i3-msg 'workspace 2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
+exec --no-startup-id exec '/home/bmilcs/.config/i3/sh/xrdb-xresources.sh'
+exec --no-startup-id i3-msg 'workspace $ws2; append_layout /home/bmilcs/.config/i3/ws2.json'
+exec --no-startup-id i3-msg 'workspace $ws2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "thunderbird --name bmtb"
 exec --no-startup-id "android-messages-desktop"
 exec --no-startup-id "discord"
-exec --no-startup-id i3-msg 'workspace 1; append_layout /home/bmilcs/.config/i3/ws1.json'
-exec --no-startup-id i3-msg 'workspace 1; exec urxvt -name neofetch -e zsh -c "neofetch && zsh"; exec urxvt -name ranger -e zsh -c "ranger && zsh"'
-exec --no-startup-id i3-msg 'workspace 1; firefox -new-window https://github.com/bmilcs/dotfiles'
+exec --no-startup-id i3-msg 'workspace $ws1; append_layout /home/bmilcs/.config/i3/ws1.json'
+exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt -name neofetch -e zsh -c "neofetch && zsh"; exec urxvt -name ranger -e zsh -c "ranger && zsh"'
+exec --no-startup-id i3-msg 'workspace $ws1; firefox -new-window https://github.com/bmilcs/dotfiles'
 exec --no-startup-id i3-msg 'exec firefox --class=\"github\" -new-window https://www.reddit.com'
 exec --no-startup-id "code"
 # 2. core components
@@ -50,7 +50,8 @@ set $mod2 Mod1
 bindsym  $mod+$mod2+Escape exec "i3-msg exit"
 bindcode $mod+Control+49 reload
 bindcode $mod+49 restart
-bindcode $mod+Shift+49 exec xrdb ~/.Xresources
+bindcode $mod+Shift+49 exec '/home/bmilcs/.config/i3/sh/xrdb-xresources.sh'
+#bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
 bindcode $mod+23 exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
 # audio control
@@ -166,10 +167,10 @@ client.background       $bg
 
 ### workspaces ################################################################
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
+set $ws1 "1:code"
+set $ws2 "2:chat"
+set $ws3 "3:web"
+set $ws4 "4:mp3"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"

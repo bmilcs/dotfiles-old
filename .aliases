@@ -8,6 +8,7 @@ alias pacman="sudo pacman"
 alias pm="pacman"
 alias up="pm -Syyuu ; yay -Syyuu"
 alias pmls="pacman -Qe | less"
+alias pmg="pacman -Qe|grep"
 
 # enforce vim
 alias nano="vim"

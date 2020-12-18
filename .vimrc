@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mboughaba/i3config.vim'
 
 call plug#end()
 

@@ -27,22 +27,21 @@ foreground-alt = #88C0D0
 ; #EBCB8B
 ; #A3BE8C
 ; #B48EAD
-
+; music icon: ♬
+;
 ; BARS -----------------------------------------------
 
 [bar/base]
 enable-ipc=true
-font-0 = Source Sans Pro:size=11;+2
-font-1 = Material Icons:size=13;+3
-; background = ${colors.background}
-; foreground = ${colors.foreground}
-; border-color = ${self.foreground}
+font-0 = Hack Nerd Mono Font:size=10;+3
+font-1 = Font Awesome:size=13;+3
 
 monitor = DP-0
 dpi = 96
 
 bottom = false
-border-size = 0
+border-size = 1 
+border-radius = 10
 border-color = ${colors.foreground}
 radius = 10
 height = 35
@@ -119,33 +118,33 @@ index-sort = true
 ; icons
 fuzzy-match = true
 ; ICONS -----------------------
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-default = 
+ws-icon-0 = 1;☺
+ws-icon-1 = 2;☺
+ws-icon-2 = 3;☺
+ws-icon-3 = 4;☺
+ws-icon-4 = 5;☺
+ws-icon-default = 
 ; FORMAT -----------------------
 format = <label-state> <label-mode>
 format-font = 0
 label-mode = %mode%
 label-mode-padding = 5
 label-mode-background = ${colors.background}
-label-mode-foreground = ${colors.background}
+label-mode-foreground = ${colors.foreground}
 ; FOCUSED -----------------------
-label-focused = 
+label-focused = %name%
 label-focused-foreground = ${colors.foreground-alt}
 label-focused-padding = 5
 ; UNFOCUSED -----------------------
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused = %icon%
+label-unfocused = %name%
 label-unfocused-padding = 5
 ; VISIBLE -----------------------
-label-visible = %icon% 
+label-visible = %name% 
 label-visible-underline = ${colors.foreground}
 label-visible-padding = 5
 ; URGENT -----------------------
-label-urgent = %icon%
+label-urgent = %name%
 label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.background}
 label-urgent-padding = 5
@@ -162,24 +161,6 @@ label-color = ${colors.foreground}
 label-background = ${colors.background} 
 label-padding = 2
 
-[module/bspwm]
-type = internal/bspwm
-format = <label-state>
-format-padding = 2
-index-sort = true
-
-enable-click = true
-reverse-scroll = false
-
-label-focused = 
-label-focused-padding = 1
-
-label-occupied = 
-label-occupied-padding = 1
-
-
-label-empty = 
-label-empty-padding = 1
 
 [module/mpd]
 type = internal/mpd
@@ -282,7 +263,7 @@ type = internal/pulseaudio
 sink = sys-devices-pci0000:00-0000:00:08.1-0000:2f:00.3-usb7-7-1-7-1:1.0-sound-card1.device
 format-volume-padding = 3
 format-volume = <ramp-volume><label-volume>
-label-volume = %percentage:4:4%%
+label-volume = %percentage:4:4%% 
 use-ui-max = false
 interval = 5
 ramp-volume-0 = ""
