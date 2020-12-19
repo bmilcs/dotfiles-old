@@ -1,6 +1,8 @@
 ! Base16 Nord
 ! Scheme: arcticicestudio
-
+urxvt*depth: 32
+!urxvt*background: rgba:2e00/3400/4000/c800
+URxvt.background: [90]#2e3440
 #define nord0 #2E3440
 #define nord1 #3B4252
 #define nord2 #434C5E
@@ -21,8 +23,8 @@
 *.foreground:   nord4
 *.background:   nord0
 *.cursorColor:  nord4
-*fading: 25
-*fadeColor: nord3
+!*fading: 25
+!*fadeColor: nord3
 
 *.color0: nord1
 *.color1: nord11
@@ -42,12 +44,12 @@
 *.color15: nord6
 
 URxvt*termName:								rxvt-unicode-256color
+!URxvt*termName:							  urxvt	
 URxvt*loginShell:							true
 URxvt*scrollBar:							false
 URxvt.scrollStyle:						plain
 URxvt.secondaryScroll:				true
 URxvt.urgentOnBell:						true
-URxvt.depth: 									24
 URxvt.letterSpace:            -1
 URxvt.lineSpace:              -1 
 URxvt.geometry:               92x24
@@ -66,19 +68,14 @@ Xft.dpi:											96
 Xft.rgba:											rgb
 Xft.lcdfilter:								lcdlight
 
-
-urxvt*font:     xft:Hack:size=10
-urxvt*boldFont: xft:Hack-Bold:size=10
-
+urxvt*font:                   xft:Hack:size=10
+urxvt*boldFont:               xft:Hack-Bold:size=10
 ! URxvt.font:               
 ! URxvt.boldFont:            
-
 ! URxvt.font: 								xft:Iosevka Term:size=12:antialias=true
 ! URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
-
 ! URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
 ! URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
-
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.perl-ext-common: default,clipboard,keyboard-select
@@ -88,7 +85,10 @@ URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.C-Down:  resize-font:smaller
 URxvt.keysym.C-Up:    resize-font:bigger
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
 ! disable annoying ISO/screen capture shift/ctrl issue
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
+! URxvt.transparent: true
+! URxvt.shading:20

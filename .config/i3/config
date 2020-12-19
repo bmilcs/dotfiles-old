@@ -53,7 +53,7 @@ bindcode $mod+49 restart
 bindcode $mod+Shift+49 exec '/home/bmilcs/.config/i3/sh/xrdb-xresources.sh'
 #bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
-bindcode $mod+23 exec rofi -show drun -display-dr/un ""jk -config ~/.config/rofi/config
+bindcode $mod+23 exec rofi -show drun -display-dr/un ""jkl -config ~/.config/rofi/config
 # audio control
 bindsym XF86AudioRaiseVolume exec "pactl -- set-sink-volume 0 +5%" 
 bindsym XF86AudioLowerVolume exec "pactl -- set-sink-volume 0 -5%"
@@ -124,9 +124,9 @@ gaps outer 18
 
 font pango:Source Code Pro 12
 
-default_border pixel 1
-default_floating_border pixel 1
-for_window [class=".*"] border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class=".*"] border pixel 2
 
 set $black              #2E3440
 set $black2             #3B4252
@@ -145,31 +145,31 @@ set $yellow             #EBCB8B
 set $green              #A3BE8C
 set $purple             #B48EAD
 # -----------------------------
-set $bg                 #81A1C1
+set $bg                 #434C5E
 set $inactive-bg        #2E3440
 set $urgent-bg          #EBCB8B
-set $text               #D8DEE9
-set $inactive-text      #3B4252
-set $urgent-text        #BF616A
+set $fg                 #ECEFF4
+set $inactive-fg        #4C566A
+set $urgent-fg          #BF616A
 
-client.focused          $bg           $bg          $white               $bg
-client.unfocused        $inactive-bg  $inactive-bg $inactive-text       $bg
-client.focused_inactive $inactive-bg  $inactive-bg $inactive-text       $bg
-client.urgent           $urgent-bg    $urgent-bg   $text                $bg
-client.background       $bg
-# class                 border  bg      text    focus     child_border
-# client.focused          #81a1c1 #81a1c1 #2f343f #81a1c1   #81a1c1
-# client.focused_inactive #2f343f #2f343f #2f343f #2f343f   #2f343f
-# client.unfocused        #2f343f #2f343f #d8dee8 #2f343f   #2f343f
-# client.urgent           #bf616a #bf616a #2f343f #bf616a   #bf616a
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #ffffff
-# client.background       #ffffff
+#client.focused          $inactive-fg   $bg             $white               $bg
+#client.unfocused        $background   $inactive-bg    $inactive-fg       $bg
+#client.focused_inactive $background   $inactive-bg    $inactive-fg       $bg
+#client.urgent           $urgent-bg    $urgent-bg      $fg                $bg
+#client.background       $bg
+#class                 border  bg      fg    focus     child_border
+client.focused          #81a1c1 #81a1c1 #2f343f #81a1c1   #81a1c1
+client.focused_inactive #2f343f #2f343f #2f343f #2f343f   #2f343f
+client.unfocused        #2f343f #2f343f #d8dee8 #2f343f   #2f343f
+client.urgent           #bf616a #bf616a #2f343f #bf616a   #bf616a
+client.placeholder      #000000 #0c0c0c #D8D339 #000000   #D8D339
+client.background       #D8DEE9
 
 ### workspaces ################################################################
 
-set $ws1 "1:code"
-set $ws2 "2:chat"
-set $ws3 "3:web"
+set $ws1 "1:dev"
+set $ws2 "2:msg"
+set $ws3 "3:www"
 set $ws4 "4:mp3"
 set $ws5 "5"
 set $ws6 "6"

@@ -1,22 +1,18 @@
 call plug#begin('~/.vim/plugged')
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
-Plug 'chrisbra/Colorizer'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mboughaba/i3config.vim'
-
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'tpope/vim-sensible'
+  Plug 'preservim/nerdtree' |
+        \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+        \ Plug 'ryanoasis/vim-devicons'
+  Plug 'chrisbra/Colorizer'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'mboughaba/i3config.vim'
 call plug#end()
 
-" enable nord scheme
+" nord scheme
 colorscheme nord
-" Enable Colorizer plug-in automatically
-" :let g:colorizer_auto_color = 1
 
-" Enable truecolors
-" set termguicolors
 noremap <Up> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
@@ -26,7 +22,31 @@ inoremap <Up> <nop>
 inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
-
+" new line | shift+enter
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+" nerd tree on launch 
+autocmd VimEnter * NERDTree | wincmd p
+" nerdtree auto-close when last vim doc is closed
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+autocmd BufWinEnter * silent NERDTreeMirror " nerdtree clone on every tab
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " nerdtree: show untracked & custom icons:
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+" nerdtree width
+let g:NERDTreeWinSize=20
 " Set compatibility to Vim only.
 set nocompatible
 
@@ -44,6 +64,7 @@ set modelines=0
 
 " Automatically wrap text that extends beyond the screen length.
 set wrap
+
 " Vim's auto indentation feature does not work properly with text copied from outside of Vim. Press the <F2> key to toggle paste mode on/off.
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O>:set invpaste paste?<CR>
@@ -60,6 +81,7 @@ set noshiftround
 
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
+
 " Fixes common backspace problems
 set backspace=indent,eol,start
 
@@ -91,10 +113,13 @@ set encoding=utf-8
 
 " Highlight matching search patterns
 set hlsearch
+
 " Enable incremental search
 set incsearch
+
 " Include matching uppercase words with lowercase search term
 set ignorecase
+
 " Include only uppercase words with uppercase search term
 set smartcase
 

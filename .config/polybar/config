@@ -41,10 +41,9 @@ monitor = DP-0
 dpi = 96
 
 bottom = false
-border-size = 1 
-border-radius = 10
+border-size = 2
 border-color = ${colors.foreground}
-radius = 10
+radius = 0 
 height = 35
 offset-y = 5
 ; border-bottom = 5

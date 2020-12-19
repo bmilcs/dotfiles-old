@@ -28,6 +28,7 @@ alias gaps="vim ~/.config/i3/config"
 alias poly="vim ~/.config/polybar/config"
 alias ali="vim ~/.aliases"
 alias fun="vim ~/.functions"
+alias vimrc="vim ~/.vimrc"
 
 # zsh
 alias rcr="source ~/.zshrc"
