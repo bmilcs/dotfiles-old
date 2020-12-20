@@ -47,13 +47,15 @@ for_window [class="Pidgin"] floating enable
 set $mod Mod4
 set $mod2 Mod1
 # log out / restart / reload
-bindsym  $mod+$mod2+Escape exec "i3-msg exit"
+bindsym $mod+$mod2+Escape exec "i3-msg exit"
+bindsym $mod+Shift+Escape exit
+
 bindcode $mod+Control+49 reload
 bindcode $mod+49 restart
 bindcode $mod+Shift+49 exec '/home/bmilcs/.config/i3/sh/xrdb-xresources.sh'
 #bindcode $mod+Shift+49 exec xrdb ~/.Xresources
 # nav menu: rofi
-bindcode $mod+23 exec rofi -show drun -display-dr/un ""jkl -config ~/.config/rofi/config
+bindcode $mod+23 exec rofi -show drun -display-drun "" -config ~/.config/rofi/config
 # audio control
 bindsym XF86AudioRaiseVolume exec "pactl -- set-sink-volume 0 +5%" 
 bindsym XF86AudioLowerVolume exec "pactl -- set-sink-volume 0 -5%"
