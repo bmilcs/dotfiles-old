@@ -1,0 +1,16 @@
+#!/bin/bash
+
+picom --config /home/bmilcs/.config/picom/config 
+
+$HOME/.fehbg                                
+
+/home/bmilcs/.config/polybar/launch.sh &    
+
+pulseaudio --start
+
+nm-applet
+
+/usr/lib/kdeconnectd
+
+kdeconnect-indicator
+
