@@ -32,7 +32,7 @@
 
 *.foreground:   nord4
 *.background:   nord0
-*.cursorColor:  nord7
+*.cursorColor:  nord6
 !*fading: 25
 !*fadeColor: nord3
 

@@ -52,8 +52,7 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"    beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}" reverse-menu-complete
-# autoload colors
-autoload Uz colors && colors
+autoload Uz colors && colors # autoload colors
 # partial command search up/down
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -65,6 +64,9 @@ key[Control-Left]="${terminfo[kLFT5]}"
 key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+# bindkey -> zle -al (show all registered commands)
+bindkey '^j' autosuggest-complete
+
 # ctrl backspace delete word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
@@ -84,8 +86,7 @@ fi
 # fix locale issue : xselfont
 LC_ALL=C
 export LC_ALL
-# coax into rehashing its own command cache once out of date
-# needed by /etc/pacman.d/hooks/zsh.hook (arch manual - bmilcs)
+# coax into rehashing its own command cache once out of date | needed by /etc/pacman.d/hooks/zsh.hook (arch manual - bmilcs)
 zshcache_time="$(date +%s%N)"
 autoload -Uz add-zsh-hook
 rehash_precmd() {
@@ -98,6 +99,7 @@ rehash_precmd() {
   fi
 }
 add-zsh-hook -Uz precmd rehash_precmd
+
 
 # dotfiles, dir_colors
 [ -f "$HOME/.aliases" ] && source $HOME/.aliases
