@@ -1,0 +1,9 @@
+polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/bspwm.conf
+polybar|notice:  Loaded font "Source Sans Pro:size=10" (name=Source Sans Pro, offset=3, file=/usr/share/fonts/ttf-adobe-source-fonts/SourceSansPro-Regular.ttf)
+polybar|notice:  Loaded font "Font Awesome:size=12" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
+polybar|notice:  Loaded font "Weather Icons:size=12" (name=Weather Icons, offset=1, file=/usr/share/fonts/TTF/weathericons-regular-webfont.ttf)
+polybar|notice:  Termination signal received, shutting down...
+polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/bspwm.conf
+polybar|notice:  Loaded font "Hack:size=10" (name=Hack, offset=3, file=/usr/share/fonts/TTF/Hack-Regular.ttf)
+polybar|notice:  Loaded font "Font Awesome:size=12" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
+polybar|notice:  Loaded font "Weather Icons:size=12" (name=Weather Icons, offset=1, file=/usr/share/fonts/TTF/weathericons-regular-webfont.ttf)

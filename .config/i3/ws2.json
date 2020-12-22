@@ -1,0 +1,139 @@
+// vim:ts=4:sw=4:et
+{
+   "border": "pixel",
+   "current_border_width": 3,
+   "floating": "auto_off",
+   "geometry": {
+      "height": 1407,
+      "width": 1450,
+      "x": 0,
+      "y": 0
+   },
+   "marks": [],
+   "name": "firefox reddit",
+   "percent": 0.333333333333333,
+   "swallows": [
+      {
+         "class": "^reddit$"
+         // "instance": "^reddit$"
+         // "title": "reddit"
+         // "window_role": "^browser$"
+      }
+   ],
+   "type": "con"
+}
+
+{
+   // splitv split container with 2 children
+   "border": "pixel",
+   "floating": "auto_off",
+   "layout": "splitv",
+   "marks": [],
+   "percent": 0.393333333333333,
+   "type": "con",
+   "nodes": [
+      {
+         "border": "pixel",
+         "current_border_width": 3,
+         "floating": "auto_off",
+         "geometry": {
+            "height": 1407,
+            "width": 854,
+            "x": 0,
+            "y": 0
+         },
+         "marks": [],
+         "name": "Inbox - yahoo - Mozilla Thunderbird",
+         "percent": 0.58,
+         "swallows": [
+            {
+               "class": "^Thunderbird$"
+               // "instance": "^Mail$",
+               // "title": "^Inbox\\ \\-\\ yahoo\\ \\-\\ Mozilla\\ Thunderbird$",
+               // "window_role": "^3pane$"
+            }
+         ],
+         "type": "con"
+      },
+      {
+         "border": "pixel",
+         "current_border_width": 3,
+         "floating": "auto_off",
+         "geometry": {
+            "height": 1407,
+            "width": 940,
+            "x": 2583,
+            "y": 29
+         },
+         "marks": [],
+         "name": "Discord",
+         "percent": 0.42,
+         "swallows": [
+            {
+               "class": "^discord$",
+               "instance": "^discord$",
+               "title": "^Discord$"
+               // "window_role": "^browser\\-window$"
+            }
+         ],
+         "type": "con"
+      }
+   ]
+}
+
+{
+   // splitv split container with 2 children
+   "border": "pixel",
+   "floating": "auto_off",
+   "layout": "splitv",
+   "marks": [],
+   "percent": 0.273333333333333,
+   "type": "con",
+   "nodes": [
+      {
+         "border": "pixel",
+         "current_border_width": 3,
+         "floating": "auto_off",
+         "geometry": {
+            "height": 800,
+            "width": 1100,
+            "x": 1170,
+            "y": 320
+         },
+         "marks": [],
+         "name": "Android Messages",
+         "percent": 0.5,
+         "swallows": [
+            {
+               "class": "^android\\-messages\\-desktop$",
+               "instance": "^android\\-messages\\-desktop$",
+               "title": "^Android\\ Messages$"
+               // "window_role": "^browser\\-window$"
+            }
+         ],
+         "type": "con"
+      },
+      {
+         "border": "pixel",
+         "current_border_width": 3,
+         "floating": "auto_off",
+         "geometry": {
+            "height": 1407,
+            "width": 853,
+            "x": 2583,
+            "y": 29
+         },
+         "marks": [],
+         "name": "Telegram (4)",
+         "percent": 0.5,
+         "swallows": [
+            {
+               "class": "^TelegramDesktop$",
+               "instance": "^telegram\\-desktop$"
+               // "title": "^Telegram\\ \\(4\\)$"
+            }
+         ],
+         "type": "con"
+      }
+   ]
+}
