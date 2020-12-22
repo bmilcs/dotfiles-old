@@ -3,6 +3,8 @@ super + Return
 	urxvt # launch terminal
 super + @space
 	rofi -show drun -display-drun "" -config ~/.config/rofi/config.rasi # launch dmenu
+super + F1
+	firefox
 super + grave
 	pkill -USR1 -x sxhkd # restart sxhkd keymap
 super + ctrl + {_,shift + }grave

@@ -8950,3 +8950,114 @@ Dec 22 10:38 : player: played "phish/1993 rift/05-phish-sparkle.flac"
 Dec 22 10:41 : player: played "phish/1993 rift/06-phish-horn.flac"
 Dec 22 10:45 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
 Dec 22 10:51 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 22 10:59 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 22 11:02 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 22 11:06 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 22 11:09 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 22 11:10 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 22 11:10 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:13 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 22 11:13 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:17 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 22 11:17 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:17 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:17 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:20 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 22 11:20 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:22 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 22 11:22 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:25 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 22 11:25 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:32 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 22 11:32 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 22 11:39 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 22 11:44 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 22 11:49 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 22 11:55 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 22 12:01 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 22 12:08 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/06-dj_khaled-legendary_(chris_brown_keyshia_cole_ne-yo).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/02-dj_khaled-welcome_to_my_hood_(rick_ross_plies_lil_wayne_t-pain).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/07-dj_khaled-sleep_when_im_done_(the_game_busta_rhymes_cee-lo).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/04-dj_khaled-im_thuggin_(waka_flocka_ace_hood).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/01-dj_khaled-im_on_one_(drake_rick_ross_lil_wayne).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/10-dj_khaled-my_life_(akon_b.o.b.).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/09-dj_khaled-future_(ace_hood_meek_mill_wale_vado_big_sean).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/05-dj_khaled-it_aint_over_til_its_over_(mary_j_blige_fabolous_jadakiss).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/08-dj_khaled-cant_stop_(birdman_t-pain).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/11-dj_khaled-a_million_lights_(tyga_cory_gunz_mack_maine_jae_millz_kevin_rudolf).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/03-dj_khaled-money_(ludacris_jeezy).mp3
+Dec 22 12:12 : update: updating dj khaled/2011 we the best forever/12-dj_khaled-welcome_to_my_hood_(remix)_(ludacris_t-pain_busta_rhymes_twista_birdman).mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-01-don’t.tread.on.me-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-02-thank.your.lucky.stars-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-03-frolic.room-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-04-speak.easy-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-05-solar.flare-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-06-waiting-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-07-long.for.the.flowers-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-08-getting.through.to.her-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-09-whiskey.&.wine-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-10-it’s.getting.ok.now-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/2005 don't tread on me/311-don’t.tread.on.me-11-there’s.always.an.excuse-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-01-slinky-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-02-feels.so.good-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-03-do.you.right-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-04-!@#$.the.&-!=!-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-05-summer.of.love-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-06-unity-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-07-damn-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-08-down.south-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-09-rollin-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-10-right.now-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1991 unity/311-unity-11-c.u.t.m-mp3-192-lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-11-C.U.T.M-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-07-Damn-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-09-Rollin-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-04-!@#$.The.and-!=!-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-08-Down.South-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-05-Summer.Of.Love-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-06-Unity-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-01-Slinky-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-02-Feels.So.Good-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-03-Do.You.Right-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1991 unity/311-Unity-10-Right.Now-MP3-192-Lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-01-welcome-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-02-freak.out-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-03-visit-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-04-paradise-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-05-unity-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-06-hydroponic-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-07-my.stoney.baby-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-08-nix.hex-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-09-plain-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-10-feels.so.good-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-11-do.you.right-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: removing 311/1993 music/311-music-12-fat.chance-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-02-Freak.Out-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-11-Do.You.Right-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-08-Nix.Hex-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-05-Unity-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-07-My.Stoney.Baby-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-01-Welcome-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-12-Fat.Chance-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-06-Hydroponic-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-03-Visit-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-09-Plain-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-04-Paradise-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/1993 music/311-Music-10-Feels.So.Good-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-01-Don’t.Tread.on.Me-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-11-There’s.Always.an.Excuse-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-10-It’s.Getting.OK.Now-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-07-Long.for.the.Flowers-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-09-Whiskey.and.Wine-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-05-Solar.Flare-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-08-Getting.Through.to.Her-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-02-Thank.Your.Lucky.Stars-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-03-Frolic.Room-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-04-Speak.Easy-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: added 311/2005 don’t tread on me/311-Don’t.Tread.on.Me-06-Waiting-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:12 : update: removing 311/2009 uplifter/311-uplifter-12.vinyl-01-02-it's.alright-mp3-vbr-v0-lidarr.mp3
+Dec 22 12:12 : update: added 311/2009 uplifter/311-Uplifter-12.Vinyl.01-02-It’s.Alright-MP3-VBR-V0-Lidarr.mp3
+Dec 22 12:13 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 22 12:20 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 22 12:26 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"

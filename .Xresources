@@ -1,8 +1,18 @@
 ! Base16 Nord
 ! Scheme: arcticicestudio
-urxvt*depth: 32
-!urxvt*background: rgba:2e00/3400/4000/c800
-URxvt.background: [90]#2e3440
+
+!	Normal      Bright
+!	--------    -------
+!	0 Black      8 Black
+!	1 Red        9 Red
+!	2 Yellow    10 Yellow
+!	3 Green     11 Green
+!	4 Blue      12 Blue
+!	5 Magenta   13 Magenta
+!	6 Cyan      14 Cyan
+!	7 White     15 White
+
+
 #define nord0 #2E3440
 #define nord1 #3B4252
 #define nord2 #434C5E
@@ -22,29 +32,38 @@ URxvt.background: [90]#2e3440
 
 *.foreground:   nord4
 *.background:   nord0
-*.cursorColor:  nord4
+*.cursorColor:  nord7
 !*fading: 25
 !*fadeColor: nord3
 
+! black
 *.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
 *.color8: nord3
+! red
+*.color1: nord11
 *.color9: nord11
+! yellow
+*.color2: nord14
 *.color10: nord14
+! green
+*.color3: nord13
 *.color11: nord13
+! blue
+*.color4: nord9
 *.color12: nord9
+! magenta
+*.color5: nord15
 *.color13: nord15
+! cyan
+*.color6: nord8
 *.color14: nord7
+! white
+*.color7: nord5
 *.color15: nord6
 
+urxvt*depth: 32
+URxvt.background: [90]#2e3440
 URxvt*termName:								rxvt-unicode-256color
-!URxvt*termName:							  urxvt	
 URxvt*loginShell:							true
 URxvt*scrollBar:							false
 URxvt.scrollStyle:						plain
