@@ -8943,3 +8943,10 @@ Dec 22 10:12 : exception: Failed to open "internal" (pulse); failed to connect: 
 Dec 22 10:12 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
 Dec 22 10:13 : player: played "phish/1993 rift/03-phish-lengthwise.flac"
 Dec 22 10:19 : player: played "phish/1993 rift/01-phish-rift.flac"
+Dec 22 10:24 : player: played "phish/1993 rift/02-phish-fast_enough_for_you.flac"
+Dec 22 10:25 : player: played "phish/1993 rift/03-phish-lengthwise.flac"
+Dec 22 10:34 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 22 10:38 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 22 10:41 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 22 10:45 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 22 10:51 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"

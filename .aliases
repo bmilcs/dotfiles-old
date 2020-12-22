@@ -5,13 +5,16 @@
 #---------------------------------  archlinux specific  ----------------------------------#
 # packages | pacman | yay
 alias pacman="sudo pacman"
+compdef pacman="pacman"
 alias pm="pacman"
+compdef pm="pacman"
 alias up="pm -Syyuu ; yay -Syyuu"
 alias pmls="pacman -Qe | less"
 alias pmg="pacman -Qe|grep"
 
 # enforce vim
 alias nano="vim"
+compdef nano="vim"
 
 # mount | umount
 alias mount="sudo mount"
@@ -19,7 +22,9 @@ alias umount="sudo umount"
 
 # git
 alias gitp="gita ~/snippets/* ; gitt commit -a -m 'update' && gitt push"
+compdef gitp="git"
 alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
+compdef gitt="git"
 alias readme="vim ~/README.md"
 alias pad="vim ~/NOTES.md"
 
@@ -52,12 +57,16 @@ alias shutdown="sudo systemctl poweroff"
 alias halt="sudo systemctl halt"
 #---------------------------------  directories & files  ---------------------------------#
 alias ls="ls --color -lhF --group-directories-first"
+compdef ls="ls"
 alias l="ls"
+compdef l="ls"
 alias ll="ls -nA" #long, all, # puid
+compdef ll="ls"
 alias lll="ls -A" # long, all, abc puid
+compdef lll="ls"
 alias lsf="ls | grep -v '^d'"	#ls files,,
-alias lsg="ls | grep" #search in dir
 alias lsd="ls -ld */"   # ls, long, dir
+alias lsg="ls | grep" #search in dir
 alias mv="mv -i" #confirmation
 alias cp="cp -i" #confirmation
 alias ln="ln -i" #confirmation

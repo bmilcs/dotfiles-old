@@ -61,7 +61,6 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 # setup key accordingly
 [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"      beginning-of-line
 [[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"       end-of-line
-[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"    overwrite-mode
 [[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}" backward-delete-char
 [[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"    delete-char
 [[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"      backward-char
@@ -97,7 +96,7 @@ compinit -d /home/bmilcs/.config/zsh/.zcompdump
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
-
+bindkey -v
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	autoload -Uz add-zle-hook-widget
