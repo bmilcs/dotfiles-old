@@ -13,18 +13,18 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] add volume
     - [ ] add cpu & memory %'s
     - [x] add update watcher - distro/packages
-- [ ] add additional workstation env
-    - [ ] bspwm
+- [x] add additional workstation env
+    - [x] bspwm
     - [ ] openbox?
     - [ ] xfce
-- [x] vs code replacement
-    - [x] neovim?
-    - [x] vim?
-- [ ] integrate github into terminal
 - [ ] research vim additions
     - [ ] file browser
     - [ ] git browser
     - [ ] moving lines up/down 
+- [x] vs code replacement
+    - [x] neovim?
+    - [x] vim?
+    - [ ] integrate github into terminal
 - [x] ssh config variable host/rsa key
 - [x] shortcut - restart to windows from archlinux
 
