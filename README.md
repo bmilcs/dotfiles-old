@@ -27,11 +27,11 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] moving lines up/down 
 
 ### completed
-[x] ssh config variable host/rsa key
+- [x] ssh config variable host/rsa key
 	  hostname *
 	  	user: bmilcs
 	  	authorizedkey: id_%h
-[x] shortcut - restart to windows from archlinux
+- [x] shortcut - restart to windows from archlinux
 
 ### links
 
