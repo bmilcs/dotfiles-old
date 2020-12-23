@@ -58,9 +58,9 @@ super + ctrl + shift + space
 alt + control + shift + {h,j,k,l}
 # OTHER APPLICATIONS ----------------------------------------------------------------------------------------------
 XF86AudioRaiseVolume 
-  pactl -- set-sink-volume 0 +5% # pulseaudio - increase volume
+  pactl --set-sink-volume 0 +5% # pulseaudio - increase volume
 XF86AudioLowerVolume 
-  pactl -- set-sink-volume 0 -5% # pulseaudio - increase volume
+  pactl --set-sink-volume 0 -5% # pulseaudio - increase volume
 XF86AudioMute 
   pactl set-sink-mute # pulseaudio - increase volume
 Print 

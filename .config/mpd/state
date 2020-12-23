@@ -1,9 +1,8 @@
 sw_volume: 92
 audio_device_state:1:internal
 audio_device_state:1:my_fifo
-state: play
-current: 30
-time: 333.255000
+state: stop
+current: 40
 random: 0
 repeat: 0
 single: 0

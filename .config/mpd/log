@@ -9533,3 +9533,22 @@ Dec 23 14:03 : player: played "the crystal method/1997 vegas/103-the_crystal_met
 Dec 23 14:09 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
 Dec 23 14:14 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
 Dec 23 14:18 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 23 14:20 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 14:20 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 23 14:24 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 14:39 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 23 14:41 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 14:47 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 14:54 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 14:59 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 15:01 : exception: Failed to play on "internal" (pulse): suspended
+Dec 23 15:02 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 15:47 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 23 15:51 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 15:58 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 16:01 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 23 16:01 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 23 16:01 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 23 16:07 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 16:13 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 16:16 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
