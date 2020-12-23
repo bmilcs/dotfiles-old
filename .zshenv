@@ -1,8 +1,11 @@
 # zsh env -bmilcs
+#   executed on all shell invocations
 
-# dotfiles, dir_colors
-[ -f "$HOME/.aliases" ] && source $HOME/.aliases
-[ -f "$HOME/.functions" ] && source $HOME/.functions
-[ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
-[ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
+# path =+ ~/bin & ~/.c/bspwm/
+export PATH=$PATH:/home/bmilcs/.config/bspwm:/home/bmilcs/bin
+
+# add $PATH to path array 
+typeset -U PATH path
+path=("$HOME/.local/bin" /other/things/in/path "$path[@]")
+export PATH
 

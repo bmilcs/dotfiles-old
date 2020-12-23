@@ -16,6 +16,7 @@ zplugin load zdharma/history-search-multi-word
 # zplugin load b4b4r07/enhancd
 ## prompt themes
 autoload -Uz promptinit compinit
+compinit -d /home/bmilcs/.config/zsh/.zcompdump
 promptinit
 # autostart mpd
 [ ! -s ~/.config/mpd/pid ] && mpd
@@ -70,7 +71,6 @@ bindkey '^j' autosuggest-complete
 # ctrl backspace delete word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
-compinit -d /home/bmilcs/.config/zsh/.zcompdump
 setopt COMPLETE_ALIASES
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
@@ -102,7 +102,6 @@ add-zsh-hook -Uz precmd rehash_precmd
 
 
 # dotfiles, dir_colors
-#[ -f "$HOME/.aliases" ] && source $HOME/.aliases
-#[ -f "$HOME/.functions" ] && source $HOME/.functions
-#[ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
-#[ -f "$HOME/.env" ] && eval $(dircolors ~/.env)
+[ -f "$HOME/.aliases" ] && source $HOME/.aliases
+[ -f "$HOME/.functions" ] && source $HOME/.functions
+[ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)

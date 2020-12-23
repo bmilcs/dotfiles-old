@@ -1,3 +1,6 @@
+" specify zsh home
+export ZDOTDIR=$HOME
+
 " For plug-ins to load correctly.
 filetype plugin indent on
 

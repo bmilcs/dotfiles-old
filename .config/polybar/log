@@ -2,9 +2,3 @@ polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/bspwm.conf
 polybar|notice:  Loaded font "Iosevka:size=10" (name=Iosevka, offset=3, file=/usr/share/fonts/TTF/iosevka-regular.ttf)
 polybar|notice:  Loaded font "Font Awesome:size=12" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
 polybar|notice:  Loaded font "Weather Icons:size=12" (name=Weather Icons, offset=4, file=/usr/share/fonts/TTF/weathericons-regular-webfont.ttf)
-polybar|warn:  module/bspwm: Undefined T => '@'
-polybar|warn:  module/bspwm: Undefined T => '@'
-polybar|warn:  module/bspwm: Undefined T => '@'
-polybar|warn:  module/bspwm: Undefined T => '@'
-polybar|warn:  module/bspwm: Undefined T => '@'
-polybar|warn:  module/bspwm: Undefined T => '@'
