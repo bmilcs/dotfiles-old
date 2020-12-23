@@ -12,7 +12,7 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] add networking up/down
     - [ ] add volume
     - [ ] add cpu & memory %'s
-    - [ ] add update watcher - distro/packages
+    - [x] add update watcher - distro/packages
 - [ ] add additional workstation env
     - [ ] bspwm
     - [ ] openbox?
@@ -25,12 +25,10 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] file browser
     - [ ] git browser
     - [ ] moving lines up/down 
-
-### completed
 - [x] ssh config variable host/rsa key
-	  hostname *
-	  	user: bmilcs
-	  	authorizedkey: id_%h
+  	  hostname *
+  	  	user: bmilcs
+  	  	authorizedkey: id_%h
 - [x] shortcut - restart to windows from archlinux
 
 ### links
