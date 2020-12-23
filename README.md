@@ -9,18 +9,19 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] add screenshots
     - [ ] add table of contents
 - [ ] polybar config
-    - [ ] add networking up/down
     - [ ] add volume
-    - [ ] add cpu & memory %'s
+    - [ ] add cpu/memory %'s
+    - [ ] add networking up/down
+    - [x] add music controls
     - [x] add update watcher - distro/packages
 - [x] add additional workstation env
     - [x] bspwm
     - [ ] openbox?
     - [ ] xfce
 - [ ] research vim additions
-    - [ ] file browser
+    - [x] file browser
     - [ ] git browser
-    - [ ] moving lines up/down 
+    - [x] moving lines up/down 
 - [x] vs code replacement
     - [x] neovim?
     - [x] vim?

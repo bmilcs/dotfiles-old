@@ -20,8 +20,7 @@ call plug#end()
 colorscheme nord
 
 " HOTKEY MODS --------------------------------------------------
-" disable arrow keys
-noremap <Up> <nop>
+noremap <Up> <nop>    " disable arrow keys
 noremap <Left> <nop>
 noremap <Right> <nop>
 noremap <Down> <nop>
@@ -61,48 +60,33 @@ augroup END
 filetype on
 
 " OTHER --------------------------------------------------------
+set shell=zsh\ -l   
 set nocompatible " Set compatibility to Vim only.
-" turn off modelines
-set modelines=0
-" auto word wrap
-set wrap
-" set textwidth=79
-set formatoptions=tcqrn1
+set modelines=0   " turn off modelines
+set wrap    " auto word wrap
+set formatoptions=tcqrn1    " set textwidth=79
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
-" Display 5 lines above/below the cursor when scrolling with a mouse.
-set scrolloff=5
-" Speed up scrolling in Vim
-set ttyfast
-" Status bar
-set laststatus=2
-" Display options
-set showmode
+set scrolloff=5   " Display 5 lines above/below the cursor when scrolling with a mouse.
+set ttyfast   " Speed up scrolling in Vim
+set laststatus=2    " Status bar
+set showmode    " Display options
 set showcmd
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-set matchpairs+=<:>
+set matchpairs+=<:>   " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 " Display different types of white spaces.
 " set list
 " set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
-" Show line numbers
-set number
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
-" Encoding
-set encoding=utf-8
-" Highlight matching search patterns
-set hlsearch
-" Enable incremental search
-set incsearch
-" Include matching uppercase words with lowercase search term
-set ignorecase
-" Include only uppercase words with uppercase search term
-set smartcase
-" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
-set viminfo='100,<9999,s100
+set number    " Show line numbers
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
+set encoding=utf-8    " Encoding
+set hlsearch    " Highlight matching search patterns
+set incsearch   " Enable incremental search
+set ignorecase    " Include matching uppercase words with lowercase search term
+set smartcase   " Include only uppercase words with uppercase search term
+set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 " Automatically save and load folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
@@ -110,8 +94,7 @@ autocmd BufWinEnter *.* silent loadview"
 
 " PLUGIN SPECIFIC ----------------------------------------------
 "
-" COLORIZER
-let g:colorizer_auto_color = 1
+let g:colorizer_auto_color = 1    " COLORIZER
 
 " NERDTREE
 nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>" " f6 to toggle nerd tree
