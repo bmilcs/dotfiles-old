@@ -4,8 +4,8 @@ filetype plugin indent on
 " PLUGINS ------------------------------------------------------
 call plug#begin('~/.vim/plugged')
   " markdown plugins
-  Plug 'godlygeek/tabular'
-  Plug 'plasticboy/vim-markdown'
+  "Plug 'godlygeek/tabular'
+  "Plug 'plasticboy/vim-markdown'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   " theme
   Plug 'arcticicestudio/nord-vim'

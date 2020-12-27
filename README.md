@@ -1,11 +1,21 @@
 ## bmilcs/dotfiles
 
-Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 years of [light Debian experience](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home of my personal configuration files. Windows is a requirement in my line of work, but I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration. 
+Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 years of [***light* Debian experience**](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home for my personal configuration files. Putting food on the table binds me to Microsoft Windows for 40 hours a week. However, I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration and vow to use nothing else in my leisure time. 
 
+### Navigation 
 
+  1. [Personal Goals](#goals)
+  2. [TODO List](#todo)
+  3. Frequently Edited Configs
+      - [BSPWM Window Manager (bspwmrc)](bspwmrc)
+      - 
+  
+<a name="goals"/>
 
 ### GOALS
    1. 
+
+<a name="todo"/>
 
 ### TODO
 
