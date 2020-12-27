@@ -1,4 +1,0 @@
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/i3.conf
-polybar|error: Monitor "DP-0 dpi = 96" not found opolybar|warn:  No fonts specified, using fallback font "fixed"
-polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
-polybar|notice:  Termination signal received, shutting down...
