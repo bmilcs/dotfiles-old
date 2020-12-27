@@ -1,7 +1,7 @@
 configuration {
 	width: 15;
 	lines: 20;
-	font: "Hack 12";
+	font: "Hack 10";
 	hide-scrollbar: true;
 	theme: "~/.config/rofi/nord.rasi";
 }

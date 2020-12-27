@@ -1,8 +1,9 @@
 sw_volume: 92
 audio_device_state:1:internal
 audio_device_state:1:my_fifo
-state: stop
-current: 40
+state: pause
+current: 0
+time: 515.341000
 random: 0
 repeat: 0
 single: 0
@@ -11,61 +12,5 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:phish/1993 rift/01-phish-rift.flac
-1:phish/1993 rift/02-phish-fast_enough_for_you.flac
-2:phish/1993 rift/03-phish-lengthwise.flac
-3:phish/1993 rift/04-phish-maze.flac
-4:phish/1993 rift/05-phish-sparkle.flac
-5:phish/1993 rift/06-phish-horn.flac
-6:phish/1993 rift/07-phish-the_wedge.flac
-7:phish/1993 rift/08-phish-my_friend_my_friend.flac
-8:phish/1993 rift/09-phish-weigh.flac
-9:phish/1993 rift/10-phish-all_things_reconsidered.flac
-10:phish/1993 rift/11-phish-mound.flac
-11:phish/1993 rift/12-phish-its_ice.flac
-12:phish/1993 rift/13-phish-lengthwise.flac
-13:phish/1993 rift/14-phish-the_horse.flac
-14:phish/1993 rift/15-phish-silent_in_the_morning.flac
-15:taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac
-16:taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac
-17:taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac
-18:taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac
-19:taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac
-20:taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac
-21:taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac
-22:taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac
-23:taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac
-24:taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac
-25:the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac
-26:the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac
-27:the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac
-28:the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac
-29:the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac
-30:the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac
-31:the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac
-32:the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac
-33:the crystal method/1997 vegas/109-the_crystal_method-jaded.flac
-34:the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac
-35:the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac
-36:the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac
-37:the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac
-38:the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac
-39:the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac
-40:the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac
-41:the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac
-42:the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac
-43:the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac
-44:the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac
-45:u2/1997 pop/01-u2-discotheque.mp3
-46:u2/1997 pop/02-u2-do_you_feel_loved.mp3
-47:u2/1997 pop/03-u2-mofo.mp3
-48:u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3
-49:u2/1997 pop/05-u2-staring_at_the_sun.mp3
-50:u2/1997 pop/06-u2-last_night_on_earth.mp3
-51:u2/1997 pop/07-u2-gone.mp3
-52:u2/1997 pop/08-u2-miami.mp3
-53:u2/1997 pop/09-u2-the_playboy_mansion.mp3
-54:u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3
-55:u2/1997 pop/11-u2-please.mp3
-56:u2/1997 pop/12-u2-wake_up_dead_man.mp3
+0:tool/2019 fear inoculum/04 - invincible.mp3
 playlist_end

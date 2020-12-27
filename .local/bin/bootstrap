@@ -2,7 +2,7 @@
 # autostart.sh -bmilcs
 
 # audio
-pulseaudio --k &
+#pulseaudio --k &
 pulseaudio --start &
 # compositor
 picom --config ~/.config/picom/config &

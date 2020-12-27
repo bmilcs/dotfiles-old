@@ -1,5 +1,5 @@
-mpd_music_dir = "/home/bmilcs/nfs/media/audio/music"
-lyrics_directory = "/home/bmilcs/nfs/media/audio/lyrics"
+mpd_music_dir = "/all/media/audio/music"
+lyrics_directory = "/all/media/audio/lyrics"
 ncmpcpp_directory = "/home/bmilcs/.config/ncmpcpp"
 mpd_crossfade_time = "5"
 mpd_connection_timeout = "5"

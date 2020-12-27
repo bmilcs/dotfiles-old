@@ -1,6 +1,3 @@
-" specify zsh home
-export ZDOTDIR=$HOME
-
 " For plug-ins to load correctly.
 filetype plugin indent on
 
@@ -91,6 +88,7 @@ set ignorecase    " Include matching uppercase words with lowercase search term
 set smartcase   " Include only uppercase words with uppercase search term
 set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 " Automatically save and load folds
+set relativenumber
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 
@@ -106,8 +104,8 @@ nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufe
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
       \ quit | endif
 autocmd BufWinEnter * silent NERDTreeMirror " nerdtree clone on every tab
-:let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " nerdtree: show untracked & custom icons:
-:let g:NERDTreeGitStatusIndicatorMapCustom = {
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " nerdtree: show untracked & custom icons:
+let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Modified'  :'✹',
       \ 'Staged'    :'✚',
       \ 'Untracked' :'✭',
@@ -119,5 +117,5 @@ autocmd BufWinEnter * silent NERDTreeMirror " nerdtree clone on every tab
       \ 'Clean'     :'✔︎',
       \ 'Unknown'   :'?',
       \ }
-:let g:NERDTreeWinSize=20 " nerdtree width
+let g:NERDTreeWinSize=20 " nerdtree width
 

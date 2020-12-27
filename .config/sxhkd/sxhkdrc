@@ -1,68 +1,97 @@
-# BSPWM -----------------------------------------------------------------------------------------------------------
 super + Return
 	urxvt # launch terminal
+
 super + @space
-	rofi -show drun -display-drun "" -config ~/.config/rofi/config.rasi # launch dmenu
-super + F1
+	rofi -show drun -drun-display-format \{name\} -config ~/.config/rofi/config.rasi # launch dmenu
+
+super + ctrl + Return 
 	firefox
+
 super + grave
 	pkill -USR1 -x sxhkd # restart sxhkd keymap
+
 super + ctrl + {_,shift + }grave
 	bspc {wm -r,quit}
+
 super + {_,ctrl + }w
 	bspc node -{c,k} # close and kill
+
 super + m
 	bspc desktop -l next # alternate between the tiled and monocle layout
+
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local # send the newest marked node to the newest preselected node
+
 super + g
 	bspc node -s biggest.window # swap the current node and the biggest window
+
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen} # set the window state
+
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private} # set the node flags
-super + {_,ctrl + }{h,j,k,l}
+
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east} # focus the node in the given direction
+
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second} # focus the node for the given path jump
+
 alt + {_,shift + }Tab
 	bspc node -f {next,prev}.local.!hidden.window # focus the next/previous window in the current desktop
+
 super + {_,shift + }Tab
 	bspc {node,desktop} -f last # focus the last node/desktop
+
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local # focus the next/previous desktop in the current monitor
+
 super + {o,i}
 	bspc wm -h off; \ # focus the older or newer node in the focus history
+
 	bspc node {older,newer} -f; \
 	bspc wm -h on
+
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}' # focus or send to the given desktop
+
   bspc node -z {left -20 0 || bspc node -z right -20 0, \
                 bottom 0 20 || bspc node -z top 0 20,\
+
                 top 0 -20 || bspc node -z bottom 0 -20,\
                 right 20 0 || bspc node -z left 20 0}
+
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0} # expand a window by moving one of its side outward | RESIZE
+
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0} # contract a window by moving one of its side inward | RESIZE
+
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0} # move a floating window
+
 super + ctrl + shift + {h,j,k,l}
 	bspc node -p {west,south,north,east} # preselect the direction
+
 super + ctrl + shift + {1-9}
 	bspc node -o 0.{1-9} # preselect the ratio
+
 super + ctrl + space
 	bspc node -p cancel # cancel the preselection for the focused node
+
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel # cancel the preselection for the focused desktop
-alt + control + shift + {h,j,k,l}
-# OTHER APPLICATIONS ----------------------------------------------------------------------------------------------
+
+# alt + control + shift + {h,j,k,l}
 XF86AudioRaiseVolume 
-  pactl --set-sink-volume 0 +5% # pulseaudio - increase volume
+  pactl set-sink-volume 1 +5% # pulseaudio - increase volume
+
 XF86AudioLowerVolume 
-  pactl --set-sink-volume 0 -5% # pulseaudio - increase volume
+  pactl set-sink-volume 1 -5% # pulseaudio - increase volume
+
 XF86AudioMute 
-  pactl set-sink-mute # pulseaudio - increase volume
+  pactl set-sink-mute 1 # pulseaudio - increase volume
+
 Print 
   flameshot gui # printscreen screenshot
 

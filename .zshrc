@@ -4,10 +4,7 @@ SAVEHIST=5000
 setopt autocd beep extendedglob nomatch
 bindkey -e
 # bmilcs ---------------------------------------
-# add custom path var 
-export PATH="$PATH:/home/bmilcs/bin"
 # zplugin manager
-# plugins	(zsh-completions zsh-autosuggestions)
 source ~/.zplugin/bin/zplugin.zsh
 zplugin light zsh-users/zsh-completions 
 zplugin light zsh-users/zsh-autosuggestions
@@ -18,10 +15,6 @@ zplugin load zdharma/history-search-multi-word
 autoload -Uz promptinit compinit
 compinit -d /home/bmilcs/.config/zsh/.zcompdump
 promptinit
-# autostart mpd
-[ ! -s ~/.config/mpd/pid ] && mpd
-# xcape: map control tap > escape (for vim)
-xcape -e 'Control_L=Escape'
 # prompt
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}%b%f%k"
@@ -66,8 +59,7 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 # bindkey -> zle -al (show all registered commands)
-bindkey '^j' autosuggest-complete
-
+bindkey '^j' autosuggest-accept 
 # ctrl backspace delete word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
@@ -101,7 +93,11 @@ rehash_precmd() {
 add-zsh-hook -Uz precmd rehash_precmd
 
 
+# autostart mpd
+[ ! -s ~/.config/mpd/pid ] && mpd
 # dotfiles, dir_colors
 [ -f "$HOME/.aliases" ] && source $HOME/.aliases
 [ -f "$HOME/.functions" ] && source $HOME/.functions
 [ -f "$HOME/.dir_colors" ] && eval $(dircolors ~/.dir_colors)
+# xcape: map control tap > escape (for vim)
+xcape -e 'Control_L=Escape'

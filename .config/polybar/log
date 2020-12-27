@@ -1,4 +1,4 @@
-polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/bspwm.conf
-polybar|notice:  Loaded font "Iosevka:size=10" (name=Iosevka, offset=3, file=/usr/share/fonts/TTF/iosevka-regular.ttf)
-polybar|notice:  Loaded font "Font Awesome:size=12" (name=FontAwesome, offset=3, file=/usr/share/fonts/TTF/fontawesome-webfont.ttf)
-polybar|notice:  Loaded font "Weather Icons:size=12" (name=Weather Icons, offset=4, file=/usr/share/fonts/TTF/weathericons-regular-webfont.ttf)
+polybar|notice:  Parsing config file: /home/bmilcs/.config/polybar/i3.conf
+polybar|error: Monitor "DP-0 dpi = 96" not found opolybar|warn:  No fonts specified, using fallback font "fixed"
+polybar|notice:  Loaded font "fixed" (name=DejaVu Sans, offset=0, file=/usr/share/fonts/TTF/DejaVuSans.ttf)
+polybar|notice:  Termination signal received, shutting down...

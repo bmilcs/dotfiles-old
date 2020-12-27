@@ -50,7 +50,7 @@
 *.color11: nord13
 ! blue
 *.color4: nord9
-*.color12: nord9
+*.color12: nord8
 ! magenta
 *.color5: nord15
 *.color13: nord15

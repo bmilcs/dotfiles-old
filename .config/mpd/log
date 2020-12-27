@@ -9552,3 +9552,988 @@ Dec 23 16:01 : exception: Failed to open "internal" (pulse); failed to connect: 
 Dec 23 16:07 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
 Dec 23 16:13 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
 Dec 23 16:16 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:13 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:13 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:13 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:13 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:13 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:13 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:13 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/01-phish-rift.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/01-phish-rift.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/01-phish-rift.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/02-phish-fast_enough_for_you.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/02-phish-fast_enough_for_you.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/02-phish-fast_enough_for_you.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/03-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/03-phish-lengthwise.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/03-phish-lengthwise.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/09-phish-weigh.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/10-phish-all_things_reconsidered.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/11-phish-mound.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/12-phish-its_ice.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/13-phish-lengthwise.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/14-phish-the_horse.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac': No such file or directory
+Dec 23 19:24 : player: played "phish/1993 rift/15-phish-silent_in_the_morning.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:24 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:24 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:24 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:24 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/01-phish-rift.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/01-phish-rift.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/01-phish-rift.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/02-phish-fast_enough_for_you.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/02-phish-fast_enough_for_you.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/02-phish-fast_enough_for_you.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/03-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/03-phish-lengthwise.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/03-phish-lengthwise.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/09-phish-weigh.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/10-phish-all_things_reconsidered.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/11-phish-mound.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/12-phish-its_ice.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/13-phish-lengthwise.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/14-phish-the_horse.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac': No such file or directory
+Dec 23 19:32 : player: played "phish/1993 rift/15-phish-silent_in_the_morning.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:32 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:32 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:32 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:32 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/09-phish-weigh.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/10-phish-all_things_reconsidered.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/11-phish-mound.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/12-phish-its_ice.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/13-phish-lengthwise.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/14-phish-the_horse.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/15-phish-silent_in_the_morning.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/09-phish-weigh.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/10-phish-all_things_reconsidered.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/11-phish-mound.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/12-phish-its_ice.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/13-phish-lengthwise.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/14-phish-the_horse.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/15-phish-silent_in_the_morning.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/04-phish-maze.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/04-phish-maze.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/05-phish-sparkle.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/06-phish-horn.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/07-phish-the_wedge.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/07-phish-the_wedge.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/08-phish-my_friend_my_friend.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/08-phish-my_friend_my_friend.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/09-phish-weigh.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/09-phish-weigh.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/10-phish-all_things_reconsidered.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/10-phish-all_things_reconsidered.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/11-phish-mound.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/11-phish-mound.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/12-phish-its_ice.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/12-phish-its_ice.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/13-phish-lengthwise.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/13-phish-lengthwise.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/14-phish-the_horse.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/14-phish-the_horse.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/phish/1993 rift/15-phish-silent_in_the_morning.flac': No such file or directory
+Dec 23 19:33 : player: played "phish/1993 rift/15-phish-silent_in_the_morning.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/01-taking_back_sunday-you_know_how_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/02-taking_back_sunday-bike_scene.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/03-taking_back_sunday-cute_without_the_e_(cut_from_the_team).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/04-taking_back_sunday-theres_no_i_in_team.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/05-taking_back_sunday-great_romances_of_the_20th_century.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:33 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:33 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:33 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:33 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/06-taking_back_sunday-ghost_man_on_third.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/07-taking_back_sunday-timberwolves_at_new_jersey.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/08-taking_back_sunday-the_blue_channel.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/09-taking_back_sunday-youre_so_last_summer.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac': No such file or directory
+Dec 23 19:34 : player: played "taking back sunday/2002 tell all your friends/10-taking_back_sunday-head_club.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/101-the_crystal_method-trip_like_i_do.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/102-the_crystal_method-busy_child.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/103-the_crystal_method-cherry_twist.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/104-the_crystal_method-high_roller.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/105-the_crystal_method-comin_back.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/106-the_crystal_method-keep_hope_alive.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/107-the_crystal_method-vapor_trail.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/108-the_crystal_method-shes_my_pusher.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/109-the_crystal_method-jaded.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/109-the_crystal_method-jaded.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/110-the_crystal_method-bad_stone.flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/201-the_crystal_method-busy_child_(sta_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/202-the_crystal_method-trip_like_i_do_(tom_real_vs_the_rogue_element_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/203-the_crystal_method-keep_hope_alive_(mstrkrft_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/204-the_crystal_method-comin_back_(koma_and_bones_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/205-the_crystal_method-busy_child_(hyper_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/206-the_crystal_method-cherry_twist_(deadmau5_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/207-the_crystal_method-busy_child_(paul_oakenfold_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/208-the_crystal_method-high_roller_(myagi_remix).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/209-the_crystal_method-comin_back_(93_demo).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac; Failed to open '/home/bmilcs/nfs/media/audio/music/the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac': No such file or directory
+Dec 23 19:34 : player: played "the crystal method/1997 vegas/210-the_crystal_method-vapor_trail_(live).flac"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/01-u2-discotheque.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/01-u2-discotheque.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/02-u2-do_you_feel_loved.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/02-u2-do_you_feel_loved.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/03-u2-mofo.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/03-u2-mofo.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/04-u2-if_god_will_send_his_angels.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/05-u2-staring_at_the_sun.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/05-u2-staring_at_the_sun.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/06-u2-last_night_on_earth.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/06-u2-last_night_on_earth.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/07-u2-gone.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/07-u2-gone.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/08-u2-miami.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/08-u2-miami.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/09-u2-the_playboy_mansion.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/09-u2-the_playboy_mansion.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/10-u2-if_you_wear_that_velvet_dress.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/11-u2-please.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/11-u2-please.mp3"
+Dec 23 19:34 : exception: Failed to decode /home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3; Failed to open '/home/bmilcs/nfs/media/audio/music/u2/1997 pop/12-u2-wake_up_dead_man.mp3': No such file or directory
+Dec 23 19:34 : player: played "u2/1997 pop/12-u2-wake_up_dead_man.mp3"
+Dec 24 13:43 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 13:46 : player: played "phish/1993 rift/05-phish-sparkle.flac"
+Dec 24 13:46 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 24 13:46 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 24 13:47 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 24 13:47 : player: played "phish/1993 rift/06-phish-horn.flac"
+Dec 24 13:49 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 13:52 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-01-Sowing.Season-MP3-320-Lidarr.mp3"
+Dec 24 13:56 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-02-Millstone-MP3-320-Lidarr.mp3"
+Dec 24 13:59 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 14:01 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-03-Jesus-MP3-320-Lidarr.mp3"
+Dec 24 14:02 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 14:05 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-04-Degausser-MP3-320-Lidarr.mp3"
+Dec 24 14:05 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 24 14:07 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-04-Degausser-MP3-320-Lidarr.mp3"
+Dec 24 14:11 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 14:15 : player: played "brand new/2006 the devil and god are raging inside me/Brand.New-The.Devil.and.God.Are.Raging.Inside.Me-05-Limousine.MS.Rebridge-MP3-320-Lidarr.mp3"
+Dec 24 14:22 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 24 14:25 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-08-The.No.Seatbelt.Song-MP3-320-Lidarr.mp3"
+Dec 24 14:30 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 24 14:31 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-08-The.No.Seatbelt.Song-MP3-320-Lidarr.mp3"
+Dec 24 14:32 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 14:35 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-09-Seventy.Times.7-MP3-320-Lidarr.mp3"
+Dec 24 14:35 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 24 14:38 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-10-Secondary-MP3-320-Lidarr.mp3"
+Dec 24 14:38 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 24 14:40 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-11-Magazines-MP3-320-Lidarr.mp3"
+Dec 24 14:40 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 24 14:45 : exception: Failed to play on "internal" (pulse): suspended
+Dec 24 14:45 : player: played "brand new/2001 your favorite weapon/Brand.New-Your.Favorite.Weapon-12-Soco.Amaretto.Lime-MP3-320-Lidarr.mp3"
+Dec 24 14:53 : player: played "a perfect circle/2000 mer de noms/A.Perfect.Circle-Mer.de.Noms-01-The.Hollow-MP3-VBR-V0-Lidarr.mp3"
+Dec 24 14:57 : player: played "a perfect circle/2000 mer de noms/A.Perfect.Circle-Mer.de.Noms-02-Magdalena-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 09:19 : player: played "a perfect circle/2000 mer de noms/A.Perfect.Circle-Mer.de.Noms-03-Rose-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 10:57 : player: played "a perfect circle/2000 mer de noms/A.Perfect.Circle-Mer.de.Noms-03-Rose-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:03 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-01-Frank.Sinatra-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:06 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-02-The.Distance-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:09 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-03-Friend.Is.a.Four.Letter.Word-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:13 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-04-Open.Book-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:16 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-05-Daria-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:18 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-06-Race.Car.Ya-Yas-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:23 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-07-I.Will.Survive-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:24 : exception: Failed to play on "internal" (pulse): suspended
+Dec 25 11:25 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-08-Stickshifts.and.Safetybelts-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:27 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-09-Perhaps.Perhaps.Perhaps-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:31 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-10-Its.Coming.Down-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:35 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-11-Nugget-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:38 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-12-She'll.Come.Back.to.Me-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:43 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-13-Italian.Leather.Sofa-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 11:47 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-14-Sad.Songs.and.Waltzes-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:42 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-01-Frank.Sinatra-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:45 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-02-The.Distance-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:48 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-03-Friend.Is.a.Four.Letter.Word-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:52 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-04-Open.Book-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:56 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-05-Daria-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 13:57 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-06-Race.Car.Ya-Yas-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:02 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-07-I.Will.Survive-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:05 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-08-Stickshifts.and.Safetybelts-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:07 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-09-Perhaps.Perhaps.Perhaps-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:11 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-10-Its.Coming.Down-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:15 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-11-Nugget-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:17 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-12-She'll.Come.Back.to.Me-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:23 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-13-Italian.Leather.Sofa-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 14:26 : player: played "cake/1996 fashion nugget/CAKE-Fashion.Nugget-14-Sad.Songs.and.Waltzes-MP3-VBR-V0-Lidarr.mp3"
+Dec 25 16:35 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-01-wanna.be.startin’.somethin’-flac-perfect.flac"
+Dec 25 16:40 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-02-baby.be.mine-flac-perfect.flac"
+Dec 25 16:43 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-03-the.girl.is.mine-flac-perfect.flac"
+Dec 25 16:49 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-04-thriller-flac-perfect.flac"
+Dec 25 16:54 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-05-beat.it-flac-perfect.flac"
+Dec 25 16:59 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-06-billie.jean-flac-perfect.flac"
+Dec 25 17:03 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-07-human.nature-flac-perfect.flac"
+Dec 25 17:07 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-08-p.y.t.pretty.young.thing-flac-perfect.flac"
+Dec 25 17:12 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-09-the.lady.in.my.life-flac-perfect.flac"
+Dec 25 17:14 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-10-quincy.jones.interview.part.i-flac-perfect.flac"
+Dec 25 17:19 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-11-someone.in.the.dark-flac-perfect.flac"
+Dec 25 17:21 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-12-quincy.jones.interview.part.ii-flac-perfect.flac"
+Dec 25 17:23 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-13-billie.jean.home.demo.from.1981-flac-perfect.flac"
+Dec 25 17:26 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-14-quincy.jones.interview.part.iii-flac-perfect.flac"
+Dec 25 17:30 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-15-rod.temperton.interview.part.i-flac-perfect.flac"
+Dec 25 17:32 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-16-quincy.jones.interview.part.iv-flac-perfect.flac"
+Dec 25 17:35 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-17-voice.over.session.from.“thriller”-flac-perfect.flac"
+Dec 25 17:37 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-18-rod.temperton.interview.part.ii-flac-perfect.flac"
+Dec 25 17:39 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-19-quincy.jones.interview.part.v-flac-perfect.flac"
+Dec 25 17:41 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-20-carousel-flac-perfect.flac"
+Dec 25 17:42 : player: played "michael jackson/1982 thriller/michael.jackson-thriller-21-quincy.jones.interview.part.vi-flac-perfect.flac"
+Dec 26 14:57 : exception: Failed to pause "internal" (pulse): failed to connect the stream: Connection terminated
+Dec 26 14:57 : player: played "tool/2019 fear inoculum/04 - invincible.mp3"
