@@ -54,7 +54,6 @@ super + {o,i}
 
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}' # focus or send to the given desktop
-
   bspc node -z {left -20 0 || bspc node -z right -20 0, \
                 bottom 0 20 || bspc node -z top 0 20,\
 

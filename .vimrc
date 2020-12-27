@@ -3,7 +3,13 @@ filetype plugin indent on
 
 " PLUGINS ------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+  " markdown plugins
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  " theme
   Plug 'arcticicestudio/nord-vim'
+  " git
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-sensible'
   Plug 'preservim/nerdtree' |
@@ -20,6 +26,8 @@ call plug#end()
 colorscheme nord
 
 " HOTKEY MODS --------------------------------------------------
+nnoremap ; :
+nnoremap : ;
 noremap <Up> <nop>    " disable arrow keys
 noremap <Left> <nop>
 noremap <Right> <nop>
@@ -76,9 +84,6 @@ set laststatus=2    " Status bar
 set showmode    " Display options
 set showcmd
 set matchpairs+=<:>   " Highlight matching pairs of brackets. Use the '%' character to jump between them.
-" Display different types of white spaces.
-" set list
-" set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 set number    " Show line numbers
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
 set encoding=utf-8    " Encoding
@@ -93,16 +98,24 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 
 
-" PLUGIN SPECIFIC ----------------------------------------------
-"
+
+" markdown preview = https://github.com/iamcco/markdown-preview.nvim
+let g:mkdp_auto_start = 1   " auto-start w/ .md file
+let g:mkdp_auto_close = 1   " auto-close on .md exit
+let g:mkdp_refresh_slow = 0   " reduce refresh speed
+let g:mkdp_command_for_global = 0   " md can be used on all files
+let g:vim_markdown_no_default_key_mappings = 1
+
+" colorizer auto
 let g:colorizer_auto_color = 1    " COLORIZER
 
-" NERDTREE
+" nerdtree customizations
 nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>" " f6 to toggle nerd tree
 " nerd tree on launch: autocmd VimEnter * NERDTree | wincmd p
-" nerdtree auto-close when last vim doc is closed
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
       \ quit | endif
+" nerdtree auto-close when last vim doc is closed
+
 autocmd BufWinEnter * silent NERDTreeMirror " nerdtree clone on every tab
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " nerdtree: show untracked & custom icons:
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -119,3 +132,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ }
 let g:NERDTreeWinSize=20 " nerdtree width
 
+
+" Display different types of white spaces.
+" set list
+" set listchars=tab:›\ ,trail:•,extends:#,nbsp:.

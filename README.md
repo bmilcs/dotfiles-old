@@ -1,10 +1,14 @@
 ## bmilcs/dotfiles
 
-welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & committing to a dual boot configeration on my primary workstation. 
+Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 years of [light Debian experience](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home of my personal configuration files. Windows is a requirement in my line of work, but I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration. 
+
+
+
+### GOALS
+   1. 
 
 ### TODO
 
-- [ ] neomutt - email
 - [ ] improve README.md
     - [ ] add screenshots
     - [ ] add table of contents
@@ -14,14 +18,15 @@ welcome to bmilcs/dotfiles v2.0, established in 12/2020, after installing & comm
     - [ ] add networking up/down
     - [x] add music controls
     - [x] add update watcher - distro/packages
+- [ ] neomutt - email
+- [ ] research vim additions
+    - [ ] git browser
+    - [x] file browser
+    - [x] moving lines up/down 
 - [x] add additional workstation env
     - [x] bspwm
     - [ ] openbox?
     - [ ] xfce
-- [ ] research vim additions
-    - [x] file browser
-    - [ ] git browser
-    - [x] moving lines up/down 
 - [x] vs code replacement
     - [x] neovim?
     - [x] vim?
