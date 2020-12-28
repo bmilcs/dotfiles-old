@@ -39,4 +39,5 @@ picom --config ~/.config/picom/config &
 nitrogen --restore &
 # polybar                              
 /home/bmilcs/.config/polybar/bspwm.sh &
-
+# unclutter 
+unclutter &
