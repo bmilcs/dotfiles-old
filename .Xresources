@@ -62,7 +62,7 @@
 *.color15: nord6
 
 urxvt*depth: 32
-URxvt.background:             [85]#2e3440
+URxvt.background:             [88]#2e3440
 URxvt*termName:								rxvt-unicode-256color
 URxvt*loginShell:							true
 URxvt*scrollBar:							false
