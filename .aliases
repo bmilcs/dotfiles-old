@@ -58,6 +58,9 @@ alias onotes="vim ~/notes"
 alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
 alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 
+# update grub
+alias upgrub=""
+
 # reboot, shutdown, etc.
 alias reboot="sudo systemctl reboot"
 alias rb="sudo systemctl reboot"
