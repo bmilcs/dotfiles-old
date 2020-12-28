@@ -13,6 +13,9 @@ super + grave
 super + ctrl + {_,shift + }grave
 	bspc {wm -r,quit}
 
+super + shift + grave
+	xrdb -merge ~/.Xresources
+
 super + {_,ctrl + }w
 	bspc node -{c,k} # close and kill
 

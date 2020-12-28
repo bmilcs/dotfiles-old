@@ -10538,3 +10538,6 @@ Dec 25 17:42 : player: played "michael jackson/1982 thriller/michael.jackson-thr
 Dec 26 14:57 : exception: Failed to pause "internal" (pulse): failed to connect the stream: Connection terminated
 Dec 26 14:57 : player: played "tool/2019 fear inoculum/04 - invincible.mp3"
 Dec 27 17:48 : player: played "tool/2019 fear inoculum/04 - invincible.mp3"
+Dec 28 14:27 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 28 14:27 : player: played "tool/2019 fear inoculum/04 - invincible.mp3"
+Dec 28 14:31 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused

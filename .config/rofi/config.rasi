@@ -4,4 +4,5 @@ configuration {
 	font: "Hack 10";
 	hide-scrollbar: true;
 	theme: "~/.config/rofi/nord.rasi";
+  combi-modi: "window,drun,ssh";
 }
