@@ -7,8 +7,9 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
   1. [Personal Goals](#goals)
   2. [TODO List](#todo)
   3. Frequently Revised 
-      - [**bspwmrc**](.config/bspwm/bspwmrc)
-      - [**sxhkdrc**](.config/sxhkd/sxhkdrc)
+      - [**bspwmrc**](.config/bspwm/bspwmrc): bspwm (window manager)
+      - [**sxhkdrc**](.config/sxhkd/sxhkdrc): sxhkd (keyboard shortcuts)
+      - [**polybar**](.config/polybar/bspwm.conf): 
   
 <a name="goals"/>
 
