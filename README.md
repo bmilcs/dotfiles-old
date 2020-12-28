@@ -9,7 +9,9 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
   3. **Shortcuts** 
       - [**bspwmrc**](.config/bspwm/bspwmrc) *window manager*
       - [**sxhkdrc**](.config/sxhkd/sxhkdrc) *keyboard shortcuts*
-      - [**polybar**](.config/polybar/bspwm.conf): 
+      - [**polybar (conf**](.config/polybar/bspwm.conf) & [**.sh**)](.config/polybar/bspwm.sh) *task/status bar*
+      - rofi
+      - picom
   
 <a name="goals"/>
 
