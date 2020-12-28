@@ -7,10 +7,10 @@ super + @space
 super + ctrl + Return 
 	firefox
 
-super + grave
+super + ctrl + grave
 	pkill -USR1 -x sxhkd # restart sxhkd keymap
 
-super + ctrl + {_,shift + }grave
+super + {_,shift + }grave
 	bspc {wm -r,quit}
 
 super + shift + grave
