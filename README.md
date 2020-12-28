@@ -4,36 +4,52 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
 
 ### Navigation 
 
-  1. [Personal Goals](#goals)
-  2. [TODO List](#todo)
-  3. Frequently Revised 
-      - [**bspwmrc**](.config/bspwm/bspwmrc): bspwm (window manager)
-      - [**sxhkdrc**](.config/sxhkd/sxhkdrc): sxhkd (keyboard shortcuts)
+  1. [**Goals**](#goals)
+  2. [**TODO**](#todo)
+  3. **Shortcuts** 
+      - [**bspwmrc**](.config/bspwm/bspwmrc) *window manager*
+      - [**sxhkdrc**](.config/sxhkd/sxhkdrc) *keyboard shortcuts*
       - [**polybar**](.config/polybar/bspwm.conf): 
   
 <a name="goals"/>
 
 ### GOALS
-   1. 
+  1. VIM
+     - Adapt to, Learn & Master 
+     - Add Visual Studio Code's visual appeal & functionality via plugins, vimrc, shortcuts, etc.
+     - Universally adopt VIM-functionality
+        - IE: zsh, ranger, mutt, etc.
+  2. Tiling Window Manager
 
 <a name="todo"/>
 
 ### TODO
 
-- [ ] improve README.md
-    - [ ] add screenshots
-    - [ ] add table of contents
-- [ ] polybar config
-    - [ ] add volume
-    - [ ] add cpu/memory %'s
-    - [ ] add networking up/down
-    - [x] add music controls
-    - [x] add update watcher - distro/packages
-- [ ] neomutt - email
-- [ ] research vim additions
+- [ ] **vim**
+  - [ ] tmux - learn tabs, buffers, etc.
+  - [ ] functions() - ie: centered title bar w/ ascii characters
+  - [ ] create workspaces (vs-code style w/ multiple text files opened at once)
+  - [ ] improve hotkey knowledge
+    - [ ] navigation - pgup/pgdn, visual blocks/lines/etc
+    - [ ] more to come...
+  - [ ] optimize vimrc
+    - [ ] common improvements
+    - [ ] keyboard shortcut tweaks
+    - [ ] ..
+  - [ ] research plugins 
     - [ ] git browser
     - [x] file browser
     - [x] moving lines up/down 
+- [ ] improve README.md
+    - [ ] add scrots
+    - [x] add table of contents
+- [ ] polybar config
+    - [ ] add cpu/memory %'s
+    - [ ] add networking up/down
+    - [x] add volume
+    - [x] add music controls
+    - [x] add update watcher - distro/packages
+- [ ] neomutt - email
 - [x] add additional workstation env
     - [x] bspwm
     - [ ] openbox?
