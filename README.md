@@ -8,7 +8,7 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
   2. [TODO List](#todo)
   3. Frequently Revised 
       - [**bspwmrc**](.config/bspwm/bspwmrc)
-      - 
+      - [**sxhkdrc**](.config/sxhkd/sxhkdrc)
   
 <a name="goals"/>
 
