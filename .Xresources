@@ -69,8 +69,8 @@ URxvt*scrollBar:							false
 URxvt.scrollStyle:						plain
 URxvt.secondaryScroll:				true
 URxvt.urgentOnBell:						true
-URxvt.letterSpace:            -1
-URxvt.lineSpace:              -1
+URxvt.letterSpace:            0
+URxvt.lineSpace:              0
 URxvt.geometry:               92x24
 URxvt.internalBorder:					5
 URxvt*cursorBlink:						true
@@ -92,9 +92,9 @@ Xft.lcdfilter:								lcdlight
 ! URxvt.font:               
 ! URxvt.boldFont:            
 ! URxvt.font: 								xft:Iosevka Term:size=12:antialias=true
- URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
+! URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
 URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
-!URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
+URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.perl-ext-common: default,clipboard,keyboard-select
