@@ -70,9 +70,9 @@ URxvt.scrollStyle:						plain
 URxvt.secondaryScroll:				true
 URxvt.urgentOnBell:						true
 URxvt.letterSpace:            -1
-URxvt.lineSpace:              -1 
+URxvt.lineSpace:              -1
 URxvt.geometry:               92x24
-URxvt.internalBorder:					12
+URxvt.internalBorder:					5
 URxvt*cursorBlink:						true
 URxvt*scrollTtyOutput:				false
 URxvt*scrollWithBuffer:				true
