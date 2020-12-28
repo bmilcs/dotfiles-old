@@ -7,7 +7,7 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
   1. [Personal Goals](#goals)
   2. [TODO List](#todo)
   3. Frequently Edited Configs
-      - [BSPWM Window Manager (bspwmrc)](bspwmrc)
+      - [BSPWM Window Manager (bspwmrc)](.config/bspwm/bspwmrc)
       - 
   
 <a name="goals"/>
