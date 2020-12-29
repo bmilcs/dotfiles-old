@@ -10959,3 +10959,22 @@ Dec 28 20:12 : player: played "soul coughing/1998 el oso/02-soul_coughing-misinf
 Dec 28 20:13 : exception: Failed to play on "internal" (pulse): disconnected
 Dec 28 20:13 : player: played "soul coughing/1998 el oso/03-soul_coughing-circles.flac"
 Dec 29 13:42 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 29 13:44 : player: played "soul coughing/1998 el oso/03-soul_coughing-circles.flac"
+Dec 29 13:49 : player: played "soul coughing/1998 el oso/04-soul_coughing-blame.flac"
+Dec 29 13:53 : player: played "soul coughing/1998 el oso/05-soul_coughing-st._louise_is_listening.flac"
+Dec 29 13:58 : player: played "soul coughing/1998 el oso/06-soul_coughing-maybe_ill_come_down.flac"
+Dec 29 14:02 : player: played "soul coughing/1998 el oso/07-soul_coughing-houston.flac"
+Dec 29 14:05 : player: played "soul coughing/1998 el oso/08-soul_coughing-300.flac"
+Dec 29 14:09 : player: played "soul coughing/1998 el oso/09-soul_coughing-fully_retractable.flac"
+Dec 29 14:13 : player: played "soul coughing/1998 el oso/10-soul_coughing-monster_man.flac"
+Dec 29 14:17 : player: played "soul coughing/1998 el oso/11-soul_coughing-pensacola.flac"
+Dec 29 14:21 : player: played "soul coughing/1998 el oso/12-soul_coughing-i_miss_the_girl.flac"
+Dec 29 14:24 : player: played "soul coughing/1998 el oso/13-soul_coughing-so_far_i_have_not_found_the_science.flac"
+Dec 29 14:27 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 29 14:28 : player: played "soul coughing/1998 el oso/14-soul_coughing-the_incumbent.flac"
+Dec 29 14:42 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
+Dec 29 14:45 : player: played "soul coughing/1998 el oso/14-soul_coughing-the_incumbent.flac"
+Dec 29 14:49 : player: played "soul coughing/1996 irresistible bliss/01-soul_coughing-super_bon_bon.flac"
+Dec 29 14:52 : player: played "soul coughing/1996 irresistible bliss/02-soul_coughing-soft_serve.flac"
+Dec 29 14:55 : player: played "soul coughing/1996 irresistible bliss/03-soul_coughing-white_girl.flac"
+Dec 29 14:58 : player: played "soul coughing/1996 irresistible bliss/04-soul_coughing-soundtrack_to_mary.flac"
