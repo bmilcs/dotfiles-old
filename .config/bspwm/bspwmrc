@@ -52,15 +52,16 @@ bspc rule -a Chromium desktop='^3'
 #
 # autostart
 #
-pidgin &
-discord &
-thunderbird &
-telegram-desktop &
-android-messages-desktop &
-pulseaudio --start &
-picom --config ~/.config/picom/config &
-nitrogen --restore &
-/home/bmilcs/.config/polybar/bspwm.sh &
-unclutter &
-
+[ "$1" = 0 ] && {   # only on bspwm start (not reload)
+  pidgin &
+  discord &
+  thunderbird &
+  telegram-desktop &
+  android-messages-desktop &
+  pulseaudio --start &
+  picom --config ~/.config/picom/config &
+  nitrogen --restore &
+  /home/bmilcs/.config/polybar/bspwm.sh &
+  unclutter &
+}
 #$HOME/.local/bin/bootstrap &
