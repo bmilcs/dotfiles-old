@@ -7,7 +7,7 @@ pgrep sxhkd || sxhkd &
 #
 # workspaces
 #
-bspc monitor -d dev msg mp3 misc
+bspc monitor -d dev www msg misc
 #
 # colors
 #
@@ -37,14 +37,15 @@ bspc config center_pseudo_tiled     true
 #
 # window placement
 #
-bspc rule -a Thunderbird desktop='^2'
-bspc rule -a android-messages-desktop desktop='^2'
-bspc rule -a Firefox desktop='^2'
-bspc rule -a discord desktop='^2'
-bspc rule -a Pidgin desktop='^2' state=floating 
-bspc rule -a TelegramDesktop desktop='^2'
+bspc rule -a Thunderbird desktop='^3'
+bspc rule -a android-messages-desktop desktop='^3'
+bspc rule -a Firefox desktop='^3'
+bspc rule -a discord desktop='^3'
+bspc rule -a Pidgin desktop='^3' state=floating 
+bspc rule -a TelegramDesktop desktop='^3'
 bspc rule -a Gimp desktop='^4' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+bspc rule -a Chromium desktop='^3'
+
 #state=floating
 #focus=on
 #manage=off
