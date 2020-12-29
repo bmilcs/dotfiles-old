@@ -100,7 +100,11 @@ XF86AudioMute
   pactl set-sink-mute 1 # pulseaudio - increase volume
 
 Print 
-  flameshot gui # printscreen screenshot
+	maim /all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png ; cat /all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | xclip -selection clipboard -t image/png
+
+alt + Print 
+	maim -s /all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png ; cat /all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | xclip -selection clipboard -t image/png
+#flameshot gui # printscreen screenshot
 
 # GRAVEYARD -------------------------------------------------------------------
 # super + alt + {q,r}
