@@ -10956,3 +10956,6 @@ Dec 28 18:15 : player: played "soul coughing/1996 irresistible bliss/11-soul_cou
 Dec 28 18:20 : player: played "soul coughing/1996 irresistible bliss/12-soul_coughing-how_many_cans.flac"
 Dec 28 20:09 : player: played "soul coughing/1998 el oso/01-soul_coughing-rolling.flac"
 Dec 28 20:12 : player: played "soul coughing/1998 el oso/02-soul_coughing-misinformed.flac"
+Dec 28 20:13 : exception: Failed to play on "internal" (pulse): disconnected
+Dec 28 20:13 : player: played "soul coughing/1998 el oso/03-soul_coughing-circles.flac"
+Dec 29 13:42 : exception: Failed to open "internal" (pulse); failed to connect: Connection refused
