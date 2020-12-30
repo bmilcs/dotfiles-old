@@ -18,7 +18,7 @@ bspc config presel_feedback_color "#4C566A"
 #
 # window style
 #
-bspc config automatic_scheme        spiral
+#bspc config automatic_scheme        spiral
 bspc config window_gap              6
 bspc config top_padding             50
 bspc config bottom_padding          25
@@ -33,18 +33,28 @@ bspc config single_monocle          true
 bspc config focus_follows_pointer   true
 bspc config ignore_ewmh_focus       true
 bspc config center_pseudo_tiled     true
+bspc wm -l ~/.config/bspwm/canvas.json
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/1/1
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/1/2
+bspc rule -a firefox:Navigator -o node=@^1:^1:/2
+bspc rule -a URxvt:urxvt -o node=@^1:^2:/
+bspc rule -a Thunderbird:Mail -o node=@^1:^3:/1
+bspc rule -a TelegramDesktop:telegram-desktop -o node=@^1:^3:/2/1
+bspc rule -a discord:discord -o node=@^1:^3:/2/2/1
+bspc rule -a android-messages-desktop:android-messages-desktop -o node=@^1:^3:/2/2/2
+bspc rule -a kdeconnect.sms:kdeconnect-sms -o node=@^1:^4:/
 
 #
 # window placement
 #
-bspc rule -a Thunderbird desktop='^3'
-bspc rule -a android-messages-desktop desktop='^3'
-bspc rule -a Firefox desktop='^3'
-bspc rule -a discord desktop='^3'
-bspc rule -a Pidgin desktop='^3' state=floating 
-bspc rule -a TelegramDesktop desktop='^3'
-bspc rule -a Gimp desktop='^4' state=floating follow=on
-bspc rule -a Chromium desktop='^3'
+#bspc rule -a Thunderbird desktop='^3'
+#bspc rule -a android-messages-desktop desktop='^3'
+#bspc rule -a Firefox desktop='^3'
+#bspc rule -a discord desktop='^3'
+#bspc rule -a Pidgin desktop='^3' state=floating 
+#bspc rule -a TelegramDesktop desktop='^3'
+#bspc rule -a Gimp desktop='^4' state=floating follow=on
+#bspc rule -a Chromium desktop='^3'
 
 #state=floating
 #focus=on

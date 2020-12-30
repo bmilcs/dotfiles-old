@@ -89,12 +89,13 @@ Xft.lcdfilter:								lcdlight
 
 !urxvt*font:                   xft:Hack:size=10
 !urxvt*boldFont:               xft:Hack-Bold:size=10
-! URxvt.font:               
-! URxvt.boldFont:            
+!URxvt.font:                   xft:DejaVu Sans Mono:size 10
+!URxvt.boldFont:               xft:DejaVu Sans Mono:size 10 
 ! URxvt.font: 								xft:Iosevka Term:size=12:antialias=true
 ! URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
 URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
 URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
+
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.perl-ext-common: default,clipboard,keyboard-select

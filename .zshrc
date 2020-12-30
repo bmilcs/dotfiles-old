@@ -66,6 +66,9 @@ bindkey '^[[3;5~' kill-word
 setopt COMPLETE_ALIASES
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
+CASE_SENSITIVE="false"
+# case insensitive completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 bindkey -v  # vim mode
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
