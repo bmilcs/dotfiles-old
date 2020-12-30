@@ -43,7 +43,7 @@ alias zshrc="vim ~/.zshrc"
 alias zshr="source ~/.zshrc"
 alias tmuxrc="vim ~/.tmux.conf"
 alias tmuxr="tmux source ~/.tmux.conf"
-
+alias termrc="vim ~/.config/alacritty/alacritty.yml"
 # tmux
 alias t="tmux"
 compdef t="tmux"

@@ -71,6 +71,8 @@ URxvt.secondaryScroll:				true
 URxvt.urgentOnBell:						true
 URxvt.letterSpace:            0
 URxvt.lineSpace:              0
+!URxvt.letterSpace:            -1
+!URxvt.lineSpace:              -1
 URxvt.geometry:               92x24
 URxvt.internalBorder:					5
 URxvt*cursorBlink:						true
@@ -95,6 +97,11 @@ Xft.lcdfilter:								lcdlight
 ! URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
 URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
 URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
+
+!URxvt.boldFont:   xft:Inter-Bold:size 10
+!URxvt.font:       xft:Inter-Medium:size 10
+
+
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
