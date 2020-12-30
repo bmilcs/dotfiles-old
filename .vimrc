@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
   " markdown plugins
   "Plug 'godlygeek/tabular'
   "Plug 'plasticboy/vim-markdown'
+	Plug 'christoomey/vim-tmux-navigator'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   " theme
   Plug 'arcticicestudio/nord-vim'
@@ -52,12 +53,19 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " set pastetoggle=<F2>
 " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
 " noremap <A-V> :r !xclip -o <CR>
-"set clipboard+=unnamedplus
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
-noremap <Leader>P "+p
+set clipboard+=unnamedplus
+"let mapleader=";"
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Fixes common backspace problems
 set backspace=indent,eol,start

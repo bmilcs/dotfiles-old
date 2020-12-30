@@ -15,13 +15,13 @@ alias yayls="pacman -Qe | less"
 alias yayg="pacman -Qe|grep"
 alias mutt="neomutt -F ~/.config/mutt/muttrc"
 
-# enforce vim
-alias nano="vim"
-compdef nano="vim"
-
 # mount | umount
 alias mount="sudo mount"
 alias umount="sudo umount"
+
+# enforce vim
+alias nano="vim"
+compdef nano="vim"
 
 # git
 alias gitp="gita ~/snippets/* ; gita ~/.local/bin/* ; gitt commit -a -m 'update' && gitt push"
@@ -39,10 +39,18 @@ alias poly="vim ~/.config/polybar/bspwm.conf"
 alias ali="vim ~/.aliases"
 alias fun="vim ~/.functions"
 alias vimrc="vim ~/.vimrc"
-
-# zsh
-alias zshrcr="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
+alias zshr="source ~/.zshrc"
+alias tmuxrc="vim ~/.tmux.conf"
+alias tmuxr="tmux source ~/.tmux.conf"
+
+# tmux
+alias t="tmux"
+compdef t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+
 
 # logout
 alias rex="sudo systemctl restart display-manager"
