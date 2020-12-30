@@ -81,13 +81,13 @@ URxvt*scrollWithBuffer:				true
 URxvt*scrollTtyKeypress:			true
 URxvt*saveLines:							16384
 URxvt*colorUL:								yellow
-Xft.antialias:								true
-Xft.autohint:									false
-Xft.hinting:									true
-Xft.hintstyle:								hintslight
-Xft.dpi:										  96
-Xft.rgba:											rgb
-Xft.lcdfilter:								lcdlight
+Xft.antialias:                1
+Xft.autohint:                 0
+Xft.dpi:                      96
+Xft.hinting:                  1
+Xft.hintstyle:                hintslight
+Xft.lcdfilter:                lcddefault
+Xft.rgba:                     rgb
 
 !urxvt*font:                   xft:Hack:size=10
 !urxvt*boldFont:               xft:Hack-Bold:size=10
