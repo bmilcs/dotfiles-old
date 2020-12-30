@@ -30,6 +30,9 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
 - [ ] github
   - [ ] research: way of marking non-tracked files in home via 'ls'
   - [ ] function: add .ini w/ list of dirs to wildcard gita on push
+    - ~/.local/bin
+    - ~/bin
+    - ~/snippets
 - [ ] **vim**
   - [ ] tmux - learn tabs, buffers, etc.
   - [ ] functions() - ie: centered title bar w/ ascii characters
