@@ -17,7 +17,7 @@ compinit -d /home/bmilcs/.config/zsh/.zcompdump
 promptinit
 # prompt
 NL=$'\n'
-PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}%b%f%k"
+PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
 # auto corrections
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"

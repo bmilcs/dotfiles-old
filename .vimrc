@@ -47,9 +47,18 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 " toggle paste method
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
+" nnoremap <F2> :set invpaste paste?<CR>
+" imap <F2> <C-O>:set invpaste paste?<CR>
+" set pastetoggle=<F2>
+" vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
+" noremap <A-V> :r !xclip -o <CR>
+"set clipboard+=unnamedplus
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+noremap <Leader>P "+p
+
 " Fixes common backspace problems
 set backspace=indent,eol,start
 " Map the <Space> key to toggle a selected fold opened/closed.
@@ -96,8 +105,6 @@ set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time
 set relativenumber
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
-
-
 
 " markdown preview = https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_auto_start = 1   " auto-start w/ .md file
