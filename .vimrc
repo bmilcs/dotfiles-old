@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   " git
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-fugitive'
   Plug 'preservim/nerdtree' |
         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
         \ Plug 'ryanoasis/vim-devicons'
@@ -68,6 +69,10 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+" git gutter hunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
 " Fixes common backspace problems
 set backspace=indent,eol,start
 " Map the <Space> key to toggle a selected fold opened/closed.
@@ -110,7 +115,7 @@ set ignorecase    " Include matching uppercase words with lowercase search term
 set smartcase   " Include only uppercase words with uppercase search term
 set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 " Automatically save and load folds
-set relativenumber
+set relativenumber  " Line numbers move up/down
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview"
 
@@ -130,7 +135,6 @@ nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufe
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
       \ quit | endif
 " nerdtree auto-close when last vim doc is closed
-
 autocmd BufWinEnter * silent NERDTreeMirror " nerdtree clone on every tab
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " nerdtree: show untracked & custom icons:
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -150,7 +154,7 @@ let g:NERDTreeWinSize=20 " nerdtree width
 "
 " air-line
 "
-set guifont=Hack:h10:cANSI
+"set guifont=Hack:h10:cANSI
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
