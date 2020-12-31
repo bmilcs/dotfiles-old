@@ -18,6 +18,8 @@ promptinit
 # prompt
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
+# 256color
+export TERM=xterm-256color
 # auto corrections
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"

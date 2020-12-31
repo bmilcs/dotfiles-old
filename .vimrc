@@ -6,8 +6,9 @@ call plug#begin('~/.vim/plugged')
   " markdown plugins
   "Plug 'godlygeek/tabular'
   "Plug 'plasticboy/vim-markdown'
-	"Plug 'christoomey/vim-tmux-navigator'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  " tmux vim nav
+  Plug 'christoomey/vim-tmux-navigator'
   " theme
   Plug 'arcticicestudio/nord-vim'
   " git
@@ -103,8 +104,7 @@ set showcmd
 set matchpairs+=<:>   " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 set number    " Show line numbers
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
-set encoding=utf-8    " Encoding
-set hlsearch    " Highlight matching search patterns
+set encoding=utf-8    " Encoding set hlsearch    " Highlight matching search patterns
 set incsearch   " Enable incremental search
 set ignorecase    " Include matching uppercase words with lowercase search term
 set smartcase   " Include only uppercase words with uppercase search term
@@ -147,6 +147,39 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ }
 let g:NERDTreeWinSize=20 " nerdtree width
 
+"
+" air-line
+"
+set guifont=Hack:h10:cANSI
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '' air-line
+let g:airline_powerline_fonts = 1
 
 " Display different types of white spaces.
 " set list

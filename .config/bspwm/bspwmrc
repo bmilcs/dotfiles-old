@@ -44,13 +44,13 @@ bspc rule -a Gimp desktop='^4' state=floating follow=on
   thunderbird &
   telegram-desktop &
   android-messages-desktop &
+  /home/bmilcs/.config/polybar/bspwm.sh &
 
 # autostart [initial launch] 
 [ "$1" = 0 ] && {   
   pulseaudio --start &
   picom --config ~/.config/picom/config &
   nitrogen --restore &
-  /home/bmilcs/.config/polybar/bspwm.sh &
   unclutter &
   }
 
