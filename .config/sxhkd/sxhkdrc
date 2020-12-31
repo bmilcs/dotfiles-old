@@ -1,5 +1,6 @@
 super + Return
-	urxvt # launch terminal
+	alacritty
+	#	urxvt # launch terminal
 
 # launch rofi (dmenu alternative)
 F1

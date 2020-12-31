@@ -44,6 +44,8 @@ alias zshr="source ~/.zshrc"
 alias tmuxrc="vim ~/.tmux.conf"
 alias tmuxr="tmux source ~/.tmux.conf"
 alias termrc="vim ~/.config/alacritty/alacritty.yml"
+alias picomrc="vim ~/.config/picom/config"
+
 # tmux
 alias t="tmux"
 compdef t="tmux"

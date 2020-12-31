@@ -1,9 +1,7 @@
 sw_volume: 92
 audio_device_state:1:internal
 audio_device_state:1:my_fifo
-state: pause
-current: 21
-time: 52.226000
+state: stop
 random: 0
 repeat: 0
 single: 0
@@ -12,30 +10,4 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:soul coughing/1998 el oso/01-soul_coughing-rolling.flac
-1:soul coughing/1998 el oso/02-soul_coughing-misinformed.flac
-2:soul coughing/1998 el oso/03-soul_coughing-circles.flac
-3:soul coughing/1998 el oso/04-soul_coughing-blame.flac
-4:soul coughing/1998 el oso/05-soul_coughing-st._louise_is_listening.flac
-5:soul coughing/1998 el oso/06-soul_coughing-maybe_ill_come_down.flac
-6:soul coughing/1998 el oso/07-soul_coughing-houston.flac
-7:soul coughing/1998 el oso/08-soul_coughing-300.flac
-8:soul coughing/1998 el oso/09-soul_coughing-fully_retractable.flac
-9:soul coughing/1998 el oso/10-soul_coughing-monster_man.flac
-10:soul coughing/1998 el oso/11-soul_coughing-pensacola.flac
-11:soul coughing/1998 el oso/12-soul_coughing-i_miss_the_girl.flac
-12:soul coughing/1998 el oso/13-soul_coughing-so_far_i_have_not_found_the_science.flac
-13:soul coughing/1998 el oso/14-soul_coughing-the_incumbent.flac
-14:soul coughing/1996 irresistible bliss/01-soul_coughing-super_bon_bon.flac
-15:soul coughing/1996 irresistible bliss/02-soul_coughing-soft_serve.flac
-16:soul coughing/1996 irresistible bliss/03-soul_coughing-white_girl.flac
-17:soul coughing/1996 irresistible bliss/04-soul_coughing-soundtrack_to_mary.flac
-18:soul coughing/1996 irresistible bliss/05-soul_coughing-lazybones.flac
-19:soul coughing/1996 irresistible bliss/06-soul_coughing-4_out_of_5.flac
-20:soul coughing/1996 irresistible bliss/07-soul_coughing-paint.flac
-21:soul coughing/1996 irresistible bliss/08-soul_coughing-disseminated.flac
-22:soul coughing/1996 irresistible bliss/09-soul_coughing-collapse.flac
-23:soul coughing/1996 irresistible bliss/10-soul_coughing-sleepless.flac
-24:soul coughing/1996 irresistible bliss/11-soul_coughing-the_idiot_kings.flac
-25:soul coughing/1996 irresistible bliss/12-soul_coughing-how_many_cans.flac
 playlist_end
