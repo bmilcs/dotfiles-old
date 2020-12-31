@@ -58,20 +58,16 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 set clipboard+=unnamedplus
 "let mapleader=";"
 " " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
+vnoremap <leader>y  "+y
+nnoremap <leader>Y  "+yg_
+nnoremap <leader>y  "+y
+nnoremap <leader>yy  "+yy
 
 " " Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-" git gutter hunk
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
 
 " Fixes common backspace problems
 set backspace=indent,eol,start
@@ -109,15 +105,17 @@ set showcmd
 set matchpairs+=<:>   " Highlight matching pairs of brackets. Use the '%' character to jump between them.
 set number    " Show line numbers
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
-set encoding=utf-8    " Encoding set hlsearch    " Highlight matching search patterns
+set encoding=utf-8    " Encoding 
+set hlsearch    " Highlight matching search patterns
 set incsearch   " Enable incremental search
 set ignorecase    " Include matching uppercase words with lowercase search term
 set smartcase   " Include only uppercase words with uppercase search term
-set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+" set viminfo='100,<9999,s100   " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 " Automatically save and load folds
 set relativenumber  " Line numbers move up/down
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview"
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview"
 
 " markdown preview = https://github.com/iamcco/markdown-preview.nvim
 let g:mkdp_auto_start = 1   " auto-start w/ .md file
