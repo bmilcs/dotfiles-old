@@ -29,6 +29,11 @@ function gita() {
 	gitt commit -m "Added $@"
 }
 
+function bma() {
+	bm add $@
+	bm commit -m "Added $@"
+}
+
 function sstart() {
 	sudo service $@ start
 	}
