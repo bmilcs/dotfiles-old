@@ -30,6 +30,8 @@ compdef gitt="git"
 compdef gitp="git"
 alias bm="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 alias bmp="gita ~/bm/* ; gitt commit -a -m 'update' && gitt push"
+compdef bm="git"
+compdef bmp="git"
 alias readme="vim ~/bm/README.md"
 alias pad="vim ~/bm/NOTES.md"
 
@@ -81,11 +83,11 @@ alias halt="sudo systemctl halt"
 #---------------------------------  directories & files  ---------------------------------#
 alias ls="ls --color -lhF --group-directories-first"
 compdef ls="ls"
-alias l="ls"
+alias l="ls -A" # long, all, abc puid
 compdef l="ls"
 alias ll="ls -nA" #long, all, # puid
 compdef ll="ls"
-alias lll="ls -A" # long, all, abc puid
+alias lll="ls" 
 compdef lll="ls"
 alias lsf="ls -A | grep -v '^d'"	#ls files,,
 alias lsd="ls -Ald */"   # ls, long, dir

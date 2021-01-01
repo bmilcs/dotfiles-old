@@ -29,6 +29,10 @@ function gita() {
 	gitt commit -m "Added $@"
 }
 
+function bmia() {
+  cp -r $@ ~/bm/`basename "$PWD"`/$@ 
+}
+
 function bma() {
 	bm add $@
 	bm commit -m "Added $@"
