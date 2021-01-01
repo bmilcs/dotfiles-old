@@ -24,12 +24,14 @@ alias nano="vim"
 compdef nano="vim"
 
 # git
-alias gitp="gita ~/snippets/* ; gita ~/.local/bin/* ; gitt commit -a -m 'update' && gitt push"
-compdef gitp="git"
 alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
+alias gitp="gitt commit -a -m 'update' && gitt push"
 compdef gitt="git"
-alias readme="vim ~/README.md"
-alias pad="vim ~/NOTES.md"
+compdef gitp="git"
+alias bm="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
+alias bmp="gita ~/bm/* ; gitt commit -a -m 'update' && gitt push"
+alias readme="vim ~/bm/README.md"
+alias pad="vim ~/bm/NOTES.md"
 
 # configs
 alias gaps="vim ~/.config/i3/config"

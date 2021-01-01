@@ -1,83 +1,115 @@
-" For plug-ins to load correctly.
+" FOR PLUG-INS TO LOAD CORRECTLY.
 filetype plugin indent on
 
+" --------------------------------------------------------------
 " PLUGINS ------------------------------------------------------
+" --------------------------------------------------------------
+
 call plug#begin('~/.vim/plugged')
+
   " markdown plugins
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   "Plug 'godlygeek/tabular'
   "Plug 'plasticboy/vim-markdown'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  
   " tmux vim nav
   Plug 'christoomey/vim-tmux-navigator'
-  " theme
+
+  " color theme
   Plug 'arcticicestudio/nord-vim'
-  " git
+
+  " git symbols in gutter
   Plug 'airblade/vim-gitgutter'
+
+  " sensible & fugitive (git)
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-fugitive'
+
+  " nerdtree file browser
   Plug 'preservim/nerdtree' |
         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
         \ Plug 'ryanoasis/vim-devicons'
+
+  " colorizing hex color codes
   Plug 'chrisbra/Colorizer'
+
+  " airline status bar customization
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+
+  " language | syntax
   Plug 'mboughaba/i3config.vim'
   Plug 'kovetskiy/sxhkd-vim'
+
 call plug#end()
 
-" COLOR SCHEME -------------------------------------------------
+" COLOR SCHEME
 colorscheme nord
 
-" HOTKEY MODS --------------------------------------------------
+" --------------------------------------------------------------
+" KEY BINDINGS -------------------------------------------------
+" --------------------------------------------------------------
+
+" SWAP ";" WITH ":"
 nnoremap ; :
 nnoremap : ;
-noremap <Up> <nop>    " disable arrow keys
+
+" DISABLE ARROW KEYS
+noremap <Up> <nop>    
 noremap <Left> <nop>
 noremap <Right> <nop>
 noremap <Down> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-" new line | shift+enter
+    " inoremap <Up> <nop>
+    " inoremap <Down> <nop>
+    " inoremap <Left> <nop>
+    " inoremap <Right> <nop>
+
+" VS CODE > new line 
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
-" move line up/down
+
+" VS CODE > move line up/down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
-" toggle paste method
-" nnoremap <F2> :set invpaste paste?<CR>
-" imap <F2> <C-O>:set invpaste paste?<CR>
-" set pastetoggle=<F2>
-" vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
-" noremap <A-V> :r !xclip -o <CR>
+
+"
+" CLIPBOARD MOD 
+"
+    " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
+    " noremap <A-V> :r !xclip -o <CR>
+
+" CLIPBOARD > SYSTEM
 set clipboard+=unnamedplus
-"let mapleader=";"
-" " Copy to clipboard
+
+" CUSTOM LEADER CHARACTER
+    " let mapleader=";"
+
+" COPY TO CLIPBOARD
 vnoremap <leader>y  "+y
 nnoremap <leader>Y  "+yg_
 nnoremap <leader>y  "+y
 nnoremap <leader>yy  "+yy
 
-" " Paste from clipboard
+"  PASTE FROM CLIPBOARD
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Fixes common backspace problems
-set backspace=indent,eol,start
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+
 " FILETYPE SPECIFICS -------------------------------------------
+"
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
+
 " Turn on syntax highlighting.
 syntax on
 augroup filetypedetect
@@ -87,8 +119,10 @@ augroup END
 filetype on
 
 " OTHER --------------------------------------------------------
+
+set backspace=indent,eol,start " fixes common backspace problems
 set shell=zsh\ -l   
-set nocompatible " Set compatibility to Vim only.
+set nocompatible " Set compatibility to Vim only
 set modelines=0   " turn off modelines
 set wrap    " auto word wrap
 set formatoptions=tcqrn1    " set textwidth=79
