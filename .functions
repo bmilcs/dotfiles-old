@@ -29,7 +29,8 @@ function gita() {
 	gitt commit -m "Added $@"
 }
 
-function bmia() {
+function bmad() {
+  mkdir -p ~/bm/`basename "$PWD"`
   cp -r $@ ~/bm/`basename "$PWD"`/$@ 
 }
 
