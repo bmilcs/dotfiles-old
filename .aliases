@@ -8,7 +8,7 @@ alias pacman="sudo pacman"
 compdef pacman="pacman"
 alias pm="pacman"
 compdef pm="pacman"
-alias up="gitp ; pm -Syyuu ; yay -Syyuu"
+alias up="sudo betterdiscordctl upgrade ; bmp ; gitp ; pm -Syyuu ; yay -Syyuu"
 alias pmls="pacman -Qe | less"
 alias pmg="pacman -Qe|grep"
 alias yayls="pacman -Qe | less"
@@ -57,6 +57,8 @@ alias ta="t a -t"
 alias tls="t ls"
 alias tn="t new -t"
 
+# misc
+alias nitrogen="nitrogen ~/wall"
 
 # logout
 alias rex="sudo systemctl restart display-manager"
