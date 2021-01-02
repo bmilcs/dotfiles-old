@@ -1,5 +1,9 @@
 #! /bin/sh
 
+#
+# bmilcs: bspwm config
+#
+
 # launch sxhkd
 pgrep sxhkd || sxhkd &
 
