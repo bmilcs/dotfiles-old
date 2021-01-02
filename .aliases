@@ -33,7 +33,7 @@ alias bmm="/usr/bin/git --git-dir=$HOME/bm/" # --work-tree=$HOME/bm"
 alias bmp="cd ~/bm ; git add . ; git commit -a -m 'update' && git push --set-upstream origin master"
 compdef bmm="git"
 compdef bmp="git"
-alias readme="vim ~/bm/README.md"
+alias readme="vim ~/bm/readme.md"
 alias pad="vim ~/bm/NOTES.md"
 
 # configs
