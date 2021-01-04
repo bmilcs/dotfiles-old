@@ -1,3 +1,5 @@
+" TODO shortcut: sort alphabetically --- ":sort u"
+
 " FOR PLUG-INS TO LOAD CORRECTLY.
 filetype plugin indent on
 
