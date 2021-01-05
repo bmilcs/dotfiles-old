@@ -8,7 +8,7 @@
 
 # update
   # TODO conditional update | distro based
-alias up="sudo betterdiscordctl upgrade ; bmp ; gitp ; pm -Syyuu ; yay -Syyuu"
+alias up="pm -Syyuu ; yay -Syyuu"
 
 # pacman
 alias pacman="sudo pacman"
@@ -21,9 +21,9 @@ alias pmg="pacman -Qe|grep"
       compdef pmg="pacman"
 
 # aur | yay
-alias yayls="yay"
+alias yayls="yay -Qe | less"
       compdef yayls="yay"
-alias yayg="yay"
+alias yayg="yay -Qe | grep"
       compdef yayg="yay"
 
 #

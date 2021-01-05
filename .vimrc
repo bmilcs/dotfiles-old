@@ -1,4 +1,4 @@
-" TODO shortcut: sort alphabetically --- ":sort u"
+" TODO shortcut: sort alphabetically --- :sort u
 
 " FOR PLUG-INS TO LOAD CORRECTLY.
 filetype plugin indent on
@@ -52,7 +52,7 @@ colorscheme nord
 " KEY BINDINGS -------------------------------------------------
 " --------------------------------------------------------------
 
-" SWAP ";" WITH ":"
+" SWAP ; WITH :
 nnoremap ; :
 nnoremap : ;
 
@@ -216,7 +216,7 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '' air-line
+let g:airline_symbols.linenr = '' 
 let g:airline_powerline_fonts = 1
 
 " Display different types of white spaces.
