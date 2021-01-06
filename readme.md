@@ -59,6 +59,27 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
 
 ## TODO
 
+**NEW**
+
+- research: npm
+- nettree
+- retain visual  ( after a command )
+nmap Y y$
+vmap < <gv
+vmap > >gv
+
+via YouTube Plugins "Super Powers"
+
+- [ ] vim shortcut: auto :%s/VISUAL//gI
+- [ ] vim autocomplete: shortcut? all ext, within file AND /path/to autocomplete
+ - [ ] coc.vim visual studio-like autocompletion
+- [ ] ctrlsf - 'command line searching"
+- [ ] fzf fuzzy find - to "//"
+ - rip grep? same thing?
+- [ ] bcommits? git history-like plugin
+- [ ] anyjump -- search across workspace
+- [ ] lazygit -- lazydocker, lazynpm
+
 **DotFiles & GITHUB**
   - [ ] setup ~/bm & move away from bare repo
       - establish directory hierarchy
