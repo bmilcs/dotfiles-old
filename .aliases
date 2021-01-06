@@ -57,8 +57,9 @@ alias nano="vim"
       compdef nano="vim"
 
 # scratchpad
-alias pad="vim ~/bm/notes/scratchpad.md"
-alias sdir="echo $PWD >> ~/bm/notes/scratchpad.md" # TODO fix > function required?
+alias pad="vim ~/bm/txt/scratchpad.md"
+alias sdir="echo $PWD >> ~/bm/txt/scratchpad.md" # TODO fix > function required?
+alias regex="vim ~/bm/txt/regex.md"
 
 # dotfile repo: readme
 alias readme="vim ~/bm/readme.md"
