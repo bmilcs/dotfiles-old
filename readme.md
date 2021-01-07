@@ -1,6 +1,6 @@
 > A few weeks into my journey... 01.02.2021
 
-![desktop](img/screenshot.png)
+![desktop](cfg/git/img/screenshot.png)
  
 
 # BMILCS: DOTFILES
@@ -23,7 +23,7 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
 ---
 
 <a name="goals"/>
-<img align="right" src="img/gateway.jpeg" width=200 style="border: 25px solid white">
+<cfg/git/img align="right" src="cfg/git/img/gateway.jpeg" width=200 style="border: 25px solid white">
 
 ## GOALS
 
