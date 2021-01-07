@@ -25,21 +25,13 @@ TIME="$(date +"%I:%M %P")"
 # PROMPTS
 #
 
-function _i() {
-  echo -e "${BLU}[ ${B}$@ ${BLU}]${NC}\n"
-  }
-
+function _i() { echo -e "${BLU}[ ${B}$@ ${BLU}]${NC}\n" }
 
 function _w() { echo -e "  ${YLW}[!] $@ ${NC}\n" }
 
 function _s() {
-  if [ $# -eq 0 ]
-  then
-    echo -e "  ${GRN}[√] success ${NC}\n"
-  else
-    echo -e "  ${GRN}[√] $@ ${NC}\n"
-  fi
-  }
+  if [ $# -eq 0 ] ; then ; echo -e "  ${GRN}[√] success ${NC}\n"
+  else ; echo -e "  ${GRN}[√] $@ ${NC}\n" ; fi }
 
 
 function _e() {

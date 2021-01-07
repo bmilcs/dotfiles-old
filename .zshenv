@@ -2,6 +2,7 @@
 #   executed on all shell invocations
 
 # add $PATH to path array 
+#
 typeset -U PATH path
-path=("$HOME/.local/bin"  "$path[@]")
+path=("$HOME/bin"  "$path[@]")
 export PATH

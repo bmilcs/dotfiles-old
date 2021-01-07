@@ -30,11 +30,10 @@ alias yayg="yay -Qe | grep"
 # GITHUB | DOTFILE REPO
 #
 
-alias bm="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
-      compdef bm="git"
-alias bmp="gita ~/bm/* ; gitt commit -a -m 'update' && gitt push"
-      compdef bmp="git"
-
+alias gg="cd ~/bm" 
+alias gc="git add . ; git commit -a -m "
+      compdef gp="git"
+alias gp="git push "
 #
 # TMUX
 #
@@ -112,8 +111,8 @@ alias lsd="ls -Ald */"   # ls, long, dir
 alias lsg="ls -A | grep" #search in dir
 
 # command tweaks
-alias mv="mv -i"    #confirmation
-alias cp="cp -i"    #confirmation
+#alias mv="mv -i"    #confirmation
+#alias cp="cp -i"    #confirmation
 alias ln="ln -i"    #confirmation
 alias ip="ip -color=auto"      # color
 alias grep="grep --color=auto" # color

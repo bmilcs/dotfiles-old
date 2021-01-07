@@ -1,20 +1,19 @@
 " BMILCS/VIMRC
-"
+
 " -------------------------------------------------------
 " TODO shortcut: sort alphabetically --- :sort u
 " TODO fix clipboards: 2x shortcuts - system & vim buffer
 " -------------------------------------------------------
 
+"
+" PLUGINS
+"
+
 " help plugins load 
 filetype plugin indent on
-
 " plugin manager 
 call plug#begin('~/.vim/plugged')
 
-"
-" PLUGINS: GLOBAL
-"
-  
 " general improvements
 Plug 'tpope/vim-sensible'
 
@@ -40,38 +39,30 @@ Plug 'chrisbra/Colorizer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-"
-" PLUGINS: LANGUAGE SPECIFIC
-"
-
-" configs 
+" language: linux configs
 Plug 'mboughaba/i3config.vim'
 Plug 'kovetskiy/sxhkd-vim'
 
-" markdown (.md)
+" language: markdown (.md)
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-  "Plug 'godlygeek/tabular'
-  "Plug 'plasticboy/vim-markdown'
 
+" end of plugins
 call plug#end()
-
-"
-" COLOR SCHEME
-"
-
-colorscheme nord
 
 " 
 " KEY BINDINGS 
 "
 
-" show full error messages
-nnoremap <silent> E :call LanguageClient#explainErrorAtPoint()<CR>
+" visual block retention post command
+nmap Y y$
+vmap < <gv
+vmap > >gv
 
 " macros
 nnoremap <Space> @q " quick macro replay @q
 nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left> " Easily edit the macro stored at register q
-
+nnoremap <leader>ndl :/$^�kb�kb^$:;d//g;d///g/�kb;g//d
+nnoremap <leader>nl :/^$\n^$^M;g//d^M
 
 " swap ; with :
 nnoremap ; :
@@ -82,11 +73,6 @@ noremap <Up> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 noremap <Down> <nop>
-    " insert mode:
-    " inoremap <Up> <nop>
-    " inoremap <Down> <nop>
-    " inoremap <Left> <nop>
-    " inoremap <Right> <nop>
 
 " vs code > new line 
 nmap <S-Enter> O<Esc>
@@ -100,18 +86,29 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-
-" clipboard mod 
-    " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
-    " noremap <A-V> :r !xclip -o <CR>
-
 " clipboard > system
 set clipboard+=unnamedplus
+
+"
+" VIMINFO
+"
+
+set viminfo=%,<1500,'5,:500,/250
+    " set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+    "             | |    |   |   |    | |  + viminfo file path
+    "             | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+    "             | |    |   |   |    + disable 'hlsearch' loading viminfo
+    "             | |    |   |   + command-line history saved
+    "             | |    |   + search history saved
+    "             | |    + files marks saved
+    "             | + lines saved each register (old name for <, vi6.2)
+    "             + save/restore buffer list
 
 "
 " GENERAL CUSTOMIZATIONS
 "
 
+colorscheme nord " color scheme
 set hidden " hide buffers when they are abandoned
 set backspace=indent,eol,start " fixes common backspace problems
 set shell=zsh\ -l   
@@ -136,19 +133,16 @@ set hlsearch  " highlight matching search patterns
 set incsearch " enable incremental search
 set ignorecase  " include matching uppercase words with lowercase search term
 set smartcase " include only uppercase words with uppercase search term
-" store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. useful for copying large amounts of data between files.
-set viminfo='1000,<99999,s1000  
 set relativenumber  " line numbers move up/down
-" set wrap    " auto word wrap
-" set list " display different types of white spaces.
-" set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+  " set wrap    " auto word wrap
+  " set list " display different types of white spaces.
+  " set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 "
-" FILE EXTENSION CUSTOMIZATION
+" FILE-TYPE AUTOMATION
 "
 
-" force plugins to load correctly when it is turned back on below.
-filetype off
+filetype off " force plugins to load correctly when it is turned back on below.
   syntax on
   augroup filetypedetect
     au BufNewFile,BufRead *.fsh,*.vsh setf glsl
@@ -156,11 +150,8 @@ filetype off
   augroup END
 filetype on
 
-
-" PLUGIN TWEAKS ---------------------------------------------------
-
 "
-" MARKDOWN PREVIEW 
+" PLUGIN: MARKDOWN PREVIEW 
 "
 
 let g:mkdp_auto_start = 1 " auto-start w/ .md file
@@ -170,13 +161,13 @@ let g:mkdp_command_for_global = 0 " md can be used on all files
 let g:vim_markdown_no_default_key_mappings = 1
 
 "
-" COLORIZER
+" PLUGIN: COLORIZER
 "
 
 let g:colorizer_auto_color = 1  " colorizer (auto)
 
 "
-" NERDTREE
+" PLUGIN: NERDTREE
 "
 
 let g:NERDTreeWinSize=20 " column width
@@ -196,7 +187,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 autocmd BufWinEnter * silent NERDTreeMirror 
 
 "
-" NERDTREE: GIT STATUS
+" PLUGIN: NERDTREE GIT STATUS
 "
 
 " show untracked & custom icons:
@@ -216,9 +207,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Unknown'   :'?',
       \ }
 
-
 "
-" AIRLINE STATUS BAR
+" PLUGIN: AIRLINE STATUS BAR
 "
 
 " fix > status bar symbols
@@ -248,3 +238,24 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '' 
 let g:airline_powerline_fonts = 1
+
+"
+" GRAVEYARD
+"
+
+" PLUGINS
+"
+  "Plug 'godlygeek/tabular'
+  "Plug 'plasticboy/vim-markdown'
+
+" KEY BINDINGS
+
+    " insert mode:
+    " inoremap <Up> <nop>
+    " inoremap <Down> <nop>
+    " inoremap <Left> <nop>
+    " inoremap <Right> <nop>
+
+    " clipboard mod 
+    " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
+    " noremap <A-V> :r !xclip -o <CR>
