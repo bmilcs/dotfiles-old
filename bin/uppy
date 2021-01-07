@@ -1,0 +1,16 @@
+#!/bin/bash
+# set -x
+#echo -e
+
+source ./header
+
+_i a test
+_i 
+_w w test
+_w 
+_s s test
+_s 
+_e e test
+_e 
+
+exit 0
