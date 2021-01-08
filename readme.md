@@ -38,8 +38,8 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
     - IE: zsh, ranger, mutt, etc.
 
 **GitHub**
- - Learn all common functions
- - Learn & practice version control
+ - Learn & adopt all common functions
+ - Learn & practice version control w/ dotfiles
 
  **Dotfiles**
  - Automate installation & backup w/o third party tool
