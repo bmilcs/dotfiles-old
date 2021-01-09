@@ -13,7 +13,7 @@
 	unstage = reset HEAD --
 	cached = diff --cached
 	d = difftool
-	c = clone
+	c = commit -a -m
 [difftool]
   prompt = false
 [difftool "nvimdiff"]
