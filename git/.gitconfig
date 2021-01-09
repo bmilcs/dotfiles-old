@@ -18,4 +18,11 @@
 [difftool]
   prompt = false
 [difftool "nvimdiff"]
- 	cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
+[advice]
+    pushNonFastForward = false
+    statusHints        = false
+    commitBeforeMerge  = false
+    resolveConflict    = false
+    implicitIdentity   = false
+    detachedHead       = false
