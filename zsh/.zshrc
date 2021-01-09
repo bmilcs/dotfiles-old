@@ -4,7 +4,7 @@
 #
 
 # load configs
-for cfg (~/.zsh/**/*.zsh) source $cfg
+for cfg (~/.zsh/*.zsh) source $cfg
 
 # dir_colors
-[ -f "$DOT/zsh/.zsh/dir_colors.zsh" ] && eval $(dircolors $DOT/zsh/.zsh/dir_colors.zsh)
+[ -f "~/.zsh/dir_colors" ] && eval $(dircolors ~/.zsh/dir_colors.zsh)
