@@ -1,0 +1,17 @@
+#!/bin/bash
+# set -x
+#echo -e
+
+# TODO get script dir wherever you is.
+
+source ~/bin/header
+
+_a info
+_a 
+_w warning
+_w 
+_s success
+_s 
+_e u done messed up
+_e 
+

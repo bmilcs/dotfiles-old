@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source $HOME/bin/header
+
+_a creating folder inside repo
+#pwd | sed 's/\/home\/.*\/\(.*\)/\1/' | xargs mkdir -p 
+bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
+
+mdir=$CFG/$1/$bdir
+
+# TODO [ -e $CFG/$1 ]
+
+mkdir -p $mdir
+cp $2 $mdir
+_s 
+

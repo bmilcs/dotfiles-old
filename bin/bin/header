@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#
+# BIN/HEADER
+#
+
+NC='\033[0m'
+B='\033[1m'
+DIM='\033[2m'
+ITAL='\033[3m'
+UL='\033[4m'
+BLINK='\033[5m'
+INV='\033[7m'
+BLK=${NC}'\033[30m'
+RED=${NC}'\033[31m'
+GRN=${NC}'\033[32m'
+YLW=${NC}'\033[33m'
+BLU=${NC}'\033[34m'
+PUR=${NC}'\033[35m'
+CYN=${NC}'\033[36m'
+WHT=${NC}'\033[37m'
+TIME="$(date +"%I:%M %P")"
+
+#
+# PROMPTS
+#
+
+function _a() {
+  echo -e "${BLU}[ ${B}$@ ${BLU}]${NC}\n"
+  }
+
+function _w() {
+  echo -e "  ${YLW}[!] $@ ${NC}\n"
+}
+
+function _s() {
+  if [ $# -eq 0 ] ; then 
+    echo -e "  ${GRN}[√] success ${NC}\n"
+  else 
+    echo -e "  ${GRN}[√] $@ ${NC}\n"
+  fi 
+  }
+
+
+function _e() {
+  if [ $# -eq 0 ] ; then
+    echo -e "${RED}  [X]${RED}${B} error \n${NC}"
+  else
+    echo -e "${RED}  [X]${RED}${B} $@\n${NC}"
+  fi
+  }
