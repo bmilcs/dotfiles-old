@@ -14,6 +14,7 @@ function gtc() {
   _a dotfiles: git add .
   gt add $D/.
   _s
+
   _a dotfiles: git commit -a -m "$*"
   gt commit -a -m "$*"
   _s
