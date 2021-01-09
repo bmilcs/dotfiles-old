@@ -11,8 +11,8 @@ source _head
 
 # dotfiles: git add new & commit all w/ message
 function gtc() {
-  _t gtc: commit / push dotfile repo
-  _a add / commit
+  _t dotfile repo commit
+  _a add missing files \& commit
   gt add $D/. 
   gt commit -a -m "$*"
 
