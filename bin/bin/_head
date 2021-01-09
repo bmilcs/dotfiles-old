@@ -38,29 +38,29 @@ function _t() {
 
 # announce
 function _a() {
-  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
+  echo -e "\n${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
   }
 
 # warn
 function _w() {
-  echo -e "    ${YLW}[!] $* ${NC}"
+  echo -e "\n    ${YLW}[!] $* ${NC}"
 }
 
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "    ${GRN}[√] success${NC}"
+    echo -e "\n    ${GRN}[√] success${NC}"
   else 
-    echo -e "    ${GRN}[√] $* ${NC}"
+    echo -e "\n    ${GRN}[√] $* ${NC}"
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "${RED}    [X]${RED}${B} error${NC}"
+    echo -e "\n${RED}    [X]${RED}${B} error${NC}"
   else
-    echo -e "${RED}    [X]${RED}${B} ${NC}${RED}$*"
+    echo -e "\n${RED}    [X]${RED}${B} ${NC}${RED}$*"
   fi
   }
 
