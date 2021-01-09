@@ -27,10 +27,12 @@ TIME="$(date +"%I:%M %P")"
 #
 
 # clean up parameter
-msg=echo $*| sed -e 's/\&/\\\&/g'
 
 # announce
 function _t() {
+  # TODO parse parameters for illegal symbol &
+  # msg=${echo $*| sed -e 's/\&/\\\&/g'}
+  # echo $msg
   echo -e "${CYN}[${B}BM${CYN}] $* ${NC}"
   }
 
