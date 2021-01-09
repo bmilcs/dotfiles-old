@@ -27,6 +27,11 @@ TIME="$(date +"%I:%M %P")"
 #
 
 # announce
+function _t() {
+  echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
+  }
+
+# announce
 function _a() {
   echo -e "${BLU}[ ${B}$* ${BLU}]${NC}\n"
   }
