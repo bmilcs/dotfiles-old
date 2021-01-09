@@ -1,29 +1,21 @@
-#==============================================================
-#====  bmilcs functions  ======================================
-#==============================================================
+#
+# FUNCTIONS
+# -bmilcs
+#
+
 source _head
 
 #
 # GITHUB & DOTFILES 
 #
 
+# dotfiles: git add new & commit all w/ message
 function gtc() {
+  _a dotfiles: git add .
   gt add $D/.
+  _a dotfiles: git commit -a -m "$*"
   gt commit -a -m "$*"
-}
-
-# add dir w/ basedir prefix to repo
-# TODO fix w/ stow format
-function bmad() {
-  mkdir -p ~/bm/`basename "$PWD"`
-  cp -r $@ ~/bm/`basename "$PWD"`/$@ 
-  }
-
-# add file to base dir of repo
-# TODO fix w/ stow format
-function bma() {
-  bm add $@
-  bm commit -m "Added $@"
+  _s
   }
 
 #
@@ -197,15 +189,41 @@ man() {
     command man "$@"
     }
 
+#
+# GRAVEYARD
+#
 
+#
+# GITHUB
+#
 
-# DOTFILES GITHUB OLD
-function gita() {
-    gitt add $@
-    gitt commit -m "Added $@"
-    }
+# # add dir w/ basedir prefix to repo
+# # TODO fix w/ stow format
+# function bmad() {
+#   mkdir -p ~/bm/`basename "$PWD"`
+#   cp -r $@ ~/bm/`basename "$PWD"`/$@ 
+#   }
+# 
+# # add file to base dir of repo
+# # TODO fix w/ stow format
+# function bma() {
+#   bm add $@
+#   bm commit -m "Added $@"
+#   }
+# 
+# 
+# # DOTFILES GITHUB OLD
+# function gita() {
+#     gitt add $@
+#     gitt commit -m "Added $@"
+#     }
 
-#: function drun() {
+#
+# DOCKER
+#
+
+# # docker-compose based on host name
+# function drun() {
 # 	if [ "$HOSTNAME" = docker ]; then
 # 		echo && echo "----  docker1: www & doc content  ---------------------------------------------------------------------" && echo && cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/dockerl && mv 1docker-compose.yaml docker-compose.yaml && docker-compose up -d --remove-orphans
 # 	elif [ "$HOSTNAME" = docker2 ]; then
