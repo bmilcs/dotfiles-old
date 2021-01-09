@@ -26,6 +26,9 @@ TIME="$(date +"%I:%M %P")"
 # PROMPTS
 #
 
+# clean up parameter
+msg=echo $*| sed -e 's/\&/\\\&/g'
+
 # announce
 function _t() {
   echo -e "${CYN}[${B}BM${CYN}] $* ${NC}"
