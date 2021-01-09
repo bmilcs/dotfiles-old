@@ -19,7 +19,7 @@ function gtc() {
   _s done.
 
 
-  _a bmilcs/dotfiles push to github
+  _a push to github
   gtp && _s update complete
   }
 
