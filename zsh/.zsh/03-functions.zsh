@@ -13,11 +13,14 @@ source _head
 function gtc() {
   _a dotfiles: git add .
   gt add $D/.
-  _s
+  _s success.
 
   _a dotfiles: git commit -a -m "$*"
   gt commit -a -m "$*"
-  _s
+  _s done.
+
+  _a dotfiles: upload to repo
+  gtp
   }
 
 #
