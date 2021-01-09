@@ -33,7 +33,7 @@ function _t() {
 
 # announce
 function _a() {
-  echo -e "${BLU}> ${B}$* ${BLU}${NC}"
+  echo -e "${BLU}${B}>${BLU} $* ${BLU}${NC}"
   }
 
 # warn
@@ -53,9 +53,9 @@ function _s() {
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "${RED}  [X]${RED}${B} error${NC}${RED}: something went wrong"
+    echo -e "${RED}  [X]${RED}${B} error${NC}"
   else
-    echo -e "${RED}  [X]${RED}${B} error${NC}${RED}: $*"
+    echo -e "${RED}  [X]${RED}${B} ${NC}${RED}$*"
   fi
   }
 
