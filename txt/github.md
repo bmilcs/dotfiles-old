@@ -16,10 +16,23 @@
     git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d'
 
 
-#### branches <sup>[[1]](#gtk)</sup>
+### branches 
 
-*version control: creating backups*
+##### renaming branches
 
+    git checkout <old_name>
+    git branch -m <new_name>
+    git push origin -u <new_name>
+
+##### deleting branches
+
+    // delete branch locally
+    git branch -d localBranchName
+
+    // delete branch remotely
+    git push origin --delete remoteBranchName
+
+##### gk's help <sup>[[1]](#gtk)</sup> *version control: creating backups*
 
     # download existing repo
     git clone https://github.com/blimcs/dotfiles
