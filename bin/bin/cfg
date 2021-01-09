@@ -1,4 +1,6 @@
 #!/bin/bash
+source _head
+
 # source: https://raw.githubusercontent.com/mbndr/arch-dotfiles/master/.scripts/conf
 
 if [ "$EDITOR" == "" ]; then

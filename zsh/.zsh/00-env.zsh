@@ -3,10 +3,6 @@
 # 
 # executed on all shell invocations
 
-
- 
-
-
 #
 # PATH
 #
@@ -19,4 +15,11 @@ export PATH
 # REPO DIR
 #
 
-export DOT=$HOME/bm
+export D=$HOME/bm
+
+#
+# ENV VAR
+#
+
+export EDITOR=nvim
+export VISUAL=nvim

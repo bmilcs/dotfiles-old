@@ -5,8 +5,6 @@
 " TODO fix clipboards: 2x shortcuts - system & vim buffer
 " -------------------------------------------------------
 
-set completeopt=longest,menuone
-
 "
 " PLUGINS
 "
@@ -141,6 +139,8 @@ set ignorecase  " include matching uppercase words with lowercase search term
 set smartcase " include only uppercase words with uppercase search term
 set relativenumber  " line numbers move up/down
   " set wrap    " auto word wrap
+set completeopt=longest,menuone   " view full error msg | ie pumheight?
+
   " set list " display different types of white spaces.
   " set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 

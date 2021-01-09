@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+source _head
+
+_a gk: app speed test
+
+if [ $# = 0 ] ; then
+	_e argument required. ie: "timetest st -e sh -c exit"
+	exit 0
+fi
+
 
 : "${t:=20}"
 
@@ -22,7 +31,7 @@ while [ "$i" -lt "$t" ]; do
 	[ "$var" -lt "$low" ] && low=$var
 done
 
-echo "avg:  $(( avg / t  ))ms"
-echo "low:  ${low}ms"
-echo "high: ${high}ms"
+_w "avg:  $(( avg / t  ))ms"
+_e "low:  ${low}ms"
+_s "high: ${high}ms"
 

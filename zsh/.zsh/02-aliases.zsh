@@ -30,10 +30,12 @@ alias yayg="yay -Qe | grep"
 # GITHUB | DOTFILE REPO
 #
 
-alias gg="cd ~/bm" 
-alias gc="git add . ; git commit -a -m "
-      compdef gp="git"
-alias gp="git push "
+alias gt="git --git-dir=$D/.git --work-tree $D" 
+      compdef gt="git"
+alias gtc="gt add $D/.; gt commit -a -m "
+      compdef gc="git"
+alias gtp="gt push "
+
 #
 # TMUX
 #
@@ -64,11 +66,12 @@ alias regex="vim ~/bm/txt/regex.md"
 alias readme="vim ~/bm/readme.md"
 
 # dotfiles
-alias ali="vim ~/.aliases"
-alias fun="vim ~/.functions"
+alias bm="cd $D"	# only while root
+alias ali="vim ~/.zsh/02-aliases.zsh"
+alias fun="vim ~/.zsh/03-functions.zsh"
 alias tmuxr="tmux source ~/.tmux.conf"
 alias tmuxrc="vim ~/.tmux.conf"
-alias vimrc="vim ~/.vimrc"
+alias vimrc="vim ~/.vim/10-organize-me.vim"
 alias zshr="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
 
@@ -174,7 +177,6 @@ alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 alias upgrub=""
 
 # swap users
-alias bm="su bmilcs"	# only while root
 alias rt="sudo -s"
 
 # syslog

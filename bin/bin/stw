@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $HOME/bin/header
+source _head
 
 _a creating folder inside repo
 #pwd | sed 's/\/home\/.*\/\(.*\)/\1/' | xargs mkdir -p 

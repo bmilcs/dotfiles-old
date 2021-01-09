@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #
-# BIN/HEADER
+# BIN/_HEAD
+# -bmilcs
 #
 
 NC='\033[0m'
@@ -25,14 +26,17 @@ TIME="$(date +"%I:%M %P")"
 # PROMPTS
 #
 
+# announce
 function _a() {
   echo -e "${BLU}[ ${B}$@ ${BLU}]${NC}\n"
   }
 
+# warn
 function _w() {
   echo -e "  ${YLW}[!] $@ ${NC}\n"
 }
 
+# success
 function _s() {
   if [ $# -eq 0 ] ; then 
     echo -e "  ${GRN}[√] success ${NC}\n"
@@ -41,7 +45,7 @@ function _s() {
   fi 
   }
 
-
+# error
 function _e() {
   if [ $# -eq 0 ] ; then
     echo -e "${RED}  [X]${RED}${B} error \n${NC}"
@@ -49,3 +53,4 @@ function _e() {
     echo -e "${RED}  [X]${RED}${B} $@\n${NC}"
   fi
   }
+

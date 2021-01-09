@@ -1,21 +1,21 @@
 #==============================================================
 #====  bmilcs functions  ======================================
 #==============================================================
-source $DOT/bin/bin/header
-
+source _head
 
 #
 # GITHUB & DOTFILES 
 #
 
 # add dir w/ basedir prefix to repo
+# TODO fix w/ stow format
 function bmad() {
-
   mkdir -p ~/bm/`basename "$PWD"`
   cp -r $@ ~/bm/`basename "$PWD"`/$@ 
   }
 
 # add file to base dir of repo
+# TODO fix w/ stow format
 function bma() {
   bm add $@
   bm commit -m "Added $@"
