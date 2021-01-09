@@ -7,6 +7,11 @@ source _head
 # GITHUB & DOTFILES 
 #
 
+function gtc() {
+  gt add $D/.
+  gt commit -a -m "$*"
+}
+
 # add dir w/ basedir prefix to repo
 # TODO fix w/ stow format
 function bmad() {
