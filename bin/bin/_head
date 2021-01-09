@@ -33,7 +33,7 @@ function _t() {
   # TODO parse parameters for illegal symbol &
   # msg=${echo $*| sed -e 's/\&/\\\&/g'}
   # echo $msg
-  echo -e "${CYN}[${B}${CYN}] $* ${NC}"
+  echo -e "${CYN}[${B} $* ${CYN}]${NC}"
   }
 
 # announce
