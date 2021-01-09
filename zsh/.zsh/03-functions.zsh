@@ -16,11 +16,10 @@ function gtc() {
   _s success.
 
   _a dotfiles: git commit -a -m "$*"
-  gt commit -a -m "$*"
-  _s done.
+  gt commit -a -m "$*" && _s done.
 
   _a dotfiles: upload to repo
-  gtp
+  gtp && -s update complete
   }
 
 #
