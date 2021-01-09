@@ -28,12 +28,12 @@ TIME="$(date +"%I:%M %P")"
 
 # announce
 function _a() {
-  echo -e "${BLU}[ ${B}$@ ${BLU}]${NC}\n"
+  echo -e "${BLU}[ ${B}$* ${BLU}]${NC}\n"
   }
 
 # warn
 function _w() {
-  echo -e "  ${YLW}[!] $@ ${NC}\n"
+  echo -e "  ${YLW}[!] $* ${NC}\n"
 }
 
 # success
@@ -41,7 +41,7 @@ function _s() {
   if [ $# -eq 0 ] ; then 
     echo -e "  ${GRN}[√] success ${NC}\n"
   else 
-    echo -e "  ${GRN}[√] $@ ${NC}\n"
+    echo -e "  ${GRN}[√] $* ${NC}\n"
   fi 
   }
 
@@ -50,7 +50,7 @@ function _e() {
   if [ $# -eq 0 ] ; then
     echo -e "${RED}  [X]${RED}${B} error \n${NC}"
   else
-    echo -e "${RED}  [X]${RED}${B} $@\n${NC}"
+    echo -e "${RED}  [X]${RED}${B} $*\n${NC}"
   fi
   }
 
