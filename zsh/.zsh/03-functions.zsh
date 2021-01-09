@@ -11,7 +11,7 @@ source _head
 
 # dotfiles: git add new & commit all w/ message
 function gtc() {
-  _t bmilcs/dotfiles:
+  _t bmilcs/dotfiles
   _a add / commit
   gt add $D/. 
   gt commit -a -m "$*"
