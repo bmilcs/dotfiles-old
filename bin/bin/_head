@@ -28,7 +28,7 @@ TIME="$(date +"%I:%M %P")"
 
 # announce
 function _t() {
-  echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
+  echo -e "${CYN}--- ${B}$* ${CYN} ---${NC}"
   }
 
 # announce
