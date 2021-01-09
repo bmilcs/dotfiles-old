@@ -33,29 +33,29 @@ function _t() {
 
 # announce
 function _a() {
-  echo -e "${BLU}-> ${B}$* ${BLU}${NC}\n"
+  echo -e "${BLU}-> ${B}$* ${BLU}${NC}"
   }
 
 # warn
 function _w() {
-  echo -e "  ${YLW}[!] $* ${NC}\n"
+  echo -e "  ${YLW}[!] $* ${NC}"
 }
 
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "  ${GRN}[√] success ${NC}\n"
+    echo -e "  ${GRN}[√] success ${NC}"
   else 
-    echo -e "  ${GRN}[√] $* ${NC}\n"
+    echo -e "  ${GRN}[√] $* ${NC}"
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "${RED}  [X]${RED}${B} error \n${NC}"
+    echo -e "${RED}  [X]${RED}${B} error${NC}${RED}: something went wrong"
   else
-    echo -e "${RED}  [X]${RED}${B} $*\n${NC}"
+    echo -e "${RED}  [X]${RED}${B} error ${NC}${RED}:$*\n"
   fi
   }
 
