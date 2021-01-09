@@ -38,7 +38,7 @@ function _t() {
 
 # announce
 function _a() {
-  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
+  echo -e "${BLU}${B}>${BLU} $* ${BLU}${B}${NC}"
   }
 
 # warn

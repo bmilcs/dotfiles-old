@@ -7,7 +7,7 @@ source _head
 # TODO get script dir wherever you is.
 
 
-_t _t title of action & stuff
+_t _t title of action \& stuff
 _t 
 _a _a action/announce
 _a 
