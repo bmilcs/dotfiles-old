@@ -1,26 +1,21 @@
-#
-# FUNCTIONS
-# -bmilcs
-#
-
 source _head
 
 #
-# GITHUB & DOTFILES 
+# ZSH/FUNCTIONS
+# -bmilcs
 #
 
-# dotfiles: git add new & commit all w/ message
+#
+# GITHUB
+#
+
+# commit changes 
 function gtc() {
   _t dotfile repo commit
   _a add missing files \& commit
   gt add $D/. 
   gt commit -a -m "$*"
-
   _s done.
-
-
-  _a push to github
-  gtp && _s update complete
   }
 
 #
@@ -77,13 +72,12 @@ function apts() {
   systemctl status $@; 
   }
 
-
 #
 # COLORS
 #
 
 # color print out 
-function colors() {
+function colorr() {
   # part1
   for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""
   # part2

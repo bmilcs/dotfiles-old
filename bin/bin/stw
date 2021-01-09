@@ -2,15 +2,78 @@
 
 source _head
 
-_a creating folder inside repo
+_t bmilcs stow prepper
+
+  # extract useful data
+  cdir=$(pwd)
+  bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
+  idir=$(pwd | sed 's/\/home\/'$USER'\/\(.*\)/\1/')
+  ndir=$D/$bdir/$idir
+
+  # debugging  
+  # set -x  # debugging
+   _i bdir: $bdir 
+   _i idir: $idir
+   _i ndir: $ndir 
+   _i dot dir: $D
+
+# no arguments:
+if [ $# -eq 0 ] ; then
+  # in $HOME?
+  if [[ $bdir == *"home"* ]]; then
+    _w \$HOME\ - really?
+    exit 1
+  # in dotfile repo dir?
+  elif [[ $cdir == $D* ]]; then
+    _w stow your stow - really?
+    exit 1
+  # does dir exist already?
+  elif test -d "$ndir"; then
+    _w $ndir already exists
+  else
+    _a creating $ndir
+    mkdir -p $ndir
+    if test -d $ndir; then
+      _s successfully created: ../$bdir/$idir
+    else
+      _e something went wrong. unable to create folder.
+      exit 3
+    fi
+  fi
+fi
+
+_ask "stow entire dir? (overwrites existing files)"
+
+if [ $? == "1" ];then exit 0;fi
+
+for d in * ; do
+  # symlink test:    [[ -L $d ]]
+  if [[ $d == *.log ]];then
+    _w skipped $d
+  else  
+    _o copying \"$d\" to \"../$bdir/$idir\"
+    cp $d $ndir/$d
+    # double check
+    if test -f $ndir/$d; then
+      _s
+    else
+      _e copy failed! emergency exit.
+      exit 1
+    fi 
+  fi
+done
+
+
+#  mdir=$D/$1/$bdir
+#  _a attempting to copy file over
+
+#  mkdir -p $mdir
+#  cp $2 $mdir
+#  _s 
+  
+
+# 
+# GRAVEYARD
+#
+
 #pwd | sed 's/\/home\/.*\/\(.*\)/\1/' | xargs mkdir -p 
-bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
-
-mdir=$CFG/$1/$bdir
-
-# TODO [ -e $CFG/$1 ]
-
-mkdir -p $mdir
-cp $2 $mdir
-_s 
-

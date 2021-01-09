@@ -5,6 +5,12 @@
 # -bmilcs
 #
 
+# TODO: CLEAN UP PARAMETER : \& \: \= \|
+
+#
+# COLORS
+#
+
 NC='\033[0m'
 B='\033[1m'
 DIM='\033[2m'
@@ -26,41 +32,91 @@ TIME="$(date +"%I:%M %P")"
 # PROMPTS
 #
 
-# clean up parameter
+_ask() {
+  local prompt default reply
+  if [[ ${2:-} = 'Y' ]]; then
+    prompt='Y/n'
+    default='Y'
+  elif [[ ${2:-} = 'N' ]]; then
+    prompt='y/N'
+    default='N'
+  else
+    prompt='y/n'
+    default=''
+  fi
+  while true; do
+    # ask the question (not using "read -p" as it uses stderr not stdout)
+    _q "$1 ${PUR}[$prompt] "
+    # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+    read -r reply </dev/tty
+    # default?
+    if [[ -z $reply ]]; then
+        reply=$default
+    fi
+    # check if the reply is valid
+    case "$reply" in
+      Y*|y*) return 0 ;;
+      N*|n*) return 1 ;;
+    esac
+  done
+  }
 
-# announce
+#
+# OUTPUT
+#
+
+# TODO  parse parameters for illegal symbol &
+# msg=${echo $*| sed -e 's/\&/\\\&/g'}
+# echo $msg
+
+# title
 function _t() {
-  # TODO parse parameters for illegal symbol &
-  # msg=${echo $*| sed -e 's/\&/\\\&/g'}
-  # echo $msg
-  echo -e "${CYN}${B}$* ${CYN}${NC}"
+  echo -e "\n${CYN}${B}$* ${CYN}${NC}\n"
   }
 
 # announce
 function _a() {
-  echo -e "\n${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
+  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}\n"
+  }
+
+# question
+function _q() {
+  echo -e "${CYN}${B}>>> $* "
+  }
+
+# output
+function _o() {
+  echo -e "    ${WHT}${B}> ${WHT} $* ${NC}"
+  }
+
+# inform
+function _i() {
+  echo -e "    ${WHT}[${B}i${WHT}] $* ${NC}\n"
   }
 
 # warn
 function _w() {
-  echo -e "\n    ${YLW}[!] $* ${NC}"
-}
+  echo -e "    ${YLW}[!] $* ${NC}\n"
+  }
+function _w2() {
+  echo -e "    ${YLW}[!] $* ${NC}"
+  }
 
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "\n    ${GRN}[√] success${NC}"
+    echo -e "    ${GRN}[√] success${NC}\n"
   else 
-    echo -e "\n    ${GRN}[√] $* ${NC}"
+    echo -e "    ${GRN}[√] $* ${NC}\n"
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "\n${RED}    [X]${RED}${B} error${NC}"
+    echo -e "${RED}    [X]${RED}${B} error${NC}\n"
   else
-    echo -e "\n${RED}    [X]${RED}${B} ${NC}${RED}$*"
+    echo -e "${RED}    [X]${RED}${B} ${NC}${RED}$*\n"
   fi
   }
 

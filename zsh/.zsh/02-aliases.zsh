@@ -1,4 +1,7 @@
-# BMILCS > ALIASES ##########################################
+#
+# ALIASES
+# -bmilcs
+#
 
 # TODO: split up into separate .zsh files
 
