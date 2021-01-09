@@ -7,12 +7,14 @@ source _head
 # TODO get script dir wherever you is.
 
 
-_a info
+_t _t title of action
+_t 
+_a _a action/announce
 _a 
-_w warning
+_w _w warning
 _w 
-_s success
+_s _s success
 _s 
-_e u done messed up
+_e _e error
 _e 
 

@@ -28,12 +28,12 @@ TIME="$(date +"%I:%M %P")"
 
 # announce
 function _t() {
-  echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
+  echo -e "${CYN}[${B}BM${CYN}] $* ${NC}"
   }
 
 # announce
 function _a() {
-  echo -e "${BLU}-> ${B}$* ${BLU}${NC}"
+  echo -e "${BLU}> ${B}$* ${BLU}${NC}"
   }
 
 # warn
@@ -44,7 +44,7 @@ function _w() {
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "  ${GRN}[√] success ${NC}"
+    echo -e "  ${GRN}[√] success${NC}"
   else 
     echo -e "  ${GRN}[√] $* ${NC}"
   fi 
@@ -55,7 +55,7 @@ function _e() {
   if [ $# -eq 0 ] ; then
     echo -e "${RED}  [X]${RED}${B} error${NC}${RED}: something went wrong"
   else
-    echo -e "${RED}  [X]${RED}${B} error ${NC}${RED}:$*\n"
+    echo -e "${RED}  [X]${RED}${B} error${NC}${RED}: $*"
   fi
   }
 
