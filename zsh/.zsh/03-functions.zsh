@@ -11,15 +11,11 @@ source _head
 
 # dotfiles: git add new & commit all w/ message
 function gtc() {
-  _a dotfiles: git add .
-  gt add $D/.
-  _s success.
+  _a bmilcs/dotfiles add & commit
+  gt add $D/. && gt commit -a -m "$*" && _s done.
 
-  _a dotfiles: git commit -a -m "$*"
-  gt commit -a -m "$*" && _s done.
-
-  _a dotfiles: upload to repo
-  gtp && -s update complete
+  _a bmilcs/dotfiles push to github
+  gtp && _s update complete
   }
 
 #
