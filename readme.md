@@ -1,6 +1,6 @@
 > A few weeks into my journey... 01.02.2021
 
-![desktop](rice.png)
+![desktop](asset/rice.png)
  
 
 # BMILCS: DOTFILES
@@ -23,7 +23,7 @@ Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 year
 ---
 
 <a name="goals"/>
-<img align="right" src="gw.jpeg" width=200 style="border: 25px solid white">
+<img align="right" src="asset/gw.jpeg" width=200 style="border: 25px solid white">
 
 ## GOALS
 
