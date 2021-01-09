@@ -2,7 +2,6 @@
 
 " -------------------------------------------------------
 " TODO shortcut: sort alphabetically --- :sort u
-" TODO fix clipboards: 2x shortcuts - system & vim buffer
 " -------------------------------------------------------
 
 "
@@ -11,6 +10,7 @@
 
 " help plugins load 
 filetype plugin indent on
+
 " plugin manager 
 call plug#begin('~/.vim/plugged')
 
@@ -91,7 +91,16 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " clipboard > system
-set clipboard+=unnamedplus
+  " * = PRIMARY (vim)
+  " + = CLIPBOARD (system)
+  " set clipboard=unnamedplus  " + plus, system ^c)
+  " noremap <Leader>y "*y
+  " noremap <Leader>p "*p
+set clipboard=unnamed       " * primary, on select 
+noremap <Leader>p "+p
+noremap <Leader>y "+y
+
+
 
 "
 " VIMINFO

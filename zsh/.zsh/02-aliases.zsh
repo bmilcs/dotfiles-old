@@ -32,10 +32,8 @@ alias yayg="yay -Qe | grep"
 
 alias gt="git --git-dir=$D/.git --work-tree $D" 
       compdef gt="git"
-#alias gtc="gt add $D/.; gt commit -a -m "
-#      compdef gc="git"
 alias gtp="gt push "
-
+      compdef gtp="git push"
 #
 # TMUX
 #
