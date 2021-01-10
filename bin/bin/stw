@@ -50,19 +50,33 @@ for d in * ; do
   # symlink test:    [[ -L $d ]]
   if [[ $d == *.log ]];then
     _w skipped $d
-  else  
-    _o copying \"$d\" to \"../$bdir/$idir\"
-    cp $d $ndir/$d
-    # double check
-    if test -f $ndir/$d; then
-      _s
-    else
-      _e copy failed! emergency exit.
-      exit 1
-    fi 
+    continue
+  elif [ -f $ndir/$d ]; then
+    _ask "overwrite existing $d??"
+    if [ $? == "1" ]; then
+      _w skipping $d
+      continue
+    fi
+    mv $ndir/$d $ndir/$d.bak
   fi
+  mkdir -p $BAK/$bdir-$DATE
+  _o copying \"$d\" to \"../$bdir/$idir\"
+  cp $d $ndir/$d 2>/dev/null
+  if test -f $ndir/$d; then
+    _s
+    rm $ndir/$d.bak 2>/dev/null
+    mv $d $BAK/$bdir-$DATE/$d
+  else
+    _e copy failed! emergency exit.
+    mv $ndir/$d.bak $ndir/$d 2>/dev/null
+    exit 1
+  fi 
 done
 
+_a stow time!
+cd $D
+stow $bdir
+_s
 
 #  mdir=$D/$1/$bdir
 #  _a attempting to copy file over

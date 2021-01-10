@@ -16,6 +16,7 @@ export PATH
 #
 
 export D=$HOME/bm
+export BAK=$HOME/.backup
 
 #
 # ENV VAR
