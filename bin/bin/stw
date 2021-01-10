@@ -7,12 +7,14 @@ _t bmilcs stow prepper
   # extract useful data
   cdir=$(pwd)
   bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
+  nbdir=${bdir,,}
   idir=$(pwd | sed 's/\/home\/'$USER'\/\(.*\)/\1/')
-  ndir=$D/$bdir/$idir
+  ndir=$D/$nbdir/$idir
 
   # debugging  
   # set -x  # debugging
    _i bdir: $bdir 
+   _i nbdir: $nbdir 
    _i idir: $idir
    _i ndir: $ndir 
    _i dot dir: $D
@@ -34,7 +36,7 @@ if [ $# -eq 0 ] ; then
     _a creating $ndir
     mkdir -p $ndir
     if test -d $ndir; then
-      _s successfully created: ../$bdir/$idir
+      _s successfully created: ../$nbdir/$idir
     else
       _e something went wrong. unable to create folder.
       exit 3
@@ -59,7 +61,7 @@ for d in * ; do
     mv $ndir/$d $ndir/$d.bak
   fi
   mkdir -p $BAK/$bdir-$DATE
-  _o copying \"$d\" to \"../$bdir/$idir\"
+  _o copying \"$d\" to \"../$nbdir/$idir\"
   cp -r $d $ndir/$d 2>/dev/null
   set -x
   if test -f $ndir/$d; then
@@ -76,10 +78,11 @@ for d in * ; do
     exit 1
   fi 
 done
+fi
 
 _a stow time!
 cd $D
-stow -R $bdir
+stow -R $nbdir
 _s
 
 #  mdir=$D/$1/$bdir
