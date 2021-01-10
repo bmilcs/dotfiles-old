@@ -28,6 +28,7 @@ CYN=${NC}'\033[36m'
 WHT=${NC}'\033[37m'
 TIME="$(date +"%I:%M %P")"
 DATE="$(date +"%Y-%m-%d")"
+
 #
 # PROMPTS
 #

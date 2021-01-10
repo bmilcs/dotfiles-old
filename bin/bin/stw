@@ -40,7 +40,6 @@ if [ $# -eq 0 ] ; then
       exit 3
     fi
   fi
-fi
 
 _ask "stow entire dir? (overwrites existing files)"
 
@@ -61,8 +60,13 @@ for d in * ; do
   fi
   mkdir -p $BAK/$bdir-$DATE
   _o copying \"$d\" to \"../$bdir/$idir\"
-  cp $d $ndir/$d 2>/dev/null
+  cp -r $d $ndir/$d 2>/dev/null
+  set -x
   if test -f $ndir/$d; then
+    _s
+    rm $ndir/$d.bak 2>/dev/null
+    mv $d $BAK/$bdir-$DATE/$d
+  elif test -d $ndir/$d; then
     _s
     rm $ndir/$d.bak 2>/dev/null
     mv $d $BAK/$bdir-$DATE/$d
@@ -75,7 +79,7 @@ done
 
 _a stow time!
 cd $D
-stow $bdir
+stow -R $bdir
 _s
 
 #  mdir=$D/$1/$bdir
