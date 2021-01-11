@@ -59,32 +59,35 @@ alias nano="vim"
       compdef nano="vim"
 
 # scratchpad
-alias pad="vim ~/bm/txt/scratchpad.md"
 alias sdir="echo $PWD >> ~/bm/txt/scratchpad.md" # TODO fix > function required?
+alias pad="vim ~/bm/txt/scratchpad.md"
 alias regex="vim ~/bm/txt/regex.md"
+
+# text folder
+alias txt="cd $D/txt"
 
 # dotfile repo: readme
 alias readme="vim ~/bm/readme.md"
 
 # dotfiles
 alias bm="cd $D"	# only while root
-alias ali="vim ~/.zsh/02-aliases.zsh"
-alias fun="vim ~/.zsh/03-functions.zsh"
+alias ali="vim $D/zsh/.zsh/02-aliases.zsh"
+alias fun="vim $D/zsh/.zsh/03-functions.zsh"
 alias tmuxr="tmux source ~/.tmux.conf"
-alias tmuxrc="vim ~/.tmux.conf"
-alias vimrc="vim ~/.vim/10-organize-me.vim"
+alias tmuxrc="vim $D/tmux/.tmux.conf"
+alias vimrc="vim $D/vim/.vim/10-organize-me.vim"
 alias zshr="source ~/.zshrc"
-alias zshrc="vim ~/.zshrc"
+alias zshrc="vim $D/zshrc/.zshrc"
 
 # configuration files
-alias bsp="vim ~/.config/bspwm/bspwmrc"
-alias gaps="vim ~/.config/i3/config"
-alias keys="vim ~/.config/sxhkd/sxhkdrc"
-alias picomrc="vim ~/.config/picom/config"
-alias poly="vim ~/.config/polybar/bspwm.conf"
-alias polysh="vim ~/.config/polybar/bspwm.sh"
+alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"
+alias gaps="vim $D/i3/.config/i3/config"
+alias keys="vim $D/sxhkd/.config/sxhkd/sxhkdrc"
+alias picomrc="vim $D/picom/.config/picom/config"
+alias poly="vim $D/polybar/.config/polybar/bspwm.conf"
+alias polysh="vim $D/polybar/.config/polybar/bspwm.sh"
 alias polyr="polybar -r -c ~/.config/polybar/bspwm.conf bspwm"
-alias termrc="vim ~/.config/alacritty/alacritty.yml"
+alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
 
 #
 # APPLICATIONS

@@ -1,14 +1,170 @@
-##### BMILCS FUNCTION NOTES
+# "function" cheatsheet
+> bmilcs' cheatsheat on shell scripting, functions, etc.
 
-# ARGUMENT HANDLING
+
+### ARGUMENTS / PARAMETERS
 
 var | desc
 -|:-
-$#    |   number of command-line arguments that were passed to the shell program.
-$?    |   exit value last command executed. (0=success,1+ ???)
+$#    |   # of arguments
+$?    |   exit status, last command (0=true/success)
 $0    |   first word of entered command (the name of the shell program)
 $*    |   all arguments command line ($1 $2 ...).
 "$@"  |   all arguments command line, individually quoted ("$1" "$2" ...).
+
+---
+
+# IF... ELSE
+
+**SYNTAX**
+
+    [[ 1 -eq 1 ]] && echo "duh!"
+    [[ 1 -eq 2 ]] || echo "of course not!"
+
+    if [[ 1 -eq 2 ]]
+    then
+    elif
+    fi
+
+    if [[ 1 -eq 2 ]]; then
+    fi
+
+
+    if [[ 1 -eq 2 ]]; then gogogo; fi
+    fi
+
+
+# TEST COMMAND (IF)
+
+**SYNTAX**
+
+    test EXPRESSION
+    [ expression ]
+    test
+    [ ]
+
+### EXPRESSIONS
+
+EXPRESSION | ...
+---|---
+**(** exp **)** | expression is true
+**!** exp | expression is false
+e1 **-a** e2 | AND: both true 
+e1 **&&** e2 | AND: both true 
+e1 **-o** e2 | OR: 1 is true
+e1 **&#124;&#124;** e2 | OR: 1 is true
+
+### STRINGS
+
+STRINGS | ...
+--|--
+**-n** str | string length is NON-zero
+**-z** str | string length IS zero
+s1 **=** s2 | strings are equal, pattern matching
+[[ s1 **=** "s2" ]] | strings are equal, literal, NO pattern matching
+s1 **!=** s2 | strings NOT are equal
+c > a | true: c comes after a (greater value)
+c < a | false: a comes before c (less than)
+[[ $NAME = derp* ]] | wildcard matching
+
+
+### INTEGERS
+STRINGS | ...
+--|--
+x **-eq** y | integers equal
+x **-ge** y | greater/equal: i1 >= i2
+x **-gt** y | greater: i1 > i2
+x **-le** y | lesser/equal: i1 <= i2
+x **-lt** y | lesser: i1 < i2
+x **-ne** y | NOT equal to: i1 != i2
+
+**ARGUMENTS**
+
+FILES | DEF | IE
+--:|:--|:--
+**-f** | True: is a regular File. | [[ -f demofile ]]
+**-d** | True: is a Directory. | [[ -d demofile ]]
+**-e** | True: file/dir exists. | [[ -e demofile ]]
+**-h** | True: is a symbolic Link. | [[ -h demofile ]]
+**-L** | True: is a symbolic Link. | [[ -L demofile ]]
+**-G** | True: owned by group id. | [[ -G demofile ]]
+**-O** | True: owned by user id. | [[ -O demofile ]]
+**-r** | True: is readable. | [[ -r demofile ]]
+**-w** | True: is writable. | [[ -w demofile ]]
+**-x** | True: is executable. | [[ -x demofile ]]
+x **-nt** y | True x is newer than y. | [[ demofile1 -nt $DEMO ]]
+x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
+
+# CASE
+
+> elegant if/then
+
+    case $ANIMAL in
+      (horse | dog | cat) legs=four;;
+      (man | kangaroo ) legs=two;;
+      (*) echo -n legs="an unknown number of";;
+    esac
+
+
+# LOOPS
+
+### FOR 
+
+> all files in current directory
+
+      for d in * ; do 
+
+
+### WHILE 
+
+---
+
+
+#### instr, in string, regexmatch
+
+    if [[ $x == *"home"* ]]; then
+
+#### test command: if file/dir exists, perms, etc.
+
+    # file/dir exists, return 0 (true)
+      test -f file && echo ye exists.
+      test -d /path && echo ye exists.
+    # file/dir exists: true run cmd
+      [ -f file ] && command
+      if [ -d path ] ];then
+    # file NO exist > true: run cmd
+      [ ! -f file ] && command
+      if [ ! -d /path ];then
+
+
+# INPUT OUTPUT REDIRECTS
+
+[**source**](https://gist.github.com/bmilcs/a51512131d44077a6ee2db818ccb6dca)
+
+example | def
+--:|---
+1 &#124; 2  |  use stdout of cmd1 as stdin for cmd2
+> file  |  save stdout to file
+   < file  |  use file as stdin
+  >> file  |  append stdout to file (create file if nonexistent)
+  >&#124; file  |  force stdout to file (even if noclobber is set)
+ n>&#124; file  |  force stdout to file from descriptor n (even...)
+  <> file  |  use file as both stdin and stdout (process in place)
+ n<> file  |  use as both stdin and stdout for file descriptor n
+  << label |  use here-document (within scripts specifies batch input)
+  n> file  |  direct file descriptor n to file
+  n< file  |  take file descriptor n from file
+ n>> file  |  append descriptor n to file (or create file for n)
+ n>&       |  duplicate stdout to file descriptor n
+ n<&       |  duplicate stdin from file descriptor n
+ n>&m      |  make file descriptor n a copy of the stdout fd
+ n<&m      |  make file descriptor n a copy of the stdin  fd 
+  >&file   |  send stdout and stderror to file
+ <&-       |  close stdin
+ >&-       |  close stdout
+n<&-       |  close input  from file descriptor n
+n>&-       |  close output from file descriptor n
+
 
 ---
 

@@ -1,4 +1,7 @@
-" BMILCS/VIMRC
+"
+" VIMRC
+" -bmilcs
+"
 
 " -------------------------------------------------------
 " TODO shortcut: sort alphabetically --- :sort u
@@ -33,8 +36,7 @@ Plug 'preservim/nerdtree' |
       \ Plug 'ryanoasis/vim-devicons'
 
 " fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug '~/.fzf'
 
 " color hexcode highlighter
 Plug 'chrisbra/Colorizer'
@@ -52,6 +54,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 " end of plugins
 call plug#end()
+
+set rtp+=~/.fzf
 
 " 
 " KEY BINDINGS 
@@ -99,8 +103,6 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 set clipboard=unnamed       " * primary, on select 
 noremap <Leader>p "+p
 noremap <Leader>y "+y
-
-
 
 "
 " VIMINFO

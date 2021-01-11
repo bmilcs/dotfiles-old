@@ -1,11 +1,11 @@
+# BMILCS: DOTFILES
 > A few weeks into my journey... 01.02.2021
 
 ![desktop](asset/rice.png)
  
+**Welcome to version 2 of my dotfiles.** 
 
-# BMILCS: DOTFILES
-
-Welcome to version 2 of my dotfiles. Established in December of 2020 with 2 years of [***light* Debian experience**](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home for my personal configuration files. Putting food on the table binds me to Microsoft Windows for 40 hours a week. However, I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration and vow to use nothing else in my leisure time. 
+Established in December of 2020 with 2 years of [***light* Debian experience**](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home for my personal configuration files. Putting food on the table binds me to Microsoft Windows for 40 hours a week. However, I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration and vow to use nothing else in my leisure time. 
 
 ---
 

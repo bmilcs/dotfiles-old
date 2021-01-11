@@ -1,13 +1,14 @@
 # ZSHENV 
-# - bmilcs
-# 
+#- bmilcs
+#
 # executed on all shell invocations
 
 #
 # PATH
 #
 
-typeset -U PATH path  # add $PATH to path array | source: arch wiki
+# add $PATH to path array | source: arch wiki
+typeset -U PATH path  
 path=("$HOME/bin"  "$path[@]")
 export PATH
 

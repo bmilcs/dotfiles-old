@@ -1,10 +1,9 @@
 #!/bin/bash
 
 #
-# BM STOWIFIER
+# STOWIFIER
 # -bmilcs
 #
-
 # TODO: filename argument passed
 # TODO: iteration, y/n per each file
 # TODO: check if symlink, skip if so
@@ -13,22 +12,29 @@ source _head
 
 _t bmilcs stow prepper
 
-  # extract useful data
-  cdir=$(pwd)
-  bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
-  nbdir=${bdir,,}
-  idir=$(pwd | sed 's/\/home\/'$USER'\/\(.*\)/\1/')
-  ndir=$D/$nbdir/$idir
+#
+# EXTRACT DATA
+#
 
-  # debugging  
-  # set -x  # debugging
-   _i bdir: $bdir 
-   _i nbdir: $nbdir 
-   _i idir: $idir
-   _i ndir: $ndir 
-   _i dot dir: $D
+cdir=$(pwd)
+bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
+nbdir=${bdir,,}
+idir=$(pwd | sed 's/\/home\/'$USER'\/\(.*\)/\1/')
+ndir=$D/$nbdir/$idir
 
-# no arguments:
+# debugging  
+# set -x  # debugging
+#  _i bdir: $bdir 
+#  _i nbdir: $nbdir 
+#  _i idir: $idir
+#  _i ndir: $ndir 
+#  _i dot dir: $D
+
+#
+# NO ARGUMENTS
+#
+
+# CREATE DIR STRUCTURE
 if [ $# -eq 0 ] ; then
   # in $HOME?
   if [[ $bdir == *"home"* ]]; then
@@ -52,41 +58,51 @@ if [ $# -eq 0 ] ; then
     fi
   fi
 
-_ask "stow entire dir? (overwrites existing files)"
+# STOW EVERYTHING?
+  _ask "stow entire dir?"
+  if [ $? == "1" ];then _s all set ; exit 0;fi
 
-if [ $? == "1" ];then exit 0;fi
-
-for d in * ; do
-  # symlink test:    [[ -L $d ]]
-  if [[ $d == *.log ]];then
-    _w skipped $d
-    continue
-  elif [ -f $ndir/$d ]; then
-    _ask "overwrite existing $d??"
-    if [ $? == "1" ]; then
-      _w skipping $d
+  # loop over all files
+  for d in * ; do
+    # TODO symlink test
+    # skip log files
+    if [[ $d == *.log ]];then
+      _w skipped $d
       continue
+    elif [ -f $ndir/$d ]; then
+      _ask "overwrite existing $d??"
+      if [ $? == "1" ]; then
+        _w skipping $d
+        continue
+      fi
+      mv $ndir/$d $ndir/$d.bak
     fi
-    mv $ndir/$d $ndir/$d.bak
-  fi
-  mkdir -p $BAK/$bdir-$DATE
-  _o copying \"$d\" to \"../$nbdir/$idir\"
-  cp -r $d $ndir/$d 2>/dev/null
-  set -x
-  if test -f $ndir/$d; then
-    _s
-    rm $ndir/$d.bak 2>/dev/null
-    mv $d $BAK/$bdir-$DATE/$d
-  elif test -d $ndir/$d; then
-    _s
-    rm $ndir/$d.bak 2>/dev/null
-    mv $d $BAK/$bdir-$DATE/$d
-  else
-    _e copy failed! emergency exit.
-    mv $ndir/$d.bak $ndir/$d 2>/dev/null
-    exit 1
-  fi 
-done
+    mkdir -p $BAK/$bdir-$DATE
+    _o copying \"$d\" to \"../$nbdir/$idir\"
+    cp -r $d $ndir/$d 2>/dev/null
+    if test -f $ndir/$d; then
+      _s
+      rm $ndir/$d.bak 2>/dev/null
+      mv $d $BAK/$bdir-$DATE/$d
+    elif test -d $ndir/$d; then
+      _s
+      rm $ndir/$d.bak 2>/dev/null
+      mv $d $BAK/$bdir-$DATE/$d
+    else
+      _e copy failed! emergency exit.
+      mv $ndir/$d.bak $ndir/$d 2>/dev/null
+      exit 1
+    fi 
+  done
+
+#
+# ARGUMENT TIME
+#
+
+else
+  for f in $# ; do
+    zsh
+
 fi
 
 # arg passed
@@ -94,21 +110,13 @@ fi
 
 
 
+
+# 
+# CREATE SYMLINKS
+#
+
 _a stow time!
 cd $D
 stow -R $nbdir
-_s
+_s success \!
 
-#  mdir=$D/$1/$bdir
-#  _a attempting to copy file over
-
-#  mkdir -p $mdir
-#  cp $2 $mdir
-#  _s 
-  
-
-# 
-# GRAVEYARD
-#
-
-#pwd | sed 's/\/home\/.*\/\(.*\)/\1/' | xargs mkdir -p 
