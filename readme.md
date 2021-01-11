@@ -10,16 +10,15 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 ---
 
 ## **NAVIGATION**
-- [**to do**](#todo)
-- [**my goals**](#goals)
 - [**bspwm**](/bspwm/.config/bspwm/bspwmrc) :  *window manager*
 - [**sxhkd**](/sxhkd/.config/sxhkd/sxhkdrc) : *keyboard shortcuts*
 - [**polybar**](/polybar/.config/polybar/bspwm.conf) [[**sh**]](/polybar/.config/polybar/bspwm.sh) : *task/status bar*
-- rofi : dmenu replacement
-- picom.conf : compositor
-- .tmux.conf : ide 
-- vim : text editor
-
+- [**rofi**](/rofi/.config/rofi/config.rasi) : dmenu replacement
+- [**picom.conf**](/picom/.config/picom/config) : compositor
+- [**.tmux.conf**](/tmux/.tmux.conf) : ide 
+- [**vim**](/vim/.vim) : text editor
+- [**to do**](#todo)
+- [**my goals**](#goals)
 ---
 
 <a name="goals"/>
