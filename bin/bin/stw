@@ -34,9 +34,7 @@ ndir=$D/$nbdir/$idir
 # NO ARGUMENTS
 #
 
-# CREATE DIR STRUCTURE
-if [ $# -eq 0 ] ; then
-  # in $HOME?
+# DIR STRUCTURE CHECK
   if [[ $bdir == *"home"* ]]; then
     _w \$HOME\ - really?
     exit 1
@@ -44,13 +42,15 @@ if [ $# -eq 0 ] ; then
   elif [[ $cdir == $D* ]]; then
     _w stow your stow - really?
     exit 1
+  fi
+
   # does dir exist already?
-  elif test -d "$ndir"; then
-    _w $ndir already exists
+  if [ -d "$ndir" ]; then
+    _i sweet. $ndir already exists
   else
     _a creating $ndir
     mkdir -p $ndir
-    if test -d $ndir; then
+    if [ -d $ndir ]; then
       _s successfully created: ../$nbdir/$idir
     else
       _e something went wrong. unable to create folder.
@@ -58,36 +58,51 @@ if [ $# -eq 0 ] ; then
     fi
   fi
 
-# STOW EVERYTHING?
-  _ask "stow entire dir?"
-  if [ $? == "1" ];then _s all set ; exit 0;fi
 
-  # loop over all files
-  for d in * ; do
-    # TODO symlink test
-    # skip log files
-    if [[ $d == *.log ]];then
-      _w skipped $d
+# STOW EVERYTHING?
+if [ $# -eq 0 ] ; then
+  _a "looping through dir"
+  if [ $? == "1" ];then _s all set ; exit 0;fi
+  loopz="*"
+else
+  loopz="$@"
+fi
+
+
+
+  # LOOP OVER DIR
+  for d in $loopz ; do
+    
+    # CHECK FOR ISSUES
+    if [ -L $d ];then
+      _w skipped $d: symlink
+      continue
+    elif [ $d == *.log ];then
+      _w skipped $d: log
+      continue
+    elif [ -d $d ]; then
+      _e skipped $d: directory
       continue
     elif [ -f $ndir/$d ]; then
       _ask "overwrite existing $d??"
-      if [ $? == "1" ]; then
-        _w skipping $d
-        continue
-      fi
+      if [ $? == "1" ]; then _w skipping $d: declined; continue; fi
       mv $ndir/$d $ndir/$d.bak
+    else 
+      _ask "add $d to repo?"
+      if [ $? == "1" ];then _w skipping $d; continue; fi
     fi
-    mkdir -p $BAK/$bdir-$DATE
+
+    # PASSED ISSUE TEST
+    # create backup directory
+    mkdir -p $BAK/$bdir
     _o copying \"$d\" to \"../$nbdir/$idir\"
-    cp -r $d $ndir/$d 2>/dev/null
-    if test -f $ndir/$d; then
+    cp $d $ndir/$d 2>/dev/null
+
+
+    if [ -f $ndir/$d ]; then
       _s
       rm $ndir/$d.bak 2>/dev/null
-      mv $d $BAK/$bdir-$DATE/$d
-    elif test -d $ndir/$d; then
-      _s
-      rm $ndir/$d.bak 2>/dev/null
-      mv $d $BAK/$bdir-$DATE/$d
+      mv $d $BAK/$bdir/$d-$DATE
     else
       _e copy failed! emergency exit.
       mv $ndir/$d.bak $ndir/$d 2>/dev/null
@@ -99,16 +114,74 @@ if [ $# -eq 0 ] ; then
 # ARGUMENT TIME
 #
 
-else
-  for f in $# ; do
-    zsh
-
-fi
+#else
+#
+#  if [[ $bdir == *"home"* ]]; then
+#    _w \$HOME - category needed. manual intervention required.
+#    exit 1
+#  # in dotfile repo dir?
+#  elif [[ $cdir == $D* ]]; then
+#    _w stow your stow - really?
+#    exit 1
+#  # does dir exist already?
+#  elif [ -d "$ndir" ]; then
+#    _a $ndir already exists - sweet.
+#  else
+#    _a creating $ndir
+#    mkdir -p $ndir
+#    if [ -d $ndir ]; then
+#      _s successfully created: ../$nbdir/$idir
+#    else
+#      _e something went wrong. unable to create folder.
+#      exit 3
+#    fi
+#  fi
+#
+#
+#  for f in $@ ; do
+#    echo $f
+#    # CHECK FOR ISSUES
+#    if [ -L $f ];then
+#      _w skipped $f: symlink
+#      continue
+#    elif [ $f == *.log ];then
+#      _w skipped $f: log
+#      continue
+#    elif [ -d $f ]; then
+#      _e skipped $f: directory
+#      continue
+#    elif [ -f $ndir/$f ]; then
+#      _ask "overwrite existing $f??"
+#      if [ $? == "1" ]; then
+#        _w skipping $f: declined
+#        continue
+#      fi
+#      mv $ndir/$f $ndir/$f.bak
+#    else 
+#      _ask add ${f} to repo?
+#      if [ $? == "1" ];then
+#      _w skipping $f
+#      continue
+#      fi
+#    fi
+#
+#    # PASSED ISSUE TEST
+#    mkdir -p $BAK/$bdir
+#    _o copying \"$f\" to \"../$nbdir/$idir\"
+#    cp -r $f $ndir/$f 2>/dev/null
+#    if [ -f $ndir/$f ]; then
+#      _s
+#      rm $ndir/$f.bak 2>/dev/null
+#      mv $f $BAK/$bdir/$f-$DATE
+#    else
+#      _e copy failed! emergency exit.
+#      mv $ndir/$f.bak $ndir/$f 2>/dev/null
+#      exit 1
+#    fi 
+#  done
 
 # arg passed
 # TODO INSERT HERE
-
-
 
 
 # 
@@ -118,5 +191,7 @@ fi
 _a stow time!
 cd $D
 stow -R $nbdir
+[[ $? != 0 ]] && _e something went wrong
 _s success \!
+
 

@@ -69,7 +69,7 @@ c < a | false: a comes before c (less than)
 
 
 ### INTEGERS
-STRINGS | ...
+INTEGERS | ...
 --|--
 x **-eq** y | integers equal
 x **-ge** y | greater/equal: i1 >= i2
@@ -78,8 +78,7 @@ x **-le** y | lesser/equal: i1 <= i2
 x **-lt** y | lesser: i1 < i2
 x **-ne** y | NOT equal to: i1 != i2
 
-**ARGUMENTS**
-
+### FILES/DIRS
 FILES | DEF | IE
 --:|:--|:--
 **-f** | True: is a regular File. | [[ -f demofile ]]
