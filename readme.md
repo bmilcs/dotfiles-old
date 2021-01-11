@@ -12,9 +12,9 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 ## **NAVIGATION**
 - [**to do**](#todo)
 - [**my goals**](#goals)
-- [**bspwm**](../bspwm/.config/bspwm/bspwmrc) :  *window manager*
-- [**sxhkd**](../sxhkd/.config/sxhkd/sxhkdrc) : *keyboard shortcuts*
-- [**polybar**](../polybar/.config/polybar/bspwm.conf) [[**sh**]](.config/polybar/bspwm.sh) : *task/status bar*
+- [**bspwm**](/bspwm/.config/bspwm/bspwmrc) :  *window manager*
+- [**sxhkd**](/sxhkd/.config/sxhkd/sxhkdrc) : *keyboard shortcuts*
+- [**polybar**](/polybar/.config/polybar/bspwm.conf) [[**sh**]](/polybar/.config/polybar/bspwm.sh) : *task/status bar*
 - rofi : dmenu replacement
 - picom.conf : compositor
 - .tmux.conf : ide 
