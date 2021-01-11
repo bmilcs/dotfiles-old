@@ -10,13 +10,14 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 ---
 
 ## **NAVIGATION**
+- [**zsh**](/zsh/.zsh) : shell
+- [**vim**](/vim/.vim) : text editor
+- [**.tmux.conf**](/tmux/.tmux.conf) : ide 
 - [**bspwm**](/bspwm/.config/bspwm/bspwmrc) :  *window manager*
 - [**sxhkd**](/sxhkd/.config/sxhkd/sxhkdrc) : *keyboard shortcuts*
 - [**polybar**](/polybar/.config/polybar/bspwm.conf) [[**sh**]](/polybar/.config/polybar/bspwm.sh) : *task/status bar*
 - [**rofi**](/rofi/.config/rofi/config.rasi) : dmenu replacement
 - [**picom.conf**](/picom/.config/picom/config) : compositor
-- [**.tmux.conf**](/tmux/.tmux.conf) : ide 
-- [**vim**](/vim/.vim) : text editor
 - [**to do**](#todo)
 - [**my goals**](#goals)
 ---
@@ -31,10 +32,10 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 ---
 
 **VIM**
- - Adapt to, Learn & Master 
- - Combine Visual Studio Code's visual appeal & functionality via plugins, vimrc, shortcuts, etc.
- - Universally adopt VIM-functionality across most applications
-    - IE: zsh, ranger, mutt, etc.
+- Adapt to, Learn & Master 
+- Combine Visual Studio Code's visual appeal & functionality via plugins, vimrc, shortcuts, etc.
+- Universally adopt VIM-functionality across most applications
+  - IE: zsh, ranger, mutt, etc.
 
 **GitHub**
  - Learn & adopt all common functions
