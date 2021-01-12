@@ -75,7 +75,7 @@ alias ali="vim $D/zsh/.zsh/02-aliases.zsh"
 alias fun="vim $D/zsh/.zsh/03-functions.zsh"
 alias tmuxr="tmux source ~/.tmux.conf"
 alias tmuxrc="vim $D/tmux/.tmux.conf"
-alias vimrc="vim $D/vim/.vim/10-organize-me.vim"
+alias vimrc="cd $D/vim/.vim/ ; vim $D/vim/.vim/10-core.vim"
 alias zshr="source ~/.zshrc"
 alias zshrc="vim $D/zshrc/.zshrc"
 
