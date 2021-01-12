@@ -47,7 +47,7 @@ _ask() {
   fi
   while true; do
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    _q "$1 ${PUR}[$prompt] "
+    _q "$1 ${YLW}${B}[$prompt]${NC} "
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply </dev/tty
     # default?
@@ -77,7 +77,7 @@ function _t() {
 
 # announce
 function _a() {
-  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}\n"
+  echo -e "\n${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}\n"
   }
 
 # question

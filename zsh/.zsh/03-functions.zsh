@@ -1,9 +1,9 @@
-source _head
-
 #
 # ZSH/FUNCTIONS
 # -bmilcs
 #
+
+source _head
 
 #
 # GITHUB
@@ -17,31 +17,6 @@ function gtc() {
   gt commit -a -m "$*"
   _s done.
   }
-
-#
-# SERVICES
-#
-
-# start service
-function sstart() {
-  sudo service $@ start
-  }
-
-# stop service
-function sstop() {
-  sudo service $@ stop
-  }
-
-# restart service
-function srestart() {
-  sudo service $@ restart
-  }
-
-# get service status
-function sstatus() {
-  sudo service $@ status
-  }
-
 
 #
 # BASH
@@ -71,6 +46,32 @@ function aptf() {
 function apts() {	
   systemctl status $@; 
   }
+
+#
+# SERVICES
+#
+
+# start service
+function sstart() {
+  sudo service $@ start
+  }
+
+# stop service
+function sstop() {
+  sudo service $@ stop
+  }
+
+# restart service
+function srestart() {
+  sudo service $@ restart
+  }
+
+# get service status
+function sstatus() {
+  sudo service $@ status
+  }
+
+
 
 #
 # COLORS

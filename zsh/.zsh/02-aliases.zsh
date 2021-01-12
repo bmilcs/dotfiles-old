@@ -11,7 +11,7 @@
 
 # update
   # TODO conditional update | distro based
-alias up="pm -Syyuu ; yay -Syyuu"
+alias up="_a pacman ; pm -Syyuu ; _a yay ; yay -Syyuu"
 
 # pacman
 alias pacman="sudo pacman"
