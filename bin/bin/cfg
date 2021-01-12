@@ -11,6 +11,20 @@ source _head
 
 _t cfg editor
 
+
+etxt() {
+  _a VIM 
+  unset options i
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+  done < <(find "$D/txt/" -maxdepth 3 -type f -name "*" -print0 )
+  select opt in "${options[@]}" ; do
+    case $opt in
+      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
+    esac
+  done
+  }
+
 evim() {
   _a VIM 
   unset options i
@@ -19,8 +33,7 @@ evim() {
   done < <(find "$D/vim/" -maxdepth 3 -type f -name "*vim" -print0 )
   select opt in $D/vim/.vimrc "${options[@]}" ; do
     case $opt in
-      *.vim*) nvim $opt ; exit 0 ;;
-      *) exit 1 ;;
+      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
     esac
   done
   }
@@ -33,8 +46,7 @@ ezsh() {
   done < <(find "$D/zsh/" -maxdepth 3 -type f -name "*zsh" -print0 )
   select opt in $D/zsh/.zshrc "${options[@]}" ; do
     case $opt in
-      *.zsh*) nvim $opt ; exit 0 ;;
-      *) exit 1 ;;
+      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
     esac
   done
   }
@@ -47,13 +59,13 @@ epoly() {
   done < <(find "$D/polybar/" -maxdepth 3 -type f -print0 )
   select opt in "${options[@]}" ; do
     case $opt in
-      *.*) nvim $opt ; exit 0 ;;
-      *) exit 1 ;;
+      *) nvim $opt ; exit 0 ;;
     esac
   done
   }
 
 if [ $# = 0 ]; then
+  _o 0   txt
   _o 1   vim  
   _o 2   zsh  
   _o 3   polybar  
@@ -68,6 +80,7 @@ fi
 
 
 case $sel in
+  0) etxt;;
   1) evim;;
   2) ezsh;;
   3) epoly;;
