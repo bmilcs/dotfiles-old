@@ -1,32 +1,82 @@
 #!/bin/bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   config file editor
+#────────────────────────────────────────────────────────────
 source _head
 
-# source: https://raw.githubusercontent.com/mbndr/arch-dotfiles/master/.scripts/conf
+_t cfg editor
 
-if [ "$EDITOR" == "" ]; then
-    echo "Set \$EDITOR to open a config file"
-    exit 1
+evim() {
+  _a VIM 
+  unset options i
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+  done < <(find "$D/vim/" -maxdepth 3 -type f -name "*vim" -print0 )
+  select opt in $D/vim/.vimrc "${options[@]}" ; do
+    case $opt in
+      *.vim*) nvim $opt ; exit 0 ;;
+      *) exit 1 ;;
+    esac
+  done
+  }
+
+ezsh() {
+  _a ZSH
+  unset options i
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+  done < <(find "$D/zsh/" -maxdepth 3 -type f -name "*zsh" -print0 )
+  select opt in $D/zsh/.zshrc "${options[@]}" ; do
+    case $opt in
+      *.zsh*) nvim $opt ; exit 0 ;;
+      *) exit 1 ;;
+    esac
+  done
+  }
+
+epoly() {
+  _a polybar
+  unset options i
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+  done < <(find "$D/polybar/" -maxdepth 3 -type f -print0 )
+  select opt in "${options[@]}" ; do
+    case $opt in
+      *.*) nvim $opt ; exit 0 ;;
+      *) exit 1 ;;
+    esac
+  done
+  }
+
+if [ $# = 0 ]; then
+  _o 1   vim  
+  _o 2   zsh  
+  _o 3   polybar  
+  _o 4   sxhkd  
+  _o 5   bspwm  
+  _o 6   tmux  
+  _o 7   .xresources  
+  read sel
+else
+  sel=${1}
 fi
 
-edit() {
-    eval $EDITOR $1
-    echo -e "\x1b[34mDon't forget to apply your changes to the dotfiles\x1b[0m"
-}
 
-sudoedit() {
-    e=$EDITOR
-    eval sudo $e $1
-    echo -e "\x1b[34mDon't forget to apply your changes to the dotfiles\x1b[0m"
-}
-
-case $1 in
-    xinit) edit ~/.xinitrc;;
-    xresources|xres) edit ~/.Xresources;;
-    xterm) edit ~/.Xresources.d/xterm;;
-    sxhkd) edit ~/.config/sxhkd/sxhkdrc;;
-    bspwm) edit ~/.config/bspwm/bspwmrc;;
-    yabar) edit ~/.config/yabar/yabar.conf;;
-    hosts) sudoedit /etc/hosts;;
-    *) echo "No registered config key"; exit 1;;
+case $sel in
+  1) evim;;
+  2) ezsh;;
+  3) epoly;;
+  4) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
+  5) nvim $D/bspwm/.config/bspwm/bspwmrc;;
+  6) nvim $D/tmux/.tmux.conf;;
+  6) nvim $D/xorg/.Xresources;;
+  7) nvim $D/xorg/.xinitrc;;
+  8) sudovim /etc/hosts;;
+  #xterm) vim ~/.Xresources.d/xterm;;
 esac
 

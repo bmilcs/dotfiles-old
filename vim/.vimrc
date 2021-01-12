@@ -3,7 +3,6 @@
 " -bmilcs
 "
 
-
 let wild = [ "*" ]
 for name in wild
   let cfg = expand("~/.vim/".name.".vim")

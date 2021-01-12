@@ -1,53 +1,12 @@
-# █▀▀▄ █▀▄▀█ ░▀░ █░░ █▀▀ █▀▀ 　 █▀▀▄ █▀▀█ ▀▀█▀▀ █▀▀ ░▀░ █░░ █▀▀ █▀▀ 
-# █▀▀▄ █░▀░█ ▀█▀ █░░ █░░ ▀▀█ 　 █░░█ █░░█ ░░█░░ █▀▀ ▀█▀ █░░ █▀▀ ▀▀█ 
-# ▀▀▀░ ▀░░░▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ 　 ▀▀▀░ ▀▀▀▀ ░░▀░░ ▀░░ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀
-#
-#
-# ╭╮╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╭━╮╭╮
-# ┃┃╱╱╱╱╱┃┃╱╱╱╱╱╱╱╱╱┃┃╱╭╯╰┫╭╯┃┃
-# ┃╰━┳╮╭┳┫┃╭━━┳━━╮╭━╯┣━┻╮╭╯╰┳┫┃╭━━┳━━╮
-# ┃╭╮┃╰╯┣┫┃┃╭━┫━━┫┃╭╮┃╭╮┃┣╮╭╋┫┃┃┃━┫━━┫
-# ┃╰╯┃┃┃┃┃╰┫╰━╋━━┃┃╰╯┃╰╯┃╰┫┃┃┃╰┫┃━╋━━┃
-# ╰━━┻┻┻┻┻━┻━━┻━━╯╰━━┻━━┻━┻╯╰┻━┻━━┻━━╯
-#
-#
-# ████████████████████████████████████████████████████████████████████████████████████
-# █▄─▄─▀█▄─▀█▀─▄█▄─▄█▄─▄███─▄▄▄─█─▄▄▄▄███▄─▄▄▀█─▄▄─█─▄─▄─█▄─▄▄─█▄─▄█▄─▄███▄─▄▄─█─▄▄▄▄█
-# ██─▄─▀██─█▄█─███─███─██▀█─███▀█▄▄▄▄─████─██─█─██─███─████─▄████─███─██▀██─▄█▀█▄▄▄▄─█
-# ▀▄▄▄▄▀▀▄▄▄▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▀▀▄▄▄▄▀▀▄▄▄▄▀▀▄▄▄▀▀▄▄▄▀▀▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀
-# ╔╗ ╔╦╗╦╦  ╔═╗╔═╗  
-# ╠╩╗║║║║║  ║  ╚═╗  /dotfiles.git 
-# ╚═╝╩ ╩╩╩═╝╚═╝╚═╝  
-# elite,calvin s,delta corp prist 1
-#
-#  ZSH CORE
-# -bmilcs
-#
-# 
-# 
-# ┏┓╋╋╋╋╋┏┓
-# ┃┃╋╋╋╋╋┃┃
-# ┃┗━┳┓┏┳┫┃┏━━┳━━┓
-# ┃┏┓┃┗┛┣┫┃┃┏━┫━━┫
-# ┃┗┛┃┃┃┃┃┗┫┗━╋━━┃
-# ┗━━┻┻┻┻┻━┻━━┻━━┛
-# ██████╗░███╗░░░███╗██╗██╗░░░░░░█████╗░░██████╗
-# ██╔══██╗████╗░████║██║██║░░░░░██╔══██╗██╔════╝
-# ██████╦╝██╔████╔██║██║██║░░░░░██║░░╚═╝╚█████╗░
-# ██╔══██╗██║╚██╔╝██║██║██║░░░░░██║░░██╗░╚═══██╗
-# ██████╦╝██║░╚═╝░██║██║███████╗╚█████╔╝██████╔╝
-# ╚═════╝░╚═╝░░░░░╚═╝╚═╝╚══════╝░╚════╝░╚═════╝░
-# ╭╮╱╱╱╱╱╭╮
-# ┃┃╱╱╱╱╱┃┃
-# ┃╰━┳╮╭┳┫┃╭━━┳━━╮
-# ┃╭╮┃╰╯┣┫┃┃╭━┫━━┫
-# ┃╰╯┃┃┃┃┃╰┫╰━╋━━┃
-# ╰━━┻┻┻┻┻━┻━━┻━━╯
-# 
-# █████████████████████████████████████
-# █▄─▄─▀█▄─▀█▀─▄█▄─▄█▄─▄███─▄▄▄─█─▄▄▄▄█
-# ██─▄─▀██─█▄█─███─███─██▀█─███▀█▄▄▄▄─█
-# ▀▄▄▄▄▀▀▄▄▄▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   zsh core cfg
+#────────────────────────────────────────────────────────────
+
 #
 # HISTORY
 #
@@ -55,16 +14,17 @@
 HISTFILE=~/.config/zsh/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
-setopt APPEND_HISTORY         # Add to history file, across sessions, not replace
-setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
-setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
-unsetopt HIST_VERIFY          # History expansion, execute the line directly
-setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
-setopt SHARE_HISTORY          # Share history between all sessions.
-unsetopt HIST_VERIFY          # Whenever the user enters a line with history expansion, execute the line directly
+setopt APPEND_HISTORY         # add to history file, across sessions, not replace
+setopt HIST_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS       # do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS      # do not display a previously found event.
+setopt HIST_SAVE_NO_DUPS      # do not write a duplicate event to the history file.
+unsetopt HIST_VERIFY          # history expansion, execute the line directly
+setopt EXTENDED_HISTORY       # write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY          # share history between all sessions.
+unsetopt HIST_VERIFY          # whenever the user enters a line with history expansion, execute the line directly
+
 #
 # OPTIONS
 #
@@ -74,7 +34,7 @@ setopt autocd                 #
 setopt beep                   #
 setopt extendedglob           #
 setopt nomatch                #
-setopt interactivecomments    # Let use comment in interactive mode
+setopt interactivecomments    # let use comment in interactive mode
 bindkey -e
 
 #
