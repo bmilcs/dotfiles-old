@@ -27,29 +27,31 @@ function gtc() {
 #
 
 # create dir & cd into it
-function mdir() {
-  mkdir -p "$@" && cd "$@";
-  }
+  function mdir() {
+    mkdir -p "$@" && cd "$@";
+    }
 
-# debian: install app
-function apti() {
-  sudo apt-get install $@ -y
-  }
+if [[ $DISTRO = arch ]]; then
+  # debian: install app
+  function apti() {
+    sudo apt-get install $@ -y
+    }
 
-# debian: delete & purge app
-function aptr() {
-  sudo apt-get purge $@ -y
-  }
+  # debian: delete & purge app
+  function aptr() {
+    sudo apt-get purge $@ -y
+    }
 
-# debian: find app
-function aptf() {
-  dpkg --get-selections | grep $@
-  }
+  # debian: find app
+  function aptf() {
+    dpkg --get-selections | grep $@
+    }
 
-# debian: get app status
-function apts() {	
-  systemctl status $@; 
-  }
+  # debian: get app status
+  function apts() {	
+    systemctl status $@; 
+    }
+fi
 
 #
 # SERVICES

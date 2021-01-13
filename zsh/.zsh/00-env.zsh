@@ -22,6 +22,7 @@ export PATH
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
+[[ -z $(which pacman) ]] && DISTRO='arch' || DISTRO='debian'
 
 #
 # ENV VAR
@@ -30,9 +31,6 @@ export BAK=$HOME/.backup
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
-
-
-[[ -z $(which pacman) ]] && echo 'arch.' && DISTRO='arch' || echo 'deb.' && DISTRO='debian'
 
 #
 # LOCALE

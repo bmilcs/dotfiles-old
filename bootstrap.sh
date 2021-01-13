@@ -1,10 +1,20 @@
 #!/bin/bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   dotfile repo bootstrap / deployment              
+#────────────────────────────────────────────────────────────
+#     TODO 1. backup existing files
+#          2. for cfg in pwd, stow -R $cfg
 
-#
-# bmilcs
-# DOTFILE BOOTSTRAP
-#
 
-# TODO 1. backup existing files
-#      2. for cfg in pwd, stow -R $cfg
+if [[ $DISTRO = arch ]]; then
+
+else
+
+fi
+
 

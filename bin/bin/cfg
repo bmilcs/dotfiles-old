@@ -7,71 +7,39 @@
 #────────────────────────────────────────────────────────────
 #   config file editor
 #────────────────────────────────────────────────────────────
+# TODO Add /bin/
+# TODO Add generic read thru func
+
 source _head
 
 _t cfg editor
 
-etxt() {
-  _a TXT 
+
+
+genls() {
+  _a $2
   unset options i
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
-  done < <(find "$D/txt/" -maxdepth 3 -type f -name "*" -print0 )
-  select opt in "${options[@]}" ; do
+  done < <(find "$1" -maxdepth 3 -type f -name "*" -print0 )
+  select opt in "${options[@]}" $3 ; do
     case $opt in
       *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
-    esac
-  done
-  }
-
-evim() {
-  _a VIM 
-  unset options i
-  while IFS= read -r -d $'\0' f; do
-    options[i++]="$f"
-  done < <(find "$D/vim/" -maxdepth 3 -type f -name "*vim" -print0 )
-  select opt in "${options[@]}" $D/vim/.vimrc; do
-    case $opt in
-      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
-    esac
-  done
-  }
-
-ezsh() {
-  _a ZSH
-  unset options i
-  while IFS= read -r -d $'\0' f; do
-    options[i++]="$f"
-  done < <(find "$D/zsh/" -maxdepth 3 -type f -name "*zsh" -print0 )
-  select opt in "${options[@]}" $D/zsh/.zshrc; do
-    case $opt in
-      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
-    esac
-  done
-  }
-
-epoly() {
-  _a polybar
-  unset options i
-  while IFS= read -r -d $'\0' f; do
-    options[i++]="$f"
-  done < <(find "$D/polybar/" -maxdepth 3 -type f -print0 )
-  select opt in "${options[@]}" ; do
-    case $opt in
-      *) nvim $opt ; exit 0 ;;
     esac
   done
   }
 
 if [ $# = 0 ]; then
-  _o 0   txt
-  _o 1   vim  
-  _o 2   zsh  
+  _o t   txt
+  _o b   bin
+  _o 1   zsh  
+  _o 2   vim  
   _o 3   polybar  
   _o 4   sxhkd  
   _o 5   bspwm  
   _o 6   tmux  
-  _o 7   .xresources  
+  _o 7   xorg
+  _o 8   ncmpcpp
   read sel
 else
   sel=${1}
@@ -79,16 +47,17 @@ fi
 
 
 case $sel in
-  0) etxt;;
-  1) evim;;
-  2) ezsh;;
-  3) epoly;;
-  4) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
-  5) nvim $D/bspwm/.config/bspwm/bspwmrc;;
-  6) nvim $D/tmux/.tmux.conf;;
-  6) nvim $D/xorg/.Xresources;;
-  7) nvim $D/xorg/.xinitrc;;
-  8) sudovim /etc/hosts;;
+  t) genls $D/txt TXT;;
+  b) genls $D/bin BIN;;
+  1) genls $D/zsh ZSH;;
+  2) genls $D/vim VIM;;
+  3) genls $D/polybar POLYBAR;;
+  4) nvim $D/sxhkd/.config/sxhkd/sxhkdrc SXHKD;;
+  5) nvim $D/bspwm/.config/bspwm/bspwmrc BSPWM;;
+  6) nvim $D/tmux/.tmux.conf TMUX;;
+  7) genls $D/xorg XORG;;
+  8) genls $D/ncmpcpp NCMPCPP;;
+  #8) sudovim /etc/hosts;;
   #xterm) vim ~/.Xresources.d/xterm;;
 esac
 
