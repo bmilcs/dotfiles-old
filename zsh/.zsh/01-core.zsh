@@ -148,7 +148,9 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 
 # TODO: bindkey -> zle -al (show all registered commands)
 # TODO: FIX AUTOSUGGEST-ACCEPT BINDING
-bindkey '^j' autosuggest-accept 
+bindkey '^l' autosuggest-accept 
+bindkey '^j' up-line-or-beginning-search
+bindkey '^k' down-line-or-beginning-search
 bindkey '^H' backward-kill-word # ctrl backspace delete word
 bindkey '^[[3;5~' kill-word
 
