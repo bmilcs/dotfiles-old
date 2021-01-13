@@ -1,9 +1,9 @@
-# "function" cheatsheet
-> bmilcs' cheatsheat on shell scripting, functions, etc.
+### scripting & general bash cheatsheet | @bmilcs 
+> i'm not good at words =P
 
+### ARGUMENTS
 
-### ARGUMENTS / PARAMETERS
-
+<!---
 var | desc
 -|:-
 $#    |   # of arguments
@@ -11,90 +11,72 @@ $?    |   exit status, last command (0=true/success)
 $0    |   first word of entered command (the name of the shell program)
 $*    |   all arguments command line ($1 $2 ...).
 "$@"  |   all arguments command line, individually quoted ("$1" "$2" ...).
+-->
+
+
+     $#    # of arguments
+     $?    exit status, last command (0=true/success)
+     $0    first word of entered command (the name of the shell program)
+     $*    all arguments command line ($1 $2 ...).
+    "$@"   all arguments command line, individually quoted ("$1" "$2" ...).
 
 ---
 
-# IF... ELSE
+### CONDITIONAL
+> if statement stuff
 
-**SYNTAX**
-
-    [[ 1 -eq 1 ]] && echo "duh!"
-    [[ 1 -eq 2 ]] || echo "of course not!"
-
-    if [[ 1 -eq 2 ]]
-    then
-    elif
-    fi
-
-    if [[ 1 -eq 2 ]]; then
-    fi
-
+    # test command
+    test X || [ expression ] || test || [ ]
 
     if [[ 1 -eq 2 ]]; then gogogo; fi
-    fi
 
+    [[ 1 -eq 1 ]] && echo "duh!"
 
-# TEST COMMAND (IF)
+    [[ 1 -eq 2 ]] || echo "of course not!"
 
-**SYNTAX**
+<center>
 
-    test EXPRESSION
-    [ expression ]
-    test
-    [ ]
+EXPRESSIONS | EXPRESSIONS | IF | IF
+---|---|---|---
+**(** exp **)**        | expression is true       |  [ ]   | test v1
+**!** exp              | expression is false      | [[ ]]  | test v2, wildcards
+e1 **-a** e2           | AND: both true           |  ( )   | runs in subshell, has exit code
+e1 **&&** e2           | AND: both true           | (( ))  | arithmatic, exit code, if acts upon it
+e1 **-o** e2           | OR: either is true       | if x   |
+e1 **&#124;&#124;** e2 | OR: either is true       |        |
 
-### EXPRESSIONS
+---
 
-EXPRESSION | ...
----|---
-**(** exp **)** | expression is true
-**!** exp | expression is false
-e1 **-a** e2 | AND: both true 
-e1 **&&** e2 | AND: both true 
-e1 **-o** e2 | OR: 1 is true
-e1 **&#124;&#124;** e2 | OR: 1 is true
+ABC | STRINGS  | 123  | INTEGERS 
+--|--|--|--
+**-n** str | length is NON-zero | x **-ge** y | greater/equal: i1 >= i2
+**-z** str | length IS zero | x **-gt** y | greater: i1 > i2
+s1 **=** s2 | equal w/  patterns! [[ $x = derp* ]] |  x **-le** y | lesser/equal: i1 <= i2
+[[ s1 **=** "s2" ]] | equal, literal, NO patterns |  x **-lt** y | lesser: i1 < i2
+s1 **!=** s2 | strings NOT are equal |  x **-ne** y | NOT equal to: i1 != i2
+c > a | true: c comes after a (greater value) | ... | ...
+c < a | false: a comes before c (less than)  | ... | ...
 
-### STRINGS
-
-STRINGS | ...
---|--
-**-n** str | string length is NON-zero
-**-z** str | string length IS zero
-s1 **=** s2 | strings are equal, pattern matching
-[[ s1 **=** "s2" ]] | strings are equal, literal, NO pattern matching
-s1 **!=** s2 | strings NOT are equal
-c > a | true: c comes after a (greater value)
-c < a | false: a comes before c (less than)
-[[ $NAME = derp* ]] | wildcard matching
-
-
-### INTEGERS
-INTEGERS | ...
---|--
-x **-eq** y | integers equal
-x **-ge** y | greater/equal: i1 >= i2
-x **-gt** y | greater: i1 > i2
-x **-le** y | lesser/equal: i1 <= i2
-x **-lt** y | lesser: i1 < i2
-x **-ne** y | NOT equal to: i1 != i2
-
-### FILES/DIRS
-FILES | DEF | IE
---:|:--|:--
-**-f** | True: is a regular File. | [[ -f demofile ]]
-**-d** | True: is a Directory. | [[ -d demofile ]]
-**-e** | True: file/dir exists. | [[ -e demofile ]]
-**-h** | True: is a symbolic Link. | [[ -h demofile ]]
-**-L** | True: is a symbolic Link. | [[ -L demofile ]]
-**-G** | True: owned by group id. | [[ -G demofile ]]
-**-O** | True: owned by user id. | [[ -O demofile ]]
-**-r** | True: is readable. | [[ -r demofile ]]
-**-w** | True: is writable. | [[ -w demofile ]]
-**-x** | True: is executable. | [[ -x demofile ]]
-x **-nt** y | True x is newer than y. | [[ demofile1 -nt $DEMO ]]
+FILES | DIRS | . 
+--:|---|:--
+**-f** | true: is a regular file. | [[ -f demofile ]]
+**-d** | true: is a directory. | [[ -d demofile ]]
+**-e** | true: file/dir exists. | [[ -e demofile ]]
+**-h** | true: is a symbolic link. | [[ -h demofile ]]
+**-L** | true: is a symbolic link. | [[ -L demofile ]]
+**-G** | true: owned by group id. | [[ -G demofile ]]
+**-O** | true: owned by user id. | [[ -O demofile ]]
+**-r** | true: is readable. | [[ -r demofile ]]
+**-w** | true: is writable. | [[ -w demofile ]]
+**-x** | true: is executable. | [[ -x demofile ]]
+x **-nt** y | true x is newer than y. | [[ demofile1 -nt $DEMO ]]
 x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
 
-# CASE
+
+
+</center>
+
+### CASE
 
 > elegant if/then
 
@@ -105,16 +87,16 @@ x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
     esac
 
 
-# LOOPS
+### LOOPS
 
-### FOR 
+#### FOR 
 
 > all files in current directory
 
       for d in * ; do 
 
 
-### WHILE 
+#### WHILE 
 
 ---
 
@@ -136,7 +118,8 @@ x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
       if [ ! -d /path ];then
 
 
-# INPUT OUTPUT REDIRECTS
+
+### INPUT OUTPUT REDIRECTS
 
 [**source**](https://gist.github.com/bmilcs/a51512131d44077a6ee2db818ccb6dca)
 

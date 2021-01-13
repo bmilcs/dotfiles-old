@@ -4,3 +4,9 @@
 
 [0m[34m[1m[[0m[34m add missing files & commit [0m[34m[1m][0m
 
+[main f6a5f36] cfg improvement evim ezsh
+ 5 files changed, 72 insertions(+), 87 deletions(-)
+ rewrite bootstrap.sh (87%)
+ create mode 100644 genls
+    [0m[32m[√] done. [0m
+

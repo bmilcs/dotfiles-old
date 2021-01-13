@@ -11,49 +11,24 @@
 " PLUGINS
 "
 
-" help plugins load 
-filetype plugin indent on
-
-" plugin manager 
-call plug#begin('~/.vim/plugged')
-
-" general improvements
-Plug 'tpope/vim-sensible'
-
-" colorscheme
-Plug 'arcticicestudio/nord-vim'
-
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-" git 
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" file browser
-Plug 'preservim/nerdtree' |
+filetype plugin indent on                       " help plugins load 
+call plug#begin('~/.vim/plugged')               " plugin manager 
+  Plug 'tpope/vim-sensible'                     " general improvements
+  Plug 'arcticicestudio/nord-vim'               " colorscheme
+  Plug 'christoomey/vim-tmux-navigator'         " tmux
+  Plug 'airblade/vim-gitgutter'                 " git 
+  Plug 'tpope/vim-fugitive'
+  Plug 'preservim/nerdtree'                     " file browser
       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
       \ Plug 'ryanoasis/vim-devicons'
-
-" fzf
-Plug '~/.fzf'
-
-" color hexcode highlighter
-Plug 'chrisbra/Colorizer'
-
-" status bar 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" language: linux configs
-Plug 'mboughaba/i3config.vim'
-Plug 'kovetskiy/sxhkd-vim'
-
-" language: markdown (.md)
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-" end of plugins
-call plug#end()
+  Plug '~/.fzf'                                 " fzf
+  Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
+  Plug 'vim-airline/vim-airline'                " status bar 
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'mboughaba/i3config.vim'                 " language: linux configs
+  Plug 'kovetskiy/sxhkd-vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+call plug#end()                                 " end of plugins
 
 set rtp+=~/.fzf
 
@@ -69,6 +44,8 @@ vmap > >gv
 " macros
 nnoremap <Space> @q " quick macro replay @q
 nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left> " Easily edit the macro stored at register q
+
+let @z = '0i  EEa€kD€kDj'
 nnoremap <leader>ndl :/$^€kb€kb^$:;d//g;d///g/€kb;g//d
 nnoremap <leader>nl :/^$\n^$^M;g//d^M
 
@@ -95,11 +72,6 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " clipboard > system
-  " * = PRIMARY (vim)
-  " + = CLIPBOARD (system)
-  " set clipboard=unnamedplus  " + plus, system ^c)
-  " noremap <Leader>y "*y
-  " noremap <Leader>p "*p
 set clipboard=unnamed       " * primary, on select 
 noremap <Leader>p "+p
 noremap <Leader>y "+y
@@ -261,18 +233,26 @@ let g:airline_powerline_fonts = 1
 "
 
 " PLUGINS
-"
+
   "Plug 'godlygeek/tabular'
   "Plug 'plasticboy/vim-markdown'
 
 " KEY BINDINGS
 
-    " insert mode:
-    " inoremap <Up> <nop>
-    " inoremap <Down> <nop>
-    " inoremap <Left> <nop>
-    " inoremap <Right> <nop>
+  " insert mode:
+  " inoremap <Up> <nop>
+  " inoremap <Down> <nop>
+  " inoremap <Left> <nop>
+  " inoremap <Right> <nop>
 
-    " clipboard mod 
-    " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
-    " noremap <A-V> :r !xclip -o <CR>
+  " clipboard mod 
+  " vnoremap <C-c> y: call system("xclip -i", getreg("\""))<CR>
+  " noremap <A-V> :r !xclip -o <CR>
+    
+" CLIPBOARD    
+    
+  " * = PRIMARY (vim)
+  " + = CLIPBOARD (system)
+  " set clipboard=unnamedplus  " + plus, system ^c)
+  " noremap <Leader>y "*y
+  " noremap <Leader>p "*p

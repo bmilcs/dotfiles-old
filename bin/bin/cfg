@@ -7,21 +7,16 @@
 #────────────────────────────────────────────────────────────
 #   config file editor
 #────────────────────────────────────────────────────────────
-# TODO Add /bin/
-# TODO Add generic read thru func
 
 source _head
-
 _t cfg editor
-
-
 
 genls() {
   _a $2
   unset options i
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
-  done < <(find "$1" -maxdepth 3 -type f -name "*" -print0 )
+  done < <(find "$1" -maxdepth 3 -type f -name "*" -print0 | sort -z )
   select opt in "${options[@]}" $3 ; do
     case $opt in
       *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
@@ -30,33 +25,34 @@ genls() {
   }
 
 if [ $# = 0 ]; then
-  _o t   txt
-  _o b   bin
-  _o 1   zsh  
-  _o 2   vim  
-  _o 3   polybar  
-  _o 4   sxhkd  
-  _o 5   bspwm  
-  _o 6   tmux  
-  _o 7   xorg
-  _o 8   ncmpcpp
+  _o t     txt
+  _o b     bin
+  _o z     zsh  
+  _o v     vim  
+  _o p     polybar  
+  _o k     sxhkd  
+  _o bsp   bspwm  
+  _o tmux  tmux  
+  _o x     xorg
+  _o n     ncmpcpp
   read sel
 else
   sel=${1}
 fi
 
+clear
 
 case $sel in
   t) genls $D/txt TXT;;
   b) genls $D/bin BIN;;
-  1) genls $D/zsh ZSH;;
-  2) genls $D/vim VIM;;
-  3) genls $D/polybar POLYBAR;;
-  4) nvim $D/sxhkd/.config/sxhkd/sxhkdrc SXHKD;;
-  5) nvim $D/bspwm/.config/bspwm/bspwmrc BSPWM;;
-  6) nvim $D/tmux/.tmux.conf TMUX;;
-  7) genls $D/xorg XORG;;
-  8) genls $D/ncmpcpp NCMPCPP;;
+  z) genls $D/zsh ZSH;;
+  v) genls $D/vim VIM;;
+  p) genls $D/polybar POLYBAR;;
+  k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
+  bsp) nvim $D/bspwm/.config/bspwm/bspwmrc;;
+  tm|tmux) nvim $D/tmux/.tmux.conf;;
+  x|xorg) genls $D/xorg XORG;;
+  n|ncm) genls $D/ncmpcpp NCMPCPP;;
   #8) sudovim /etc/hosts;;
   #xterm) vim ~/.Xresources.d/xterm;;
 esac

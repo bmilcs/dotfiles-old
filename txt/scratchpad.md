@@ -1,5 +1,10 @@
 ### archlinux notepad [bmilcs]
 
+:55,59norm!d$7kA | ^P"
+
+
+
+
 
 https://www.reddit.com/r/linux/comments/61dbym/managing_dotfiles_a_survey/
 
