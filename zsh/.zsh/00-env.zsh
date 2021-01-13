@@ -31,6 +31,9 @@ export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
 
+
+[[ ! -z $(which pacman) ]] && echo 'arch.' && DISTRO='arch' || echo 'deb.' && DISTRO='debian'
+
 #
 # LOCALE
 #

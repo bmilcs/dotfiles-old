@@ -77,15 +77,15 @@ setopt COMPLETE_ALIASES # auto complete aliases
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}”
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
 zstyle ':completion:*' menu select # menu style, tab
-zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
 zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
 zstyle ':completion:*:matches' group yes
 zstyle ':completion:*:options' description yes
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
-zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
+zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
+zstyle ':completion:*:messages' format '%F{purple}%d%f'
+zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '[%F{yellow}%B%d]'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
