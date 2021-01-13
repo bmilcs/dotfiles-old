@@ -12,7 +12,7 @@ source _head
 _t cfg editor
 
 etxt() {
-  _a VIM 
+  _a TXT 
   unset options i
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
@@ -30,7 +30,7 @@ evim() {
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
   done < <(find "$D/vim/" -maxdepth 3 -type f -name "*vim" -print0 )
-  select opt in $D/vim/.vimrc "${options[@]}" ; do
+  select opt in "${options[@]}" $D/vim/.vimrc; do
     case $opt in
       *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
     esac
@@ -43,7 +43,7 @@ ezsh() {
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
   done < <(find "$D/zsh/" -maxdepth 3 -type f -name "*zsh" -print0 )
-  select opt in $D/zsh/.zshrc "${options[@]}" ; do
+  select opt in "${options[@]}" $D/zsh/.zshrc; do
     case $opt in
       *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
     esac

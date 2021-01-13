@@ -129,6 +129,8 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ### links
 
+- **https://github.com/bmilcs/.dotfiles/blob/master/zsh/.zshrc**
+
 - [**dotfile organization reddit (3yrs)**](https://www.reddit.com/r/linux/comments/61dbym/managing_dotfiles_a_survey/) 
 
   > One git repository for using with stow (eg. ~/.dotfiles). Git submodules for vim plugins etc. Branches for host-specific configuration, rebasing on master. Share master publicly.
