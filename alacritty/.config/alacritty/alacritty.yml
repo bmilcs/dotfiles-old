@@ -92,15 +92,15 @@ font:
   # Normal (roman) font face
   normal:
     #family: SauceCodePro Nerd Font 
-    family: DejaVu Sans Mono
+    family: DejaVu Sans Mono for Powerline
     style: Regular
   bold:
     #family: SauceCodePro Nerd Font 
-    family: DejaVu Sans Mono
+    family: DejaVu Sans Mono for Powerline
     style: Bold
   italic:
     #family: SauceCodePro Nerd Font 
-    family: DejaVu Sans Mono
+    family: DejaVu Sans Mono for Powerline
     style: Italic
   #bold_italic:
     #family: monospace
