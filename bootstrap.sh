@@ -12,11 +12,23 @@
 
 source ./bin/bin/_head
 
+#
+# ARCHLINUX
+#
+
 if [[ $DISTRO = arch ]]; then
 
-  stow -R bash bin bspwm clipit dev gtk-2.0 gtk-3.0 htop i3 mpd ncmpcpp neofetch nitrogen picom polybar rofi sxhkd thunar tmux vim xorg zsh
+  for dir in ~/bm ; do
+    if [[ ! $dir == txt ]] && [[ ! $dir == git ]]; then
+      _i stow -R $dir
+    fi  
+  done
 
 else
+
+#
+# DEB-BASED
+#
 
   reqs=("curl" "zsh" "neovim" "git")
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || sudo apt-get install ${reqs[@]}
@@ -30,7 +42,7 @@ else
 
 
   [[ -d ~/.zsh ]] || stow -R zsh 
-  [[ -d ~/.vim ]] || stow -R zsh vim
+  [[ -d ~/.vim ]] || stow -R vim
   stow -R git bin
 fi
 
