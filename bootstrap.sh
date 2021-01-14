@@ -36,18 +36,24 @@ else
 # DEB-BASED
 #
 
+_a checking for missing packages
+
   reqs=("curl" "zsh" "neovim" "git")
-  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || sudo apt-get install ${reqs[@]}
+  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
+
+  _s all packages present
 
   # zplugins
-  [[ -d ~/.zplugin ]] || ( mkdir -p ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin )
+  [[ -d ~/.zplugin ]] || ( _a zsh plugin setup started ; mkdir -p ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin && _s completed zsh plugin setup )
 
   # vim-plug
-  [[ -f ~/.local/share/nvim/site/autoload/plug.vim ]] || (echo "plug vim missing" && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-  [[ -d ~/.zsh ]] || stow -R zsh 
-  [[ -d ~/.vim ]] || stow -R vim
-  stow -R git bin
+  [[ -f ~/.local/share/nvim/site/autoload/plug.vim ]] || (_a vim-plug setup started && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' && _s completed vim-plug setup)
+
+  _a stowing necessary files
+  [[ -d ~/.zsh ]] || stow -R zsh && _s stowed zsh
+  [[ -d ~/.vim ]] || stow -R vim && _s stowed vim
+  stow -R git bin && _s stowed git, bin
 fi
 
 
