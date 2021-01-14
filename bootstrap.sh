@@ -45,7 +45,7 @@ _a checking for missing packages
 
   # zplugins
   [[ -d ~/.zplugin ]] || ( _a zsh plugin setup started ; mkdir -p ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin && _s completed zsh plugin setup )
-
+mkdir -p ~/.config/zsh
   # vim-plug
   [[ -f ~/.local/share/nvim/site/autoload/plug.vim ]] || (_a vim-plug setup started && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' && _s completed vim-plug setup)
