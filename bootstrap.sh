@@ -21,8 +21,8 @@ DISTRO='arch'; else DISTRO='debian'; fi
 if [[ ${DISTRO} == "arch" ]]; then
 
   for dir in ~/bm/*/ ; do
-    if [[ ! $dir == txt ]] && [[ ! $dir == git ]]; then
-      _i stow -R $dir
+    if [[ ! $dir == *txt* ]] && [[ ! $dir == *asset* ]]; then
+      stow -R $(basename $dir)
     fi  
   done
   exit 0
