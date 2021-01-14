@@ -18,21 +18,22 @@
 alias up="_a pacman ; pm -Syyuu ; _a yay ; yay -Syyuu"
 
 # pacman
-alias pacman="sudo pacman"
-      compdef pacman="pacman"
-alias pm="pacman"
-      compdef pm="pacman"
-alias pmls="pacman -Qe | less"
-      compdef pmls="pacman"
-alias pmg="pacman -Qe|grep"
-      compdef pmg="pacman"
+if [[ $D = arch ]]; then
+  alias pacman="sudo pacman"
+        compdef pacman="pacman"
+  alias pm="pacman"
+        compdef pm="pacman"
+  alias pmls="pacman -Qe | less"
+        compdef pmls="pacman"
+  alias pmg="pacman -Qe|grep"
+        compdef pmg="pacman"
 
-# aur | yay
-alias yayls="yay -Qe | less"
-      compdef yayls="yay"
-alias yayg="yay -Qe | grep"
-      compdef yayg="yay"
-
+  # aur | yay
+  alias yayls="yay -Qe | less"
+        compdef yayls="yay"
+  alias yayg="yay -Qe | grep"
+        compdef yayg="yay"
+fi
 #
 # GITHUB | DOTFILE REPO
 #
@@ -150,8 +151,7 @@ alias umount="sudo umount"
 
 # fstab
  alias fstab="sudo vim /etc/fstab"
- alias fstabt="sudo findmnt --verify --verbose"
-       compdef fstabt="findmnt"
+ dpkg -s "findmnt" >/dev/null 2>&1 && ( alias fstabt="sudo findmnt --verify --verbose" ; compdef fstabt="findmnt" )
 
 # nfs shares
 alias nfs="sudo vim /etc/exports"

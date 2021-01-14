@@ -15,6 +15,6 @@ fi
 [[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.zsh" 2> /dev/null
 
 # key bindings
-source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
+[[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
 
 

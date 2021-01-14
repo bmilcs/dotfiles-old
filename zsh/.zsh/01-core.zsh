@@ -181,16 +181,6 @@ rehash_precmd() {
 }
 add-zsh-hook -Uz precmd rehash_precmd
 
-
-#
-# XCAPE CTRL=ESCAPE
-#
-xcape -e 'Control_L=Escape'
-
-
-
-
-
 #
 # UNDER CONSTRUCTION
 #
