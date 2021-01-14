@@ -22,7 +22,9 @@ if [[ ${DISTRO} == "arch" ]]; then
 
   for dir in ~/bm/*/ ; do
     if [[ ! $dir == *txt* ]] && [[ ! $dir == *asset* ]]; then
+      _i bootstraping $(basename $dir)...
       stow -R $(basename $dir)
+      _s
     fi  
   done
   exit 0
