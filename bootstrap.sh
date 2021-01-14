@@ -14,12 +14,13 @@ source ./bin/bin/_head
 
 if [ -f "/etc/arch-release" ]; then
 DISTRO='arch'; else DISTRO='debian'; fi
+_t bmilcs/bootstrap initiated for $DISTRO
+
 #
 # ARCHLINUX
 #
 
 if [[ ${DISTRO} == "arch" ]]; then
-
   for dir in ~/bm/*/ ; do
     if [[ ! $dir == *txt* ]] && [[ ! $dir == *asset* ]]; then
       _i bootstraping $(basename $dir)...
@@ -27,11 +28,14 @@ if [[ ${DISTRO} == "arch" ]]; then
       _s
     fi  
   done
+  _t bmilcs/bootstrap complete
   exit 0
 else
+
 #
 # DEB-BASED
 #
+
   reqs=("curl" "zsh" "neovim" "git")
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || sudo apt-get install ${reqs[@]}
 
