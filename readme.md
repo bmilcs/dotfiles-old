@@ -59,6 +59,10 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
+- [ ] ssh keys > private repo
+- [ ] segment arch workstation & barebones vm dotfiles
+
+
 **via YouTube ?**
 
 - research: npm

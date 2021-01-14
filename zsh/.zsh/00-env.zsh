@@ -22,7 +22,9 @@ export PATH
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
-[[ -z $(which pacman) ]] && DISTRO='arch' || DISTRO='debian'
+if [ -f "/etc/arch-release" ]; then
+DISTRO='arch'; else DISTRO='debian'; fi
+
 
 #
 # ENV VAR

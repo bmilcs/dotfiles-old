@@ -72,8 +72,6 @@ FILES | DIRS | .
 x **-nt** y | true x is newer than y. | [[ demofile1 -nt $DEMO ]]
 x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
 
-
-
 </center>
 
 ### CASE
