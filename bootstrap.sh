@@ -31,7 +31,7 @@ else
 
   [[ -d ~/.zsh ]] || stow -R zsh 
   [[ -d ~/.vim ]] || stow -R zsh vim
-  stow -R git
+  stow -R git bin
 fi
 
 
