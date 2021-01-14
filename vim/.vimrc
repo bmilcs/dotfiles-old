@@ -2,9 +2,11 @@
 " VIM BOOTSTRAP
 " -bmilcs
 "
+
 for rcfile in split(globpath("~/.vim/rc", "*.vim"), '\n') 
     execute('source '.rcfile)
 endfor
+
 " for cfg (~/.vim/*.vim); do execute 'source' $cfg; done
 
 "	for name in *
