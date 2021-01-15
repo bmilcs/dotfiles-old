@@ -26,3 +26,5 @@
     resolveConflict    = false
     implicitIdentity   = false
     detachedHead       = false
+[core]
+	editor = nvim
