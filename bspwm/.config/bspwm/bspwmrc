@@ -67,6 +67,7 @@ bspc rule -a gimp* desktop='^4' state=floating follow=on
   nitrogen --restore &
   pulseaudio --start &
   unclutter &
+  xcape -e 'Control_L=Escape'
   }
 
 
