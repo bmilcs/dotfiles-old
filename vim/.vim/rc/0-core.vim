@@ -36,8 +36,8 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   Plug 'vim-airline/vim-airline'                " status bar 
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'mboughaba/i3config.vim'                 " language: linux configs
+  Plug 'vim-airline/vim-airline-themes'         " status bar themes
+"  Plug 'mboughaba/i3config.vim'                 " i3 syntax
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
 call plug#end()                                 " end of plugins
