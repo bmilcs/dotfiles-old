@@ -9,8 +9,6 @@
 " TODO shortcut: sort alphabetically --- :sort u
 "              : bring up errors --- :messages
 
-" scriptencoding utf-8
-
 " Install vim-plug and plugins if vim-plug is not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -18,7 +16,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 autocmd! VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | q | endif
-"
+
 "
 " PLUGINS
 "
@@ -161,6 +159,7 @@ let g:colorizer_auto_color = 1  " colorizer (auto)
 " PLUGIN: NERDTREE
 "
 
+set modifiable " allow d
 let g:NERDTreeWinSize=20 " column width
 
 " bind f6: toggle view
