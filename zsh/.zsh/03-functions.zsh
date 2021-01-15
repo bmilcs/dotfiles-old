@@ -14,7 +14,7 @@ source _head
 #
 
 # commit changes 
-function gtc() {
+function gtca() {
   _t dotfile repo commit
   _a add missing files \& commit
   gt add $D/. 
@@ -27,7 +27,7 @@ function gtc() {
 #
 
 # create dir & cd into it
-  function mdir() {
+function mdir() {
     mkdir -p "$@" && cd "$@";
     }
 
@@ -169,6 +169,8 @@ function dre() {
 vim() {
   if [ $# -eq 0 ]; then   # no argument, launch nvim
     nvim
+  elif [ $# -gt 1 ]; then  # multiple arguments, skip function
+    nvim $*
   elif [ -d "$@" ]; then  # if argument = a directory, error
     echo "error: \"$@\" is a DIRECTORY. Denied."
   elif [ -w $@ ]; then    # if exists and writeable. nvim TIME!"

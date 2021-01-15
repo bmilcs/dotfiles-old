@@ -32,9 +32,10 @@ fi
 #
 
 exec bspwm
+xcape -e 'Control_L=Escape'
+
 
 #
 # KEY REMAP
 #
 
-xcape -e 'Control_L=Escape'

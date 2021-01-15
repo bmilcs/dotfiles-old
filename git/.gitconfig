@@ -16,9 +16,9 @@
 	c = commit -a -m
   ps = push
 [difftool]
-  prompt = false
+	prompt = false
 [difftool "nvimdiff"]
-  cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [advice]
     pushNonFastForward = false
     statusHints        = false
@@ -28,3 +28,7 @@
     detachedHead       = false
 [core]
 	editor = nvim
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff

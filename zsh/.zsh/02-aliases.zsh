@@ -46,7 +46,7 @@ alias gtp="gt push "
 # TMUX
 #
 
-alias t="tmux"
+alias t="tmux -u"
       compdef t="tmux"
 alias ta="t a -t"
       compdef ta="tmux"
