@@ -13,8 +13,8 @@
 source ./bin/bin/_head
 
 if [ -f "/etc/arch-release" ]; then
-DISTRO='arch'; else DISTRO='debian'; fi
-_t bmilcs/bootstrap initiated for $DISTRO
+  DISTRO='arch'; else DISTRO='debian'; fi
+  _t bmilcs/bootstrap initiated for $DISTRO
 
 #
 # ARCHLINUX
@@ -29,7 +29,7 @@ if [[ ${DISTRO} == "arch" ]]; then
     fi  
   done
   _t bmilcs/bootstrap complete
-  exit 0
+
 else
 
 #
@@ -55,19 +55,5 @@ mkdir -p ~/.config/zsh
   [[ -d ~/.vim ]] || stow -R vim && _s stowed vim
   stow -R git bin && _s stowed git, bin
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
