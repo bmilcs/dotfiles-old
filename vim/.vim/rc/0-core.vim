@@ -37,7 +37,7 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   Plug 'vim-airline/vim-airline'                " status bar 
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
-"  Plug 'mboughaba/i3config.vim'                 " i3 syntax
+
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
 call plug#end()                                 " end of plugins
@@ -61,15 +61,13 @@ nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><le
 nnoremap ; :
 nnoremap : ;
 
-" disable arrow keys
-noremap <Up> <nop>    
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <Down> <nop>
-
 " vs code > new line 
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
+
+" vs code > move lines up/down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
 
 " clipboard > system
 set clipboard=unnamed       " * primary, on select 
@@ -301,16 +299,15 @@ xmap <Leader>r
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
 
-
-
 "
 " GRAVEYARD
 "
 
 " PLUGINS
 
-  "Plug 'godlygeek/tabular'
-  "Plug 'plasticboy/vim-markdown'
+  "Plug 'godlygeek/tabular'                      " markdown
+  "Plug 'plasticboy/vim-markdown'                " markdown
+"  Plug 'mboughaba/i3config.vim'                 " i3 syntax
 
 " KEY BINDINGS
 
