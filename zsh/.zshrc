@@ -4,13 +4,8 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   zsh bootstrap
+#   ZSHRC BOOTSTRAP
 #────────────────────────────────────────────────────────────
 
 # load configs
 for cfg (~/.zsh/*.zsh) source $cfg
-
-
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
-export FZF_DEFAULT_OPTS="--color=dark"
-
