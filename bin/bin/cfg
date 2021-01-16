@@ -46,7 +46,7 @@ case $sel in
   t) genls $D/txt TXT;;
   b) genls $D/bin BIN;;
   z) genls $D/zsh ZSH;;
-  v) genls $D/vim VIM;;
+  v) nvim -S ~/dev/vim.bm;;
   p) genls $D/polybar POLYBAR;;
   k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
   bsp) nvim $D/bspwm/.config/bspwm/bspwmrc;;
