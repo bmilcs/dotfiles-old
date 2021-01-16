@@ -11,6 +11,7 @@
 source _head
 
 if [[ $# == 0 ]]; then
+
   echo "  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"
   echo "  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗"
   echo "  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗"
@@ -19,19 +20,32 @@ if [[ $# == 0 ]]; then
   echo "────────────────────────────────────────────────────────────"
   echo "   bmilcs@yahoo.com | discord: bmilcs#6039 | est 12/2020    "
   echo "────────────────────────────────────────────────────────────"
+
 else
-  [[ -x $1 ]] && rechmod=1 && _w executable file
-  [[ $(head -1 $1) == "#!"* ]] && rebinbash=1 && firstline=$(head -1 $1) && sed -i -e 1,1d $1
+
+  [[ -x $1 ]] && (rechmod=1 && _w executable file)
+
+  [[ $(head -1 $1) == "#!"* ]] && (rebinbash=1 && firstline=$(head -1 $1) && sed -i -e 1,1d $1)
+
+  if [[ $(basename $1) == *".vim" ]] || [[ $(basename $1) == *".vim"* ]] ; then
+    _i vimrc detected - set $CM
+    CM='"'
+  else
+    _i regular file detected - set $CM
+    CM="#"
+  fi
+
   _w $firstline
-  echo "#────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1
-  [[ $# -eq 1 ]] && echo "#   enter desc. here              " | cat - $1 > logotemp && mv logotemp $1 
-  [[ $# -eq 2 ]] && echo "#   $2              " | cat - $1 > logotemp && mv logotemp $1 
-  echo "#────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1 
-  echo "#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com"  | cat - $1 > logotemp && mv logotemp $1
-  echo "#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝" | cat - $1 > logotemp && mv logotemp $1 
-  echo "#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗" | cat - $1 > logotemp && mv logotemp $1 
-  echo "#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗" | cat - $1 > logotemp && mv logotemp $1 
-  echo "#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"  | cat - $1 > logotemp && mv logotemp $1 
+
+  echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1
+  [[ $# -eq 1 ]] && echo "$CM   enter desc. here              " | cat - $1 > logotemp && mv logotemp $1 
+  [[ $# -eq 2 ]] && echo "$CM   $2              " | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com"  | cat - $1 > logotemp && mv logotemp $1
+  echo "$CM  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝" | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗" | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗" | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"  | cat - $1 > logotemp && mv logotemp $1 
   [[ rebinbash -eq 1 ]] && echo $firstline | cat - $1 > logotemp && mv logotemp $1 
   [[ rechmod -eq 1 ]] && chmod +x $1 && _a fixed chmod
 fi
