@@ -42,7 +42,7 @@ alias gs="( cd $D && git status )"
       compdef gs="git"
 alias gt="( cd $D && git )" 
       compdef gt="git"
-alias gtp="( cd $D && git push )"
+alias gp="( cd $D && git push )"
       compdef gtp="git"
 #
 # TMUX

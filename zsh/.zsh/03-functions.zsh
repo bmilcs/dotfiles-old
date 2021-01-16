@@ -18,11 +18,10 @@ source _head
 function ga() {
   cd $D && git add "$*"
   }
-compdef ga="git add"
 
 # commit changes
 function gc() {
-  cd $D && git commit "$*"
+  cd $D && git commit -m "$*"
   }
 
 # commit changes w/ add .
