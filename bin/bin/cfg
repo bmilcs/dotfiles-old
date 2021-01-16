@@ -35,6 +35,8 @@ if [ $# = 0 ]; then
   _o tmux  tmux  
   _o x     xorg
   _o n     ncmpcpp
+  _o e     cfg script
+
   read sel
 else
   sel=${1}
@@ -45,7 +47,7 @@ clear
 case $sel in
   t) genls $D/txt TXT;;
   b) genls $D/bin BIN;;
-  z) genls $D/zsh ZSH;;
+  z) nvim -S ~/dev/zsh.bm;;
   v) nvim -S ~/dev/vim.bm;;
   p) genls $D/polybar POLYBAR;;
   k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
@@ -55,5 +57,6 @@ case $sel in
   n|ncm) genls $D/ncmpcpp NCMPCPP;;
   #8) sudovim /etc/hosts;;
   #xterm) vim ~/.Xresources.d/xterm;;
+  e) nvim $D/bin/bin/cfg
 esac
 
