@@ -92,7 +92,7 @@ zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '[%F{yellow}%B%d]'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*:*:gtc:*' script ~/.zsh/completion/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
 
