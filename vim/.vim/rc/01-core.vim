@@ -12,73 +12,55 @@
 "           sort alphabetically       :sort u
 "           bring up errors           :messages
 "           reload current file       :e!
+"           toggle ve block vs all    :set ve=all/block
+"
+" 2. Git:
+"           establish workflow for commits
+"           add keyboard shortcuts
+"
+" 2. Create titlebar function/hotkey to create headers
+"
 "
 "────────────────────────────────────────────────────────────
 " GENERAL CUSTOMIZATIONS
 "────────────────────────────────────────────────────────────
 
-set nocompatible " set compatibility to vim only
-colorscheme nord " color scheme
-set hidden " hide buffers when they are abandoned
-set backspace=indent,eol,start " fixes common backspace problems
-set shell=zsh\ -l   
-set modelines=0 " turn off modelines
-set formatoptions=tcqrn1    " set textwidth=79
+
+set nocompatible                              " set compatibility to vim only
+colorscheme nord                              " color scheme
+set mouse=a                                   " allow mouse interaction
+set directory^=$HOME/.vim/swap//              " vim swap file location
+set hidden                                    " hide buffers when they are abandoned
+set backspace=indent,eol,start                " fixes common backspace problems
+set shell=zsh\ -l
+set modelines=0                               " turn off modelines
+set formatoptions=tcqrn1                      " set textwidth=79
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
-set scrolloff=5 " display 5 lines above/below the cursor when scrolling with a mouse.
-set ttyfast " speed up scrolling in vim
-set laststatus=2    " status bar
-set showmode  " display options
-set showcmd   " display command
-set matchpairs+=<:> " highlight matching pairs of brackets. use the '%' character to jump between them.
-set number  " show line numbers
+set scrolloff=5                               " display 5 lines above/below the cursor when scrolling with a mouse.
+set ttyfast                                   " speed up scrolling in vim
+set laststatus=2                              " status bar
+set showmode                                  " display options
+set showcmd                                   " display command
+set matchpairs+=<:>                           " highlight matching pairs of brackets. use the '%' character to jump between them.
+set number                                    " show line numbers
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
-set encoding=utf-8    " encoding 
-set hlsearch  " highlight matching search patterns
-set incsearch " enable incremental search
-set ignorecase  " include matching uppercase words with lowercase search term
-set smartcase " include only uppercase words with uppercase search term
-set relativenumber  " line numbers move up/down
-" set wrap    " auto word wrap
-set completeopt=longest,menuone   " view full error msg | ie pumheight?
+set encoding=utf-8                            " encoding 
+set hlsearch                                  " highlight matching search patterns
+set incsearch                                 " enable incremental search
+set ignorecase                                " include matching uppercase words with lowercase search term
+set smartcase                                 " include only uppercase words with uppercase search term
+set relativenumber                            " line numbers move up/down
+" set wrap                                    " auto word wrap
+set nowrap                                    " no word wrap
+set completeopt=longest,menuone               " view full error msg pumheight?
 
 "────────────────────────────────────────────────────────────
-" KEY BINDINGS 
+" VIMINFO
 "────────────────────────────────────────────────────────────
-    
-
-" keep Visual Block after issuing command
-nmap Y y$
-vmap < <gv
-vmap > >gv
-
-
-" swap ; with :
-nnoremap ; :
-nnoremap : ;
-
-" vs code > new line 
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
-" vs code > move lines up/down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-
-" clipboard > system
-set clipboard=unnamed       " * primary, on select 
-noremap <Leader>p "+p
-noremap <Leader>y "+y
-noremap <Leader>P "+P
-noremap <Leader>Y "+Y
-
-"
-" vIMINFO
-"
 
 set viminfo=%,<1500,'25,/250,:1000,n~/.vim/cache/.viminfo
 "et viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
@@ -94,9 +76,9 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.vim/cache/.viminfo
 " set list " display different types of white spaces.
 " set listchars=tab:âº\ ,trail:â¢,extends:#,nbsp:.
 
-"
-" fILE-TYPE AUTOMATION
-"
+"────────────────────────────────────────────────────────────
+" FILE-TYPE AUTOMATION
+"────────────────────────────────────────────────────────────
 
 filetype off " force plugins to load correctly when it is turned back on below.
 syntax on
@@ -114,29 +96,6 @@ filetype on
 \ 'Gread', 'Gwrite', 'Gwq', 'Gdiff', 'Gsdiff', 'Gvdiff', 'Gmove']
   exe 'cnoreabbrev g'.gcommand[1:].' '.gcommand
 endfor
-
-"" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-"
-"" airline symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
 
 "
 " gRAVEYARD
