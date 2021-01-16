@@ -92,6 +92,7 @@ zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '[%F{yellow}%B%d]'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
+# git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
@@ -103,14 +104,13 @@ fpath=(~/.zsh/completion $fpath)
 # AUTOLOADS
 #
 
-autoload -Uz promptinit compinit bashcompinit
+autoload -Uz promptinit && promptinit
+autoload -Uz compinit && compinit -d /home/bmilcs/.config/zsh/.zcompdump
+autoload -Uz bashcompinit && bashcompinit
 autoload -Uz colors && colors # autoload colors
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
-
-compinit -d /home/bmilcs/.config/zsh/.zcompdump
 _comp_options+=(globdots)       # autocomplete .dotfiles
-promptinit                      # 
-bashcompinit
+
 
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -121,6 +121,14 @@ zle -N down-line-or-beginning-search
 
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+# PROMPT=\$vcs_info_msg_0_'%# '
+zstyle ':vcs_info:git:*' formats '%b'
 
 #
 # KEYBINDINGS
