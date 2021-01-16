@@ -4,7 +4,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   aliases              
+#   ZSH ALIASES              
 #────────────────────────────────────────────────────────────
 
 # TODO: split up into separate .zsh files
@@ -38,9 +38,11 @@ fi
 # GITHUB | DOTFILE REPO
 #
 
-alias gt="git --git-dir=$D/.git --work-tree $D" 
+alias gs="( cd $D && git status )" 
+      compdef gs="git"
+alias gt="( cd $D && git )" 
       compdef gt="git"
-alias gtp="gt push "
+alias gtp="( cd $D && git push )"
       compdef gtp="git"
 #
 # TMUX
@@ -81,8 +83,7 @@ alias fun="vim $D/zsh/.zsh/03-functions.zsh"
 alias tmuxr="tmux source ~/.tmux.conf"
 alias tmuxrc="vim $D/tmux/.tmux.conf"
 alias vimrc="cd $D/vim/.vim/ ; vim $D/vim/.vim/10-core.vim"
-alias zshr="source ~/.zshrc"
-alias zshrc="vim $D/zshrc/.zshrc"
+alias zr="source ~/.zshrc"
 
 # configuration files
 alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"

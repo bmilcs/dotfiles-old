@@ -4,7 +4,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   functions              
+#   ZSH FUNCTIONS              
 #────────────────────────────────────────────────────────────
 
 source _head
@@ -13,12 +13,24 @@ source _head
 # GITHUB
 #
 
-# commit changes 
+
+# commit changes
+function ga() {
+  cd $D && git add "$*"
+  }
+compdef ga="git add"
+
+# commit changes
+function gc() {
+  cd $D && git commit "$*"
+  }
+
+# commit changes w/ add .
 function gtca() {
   _t dotfile repo commit
   _a add missing files \& commit
-  gt add $D/. 
-  gt commit -a -m "$*"
+  cd $D && git add . 
+  git commit -am "$*"
   _s done.
   }
 

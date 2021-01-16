@@ -4,7 +4,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   zsh environment
+#   ZSH ENVIRONMENT
 #────────────────────────────────────────────────────────────
 
 #
@@ -33,6 +33,15 @@ DISTRO='arch'; else DISTRO='debian'; fi
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
+
+
+#
+# FZF
+#
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
+export FZF_DEFAULT_OPTS="--color=dark"
+
 
 #
 # LOCALE
