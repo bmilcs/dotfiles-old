@@ -22,6 +22,74 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [**my goals**](#goals)
 ---
 
+<a name="todo"/>
+
+## TODO
+
+- [ ] ssh keys > private repo
+- [ ] segment arch workstation & barebones vm dotfiles
+
+
+**via YouTube ?**
+
+- research: npm
+- nettree
+
+**via YouTube Plugins "Super Powers"**
+
+- [x] ~~vim shortcut: auto :%s/VISUAL//gI~~
+- [ ] vim autocomplete: shortcut? all ext, within file AND /path/to autocomplete
+  - [ ] coc.vim visual studio-like autocompletion
+- [ ] ctrlsf - 'command line searching"
+- [ ] fzf fuzzy find - to "//"
+- [ ] rip grep? same thing?
+- [ ] bcommits? git history-like plugin
+- [ ] anyjump -- search across workspace
+- [ ] lazygit -- lazydocker, lazynpm
+
+
+**VIM**
+  - [ ] tmux - learn tabs, buffers, etc.
+  - [ ] functions() - ie: centered title bar w/ ascii characters
+  - [x] ~~create workspaces (vs-code style w/ multiple text files opened at once)~~
+  - [x] ~~improve hotkey knowledge~~
+    - [x] ~~navigation - pgup/pgdn, visual blocks/lines/etc~~
+  - [x] ~~optimize vimrc~~
+    - [x] ~~common improvements~~
+    - [x] ~~keyboard shortcut tweaks~~
+  - [x] ~~research plugins~~
+    - [x] ~~git browser~~
+    - [x] ~~file browser~~
+    - [x] ~~moving lines up/down~~ 
+
+**BSPWM**
+  - [ ] ergonomic shortcuts
+  - [x] ~~gap & padding shortcuts~~
+  - [x] ~~automate workspace on login~~
+
+**POLYBAR**
+  - [ ] pkg update watcher notifications - distro/packages
+  - [ ] add networking up/down
+  - [x] ~~add cpu/memory %'s~~
+  - [x] ~~*add volume*~~
+  - [x] ~~*add music controls*~~
+
+**SOFTWARE**
+- [ ] neomutt - email
+
+**DotFiles & GITHUB**
+  - [x] ~~setup ~/bm & move away from bare repo~~
+      - establish directory hierarchy
+      - cp all config files over
+      - script backup & installation of symlinks
+      - script update functionality
+  - [x] ~~research: way of marking non-tracked files in home via 'ls'~~
+  - [x] ~~function: add .ini w/ list of dirs to wildcard gita on push~~
+    - ~/.local/bin
+    - ~/bin
+    - ~/snippets
+---
+
 <a name="goals"/>
 <img align="right" src="asset/gw.jpeg" width=200 style="border: 25px solid white">
 
@@ -55,116 +123,15 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ---
 
-<a name="todo"/>
 
-## TODO
+### inspirations & help
 
-- [ ] ssh keys > private repo
-- [ ] segment arch workstation & barebones vm dotfiles
-
-
-**via YouTube ?**
-
-- research: npm
-- nettree
-- retain visual  ( after a command )
-    nmap Y y$
-    vmap < <gv
-    vmap > >gv
-
-**via YouTube Plugins "Super Powers"**
-
-- [ ] vim shortcut: auto :%s/VISUAL//gI
-- [ ] vim autocomplete: shortcut? all ext, within file AND /path/to autocomplete
-  - [ ] coc.vim visual studio-like autocompletion
-- [ ] ctrlsf - 'command line searching"
-- [ ] fzf fuzzy find - to "//"
-  - rip grep? same thing?
-- [ ] bcommits? git history-like plugin
-- [ ] anyjump -- search across workspace
-- [ ] lazygit -- lazydocker, lazynpm
-
-**DotFiles & GITHUB**
-  - [ ] setup ~/bm & move away from bare repo
-      - establish directory hierarchy
-      - cp all config files over
-      - script backup & installation of symlinks
-      - script update functionality
-  - [ ] research: way of marking non-tracked files in home via 'ls'
-  - [ ] function: add .ini w/ list of dirs to wildcard gita on push
-    - ~/.local/bin
-    - ~/bin
-    - ~/snippets
-
-**VIM**
-  - [ ] tmux - learn tabs, buffers, etc.
-  - [ ] functions() - ie: centered title bar w/ ascii characters
-  - [ ] create workspaces (vs-code style w/ multiple text files opened at once)
-  - [ ] improve hotkey knowledge
-    - [ ] navigation - pgup/pgdn, visual blocks/lines/etc
-    - [ ] more to come...
-  - [ ] optimize vimrc
-    - [ ] common improvements
-    - [ ] keyboard shortcut tweaks
-    - [ ] ..
-  - [ ] research plugins 
-    - [ ] git browser
-    - [x] ~~file browser~~
-    - [x] ~~moving lines up/down~~ 
-
-**BSPWM**
-  - [ ] ergonomic shortcuts
-  - [ ] gap & padding shortcuts
-  - [ ] automate workspace on login
-
-**POLYBAR**
-
-  - [ ] pkg update watcher notifications - distro/packages
-  - [ ] add cpu/memory %'s
-  - [ ] add networking up/down
-  - [x] ~~*add volume*~~
-  - [x] ~~*add music controls*~~
-
-**SOFTWARE**
-- [ ] neomutt - email
-
----
-
-
-### links
-
-- **https://github.com/bmilcs/.dotfiles/blob/master/zsh/.zshrc**
-
+- [**xero's dotfiles**](https://github.com/xero/dotfiles)
 - [**dotfile organization reddit (3yrs)**](https://www.reddit.com/r/linux/comments/61dbym/managing_dotfiles_a_survey/) 
-
   > One git repository for using with stow (eg. ~/.dotfiles). Git submodules for vim plugins etc. Branches for host-specific configuration, rebasing on master. Share master publicly.
-
   > ~/.git/ for some stuff that does not fit to the above.
-
   > ansible for other things that can't be done with the above.
-
-- https://guides.github.com/features/mastering-markdown/ 
-- https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
-
+- [**markdown help**](https://guides.github.com/features/mastering-markdown/)
+- [**color theming via xresources**](https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/)
 
 
-
-
-
-
----
-
-**ARCHIVE**
-- [x] *add additional workstation env*
-    - [x] *bspwm*
-    - [ ] *openbox?*
-    - [ ] *xfce*
-- [x] *vs code replacement*
-    - [x] *neovim?*
-    - [x] *vim?*
-    - [ ] *integrate github into terminal*
-- [x] *ssh config variable host/rsa key*
-- [x] *shortcut - restart to windows from archlinux*
-- [x] *improve README.md*
-    - [x] *add scrots*
-    - [x] *add table of contents*
