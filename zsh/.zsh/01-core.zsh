@@ -8,6 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 [[ -d $HOME/.zplugin ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+[[ -d $HOME/.config/zsh ]] || mkdir -p $HOME/.config/zsh
 
 #
 # HISTORY
