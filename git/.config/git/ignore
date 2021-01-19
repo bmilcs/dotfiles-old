@@ -1,0 +1,4 @@
+*.log
+vim/.vim/autoload/
+vim/.vim/cache/
+vim/.vim/plugged/
