@@ -80,6 +80,7 @@ else
   _a stowing necessary files
   stowee=("bin" "zsh" "vim" "git" "txt")
   stow -R "${stowee[@]}" && _s ${stowee[@]} symlinked
+  git remote set-url origin git@github.com:bmilcs/dotfiles.git 
 
   #
   # CHANGE SHELL
