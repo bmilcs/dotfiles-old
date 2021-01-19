@@ -125,24 +125,6 @@ x **-ot** y | True x is older than y. | [[ $DEMO -ot demofile2 ]]
 
 ---
 
-
-#### instr, in string, regexmatch
-
-    if [[ $x == *"home"* ]]; then
-
-#### test command: if file/dir exists, perms, etc.
-
-    # file/dir exists, return 0 (true)
-      test -f file && echo ye exists.
-      test -d /path && echo ye exists.
-    # file/dir exists: true run cmd
-      [ -f file ] && command
-      if [ -d path ] ];then
-    # file NO exist > true: run cmd
-      [ ! -f file ] && command
-      if [ ! -d /path ];then
-
-
 # INPUT OUTPUT REDIRECTS
 
 [**source**](https://gist.github.com/bmilcs/a51512131d44077a6ee2db818ccb6dca)
