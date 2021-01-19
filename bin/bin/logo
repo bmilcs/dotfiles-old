@@ -27,22 +27,24 @@ elif [[ ! -f $1 ]]; then
   exit 1
 
 else
-  [[ $# == 1 ]] && _w did you really not want to a header line?
+  if [[ $# == 1 ]]; then 
+    _q please enter a title: 
+    read title
+  else
+    title=$2
+  fi
   _a executable pre-check
   [[ -x $1 ]] && (rechmod=1 && _w executable file)
   [[ $(head -1 $1) == "#!"* ]] && (rebinbash=1 && firstline=$(head -1 $1) && sed -i -e 1,1d $1)
 
   if [[ $(basename $1) == *".vim" ]] || [[ $(basename $1) == *".vim"* ]] ; then
-    _i vimrc detected - set $CM
     CM='"'
   else
-    _i regular file detected - set $CM
     CM="#"
   fi
 
   echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1
-  [[ $# -eq 1 ]] && echo "$CM   enter desc. here              " | cat - $1 > logotemp && mv logotemp $1 
-  [[ $# -eq 2 ]] && echo "$CM   $2              " | cat - $1 > logotemp && mv logotemp $1 
+  echo "$CM   $title              " | cat - $1 > logotemp && mv logotemp $1 
   echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1 
   echo "$CM  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com"  | cat - $1 > logotemp && mv logotemp $1
   echo "$CM  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝" | cat - $1 > logotemp && mv logotemp $1 
