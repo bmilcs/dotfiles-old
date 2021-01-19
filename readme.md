@@ -26,6 +26,10 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
+
+- [ ] github aliases
+  - [ ] autocomplete git status > diff > to add workflow
+  - [ ] research best, quickest method for dotfile use
 - [ ] ssh keys > private repo
 - [ ] segment arch workstation & barebones vm dotfiles
 
