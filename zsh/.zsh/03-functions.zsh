@@ -15,9 +15,9 @@ source _head
 
 
 # commit changes
-function ga() {
-  cd $D && git add "$*"
-  }
+#function ga() {
+#  cd $D && git add "$*"
+#  }
 
 # commit changes
 function gc() {
@@ -25,7 +25,7 @@ function gc() {
   }
 
 # commit changes w/ add .
-function gtca() {
+function gca() {
   _t dotfile repo commit
   _a add missing files \& commit
   cd $D && git add . 

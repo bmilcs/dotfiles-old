@@ -34,16 +34,26 @@ if [[ $D = arch ]]; then
   alias yayg="yay -Qe | grep"
         compdef yayg="yay"
 fi
+
 #
 # GITHUB | DOTFILE REPO
 #
 
+if [ -f ~/.zsh/completion/.git-completion.bash ]; then
+  . ~/.zsh/completion/.git-completion.bash
+  
+  # Add git completion to aliases
+  __git_complete g __git_main
+  __git_complete gs __git_status
+  __git_complete gc _git_commit
+  __git_complete gp _git_push
+fi
+
+alias g="( cd $D && git )" 
+alias ga="( cd $D && git add )" 
 alias gs="( cd $D && git status )" 
-      compdef gs="git"
-alias gt="( cd $D && git )" 
-      compdef gt="git"
+alias gd="( cd $D && git diff )"
 alias gp="( cd $D && git push )"
-      compdef gtp="git"
 #
 # TMUX
 #
