@@ -29,7 +29,7 @@
     detachedHead       = false
 [core]
 	editor = nvim
-	excludesfile = /home/bmdev/.config/git/ignore
+	excludesfile = ~/.config/git/ignore
 [diff]
 	tool = nvimdiff
 [merge]
