@@ -146,6 +146,7 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit',
   \ 'ctrl-y': {lines -> setreg('*', join(lines, "\n"))}}
 
+
 " Launch fzf with CTRL+P.
 nnoremap <silent> <C-p> :FZF -m<CR>
 nnoremap <silent> <C-S-p> :FZF -m<CR>
