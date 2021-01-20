@@ -76,12 +76,13 @@ alias nano="vim"
       compdef nano="vim"
 
 # scratchpad
-alias sdir="echo $PWD >> ~/bm/txt/scratchpad.md" # TODO fix > function required?
-alias pad="vim ~/bm/txt/scratchpad.md"
-alias regex="vim ~/bm/txt/regex.md"
+alias sdir="echo $PWD >> $D/txt/txt/scratchpad.md" # TODO fix > function required?
+alias pad="vim $D/txt/txt/scratchpad.md"
+alias regex="vim $D/txt/txt/regex.md"
+
 
 # text folder
-alias txt="cd $D/txt"
+alias txt="cd $D/txt/txt ; c ; l"
 
 # dotfile repo: readme
 alias readme="vim ~/bm/readme.md"
@@ -90,9 +91,7 @@ alias readme="vim ~/bm/readme.md"
 alias bm="cd $D"	# only while root
 alias ali="vim $D/zsh/.zsh/02-aliases.zsh"
 alias fun="vim $D/zsh/.zsh/03-functions.zsh"
-alias tmuxr="tmux source ~/.tmux.conf"
-alias tmuxrc="vim $D/tmux/.tmux.conf"
-alias vimrc="cd $D/vim/.vim/ ; vim $D/vim/.vim/10-core.vim"
+alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
 
 # configuration files
