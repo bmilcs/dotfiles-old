@@ -1,0 +1,23 @@
+#!/usr/bin/bash 
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   SCRATCHPAD VIA SXHKD BSPWM              
+#────────────────────────────────────────────────────────────
+
+if [ -z $1 ]; then
+	echo "Usage: $0 <name of hidden scratchpad window>"
+	exit 1
+fi
+    
+
+
+pids=$(xdotool search --name ${1})
+for pid in $pids; do
+	echo "Toggle $pid"
+	bspc node $pid --flag hidden -f
+  xdotool windowmove $pid 500 0
+done

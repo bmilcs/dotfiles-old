@@ -1,6 +1,4 @@
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
-#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
-#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
@@ -9,7 +7,7 @@
 
 #	[bspwm] restart, quit 
 super + {_,shift + ctrl + }grave
-	bspc {wm -r,quit}
+	pkill -USR1 -x sxhkd;	xrdb -merge ~/.Xresources; bspc {wm -r,quit}
 
 # [sxhkd] restart 
 super + ctrl + grave
@@ -134,12 +132,11 @@ super + ctrl + shift + space
 super + {_,shift + ,ctrl + }Return
 	{alacritty,st,urxvt}
 
-# launch rofi (dmenu alternative)
-F1
-	rofi -show drun -drun-display-format \{name\} -config ~/.config/rofi/config.rasi 
+super + @space
+  $HOME/bin/scratch bmpad
 
 # launch rofi (dmenu alternative)
-super + @space
+F1
 	rofi -show drun -drun-display-format \{name\} -config ~/.config/rofi/config.rasi 
 
 # launch firefox (browser)
