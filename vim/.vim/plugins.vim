@@ -14,10 +14,11 @@
 "────────────────────────────────────────────────────────────
 " INSTALL VIM-PLUG & PLUGINS IF MISSING
 "────────────────────────────────────────────────────────────
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source ~/.vim/plugins.vim
 endif
 autocmd! VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | q | endif
 
@@ -37,15 +38,19 @@ call plug#begin('~/.vim/plugged')               " plugin manager
       \ Plug 'ryanoasis/vim-devicons'
   Plug '~/.fzf'                                 " fuzzy finder
   Plug 'junegunn/fzf.vim'
-  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
+"  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   Plug 'vim-airline/vim-airline'                " status bar 
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
-
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
 call plug#end()                                 " end of plugins
 set rtp+=~/.fzf
+
+"────────────────────────────────────────────────────────────
+" PLUGIN: NORD THEME
+"────────────────────────────────────────────────────────────
+colorscheme nord                              " color scheme
 
 "────────────────────────────────────────────────────────────
 " PLUGIN: MARKDOWN PREVIEW 
@@ -74,8 +79,8 @@ let g:NERDTreeWinSize=20 " column width
 nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>" 
 
 " start nerdtree, unless a file or session is specified, eg. vim -s session_file.vim.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
 
 " if closing last open document, nuke nerdtree
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -117,8 +122,6 @@ endif
 
 let g:airline_highlighting_cache = 1
 
-
-
 "────────────────────────────────────────────────────────────
 " FZF: FUZZY FINDER
 "────────────────────────────────────────────────────────────
@@ -157,7 +160,6 @@ nnoremap <silent> <Leader>b :BMdotfiles<CR>
 nnoremap <silent> <Leader><Enter> :Buffers<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 
-
 " Allow \assing optional flags into the Rg command.
 "   Example: :Rg myterm -g '*.md'
 command! -bang -nargs=* Rg
@@ -175,31 +177,4 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
 
 " Word completion with custom spec with popup layout option
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
-
-
-"
-" MHINZ/VIM-GREPPER
-"
-
-let g:grepper={}
-let g:grepper.tools=["rg"]
-
-xmap gr <plug>(GrepperOperator)
-
-" After searching for text, press this mapping to do a project wide find and
-" replace. It's similar to <leader>r except this one applies to all matches
-" across all files instead of just the current file.
-nnoremap <Leader>r
-  \ :let @s='\<'.expand('<cword>').'\>'<CR>
-  \ :Grepper -cword -noprompt<CR>
-  \ :cfdo %s/<C-r>s//g \| update
-  \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-
-" The same as above except it works with a visual selection.
-xmap <Leader>r
-    \ "sy
-    \ gvgr
-    \ :cfdo %s/<C-r>s//g \| update
-     \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-
 
