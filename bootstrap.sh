@@ -10,13 +10,42 @@
 #   TODO 1. backup existing files
 #        2. for cfg in pwd, stow -R $cfg
 #────────────────────────────────────────────────────────────
+
 source ./bin/bin/_head
+
+#────────────────────────────────────────────────────────────
+# FUNCTIONS
+#────────────────────────────────────────────────────────────
+
+izsh() {
+  if [[ ! -d ~/.zplugin ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] || [[ ! -d ~/.zsh/completion ]];then 
+     _a zsh setup required
+     # create directories
+     mkdir -p ~/.zplugin ~/.config/zsh/ ~/.zsh/completion
+     # install zplugin
+     git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin 
+     # install zsh git completion
+     curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+     curl -o ~/.zsh/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+     _s completed zsh plugin setup
+  fi
+}
+
+ivim() {
+  if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then 
+    _a vim-plug setup started 
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
+    _s completed vim-plug setup
+  fi
+}
 
 # DISTRO CHECK
 
+_t bmilcs/bootstrap initiated for $DISTRO
+
 if [ -f "/etc/arch-release" ]; then
   DISTRO='arch'; else DISTRO='debian'; fi
-  _t bmilcs/bootstrap initiated for $DISTRO
 
 #────────────────────────────────────────────────────────────
 # ARCHLINUX
@@ -24,75 +53,49 @@ if [ -f "/etc/arch-release" ]; then
 
 if [[ ${DISTRO} == "arch" ]]; then
 
-  #
   # STOW 
-  #
-
   for dir in ~/bm/*/ ; do
     if [[ ! $dir == *asset* ]]; then
-      _i bootstraping $(basename $dir)...
       stow -R $(basename $dir)
-      _s
+      [[ $? -gt 0 ]] && _e $(basename $dir)
     fi  
   done
+
+  # VIM/ZSH
+  izsh
+  ivim
+
+else
 
 #────────────────────────────────────────────────────────────
 # DEBIAN
 #────────────────────────────────────────────────────────────
 
-else
-
-  #
   # BASE PACKAGES
-  #
-
   _a checking for missing packages
   reqs=("curl" "zsh" "neovim" "git")
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
   _s all packages present
 
-  #
-  # ZSH
-  #
-
-  if [[ ! -d ~/.zplugin ]]; then 
-     _a zsh plugin setup started 
-     mkdir -p ~/.zplugin ~/.config/zsh
-     git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin 
-     _s completed zsh plugin setup
-  fi
-
-  #
-  # VIM 
-  #
-
-  if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then 
-    _a vim-plug setup started 
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
-    _s completed vim-plug setup
-  fi
-
-  #
+  # CONFIGURE VIM/ZSH
+  izsh
+  ivim
+  
   # STOW
-  #
-
   _a stowing necessary files
   stowee=("bin" "zsh" "vim" "git" "txt")
   stow -R "${stowee[@]}" && _s ${stowee[@]} symlinked
+
+  # SET REPO URL
   git remote set-url origin git@github.com:bmilcs/dotfiles.git 
 
-  #
   # CHANGE SHELL
-  #
-
   _ask swap to ZSH now?
   if [[ $? == 0 ]]; then
     chsh -s /usr/bin/zsh
   else
     _i ZSH skipped for now
   fi
-
 
 fi
 

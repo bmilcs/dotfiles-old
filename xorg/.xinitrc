@@ -8,8 +8,8 @@
 #   xinitrc              
 #────────────────────────────────────────────────────────────
 
-userresources=$D/xorg/.Xresources
-usermodmap=$D/xorg/.Xmodmap
+userresources=~/.Xresources
+usermodmap=~/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
@@ -19,7 +19,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [ -f "$userresources" ] && xrdb -merge "$userresources"
 [ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
-# start some nice programs
+# start xinit extras
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -27,15 +27,37 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-#
+#────────────────────────────────────────────────────────────
+# BIN > PATH
+#────────────────────────────────────────────────────────────
+
+if [[ -d $HOME/bin && -z $(echo $PATH | grep -o $HOME/bin) ]]; then
+  export PATH=$PATH$( find $HOME/bin/ -type d -printf ":%p" )
+fi
+
+#────────────────────────────────────────────────────────────
+# APPLICATIONS 
+#────────────────────────────────────────────────────────────
+
+(sleep 0.5 && $HOME/bin/bootstrap) &
+
+#────────────────────────────────────────────────────────────
 # WM
-#
+#────────────────────────────────────────────────────────────
 
-exec bspwm
-xcape -e 'Control_L=Escape'
+session=${1:-bspwm}
 
+case $session in
+    i3|i3wm           ) exec i3;; 
+    bsp|bspwm         ) exec bspwm;;
+    *                 ) exec $1;;
+esac
+#pid=$!
+#wait $pid
 
-#
-# KEY REMAP
-#
+#────────────────────────────────────────────────────────────
+# SIJI FONT
+#────────────────────────────────────────────────────────────
 
+xset +fp /home/bmilcs/.local/share/fonts
+xset fp rehash

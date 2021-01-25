@@ -44,6 +44,7 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+  Plug 'mboughaba/i3config.vim',
 call plug#end()                                 " end of plugins
 set rtp+=~/.fzf
 
@@ -149,11 +150,9 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit',
   \ 'ctrl-y': {lines -> setreg('*', join(lines, "\n"))}}
 
-
 " Launch fzf with CTRL+P.
 nnoremap <silent> <C-p> :FZF -m<CR>
 nnoremap <silent> <C-S-p> :FZF -m<CR>
-
 
 " Map a few common things to do with FZF.
 nnoremap <silent> <Leader>b :BMdotfiles<CR>
@@ -167,7 +166,6 @@ command! -bang -nargs=* Rg
   \ "rg --column --line-number --no-heading --color=always --smart-case " .
   \ <q-args>, 1, fzf#vim#with_preview(), <bang>0)
 
-
 " FZF: ~/bm dotfile search
 command! -bang BMdotfiles call fzf#vim#files('~/bm', <bang>0)
 
@@ -178,3 +176,27 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
 " Word completion with custom spec with popup layout option
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 
+"────────────────────────────────────────────────────────────
+" FILE(TYPE) AUTOMATION
+"────────────────────────────────────────────────────────────
+
+" force plugins to load correctly when it is turned back on below.
+filetype off 
+syntax on
+augroup filetypedetect
+  au BufNewFile,BufRead *.fsh,*.vsh setf glsl
+  au BufRead,BufNewFile *.conf setf dosini
+augroup END
+filetype on
+
+aug i3config_ft_detection
+  au!
+  au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
+aug end
+
+" " remove trailing whitespaces / ^M chars
+" augroup ws
+"   au!
+"   autocmd FileType c,cpp,java,php,js,json,css,scss,sass,py,rb,coffee,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" augroup end
+" 

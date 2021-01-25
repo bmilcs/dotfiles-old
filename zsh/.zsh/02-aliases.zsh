@@ -6,80 +6,22 @@
 #────────────────────────────────────────────────────────────
 #   ZSH ALIASES              
 #────────────────────────────────────────────────────────────
-
-# TODO: split up into separate .zsh files
-
 #
-# PACKAGE MANAGER 
+#   TODO
+#         split up into separate .zsh files
+#         add working savedir alias > select
 #
-
-# update
-  # TODO conditional update | distro based
-alias up="_a pacman ; pm -Syyuu ; _a yay ; yay -Syyuu"
-
-# pacman
-if [[ $D = arch ]]; then
-  alias pacman="sudo pacman"
-        compdef pacman="pacman"
-  alias pm="pacman"
-        compdef pm="pacman"
-  alias pmls="pacman -Qe | less"
-        compdef pmls="pacman"
-  alias pmg="pacman -Qe|grep"
-        compdef pmg="pacman"
-
-  # aur | yay
-  alias yayls="yay -Qe | less"
-        compdef yayls="yay"
-  alias yayg="yay -Qe | grep"
-        compdef yayg="yay"
-fi
-
-#
-# GITHUB | DOTFILE REPO
-#
-
-if [ -f ~/.zsh/completion/.git-completion.bash ]; then
-  . ~/.zsh/completion/.git-completion.bash
-  
-  # Add git completion to aliases
-  __git_complete g __git_main
-  __git_complete gs __git_status
-  __git_complete gc _git_commit
-  __git_complete gp _git_push
-fi
-
-alias g="( cd $D && git )" 
-alias ga="( cd $D && git add )" 
-alias gs="( cd $D && git status )" 
-alias gd="( cd $D && git diff )"
-alias gp="( cd $D && git push )"
-#
-# TMUX
-#
-
-alias t="tmux -u"
-      compdef t="tmux"
-alias ta="t a -t"
-      compdef ta="tmux"
-alias tls="t ls"
-      compdef tls="tmux"
-alias tn="t new -t"
-      compdef tn="tmux"
-
-#
+#────────────────────────────────────────────────────────────
 # TEXT EDITING
-#
+#────────────────────────────────────────────────────────────
 
 # nano -> vim
 alias nano="vim"
       compdef nano="vim"
 
 # scratchpad
-alias sdir="echo $PWD >> $D/txt/txt/scratchpad.md" # TODO fix > function required?
 alias pad="vim $D/txt/txt/scratchpad.md"
 alias regex="vim $D/txt/txt/regex.md"
-
 
 # text folder
 alias txt="cd $D/txt/txt ; c ; l"
@@ -91,8 +33,7 @@ alias readme="vim ~/bm/readme.md"
 alias bm="cd $D"	# only while root
 alias ali="vim $D/zsh/.zsh/02-aliases.zsh"
 alias fun="vim $D/zsh/.zsh/03-functions.zsh"
-alias tr="tmux source ~/.tmux.conf"
-alias zr="source ~/.zshrc"
+alias txs="c ; tail -f ~/.xsession-errors"
 
 # configuration files
 alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"
@@ -101,12 +42,82 @@ alias keys="vim $D/sxhkd/.config/sxhkd/sxhkdrc"
 alias picomrc="vim $D/picom/.config/picom/config"
 alias poly="vim $D/polybar/.config/polybar/bspwm.conf"
 alias polysh="vim $D/polybar/.config/polybar/bspwm.sh"
-alias polyr="polybar -r -c ~/.config/polybar/bspwm.conf bspwm"
 alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
 
-#
+# restarting
+alias tr="tmux source ~/.tmux.conf"
+alias zr="source ~/.zshrc"
+alias polyr=". ~/.config/polybar/launch.sh"
+
+# alias sdir="echo $PWD >> $D/txt/txt/scratchpad.md" # TODO fix > function required?
+
+#────────────────────────────────────────────────────────────
+# PACKAGE MANAGER 
+#────────────────────────────────────────────────────────────
+
+# UPDATE # TODO conditional update | distro based
+alias up="_a pacman ; pm -Syyuu ; _a yay ; yay -Syyuu"
+
+# ARCHLINUX
+if [[ $DISTRO = arch ]]; then
+  alias pacman="sudo pacman"
+        compdef pacman="pacman"
+  alias pm="pacman"
+        compdef pm="pacman"
+  alias pmls="pacman -Qe | less"
+        compdef pmls="pacman"
+  alias pmg="pacman -Qe|grep"
+        compdef pmg="pacman"
+# AUR | YAY
+  alias yayls="yay -Qe | less"
+        compdef yayls="yay"
+  alias yayg="yay -Qe | grep"
+        compdef yayg="yay"
+fi
+
+#────────────────────────────────────────────────────────────
+# GITHUB | DOTFILE REPO
+#────────────────────────────────────────────────────────────
+
+# REFRESH REPO SYMLINKS
+alias bmbs="cd $D && ./bootstrap.sh"
+
+# DL MISSING GIT AUTOCOMPLETE
+[[ ! -f ~/.zsh/completion/_git ]] && wget -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+# ALIAS GIT AUTOCOMPLETION
+if [ -f ~/.zsh/completion/git-completion.zsh ]; then
+  . ~/.zsh/completion/git-completion.zsh
+  # Add git completion to aliases
+  __git_complete g __git_main
+  __git_complete gs __git_status
+  __git_complete ga __git_add
+  __git_complete gc _git_commit
+  __git_complete gp _git_push
+fi
+
+alias g="cd $D && git "
+alias ga="cd $D && git add "
+alias gs="cd $D && git status " 
+alias gd="cd $D && git diff "
+alias gp="cd $D && git push "
+
+#────────────────────────────────────────────────────────────
+# TMUX
+#────────────────────────────────────────────────────────────
+
+alias t="tmux -u"
+      compdef t="tmux"
+alias ta="t a -t"
+      compdef ta="tmux"
+alias tls="t ls"
+      compdef tls="tmux"
+alias tn="t new -t"
+      compdef tn="tmux"
+
+#────────────────────────────────────────────────────────────
 # APPLICATIONS
-#
+#────────────────────────────────────────────────────────────
 
 # mutt
 alias mutt="neomutt -F ~/.config/mutt/muttrc"
@@ -115,9 +126,9 @@ alias mutt="neomutt -F ~/.config/mutt/muttrc"
 alias nitrogen="nitrogen ~/wall"
 alias fehbg="feh -g 640x480 -d -S filename ~/wall"
 
-#
+#────────────────────────────────────────────────────────────
 # BASH
-#
+#────────────────────────────────────────────────────────────
 
 # ls 
 alias ls="ls --color -lhF --group-directories-first --time-style=+\"%Y-%m-%d %H:%M:%S\""
@@ -149,9 +160,9 @@ alias ....="cd ../../.. && c && l"
 # fzf
 alias -g zz="fzf -m"
 
-#
+#────────────────────────────────────────────────────────────
 # FILE SYSTEM
-#
+#────────────────────────────────────────────────────────────
 
 # mount | umount
 alias mount="sudo mount"
@@ -170,9 +181,9 @@ alias nfsr="sudo systemctl restart nfs-kernel-server"
 # smb
 alias smb='sudo vim /etc/samba/smb.conf'
 
-#
+#────────────────────────────────────────────────────────────
 # SYSTEM
-#
+#────────────────────────────────────────────────────────────
 
 # reboot, shutdown, etc.
 alias rex="sudo systemctl restart display-manager"
@@ -220,15 +231,15 @@ alias svstop="sudo systemctl stop"
 ###################################################
 ###################################################
 
-#
+#────────────────────────────────────────────────────────────
 # DEBIAN CONFIGURE
-#
+#────────────────────────────────────────────────────────────
 
 alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
 
-#
+#────────────────────────────────────────────────────────────
 # BACKUP 
-#
+#────────────────────────────────────────────────────────────
 
 alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
 alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
@@ -271,9 +282,9 @@ alias ismb='
 	echo "#         valid users = bmilcs"
 	echo "-----------------------------------------------------------------------------------------------------"		'
 
-#
+#────────────────────────────────────────────────────────────
 # GITHUB RSA KEY
-#
+#────────────────────────────────────────────────────────────
 
 alias gitkeys='
 	git config --global user.name bmilcs
@@ -286,16 +297,16 @@ alias gitkeys='
 	echo "> enter github private key as follows:"
 	echo "  ssh-add ~/.ssh/id_github"'
 
-#
+#────────────────────────────────────────────────────────────
 # DEBIAN NETWORKING
-#
+#────────────────────────────────────────────────────────────
 
 alias rnet="sudo /etc/init.d/networking restart"
 alias enet="sudo vim /etc/network/interfaces"
 
-#
+#────────────────────────────────────────────────────────────
 # DOCKER
-#
+#────────────────────────────────────────────────────────────
 
 # remove unused: containers | vol | networks | etc
 alias drmu='docker system prune -a'
@@ -344,20 +355,19 @@ alias le="docker restart swag && docker logs -f swag"
 alias swag="docker restart swag && docker logs -f swag"
 alias ddf='docker system df'
 
-
 #################################################################
 # GRAVEYARD
 #################################################################
 
-#
+#────────────────────────────────────────────────────────────
 # DOCKER
-#
+#────────────────────────────────────────────────────────────
 
 # alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
 
-#
+#────────────────────────────────────────────────────────────
 # GIT BARE REPO
-#
+#────────────────────────────────────────────────────────────
 
 # alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 # alias gitp="gitt commit -a -m 'update' && gitt push"

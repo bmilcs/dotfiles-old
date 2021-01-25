@@ -26,7 +26,6 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
-
 - [ ] github aliases
   - [ ] autocomplete git status > diff > to add workflow
   - [ ] research best, quickest method for dotfile use
@@ -41,7 +40,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 **via YouTube Plugins "Super Powers"**
 
-- [x] ~~vim shortcut: auto :%s/VISUAL//gI~~
+- [ ] ~~vim shortcut: auto :%s/VISUAL//gI~~
 - [ ] vim autocomplete: shortcut? all ext, within file AND /path/to autocomplete
   - [ ] coc.vim visual studio-like autocompletion
 - [ ] ctrlsf - 'command line searching"
@@ -55,43 +54,14 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 **VIM**
   - [ ] tmux - learn tabs, buffers, etc.
   - [ ] functions() - ie: centered title bar w/ ascii characters
-  - [x] ~~create workspaces (vs-code style w/ multiple text files opened at once)~~
-  - [x] ~~improve hotkey knowledge~~
-    - [x] ~~navigation - pgup/pgdn, visual blocks/lines/etc~~
-  - [x] ~~optimize vimrc~~
-    - [x] ~~common improvements~~
-    - [x] ~~keyboard shortcut tweaks~~
-  - [x] ~~research plugins~~
-    - [x] ~~git browser~~
-    - [x] ~~file browser~~
-    - [x] ~~moving lines up/down~~ 
 
 **BSPWM**
   - [ ] ergonomic shortcuts
-  - [x] ~~gap & padding shortcuts~~
-  - [x] ~~automate workspace on login~~
 
 **POLYBAR**
   - [ ] pkg update watcher notifications - distro/packages
   - [ ] add networking up/down
-  - [x] ~~add cpu/memory %'s~~
-  - [x] ~~*add volume*~~
-  - [x] ~~*add music controls*~~
 
-**SOFTWARE**
-- [ ] neomutt - email
-
-**DotFiles & GITHUB**
-  - [x] ~~setup ~/bm & move away from bare repo~~
-      - establish directory hierarchy
-      - cp all config files over
-      - script backup & installation of symlinks
-      - script update functionality
-  - [x] ~~research: way of marking non-tracked files in home via 'ls'~~
-  - [x] ~~function: add .ini w/ list of dirs to wildcard gita on push~~
-    - ~/.local/bin
-    - ~/bin
-    - ~/snippets
 ---
 
 <a name="goals"/>

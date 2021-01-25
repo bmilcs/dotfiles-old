@@ -12,9 +12,9 @@
 #
 
 # add $PATH to path array | source: arch wiki
-typeset -U PATH path  
-path=("$HOME/bin"  "$path[@]")
-export PATH
+# typeset -U PATH path
+# path=("$HOME/bin"  "$path[@]")
+# export PATH
 
 #
 # REPO DIR

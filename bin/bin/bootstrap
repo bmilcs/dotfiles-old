@@ -5,60 +5,30 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   config file editor
+#   GLOBAL BOOTSTRAP              
 #────────────────────────────────────────────────────────────
 
-source _head
-_t cfg editor
+pgrep polybar || sh $HOME/.config/polybar/launch.sh &
 
-genls() {
-  _a $2
-  unset options i
-  while IFS= read -r -d $'\0' f; do
-    options[i++]="$f"
-  done < <(find "$1" -maxdepth 3 -type f -name "*" -print0 | sort -z )
-  select opt in "${options[@]}" $3 ; do
-    case $opt in
-      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
-    esac
-  done
-  }
+pgrep -f thunderbird || thunderbird &
+#sleep 8
 
-if [ $# = 0 ]; then
-  _o t     txt
-  _o b     bin
-  _o z     zsh  
-  _o v     vim  
-  _o p     polybar  
-  _o k     sxhkd  
-  _o bsp   bspwm  
-  _o i     i3  
-  _o tmux  tmux  
-  _o x     xorg
-  _o n     ncmpcpp
-  _o e     cfg script
+pgrep -f telegram || telegram-desktop &
+#sleep 2
+pgrep -f android-messages || android-messages-desktop &
+#sleep 2
+pgrep -f discord || discord &
+#sleep 10
 
-  read sel
-else
-  sel=${1}
-fi
+# autostart [initial launch
 
-clear
+pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
+pgrep -f nitrogen || nitrogen --restore &
+pgrep -f pulseaudio || pulseaudio --start &
+pgrep -f unclutter || unclutter &
 
-case $sel in
-  t) genls $D/txt TXT;;
-  b) genls $D/bin BIN;;
-  i) genls $D/i3/.config/i3/ I3;;
-  z) nvim -S ~/dev/zsh.bm;;
-  v) nvim -S ~/dev/vim.bm;;
-  p) genls $D/polybar POLYBAR;;
-  k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
-  bsp) nvim $D/bspwm/.config/bspwm/bspwmrc;;
-  tm|tmux) nvim $D/tmux/.tmux.conf;;
-  x|xorg) genls $D/xorg XORG;;
-  n|ncm) genls $D/ncmpcpp NCMPCPP;;
-  #8) sudovim /etc/hosts;;
-  #xterm) vim ~/.Xresources.d/xterm;;
-  e) nvim $D/bin/bin/cfg
-esac
+pgrep -f xcape || xcape -e 'Control_L=Escape'
 
+setxkbmap -option ctrl:nocaps
+
+exit 0

@@ -10,16 +10,6 @@
 " 
 " 1. Add shortcuts:
 "           sort alphabetically       :sort u
-"           bring up errors           :messages
-"           reload current file       :e!
-"           toggle ve block vs all    :set ve=all/block
-"
-" 2. Git:
-"           establish workflow for commits
-"           add keyboard shortcuts
-"
-" 2. Create titlebar function/hotkey to create headers
-"
 "
 "────────────────────────────────────────────────────────────
 
@@ -32,10 +22,13 @@ set modelines=0
 " fix common backspace problems
 set backspace=indent,eol,start  
 
+" don't redraw in middle of macro
+set lazyredraw  
+
 " retain undo history
 set undofile
 set undodir=~/.vim/undo
-set noswapfile
+"set noswapfile
 
 " case insensitivity
 set ignorecase   " match upper/lowercase versions of search term          
@@ -98,23 +91,4 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.vim/cache/.viminfo
 "           | + lines saved each register (old name for <, vi6.2)
 "           + save/restore buffer list
 
-
-"────────────────────────────────────────────────────────────
-" FILE(TYPE) AUTOMATION
-"────────────────────────────────────────────────────────────
-
-" force plugins to load correctly when it is turned back on below.
-filetype off 
-syntax on
-augroup filetypedetect
-  au BufNewFile,BufRead *.fsh,*.vsh setf glsl
-  au BufRead,BufNewFile *.conf setf dosini
-augroup END
-filetype on
-
-" remove trailing whitespaces / ^M chars
-augroup ws
-  au!
-  autocmd FileType c,cpp,java,php,js,json,css,scss,sass,py,rb,coffee,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-augroup end
 

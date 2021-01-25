@@ -40,7 +40,7 @@ super + q
 	bspc node -t {pseudo_tiled,floating,fullscreen,tiled}
 
 # set the window state
-super + {shift + ,_,ctrl + ,shift + ctrl + }F1
+super + {shift + ,_,ctrl + ,shift + ctrl + }f
 	bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen} 
 
 # adjust gap size
@@ -63,13 +63,20 @@ super + {_,ctrl + }{h,j,k,l}
 super + shift + {h,j,k,l}
 	bspc node -v {-30 0,0 30,0 -30,30 0} 
 
-# expand a window by moving one of its side outward | RESIZE
 super + alt + {h,j,k,l}
-	bspc node -z {left -30 0,bottom 0 30,top 0 -30,right 30 0} 
+  ~/bin/bspwm_resize {left,bottom,top,right} 
+
+# resize windows i3 style
+super + alt + shift + {h,j,k,l}
+    ~/.config/sxhkd/resize {x -, y +, y -, x +}
+
+# expand a window by moving one of its side outward | RESIZE
+#super + alt + {h,j,k,l}
+#	bspc node -z {left -30 0,bottom 0 30,top 0 -30,right 30 0} 
 
 # contract a window by moving one of its side inward | RESIZE
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -30 0,top 0 30,bottom 0 -30,left 30 0} 
+#super + alt + shift + {h,j,k,l}
+#	bspc node -z {right -30 0,top 0 30,bottom 0 -30,left 30 0} 
 
 # preselect the direction
 super + ctrl + shift + {h,j,k,l}
@@ -161,7 +168,7 @@ XF86AudioLowerVolume
 
 # pulseaudio - increase volume
 XF86AudioMute 
-  pactl set-sink-mute 1 
+  pactl set-sink-mute 0
 
 # printscreen (full)
 Print 

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+pgrep polybar || echo polybar 
+
+pgrep -f thunderbird || echo thunderbird 
+#sleep 8
+
+pgrep -f telegram || echo telegram-desktop
+#sleep 2
+pgrep -f android-messages-desktop || echo android
+#sleep 2
+pgrep -f discord || echo discord 
+#sleep 10
+
+# autostart [initial launch
+
+pgrep -f picom || echo picom 
+pgrep -f nitrogen || echo nitrogen 
+pgrep -f pulseaudio || echo pulseaudio 
+pgrep -f unclutter || echo unclutter 
+
+
+pgrep -f xcape || echo xcape 
+

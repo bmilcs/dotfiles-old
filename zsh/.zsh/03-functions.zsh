@@ -9,10 +9,9 @@
 
 source _head
 
-#
-# GITHUB
-#
-
+#────────────────────────────────────────────────────────────
+# GIT
+#────────────────────────────────────────────────────────────
 
 # commit changes
 #function ga() {
@@ -33,9 +32,10 @@ function gca() {
   _s done.
   }
 
-#
-# BASH
-#
+
+#────────────────────────────────────────────────────────────
+# SHELL
+#────────────────────────────────────────────────────────────
 
 # create dir & cd into it
 function mdir() {
@@ -64,35 +64,33 @@ if [[ $DISTRO = arch ]]; then
     }
 fi
 
-#
-# SERVICES
-#
+#────────────────────────────────────────────────────────────
+# SYSTEM SERVICES
+#────────────────────────────────────────────────────────────
 
 # start service
-function sstart() {
+function svon() {
   sudo service $@ start
   }
 
 # stop service
-function sstop() {
+function svoff() {
   sudo service $@ stop
   }
 
 # restart service
-function srestart() {
+function svre() {
   sudo service $@ restart
   }
 
 # get service status
-function sstatus() {
+function svst() {
   sudo service $@ status
   }
 
-
-
-#
+#────────────────────────────────────────────────────────────
 # COLORS
-#
+#────────────────────────────────────────────────────────────
 
 # color print out 
 function colorr() {
@@ -115,9 +113,9 @@ function colorr() {
   echo
   }
 
-#
+#────────────────────────────────────────────────────────────
 # NETWORKING
-#
+#────────────────────────────────────────────────────────────
 
 # ssh key generate & upload& upload& upload& upload& upload& upload& upload
 function sshgen() {
@@ -145,9 +143,9 @@ function myip() {
   printf "%s\n\n" "           wan:   $wan " 
   }
 
-#
+#────────────────────────────────────────────────────────────
 # DOCKER
-#
+#────────────────────────────────────────────────────────────
 
 # docker 
 function dexec() { 
@@ -172,9 +170,9 @@ function dre() {
   docker logs -f $@
   }
 
-#
-# COMMAND REPLACEMENT
-#
+#────────────────────────────────────────────────────────────
+# COMMAND ENHANCEMENT
+#────────────────────────────────────────────────────────────
 
 # nvim all-in-one sudo-fier wombo-combo
 vim() {
@@ -207,14 +205,15 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
     }
-
-#
+  
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
 # GRAVEYARD
-#
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
 
-#
 # GITHUB
-#
+#────────────────────────────────────────────────────────────
 
 # # add dir w/ basedir prefix to repo
 # # TODO fix w/ stow format
@@ -222,25 +221,20 @@ man() {
 #   mkdir -p ~/bm/`basename "$PWD"`
 #   cp -r $@ ~/bm/`basename "$PWD"`/$@ 
 #   }
-# 
 # # add file to base dir of repo
 # # TODO fix w/ stow format
 # function bma() {
 #   bm add $@
 #   bm commit -m "Added $@"
 #   }
-# 
-# 
 # # DOTFILES GITHUB OLD
 # function gita() {
 #     gitt add $@
 #     gitt commit -m "Added $@"
 #     }
 
-#
 # DOCKER
-#
-
+#────────────────────────────────────────────────────────────
 # # docker-compose based on host name
 # function drun() {
 # 	if [ "$HOSTNAME" = docker ]; then

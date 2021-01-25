@@ -7,9 +7,6 @@
 #   ZSH CORE
 #────────────────────────────────────────────────────────────
 
-[[ -d $HOME/.zplugin ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-[[ -d $HOME/.config/zsh ]] || mkdir -p $HOME/.config/zsh
-
 #
 # HISTORY
 #
@@ -23,8 +20,7 @@ setopt EXTENDED_HISTORY       # write the history file in the ':start:elapsed;co
 setopt HIST_IGNORE_DUPS       # do not record an event that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS   # delete an old recorded event if a new event is a duplicate.
 setopt HIST_FIND_NO_DUPS      # do not display a previously found event.
-setopt HIST_SAVE_NO_DUPS      # do not write a duplicate event to the history file.
-setopt HIST_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
+setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 unsetopt HIST_VERIFY          # after history expansion, execute the line directly
 
