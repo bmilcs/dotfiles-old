@@ -75,11 +75,15 @@ if [[ $DISTRO = arch ]]; then
         compdef pm="pacman"
   alias pmls="pacman -Qe | less"
         compdef pmls="pacman"
+  alias pms="pacman -S"
+        compdef pms="pacman"
   alias pmg="pacman -Qe|grep"
         compdef pmg="pacman"
 # AUR | YAY
   alias yayls="yay -Qe | less"
         compdef yayls="yay"
+  alias yays="yay -S"
+        compdef yays="yay"
   alias yayg="yay -Qe | grep"
         compdef yayg="yay"
 fi

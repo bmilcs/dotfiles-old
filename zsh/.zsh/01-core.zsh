@@ -28,7 +28,7 @@ unsetopt HIST_VERIFY          # after history expansion, execute the line direct
 # DIR_COLORS
 #
 
-[ -f "$D/zsh/.zsh/.dir_colors" ] && eval $($D/zsh/.zsh/.dir_colors)
+[ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
 
 #
 # PLUGINS

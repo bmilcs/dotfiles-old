@@ -51,23 +51,27 @@ if [ -f "/etc/arch-release" ]; then
 # ARCHLINUX
 #────────────────────────────────────────────────────────────
 
-if [[ ${DISTRO} == "arch" ]]; then
+#if [[ ${DISTRO} == "arch" ]]; then
 
-  # STOW 
-  for dir in ~/bm/*/ ; do
-    if [[ $dir == rsnapshot ]]; then
-      sudo stow -t / -R $(basename sdir)
-    elif [[ ! $dir == *asset* ]]; then 
-      stow -R $(basename $dir)
-      [[ $? -gt 0 ]] && _e $(basename $dir)
-    fi  
-  done
+  _ask install everything?
+  if [[ $? == 0 ]]; then
+    # STOW 
+    for dir in ~/bm/*/ ; do
+      if [[ $dir == rsnapshot ]]; then
+        sudo stow -t / -R $(basename sdir)
+      elif [[ ! $dir == *asset* ]]; then 
+        stow -R $(basename $dir)
+        [[ $? -gt 0 ]] && _e $(basename $dir)
+      fi  
+    done
+    exit 0   
+  fi
 
   # VIM/ZSH
   izsh
   ivim
 
-else
+#else
 
 #────────────────────────────────────────────────────────────
 # DEBIAN
@@ -75,8 +79,13 @@ else
 
   # BASE PACKAGES
   _a checking for missing packages
-  reqs=("curl" "zsh" "neovim" "git")
-  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
+  reqs=("curl" "zsh" "neovim" "git" "stow")
+
+  if [[ ${DISTRO} == "arch" ]]; then
+    dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -S ${reqs[@]} && _s installed ${reqs[@]})
+  else
+    dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
+  fi
   _s all packages present
 
   # CONFIGURE VIM/ZSH
@@ -98,8 +107,6 @@ else
   else
     _i ZSH skipped for now
   fi
-
-fi
 
 _t bmilcs/bootstrap complete
 
