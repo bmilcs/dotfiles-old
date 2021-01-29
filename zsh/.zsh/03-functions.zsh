@@ -175,25 +175,25 @@ function dre() {
 #────────────────────────────────────────────────────────────
 
 # nvim all-in-one sudo-fier wombo-combo
-vim() {
-  if [ $# -eq 0 ]; then   # no argument, launch nvim
-    nvim
-  elif [ $# -gt 1 ]; then  # multiple arguments, skip function
-    nvim $*
-  elif [ -d "$@" ]; then  # if argument = a directory, error
-    echo "error: \"$@\" is a DIRECTORY. Denied."
-  elif [ -w $@ ]; then    # if exists and writeable. nvim TIME!"
-    command nvim "$@" 
-  elif [ -e $@ ]; then    # if exists, not writeable, auto SUDO 
-    sudo nvim "$@"
-  else                    # if arg doesn't exist...
-      if touch $@; then     # if user has permission, create & launch nvim:
-        command nvim "$@"
-      else                  # elevate to sudo & create/launch nvim: 
-        sudo nvim \"$@\"
-      fi
-    fi
-    }
+# vim() {
+#   if [ $# -eq 0 ]; then   # no argument, launch nvim
+#     nvim
+#   elif [ $# -gt 1 ]; then  # multiple arguments, skip function
+#     nvim $*
+#   elif [ -d "$@" ]; then  # if argument = a directory, error
+#     echo "error: \"$@\" is a DIRECTORY. Denied."
+#   elif [ -w $@ ]; then    # if exists and writeable. nvim TIME!"
+#     command nvim "$@" 
+#   elif [ -e $@ ]; then    # if exists, not writeable, auto SUDO 
+#     sudo nvim "$@"
+#   else                    # if arg doesn't exist...
+#       if touch $@; then     # if user has permission, create & launch nvim:
+#         command nvim "$@"
+#       else                  # elevate to sudo & create/launch nvim: 
+#         sudo nvim \"$@\"
+#       fi
+#     fi
+#     }
 
 # colorize man command
 man() {

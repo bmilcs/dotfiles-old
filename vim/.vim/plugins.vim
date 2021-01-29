@@ -186,6 +186,7 @@ syntax on
 augroup filetypedetect
   au BufNewFile,BufRead *.fsh,*.vsh setf glsl
   au BufRead,BufNewFile *.conf setf dosini
+  au BufRead,BufNewFile *rc setf dosini
 augroup END
 filetype on
 

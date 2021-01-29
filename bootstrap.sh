@@ -55,7 +55,9 @@ if [[ ${DISTRO} == "arch" ]]; then
 
   # STOW 
   for dir in ~/bm/*/ ; do
-    if [[ ! $dir == *asset* ]]; then
+    if [[ $dir == rsnapshot ]]; then
+      sudo stow -t / -R $(basename sdir)
+    elif [[ ! $dir == *asset* ]]; then 
       stow -R $(basename $dir)
       [[ $? -gt 0 ]] && _e $(basename $dir)
     fi  

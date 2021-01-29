@@ -29,6 +29,9 @@
 " FILES
 "────────────────────────────────────────────────────────────
 
+" (w)rite (w)indow as sudo
+nnoremap <leader>ww :execute ':silent w !sudo tee % > /dev/null' \| :edit!<CR>
+
 " (s)ource vimrc config
 nnoremap <silent> <leader>` :source ~/.vimrc<CR>
 
@@ -69,6 +72,9 @@ nnoremap <leader>/ :nohlsearch<CR>
 "────────────────────────────────────────────────────────────
 " GIT
 "────────────────────────────────────────────────────────────
+
+" git push
+nnoremap <silent> <leader>gp :Gpush<CR>
 
 " git diff split
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>

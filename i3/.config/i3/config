@@ -19,21 +19,28 @@
 set $win Mod4
 set $alt Mod1
 set $tilde 49
+set $shift Shift
+set $ctrl Ctrl
 
 # LOG OUT / RESTART / RELOAD
 bindcode $win+$tilde restart
+bindcode $win+$ctrl+$tilde reload
+bindcode $win+$shift+$tilde exec ". ~/.config/polybar/launch.sh"
 bindcode $win+$alt+$tilde exec "i3-msg exit"
-bindcode $win+Control+$tilde reload
-bindcode $win+Shift+49 exec '~/.config/i3/sh/xrdb-xresources.sh'
+#bindcode $win+$shift+49 exec '~/.config/i3/sh/xrdb-xresources.sh'
 
 #────────────────────────────────────────────────────────────
-# PACKAGES
+# APPLICATIONS
 #────────────────────────────────────────────────────────────
 
-# nav menu: rofi
-bindsym F1 exec rofi -show drun -drun-display-format \{name\} -config ~/.config/rofi/config.rasi 
+# ROFI
+bindsym F1 exec --no-startup-id rofi -config ~/.config/rofi/config.rasi -show drun
+bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
+bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
-# audio control
+#-show drun -drun-display-format \{name\}
+
+# AUDIO
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo +5%
 bindsym XF86AudioLowerVolume  exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo -5%
 bindsym XF86AudioMute         exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo toggle
@@ -41,23 +48,20 @@ bindsym XF86AudioPlay         exec mpc toggle
 bindsym XF86AudioStop         exec mpc stop
 bindsym XF86AudioNext         exec mpc next
 
-# move floating windows
-floating_modifier $win
-
-# terminal
-
+# TERMINAL
 bindsym $win+Return exec alacritty
 
-bindcode $win+51 scratchpad show
-bindcode $win+Control+51 move scratchpad
-
-# 47 = ; bindcode $win+47 exec code
-# 48 = ' bindcode $win+48 exec firefox 
+# BROWSER
 bindsym $win+a exec firefox
 
-bindsym Print exec screenshot win
-bindsym $alt+Print exec screenshot sel
-bindsym Ctrl+Print exec screenshot all
+# SCRATCHPAD
+bindcode $win+51 scratchpad show
+bindcode $win+$ctrl+51 move scratchpad
+
+# SCREENSHOTS
+bindsym Print exec screenshot sel
+bindsym $ctrl+Print exec screenshot all
+bindsym $alt+Print exec screenshot win
 
 #────────────────────────────────────────────────────────────
 # WINDOW CONTROL
@@ -81,37 +85,40 @@ bindsym $win+r focus child
 # bindsym $win+o focus child
 
 # MOVE
-bindsym $win+Control+l move right 50 px
-bindsym $win+Control+h move left  50 px
-bindsym $win+Control+k move up    50 px
-bindsym $win+Control+j move down  50 px
-# bindsym $win+Control+d move right 50 px
-# bindsym $win+Control+a move left  50 px
-# bindsym $win+Control+w move up  50 px
-# bindsym $win+Control+s move down  50 px
+bindsym $win+$ctrl+l move right 50 px
+bindsym $win+$ctrl+h move left  50 px
+bindsym $win+$ctrl+k move up    50 px
+bindsym $win+$ctrl+j move down  50 px
+# bindsym $win+$ctrl+d move right 50 px
+# bindsym $win+$ctrl+a move left  50 px
+# bindsym $win+$ctrl+w move up  50 px
+# bindsym $win+$ctrl+s move down  50 px
 
 # RESIZE
-bindsym $win+$alt+j resize shrink height 1 px or 1 ppt
-bindsym $win+$alt+k resize grow height 1 px or 1 ppt
-bindsym $win+$alt+h resize shrink width 1 px or 1 ppt
-bindsym $win+$alt+l resize grow width 1 px or 1 ppt
-# bindsym $win+Shift+d resize grow width 1 px or 1 ppt
-# bindsym $win+Shift+a resize shrink width 1 px or 1 ppt
-# bindsym $win+Shift+w resize grow height 1 px or 1 ppt
-# bindsym $win+Shift+s resize shrink height 1 px or 1 ppt
+bindsym $win+$alt+j resize shrink height 2 px or 2 ppt
+bindsym $win+$alt+k resize grow height 2 px or 2 ppt
+bindsym $win+$alt+h resize shrink width 2 px or 2 ppt
+bindsym $win+$alt+l resize grow width 2 px or 2 ppt
+# bindsym $win+$shift+d resize grow width 1 px or 1 ppt
+# bindsym $win+$shift+a resize shrink width 1 px or 1 ppt
+# bindsym $win+$shift+w resize grow height 1 px or 1 ppt
+# bindsym $win+$shift+s resize shrink height 1 px or 1 ppt
 
 # GAPS
-bindsym $win+Shift+j gaps outer all plus 2
-bindsym $win+Shift+k gaps outer all minus 2
-bindsym $win+Shift+h gaps inner all plus 2
-bindsym $win+Shift+l gaps inner all minus 2
+bindsym $win+$shift+j gaps outer all plus 2
+bindsym $win+$shift+k gaps outer all minus 2
+bindsym $win+$shift+h gaps inner all plus 2
+bindsym $win+$shift+l gaps inner all minus 2
 
 # SPLITTING
-bindsym $win+c split v
-bindsym $win+Control+c split h
+bindcode $win+47 split v
+bindcode $win+48 split h
 
 # FULL SCREEN
 bindsym $win+f fullscreen toggle
+
+# FLOATING WINDOWS
+floating_modifier $win
 
 #────────────────────────────────────────────────────────────
 # WORKSPACES
@@ -120,8 +127,8 @@ bindsym $win+f fullscreen toggle
 set $ws1 "1:dev"
 set $ws2 "2:msg"
 set $ws3 "3:www"
-set $ws4 "4:music"
-set $ws5 "5"
+set $ws4 "4:etc"
+set $ws5 "5:mpd"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -139,16 +146,16 @@ bindsym $win+8 workspace number $ws8
 bindsym $win+9 workspace number $ws9
 bindsym $win+0 workspace number $ws10
 
-bindsym $win+Control+1 move container to workspace number $ws1
-bindsym $win+Control+2 move container to workspace number $ws2
-bindsym $win+Control+3 move container to workspace number $ws3
-bindsym $win+Control+4 move container to workspace number $ws4
-bindsym $win+Control+5 move container to workspace number $ws5
-bindsym $win+Control+6 move container to workspace number $ws6
-bindsym $win+Control+7 move container to workspace number $ws7
-bindsym $win+Control+8 move container to workspace number $ws8
-bindsym $win+Control+9 move container to workspace number $ws9
-bindsym $win+Control+0 move container to workspace number $ws10
+bindsym $win+$alt+1 move container to workspace number $ws1
+bindsym $win+$alt+2 move container to workspace number $ws2
+bindsym $win+$alt+3 move container to workspace number $ws3
+bindsym $win+$alt+4 move container to workspace number $ws4
+bindsym $win+$alt+5 move container to workspace number $ws5
+bindsym $win+$alt+6 move container to workspace number $ws6
+bindsym $win+$alt+7 move container to workspace number $ws7
+bindsym $win+$alt+8 move container to workspace number $ws8
+bindsym $win+$alt+9 move container to workspace number $ws9
+bindsym $win+$alt+0 move container to workspace number $ws10
 
 #────────────────────────────────────────────────────────────
 # GUI
@@ -194,18 +201,19 @@ set $inactive-fg        #4C566A
 set $urgent-fg          #BF616A
 
 # COLOR APPLICATION
-client.focused          #81a1c1 #81a1c1 #2f343f #81a1c1   #81a1c1
+#class                  border  bg      fg      focus     child_border
+client.focused          $yellow #81a1c1 #2f343f #81a1c1   #81a1c1
 client.focused_inactive #2f343f #2f343f #2f343f #2f343f   #2f343f
 client.unfocused        #2f343f #2f343f #d8dee8 #2f343f   #2f343f
 client.urgent           #bf616a #bf616a #2f343f #bf616a   #bf616a
 client.placeholder      #000000 #0c0c0c #D8D339 #000000   #D8D339
 client.background       #D8DEE9
 
+#class                   border        bg            fg             focus     child_border
 #client.focused          $inactive-fg  $bg           $white         $bg
 #client.unfocused        $background   $inactive-bg  $inactive-fg   $bg
 #client.focused_inactive $background   $inactive-bg  $inactive-fg   $bg
 #client.urgent           $urgent-bg    $urgent-bg    $fg            $bg
-#class                   border        bg            fg             focus     child_border
 #client.background       $bg
 
 #────────────────────────────────────────────────────────────
@@ -218,6 +226,8 @@ assign [class="discord"] 2
 assign [class="android-*"] 2
 assign [class="Telegram*"] 2
 
+for_window [class='Conky'] floating enable
+
 #────────────────────────────────────────────────────────────
 # BOOTSTRAP
 #────────────────────────────────────────────────────────────
@@ -228,7 +238,7 @@ assign [class="Telegram*"] 2
 # exec --no-startup-id picom --experimental-backends --config ~/.config/picom/config
 # exec --no-startup-id pulseaudio --start
 # exec --no-startup-id unclutter
-# exec --no-startup-id xcape -e 'Control_L=Escape'
+# exec --no-startup-id xcape -e '$ctrl_L=Escape'
 # exec --no-startup-id nitrogen --restore
 # #exec --no-startup-id nm-applet
 # #exec --no-startup-id /usr/lib/kdeconnectd

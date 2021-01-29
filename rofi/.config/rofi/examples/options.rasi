@@ -1,0 +1,72 @@
+configuration {
+    show-icons:                     false;
+    font:                           "Font Awesome 17";
+}
+
+window {
+    height:                         300;
+    width:                          300;
+    location:                       northeast;
+    anchor:                         northeast;
+    x-offset:                       -10;
+    y-offset:                       10;
+    transparency:                   "real";
+    background-color:               #00000000;
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  8;
+    border-color:                   @primary;
+}
+
+mainbox {
+    children:                       [message, listview];
+    padding:                        0px 0px;
+}
+
+
+textbox {
+    horizontal-align:   0.5;
+    border:             0px 0px 2px;
+    border-color:       @primary;
+    margin:             12px;
+    padding:            12px;
+}
+
+listview {
+    padding:                        8px 32px;
+}
+
+element {
+    padding:                        8px;
+    orientation:                    horizontal;
+}
+
+element normal.urgent, element alternate.urgent {
+    background-color:               @urgent;
+}
+
+element normal.active, element alternate.active {
+    background-color:               @background-alt;
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  8;
+    border-color:                   transparent;
+}
+
+element selected {
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  8;
+    border-color:                   @primary;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+}
+
+element-text {
+    horizontal-align:               0;
+    padding:                        0px 8px;
+}
+

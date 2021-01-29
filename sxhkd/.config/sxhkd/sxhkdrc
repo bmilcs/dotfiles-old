@@ -7,7 +7,7 @@
 
 #	[bspwm] restart, quit 
 super + {_,shift + ctrl + }grave
-	pkill -USR1 -x sxhkd;	xrdb -merge ~/.Xresources; bspc {wm -r,quit}
+	pkill -USR1 -x sxhkd; . ~/.config/polybar/launch.sh;	xrdb -merge ~/.Xresources; bspc {wm -r,quit}
 
 # [sxhkd] restart 
 super + ctrl + grave

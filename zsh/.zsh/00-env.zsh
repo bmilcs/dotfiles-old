@@ -33,7 +33,7 @@ DISTRO='arch'; else DISTRO='debian'; fi
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
-
+export TERMINAL=alacritty
 
 #
 # FZF

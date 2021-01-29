@@ -26,34 +26,41 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
-- [ ] github aliases
-  - [ ] autocomplete git status > diff > to add workflow
-  - [ ] research best, quickest method for dotfile use
+- [ ] dunst notifications
+- [ ] udisk2 / udiskie automount
+
+**rust**
+
+- [ ] tldr
+- [ ] fd
+- [ ] bat
+- [ ] prox
+- [ ] exa
+- [ ] ripgrep
+- [x] github aliases
+
+**misc**
+- [ ] dotfiles: segment essentials | vm | workstation
+- [ ] autocomplete git status > diff > to add workflow
 - [ ] ssh keys > private repo
-- [ ] segment arch workstation & barebones vm dotfiles
+- [x] research best, quickest method for dotfile use
 
-
-**via YouTube ?**
-
-- research: npm
-- nettree
-
-**via YouTube Plugins "Super Powers"**
-
-- [ ] ~~vim shortcut: auto :%s/VISUAL//gI~~
-- [ ] vim autocomplete: shortcut? all ext, within file AND /path/to autocomplete
-  - [ ] coc.vim visual studio-like autocompletion
+**VIM** [ref: youtube vim super powers]
+- [ ] npm
+- [ ] nettree
+- [ ] vim shortcut: auto :%s/VISUAL//g
+- [ ] vim autocomplete
+    - [ ]  all stuff within file 
+    - [ ]  /path/to autocomplete
+    - [ ] coc.vim [visual studio-like]
 - [ ] ctrlsf - 'command line searching"
 - [ ] fzf fuzzy find - to "//"
 - [ ] rip grep? same thing?
 - [ ] bcommits? git history-like plugin
+- [ ] lazygit, lazydocker, lazynpm
+- [ ] tmux - learn tabs, buffers, etc.
 - [ ] anyjump -- search across workspace
-- [ ] lazygit -- lazydocker, lazynpm
-
-
-**VIM**
-  - [ ] tmux - learn tabs, buffers, etc.
-  - [ ] functions() - ie: centered title bar w/ ascii characters
+- [ ] functions() - ie: centered title bar w/ ascii characters
 
 **BSPWM**
   - [ ] ergonomic shortcuts
@@ -97,7 +104,6 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ---
 
-
 ### inspirations & help
 
 - [**xero's dotfiles**](https://github.com/xero/dotfiles)
@@ -107,5 +113,4 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
   > ansible for other things that can't be done with the above.
 - [**markdown help**](https://guides.github.com/features/mastering-markdown/)
 - [**color theming via xresources**](https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/)
-
 

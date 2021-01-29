@@ -36,7 +36,9 @@ if [ $# = 0 ]; then
   _o tmux  tmux  
   _o x     xorg
   _o n     ncmpcpp
+  _o r     rofi
   _o e     cfg script
+  
 
   read sel
 else
@@ -53,6 +55,7 @@ case $sel in
   v) nvim -S ~/dev/vim.bm;;
   p) genls $D/polybar POLYBAR;;
   k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
+  r) genls $D/rofi;;
   bsp) nvim $D/bspwm/.config/bspwm/bspwmrc;;
   tm|tmux) nvim $D/tmux/.tmux.conf;;
   x|xorg) genls $D/xorg XORG;;

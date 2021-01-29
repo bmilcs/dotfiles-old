@@ -1,19 +1,22 @@
 #!/bin/bash
 
 maimsel() {
-  f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
+  #f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
+  f=~/img/$(date +%Y-%m-%d%H-%m-%s).png
   maim -s "$f" 
   xclip -sel clip -t image/png "$f"
 }
 
 maimwin() {
-  f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
-  maim -i "$f" 
+  #f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
+  f=~/img/$(date +%Y-%m-%d%H-%m-%s).png
+  maim -i $(xdotool getactivewindow) "$f" 
   xclip -sel clip -t image/png "$f"
 }
 
 maimall() {
-  f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
+  #f=/all/bm/images/screenshots/$(date +%Y-%m-%d%H-%m-%s).png
+  f=~/img/$(date +%Y-%m-%d%H-%m-%s).png
   maim "$f" 
   xclip -sel clip -t image/png "$f"
 }

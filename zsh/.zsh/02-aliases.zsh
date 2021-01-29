@@ -12,12 +12,21 @@
 #         add working savedir alias > select
 #
 #────────────────────────────────────────────────────────────
+# SUDIO > CFG 
+#────────────────────────────────────────────────────────────
+
+# nocorrect [zsh autocorrect > sudo] -E [respect orig env]
+alias sudo="nocorrect sudo -E "
+
+#────────────────────────────────────────────────────────────
 # TEXT EDITING
 #────────────────────────────────────────────────────────────
 
 # nano -> vim
-alias nano="vim"
-      compdef nano="vim"
+alias nano="nvim"
+      compdef nano="nvim"
+alias vim="nvim"
+      compdef vim="nvim"
 
 # scratchpad
 alias pad="vim $D/txt/txt/scratchpad.md"
