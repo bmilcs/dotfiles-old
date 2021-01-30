@@ -10,7 +10,7 @@
 
 pgrep polybar || sh $HOME/.config/polybar/launch.sh &
 pgrep -f udiskie || udiskie &
-pgrep -f thunderbird || thunderbird &
+#pgrep -f thunderbird || thunderbird &
 pgrep -f telegram || telegram-desktop &
 pgrep -f android-messages || android-messages-desktop &
 pgrep -f discord || discord &
@@ -18,6 +18,7 @@ pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config 
 pgrep -f nitrogen || nitrogen --restore &
 pgrep -f pulseaudio || pulseaudio --start &
 pgrep -f unclutter || unclutter &
-pgrep -f xcape || xcape -e 'Control_L=Escape'
+
 setxkbmap -option ctrl:nocaps
+pgrep -f xcape || xcape -e 'Control_L=Escape'
 exit 0

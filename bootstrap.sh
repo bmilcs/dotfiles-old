@@ -79,7 +79,7 @@ if [ -f "/etc/arch-release" ]; then
 
   # BASE PACKAGES
   _a checking for missing packages
-  reqs=("curl" "zsh" "neovim" "git")
+  reqs=("curl" "zsh" "neovim" "git" "stow")
 
   if [[ ${DISTRO} == "arch" ]]; then
     dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -S ${reqs[@]} && _s installed ${reqs[@]})
@@ -108,6 +108,5 @@ if [ -f "/etc/arch-release" ]; then
     _i ZSH skipped for now
   fi
 
-fi
 _t bmilcs/bootstrap complete
 

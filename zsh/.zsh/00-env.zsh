@@ -12,9 +12,11 @@
 #
 
 # add $PATH to path array | source: arch wiki
-# typeset -U PATH path
-# path=("$HOME/bin"  "$path[@]")
-# export PATH
+if [[ ! $(echo $PATH|grep -q $HOME/bin) ]]; then
+  typeset -U PATH path
+  path=("$HOME/bin"  "$path[@]")
+  export PATH
+fi
 
 #
 # REPO DIR
@@ -22,14 +24,18 @@
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
-if [ -f "/etc/arch-release" ]; then
-DISTRO='arch'; else DISTRO='debian'; fi
 
+if [ -f "/etc/arch-release" ]; then
+  DISTRO='arch'; else DISTRO='debian'; fi
 
 #
 # ENV VAR
 #
 
+# multi-core build
+export MAKEFLAGS="-j$(nproc)"
+# build dir to ram
+export BUILDDIR=/tmp/makepkg makepkg
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
@@ -41,7 +47,6 @@ export TERMINAL=alacritty
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
 export FZF_DEFAULT_OPTS="--color=dark"
-
 
 #
 # LOCALE
