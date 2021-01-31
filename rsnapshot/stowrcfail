@@ -1,6 +1,0 @@
---dir=$D/rsnapshot
---target=/
-# --override=bin
-# --override=man
-# --ignore='perllocal\.pod'
-# --ignore='\.packlist'
