@@ -5,9 +5,13 @@
 #   sxhkdrc              
 #────────────────────────────────────────────────────────────
 
-#	[bspwm] restart, quit 
-super + {_,shift + ctrl + }grave
-	pkill -USR1 -x sxhkd; . ~/.config/polybar/launch.sh;	xrdb -merge ~/.Xresources; bspc {wm -r,quit}
+#	[bspwm] restart
+super + grave
+	pkill -USR1 -x sxhkd; . ~/.config/polybar/launch.sh;	xrdb -merge ~/.Xresources; bspc wm -r
+
+# [bspwm] quit
+super + alt + grave
+	bspc quit
 
 # [sxhkd] restart 
 super + ctrl + grave
@@ -160,14 +164,18 @@ super + ctrl + Return
 
 # pulseaudio - increase volume
 XF86AudioRaiseVolume 
-  pactl set-sink-volume 1 +5% 
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 +5%; else pactl set-sink-volume 1 +5%;fi
 
 # pulseaudio - increase volume
 XF86AudioLowerVolume 
-  pactl set-sink-volume 1 -5% 
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 -5%; else pactl set-sink-volume 1 -5%;fi
+#  pactl set-sink-volume 1 -5% 
 
 # pulseaudio - increase volume
 XF86AudioMute 
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-mute 0 toggle; else pactl set-sink-mute 0 toggle;fi
+
+
   pactl set-sink-mute 0
 
 # printscreen (full)

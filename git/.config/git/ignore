@@ -1,6 +1,7 @@
 *.log
-vim/.vim/autoload/
-vim/.vim/cache/
-vim/.vim/plugged/
+vim/.vim/autoload/*
+vim/.vim/cache/*
+vim/.vim/plugged/*
+vim/.vim/undo/*
 .bmenv
 
