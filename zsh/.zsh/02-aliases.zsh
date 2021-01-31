@@ -65,7 +65,6 @@ alias polyr=". ~/.config/polybar/launch.sh"
 #────────────────────────────────────────────────────────────
 
 # UPDATE # TODO conditional update | distro based
-alias up="_a pacman ; pm -Syyuu ; _a yay ; yay -Syyuu"
 
 # ARCHLINUX
 if [[ $DISTRO = arch ]]; then

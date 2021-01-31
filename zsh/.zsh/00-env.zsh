@@ -24,17 +24,8 @@ fi
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-if [ -f "/etc/arch-release" ]; then
-=======
 if [[ -f "/etc/arch-release" ]]; then
->>>>>>> 26eef7d (bmpc additions/tweaks)
-=======
-
-if [ -f "/etc/arch-release" ]; then
->>>>>>> 662aa7ecafe1a345e9c55ad1ded62f17377d2255
   DISTRO='arch'; else DISTRO='debian'; fi
 
 #────────────────────────────────────────────────────────────
@@ -57,14 +48,7 @@ export TERMINAL=alacritty
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
 export FZF_DEFAULT_OPTS="--color=dark"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 662aa7ecafe1a345e9c55ad1ded62f17377d2255
-#
-=======
 #────────────────────────────────────────────────────────────
->>>>>>> 26eef7d (bmpc additions/tweaks)
 # LOCALE
 #────────────────────────────────────────────────────────────
 
