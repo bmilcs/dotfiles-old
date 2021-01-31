@@ -41,37 +41,40 @@ ivim() {
 }
 
 # DISTRO CHECK
-
-_t bmilcs/bootstrap initiated for $DISTRO
-
 if [ -f "/etc/arch-release" ]; then
   DISTRO='arch'; else DISTRO='debian'; fi
+
+_t bmilcs/bootstrap initiated for $DISTRO
 
 #────────────────────────────────────────────────────────────
 # ARCHLINUX
 #────────────────────────────────────────────────────────────
 
-#if [[ ${DISTRO} == "arch" ]]; then
+if [[ ${DISTRO} == "arch" ]]; then
 
   _ask install everything?
   if [[ $? == 0 ]]; then
+
     # STOW 
     for dir in ~/bm/*/ ; do
       if [[ $dir == rsnapshot ]]; then
         sudo stow -t / -R $(basename sdir)
+
+      elif [[ $dir == usr ]]; then
+        sudo stow -t /usr -R $(basename sdir)
+
       elif [[ ! $dir == *asset* ]]; then 
         stow -R $(basename $dir)
         [[ $? -gt 0 ]] && _e $(basename $dir)
       fi  
     done
-    exit 0   
   fi
 
   # VIM/ZSH
   izsh
   ivim
-
-#else
+  exit 0
+fi
 
 #────────────────────────────────────────────────────────────
 # DEBIAN
