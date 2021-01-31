@@ -7,9 +7,9 @@
 #   ZSH CORE
 #────────────────────────────────────────────────────────────
 
-#
+#────────────────────────────────────────────────────────────
 # HISTORY
-#
+#────────────────────────────────────────────────────────────
 
 HISTFILE=~/.config/zsh/.zhistory
 HISTSIZE=5000
@@ -24,13 +24,13 @@ setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST #
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 unsetopt HIST_VERIFY          # after history expansion, execute the line directly
 
-#
+#────────────────────────────────────────────────────────────
 # DIR_COLORS
-#
+#────────────────────────────────────────────────────────────
 
 [ -f "$D/zsh/.zsh/.dir_colors" ] && eval $($D/zsh/.zsh/.dir_colors)
 
-#
+#────────────────────────────────────────────────────────────
 # PLUGINS
 # 
 
@@ -39,9 +39,9 @@ zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zdharma/fast-syntax-highlighting
 
-#
+#────────────────────────────────────────────────────────────
 # OPTIONS
-#
+#────────────────────────────────────────────────────────────
 
 set nocompatible
 bindkey -v                    # vim mode
@@ -52,9 +52,9 @@ setopt nomatch                #
 setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
 
-#
+#────────────────────────────────────────────────────────────
 # CORRECTIONS
-#
+#────────────────────────────────────────────────────────────
 
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
@@ -67,9 +67,9 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
 # NEW END
 
-#
+#────────────────────────────────────────────────────────────
 # AUTOCOMPLETE
-#
+#────────────────────────────────────────────────────────────
 
 CASE_SENSITIVE="false"
 setopt COMPLETE_ALIASES # auto complete aliases
@@ -92,13 +92,11 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
-
 # NEW END
 
-
-#
+#────────────────────────────────────────────────────────────
 # AUTOLOADS
-#
+#────────────────────────────────────────────────────────────
 
 autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit -d /home/bmilcs/.config/zsh/.zcompdump
@@ -106,14 +104,13 @@ autoload -Uz bashcompinit && bashcompinit
 autoload -Uz colors && colors # autoload colors
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 _comp_options+=(globdots)       # autocomplete .dotfiles
-
-
+zmodload -i zsh/complist
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-#
+#────────────────────────────────────────────────────────────
 # PROMPT, COLORS, ETC. 
-#
+#────────────────────────────────────────────────────────────
 
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
@@ -126,10 +123,9 @@ RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
 
-#
+#────────────────────────────────────────────────────────────
 # KEYBINDINGS
-#
-
+#────────────────────────────────────────────────────────────
 
 typeset -g -A key
 key[Home]="${terminfo[khome]}"
@@ -165,8 +161,6 @@ bindkey '^k' down-line-or-beginning-search
 bindkey '^H' backward-kill-word # ctrl backspace delete word
 bindkey '^[[3;5~' kill-word
 
-
-
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	autoload -Uz add-zle-hook-widget
@@ -190,14 +184,12 @@ rehash_precmd() {
 }
 add-zsh-hook -Uz precmd rehash_precmd
 
-#
+#────────────────────────────────────────────────────────────
 # UNDER CONSTRUCTION
-#
-
-
+#────────────────────────────────────────────────────────────
 
 # 
 # REFERENCES
-#
+#────────────────────────────────────────────────────────────
 
 # https://github.com/mimame/.dotfiles/blob/master/zsh/.zshrc

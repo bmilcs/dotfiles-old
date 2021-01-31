@@ -72,6 +72,29 @@ install & apply customizations:
   set-default-source alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo
   set-card-profile alsa_card.usb-Focusrite_Scarlett_2i2_USB-00 output:analog-stereo+input:analog-stereo
 
+# thinkpad t14
+
+
+https://wiki.archlinux.org/index.php/makepkg#Parallel_compilation
+
+
+
+Building from files in memory
+  Building from files in memory
+
+/tmp to ram
+
+    tmpfs   /tmp         tmpfs   rw,nodev,nosuid,size=2G          0  0
+
+https://wiki.archlinux.org/index.php/makepkg#Utilizing_multiple_cores_on_compression
+
+
+    $ lspci -knn|grep -iA2 audio
+
+
+
+
+
 ## archive
 
 **removed software**

@@ -7,9 +7,9 @@
 #   ZSH ENVIRONMENT
 #────────────────────────────────────────────────────────────
 
-#
+#────────────────────────────────────────────────────────────
 # PATH
-#
+#────────────────────────────────────────────────────────────
 
 # add $PATH to path array | source: arch wiki
 if [[ ! $(echo $PATH|grep -q $HOME/bin) ]]; then
@@ -18,19 +18,23 @@ if [[ ! $(echo $PATH|grep -q $HOME/bin) ]]; then
   export PATH
 fi
 
-#
+#────────────────────────────────────────────────────────────
 # REPO DIR
-#
+#────────────────────────────────────────────────────────────
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
+<<<<<<< HEAD
 
 if [ -f "/etc/arch-release" ]; then
+=======
+if [[ -f "/etc/arch-release" ]]; then
+>>>>>>> 26eef7d (bmpc additions/tweaks)
   DISTRO='arch'; else DISTRO='debian'; fi
 
-#
+#────────────────────────────────────────────────────────────
 # ENV VAR
-#
+#────────────────────────────────────────────────────────────
 
 # multi-core build
 export MAKEFLAGS="-j$(nproc)"
@@ -41,16 +45,20 @@ export VISUAL=nvim
 export TERM=xterm-256color
 export TERMINAL=alacritty
 
-#
+#────────────────────────────────────────────────────────────
 # FZF
-#
+#────────────────────────────────────────────────────────────
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
 export FZF_DEFAULT_OPTS="--color=dark"
 
+<<<<<<< HEAD
 #
+=======
+#────────────────────────────────────────────────────────────
+>>>>>>> 26eef7d (bmpc additions/tweaks)
 # LOCALE
-#
+#────────────────────────────────────────────────────────────
 
 export LC_COLLATE=C
 export LC_CTYPE=en_US.UTF-8
