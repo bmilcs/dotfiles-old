@@ -40,11 +40,22 @@ ivim() {
   fi
 }
 
+
 # DISTRO CHECK
 if [ -f "/etc/arch-release" ]; then
   DISTRO='arch'; else DISTRO='debian'; fi
+  _t bmilcs/bootstrap initiated for $DISTRO
 
-_t bmilcs/bootstrap initiated for $DISTRO
+# BASE PACKAGES
+_a checking for missing packages
+reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
+
+if [[ ${DISTRO} == "arch" ]]; then
+  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy ${reqs[@]} && _s installed ${reqs[@]})
+else
+  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
+fi
+_s all packages present
 
 #────────────────────────────────────────────────────────────
 # ARCHLINUX
@@ -80,16 +91,6 @@ fi
 # DEBIAN
 #────────────────────────────────────────────────────────────
 
-  # BASE PACKAGES
-  _a checking for missing packages
-  reqs=("curl" "zsh" "neovim" "git" "stow")
-
-  if [[ ${DISTRO} == "arch" ]]; then
-    dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -S ${reqs[@]} && _s installed ${reqs[@]})
-  else
-    dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
-  fi
-  _s all packages present
 
   # CONFIGURE VIM/ZSH
   izsh

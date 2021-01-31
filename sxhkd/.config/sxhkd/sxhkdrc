@@ -163,15 +163,21 @@ super + ctrl + Return
 #
 
 # pulseaudio - increase volume
+super + F3
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 +5%; else pactl set-sink-volume 1 +5%;fi
 XF86AudioRaiseVolume 
   if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 +5%; else pactl set-sink-volume 1 +5%;fi
 
 # pulseaudio - increase volume
+super + F2
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 -5%; else pactl set-sink-volume 1 -5%;fi
 XF86AudioLowerVolume 
   if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 -5%; else pactl set-sink-volume 1 -5%;fi
 #  pactl set-sink-volume 1 -5% 
 
 # pulseaudio - increase volume
+super + F1 
+  if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-mute 0 toggle; else pactl set-sink-mute 0 toggle;fi
 XF86AudioMute 
   if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-mute 0 toggle; else pactl set-sink-mute 0 toggle;fi
 

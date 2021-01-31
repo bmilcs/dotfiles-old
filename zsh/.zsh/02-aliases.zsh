@@ -12,7 +12,7 @@
 #         add working savedir alias > select
 #
 #────────────────────────────────────────────────────────────
-# SUDIO > CFG 
+# SUDO 
 #────────────────────────────────────────────────────────────
 
 # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
@@ -95,11 +95,12 @@ fi
 alias bmbs="cd $D && ./bootstrap.sh"
 
 # DL MISSING GIT AUTOCOMPLETE
-[[ ! -f ~/.zsh/completion/_git ]] && wget -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+[[ ! -f ~/.zsh/completion/_git ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+[[ ! -f ~/.zsh/completion/git-completion.bash ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 # ALIAS GIT AUTOCOMPLETION
-if [ -f ~/.zsh/completion/git-completion.zsh ]; then
-  . ~/.zsh/completion/git-completion.zsh
+if [ -f ~/.zsh/completion/_git ]; then
+  . ~/.zsh/completion/_git
   # Add git completion to aliases
   __git_complete g __git_main
   __git_complete gs __git_status

@@ -51,7 +51,8 @@ case $sel in
   t) genls $D/txt TXT;;
   b) genls $D/bin BIN;;
   i) genls $D/i3/.config/i3/ I3;;
-  z) nvim -S ~/dev/zsh.bm;;
+  #z) nvim -S ~/dev/zsh.bm;;
+  z) genls $D/zsh;;
   v) nvim -S ~/dev/vim.bm;;
   p) genls $D/polybar POLYBAR;;
   k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
