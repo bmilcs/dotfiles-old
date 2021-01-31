@@ -26,7 +26,7 @@ export D=$HOME/bm
 export BAK=$HOME/.backup
 
 if [[ -f "/etc/arch-release" ]]; then
-  DISTRO='arch'; else DISTRO='debian'; fi
+  export DISTRO='arch'; else export DISTRO='debian'; fi
 
 #────────────────────────────────────────────────────────────
 # ENV VAR

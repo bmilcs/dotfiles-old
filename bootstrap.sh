@@ -18,7 +18,7 @@ source ./bin/bin/_head
 #────────────────────────────────────────────────────────────
 
 izsh() {
-  if [[ ! -d ~/.zplugin ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] || [[ ! -d ~/.zsh/completion ]];then 
+  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zplugin ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] || [[ ! -d ~/.zsh/completion ]];then 
      _a zsh setup required
      # create directories
      mkdir -p ~/.zplugin ~/.config/zsh/ ~/.zsh/completion
@@ -32,7 +32,7 @@ izsh() {
 }
 
 ivim() {
-  if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then 
+  if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
     _a vim-plug setup started 
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
@@ -59,17 +59,17 @@ if [[ ${DISTRO} == "arch" ]]; then
     for dir in ~/bm/*/ ; do
       if [[ $dir == rsnapshot ]]; then
         sudo stow -t / -R $(basename sdir)
-
+        _s stowed: rsnapshot
       elif [[ $dir == usr ]]; then
         sudo stow -t /usr -R $(basename sdir)
-
+        _s stowed usr local bin
       elif [[ ! $dir == *asset* ]]; then 
         stow -R $(basename $dir)
         [[ $? -gt 0 ]] && _e $(basename $dir)
       fi  
     done
   fi
-
+  _a stow completed
   # VIM/ZSH
   izsh
   ivim
