@@ -72,7 +72,7 @@ if [[ ${DISTRO} == "arch" ]]; then
         sudo stow -t / -R $(basename sdir)
         _s stowed: rsnapshot
       elif [[ $dir == usr ]]; then
-        sudo stow -t /usr -R $(basename sdir)
+        sudo stow -t /usr/ -R $(basename sdir)
         _s stowed usr local bin
       elif [[ ! $dir == *asset* ]]; then 
         stow -R $(basename $dir)
