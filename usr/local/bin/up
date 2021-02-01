@@ -5,8 +5,8 @@ NC='\033[0m';B='\033[1m';DIM='\033[2m';ITAL='\033[3m';UL='\033[4m';BLINK='\033[5
 CHECK_PAC=$(which pacman)
 
 if [[ ! -z $CHECK_PAC ]]; then
-	echo -e "${BLU}[ ${B}sudo pacman -Syyuu${BLU}]${NC}"
-	sudo pacman -Syyuu
+	echo -e "${BLU}[ ${B}sudo pacman -Syyyuuu${BLU}]${NC}"
+	sudo pacman -Syyyuuu
 	echo -e "${BLU}[ ${B}yay -Syyuu${BLU}]${NC}"
 	yay -Syyuu
 else

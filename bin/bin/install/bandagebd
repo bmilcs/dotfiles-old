@@ -1,0 +1,6 @@
+#!/bin/bash
+#https://gist.github.com/ObserverOfTime/d7e60eb9aa7fe837545c8cb77cf31172
+
+ curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
+ chmod +x betterdiscordctl
+ sudo mv betterdiscordctl /usr/local/bin

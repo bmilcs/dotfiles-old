@@ -99,16 +99,15 @@ alias bmbs="cd $D && ./bootstrap.sh"
 [[ ! -f ~/.zsh/completion/git-completion.bash ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 # ALIAS GIT AUTOCOMPLETION
-if [ -f ~/.zsh/completion/_git ]; then
-  . ~/.zsh/completion/_git
-  # Add git completion to aliases
-  __git_complete g __git_main
-  __git_complete gs __git_status
-  __git_complete ga __git_add
-  __git_complete gc _git_commit
-  __git_complete gp _git_push
-fi
-
+# if [ -f ~/.zsh/completion/_git ]; then
+#   . ~/.zsh/completion/_git
+#   # Add git completion to aliases
+#   __git_complete g __git_main
+#   __git_complete gs __git_status
+#   __git_complete ga __git_add
+#   __git_complete gc _git_commit
+#   __git_complete gp _git_push
+# fi
 alias g="cd $D && git "
 alias ga="cd $D && git add "
 alias gs="cd $D && git status " 
