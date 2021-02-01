@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -41,16 +41,25 @@ ivim() {
   fi
 }
 
-
+#────────────────────────────────────────────────────────────
 # DISTRO CHECK
+#────────────────────────────────────────────────────────────
+
 if [ -f "/etc/arch-release" ]; then
   DISTRO='arch'; else DISTRO='debian'; fi
-  _t bmilcs/bootstrap initiated for $DISTRO
 
-# BASE PACKAGES
+_t bmilcs/bootstrap initiated for $DISTRO
+
+#────────────────────────────────────────────────────────────
+# INSTALL REQUIRED PACKAGES
+#────────────────────────────────────────────────────────────
+
 _a checking for missing packages
+
+# required software
 reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
 
+# distro-based installation
 if [[ ${DISTRO} == "arch" ]]; then
   pacman -Qi "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy ${reqs[@]} && _s installed ${reqs[@]})
 else
@@ -66,47 +75,56 @@ _s all packages present
 if [[ ${DISTRO} == "arch" ]]; then
 
   _ask install everything?
-  if [[ $? == 0 ]]; then
 
-    # STOW 
+  # if yes:
+  if [[ $? == 0 ]]; then
+    # stow: loop thru repo
     for dir in $D/*/ ; do
+      # rsnapshot config > /etc/rsnapshot.conf
       if [[ $dir = $D/rsnapshot/ ]]; then
         sudo stow -t / -R $(basename $dir)
         _s stowed: rsnapshot
+      # /usr/local/bin applcations
       elif [[ $dir = $D/usr/ ]]; then
         sudo stow -t /usr/ -R $(basename $dir)
-        _s stowed usr local bin
-      elif [[ ! $dir = *asset* ]]; then 
+        _s stowed: usr local bin
+      # if not in repo /asset folder
+      elif [[ ! $dir = $D/asset* ]]; then 
         stow -R $(basename $dir)
+        # if exit status of last command sucked...
         [[ $? -gt 0 ]] && _e $(basename $dir)
       fi  
+    # loop end
     done
-  fi
+  _s stowed: everything else
+  # end of install everything
   _a stow completed
-  # VIM/ZSH
+  fi
+
+  # configure shell & vim via functions
   izsh
   ivim
-  exit 0
-fi
+
+# end of arch
+else
 
 #────────────────────────────────────────────────────────────
-# DEBIAN
+# DEB-BASED
 #────────────────────────────────────────────────────────────
 
-
-  # CONFIGURE VIM/ZSH
-  izsh
-  ivim
-  
-  # STOW
+  # stow
   _a stowing necessary files
   stowee=("bin" "zsh" "vim" "git" "txt")
   stow -R "${stowee[@]}" && _s ${stowee[@]} symlinked
 
-  # SET REPO URL
+  # set repo url
   git remote set-url origin git@github.com:bmilcs/dotfiles.git 
 
-  # CHANGE SHELL
+  # configure vim/zsh
+  izsh
+  ivim
+
+  # change shell
   _ask swap to ZSH now?
   if [[ $? == 0 ]]; then
     chsh -s /usr/bin/zsh
@@ -114,5 +132,10 @@ fi
     _i ZSH skipped for now
   fi
 
+# end of deb-based install
+fi
+
 _t bmilcs/bootstrap complete
 
+# exit successfully, despite not having checked lol
+exit 0
