@@ -12,6 +12,7 @@
 #────────────────────────────────────────────────────────────
 
 source ./bin/bin/_head
+D=$HOME/bm
 
 #────────────────────────────────────────────────────────────
 # FUNCTIONS
@@ -51,10 +52,11 @@ _a checking for missing packages
 reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
 
 if [[ ${DISTRO} == "arch" ]]; then
-  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy ${reqs[@]} && _s installed ${reqs[@]})
+  pacman -Qi "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy ${reqs[@]} && _s installed ${reqs[@]})
 else
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
 fi
+
 _s all packages present
 
 #────────────────────────────────────────────────────────────
@@ -67,14 +69,16 @@ if [[ ${DISTRO} == "arch" ]]; then
   if [[ $? == 0 ]]; then
 
     # STOW 
-    for dir in ~/bm/*/ ; do
-      if [[ $dir == rsnapshot ]]; then
-        sudo stow -t / -R $(basename sdir)
+    for dir in $D/*/ ; do
+      echo $dir
+      echo $D/rsnapshot
+      if [[ $dir = $D/rsnapshot/ ]]; then
+        sudo stow -t / -R $(basename $dir)
         _s stowed: rsnapshot
-      elif [[ $dir == usr ]]; then
-        sudo stow -t /usr/ -R $(basename sdir)
+      elif [[ $dir = $D/usr/ ]]; then
+        sudo stow -t /usr/ -R $(basename $dir)
         _s stowed usr local bin
-      elif [[ ! $dir == *asset* ]]; then 
+      elif [[ ! $dir = *asset* ]]; then 
         stow -R $(basename $dir)
         [[ $? -gt 0 ]] && _e $(basename $dir)
       fi  
