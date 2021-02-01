@@ -39,7 +39,7 @@ set smartcase    " only uppercase words w/ uppercase search term
 set shiftwidth=2 " columns of whitespace: “level of indentation"
 set tabstop=2 " columns of whitespace: \t char 
 set softtabstop=2 " columns of whitespace per tab/backspace keypresses
-set expandtab " convert \t to spaces
+" set expandtab " convert \t to spaces
 set autoindent " auto indentation
 
 " search features
