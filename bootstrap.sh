@@ -70,8 +70,6 @@ if [[ ${DISTRO} == "arch" ]]; then
 
     # STOW 
     for dir in $D/*/ ; do
-      echo $dir
-      echo $D/rsnapshot
       if [[ $dir = $D/rsnapshot/ ]]; then
         sudo stow -t / -R $(basename $dir)
         _s stowed: rsnapshot

@@ -8,7 +8,6 @@
 #   GLOBAL BOOTSTRAP              
 #────────────────────────────────────────────────────────────
 
-pgrep polybar || sh $HOME/.config/polybar/launch.sh &
 pgrep -f udiskie || udiskie &
 #pgrep -f thunderbird || thunderbird &
 pgrep -f telegram || telegram-desktop &
@@ -21,4 +20,8 @@ pgrep -f unclutter || unclutter &
 
 setxkbmap -option ctrl:nocaps
 pgrep -f xcape || xcape -e 'Control_L=Escape'
+
+
+pgrep polybar || sh $HOME/.config/polybar/launch.sh &
+
 exit 0

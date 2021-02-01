@@ -131,6 +131,9 @@ alias tn="t new -t"
 # APPLICATIONS
 #────────────────────────────────────────────────────────────
 
+# ncdu
+alias ncdu="ncdu --exclude /all --exclude /backup"
+
 # mutt
 alias mutt="neomutt -F ~/.config/mutt/muttrc"
 
