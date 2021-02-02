@@ -14,15 +14,41 @@ source _head
 
 # TODO get script dir wherever you is.
 
-
 _t _t title of action \& stuff
-_t 
+echo
 _a _a action/announce
-_a 
+echo
+_q _q question
+echo
+_o _o output
+echo
+_i _i inform
+echo
 _w _w warning
-_w 
+echo
 _s _s success
 _s 
+echo
 _e _e error
 _e 
+
+
+
+#  pad=$(printf '%0.1s' "-"{1..60})
+#  padlength=40
+#  string2='bbbbbbb'
+#  for string1 in a aa aaaa aaaaaaaa
+#  do
+#       printf '%s' "$string1"
+#       printf '%*.*s' 0 $((padlength - ${#string1} - ${#string2} )) "$pad"
+#       printf '%s\n' "$string2"
+#       string2=${string2:1}
+#  done
+
+_ask keep it going
+if [[ $? == 0 ]] ; then
+	$(basename $0) && exit
+else
+exit 0
+fi
 

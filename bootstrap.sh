@@ -81,13 +81,13 @@ if [[ ${DISTRO} == "arch" ]]; then
     # stow: loop thru repo
     for dir in $D/*/ ; do
       # rsnapshot config > /etc/rsnapshot.conf
-      if [[ $dir = $D/rsnapshot/ ]]; then
+      if [[ $dir = $D/root/ ]]; then
         sudo stow -t / -R $(basename $dir)
-        _s stowed: rsnapshot
+        _s stowed: root stuff
       # /usr/local/bin applcations
-      elif [[ $dir = $D/usr/ ]]; then
-        sudo stow -t /usr/ -R $(basename $dir)
-        _s stowed: usr local bin
+#      elif [[ $dir = $D/usr/ ]]; then
+#        sudo stow -t /usr/ -R $(basename $dir)
+#        _s stowed: usr local bin
       # if not in repo /asset folder
       elif [[ ! $dir = $D/asset* ]]; then 
         stow -R $(basename $dir)

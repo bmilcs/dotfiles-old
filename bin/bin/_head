@@ -10,9 +10,9 @@
 
 # TODO: CLEAN UP PARAMETER : \& \: \= \|
 
-#
+#────────────────────────────────────────────────────────────
 # COLORS
-#
+#────────────────────────────────────────────────────────────
 
 NC='\033[0m'
 B='\033[1m'
@@ -32,25 +32,15 @@ WHT=${NC}'\033[37m'
 TIME="$(date +"%I:%M %P")"
 DATE="$(date +"%Y-%m-%d")"
 
-#
+#────────────────────────────────────────────────────────────
 # PROMPTS
-#
+#────────────────────────────────────────────────────────────
 
-_ask() {
+function _ask() {
   local prompt default reply
-  if [[ ${2:-} = 'Y' ]]; then
-    prompt='Y/n'
-    default='Y'
-  elif [[ ${2:-} = 'N' ]]; then
-    prompt='y/N'
-    default='N'
-  else
-    prompt='y/n'
-    default=''
-  fi
   while true; do
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    _q "$1 ${YLW}${B}[$prompt]${NC} "
+    _q "$@ ${YLW}${B}[y|n]${NC} "
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply </dev/tty
     # default?
@@ -59,33 +49,33 @@ _ask() {
     fi
     # check if the reply is valid
     case "$reply" in
-      Y*|y*) return 0 ;;
-      N*|n*) return 1 ;;
+      ""|Y*|y*) _i answered: yes; return 0 ;;
+      N*|n*) _i answered: no; return 1 ;;
     esac
   done
   }
 
-#
+#────────────────────────────────────────────────────────────
 # OUTPUT
-#
+#────────────────────────────────────────────────────────────
 
 # TODO  parse parameters for illegal symbol &
 # msg=${echo $*| sed -e 's/\&/\\\&/g'}
 # echo $msg
 
 # title
-function _t() {
-  echo -e "\n${CYN}${B}$* ${CYN}${NC}\n"
+function _tt() {
+  echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
   }
 
 # announce
 function _a() {
-  echo -e "\n${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}\n"
+  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
   }
 
 # question
 function _q() {
-  echo -e "${CYN}${B}>>> $* "
+  printf "${PUR}${B}[?] $* "
   }
 
 # output
@@ -95,13 +85,14 @@ function _o() {
 
 # inform
 function _i() {
-  echo -e "    ${WHT}[${B}i${WHT}] $* ${NC}\n"
+  echo -e "    ${WHT}[${B}i${WHT}] $* ${NC}"
   }
 
 # warn
 function _w() {
-  echo -e "    ${YLW}[!] $* ${NC}\n"
+  echo -e "    ${YLW}[!] $* ${NC}"
   }
+
 function _w2() {
   echo -e "    ${YLW}[!] $* ${NC}"
   }
@@ -109,18 +100,63 @@ function _w2() {
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "    ${GRN}[√] success${NC}\n"
+    echo -e "    ${GRN}[√] success${NC}"
   else 
-    echo -e "    ${GRN}[√] $* ${NC}\n"
+    echo -e "    ${GRN}[√] $* ${NC}"
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "${RED}    [X]${RED}${B} error${NC}\n"
+    echo -e "${RED}    [X]${RED}${B} error${NC}"
   else
-    echo -e "${RED}    [X]${RED}${B} ${NC}${RED}$*\n"
+    echo -e "${RED}    [X]${RED}${B} ${NC}${RED}$*"
   fi
   }
 
+# titlebar
+function _t() {
+		suff="❯"
+		pre="❮"
+#		suff="⎨"
+#		pre="⎬"
+		string=$@
+		long=${#string}
+		toadd=$(( 55 - $long - 2 ))
+		printf "${BLU}$pre"
+		printf "\xE2\x94\x80%0.s" {1..5}
+		if [[ $# -gt 0 ]]; then
+			printf " ${YLW}${B}$string${CYN} ${BLU}" && toadd=$(( $toadd-2 )); fi
+
+		eval $(echo printf '"\xE2\x94\x80%0.s"' {1..$toadd}) 
+		printf "$suff\n"
+
+
+}
+		#echo some text
+#		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+
+		#echo some text
+
+#	pad=$(printf '%0.1s' '-'{1..60})
+#	padlength=40
+#	string2='bbbbbbb'
+#	for string1 in a aa aaaa aaaaaaaa
+#	do
+#			 printf '%s' "$string1 "
+#			 printf '%*.*s' 0 $((padlength - ${#string1} - ${#string2} )) "$pad"
+#			 printf '%s\n' " $string2"
+#			 string2=${string2:1}
+#	done
+
+#	pad=$(printf '%0.1s' '-'{1..60})
+#	padlength=40
+#	string2='bbbbbbb'
+#	for string1 in a aa aaaa aaaaaaaa
+#	do
+#			 printf '%s' "$string1 "
+#			 printf '%*.*s' 0 $((padlength - ${#string1} - ${#string2} )) "$pad"
+#			 printf '%s\n' " $string2"
+#			 string2=${string2:1}
+#	done
