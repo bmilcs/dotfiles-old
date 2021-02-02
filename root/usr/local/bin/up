@@ -1,42 +1,77 @@
-#!/bin/bash
-NC='\033[0m';B='\033[1m';DIM='\033[2m';ITAL='\033[3m';UL='\033[4m';BLINK='\033[5m';INV='\033[7m'; BLK=${NC}'\033[30m';RED=${NC}'\033[31m';GRN=${NC}'\033[32m';YLW=${NC}'\033[33m';BLU=${NC}'\033[34m';PUR=${NC}'\033[35m';CYN=${NC}'\033[36m';WHT=${NC}'\033[37m';TIME="$(date +"%I:%M %P")"
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   DISTRO-BASED SYSTEM UPDATE              
+#────────────────────────────────────────────────────────────
+
+source _head
+source _distro
+
 # set -e
 
-CHECK_PAC=$(which pacman)
+_t [${B}bmilcs${BLU}] system update
 
-if [[ ! -z $CHECK_PAC ]]; then
-	echo -e "${BLU}[ ${B}sudo pacman -Syyyyuuuu${BLU}]${NC}"
-	sudo pacman -Syyyyuuuu
-	echo -e "${BLU}[ ${B}yay -Syyuu${BLU}]${NC}"
-	yay -Syyyyuuuu
-else
+if [[ $DISTRO = arch ]]; then
+
+  _a ${B}pacman
+	sudo pacman -Syyyuuu
+  _s
+
+  _a ${B}aur
+	yay -Syyyuuu
+  _s
+
+# end of archlinux
+elif [[ $DISTRO = debian ]]; then
+
+  _a ${B}\"upp\"
 	upp
-	echo -e "${BLU}[ ${B}sudo apt update -y ${BLU}]${NC}"
+  _s
+
+  _a ${B}apt update
 	sudo apt update -y
-	echo -e "  ${GRN}[√] done.${NC}\n"
-	echo -e "${BLU}[ ${B}sudo apt full-upgrade -y ${BLU}]${NC}"
+  _s
+
+  _a ${B}apt full-upgrade 
 	sudo apt full-upgrade -y
-	echo -e "  ${GRN}[√] done.${NC}\n"
-	echo -e "${BLU}[ ${B}sudo apt autoremove -y ${BLU}]${NC}"
+  _s
+
+  _a ${B}apt autoremove 
 	sudo apt autoremove -y
-	echo -e "  ${GRN}[√] done.${NC}\n"
-	echo -e "${BLU}[ ${B}sudo apt clean -y ${BLU}]${NC}"
+  _s
+
+  _a apt clean 
 	sudo apt clean -y
-	echo -e "  ${GRN}[√] done.${NC}\n"
-	echo -e "${BLU}[ ${B}sudo apt autoclean -y ${BLU}]${NC}"
+  _s
+
+  _a apt autoclean 
 	sudo apt autoclean -y
-	echo -e "  ${GRN}[√] done.${NC}\n"
+  _s
+
+  _a misc
+  # update pihole test
+  if pihole -v PIHOLE &> /dev/null; then
+    _a pihole -up
+    sudo pihole -up
+  fi
+
+  # docker-compose update test
+  if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
+    _a docker-compose up
+    dcr
+  fi
+
+# end of debian
+else
+  _e unknown distro\! update script!
+  echo
+  exit 1
 fi
 
-# update pihole test
-if pihole -v PIHOLE &> /dev/null
-then
-	echo -e "${BLU}[ ${B}sudo pihole -up ${BLU}]${NC}"
-	sudo pihole -up
-fi
+echo
 
-# docker-compose update test
-if docker-compose -v DOCKER-COMPOSE &> /dev/null
-then
-	 dcr
-fi
+# CHECK_PAC=$(which pacman)
+# if [[ ! -z $CHECK_PAC ]]; then

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ -f "/etc/arch-release" ]]; then
+  export DISTRO='arch'; else export DISTRO='debian'; fi
+
