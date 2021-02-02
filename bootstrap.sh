@@ -18,43 +18,61 @@ D=$HOME/bm
 # FUNCTIONS
 #────────────────────────────────────────────────────────────
 
+
+_t [bmilcs] bootstrap initiated
+_o stowing everything includes system configuration files, such as: networkd, iwctl, pacman.conf, etc.
+
 izsh() {
   if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zplugin ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] || [[ ! -d ~/.zsh/completion ]];then 
-     _a zsh setup required
+     _o setup required_
+     _aa installing: zplugin
+
      # create directories
      mkdir -p ~/.zplugin ~/.config/zsh/ ~/.zsh/completion
+
      # install zplugin
      git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin 
+     _s
+
      # install zsh git completion
      curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
      curl -o ~/.zsh/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-     _s completed zsh plugin setup
+
+     _s 
+  else
+    _o setup not required 
+    _s
   fi
 }
 
 ivim() {
   if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-    _a vim-plug setup started 
+     _o setup required_
+     _aa installing vim-plug
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
-    _s completed vim-plug setup
+
+    _s 
+  else
+    _o setup not required 
+    _s 
   fi
 }
 
 #────────────────────────────────────────────────────────────
 # DISTRO CHECK
 #────────────────────────────────────────────────────────────
+_a locating distro
 
 if [ -f "/etc/arch-release" ]; then
   DISTRO='arch'; else DISTRO='debian'; fi
 
-_t bmilcs/bootstrap initiated for $DISTRO
-
+_i distro: $DISTRO 
 #────────────────────────────────────────────────────────────
 # INSTALL REQUIRED PACKAGES
 #────────────────────────────────────────────────────────────
 
-_a checking for missing packages
+_a package requirements
 
 # required software
 reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
@@ -66,7 +84,7 @@ else
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
 fi
 
-_s all packages present
+_i all packages present
 
 #────────────────────────────────────────────────────────────
 # ARCHLINUX
@@ -74,35 +92,37 @@ _s all packages present
 
 if [[ ${DISTRO} == "arch" ]]; then
 
-  _ask install everything?
+  _ask stow EVERYTHING?
 
   # if yes:
   if [[ $? == 0 ]]; then
-    # stow: loop thru repo
+
+    _w \(re\)symlinking entire configuration
+
+    # stow /root
+    _a ${B}system-wide
+    _o stowing: root ${B}/
+    sudo stow -t / -R root
+    _s 
+
+    _a ${B}home-user
+    _o stowing: home ${B}\~
     for dir in $D/*/ ; do
-      # rsnapshot config > /etc/rsnapshot.conf
-      if [[ $dir = $D/root/ ]]; then
-        sudo stow -t / -R $(basename $dir)
-        _s stowed: root stuff
-      # /usr/local/bin applcations
-#      elif [[ $dir = $D/usr/ ]]; then
-#        sudo stow -t /usr/ -R $(basename $dir)
-#        _s stowed: usr local bin
-      # if not in repo /asset folder
-      elif [[ ! $dir = $D/asset* ]]; then 
+      if [[ ! $dir = $D/asset/ ]] && [[ ! $dir = $D/root/ ]]; then 
         stow -R $(basename $dir)
         # if exit status of last command sucked...
         [[ $? -gt 0 ]] && _e $(basename $dir)
       fi  
     # loop end
     done
-  _s stowed: everything else
-  # end of install everything
-  _a stow completed
+  # end of [install everything?]
+  _s 
   fi
 
   # configure shell & vim via functions
+  _a zsh
   izsh
+  _a vim
   ivim
 
 # end of arch
@@ -135,7 +155,7 @@ else
 # end of deb-based install
 fi
 
-_t bmilcs/bootstrap complete
+_t bootstrap complete
 
 # exit successfully, despite not having checked lol
 exit 0
