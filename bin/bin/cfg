@@ -38,8 +38,6 @@ if [ $# = 0 ]; then
   _o n     ncmpcpp
   _o r     rofi
   _o e     cfg script
-  
-
   read sel
 else
   sel=${1}

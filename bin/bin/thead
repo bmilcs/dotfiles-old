@@ -14,22 +14,20 @@ source _head
 
 # TODO get script dir wherever you is.
 
-_t _t title of action \& stuff
-echo
-_a _a action/announce
-echo
-_q _q question
-echo
-_o _o output
-echo
-_i _i inform
-echo
-_w _w warning
-echo
-_s _s success
+_t titlebar [t]
+
+_a action [a]
+
+_o output [o]
+
+_i inform [i]
+
+_w warning [w]
+
+_s success [s]
 _s 
-echo
-_e _e error
+
+_e error [e]
 _e 
 
 
@@ -45,8 +43,10 @@ _e
 #       string2=${string2:1}
 #  done
 
-_ask keep it going
+_ask keep it going\?
+
 if [[ $? == 0 ]] ; then
+  echo -e "\n\n\n"
 	$(basename $0) && exit
 else
 exit 0
