@@ -7,8 +7,10 @@
 #────────────────────────────────────────────────────────────
 #   global shell/script/function stuff
 #────────────────────────────────────────────────────────────
-
 # TODO: CLEAN UP PARAMETER : \& \: \= \|
+
+# clear screen on script launch
+clear
 
 #────────────────────────────────────────────────────────────
 # COLORS
@@ -49,8 +51,8 @@ function _ask() {
     fi
     # check if the reply is valid
     case "$reply" in
-      ""|Y*|y*) _i answered: yes; return 0 ;;
-      N*|n*) _i answered: no; return 1 ;;
+      ""|Y*|y*) _i yes; return 0 ;;
+      N*|n*) _i no; return 1 ;;
     esac
   done
   }
@@ -62,6 +64,24 @@ function _ask() {
 # TODO  parse parameters for illegal symbol &
 # msg=${echo $*| sed -e 's/\&/\\\&/g'}
 # echo $msg
+spaces=" "
+
+
+# titlebar
+function _t() {
+  suff= #"❯" #"⎨"
+  pre= #"❮" #"⎬"
+  cols=80
+  string=$@
+  long=${#string}
+  toadd=$(( $cols - $long - 2 ))
+  printf "\n${BLU}$pre\xE2\x94\x80"
+  if [[ $# -gt 0 ]]; then
+  printf " ${BLU}${B}$string${CYN} ${BLU}" && toadd=$(( $toadd-2 )); fi
+
+  eval $(echo printf '"\xE2\x94\x80%0.s"' {1..$toadd}) 
+  printf "$suff\n"
+  }
 
 # title
 function _tt() {
@@ -70,70 +90,56 @@ function _tt() {
 
 # announce
 function _a() {
-  echo -e "${BLU}${B}[${BLU} $* ${BLU}${B}]${NC}"
+  echo -e "\n${CYN}${B}[${CYN}$*${CYN}${B}]${NC}"
+  }
+
+# announce [plain]
+function _aa() {
+  echo -e "\n${B}[${NC}$*${B}]${NC}"
   }
 
 # question
 function _q() {
-  printf "${PUR}${B}[?] $* "
+  printf "\n${PUR}${B}[?]${PUR} $* "
   }
 
 # output
 function _o() {
-  echo -e "    ${WHT}${B}> ${WHT} $* ${NC}"
+  echo -e "$spaces${WHT}$*${NC}"
   }
 
 # inform
 function _i() {
-  echo -e "    ${WHT}[${B}i${WHT}] $* ${NC}"
+  echo -e "${spaces}${WHT}${B}-${WHT} $* ${NC}"
   }
 
 # warn
 function _w() {
-  echo -e "    ${YLW}[!] $* ${NC}"
+  echo -e "$spaces${YLW}[!] $* ${NC}"
   }
 
 function _w2() {
-  echo -e "    ${YLW}[!] $* ${NC}"
+  echo -e "$spaces${YLW}[!] $* ${NC}"
   }
 
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "    ${GRN}[√] success${NC}"
+    echo -e "$spaces${GRN}[√] done${NC}"
   else 
-    echo -e "    ${GRN}[√] $* ${NC}"
+    echo -e "$spaces${GRN}[√] $* ${NC}"
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "${RED}    [X]${RED}${B} error${NC}"
+    echo -e "$spaces${RED}[X]${RED}${B} error${NC}"
   else
-    echo -e "${RED}    [X]${RED}${B} ${NC}${RED}$*"
+    echo -e "$spaces${RED}[X]${RED}${B} ${NC}${RED}$*"
   fi
   }
 
-# titlebar
-function _t() {
-		suff="❯"
-		pre="❮"
-#		suff="⎨"
-#		pre="⎬"
-		string=$@
-		long=${#string}
-		toadd=$(( 55 - $long - 2 ))
-		printf "${BLU}$pre"
-		printf "\xE2\x94\x80%0.s" {1..5}
-		if [[ $# -gt 0 ]]; then
-			printf " ${YLW}${B}$string${CYN} ${BLU}" && toadd=$(( $toadd-2 )); fi
-
-		eval $(echo printf '"\xE2\x94\x80%0.s"' {1..$toadd}) 
-		printf "$suff\n"
-
-
-}
 		#echo some text
 #		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
