@@ -56,7 +56,7 @@ alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
 # restarting
 alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
-alias polyr=". ~/.config/polybar/launch.sh"
+alias polyr=". ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log"
 
 # alias sdir="echo $PWD >> $D/txt/txt/scratchpad.md" # TODO fix > function required?
 
