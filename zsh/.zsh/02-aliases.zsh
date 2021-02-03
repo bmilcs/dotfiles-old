@@ -113,7 +113,8 @@ alias g="cd $D && git "
 alias ga="cd $D && git add "
 alias gs="cd $D && git status " 
 alias gd="cd $D && git diff "
-alias gp="cd $D && git push "
+alias gps="cd $D && git push "
+alias gpl="cd $D && git pull "
 
 #────────────────────────────────────────────────────────────
 # TMUX
