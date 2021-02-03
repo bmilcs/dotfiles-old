@@ -85,6 +85,7 @@ if [[ $DISTRO = arch ]]; then
         compdef yays="yay"
   alias yayg="yay -Qe | grep"
         compdef yayg="yay"
+  alias netr="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
 fi
 
 #────────────────────────────────────────────────────────────
@@ -314,8 +315,8 @@ alias gitkeys='
 # DEBIAN NETWORKING
 #────────────────────────────────────────────────────────────
 
-alias rnet="sudo /etc/init.d/networking restart"
-alias enet="sudo vim /etc/network/interfaces"
+#alias rnet="sudo /etc/init.d/networking restart"
+#alias enet="sudo vim /etc/network/interfaces"
 
 #────────────────────────────────────────────────────────────
 # DOCKER
