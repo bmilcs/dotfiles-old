@@ -1,4 +1,4 @@
-# arch linux networking guide
+# [bmilcs] arch networking config
 
 
 ##### optional: wifi package
@@ -7,13 +7,27 @@
 
 ##### create *.network cfg files
 
-    sudo vim /etc/systemd/network/00-bmilcs.conf
+    sudo vim /etc/systemd/network/bm-wifi.conf
     -------------------------------------------------------
     [Match]
-    Name=enp* wl*
+    Name=wl*
 
     [Network]
     DHCP=ipv4
+
+    [DHCP]
+    RouteMetric=20
+
+    sudo vim /etc/systemd/network/bm-wired.conf
+    -------------------------------------------------------
+    [Match]
+    Name=enp*
+
+    [Network]
+    DHCP=ipv4
+
+    [DHCP]
+    RouteMetric=10
 
 ##### symlink resolv.conf
 
@@ -29,6 +43,18 @@
     sudo systemctl enable {systemd-networkd.service,systemd-resolved.service,iwd.service}
     sudo systemctl start {systemd-networkd.service,systemd-resolved.service,iwd.service}
 
+##### configure wifi
+
+- iwctl
+
+      iwctl --passphrase X station INTERFACE connect SSID
+      iwctl --passphrase X station wlan0 connect-hidden miller_guest 
+
+      #iwctl
+        station wlan0 scan
+        station wlan0 get-networks
+        known-networks list
+
 ##### troubleshooting
 
 - networkctl
@@ -43,3 +69,5 @@
       resolvectl status
       resolvectl flush-caches
       resolvectl statistics
+
+
