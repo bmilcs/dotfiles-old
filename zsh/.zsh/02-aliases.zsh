@@ -144,19 +144,35 @@ alias nitrogen="nitrogen ~/wall"
 alias fehbg="feh -g 640x480 -d -S filename ~/wall"
 
 #────────────────────────────────────────────────────────────
-# BASH
+# LS
 #────────────────────────────────────────────────────────────
 
-# ls 
-alias ls="ls --color -lhF --group-directories-first --time-style=+\"%Y-%m-%d %H:%M:%S\""
-      compdef ls="ls"
-alias l="ls -A" # long, all, abc puid
-      compdef l="ls"
-alias ll="ls -nA" #long, all, # puid
-      compdef ll="ls"
+# A   all except ./ ../
+# l   list-form
+# h   human-readable sizes
+# F
+# C
+#
+
+alias ls="ls -AlhF --color --group-directories-first --time-style=\"+%D %H:%M\""
+
+alias l="ls" # long, all, abc puid
+alias ll="command ls -l --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid
+alias lll="command ls -AC --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid
+alias llll="command ls -C --color --group-directories-first --time-style=\"+%D %H:%M\""
+
+alias lst="command ls --color --group-directories-first --time-style=\"+%D %H:%M\""
+
 alias lsf="ls -A | grep -v '^d'"	#ls files,,
 alias lsd="ls -Ald */"   # ls, long, dir
 alias lsg="ls -A | grep" #search in dir
+
+compdef ls="ls"
+compdef l="ls"
+compdef ll="ls"
+compdef lll="ls"
+compdef llll="ls"
+compdef lst="ls"
 
 # command tweaks
 #alias mv="mv -i"    #confirmation
