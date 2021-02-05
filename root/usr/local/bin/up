@@ -16,11 +16,7 @@ _t system update
 
 if [[ $DISTRO = arch ]]; then
 
-  _a ${B}pacman
-	sudo pacman -Syyyuuu
-  _s
-
-  _a ${B}aur
+  _a ${B}pacman \& aur
 	yay -Syyyuuu
   _s
 

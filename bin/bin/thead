@@ -42,12 +42,12 @@ _e
 #       string2=${string2:1}
 #  done
 
-#_ask keep it going\?
-#
-#if [[ $? == 0 ]] ; then
-#  echo -e "\n\n\n"
-#	$(basename $0) && exit
-#else
-#exit 0
-#fi
-#
+_ask keep it going\?
+
+if [[ $? == 0 ]] ; then
+  echo -e "\n\n\n"
+	$(basename $0) && exit
+else
+exit 0
+fi
+

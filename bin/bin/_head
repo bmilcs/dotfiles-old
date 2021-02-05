@@ -69,29 +69,34 @@ spaces=" "
 
 # titlebar
 function _t() {
-  toadd=0
+# 
 
-  suff= #"❯" #"⎨"
-  pre= #"❮" #"⎬"
+  chr="\xE2\x94\x80"
+  s=⎨  #❯⎨ 
+  p=⎬  #❮⎬ 
+  t=  #❮⎬
+  q=  #❯⎨ 
+
   cols=$(tput cols)
   string=$@
   strlen=${#string}
-  prelen=${#pre}
-  toadd=$(( $cols - $strlen - 16 ))
-#⦗⦘⦒⦑
-  printf "\n${BLU}"
-  printf "\xE2\x94\x80%0.s" {1..3}
-  printf "${BLU}${suff}bm${BLU}${pre}"
-  printf "\xE2\x94\x80%0.s" {1..3}
+  prelen=${#p}
+  toadd=0 ; toadd=$(( $cols - $strlen - 16 ))
 
+  for i in $(seq 1 $toadd); do
+    tada="${tada}${chr}"
+  done
+
+  printf "${BLU}$p"
+  printf "${chr}%.0s" {1..3}
   if [[ $# -gt 0 ]]; then
-  printf " ${BLU}${B}$string${CYN} ${BLU}" && toadd=$(( $toadd-2 )); fi
-  eval $(echo printf '"\xE2\x94\x80%0.s"' {1..$toadd}) 
+    printf "${t}${GRN}${B} $string ${BLU}${q}" && toadd=$(( $toadd-2 )); fi
+  printf $tada
 #  eval $(echo printf '"x"' {1..$toadd}) 
-  printf "\xE2\x94\x80%0.s" {1..5}
-  suff= #"❯" #"⎨"
-  pre= #"❮" #"⎬"
-  printf "$suff${NC}\n"
+  printf "${chr}%.0s" {1..3}
+  printf "${BLU}${B}bm${BLU}"
+  printf "${chr}%.0s" {1..2}
+  printf "$s${NC}\n"
   }
 
 # title
