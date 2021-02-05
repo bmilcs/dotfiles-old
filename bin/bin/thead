@@ -11,10 +11,11 @@ source _head
 
 # set -x
 #echo -e
-
 # TODO get script dir wherever you is.
 
 _t titlebar [t]
+
+echo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 _a action [a]
 
@@ -30,8 +31,6 @@ _s
 _e error [e]
 _e 
 
-
-
 #  pad=$(printf '%0.1s' "-"{1..60})
 #  padlength=40
 #  string2='bbbbbbb'
@@ -43,12 +42,12 @@ _e
 #       string2=${string2:1}
 #  done
 
-_ask keep it going\?
-
-if [[ $? == 0 ]] ; then
-  echo -e "\n\n\n"
-	$(basename $0) && exit
-else
-exit 0
-fi
-
+#_ask keep it going\?
+#
+#if [[ $? == 0 ]] ; then
+#  echo -e "\n\n\n"
+#	$(basename $0) && exit
+#else
+#exit 0
+#fi
+#

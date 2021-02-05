@@ -9,6 +9,11 @@
 #
 #   TODO
 #     - fix hotkeys to match sxhkd
+#     - icons to rofi
+#     - add multipule rofi configs
+#       - ssh hostnames
+#       - programs
+#       - txt files? etc.
 #     - split cfg into organized files
 #
 #────────────────────────────────────────────────────────────
@@ -16,17 +21,19 @@
 #────────────────────────────────────────────────────────────
 
 #MODS
+set $shift Shift
+set $ctrl Ctrl
 set $win Mod4
 set $alt Mod1
 set $tilde 49
-set $shift Shift
-set $ctrl Ctrl
+set $backspace 51
 
 # LOG OUT / RESTART / RELOAD
-bindcode $win+$tilde restart
+bindcode $win+$tilde exec ". ~/.config/polybar/launch.sh"
 bindcode $win+$ctrl+$tilde reload
-bindcode $win+$shift+$tilde exec ". ~/.config/polybar/launch.sh"
+bindcode $win+$shift+$tilde restart
 bindcode $win+$alt+$tilde exec "i3-msg exit"
+#bindcode $win+$tilde i3-msg "reload ; exec pkill -USR1 polybar" #\ xrdb -merge ~/.Xresources"
 #bindcode $win+$shift+49 exec '~/.config/i3/sh/xrdb-xresources.sh'
 
 #────────────────────────────────────────────────────────────
@@ -37,7 +44,6 @@ bindcode $win+$alt+$tilde exec "i3-msg exit"
 bindsym F1 exec --no-startup-id rofi -config ~/.config/rofi/config.rasi -show drun
 bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
 bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-
 #-show drun -drun-display-format \{name\}
 
 # AUDIO
@@ -53,10 +59,6 @@ bindsym $win+Return exec alacritty
 
 # BROWSER
 bindsym $win+a exec firefox
-
-# SCRATCHPAD
-bindcode $win+51 scratchpad show
-bindcode $win+$ctrl+51 move scratchpad
 
 # SCREENSHOTS
 bindsym Print exec screenshot sel
@@ -95,20 +97,20 @@ bindsym $win+$ctrl+j move down  50 px
 # bindsym $win+$ctrl+s move down  50 px
 
 # RESIZE
-bindsym $win+$alt+j resize shrink height 2 px or 2 ppt
-bindsym $win+$alt+k resize grow height 2 px or 2 ppt
-bindsym $win+$alt+h resize shrink width 2 px or 2 ppt
-bindsym $win+$alt+l resize grow width 2 px or 2 ppt
+bindsym $win+$alt+j resize shrink height 3 px or 3 ppt
+bindsym $win+$alt+k resize grow height 3 px or 3 ppt
+bindsym $win+$alt+h resize shrink width 3 px or 3 ppt
+bindsym $win+$alt+l resize grow width 3 px or 3 ppt
 # bindsym $win+$shift+d resize grow width 1 px or 1 ppt
 # bindsym $win+$shift+a resize shrink width 1 px or 1 ppt
 # bindsym $win+$shift+w resize grow height 1 px or 1 ppt
 # bindsym $win+$shift+s resize shrink height 1 px or 1 ppt
 
 # GAPS
-bindsym $win+$shift+j gaps outer all plus 2
-bindsym $win+$shift+k gaps outer all minus 2
-bindsym $win+$shift+h gaps inner all plus 2
-bindsym $win+$shift+l gaps inner all minus 2
+bindsym $win+$ctrl+$alt+j gaps outer all plus 2
+bindsym $win+$ctrl+$alt+k gaps outer all minus 2
+bindsym $win+$ctrl+$alt+h gaps inner all plus 2
+bindsym $win+$ctrl+$alt+l gaps inner all minus 2
 
 # SPLITTING
 bindcode $win+47 split v
@@ -117,6 +119,13 @@ bindcode $win+48 split h
 # FULL SCREEN
 bindsym $win+f fullscreen toggle
 
+# SCRATCHPAD [51=Backspace]
+bindsym $win+s scratchpad show
+bindsym $win+$ctrl+s move scratchpad
+
+# TOGGLE FLOATIN
+bindsym $win+$shift+s floating toggle
+
 # FLOATING WINDOWS
 floating_modifier $win
 
@@ -124,11 +133,11 @@ floating_modifier $win
 # WORKSPACES
 #────────────────────────────────────────────────────────────
 
-set $ws1 "1:dev"
-set $ws2 "2:msg"
-set $ws3 "3:www"
-set $ws4 "4:etc"
-set $ws5 "5:mpd"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -167,9 +176,9 @@ font pango:DejaVu Sans Mono 12
 # BORDERS
 smart_borders no_gaps
 hide_edge_borders both
-default_border pixel 2
-default_floating_border pixel 2
-  # for_window [class=".*"] border pixel 2
+default_border pixel 3
+default_floating_border pixel 3
+for_window [class=".*"] border pixel 3
 
 # GAPS
 smart_gaps on
@@ -177,37 +186,37 @@ gaps inner 10
 gaps outer 10
 
 # COLOR VARS
-set $black              #2E3440
-set $black2             #3B4252
-set $gray               #434C5E
-set $gray2              #4C566A
-set $white              #D8DEE9
-set $white2             #E5E9F0
-set $white3             #ECEFF4
-set $green              #8FBCBB
-set $cyan               #88C0D0
-set $blue2              #81A1C1
-set $blue1              #5E81AC
-set $red                #BF616A
-set $orange             #D08770
-set $yellow             #EBCB8B
-set $green              #A3BE8C
-set $purple             #B48EAD
-set $bg                 #434C5E
-set $inactive-bg        #2E3440
-set $urgent-bg          #EBCB8B
-set $fg                 #ECEFF4
-set $inactive-fg        #4C566A
-set $urgent-fg          #BF616A
+set $black1 #2E3440
+set $black2 #3B4252
+set $black3 #434C5E
+set $black4 #4C566A
+set $white1 #D8DEE9
+set $white2 #E5E9F0
+set $white3 #ECEFF4
+set $green1 #8FBCBB
+set $cyan1 #88C0D0
+set $blue2 #81A1C1
+set $blue1 #5E81AC
+set $red1 #BF616A
+set $orange1 #D08770
+set $yellow1 #EBCB8B
+set $green1 #A3BE8C
+set $purple1 #B48EAD
+# set $bg                 #434C5E
+# set $inactive-bg        #2E3440
+# set $urgent-bg          #EBCB8B
+# set $fg                 #ECEFF4
+# set $inactive-fg        #4C566A
+# set $urgent-fg          #BF616A
 
 # COLOR APPLICATION
-#class                  border  bg      fg      focus     child_border
-client.focused          $yellow #81a1c1 #2f343f #81a1c1   #81a1c1
-client.focused_inactive #2f343f #2f343f #2f343f #2f343f   #2f343f
-client.unfocused        #2f343f #2f343f #d8dee8 #2f343f   #2f343f
-client.urgent           #bf616a #bf616a #2f343f #bf616a   #bf616a
-client.placeholder      #000000 #0c0c0c #D8D339 #000000   #D8D339
-client.background       #D8DEE9
+#class                  border   bg      fg      focus        child_border
+client.focused          $yellow1 $blue2   $blue1   $blue2     $cyan1
+client.focused_inactive $black1  $blue1   $blue1   $blue1     $black4
+client.unfocused        $black1  $blue1   $gray2   $blue1     $black4
+client.urgent           $red1    $red1    $blue1   $red1      $yellow1
+client.placeholder      $black1  $black1  $yellow1 $black1    $yellow1
+client.background       $white1
 
 #class                   border        bg            fg             focus     child_border
 #client.focused          $inactive-fg  $bg           $white         $bg
@@ -227,6 +236,7 @@ assign [class="android-*"] 2
 assign [class="Telegram*"] 2
 
 for_window [class='Conky'] floating enable
+for_window [class='Gucharmap'] floating enable
 
 #────────────────────────────────────────────────────────────
 # BOOTSTRAP

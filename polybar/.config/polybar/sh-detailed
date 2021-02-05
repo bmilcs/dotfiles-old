@@ -3,24 +3,31 @@
 get_icon() {
     case $1 in
         # Icons for weather-icons
-        01d) icon="";;
-        01n) icon="";;
-        02d) icon="";;
-        02n) icon="";;
-        03*) icon="";;
-        04*) icon="";;
-        09d) icon="";;
-        09n) icon="";;
-        10d) icon="";;
-        10n) icon="";;
-        11d) icon="";;
-        11n) icon="";;
-        13d) icon="";;
-        13n) icon="";;
-        50d) icon="";;
-        50n) icon="";;
-        *) icon="";
-
+        # 宅 卑 喝 墳 奔 
+        #🌣 🌤 🌥 🌦  🌧  🌩 🌪
+        #                             
+        #                             
+        #                            
+        #                             
+        #                           
+        #                           
+        #                         
+        01d) icon="";; # d, clear sky
+        01n) icon="";; # n, clear sky
+        02d) icon="";; # d, few clouds
+        02n) icon="";; # n, few clouds
+        03*) icon="";; # scattered clouds
+        04*) icon="";; # broken clouds
+        09*) icon="";; # shower rain
+        10d) icon="";; # d, rain
+        10n) icon="";; # n, rain
+        11d) icon="";; # d, thunder
+        11n) icon="";; # n, thunder
+        13d) icon="";; # d, snow
+        13n) icon="";; # n, snow
+        50d) icon="";; # d, mist
+        50n) icon="";; # n, mist
+        *) icon=""; # 
         # Icons for Font Awesome 5 Pro
         #01d) icon="";;
         #01n) icon="";;
@@ -45,7 +52,9 @@ get_icon() {
 KEY="91a028d98386f02bbf8b86143bac5ad9"
 CITY="4955089"
 UNITS="imperial"
-SYMBOL="°"
+SYMBOL="宅"
+
+
 
 API="https://api.openweathermap.org/data/2.5"
 

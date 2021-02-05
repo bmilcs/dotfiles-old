@@ -69,18 +69,29 @@ spaces=" "
 
 # titlebar
 function _t() {
-  suff= #"❯" #"⎨"
-  pre= #"❮" #"⎬"
-  cols=80
+  toadd=0
+
+  suff= #"❯" #"⎨"
+  pre= #"❮" #"⎬"
+  cols=$(tput cols)
   string=$@
-  long=${#string}
-  toadd=$(( $cols - $long - 2 ))
-  printf "\n${BLU}$pre\xE2\x94\x80"
+  strlen=${#string}
+  prelen=${#pre}
+  toadd=$(( $cols - $strlen - 16 ))
+#⦗⦘⦒⦑
+  printf "\n${BLU}"
+  printf "\xE2\x94\x80%0.s" {1..3}
+  printf "${BLU}${suff}bm${BLU}${pre}"
+  printf "\xE2\x94\x80%0.s" {1..3}
+
   if [[ $# -gt 0 ]]; then
   printf " ${BLU}${B}$string${CYN} ${BLU}" && toadd=$(( $toadd-2 )); fi
-
   eval $(echo printf '"\xE2\x94\x80%0.s"' {1..$toadd}) 
-  printf "$suff\n"
+#  eval $(echo printf '"x"' {1..$toadd}) 
+  printf "\xE2\x94\x80%0.s" {1..5}
+  suff= #"❯" #"⎨"
+  pre= #"❮" #"⎬"
+  printf "$suff${NC}\n"
   }
 
 # title
@@ -125,18 +136,18 @@ function _w2() {
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "$spaces${GRN}[√] done${NC}"
+    echo -e "$spaces${GRN}[] done${NC}"
   else 
-    echo -e "$spaces${GRN}[√] $* ${NC}"
+    echo -e "$spaces${GRN}[] $* ${NC}" # √
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "$spaces${RED}[X]${RED}${B} error${NC}"
+    echo -e "$spaces${RED}[]${RED}${B} error${NC}"
   else
-    echo -e "$spaces${RED}[X]${RED}${B} ${NC}${RED}$*"
+    echo -e "$spaces${RED}[]${RED}${B} ${NC}${RED}$*" # X
   fi
   }
 

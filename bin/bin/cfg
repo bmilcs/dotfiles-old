@@ -13,10 +13,13 @@ _t cfg editor
 
 genls() {
   _a $2
+  ls $1
   unset options i
+  unset optz ii
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
-  done < <(find "$1" -maxdepth 3 -type f -name "*" -print0 | sort -z )
+    #f=$(echo $f | sed -En "s/(.*)\/home\/bmilcs\/bm(\/.*$)/\1 \2/p")
+  done < <(find "$1" -type f -name "*" -print0 | sort -z )
   select opt in "${options[@]}" $3 ; do
     case $opt in
       *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
@@ -42,8 +45,6 @@ if [ $# = 0 ]; then
 else
   sel=${1}
 fi
-
-clear
 
 case $sel in
   t) genls $D/txt TXT;;

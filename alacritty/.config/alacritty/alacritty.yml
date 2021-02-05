@@ -32,8 +32,12 @@ background_opacity: .93
 #────────────────────────────────────────────────────────────
 
 window:
-  dynamic_padding: true
+  #dynamic_padding: true
   dynamic_title: true
+
+  padding:
+    x: 7
+    y: 9
 
   #dimensions:
   #  columns: 0
@@ -42,10 +46,6 @@ window:
   #position:
   #  x: 0
   #  y: 0
-
-  #  padding:
-  #    x: 5
-  #    y: 5
 
   #decorations: full
   #     - full: Borders and title bar
@@ -80,20 +80,18 @@ window:
 
 font:
   normal:
-    family: DejaVu Sans Mono for Powerline
+    family: DejaVuSansMono Nerd Font
     style: Book
-    #family: SauceCodePro Nerd Font 
   bold:
-    family: DejaVu Sans Mono for Powerline
+    family: DejaVuSansMono Nerd Font
     style: Bold
-    #family: SauceCodePro Nerd Font 
   italic:
-    family: DejaVu Sans Mono for Powerline
+    family: DejaVuSansMono Nerd Font
     style: Oblique
-    #family: SauceCodePro Nerd Font 
   bold_italic:
-    family: DejaVu Sans Mono for Powerline
+    family: DejaVuSansMono Nerd Font
     style: Bold Oblique
+    #family: DejaVu Sans Mono for Powerline
     #family: SauceCodePro Nerd Font 
   size: 10
 
@@ -184,22 +182,22 @@ font:
 # BELL
 #────────────────────────────────────────────────────────────
 
-bell:
-  animation: EaseOutExpo
-           # Ease
-           # EaseOut
-           # EaseOutSine
-           # EaseOutQuad
-           # EaseOutCubic
-           # EaseOutQuart
-           # EaseOutQuint
-           # EaseOutExpo
-           # EaseOutCirc
-           # Linear
-          
-  duration: 500   # in milliseconds
-  
-  #color: '#ffffff'
+#bell:
+#  animation: EaseOutExpo
+#           # Ease
+#           # EaseOut
+#           # EaseOutSine
+#           # EaseOutQuad
+#           # EaseOutCubic
+#           # EaseOutQuart
+#           # EaseOutQuint
+#           # EaseOutExpo
+#           # EaseOutCirc
+#           # Linear
+#          
+#  duration: 100   # in milliseconds
+#  
+#  color: '#5E81AC'
   
   #command: None
   # run a command on BEL event
@@ -433,7 +431,7 @@ cursor:
 #    A `~` operator can be used before a mode to apply the binding whenever
 #    the mode is *not* active, e.g. `~Alt`.
 
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -512,8 +510,8 @@ cursor:
   #- { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
   #- { key: Insert,         mods: Shift,                           action: PasteSelection   }
   #- { key: Key0,           mods: Control,                         action: ResetFontSize    }
-  #- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
-  #- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }

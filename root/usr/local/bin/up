@@ -12,7 +12,7 @@ source _distro
 
 # set -e
 
-_t [${B}bmilcs${BLU}] system update
+_t system update
 
 if [[ $DISTRO = arch ]]; then
 
