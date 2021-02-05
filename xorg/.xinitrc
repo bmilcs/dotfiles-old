@@ -8,6 +8,7 @@
 #   xinitrc              
 #────────────────────────────────────────────────────────────
 
+# define config files
 userresources=~/.Xresources
 usermodmap=~/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -28,7 +29,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 #────────────────────────────────────────────────────────────
-# BIN > PATH
+# PATH VAR
 #────────────────────────────────────────────────────────────
 
 if [[ -d $HOME/bin && -z $(echo $PATH | grep -o $HOME/bin) ]]; then
@@ -40,7 +41,6 @@ fi
 #────────────────────────────────────────────────────────────
 
 pgrep -f pulseaudio || pulseaudio --start &
-
 (sleep 0.1 && $HOME/bin/bootstrap) &
 
 #────────────────────────────────────────────────────────────
@@ -54,12 +54,10 @@ case $session in
     bsp|bspwm         ) exec bspwm;;
     *                 ) exec $1;;
 esac
-#pid=$!
-#wait $pid
 
 #────────────────────────────────────────────────────────────
-# SIJI FONT
+# EXTRAS
 #────────────────────────────────────────────────────────────
 
-xset +fp /home/bmilcs/.local/share/fonts
-xset fp rehash
+# disable beep sound
+set bell-style none

@@ -7,9 +7,9 @@ mpd_host = "127.0.0.1"
 mpd_port = "6600"
 
 # Visualizer
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "fifo"
-visualizer_type = "wave" (spectrum/wave)
+#visualizer_fifo_path = "/tmp/mpd.fifo"
+#visualizer_output_name = "fifo"
+#visualizer_type = "wave" (spectrum/wave)
 
 # Playlist
 song_columns_list_format = "$L(9)[white]{l} (20)[red]{a} (30)[green]{b}$R(20)[cyan]{t}"

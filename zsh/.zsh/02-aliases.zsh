@@ -49,8 +49,6 @@ alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"
 alias gaps="vim $D/i3/.config/i3/config"
 alias keys="vim $D/sxhkd/.config/sxhkd/sxhkdrc"
 alias picomrc="vim $D/picom/.config/picom/config"
-alias poly="vim $D/polybar/.config/polybar/bspwm.conf"
-alias polysh="vim $D/polybar/.config/polybar/bspwm.sh"
 alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
 
 # restarting
