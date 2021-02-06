@@ -144,15 +144,11 @@ alias fehbg="feh -g 640x480 -d -S filename ~/wall"
 #────────────────────────────────────────────────────────────
 # LS
 #────────────────────────────────────────────────────────────
-
 # A   all except ./ ../
 # l   list-form
 # h   human-readable sizes
 # F
 # C
-#
-
-alias ls="export LC_ALL=C ; ls -AlhF --color --group-directories-first --time-style=\"+%D %H:%M\" ; export LC_ALL="
 
 alias l="ls" # long, all, abc puid
 alias ll="command ls -l --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid

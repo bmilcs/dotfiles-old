@@ -32,37 +32,24 @@ function gca() {
   _s done.
   }
 
-
 #────────────────────────────────────────────────────────────
 # SHELL
 #────────────────────────────────────────────────────────────
 
 # create dir & cd into it
+function mbin() {
+  touch $@ 
+  logo "$@"
+  echo -e "source _head\n\n" >> $@
+  sed -i '1s/^/\#\!\/bin\/bash\/\n/' $@
+  chmod +x $@ 
+  nvim $@
+  }
+
+# create dir & cd into it
 function mdir() {
-    mkdir -p "$@" && cd "$@";
-    }
-
-if [[ $DISTRO = arch ]]; then
-  # debian: install app
-  function apti() {
-    sudo apt-get install $@ -y
-    }
-
-  # debian: delete & purge app
-  function aptr() {
-    sudo apt-get purge $@ -y
-    }
-
-  # debian: find app
-  function aptf() {
-    dpkg --get-selections | grep $@
-    }
-
-  # debian: get app status
-  function apts() {	
-    systemctl status $@; 
-    }
-fi
+  mkdir -p "$@" && cd "$@";
+  }
 
 #────────────────────────────────────────────────────────────
 # SYSTEM SERVICES
@@ -144,6 +131,33 @@ function myip() {
   }
 
 #────────────────────────────────────────────────────────────
+# DEBIAN-ONLY
+#────────────────────────────────────────────────────────────
+
+if [[ ! $DISTRO = arch ]]; then
+
+  # debian: install app
+  function apti() {
+    sudo apt-get install $@ -y
+    }
+
+  # debian: delete & purge app
+  function aptr() {
+    sudo apt-get purge $@ -y
+    }
+
+  # debian: find app
+  function aptf() {
+    dpkg --get-selections | grep $@
+    }
+
+  # debian: get app status
+  function apts() {	
+    systemctl status $@; 
+    }
+fi
+
+#────────────────────────────────────────────────────────────
 # DOCKER
 #────────────────────────────────────────────────────────────
 
@@ -174,29 +188,7 @@ function dre() {
 # COMMAND ENHANCEMENT
 #────────────────────────────────────────────────────────────
 
-# nvim all-in-one sudo-fier wombo-combo
-# vim() {
-#   if [ $# -eq 0 ]; then   # no argument, launch nvim
-#     nvim
-#   elif [ $# -gt 1 ]; then  # multiple arguments, skip function
-#     nvim $*
-#   elif [ -d "$@" ]; then  # if argument = a directory, error
-#     echo "error: \"$@\" is a DIRECTORY. Denied."
-#   elif [ -w $@ ]; then    # if exists and writeable. nvim TIME!"
-#     command nvim "$@" 
-#   elif [ -e $@ ]; then    # if exists, not writeable, auto SUDO 
-#     sudo nvim "$@"
-#   else                    # if arg doesn't exist...
-#       if touch $@; then     # if user has permission, create & launch nvim:
-#         command nvim "$@"
-#       else                  # elevate to sudo & create/launch nvim: 
-#         sudo nvim \"$@\"
-#       fi
-#     fi
-#     }
-
-# colorize man command
-man() {
+function man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
     LESS_TERMCAP_se=$'\e[0m' \
@@ -232,7 +224,6 @@ man() {
 #     gitt add $@
 #     gitt commit -m "Added $@"
 #     }
-
 # DOCKER
 #────────────────────────────────────────────────────────────
 # # docker-compose based on host name
@@ -245,3 +236,25 @@ man() {
 # 		echo "error: wrong vm dummy!"
 # 	fi
 # }
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
+# nvim all-in-one sudo-fier wombo-combo
+# vim() {
+#   if [ $# -eq 0 ]; then   # no argument, launch nvim
+#     nvim
+#   elif [ $# -gt 1 ]; then  # multiple arguments, skip function
+#     nvim $*
+#   elif [ -d "$@" ]; then  # if argument = a directory, error
+#     echo "error: \"$@\" is a DIRECTORY. Denied."
+#   elif [ -w $@ ]; then    # if exists and writeable. nvim TIME!"
+#     command nvim "$@" 
+#   elif [ -e $@ ]; then    # if exists, not writeable, auto SUDO 
+#     sudo nvim "$@"
+#   else                    # if arg doesn't exist...
+#       if touch $@; then     # if user has permission, create & launch nvim:
+#         command nvim "$@"
+#       else                  # elevate to sudo & create/launch nvim: 
+#         sudo nvim \"$@\"
+#       fi
+#     fi
+#     }
