@@ -141,18 +141,18 @@ function _w2() {
 # success
 function _s() {
   if [ $# -eq 0 ] ; then 
-    echo -e "$spaces${GRN}[] done${NC}"
+    echo -e "$spaces${GRN} done${NC}"
   else 
-    echo -e "$spaces${GRN}[] $* ${NC}" # √
+    echo -e "$spaces${GRN} $* ${NC}" # √
   fi 
   }
 
 # error
 function _e() {
   if [ $# -eq 0 ] ; then
-    echo -e "$spaces${RED}[]${RED}${B} error${NC}"
+    echo -e "$spaces${RED}${RED}${B} error${NC}"
   else
-    echo -e "$spaces${RED}[]${RED}${B} ${NC}${RED}$*" # X
+    echo -e "$spaces${RED}${RED}${B} ${NC}${RED}$*" # X
   fi
   }
 
