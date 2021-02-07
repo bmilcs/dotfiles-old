@@ -12,8 +12,8 @@ source _head
 _t cfg editor
 
 genls() {
-  _a $2
-  ls $1
+  _a "$2"
+  ls "$1"
   unset options i
   unset optz ii
   while IFS= read -r -d $'\0' f; do
@@ -22,7 +22,7 @@ genls() {
   done < <(find "$1" -type f -name "*" -print0 | sort -z )
   select opt in "${options[@]}" $3 ; do
     case $opt in
-      *) [[ -f $opt ]] && nvim $opt ; exit 0 ;;
+      *) [[ -f "$opt" ]] && nvim "$opt" ; exit 0 ;;
     esac
   done
   }
@@ -41,27 +41,27 @@ if [ $# = 0 ]; then
   _o n     ncmpcpp
   _o r     rofi
   _o e     cfg script
-  read sel
+  read -r sel
 else
   sel=${1}
 fi
 
 case $sel in
-  t) genls $D/txt TXT;;
-  b) genls $D/bin BIN;;
-  i) genls $D/i3/.config/i3/ I3;;
+  t) genls "$D"/txt TXT;;
+  b) genls "$D"/bin BIN;;
+  i) genls "$D"/i3/.config/i3/ I3;;
   #z) nvim -S ~/dev/zsh.bm;;
-  z) genls $D/zsh;;
-  v) genls $D/vim;;
-  p) genls $D/polybar POLYBAR;;
-  k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
-  r) genls $D/rofi;;
-  bsp) nvim $D/bspwm/.config/bspwm/bspwmrc;;
-  tm|tmux) nvim $D/tmux/.tmux.conf;;
-  x|xorg) genls $D/xorg XORG;;
-  n|ncm) genls $D/ncmpcpp NCMPCPP;;
+  z) genls "$D"/zsh;;
+  v) genls "$D"/vim;;
+  p) genls "$D"/polybar POLYBAR;;
+  k) nvim "$D"/sxhkd/.config/sxhkd/sxhkdrc;;
+  r) genls "$D"/rofi;;
+  bsp) nvim "$D"/bspwm/.config/bspwm/bspwmrc;;
+  tm|tmux) nvim "$D"/tmux/.tmux.conf;;
+  x|xorg) genls "$D"/xorg XORG;;
+  n|ncm) genls "$D"/ncmpcpp NCMPCPP;;
   #8) sudovim /etc/hosts;;
   #xterm) vim ~/.Xresources.d/xterm;;
-  e) nvim $D/bin/bin/cfg
+  e) nvim "$D"/bin/bin/cfg
 esac
 
