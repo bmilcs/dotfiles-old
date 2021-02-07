@@ -7,10 +7,7 @@
 " VIM: GENERAL
 "────────────────────────────────────────────────────────────
 " TODO 
-" 
-" 1. Add shortcuts:
 "           sort alphabetically       :sort u
-"
 "────────────────────────────────────────────────────────────
 
 " vim settings (not vi) 
@@ -34,7 +31,6 @@ set undodir=~/.vim/undo
 set ignorecase   " match upper/lowercase versions of search term          
 set smartcase    " only uppercase words w/ uppercase search term
 
-
 " <tab> behavior
 set shiftwidth=2 " columns of whitespace: “level of indentation"
 set tabstop=2 " columns of whitespace: \t char 
@@ -51,7 +47,6 @@ endif
 
 " set mapleader before other configs
 let mapleader="," 
-
 
 set completeopt=longest,menuone               " view full error msg pumheight?
 set directory^=$HOME/.vim/swap//              " vim swap file location
@@ -72,7 +67,7 @@ set showmode                                  " display options
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
 "set ttyfast                                   " speed up scrolling in vim
 
-" set list                                    " display different types of white spaces.
+set list                                    " display different types of white spaces.
 " set wrap                                    " auto word wrap
 
 "────────────────────────────────────────────────────────────
@@ -90,5 +85,4 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.vim/cache/.viminfo
 "           | |    + files marks saved
 "           | + lines saved each register (old name for <, vi6.2)
 "           + save/restore buffer list
-
 

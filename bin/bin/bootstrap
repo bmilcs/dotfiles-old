@@ -22,4 +22,4 @@ setxkbmap -option ctrl:nocaps
 pgrep -f xcape || xcape -e 'Control_L=Escape'
 
 sleep 1
-pgrep polybar || sh $HOME/.config/polybar/launch.sh &
+pgrep polybar || sh "$HOME/.config/polybar/launch.sh" &

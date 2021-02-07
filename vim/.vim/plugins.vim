@@ -7,10 +7,8 @@
 "   VIM PLUGINS RC
 "────────────────────────────────────────────────────────────
 " TODO
-"
 " 1. FZF: Add search for string in project folder
 " 2. Clean up syntax
-"
 "────────────────────────────────────────────────────────────
 " INSTALL VIM-PLUG & PLUGINS IF MISSING
 "────────────────────────────────────────────────────────────
@@ -23,38 +21,39 @@ endif
 autocmd! VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | q | endif
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: LIST
+" LIST
 "────────────────────────────────────────────────────────────
 
-filetype plugin indent on                       " help plugins load 
-call plug#begin('~/.vim/plugged')               " plugin manager 
+filetype plugin indent on                       " help plugins load
+call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'tpope/vim-sensible'                     " general improvements
   Plug 'arcticicestudio/nord-vim'               " colorscheme
   Plug 'christoomey/vim-tmux-navigator'         " tmux
-  Plug 'airblade/vim-gitgutter'                 " git 
+  Plug 'airblade/vim-gitgutter'                 " git
   Plug 'tpope/vim-fugitive'
   Plug 'preservim/nerdtree'                     " file browser
       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
       \ Plug 'ryanoasis/vim-devicons'
-  Plug '~/.fzf'                                 " fuzzy finder
+  "Plug '~/.fzf'                                 " fuzzy finder
   Plug 'junegunn/fzf.vim'
 "  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
-  Plug 'vim-airline/vim-airline'                " status bar 
+  Plug 'vim-airline/vim-airline'                " status bar
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
   Plug 'mboughaba/i3config.vim',
+  Plug 'dense-analysis/ale',                  " syntax analysis
 call plug#end()                                 " end of plugins
 set rtp+=~/.fzf
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: NORD THEME
+" NORD THEME
 "────────────────────────────────────────────────────────────
 colorscheme nord                              " color scheme
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: MARKDOWN PREVIEW 
+" MARKDOWN PREVIEW
 "────────────────────────────────────────────────────────────
 
 let g:mkdp_auto_start = 1 " auto-start w/ .md file
@@ -64,20 +63,20 @@ let g:mkdp_command_for_global = 0 " md can be used on all files
 let g:vim_markdown_no_default_key_mappings = 1
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: COLORIZER
+" COLORIZER
 "────────────────────────────────────────────────────────────
 
 let g:colorizer_auto_color = 1  " colorizer (auto)
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: NERDTREE
+" NERDTREE
 "────────────────────────────────────────────────────────────
 
 set modifiable " allow d
 let g:NERDTreeWinSize=20 " column width
 
 " bind f6: toggle view
-nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>" 
+nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 
 " start nerdtree, unless a file or session is specified, eg. vim -s session_file.vim.
 " autocmd StdinReadPre * let s:std_in=1
@@ -88,14 +87,14 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 " nerdtree clone on every tab
-autocmd BufWinEnter * silent NERDTreeMirror 
+autocmd BufWinEnter * silent NERDTreeMirror
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: NERDTREE GIT STATUS
+" NERDTREE GIT STATUS
 "────────────────────────────────────────────────────────────
 
 " show untracked & custom icons:
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all' 
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 
 " custom git icons
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -112,7 +111,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 "────────────────────────────────────────────────────────────
-" PLUGIN: AIRLINE STATUS BAR
+" AIRLINE STATUS BAR
 "────────────────────────────────────────────────────────────
 
 let g:airline_powerline_fonts = 1
@@ -181,7 +180,7 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'hei
 "────────────────────────────────────────────────────────────
 
 " force plugins to load correctly when it is turned back on below.
-filetype off 
+filetype off
 syntax on
 augroup filetypedetect
   au BufNewFile,BufRead *.fsh,*.vsh setf glsl
@@ -195,9 +194,16 @@ aug i3config_ft_detection
   au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
 aug end
 
+"────────────────────────────────────────────────────────────
+" ALE
+"────────────────────────────────────────────────────────────
+
+let g:ale_fix_on_save = 1
+call ale#handlers#shellcheck#DefineLinter('sh')
 " " remove trailing whitespaces / ^M chars
 " augroup ws
 "   au!
 "   autocmd FileType c,cpp,java,php,js,json,css,scss,sass,py,rb,coffee,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " augroup end
-" 
+
+"

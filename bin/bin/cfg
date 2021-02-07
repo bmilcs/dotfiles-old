@@ -52,7 +52,7 @@ case $sel in
   i) genls $D/i3/.config/i3/ I3;;
   #z) nvim -S ~/dev/zsh.bm;;
   z) genls $D/zsh;;
-  v) nvim -S ~/dev/vim.bm;;
+  v) genls $D/vim;;
   p) genls $D/polybar POLYBAR;;
   k) nvim $D/sxhkd/.config/sxhkd/sxhkdrc;;
   r) genls $D/rofi;;

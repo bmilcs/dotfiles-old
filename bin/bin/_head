@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -38,22 +38,26 @@ DATE="$(date +"%Y-%m-%d")"
 # PROMPTS
 #────────────────────────────────────────────────────────────
 
-function _ask() {
-  local prompt default reply
+_ask() {
   while true; do
+    default=y
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    _q "$@ ${YLW}${B}[y|n]${NC} "
+    _q "$* ${YLW}${B}[y|n]${NC} "
+
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply </dev/tty
+
     # default?
-    if [[ -z $reply ]]; then
+    if [ -z "$reply" ]; then
         reply=$default
     fi
+
     # check if the reply is valid
     case "$reply" in
       ""|Y*|y*) _i yes; return 0 ;;
       N*|n*) _i no; return 1 ;;
     esac
+
   done
   }
 
@@ -68,7 +72,7 @@ spaces=" "
 
 
 # titlebar
-function _t() {
+_t() {
 # 
 
   chr="\xE2\x94\x80"
@@ -76,12 +80,14 @@ function _t() {
   p=⎬  #❮⎬ 
   t=  #❮⎬
   q=  #❯⎨ 
+  toadd=0 
+  tada=
 
   cols=$(tput cols)
-  string=$@
+  string=$*
   strlen=${#string}
   prelen=${#p}
-  toadd=0 ; toadd=$(( $cols - $strlen - 16 ))
+  toadd=$(( $cols - $strlen - 16 ))
 
   for i in $(seq 1 $toadd); do
     tada="${tada}${chr}"
@@ -100,46 +106,46 @@ function _t() {
   }
 
 # title
-function _tt() {
+_tt() {
   echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
   }
 
 # announce
-function _a() {
+_a() {
   echo -e "\n${CYN}${B}[${CYN}$*${CYN}${B}]${NC}"
   }
 
 # announce [plain]
-function _aa() {
+_aa() {
   echo -e "\n${B}[${NC}$*${B}]${NC}"
   }
 
 # question
-function _q() {
+_q() {
   printf "\n${PUR}${B}[?]${PUR} $* "
   }
 
 # output
-function _o() {
+_o() {
   echo -e "$spaces${WHT}$*${NC}"
   }
 
 # inform
-function _i() {
+_i() {
   echo -e "${spaces}${WHT}${B}-${WHT} $* ${NC}"
   }
 
 # warn
-function _w() {
+_w() {
   echo -e "$spaces${YLW}[!] $* ${NC}"
   }
 
-function _w2() {
+_w2() {
   echo -e "$spaces${YLW}[!] $* ${NC}"
   }
 
 # success
-function _s() {
+_s() {
   if [ $# -eq 0 ] ; then 
     echo -e "$spaces${GRN} done${NC}"
   else 
@@ -148,7 +154,7 @@ function _s() {
   }
 
 # error
-function _e() {
+_e() {
   if [ $# -eq 0 ] ; then
     echo -e "$spaces${RED}${RED}${B} error${NC}"
   else

@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -18,8 +18,8 @@ fn=~/.backup/grub/$(date +%Y-%m-%d_%H-%m-%s).cfg
 _i creating dir: $ds
 mkdir -p $ds
 
-_i copying cfg to: $fn
-sudo cp /boot/grub/grub.cfg ${fn}
+_i copying cfg to: "$fn"
+sudo cp /boot/grub/grub.cfg "$fn"
 
 if [[ ! -f $fn ]]; then
   _e unable to backup config: now exiting
