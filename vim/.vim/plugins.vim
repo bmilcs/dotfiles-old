@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
   Plug 'mboughaba/i3config.vim',
+  Plug 'dense-analysis/ale' ,                   " sh syntax checking
 call plug#end()                                 " end of plugins
 set rtp+=~/.fzf
 
