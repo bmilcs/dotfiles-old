@@ -51,11 +51,11 @@ case $sel in
   b) genls "$D"/bin BIN;;
   i) genls "$D"/i3/.config/i3/ I3;;
   #z) nvim -S ~/dev/zsh.bm;;
-  z) genls "$D"/zsh;;
-  v) genls "$D"/vim;;
+  z) genls "$D"/zsh ZSH;;
+  v) genls "$D"/vim VIM;;
   p) genls "$D"/polybar POLYBAR;;
   k) nvim "$D"/sxhkd/.config/sxhkd/sxhkdrc;;
-  r) genls "$D"/rofi;;
+  r) genls "$D"/rofi ROFI;;
   bsp) nvim "$D"/bspwm/.config/bspwm/bspwmrc;;
   tm|tmux) nvim "$D"/tmux/.tmux.conf;;
   x|xorg) genls "$D"/xorg XORG;;
