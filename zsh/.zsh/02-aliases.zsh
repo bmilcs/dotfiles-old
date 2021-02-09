@@ -216,7 +216,7 @@ alias halt="sudo systemctl halt"
 alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
-alias hn="_a hostname: " $HOST
+alias hn="_a hostname: $HOST"
 
 # audio sinks
 alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
