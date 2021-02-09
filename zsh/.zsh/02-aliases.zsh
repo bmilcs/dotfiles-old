@@ -150,7 +150,6 @@ alias fehbg="feh -g 640x480 -d -S filename ~/wall"
 # F
 # C
 
-
 alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first --time-style="+%D %H:%M"'
 alias l="ls" # long, all, abc puid
 alias ll="command ls -l --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid

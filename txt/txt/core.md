@@ -1,5 +1,44 @@
+<<<<<<< HEAD
 ## "linux" cheatsheet
 > bmilcs' cheatsheat for linux-related jibberish - shell, scripting, functions, etc.
+=======
+```
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+```
+## "linux" cheatsheet
+> bmilcs' cheatsheat on shell scripting, functions, etc.
+>>>>>>> origin/main
+
+### SHEBANG @gk
+
+`#! /path/to/stuff` tells the computer what to run the script in (space is optional), so #!/usr/bin/env python3 will tell the computer to run the rest of the script in python3
+
+`/usr/bin/env` looks in the PATH variable, so you should use it for everything except sh (not bash!) which should always be /bin/sh
+
+`/bin/sh` is usually a symlink
+
+`bash` isn't guaranteed to be in `/bin`
+
+there are 2 things that a unix system will always have in a specific path:
+- `/bin/sh`
+- `/usr/bin/env` (can be used for everything else)
+
+`sh` is what `bash` added to
+
+a lot of modern linux distros have sh symlinked to bash, but that is incorrect.
+
+bash has a few things that break posix sh (one example that comes to mind is echo in bash needing -e to act like it does in posix)
+
+**vim**
+syntax checking: Plug 'dense-analysis/ale'
+coc: completion
+spellcheck: cli program ale uses for shell warnings, including shebangs, poor syntax
+
 
 
 ### ARGUMENTS / PARAMETERS
