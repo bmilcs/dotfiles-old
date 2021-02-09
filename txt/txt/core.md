@@ -1,12 +1,5 @@
-#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
-#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
-#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
-#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
-#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#────────────────────────────────────────────────────────────
-# "function" cheatsheet
-> bmilcs' cheatsheat on shell scripting, functions, etc.
+## "linux" cheatsheet
+> bmilcs' cheatsheat for linux-related jibberish - shell, scripting, functions, etc.
 
 
 ### ARGUMENTS / PARAMETERS

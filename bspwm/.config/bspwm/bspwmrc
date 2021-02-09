@@ -39,6 +39,8 @@ bspc config single_monocle          true
 bspc config focus_follows_pointer   true
 bspc config ignore_ewmh_focus       true
 bspc config center_pseudo_tiled     true
+bspc config focus_follows_pointer   false
+
 
 # window placement
 # desktop='^4' state=floating follow=on # state=floating #focus=on #manage=off

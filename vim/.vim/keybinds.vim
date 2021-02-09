@@ -64,7 +64,9 @@ nnoremap <silent> <leader>dS :%s/^$\n//g<CR>
 nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1────────────────────────────────────────────────────────────/g<CR>
 
 " find/replace all
-nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
+"nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
+nnoremap <leader>r :%s///gc<left><left><left>
+nnoremap <leader>R :%s///g<left><left><left>
 
 " clear highlighted matches
 nnoremap <leader>/ :nohlsearch<CR>

@@ -173,6 +173,13 @@ super + F3
 XF86AudioRaiseVolume 
   if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 +5%; else pactl set-sink-volume 1 +5%;fi
 
+# backlight control
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
 # pulseaudio - increase volume
 super + F2
   if [[ $(cat /etc/hostname) == bmTP ]]; then pactl set-sink-volume 0 -5%; else pactl set-sink-volume 1 -5%;fi

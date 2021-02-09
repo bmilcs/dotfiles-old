@@ -1,83 +1,72 @@
-### archlinux notepad [bmilcs]
-
-:55,59norm!d$7kA | ^P"
+### scratchpad 
 
 
 
-
-
+https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
 https://www.reddit.com/r/linux/comments/61dbym/managing_dotfiles_a_survey/
 
-
-## TODO
+#### todo
 setup variable colors
-  - https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
 
-## audio configuration [arch]
+#### audio configuration [arch]
 
 how to configure archlinux with a scarlet 2i2 audio interface.
 
 note: alsa is not enough for firefox to play audio.
 
-### alsa & pulseaudio
+#### alsa & pulseaudio
 
 install & apply customizations:
 
-  yay -S pulseaudio pulseaudio-alsa
- 
-  sudo vim /etc/pulse/client.conf
-  # all commented out, aside from:
-  autospawn = no
+      yay -S pulseaudio pulseaudio-alsa
+     
+      sudo vim /etc/pulse/client.conf
+      # all commented out, aside from:
+      autospawn = no
 
-  sudo vim /etc/pulse/default.pa
-  # add following line, allowing ALSA @ system level to communicate with PULSEAUDIO @ user level, launched via i3
-  load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 
+      sudo vim /etc/pulse/default.pa
+      # add following line, allowing ALSA @ system level to communicate with PULSEAUDIO @ user level, launched via i3
+      load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 
 
 **note**: make sure pulseaudio service isn't enabled at root or user level
 
- systemctl --user status pulseaudio
- systemctl status pulseaudio
+   systemctl --user status pulseaudio
+   systemctl status pulseaudio
 
+#### acquire sound device info
 
-### acquire sound device info
+    aplay -l
+    cat /proc/asound/cards
+    systemctl list-units --type=target
 
-  aplay -l
-  cat /proc/asound/cards
-  systemctl list-units --type=target
-
-### alsa config
+#### alsa config
   
-  sudo vim /usr/share/alsa/alsa.conf
+    sudo vim /usr/share/alsa/alsa.conf
   
-
-### pulseaudio
-
+#### pulseaudio
  
-  # find default INPUT (microphone)
-  pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'
+    # find default INPUT (microphone)
+    pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'
 
-  # find default OUTPUT (speakers)
-  pacmd list-sinks | grep -e 'name:' -e 'index:'  
+    # find default OUTPUT (speakers)
+    pacmd list-sinks | grep -e 'name:' -e 'index:'  
 
-  # set default devices
-  sudo vim /etc/pulse/default.pa 
+    # set default devices
+    sudo vim /etc/pulse/default.pa 
 
-  # comment out
-  #load-module module-device-restore
-  #load-module module-stream-restore
-  #load-module module-card-restore
+    # comment out
+    #load-module module-device-restore
+    #load-module module-stream-restore
+    #load-module module-card-restore
 
-  # at bottom:
-  set-default-sink alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo.monitor
-  set-default-source alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo
-  set-card-profile alsa_card.usb-Focusrite_Scarlett_2i2_USB-00 output:analog-stereo+input:analog-stereo
+    # at bottom:
+    set-default-sink alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo.monitor
+    set-default-source alsa_input.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo
+    set-card-profile alsa_card.usb-Focusrite_Scarlett_2i2_USB-00 output:analog-stereo+input:analog-stereo
 
 # thinkpad t14
 
-
 https://wiki.archlinux.org/index.php/makepkg#Parallel_compilation
-
-
 
 Building from files in memory
   Building from files in memory
@@ -88,20 +77,15 @@ Building from files in memory
 
 https://wiki.archlinux.org/index.php/makepkg#Utilizing_multiple_cores_on_compression
 
-
     $ lspci -knn|grep -iA2 audio
 
-
-
-
-
-## archive
+#### archive
 
 **removed software**
 - rxvt-unicode-pixbuf 9.22-2
 - urxvt-perls 2.3-1
 
-# ZSH & BASH dotfiles
+#### zsh & bash dotfiles
 
 Both Bash and Zsh use several startup scripts: profile, bashrc, zlogin, zshrc, etc.
 
@@ -113,8 +97,8 @@ Bash
 
 At startup, depending on the case:
 
-    run as a login shell (or with the option --login), it executes profile (or bash_profile instead if it exists (only user-specific version));
-    run as an interactive, non-login shell, it executes bashrc (the system-wide version is called bash.bashrc).
+  run as a login shell (or with the option --login), it executes profile (or bash_profile instead if it exists (only user-specific version));
+  run as an interactive, non-login shell, it executes bashrc (the system-wide version is called bash.bashrc).
 
 At exit, it executes ~/.bash_logout (the system-wide version is called bash.bash_logout).
 
@@ -139,18 +123,6 @@ interactive	yes	zshenv zprofile zshrc zlogin	zshenv zshrc
 no 	zshenv zprofile zlogin 	zshenv
 
 I personally find the Zsh process much saner. To be honest I should rather say that I find Bash's behaviour insane, with an absurd process (bashrc for interactive, non-login shells…) that needs to be worked around, and an inconsistent naming and search convention (~/.bashrc vs. /etc/bash.bashrc, no system-wide version of bash_logout).
-
-
-
-
-
-
-
-
-
-
-
-
 
 # personal reminders
 river valley counseling    feb 10, 3:30pm
