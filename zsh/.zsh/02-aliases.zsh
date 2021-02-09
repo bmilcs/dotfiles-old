@@ -132,10 +132,7 @@ alias tn="t new -t"
 #────────────────────────────────────────────────────────────
 
 # ncdu
-alias ncdu="ncdu --exclude /all --exclude /backup"
-
-# mutt
-alias mutt="neomutt -F ~/.config/mutt/muttrc"
+alias ncdu="ncdu --exclude /all --exclude /backup "
 
 # wallpaper
 alias nitrogen="nitrogen ~/wall"
@@ -144,11 +141,7 @@ alias fehbg="feh -g 640x480 -d -S filename ~/wall"
 #────────────────────────────────────────────────────────────
 # LS
 #────────────────────────────────────────────────────────────
-# A   all except ./ ../
-# l   list-form
-# h   human-readable sizes
-# F
-# C
+# A   all except ./ ../ | l   list-form | h   human-readable sizes| F | C
 
 alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first --time-style="+%D %H:%M"'
 alias l="ls" # long, all, abc puid
@@ -170,12 +163,12 @@ compdef llll="ls"
 compdef lst="ls"
 
 # command tweaks
-#alias mv="mv -i"    #confirmation
-#alias cp="cp -i"    #confirmation
 alias ln="ln -i"    #confirmation
 alias ip="ip -color=auto"      # color
 alias grep="grep --color=auto" # color
 alias wget="wget -c"					 # autoresume
+#alias mv="mv -i"    #confirmation
+#alias cp="cp -i"    #confirmation
 
 # shortcuts
 alias c="clear"
@@ -197,8 +190,8 @@ alias umount="sudo umount"
       compdef umount="umount"
 
 # fstab
- alias fstab="sudo vim /etc/fstab"
- dpkg -s "findmnt" >/dev/null 2>&1 && ( alias fstabt="sudo findmnt --verify --verbose" ; compdef fstabt="findmnt" )
+alias fstab="sudo vim /etc/fstab"
+dpkg -s "findmnt" >/dev/null 2>&1 && ( alias fstabt="sudo findmnt --verify --verbose" ; compdef fstabt="findmnt" )
 
 # nfs shares
 alias nfs="sudo vim /etc/exports"
@@ -223,6 +216,7 @@ alias halt="sudo systemctl halt"
 alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
+alias hn="_a hostname: " $HOST
 
 # audio sinks
 alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
