@@ -1,10 +1,24 @@
 #!/bin/sh
-# ucode: Print valid unicode characters from given code points
-# usage: ucode N  - where `N` is a glyph code
-# Accepts multiple arguments
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#────────────────────────────────────────────────────────────
+#   gk's upload to 0x0.st & clipboard
+#────────────────────────────────────────────────────────────
+source _head
+_t gk\'s fancy 0x0.st script
 
-for CODE in $@; do
-	/usr/bin/printf "%s - \u$CODE\n" $CODE
-done
 
-exit $?
+_a uploading $@ to 0x0.st
+# prevent filetypes like text/x-shellscript or text/x-diff
+# autodownloading in some browsers
+type=
+file -ibL "$1" | grep -q '^text/' && type=';type=text/plain'
+
+curl -sF file="@${1:--}$type" 'http://0x0.st' \
+    | tee /dev/stderr \
+    | xclip -r -sel clip
+
+_s
