@@ -3,14 +3,12 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   ZSH CORE
+#               ZSH CORE
 #────────────────────────────────────────────────────────────
 
 #────────────────────────────────────────────────────────────
 # HISTORY
 #────────────────────────────────────────────────────────────
-
 HISTFILE=~/.config/zsh/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
@@ -25,19 +23,31 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 unsetopt HIST_VERIFY          # after history expansion, execute the line directly
 
 #────────────────────────────────────────────────────────────
+# PLUGINS
+#────────────────────────────────────────────────────────────
+
+# ZINIT
+#────────────────────────────────────────────────────────────
+source ~/.zinit/bin/zinit.zsh
+zinit light zsh-users/zsh-completions 
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+
 # DIR_COLORS
 #────────────────────────────────────────────────────────────
-
 [ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
 
+# FUZZY FINDER (FZF)
 #────────────────────────────────────────────────────────────
-# PLUGINS
-# 
+# add .fzf to $PATH
+if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
+fi
+# add zsh fzf completions
+[[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.zsh" 2> /dev/null
 
-source ~/.zplugin/bin/zplugin.zsh
-zplugin light zsh-users/zsh-completions 
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
+# add zsh fzf key bindings
+[[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
 
 #────────────────────────────────────────────────────────────
 # OPTIONS
@@ -45,9 +55,40 @@ zplugin light zdharma/fast-syntax-highlighting
 
 set nocompatible
 bindkey -v                    # vim mode
-setopt autocd                 #
-setopt beep                   #
-setopt extendedglob           #
+
+# DIRECTORIES
+
+setopt autocd                 # cd into dir's w/o cd prefix
+setopt cdable_vars            # autocd, expand non-/path as ~
+setopt cd_silent              # don't print dir after cd
+
+DIRSTACKSIZE=15               # dir stack limit
+setopt autopushd              # cd = pushd (dir stack)
+setopt pushdminus             # swaps + and - (dir stack)
+setopt pushdsilent            # don't echo each pushd (dir stack)
+setopt pushdtohome            # no arg =  ~ (dir stack)
+setopt pushd_ignore_dups      # no mulitples (dir stack)
+alias dh='dirs -v'            # ls (dir stack)
+
+# COMPLETION
+
+setopt rec_exact              # accept exact commands, no selection menu
+setopt always_to_end          # mid-word completions get appended 
+setopt auto_list              # list choices on ambiguous completion
+setopt hash_list_all 
+#setopt glob_complete          # current word glob creates selection menu
+#setopt list_ambiguous         # unambiguous prefix to insert w/o menu
+#setopt list_packed            # reduce list length
+#setopt list_rows_first        # horizontal a/ b/ c/ d.conf
+#setopt list_types             # completions show identifying mark as last char
+#setopt menu_complete          # insert 1st match immediately & toggle through them
+setopt numeric_glob_sort       # matched numeric filenames get sorted numerically
+
+
+# MISC
+#
+setopt nobeep                 # disable beep
+setopt extendedglob           # 
 setopt nomatch                #
 setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
@@ -58,7 +99,7 @@ setopt combining_chars
 
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5E81AC,italic"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,italic"
 
 # fuzzy match mistypes
 zstyle ':completion:*' completer _complete _match _approximate
@@ -72,7 +113,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 #────────────────────────────────────────────────────────────
 
 CASE_SENSITIVE="false"
-setopt COMPLETE_ALIASES # auto complete aliases
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}”
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
 zstyle ':completion:*' menu select # menu style, tab
@@ -83,23 +123,23 @@ zstyle ':completion:*:options' description yes
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
-zstyle ':completion:*:messages' format '%F{purple}%d%f'
+zstyle ':completion:*:messages' format '%F{magenta}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}nothing%f'
-zstyle ':completion:*' format '[%F{yellow}%B%d]'
+zstyle ':completion:*' format '%I%F{green}%d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 # git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
-# NEW END
+
 
 #────────────────────────────────────────────────────────────
 # AUTOLOADS
 #────────────────────────────────────────────────────────────
 
 autoload -Uz promptinit && promptinit
-autoload -Uz compinit && compinit -d /home/bmilcs/.config/zsh/.zcompdump
+autoload -Uz compinit && compinit -d ~/.config/zsh/.zcompdump
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz colors && colors # autoload colors
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
@@ -189,7 +229,4 @@ add-zsh-hook -Uz precmd rehash_precmd
 #────────────────────────────────────────────────────────────
 
 # 
-# REFERENCES
-#────────────────────────────────────────────────────────────
 
-# https://github.com/mimame/.dotfiles/blob/master/zsh/.zshrc

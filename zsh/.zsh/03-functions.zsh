@@ -38,10 +38,24 @@ function gca() {
 
 # create dir & cd into it
 function mbin() {
+
+  if [[ $# == 0 ]]; then
+    _e filename argument missing
+    exit 1
+  elif [[ -f $1 ]]; then
+    _e file already exists!
+    exit 1
+  fi
+
   touch $@ 
   logo "$@"
-  echo -e "source _head\n\n" >> $@
-  sed -i '1s/^/\#\!\/bin\/bash\/\n/' $@
+
+  echo -e "source _head\n" >> $@
+  echo -e "#────────────────────────────────────────────────────────────" >> $@
+  echo -e "# " >> $@
+  echo -e "#────────────────────────────────────────────────────────────" >> $@
+
+  sed -i '1s/^/\#\!\/bin\/sh\n/' $@
   chmod +x $@ 
   nvim $@
   }

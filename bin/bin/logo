@@ -10,17 +10,24 @@
 
 source _head
 
+# no arguments passed
 if [[ $# == 0 ]]; then
 
+  # find center position
   x=$(($(tput lines)/2-4))
   y=$((($(tput cols)-60)/2))
+
+  # insert spaces to adjust x axis
   for i in $(seq 0 $y); do
     pre=$pre" " 
   done
+
+  # echo blank lines to adjust y axis
   for i in $(seq 0 $x); do
     echo 
   done
 
+  # print signature logo
   echo -e "${BLK}${BLU}$pre  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"
   echo -e "${BLK}${BLU}$pre  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗"
   echo -e "${BLK}${BLU}$pre  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗"
@@ -30,42 +37,142 @@ if [[ $# == 0 ]]; then
   echo -e "${BLK}${BLU}$pre   bmilcs@yahoo.com | discord: bmilcs#6039 | est 12/2020    "
   echo -e "${BLK}${BLU}$pre ───────────────────────────────────────────────────────────"
 
+  # blank lines [prompt at very bottom]
   for i in $(seq 3 $x); do
     echo 
   done
 
+# argument passed; check if file exists
 elif [[ ! -f $1 ]]; then
 
   _e "\"$1\" doesn't exist"
   exit 1
 
+# argument passed & file exists
 else
+
+  _t logo creator
+
+  rechmod=0
+  shebang=0
+  firstline=0
+  filename="$1"
+
+  # single argument passed
   if [[ $# == 1 ]]; then 
+
     _q please enter a title: 
     read title
+  
+  # remaining arguments as title
   else
-    title=$2
-  fi
-  _a executable pre-check
-  [[ -x $1 ]] && (rechmod=1 && _w executable file)
-  [[ $(head -1 $1) == "#!"* ]] && (rebinbash=1 && firstline=$(head -1 $1) && sed -i -e 1,1d $1)
 
-  if [[ $(basename $1) == *".vim" ]] || [[ $(basename $1) == *".vim"* ]] ; then
+    # ignore $1
+    shift 1
+    title="$*"
+
+  fi
+
+  _a go-go-gadget logo!
+  _o file: "${B}""$filename"
+  _o title: "${B}""$title"
+
+  # filetype | comment char selector
+  if [[ $(basename $filename) == *".vim" ]] || [[ $(basename $filename) == *".vim"* ]] ; then
+
+    _o comment character: \" 
     CM='"'
+
   else
+
+    _o comment character: \#
     CM="#"
+
   fi
 
-  echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1
-  echo "$CM   $title              " | cat - $1 > logotemp && mv logotemp $1 
-  echo "$CM────────────────────────────────────────────────────────────" | cat - $1 > logotemp && mv logotemp $1 
-  echo "$CM  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com"  | cat - $1 > logotemp && mv logotemp $1
-  echo "$CM  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝" | cat - $1 > logotemp && mv logotemp $1 
-  echo "$CM  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗" | cat - $1 > logotemp && mv logotemp $1 
-  echo "$CM  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗" | cat - $1 > logotemp && mv logotemp $1 
-  echo "$CM  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"  | cat - $1 > logotemp && mv logotemp $1 
 
-  [[ rebinbash -eq 1 ]] && echo $firstline | cat - $1 > logotemp && mv logotemp $1 
-  [[ rechmod -eq 1 ]] && chmod +x $1 && _a fixed chmod
-  [[ -f logotemp ]] && rm logotemp
+  _a write access?
+  if [[ -w $filename ]]; then
+    _o true
+  else
+    _e "false: nice try, wise-guy"
+    exit 1
+  fi
+
+  _a executable?
+  if [[ -x $filename ]]; then 
+
+    _o true
+    rechmod=1 
+
+  else
+
+    _o "false" 
+
+  fi
+
+  _a shebang?
+
+  # first line contain shebang?
+  if [[ $(head -1 $filename) == "#!"* ]]; then
+
+    shebang=1 
+
+    # extract shebang
+    firstline=$(head -1 $filename) 
+
+    # delete shebang
+    sed -i -e 1,1d "$filename"
+
+    _o true: \""$firstline"\"
+
+  else
+
+    _o false
+
+  fi
+
+
+  # does title already exist?
+  if grep -q "╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗" $filename; then
+    _w pre-existing logo found: removing it!
+    sed -i '1,7d' $filename
+  fi
+
+  # do work
+  _a appending logo now
+  echo "$CM────────────────────────────────────────────────────────────" | cat - $filename > logotemp && mv logotemp $filename
+  echo "$CM                 ${title^^} [./$(basename -a $filename)]" | cat - $filename > logotemp && mv logotemp $filename 
+  echo "$CM  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com"  | cat - $filename > logotemp && mv logotemp $filename
+  echo "$CM  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝" | cat - $filename > logotemp && mv logotemp $filename 
+  echo "$CM  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗" | cat - $filename > logotemp && mv logotemp $filename 
+  echo "$CM  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗" | cat - $filename > logotemp && mv logotemp $filename 
+  echo "$CM  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────"  | cat - $filename > logotemp && mv logotemp $filename 
+  _s
+
+  # clean up
+
+  _a clean up
+  if [[ shebang -eq 1 ]]; then
+    _o adding shebang: $firstline
+    echo $firstline | cat - $filename > logotemp 
+    mv logotemp $filename 
+  fi
+
+  if [[ rechmod -eq 1 ]]; then
+    _o "applying chmod +x"
+    chmod +x $filename 
+  fi
+
+  if [[ -f logotemp ]]; then
+    rm logotemp
+  fi
+_s
+
+_a preview of: "${B}../$filename"
+printf "${CYN}\n"
+head -n 9 "$filename"
+echo
+sleep 2
+
 fi

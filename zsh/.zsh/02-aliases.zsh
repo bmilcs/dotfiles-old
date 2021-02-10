@@ -235,13 +235,16 @@ alias syslogls="sudo cat /var/log/syslog"
 # pid
 alias pid="cat /etc/passwd"
 
-# services
-alias svls="sudo systemctl list-units --type=service --all"
-alias svlsa="sudo systemctl list-units --type=service"
-alias svg="sudo systemctl list-units --type=service --all | grep"
-alias svstart="sudo systemctl start"
-alias svr="sudo systemctl status"
-alias svstop="sudo systemctl stop"
+# systemctl
+alias sc="sudo systemctl"
+      compdef sc="systemctl"
+
+# alias sl="sudo systemctl list-units --type=service --all"
+# alias sll="sudo systemctl list-units --type=service"
+# alias sg="sudo systemctl list-units --type=service --all | grep"
+# alias su="sudo systemctl start"
+# alias ss="sudo systemctl status"
+# alias sd="sudo systemctl stop"
 
 ###################################################
 ###################################################
