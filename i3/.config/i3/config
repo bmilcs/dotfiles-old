@@ -230,10 +230,10 @@ client.background       $white1
 #────────────────────────────────────────────────────────────
 
 # DESKTOP ASSIGNMENT
-assign [class="Thunderbird"] 2
-assign [class="discord"] 2
-assign [class="android-*"] 2
-assign [class="Telegram*"] 2
+assign [class="Thunderbird"] 3
+assign [class="discord"] 3
+assign [class="android-*"] 3
+assign [class="Telegram*"] 3
 
 for_window [class='Conky'] floating enable
 for_window [class='Gucharmap'] floating enable

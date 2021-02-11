@@ -49,9 +49,10 @@ export FZF_DEFAULT_OPTS="--color=dark"
 # LOCALE
 #────────────────────────────────────────────────────────────
 
-LANG=en_US.UTF-8
+LANG="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
+#LC_TIME="en_US.UTF-8"
+LC_TIME="nl_NL.utf-8"
 LC_COLLATE="en_US.UTF-8"
 LC_MONETARY="en_US.UTF-8"
 LC_MESSAGES="en_US.UTF-8"

@@ -9,36 +9,34 @@
 #────────────────────────────────────────────────────────────
 # HISTORY
 #────────────────────────────────────────────────────────────
-HISTFILE=~/.config/zsh/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
+HISTFILE=~/.config/zsh/.zhistory
 setopt SHARE_HISTORY          # share history between all sessions.
 setopt APPEND_HISTORY         # add to history file, across sessions, not replace
 setopt EXTENDED_HISTORY       # write the history file in the ':start:elapsed;command' format.
 setopt HIST_IGNORE_DUPS       # do not record an event that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS   # delete an old recorded event if a new event is a duplicate.
 setopt HIST_FIND_NO_DUPS      # do not display a previously found event.
+setopt HIST_REDUCE_BLANKS     # remove superfluous blanks for each command
 setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
-unsetopt HIST_VERIFY          # after history expansion, execute the line directly
 
 #────────────────────────────────────────────────────────────
 # PLUGINS
 #────────────────────────────────────────────────────────────
 
 # ZINIT
-#────────────────────────────────────────────────────────────
 source ~/.zinit/bin/zinit.zsh
 zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
 # DIR_COLORS
-#────────────────────────────────────────────────────────────
 [ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
 
 # FUZZY FINDER (FZF)
-#────────────────────────────────────────────────────────────
+
 # add .fzf to $PATH
 if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then
   export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
@@ -76,13 +74,13 @@ setopt rec_exact              # accept exact commands, no selection menu
 setopt always_to_end          # mid-word completions get appended 
 setopt auto_list              # list choices on ambiguous completion
 setopt hash_list_all 
+setopt numeric_glob_sort       # matched numeric filenames get sorted numerically
 #setopt glob_complete          # current word glob creates selection menu
 #setopt list_ambiguous         # unambiguous prefix to insert w/o menu
 #setopt list_packed            # reduce list length
 #setopt list_rows_first        # horizontal a/ b/ c/ d.conf
 #setopt list_types             # completions show identifying mark as last char
 #setopt menu_complete          # insert 1st match immediately & toggle through them
-setopt numeric_glob_sort       # matched numeric filenames get sorted numerically
 
 
 # MISC

@@ -79,21 +79,21 @@ window:
 #────────────────────────────────────────────────────────────
 
 font:
+  size: 12
   normal:
-    family: DejaVuSansMono Nerd Font
+    #family: GohuFont Nerd Font
+    #family: codenewroman nerd font 
+    #family: bitstreamverasansmono nerd font
+    #family: FantasqueSansMono Nerd Font
+    #family: DejaVuSansMono Nerd Font
+    family: UbuntuMono Nerd Font
     style: Book
   bold:
-    family: DejaVuSansMono Nerd Font
     style: Bold
   italic:
-    family: DejaVuSansMono Nerd Font
     style: Oblique
   bold_italic:
-    family: DejaVuSansMono Nerd Font
     style: Bold Oblique
-    #family: DejaVu Sans Mono for Powerline
-    #family: SauceCodePro Nerd Font 
-  size: 10
 
 # space around each character
   #offset:
