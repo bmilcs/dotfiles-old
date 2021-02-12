@@ -91,7 +91,7 @@ fi
 #────────────────────────────────────────────────────────────
 
 # REFRESH REPO SYMLINKS
-alias bmbs="cd $D && ./bootstrap.sh"
+alias bms="cd $D && ./bootstrap.sh"
 
 # DL MISSING GIT AUTOCOMPLETE
 [[ ! -f ~/.zsh/completion/_git ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
