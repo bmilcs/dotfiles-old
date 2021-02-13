@@ -119,7 +119,7 @@ if [[ ${DISTRO} == arch* ]]; then
       done
 
       # if match is found, skip this iteration
-      [[ "$match" == 1 ]] && _w skipping $dir && continue
+      [[ "$match" == 1 ]] && continue
 
       # not a match && stow it :)
       stow -R $(basename $dir)
