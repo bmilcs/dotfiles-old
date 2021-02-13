@@ -7,9 +7,6 @@
 #────────────────────────────────────────────────────────────
 source ./bin/bin/_head
 
-# minimum installation
-mini=("bin" "zsh" "vim" "git" "txt")
-
 # mass installation exceptions 
 exceptions=("asset" "pc" "root" "vm")
 
@@ -23,7 +20,9 @@ D=$HOME/bm
 _t [bmilcs] bootstrap initiated
 _o stowing everything includes system configuration files, such as: networkd, iwctl, pacman.conf, etc.
 
+#────────────────────────────────────────────────────────────
 # FUNCTIONS
+#────────────────────────────────────────────────────────────
 
 izsh() {
   _a zsh
@@ -59,13 +58,17 @@ ivim() {
   fi
   }
 
+#────────────────────────────────────────────────────────────
+# MEAT N POTATOES
+#────────────────────────────────────────────────────────────
+
 # DISTRO CHECK
 
 _a distro check
 source ./root/usr/local/bin/_distro
 _s
 
-# INSTALL PACKAGES
+# INSTALL REQUIRED PACKAGES
 
 _a package prerequisites
 _o "${reqs[@]}"
@@ -128,11 +131,10 @@ if [[ ${DISTRO} == arch* ]]; then
     done # end of repo directory loop
 
   _s 
-
   fi
-  # end of [install everything]
+  # end of [install everything?]
 
-  # shell & vim configs
+  # configure shell & vim 
   izsh
   ivim
 
@@ -146,26 +148,20 @@ else
 
   # stow /root
   _a system-wide
-
   _o stowing: root\/
-  sudo stow -t / -R root
-
   _o stowing: vm\/
-  sudo stow -t / -R vm
+  sudo stow -t / -R root
   _s 
 
-  # stow /home/user/
   _a user-specific
-
   _o stowing: home ${B}\~
-  stow -R "${mini[@]}" && _s "${mini[@]}" symlinked
 
-  _s
+  # stow
+  stowee=("bin" "zsh" "vim" "git" "txt")
+  stow -R "${stowee[@]}" && _s ${stowee[@]} symlinked
 
   # set repo url
-  _a setting origin/main url
   git remote set-url origin git@github.com:bmilcs/dotfiles.git 
-  _s
 
   # configure vim/zsh
   izsh

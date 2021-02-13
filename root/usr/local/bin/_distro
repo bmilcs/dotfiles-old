@@ -30,4 +30,4 @@ else
     VER=$(uname -r)
 fi
 
-DISTRO=${DISTRO,,}
+export DISTRO=${DISTRO,,}
