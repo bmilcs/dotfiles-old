@@ -158,7 +158,7 @@ else
   _a user-specific
 
   _o stowing: home ${B}\~
-  stow -R "${mini[@]}" && _s "${mini[@]}" symlinked
+  stow -R "${mini[@]}" && _i stowed: "${mini[@]}" 
 
   _s
 
