@@ -74,15 +74,6 @@ fi
 #  ADDITIVES
 #────────────────────────────────────────────────────────────
 
-# dotfiles
-for bmfile in ~/.bm_*
-do
-	source "$bmfile"
-done
-
-# dir colors
-eval "$(dircolors ~/.dir_colors)"
-
 # ls: group dotfiles together
 export LC_COLLATE="C"
 
@@ -114,7 +105,7 @@ esac
 #
 
 if [ -x /usr/bin/dircolors ]; then
-eval "$(dircolors ~/.dir_colors)"
+  eval "$(dircolors ~/.zsh/dir_colors)"
   alias ls='ls --color=auto'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
