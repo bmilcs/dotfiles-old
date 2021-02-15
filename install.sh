@@ -112,9 +112,9 @@ if [[ ${DISTRO} == arch* ]]; then
     rm_old_df
 
     # stow /root
+    set +x
     _a system-wide
-
-    cd "$D"/root/ || _e unable to cd root/ && exit 1
+    cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
     _o stowing: root/share to "${B}"/
     sudo stow -t / -R share
@@ -123,7 +123,7 @@ if [[ ${DISTRO} == arch* ]]; then
     sudo stow -t / -R workstation
     _s 
 
-    cd "$D" || _e unable to cd base repo dir && exit 1
+    cd "$D" || (_e unable to cd base repo dir && exit 1)
 
     _a user-specific
     _o stowing: essentials [base dir] ${B}\~
@@ -148,12 +148,12 @@ if [[ ${DISTRO} == arch* ]]; then
     done # end of repo directory loop
 
     # repo: opt/
-    cd $D/opt || _e unable to cd into opt && exit 1
+    cd $D/opt || (_e unable to cd into opt && exit 1)
 
     _o stowing: opt [rice cfg] ${B}\~
 
     # loop through repo
-    for dir in $D/opt/ ; do
+    for dir in $D/opt/*/ ; do
 
       match=0
 

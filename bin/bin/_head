@@ -10,7 +10,7 @@
 # TODO: CLEAN UP PARAMETER : \& \: \= \|
 
 # clear screen on script launch
-clear
+#clear
 
 # color var
 NC='\033[0m'
