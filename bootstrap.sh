@@ -25,6 +25,18 @@ _o stowing everything includes system configuration files, such as: networkd, iw
 
 # FUNCTIONS
 
+# removal of old dotfile content
+rm_old_df() {
+  _a removing old dotfile content
+  _w "content will be moved to ~/.backup/dotfiles"
+  mkdir -p ~/.backup/dotfiles
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} ~/.backup/dotfiles 2> /dev/null
+  mv ~/.zsh/completion/{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
+  sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
+  _s
+  }
+
+
 izsh() {
   _a zsh
   if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] ||  [[ ! -d ~/.zsh/completion ]]; then 
@@ -86,7 +98,6 @@ echo
 
 if [[ ${DISTRO} == arch* ]]; then
 
-
   # shell & vim configs
   izsh
   ivim
@@ -98,6 +109,9 @@ if [[ ${DISTRO} == arch* ]]; then
 
     _a ${B}symlink: ${GRN}${B}starting${NC}
     _o distro: $DISTRO 
+
+    # remove old dotfile stuff
+    rm_old_df
 
     # stow /root
     _a system-wide
@@ -147,6 +161,9 @@ else
   _a ${B}symlink: ${GRN}${B}starting${NC}
   _o distro: $DISTRO 
   _i minimal install 
+
+  # remove old dotfile stuff
+  rm_old_df
 
   # stow /root
   _a system-wide
