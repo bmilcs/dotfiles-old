@@ -11,7 +11,7 @@ source ./bin/bin/_head
 mini=("bin" "zsh" "vim" "git" "txt")
 
 # mass installation exceptions 
-exceptions=("asset" "pc" "root" "vm")
+exceptions=("asset" "pc" "root")
 
 # required packages
 reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
@@ -154,9 +154,9 @@ else
   _o stowing: root\/
   sudo stow -t / -R root
 
-  _o stowing: vm\/
-  sudo stow -t / -R vm
-  _s 
+  #_o stowing: vm\/
+  #sudo stow -t / -R vm
+  #_s 
 
   # stow /home/user/
   _a user-specific
