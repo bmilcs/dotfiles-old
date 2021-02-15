@@ -14,6 +14,8 @@
 	d = difftool
 	c = commit -a -m
   ps = push
+[diff]
+  external = bmdiff
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
@@ -30,5 +32,6 @@
 	excludesfile = ~/.config/git/ignore
 [diff]
 	tool = nvimdiff
+	context = 0
 [merge]
 	tool = nvimdiff

@@ -109,7 +109,7 @@ alias bms="cd $D && ./bootstrap.sh"
 # fi
 alias g="cd $D && git "
 alias ga="cd $D && git add "
-alias gs="cd $D && git status " 
+alias gs="cd $D && git status -s" 
 alias gd="cd $D && git diff "
 alias gps="cd $D && git push "
 alias gpl="cd $D && git pull "
