@@ -8,10 +8,10 @@
 source ./bin/bin/_head
 
 # minimum installation
-mini=("bin" "zsh" "vim" "git" "txt")
+mini=("bin" "git" "txt" "vim" "zsh")
 
 # mass installation exceptions 
-exceptions=("asset" "pc" "root")
+exceptions=("img" "opt" "root")
 
 # required packages
 reqs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
@@ -35,7 +35,6 @@ rm_old_df() {
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
   _s
   }
-
 
 izsh() {
   _a zsh
@@ -74,7 +73,7 @@ ivim() {
 # DISTRO CHECK
 
 _a distro check
-source ./root/usr/local/bin/_distro
+source ./root/share/usr/local/bin/_distro
 _s
 
 # INSTALL PACKAGES
@@ -87,7 +86,7 @@ if [[ ${DISTRO} == arch* ]]; then
 elif [[ ${DISTRO} == debian* ]]; then
   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
 else
-  _e distro not setup yet\! update me\! bootstrap.sh
+  _e distro not setup yet\! update me\! install.sh
   exit 1
 fi
 
@@ -106,8 +105,8 @@ if [[ ${DISTRO} == arch* ]]; then
 
   if [[ $? == 0 ]]; then
 
-    _a ${B}symlink: ${GRN}${B}starting${NC}
-    _o distro: $DISTRO 
+    _a "${U}"symlink: starting
+    _o distro: "$DISTRO"
 
     # remove old dotfile stuff
     rm_old_df
@@ -115,17 +114,21 @@ if [[ ${DISTRO} == arch* ]]; then
     # stow /root
     _a system-wide
 
-    _o stowing: root to ${B}/
-    sudo stow -t / -R root
+    cd "$D"/root/ || _e unable to cd root/ && exit 1
 
-    _o stowing: pc to ${B}/
-    sudo stow -t / -R pc
+    _o stowing: root/share to "${B}"/
+    sudo stow -t / -R share
+
+    _o stowing: root/workstation to "${B}"/
+    sudo stow -t / -R workstation
     _s 
 
-    _a user-specific
-    _o stowing: everything @ home ${B}\~
+    cd "$D" || _e unable to cd base repo dir && exit 1
 
-    # loop through repo
+    _a user-specific
+    _o stowing: essentials [base dir] ${B}\~
+
+    # repo: base dir stows
     for dir in $D/*/ ; do
 
       match=0
@@ -141,6 +144,30 @@ if [[ ${DISTRO} == arch* ]]; then
       # not a match && stow it :)
       stow -R $(basename $dir)
       [[ $? -gt 0 ]] && _e $(basename $dir)
+
+    done # end of repo directory loop
+
+    # repo: opt/
+    cd $D/opt || _e unable to cd into opt && exit 1
+
+    _o stowing: opt [rice cfg] ${B}\~
+
+    # loop through repo
+    for dir in $D/opt/ ; do
+
+      match=0
+
+      # if looped dir from above = an exception, match!
+      for a in "${exceptions[@]}"; do
+        [[ $dir == $D/opt/$a/ ]] && match=1
+      done
+
+      # if match is found, skip this iteration
+      [[ "$match" == 1 ]] && continue
+
+      # not a match && stow it :)
+      stow -t "$HOME" -R "$(basename "$dir")"
+      [[ $? -gt 0 ]] && _e "$(basename "$dir")"
 
     done # end of repo directory loop
 
