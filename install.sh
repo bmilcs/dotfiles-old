@@ -26,13 +26,17 @@ _o stowing everything includes system configuration files, such as: networkd, iw
 # FUNCTIONS
 
 # removal of old dotfile content
-rm_old_df() {
+cleanup() {
   _a removing old dotfile content
   _w "content will be moved to ~/.backup/dotfiles"
   mkdir -p ~/.backup/dotfiles
   mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} ~/.backup/dotfiles 2> /dev/null
   mv ~/.zsh/{completion/,}{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
+  _a deleting broken symlinks in "${B}"~
+  find ~ -xtype l 2>/dev/null -exec rm {} \;
+  _a deleting broken symlinks "${B}"/etc]
+  sudo find ~ -xtype l 2>/dev/null -exec rm {} \;
   _s
   }
 
@@ -96,7 +100,7 @@ _s all set
 
 if [[ ${DISTRO} == arch* ]]; then
 
-  # shell & vim configs
+  # shell & vim config
   izsh
   ivim
   # ARCH LINUX
@@ -109,10 +113,9 @@ if [[ ${DISTRO} == arch* ]]; then
     _o distro: "$DISTRO"
 
     # remove old dotfile stuff
-    rm_old_df
+    cleanup
 
     # stow /root
-    set +x
     _a system-wide
     cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
@@ -189,20 +192,21 @@ else
   _i minimal install 
 
   # remove old dotfile stuff
-  rm_old_df
+  cleanup
 
   # stow /root
   _a system-wide
 
-  _o stowing: root\/
-  sudo stow -t / -R root
+  cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
-  #_o stowing: vm\/
-  #sudo stow -t / -R vm
-  #_s 
+  _o stowing: root\/
+  sudo stow -t / -R share
 
   # stow /home/user/
   _a user-specific
+  cd "$D" || (_e unable to cd base repo dir && exit 1)
+
+  _o stowing: essentials [base dir] ${B}\~
 
   _o stowing: home ${B}\~
   stow -R "${mini[@]}" && _i stowed: "${mini[@]}" 
