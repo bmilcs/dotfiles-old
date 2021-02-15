@@ -15,15 +15,29 @@ _t git repo updater
 
 EXCEPTIONS=(nerd-font something)
 
-[ -d ~/gits ] && cd ~/gits || cd ~/repos
+rm /tmp/{upno,upyes}
+
+chkout(){
+  $1 | \
+    tee >(sleep 1; [[ $(tail -n1) =~ 'Already up to date' ]] && echo "$(pwd)\n" >> /tmp/upno || echo "$(pwd)\n" >> /tmp/upyes )
+}
+
+updaterepo() {
+  for dir in */; do
+    _a updating $dir
+    cd $(pwd)/$dir
+    chkout "git pull"
+    _s
+    cd ..
+  done
+}
 
 
+[ -d ~/gits ] && cd ~/gits && updaterepo || [ -d ~/repos ] && cd ~/repos && updaterepo 
 
+_s updated successfully
+[ -f /tmp/upyes ] && cat /tmp/upyes || _o no updates available
 
-for dir in *; do
+_a no update needed
+[ -f /tmp/upno ] && cat /tmp/upno || _o everything was out of date
 
-
-
-
-
-done
