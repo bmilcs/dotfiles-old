@@ -153,7 +153,7 @@ super + @space
 
 # launch rofi (dmenu alternative)
 F1
-	rofi -show drun -drun-display-format \{name\} -config ~/.config/rofi/config.rasi 
+	rofi -config ~/.config/rofi/config.rasi -show drun
 
 # launch firefox (browser)
 super + a
