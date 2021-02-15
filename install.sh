@@ -31,7 +31,7 @@ rm_old_df() {
   _w "content will be moved to ~/.backup/dotfiles"
   mkdir -p ~/.backup/dotfiles
   mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} ~/.backup/dotfiles 2> /dev/null
-  mv ~/.zsh/completion/{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
+  mv ~/.zsh/{completion/,}{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
   _s
   }
@@ -49,7 +49,7 @@ izsh() {
      _s
      # install zsh git completion
      curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-     curl -o ~/.zsh/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+     curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
      _s 
   else
     _o setup not required 
@@ -92,7 +92,6 @@ else
 fi
 
 _s all set 
-echo
 
 # GET STARTED
 
