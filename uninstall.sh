@@ -20,8 +20,8 @@ reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
 D=$HOME/bm
 
 # title
-_t [bmilcs] bootstrap initiated
-_o stowing everything includes system configuration files, such as: networkd, iwctl, pacman.conf, etc.
+_t [bmilcs] uninstall
+_o removal of all symlinks inbound
 
 # FUNCTIONS
 
@@ -61,48 +61,48 @@ ivim() {
 
 # DISTRO CHECK
 
-_a distro check
-source ./root/usr/local/bin/_distro
-_s
+#_a distro check
+#source ./root/usr/local/bin/_distro
+#_s
 
 # INSTALL PACKAGES
 
-_a package prerequisites
-_o "${reqs[@]}"
-
-if [[ ${DISTRO} == arch* ]]; then
-  pacman -Qi "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
-elif [[ ${DISTRO} == debian* ]]; then
-  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
-else
-  _e distro not setup yet\! update me\! bootstrap.sh
-  exit 1
-fi
-
-_s all set 
-echo
+# _a package prerequisites
+# _o "${reqs[@]}"
+# 
+# if [[ ${DISTRO} == arch* ]]; then
+#   pacman -Qi "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
+# elif [[ ${DISTRO} == debian* ]]; then
+#   dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
+# else
+#   _e distro not setup yet\! update me\! bootstrap.sh
+#   exit 1
+# fi
+# 
+# _s all set 
+# echo
 
 # GET STARTED
 
-if [[ ${DISTRO} == arch* ]]; then
+#if [[ ${DISTRO} == arch* ]]; then
 
   # ARCH LINUX
 
     _a ${B}symlink removal: ${GRN}${B}starting${NC}
-    _o distro: $DISTRO 
+    _o 
 
     # stow /root
     _a system-wide
 
-    _o stowing: root to ${B}/
+    _o removing root from ${B}/
     sudo stow -t / -D root
 
-    _o stowing: pc to ${B}/
+    _o removing: pc from ${B}/
     sudo stow -t / -D pc
     _s 
 
     _a user-specific
-    _o stowing: everything @ home ${B}\~
+    _o removing: everything @ home ${B}\~
 
     # loop through repo
     for dir in $D/*/ ; do
@@ -125,63 +125,20 @@ if [[ ${DISTRO} == arch* ]]; then
 
   _s 
 
-  fi
   # end of [install everything]
 
   # shell & vim configs
   uzsh
   uvim
 
-else
-
-  # DEBIAN
-
-  _a ${B}symlink: ${GRN}${B}starting${NC}
-  _o distro: $DISTRO 
-  _i minimal install 
-
-  # stow /root
-  _a system-wide
-
-  _o stowing: root\/
-  sudo stow -t / -D root
-
-  _o stowing: vm\/
-  sudo stow -t / -D vm
-  _s 
-
-  # stow /home/user/
-  _a user-specific
-
-  _o stowing: home ${B}\~
-  stow -D "${mini[@]}" && _i stowed: "${mini[@]}" 
-
-  _s
-
-  # set repo url
-  _a setting origin/main url
-  git remote set-url origin git@github.com:bmilcs/dotfiles.git 
-  _s
-
-  # configure vim/zsh
-  uzsh
-  uvim
-
   # check active shell
   if [[ $SHELL == *zsh ]]; then
     # shell != zsh, ask to swap
-    _ask swap back to BASH now?
-    if [[ $? == 0 ]]; then
+    _a change shell: bash 
       chsh -s /usr/bin/zsh
-    else
-      _i skipping. reboot recommended!
-    fi
   fi
 
-# end of debian
-fi
-
-_a bootstrap complete
+_a uninstallation complete
 echo
 
 # exit successfully, despite not having checked lol

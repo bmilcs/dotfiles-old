@@ -14,7 +14,7 @@ mini=("bin" "zsh" "vim" "git" "txt")
 exceptions=("asset" "pc" "root")
 
 # required packages
-reqs=("curl" "wget" "zsh" "neovim" "git" "stow")
+reqs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 
 # repo's base path
 D=$HOME/bm
