@@ -26,7 +26,7 @@ updaterepo() {
   for dir in */; do
     _a updating $dir
     cd $(pwd)/$dir
-    chkout "git pull"
+    chkout "git pull --rebase"
     _s
     cd ..
   done
