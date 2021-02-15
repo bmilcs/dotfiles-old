@@ -27,13 +27,13 @@ _o stowing everything includes system configuration files, such as: networkd, iw
 
 izsh() {
   _a zsh
-  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] ||  [[ ! -d ~/.zsh/completion ]]; then 
+  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zplugin ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] ||  [[ ! -d ~/.zsh/completion ]]; then 
      _o setup required_
-     _aa installing: zinit
+     _aa installing: zplugin
      # create directories
-     mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
-     # install zinit
-     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+     mkdir -p ~/.zplugin ~/.config/zsh/ ~/.zsh/completion
+     # install zplugin
+     git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin 
      _s
      # install zsh git completion
      curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
@@ -86,27 +86,19 @@ echo
 
 if [[ ${DISTRO} == arch* ]]; then
 
-
-  # shell & vim configs
-  izsh
-  ivim
   # ARCH LINUX
 
-  _ask stow EVERYTHING?
-
-  if [[ $? == 0 ]]; then
-
-    _a ${B}symlink: ${GRN}${B}starting${NC}
+    _a ${B}symlink removal: ${GRN}${B}starting${NC}
     _o distro: $DISTRO 
 
     # stow /root
     _a system-wide
 
     _o stowing: root to ${B}/
-    sudo stow -t / -R root
+    sudo stow -t / -D root
 
     _o stowing: pc to ${B}/
-    sudo stow -t / -R pc
+    sudo stow -t / -D pc
     _s 
 
     _a user-specific
@@ -126,7 +118,7 @@ if [[ ${DISTRO} == arch* ]]; then
       [[ "$match" == 1 ]] && continue
 
       # not a match && stow it :)
-      stow -R $(basename $dir)
+      stow -D $(basename $dir)
       [[ $? -gt 0 ]] && _e $(basename $dir)
 
     done # end of repo directory loop
@@ -136,11 +128,11 @@ if [[ ${DISTRO} == arch* ]]; then
   fi
   # end of [install everything]
 
-else
+  # shell & vim configs
+  uzsh
+  uvim
 
-  # configure vim/zsh
-  izsh
-  ivim
+else
 
   # DEBIAN
 
@@ -152,17 +144,17 @@ else
   _a system-wide
 
   _o stowing: root\/
-  sudo stow -t / -R root
+  sudo stow -t / -D root
 
   _o stowing: vm\/
-  sudo stow -t / -R vm
+  sudo stow -t / -D vm
   _s 
 
   # stow /home/user/
   _a user-specific
 
   _o stowing: home ${B}\~
-  stow -R "${mini[@]}" && _i stowed: "${mini[@]}" 
+  stow -D "${mini[@]}" && _i stowed: "${mini[@]}" 
 
   _s
 
@@ -171,10 +163,14 @@ else
   git remote set-url origin git@github.com:bmilcs/dotfiles.git 
   _s
 
+  # configure vim/zsh
+  uzsh
+  uvim
+
   # check active shell
-  if [[ ! $SHELL == *zsh ]]; then
+  if [[ $SHELL == *zsh ]]; then
     # shell != zsh, ask to swap
-    _ask swap to ZSH now?
+    _ask swap back to BASH now?
     if [[ $? == 0 ]]; then
       chsh -s /usr/bin/zsh
     else
