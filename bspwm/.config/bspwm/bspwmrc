@@ -52,6 +52,10 @@ bspc rule -a discord desktop='^2'
 bspc rule -a Pidgin desktop='^2' state=floating 
 bspc rule -a TelegramDesktop desktop='^2'
 
+bspc rule -a "Blueman-manager:*" state=floating
+bspc rule -a "*:Blueman-manager" state=floating
+
+
 # scratchpad
 bw=5
 bspc rule -a Alacritty:bmpad sticky=on state=floating hidden=on rectangle=2440x488+-$bw+-$bw
