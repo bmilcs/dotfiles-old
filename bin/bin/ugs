@@ -5,39 +5,42 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   REPO UPDATER              
-#────────────────────────────────────────────────────────────
-# TODO
-#   automate git-based software updates
+#   MASS REPO GIT STATUS
 #────────────────────────────────────────────────────────────
 source _head
-_t git repo updater
 
-EXCEPTIONS=(nerd-font something)
+_t git status
 
-rm /tmp/{upno,upyes}
+exceptions=("nerd-fonts-2.0.0" "x")
 
-chkout(){
+rm -rf /tmp/{upno,upyes}
+
+savelastline(){
   $1 | \
-    tee >(sleep 1; [[ $(tail -n1) =~ 'Already up to date' ]] && echo "$(pwd)\n" >> /tmp/upno || echo "$(pwd)\n" >> /tmp/upyes )
-}
+    tee >(sleep 1; [[ $(tail -n1) =~ 'Already up to date' ]] && echo "$(pwd)" >> /tmp/upno || echo "$(pwd)" >> /tmp/upyes )
+  }
 
 updaterepo() {
+  # loop through dir
   for dir in */; do
-    _a updating $dir
-    cd $(pwd)/$dir
-    chkout "git pull --rebase"
-    _s
-    cd ..
-  done
-}
 
+    _a updating $dir
+
+    match=0
+
+    # if looped dir from above = an exception, match!
+    for a in "${exceptions[@]}"; do
+      [[ $dir == */$a/ ]] && match=1
+    done
+
+    # if match is found, skip this iteration
+    [[ "$match" == 1 ]] && continue
+
+    # cd into repo     # git pull using function 
+    (cd "$(pwd)"/"$dir" && git status -s)
+
+  done
+  }
 
 [ -d ~/gits ] && cd ~/gits && updaterepo || [ -d ~/repos ] && cd ~/repos && updaterepo 
-
-_s updated successfully
-[ -f /tmp/upyes ] && cat /tmp/upyes || _o no updates available
-
-_a no update needed
-[ -f /tmp/upno ] && cat /tmp/upno || _o everything was out of date
 
