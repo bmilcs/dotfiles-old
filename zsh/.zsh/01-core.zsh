@@ -86,7 +86,7 @@ setopt numeric_glob_sort       # matched numeric filenames get sorted numericall
 # MISC
 #
 setopt nobeep                 # disable beep
-setopt extendedglob           # 
+#setopt extendedglob          # disabled, breaks git reset HEAD^
 setopt nomatch                #
 setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
