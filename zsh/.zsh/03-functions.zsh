@@ -20,7 +20,8 @@ source $D/bin/bin/_head
 
 # commit changes
 function gc() {
-  cd $D && git commit -m "$*"
+  [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
+  git commit -m "$*"
   }
 
 # commit changes w/ add .

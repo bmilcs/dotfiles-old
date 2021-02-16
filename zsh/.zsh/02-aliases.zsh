@@ -107,12 +107,12 @@ alias bms="cd $D && ./install.sh"
 #   __git_complete gc _git_commit
 #   __git_complete gp _git_push
 # fi
-alias g="cd $D && git "
-alias ga="cd $D && git add "
-alias gs="cd $D && git status -s" 
-alias gd="cd $D && git diff "
-alias gps="cd $D && git push "
-alias gpl="cd $D && git pull "
+alias g="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git "
+alias ga="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git add "
+alias gs="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git status -s"
+alias gd="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git diff "
+alias gps="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git push "
+alias gpl="[[ $(git rev-parse --is-inside-work-tree) ]] || cd $D && git pull "
 
 #────────────────────────────────────────────────────────────
 # TMUX
