@@ -24,13 +24,31 @@ function gc() {
   git commit -m "$*"
   }
 
+
+# git reset hard
+function grh() {
+  [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
+  _t git reset hard
+  _w WILL BE LOST:
+  _a git status
+  git status -s
+  _a git diff
+  git diff
+  echo
+  _ask "do you really want to reset --hard? (all changes will be lost" && git reset --hard && git clean -fdx
+
+  }
+
+
 # commit changes w/ add .
-function gca() {
-  _t dotfile repo commit
-  _a add missing files \& commit
-  cd $D && git add . 
-  git commit -am "$*"
-  _s done.
+function gaca() {
+  _ask "mass git {add,commit,push} - are you sure?" \
+  && _t dotfile repo commit \
+  && _a add missing files \& commit \
+  && ga . \
+  && gc "$@" \
+  && gps \
+  && _s done.
   }
 
 #────────────────────────────────────────────────────────────
