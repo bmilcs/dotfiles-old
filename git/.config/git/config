@@ -14,19 +14,20 @@
 	d = difftool
 	c = commit -a -m
   ps = push
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [diff]
   external = bmdiff
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-[advice]
-    pushNonFastForward = false
-    statusHints        = false
-    commitBeforeMerge  = false
-    resolveConflict    = false
-    implicitIdentity   = false
-    detachedHead       = false
+#[advice]
+#    pushNonFastForward = false
+#    statusHints        = false
+#    commitBeforeMerge  = false
+#    resolveConflict    = false
+#    implicitIdentity   = false
+#    detachedHead       = false
 [core]
 	editor = nvim
 	excludesfile = ~/.config/git/ignore
