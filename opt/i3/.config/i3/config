@@ -42,9 +42,10 @@ bindcode $win+$alt+$tilde exec "i3-msg exit"
 
 # ROFI
 bindsym F1 exec --no-startup-id rofi -config ~/.config/rofi/config.rasi -show drun
-bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
-bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-#-show drun -drun-display-format \{name\}
+# error:
+  # bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
+  # bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+  #-show drun -drun-display-format \{name\}
 
 # AUDIO
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo +5%
