@@ -96,14 +96,18 @@ fi
 
 _s all set 
 
+#────────────────────────────────────────────────────────────
 # GET STARTED
+#────────────────────────────────────────────────────────────
 
+# ARCH LINUX
 if [[ ${DISTRO} == arch* ]]; then
 
-  # shell & vim config
+  # shell
   izsh
+
+  #vim
   ivim
-  # ARCH LINUX
 
   _ask stow EVERYTHING?
 
@@ -181,11 +185,13 @@ if [[ ${DISTRO} == arch* ]]; then
 
 else
 
-  # configure vim/zsh
-  izsh
-  ivim
-
   # DEBIAN
+
+  # zsh
+  izsh
+
+  # vim
+  ivim
 
   _a ${B}symlink: ${GRN}${B}starting${NC}
   _o distro: $DISTRO 
