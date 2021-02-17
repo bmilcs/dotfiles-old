@@ -27,7 +27,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 ## TODO
 
 - [ ] dunst notifications
-- [ ] udisk2 / udiskie automount
+- [x] udisk2 / udiskie automount
 
 **rust**
 
@@ -40,7 +40,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [x] github aliases
 
 **misc**
-- [ ] dotfiles: segment essentials | vm | workstation
+- [x] dotfiles: segment essentials | vm | workstation
 - [ ] autocomplete git status > diff > to add workflow
 - [ ] ssh keys > private repo
 - [x] research best, quickest method for dotfile use
