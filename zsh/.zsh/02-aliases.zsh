@@ -56,7 +56,7 @@ alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
 alias polyr=". ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log"
 
-# alias sdir="echo $PWD >> $D/txt/txt/scratchpad.md" # TODO fix > function required?
+alias sdir='echo $PWD >> $D/txt/txt/scratchpad.md' # TODO fix > function required?
 
 #────────────────────────────────────────────────────────────
 # PACKAGE MANAGER 
@@ -98,15 +98,6 @@ alias bms="cd $D && ./install.sh"
 [[ ! -f ~/.zsh/completion/git-completion.bash ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 # ALIAS GIT AUTOCOMPLETION
-# if [ -f ~/.zsh/completion/_git ]; then
-#   . ~/.zsh/completion/_git
-#   # Add git completion to aliases
-#   __git_complete g __git_main
-#   __git_complete gs __git_status
-#   __git_complete ga __git_add
-#   __git_complete gc _git_commit
-#   __git_complete gp _git_push
-# fi
 alias g='$(git rev-parse) || cd $D && git '
 alias gs='$(git rev-parse) || cd $D && git status -s'
 alias gss='$(git rev-parse) || cd $D && git status'
@@ -114,12 +105,6 @@ alias gd='$(git rev-parse) || cd $D && git diff'
 alias ga='$(git rev-parse) || cd $D && git add '
 alias gps='$(git rev-parse) || cd $D && git push'
 alias gpl='$(git rev-parse) || cd $D && git pull'
-#alias g="[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git "
-#alias ga="[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git add "
-#alias gs="[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git status -s"
-#alias gd=[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git diff "
-#alias gps="[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git push "
-#alias gpl="[[ $(git rev-parse --is-inside-work-tree &> /dev/null) ]] || cd ${D} && git pull "
 
 #────────────────────────────────────────────────────────────
 # TMUX
