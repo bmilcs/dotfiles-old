@@ -1,0 +1,3 @@
+[submodule "opt/polybar/.config/polybar/polybar-scripts"]
+	path = opt/polybar/.config/polybar/polybar-scripts
+	url = https://github.com/polybar/polybar-scripts
