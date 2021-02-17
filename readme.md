@@ -26,6 +26,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
+- [ ] **sxiv - image viewer**
 - [ ] dunst notifications
 - [x] udisk2 / udiskie automount
 
