@@ -13,7 +13,6 @@ _t cfg editor
 
 genls() {
   _a "$2"
-  ls "$1"
   unset options i
   unset optz ii
   while IFS= read -r -d $'\0' f; do
@@ -53,7 +52,7 @@ case $sel in
   #z) nvim -S ~/dev/zsh.bm;;
   z) genls "$D"/zsh ZSH;;
   v) genls "$D"/vim VIM;;
-  p) genls "$D"/opt/polybar POLYBAR;;
+  p) genls "$D"/opt/polybar/.config/polybar/ POLYBAR;;
   k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc;;
   r) genls "$D"/opt/rofi ROFI;;
   bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc;;
