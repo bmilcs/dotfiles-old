@@ -106,13 +106,14 @@ shadow-ignore-shaped = false;
 #
 #################################
 
-inactive-opacity = 1;
+inactive-opacity = 0.93;
 active-opacity = 1;
-frame-opacity = 1;
+frame-opacity = 0.53;
 inactive-opacity-override = false;
 
 opacity-rule = [
   "70:class_g = 'Rofi'",
+  "98:class_g = 'firefox'",
 ]
 
 # Dim inactive windows. (0.0 - 1.0)
