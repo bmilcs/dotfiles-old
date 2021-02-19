@@ -10,17 +10,6 @@
 " 1. FZF: Add search for string in project folder
 " 2. Clean up syntax
 "────────────────────────────────────────────────────────────
-" INSTALL VIM-PLUG & PLUGINS IF MISSING
-"────────────────────────────────────────────────────────────
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.vim/plugins.vim
-endif
-autocmd! VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | q | endif
-
-"────────────────────────────────────────────────────────────
 " LIST
 "────────────────────────────────────────────────────────────
 
@@ -40,10 +29,12 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   Plug 'vim-airline/vim-airline'                " status bar
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
-  Plug 'kovetskiy/sxhkd-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+  Plug 'kovetskiy/sxhkd-vim'                    " language: sxhkd
   Plug 'mboughaba/i3config.vim',
-  Plug 'dense-analysis/ale',                  " syntax analysis
+  Plug 'neoclide/coc.nvim',                     " completion
+  Plug 'dense-analysis/ale',                    " sh syntax analysis
+  "Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }      " sh parser, format, interpret
 call plug#end()                                 " end of plugins
 set rtp+=~/.fzf
 
@@ -53,12 +44,45 @@ set rtp+=~/.fzf
 colorscheme nord                              " color scheme
 
 "────────────────────────────────────────────────────────────
+" COC
+"────────────────────────────────────────────────────────────
+" TODO: :CocConfig
+" figure out global langauge server, linter, prettier, etc.
+" coc-sh, coc-diagnostic,
+"
+  " https://kimpers.com/vim-intelligent-autocompletion/
+  " https://www.chrisatmachine.com/Neovim/04-vim-coc/
+  " https://github.com/neoclide/coc.nvim/network/dependents?dependents_before=NDA0MzM0NjQyNA
+  " https://www.chrisatmachine.com/Neovim/04-vim-coc/
+set pyxversion=3
+set cmdheight=1
+set updatetime=300
+
+"────────────────────────────────────────────────────────────
+" FILE(TYPE) AUTOMATION
+"────────────────────────────────────────────────────────────
+filetype off
+syntax on
+augroup filetypedetect
+  au BufRead,BufNewFile *.conf setf dosini
+  au BufNewFile,BufRead *.fsh,*.vsh setf glsl
+  au BufRead,BufNewFile *rc setf dosini
+augroup END
+filetype on
+
+autocmd BufRead,BufNewFile ~/txt/* set syntax=markdown
+autocmd BufRead,BufNewFile ~/bin/* set syntax=sh
+autocmd BufRead,BufNewFile ~/.config/i3/config set filetype=i3config
+
+" force plugins to load correctly when it is turned back on below.
+
+"────────────────────────────────────────────────────────────
 " MARKDOWN PREVIEW
 "────────────────────────────────────────────────────────────
 
 let g:mkdp_auto_start = 1 " auto-start w/ .md file
 let g:mkdp_auto_close = 1 " auto-close on .md exit
-let g:mkdp_refresh_slow = 0 " reduce refresh speed
+let g:mkdp_refresh_slow = 1 " reduce refresh speed
 let g:mkdp_command_for_global = 0 " md can be used on all files
 let g:vim_markdown_no_default_key_mappings = 1
 
@@ -176,29 +200,13 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 
 "────────────────────────────────────────────────────────────
-" FILE(TYPE) AUTOMATION
-"────────────────────────────────────────────────────────────
-
-" force plugins to load correctly when it is turned back on below.
-filetype off
-syntax on
-augroup filetypedetect
-  au BufNewFile,BufRead *.fsh,*.vsh setf glsl
-  au BufRead,BufNewFile *.conf setf dosini
-  au BufRead,BufNewFile *rc setf dosini
-augroup END
-filetype on
-
-aug i3config_ft_detection
-  au!
-  au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
-aug end
-
-"────────────────────────────────────────────────────────────
 " ALE
 "────────────────────────────────────────────────────────────
 
-call ale#handlers#shellcheck#DefineLinter('sh')
+"call ale#handlers#shellcheck#DefineLinter('sh')
+let g:ale_linters = {
+    \ 'sh': ['language_server'],
+    \ }
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
@@ -209,4 +217,4 @@ let g:ale_completion_autoimport = 1
 "   autocmd FileType c,cpp,java,php,js,json,css,scss,sass,py,rb,coffee,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " augroup end
 
-"
+"────────────────────────────────────────────────────────────
