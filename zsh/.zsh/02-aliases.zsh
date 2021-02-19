@@ -104,7 +104,7 @@ alias gss='$(git rev-parse) || cd $D && git status'
 alias gd='$(git rev-parse) || cd $D && git diff'
 alias ga='$(git rev-parse) || cd $D && git add '
 alias gps='$(git rev-parse) || cd $D && git push'
-alias gpl='$(git rev-parse) || cd $D && git pull'
+alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
 
 #────────────────────────────────────────────────────────────
 # TMUX

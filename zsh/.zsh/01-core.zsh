@@ -27,7 +27,6 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 #────────────────────────────────────────────────────────────
 
 # ZINIT
-source ~/.zinit/bin/zinit.zsh
 zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
