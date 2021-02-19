@@ -29,7 +29,7 @@ alias vim="nvim"
       compdef vim="nvim"
 
 # scratchpad
-alias pad="vim $D/txt/txt/scratchpad.md"
+alias pad="vim $D/txt/txt/pad.md"
 alias regex="vim $D/txt/txt/regex.md"
 
 # text folder
@@ -45,18 +45,19 @@ alias fun="vim $D/zsh/.zsh/03-functions.zsh"
 alias txs="c ; tail -f ~/.xsession-errors"
 
 # configuration files
-alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"
-alias gaps="vim $D/i3/.config/i3/config"
-alias keys="vim $D/sxhkd/.config/sxhkd/sxhkdrc"
-alias picomrc="vim $D/picom/.config/picom/config"
-alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
+alias bsp="vim $D/opt/bspwm/.config/bspwm/bspwmrc"
+alias gaps="vim $D/opt/i3/.config/i3/config"
+alias keys="vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc"
+alias picomrc="vim $D/opt/picom/.config/picom/config"
+alias termrc="vim $D/opt/alacritty/.config/alacritty/alacritty.yml"
 
 # restarting
 alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
 alias polyr=". ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log"
 
-alias sdir='echo $PWD >> $D/txt/txt/scratchpad.md' # TODO fix > function required?
+alias sdir='echo $PWD >> $D/txt/txt/dir_list.md' # TODO fix > function required?
+alias odir='vim $D/txt/txt/dir_list.md' # TODO fix > function required?
 
 #────────────────────────────────────────────────────────────
 # PACKAGE MANAGER 
@@ -102,7 +103,7 @@ alias g='$(git rev-parse) || cd $D && git '
 alias gs='$(git rev-parse) || cd $D && git status -s'
 alias gss='$(git rev-parse) || cd $D && git status'
 alias gd='$(git rev-parse) || cd $D && git diff'
-alias ga='$(git rev-parse) || cd $D && git add '
+alias ga='$(git rev-parse) || cd $D && git add $(git ls-files -m -o --exclude-standard | fzf -m)'
 alias gps='$(git rev-parse) || cd $D && git push'
 alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
 
