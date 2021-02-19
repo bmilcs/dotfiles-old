@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #────────────────────────────────────────────────────────────
-#   DOTFILE REPO BOOTSTRAP / DEPLOYMENT              
+#   DOTFILE REPO BOOTSTRAP / DEPLOYMENT
 #────────────────────────────────────────────────────────────
 #   TODO 1. backup existing files
 #        2. for cfg in pwd, stow -R $cfg
@@ -10,7 +10,7 @@ source ./bin/bin/_head
 # minimum installation
 mini=("bin" "git" "txt" "vim" "zsh")
 
-# mass installation exceptions 
+# mass installation exceptions
 exceptions=("img" "opt" "root")
 
 # required packages
@@ -34,50 +34,51 @@ cleanup() {
   mv ~/.zsh/{completion/,}{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
   _a deleting broken symlinks in "${B}"~
-  find ~ -xtype l 2>/dev/null -exec rm {} \;
+  find ~ -xtype l -exec rm {} \; 2> /dev/null
   _a deleting broken symlinks "${B}"/etc]
-  sudo find ~ -xtype l 2>/dev/null -exec rm {} \;
+  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
   _s
-  }
+}
 
 izsh() {
   _a zsh
-  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]] ; then 
-     _o setup required_
-     _aa installing: zinit
-     # create directories
-     mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
-     # install zinit
-     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-     _s
-     # install zsh git completion
-     curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-     curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-     _s 
+  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]]; then
+    _o setup required_
+    # create directories
+    mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
+    # install zsh git completion
+    _a zsh: git autocompletion
+    curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+    _s
+    # install zinit
+    _a zsh: zinit plugin manager
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+    _s
   else
-    _o setup not required 
+    _o setup not required
     _s
   fi
-  }
+}
 
 ivim() {
   _a vim
   if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-     _o setup required_
-     _aa installing vim-plug
+    _o setup required
+    _a vim: vim-plug plugin manager
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
-    _s 
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    _s
   else
-    _o setup not required 
-    _s 
+    _o setup not required
+    _s
   fi
-  }
+}
 
 # DISTRO CHECK
 
 _a distro check
-source ./root/share/usr/local/bin/_distro
+source ./bin/bin/_distro
 _s
 
 # INSTALL PACKAGES
@@ -86,15 +87,15 @@ _a package prerequisites
 _o "${reqs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
-  pacman -Qi "${reqs[@]}" >/dev/null 2>&1 || ( sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
+  pacman -Qi "${reqs[@]}" > /dev/null 2>&1 || (sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
 elif [[ ${DISTRO} == debian* ]]; then
-  dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
+  dpkg -s "${reqs[@]}" > /dev/null 2>&1 || (sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
 else
   _e distro not setup yet\! update me\! install.sh
   exit 1
 fi
 
-_s all set 
+_s all set
 
 #────────────────────────────────────────────────────────────
 # GET STARTED
@@ -109,9 +110,7 @@ if [[ ${DISTRO} == arch* ]]; then
   #vim
   ivim
 
-  _ask stow EVERYTHING?
-
-  if [[ $? == 0 ]]; then
+  if [[ $(_ask stow EVERYTHING?) == 0 ]]; then
 
     _a "${U}"symlink: starting
     _o distro: "$DISTRO"
@@ -128,15 +127,15 @@ if [[ ${DISTRO} == arch* ]]; then
 
     _o stowing: root/workstation to "${B}"/
     sudo stow -t / -R workstation
-    _s 
+    _s
 
     cd "$D" || (_e unable to cd base repo dir && exit 1)
 
     _a user-specific
-    _o stowing: essentials [base dir] ${B}\~
+    _o stowing: essentials [base dir] "${B}"\~
 
     # repo: base dir stows
-    for dir in $D/*/ ; do
+    for dir in "$D"/*/; do
 
       match=0
 
@@ -149,18 +148,18 @@ if [[ ${DISTRO} == arch* ]]; then
       [[ "$match" == 1 ]] && continue
 
       # not a match && stow it :)
-      stow -R $(basename $dir)
-      [[ $? -gt 0 ]] && _e $(basename $dir)
+      stow -R "$(basename "$dir")"
+      [[ $? -gt 0 ]] && _e "$(basename "$dir")"
 
     done # end of repo directory loop
 
     # repo: opt/
-    cd $D/opt || (_e unable to cd into opt && exit 1)
+    cd "$D"/opt || (_e unable to cd into opt && exit 1)
 
-    _o stowing: opt [rice cfg] ${B}\~
+    _o stowing: opt [rice cfg] "${B}"\~
 
     # loop through repo
-    for dir in $D/opt/*/ ; do
+    for dir in "$D"/opt/*/; do
 
       match=0
 
@@ -173,19 +172,16 @@ if [[ ${DISTRO} == arch* ]]; then
       [[ "$match" == 1 ]] && continue
 
       # not a match && stow it :)
-      stow -t "$HOME" -R "$(basename "$dir")"
-      [[ $? -gt 0 ]] && _e "$(basename "$dir")"
+
+      [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
 
     done # end of repo directory loop
 
-  _s 
+    _s
 
-  fi
-  # end of [install everything]
+  fi # end of [install everything]
 
-else
-
-  # DEBIAN
+else # DEBIAN
 
   # zsh
   izsh
@@ -193,9 +189,9 @@ else
   # vim
   ivim
 
-  _a ${B}symlink: ${GRN}${B}starting${NC}
-  _o distro: $DISTRO 
-  _i minimal install 
+  _a "${B}"symlink: "${GRN}""${B}"starting"${NC}"
+  _o distro: "$DISTRO"
+  _i minimal install
 
   # remove old dotfile stuff
   cleanup
@@ -205,30 +201,30 @@ else
 
   cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
-  _o stowing: root\/
+  _o stowing: root'/'
   sudo stow -t / -R share
 
   # stow /home/user/
   _a user-specific
   cd "$D" || (_e unable to cd base repo dir && exit 1)
 
-  _o stowing: essentials [base dir] ${B}\~
+  _o stowing: essentials [base dir] "${B}"\~
 
-  _o stowing: home ${B}\~
-  stow -R "${mini[@]}" && _i stowed: "${mini[@]}" 
+  _o stowing: home "${B}"\~
+  stow -R "${mini[@]}" && _i stowed: "${mini[@]}"
 
   _s
 
   # set repo url
   _a setting origin/main url
-  git remote set-url origin git@github.com:bmilcs/dotfiles.git 
+  git remote set-url origin git@github.com:bmilcs/dotfiles.git
   _s
 
   # check active shell
   if [[ ! $SHELL == *zsh ]]; then
     # shell != zsh, ask to swap
-    _ask swap to ZSH now?
-    if [[ $? == 0 ]]; then
+
+    if [[ $(_ask swap to ZSH now?) == 0 ]]; then
       chsh -s /usr/bin/zsh
     else
       _i skipping. reboot recommended!
