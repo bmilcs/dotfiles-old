@@ -28,6 +28,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 - [ ] **sxiv - image viewer**
 - [ ] **mailspring** 
+- [ ] **qtile**
 - [ ] dunst notifications
 - [x] udisk2 / udiskie automount
 
