@@ -12,6 +12,9 @@ killall -q polybar
 # wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
+# pass polybar-script location as env var
+export PBS="$HOME/.config/polybar-scripts/polybar-scripts"
+
 if [[ $(pgrep -x "i3") ]]; then 
 
   # launch polybar, custom conf, forward output to log
