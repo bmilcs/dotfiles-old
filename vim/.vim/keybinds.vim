@@ -66,7 +66,7 @@ nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1───────�
 " find/replace all
 "nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 nnoremap <leader>r :%s///gc<left><left><left>
-nnoremap <leader>R :%s///g<left><left><left>
+nnoremap <leader>R :%s///g<left><left>
 
 " clear highlighted matches
 nnoremap <leader>/ :nohlsearch<CR>
