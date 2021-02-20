@@ -75,6 +75,13 @@ ivim() {
   fi
 }
 
+ifzf() {
+  if [[ ! -d ~/.fzf ]]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+  fi
+}
+
 # DISTRO CHECK
 
 _a distro check
@@ -109,6 +116,9 @@ if [[ ${DISTRO} == arch* ]]; then
 
   #vim
   ivim
+
+  #fzf
+  ifzf
 
   if [[ $(_ask stow EVERYTHING?) == 0 ]]; then
 
@@ -188,6 +198,9 @@ else # DEBIAN
 
   # vim
   ivim
+
+  #fzf
+  ifzf
 
   _a "${B}"symlink: "${GRN}""${B}"starting"${NC}"
   _o distro: "$DISTRO"

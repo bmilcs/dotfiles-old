@@ -2,8 +2,8 @@
 *.log
 log/
 log
-mpd/.config/mpd/database
-mpd/.config/mpd/pid
-mpd/.config/mpd/sticker.sql
+opt/mpd/.config/mpd/database
+opt/mpd/.config/mpd/pid
+opt/mpd/.config/mpd/sticker.sql
 zsh/.zsh/completion/_git
 zsh/.zsh/completion/git-completion.bash
