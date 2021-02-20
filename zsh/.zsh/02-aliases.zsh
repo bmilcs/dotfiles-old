@@ -45,16 +45,17 @@ alias fun="vim $D/zsh/.zsh/03-functions.zsh"
 alias txs="c ; tail -f ~/.xsession-errors"
 
 # configuration files
-alias bsp="vim $D/bspwm/.config/bspwm/bspwmrc"
-alias gaps="vim $D/i3/.config/i3/config"
-alias keys="vim $D/sxhkd/.config/sxhkd/sxhkdrc"
-alias picomrc="vim $D/picom/.config/picom/config"
-alias termrc="vim $D/alacritty/.config/alacritty/alacritty.yml"
+alias bsp="vim $D/opt/bspwm/.config/bspwm/bspwmrc"
+alias gaps="vim $D/opt/i3/.config/i3/config"
+alias keys="vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc"
+alias picomrc="vim $D/opt/picom/.config/picom/config"
+alias termrc="vim $D/opt/alacritty/.config/alacritty/alacritty.yml"
 
 # restarting
 alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
-alias polyr=". ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log"
+alias polyr=". ~/.config/polybar/launch.sh" 
+# tail -f ~/.config/polybar/log"
 
 alias sdir='echo $PWD >> $D/txt/txt/scratchpad.md' # TODO fix > function required?
 
