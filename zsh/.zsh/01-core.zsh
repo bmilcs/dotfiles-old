@@ -128,7 +128,7 @@ zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 zstyle ':completion:*:corrections' format '%B%F{green}# guesses? %F{red}(%e)%f'
 zstyle ':completion:*:messages' format '%F{blue}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}%d%f'
-zstyle ':completion:*' format '%B%I%F{magenta}# %d'
+zstyle ':completion:*' format '%B%I%F{magenta}# nothing'
 #zstyle ':completion:*' verbose yes
 # git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash

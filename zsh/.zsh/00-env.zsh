@@ -52,6 +52,7 @@ fi
 
 # multi-core build
 export MAKEFLAGS="-j$(nproc)"
+
 # build dir to ram
 export BUILDDIR=/tmp/makepkg makepkg
 export EDITOR=nvim
@@ -64,7 +65,8 @@ export TERMINAL=alacritty
 #────────────────────────────────────────────────────────────
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
-export FZF_DEFAULT_OPTS="--color=dark"
+export FZF_DEFAULT_OPTS="--color=dark --height 40% --layout-reverse --border"
+#export FZF_DEFAULT_OPTS="--color=dark"
 
 #────────────────────────────────────────────────────────────
 # LOCALE

@@ -4,7 +4,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   ZSH ALIASES              
+#   ZSH ALIASES
 #────────────────────────────────────────────────────────────
 #
 #   TODO
@@ -12,7 +12,7 @@
 #         add working savedir alias > select
 #
 #────────────────────────────────────────────────────────────
-# SUDO 
+# SUDO
 #────────────────────────────────────────────────────────────
 
 # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
@@ -24,67 +24,67 @@ alias sudo="nocorrect sudo -E "
 
 # nano -> vim
 alias nano="nvim"
-      compdef nano="nvim"
+compdef nano="nvim"
 alias vim="nvim"
-      compdef vim="nvim"
+compdef vim="nvim"
 
 # scratchpad
-alias pad="vim $D/txt/txt/pad.md"
-alias regex="vim $D/txt/txt/regex.md"
+alias pad='vim $D/txt/txt/pad.md'
+alias regex='vim $D/txt/txt/regex.md'
 
 # text folder
-alias txt="cd $D/txt/txt ; c ; l"
+alias txt='cd $D/txt/txt ; c ; l'
 
 # dotfile repo: readme
-alias readme="vim ~/bm/readme.md"
+alias readme='vim ~/bm/readme.md'
 
 # dotfiles
-alias bm="cd $D"	# only while root
-alias ali="vim $D/zsh/.zsh/02-aliases.zsh"
-alias fun="vim $D/zsh/.zsh/03-functions.zsh"
-alias txs="c ; tail -f ~/.xsession-errors"
+alias bm='cd $D' # only while root
+alias ali='vim $D/zsh/.zsh/02-aliases.zsh'
+alias fun='vim $D/zsh/.zsh/03-functions.zsh'
+alias txs='c ; tail -f ~/.xsession-errors'
 
 # configuration files
-alias bsp="vim $D/opt/bspwm/.config/bspwm/bspwmrc"
-alias gaps="vim $D/opt/i3/.config/i3/config"
-alias keys="vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc"
-alias picomrc="vim $D/opt/picom/.config/picom/config"
-alias termrc="vim $D/opt/alacritty/.config/alacritty/alacritty.yml"
+alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'
+alias gaps='vim $D/opt/i3/.config/i3/config'
+alias keys='vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc'
+alias picomrc='vim $D/opt/picom/.config/picom/config'
+alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
-alias tr="tmux source ~/.tmux.conf"
-alias zr="source ~/.zshrc"
-alias polyr=". ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log"
+alias tr='tmux source ~/.tmux.conf'
+alias zr='source ~/.zshrc'
+alias polyr='. ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log'
 
 alias sdir='echo $PWD >> $D/txt/txt/dir_list.md' # TODO fix > function required?
-alias odir='vim $D/txt/txt/dir_list.md' # TODO fix > function required?
+alias odir='vim $D/txt/txt/dir_list.md'          # TODO fix > function required?
 
 #────────────────────────────────────────────────────────────
-# PACKAGE MANAGER 
+# PACKAGE MANAGER
 #────────────────────────────────────────────────────────────
 
 # UPDATE # TODO conditional update | distro based
 
 # ARCHLINUX
 if [[ $DISTRO = arch ]]; then
-  alias pacman="sudo pacman"
-        compdef pacman="pacman"
-  alias pm="pacman"
-        compdef pm="pacman"
-  alias pmls="pacman -Qe | less"
-        compdef pmls="pacman"
-  alias pms="pacman -S"
-        compdef pms="pacman"
-  alias pmg="pacman -Qe|grep"
-        compdef pmg="pacman"
-# AUR | YAY
-  alias yayls="yay -Qe | less"
-        compdef yayls="yay"
-  alias yays="yay -S"
-        compdef yays="yay"
-  alias yayg="yay -Qe | grep"
-        compdef yayg="yay"
-  alias netr="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
+  alias pacman='sudo pacman'
+  compdef pacman='pacman'
+  alias pm='pacman'
+  compdef pm='pacman'
+  alias pmls='pacman -Qe | less'
+  compdef pmls='pacman'
+  alias pms='pacman -S'
+  compdef pms='pacman'
+  alias pmg='pacman -Qe|grep'
+  compdef pmg='pacman'
+  # AUR | YAY
+  alias yayls='yay -Qe | less'
+  compdef yayls='yay'
+  alias yays='yay -S'
+  compdef yays='yay'
+  alias yayg='yay -Qe | grep'
+  compdef yayg='yay'
+  alias netr='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}'
 fi
 
 #────────────────────────────────────────────────────────────
@@ -92,7 +92,7 @@ fi
 #────────────────────────────────────────────────────────────
 
 # REFRESH REPO SYMLINKS
-alias bms="cd $D && ./install.sh"
+alias bms='cd $D && ./install.sh'
 
 # DL MISSING GIT AUTOCOMPLETE
 [[ ! -f ~/.zsh/completion/_git ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
@@ -103,7 +103,8 @@ alias g='$(git rev-parse) || cd $D && git '
 alias gs='$(git rev-parse) || cd $D && git status -s'
 alias gss='$(git rev-parse) || cd $D && git status'
 alias gd='$(git rev-parse) || cd $D && git diff'
-alias ga='$(git rev-parse) || cd $D && git add $(git ls-files -m -o --exclude-standard | fzf -m)'
+alias ga='$(git rev-parse) || cd $D && git add'
+#alias ga='$(git rev-parse) || cd $D && git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p)'
 alias gps='$(git rev-parse) || cd $D && git push'
 alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
 
@@ -111,42 +112,42 @@ alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} 
 # TMUX
 #────────────────────────────────────────────────────────────
 
-alias t="tmux -u"
-      compdef t="tmux"
-alias ta="t a -t"
-      compdef ta="tmux"
-alias tls="t ls"
-      compdef tls="tmux"
-alias tn="t new -t"
-      compdef tn="tmux"
+alias t='tmux -u'
+compdef t='tmux'
+alias ta='t a -t'
+compdef ta='tmux'
+alias tls='t ls'
+compdef tls='tmux'
+alias tn='t new -t'
+compdef tn='tmux'
 
 #────────────────────────────────────────────────────────────
 # APPLICATIONS
 #────────────────────────────────────────────────────────────
 
 # ncdu
-alias ncdu="ncdu --exclude /all --exclude /backup "
+alias ncdu='ncdu --exclude /all --exclude /backup '
 
 # wallpaper
-alias nitrogen="nitrogen ~/wall"
-alias fehbg="feh -g 640x480 -d -S filename ~/wall"
+alias nitrogen='nitrogen ~/wall'
+alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 
 #────────────────────────────────────────────────────────────
 # LS
 #────────────────────────────────────────────────────────────
 # A   all except ./ ../ | l   list-form | h   human-readable sizes| F | C
 
-alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first --time-style="+%D %H:%M"'
-alias l="ls" # long, all, abc puid
-alias ll="command ls -l --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid
+alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first --time-style='+%D %H:%M''
+alias l='ls'                                                                            # long, all, abc puid
+alias ll='command ls -l --color --group-directories-first --time-style='+%D %H:%M''     #long, all, # puid
 alias lll="command ls -AC --color --group-directories-first --time-style=\"+%D %H:%M\"" #long, all, # puid
 alias llll="command ls -C --color --group-directories-first --time-style=\"+%D %H:%M\""
 
 alias lst="command ls --color --group-directories-first --time-style=\"+%D %H:%M\""
 
-alias lsf="ls -A | grep -v '^d'"	#ls files,,
-alias lsd="ls -Ald */"   # ls, long, dir
-alias lsg="ls -A | grep" #search in dir
+alias lsf="ls -A | grep -v '^d'" #ls files,,
+alias lsd="ls -Ald */"           # ls, long, dir
+alias lsg="ls -A | grep"         #search in dir
 
 compdef ls="ls"
 compdef l="ls"
@@ -156,10 +157,10 @@ compdef llll="ls"
 compdef lst="ls"
 
 # command tweaks
-alias ln="ln -i"    #confirmation
+alias ln="ln -i"               #confirmation
 alias ip="ip -color=auto"      # color
 alias grep="grep --color=auto" # color
-alias wget="wget -c"					 # autoresume
+alias wget="wget -c"           # autoresume
 #alias mv="mv -i"    #confirmation
 #alias cp="cp -i"    #confirmation
 
@@ -178,13 +179,16 @@ alias -g zz="fzf -m"
 
 # mount | umount
 alias mount="sudo mount"
-      compdef mount="mount"
+compdef mount="mount"
 alias umount="sudo umount"
-      compdef umount="umount"
+compdef umount="umount"
 
 # fstab
 alias fstab="sudo vim /etc/fstab"
-dpkg -s "findmnt" >/dev/null 2>&1 && ( alias fstabt="sudo findmnt --verify --verbose" ; compdef fstabt="findmnt" )
+dpkg -s "findmnt" > /dev/null 2>&1 && (
+  alias fstabt="sudo findmnt --verify --verbose"
+  compdef fstabt="findmnt"
+)
 
 # nfs shares
 alias nfs="sudo vim /etc/exports"
@@ -223,14 +227,14 @@ alias rt="sudo -s"
 
 # syslog
 alias syslogg="sudo cat /var/log/syslog | grep "
-alias syslogls="sudo cat /var/log/syslog" 
+alias syslogls="sudo cat /var/log/syslog"
 
 # pid
 alias pid="cat /etc/passwd"
 
 # systemctl
 alias sc="sudo systemctl"
-      compdef sc="systemctl"
+compdef sc="systemctl"
 
 # alias sl="sudo systemctl list-units --type=service --all"
 # alias sll="sudo systemctl list-units --type=service"
@@ -254,7 +258,7 @@ alias sc="sudo systemctl"
 alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
 
 #────────────────────────────────────────────────────────────
-# BACKUP 
+# BACKUP
 #────────────────────────────────────────────────────────────
 
 alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"

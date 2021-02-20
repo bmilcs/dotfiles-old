@@ -13,6 +13,12 @@ source $D/bin/bin/_head
 # GIT
 #────────────────────────────────────────────────────────────
 
+dbug() {
+  set -x ; "$*" ; set +x
+  }
+
+
+
 # commit changes
 #function ga() {
 #  cd $D && git add "$*"
@@ -40,16 +46,16 @@ function grh() {
   }
 
 
-# commit changes w/ add .
-function gaca() {
-  _ask "mass git {add,commit,push} - are you sure?" \
-  && _t dotfile repo commit \
-  && _a add missing files \& commit \
-  && ga . \
-  && gc "$@" \
-  && gps \
-  && _s done.
-  }
+# # commit changes w/ add .
+# function gaca() {
+#   _ask "mass git {add,commit,push} - are you sure?" \
+#   && _t dotfile repo commit \
+#   && _a add missing files \& commit \
+#   && ga . \
+#   && gc "$@" \
+#   && gps \
+#   && _s done.
+#   }
 
 #────────────────────────────────────────────────────────────
 # SHELL
