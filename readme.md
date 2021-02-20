@@ -26,7 +26,12 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 
 ## TODO
 
+- [ ] pywal
 - [ ] **sxiv - image viewer**
+- [ ] **mailspring** 
+- [ ] **qtile**
+- [ ] **entr**
+- [ ] github.com/chubin/rate.sx
 - [ ] dunst notifications
 - [x] udisk2 / udiskie automount
 
@@ -41,15 +46,12 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [x] github aliases
 
 **misc**
-- [x] dotfiles: segment essentials | vm | workstation
 - [ ] autocomplete git status > diff > to add workflow
 - [ ] ssh keys > private repo
-- [x] research best, quickest method for dotfile use
 
 **VIM** [ref: youtube vim super powers]
 - [ ] npm
 - [ ] nettree
-- [ ] vim shortcut: auto :%s/VISUAL//g
 - [ ] vim autocomplete
     - [ ]  all stuff within file 
     - [ ]  /path/to autocomplete
@@ -59,16 +61,7 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [ ] rip grep? same thing?
 - [ ] bcommits? git history-like plugin
 - [ ] lazygit, lazydocker, lazynpm
-- [ ] tmux - learn tabs, buffers, etc.
-- [ ] anyjump -- search across workspace
-- [ ] functions() - ie: centered title bar w/ ascii characters
-
-**BSPWM**
-  - [ ] ergonomic shortcuts
-
-**POLYBAR**
-  - [ ] pkg update watcher notifications - distro/packages
-  - [ ] add networking up/down
+- [ ] anyjump search across workspace
 
 ---
 

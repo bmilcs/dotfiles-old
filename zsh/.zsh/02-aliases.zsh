@@ -29,7 +29,7 @@ alias vim="nvim"
       compdef vim="nvim"
 
 # scratchpad
-alias pad="vim $D/txt/txt/scratchpad.md"
+alias pad="vim $D/txt/txt/pad.md"
 alias regex="vim $D/txt/txt/regex.md"
 
 # text folder
@@ -57,7 +57,8 @@ alias zr="source ~/.zshrc"
 alias polyr=". ~/.config/polybar/launch.sh" 
 # tail -f ~/.config/polybar/log"
 
-alias sdir='echo $PWD >> $D/txt/txt/scratchpad.md' # TODO fix > function required?
+alias sdir='echo $PWD >> $D/txt/txt/dir_list.md' # TODO fix > function required?
+alias odir='vim $D/txt/txt/dir_list.md' # TODO fix > function required?
 
 #────────────────────────────────────────────────────────────
 # PACKAGE MANAGER 
@@ -103,7 +104,7 @@ alias g='$(git rev-parse) || cd $D && git '
 alias gs='$(git rev-parse) || cd $D && git status -s'
 alias gss='$(git rev-parse) || cd $D && git status'
 alias gd='$(git rev-parse) || cd $D && git diff'
-alias ga='$(git rev-parse) || cd $D && git add '
+alias ga='$(git rev-parse) || cd $D && git add $(git ls-files -m -o --exclude-standard | fzf -m)'
 alias gps='$(git rev-parse) || cd $D && git push'
 alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
 
