@@ -52,9 +52,10 @@ alias picomrc='vim $D/opt/picom/.config/picom/config'
 alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
-alias tr='tmux source ~/.tmux.conf'
-alias zr='source ~/.zshrc'
-alias polyr='. ~/.config/polybar/launch.sh;tail -f ~/.config/polybar/log'
+alias tr="tmux source ~/.tmux.conf"
+alias zr="source ~/.zshrc"
+alias polyr=". ~/.config/polybar/launch.sh" 
+# tail -f ~/.config/polybar/log"
 
 alias sdir='echo $PWD >> $D/txt/txt/dir_list.md' # TODO fix > function required?
 alias odir='vim $D/txt/txt/dir_list.md'          # TODO fix > function required?
