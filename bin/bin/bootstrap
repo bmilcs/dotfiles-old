@@ -5,11 +5,12 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   GLOBAL BOOTSTRAP              
+#   GLOBAL BOOTSTRAP
 #────────────────────────────────────────────────────────────
 
 #pgrep -f pulseaudio || pulseaudio --start &
 [ ! -s ~/.config/mpd/pid ] && mpd
+xset r rate 200 35
 pgrep -f udiskie || udiskie &
 pgrep -f blueman-tray || blueman-applet &
 pgrep -f thunderbird || thunderbird &
