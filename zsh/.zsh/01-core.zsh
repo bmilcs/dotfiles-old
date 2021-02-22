@@ -30,6 +30,7 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
+zinit light wfxr/forgit
 
 # DIR_COLORS
 [ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
