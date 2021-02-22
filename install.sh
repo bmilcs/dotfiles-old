@@ -80,9 +80,12 @@ ivim() {
 }
 
 ifzf() {
+  _a fzf
   if [[ ! -d ~/.fzf ]]; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+    _o setup required
+    _a fzf: installation
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    sh ~/.fzf/install --all --no-update-rc
   fi
 }
 
