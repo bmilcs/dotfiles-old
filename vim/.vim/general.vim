@@ -87,3 +87,9 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.vim/cache/.viminfo
 "           | + lines saved each register (old name for <, vi6.2)
 "           + save/restore buffer list
 
+"────────────────────────────────────────────────────────────
+" AUTOMATION
+"────────────────────────────────────────────────────────────
+
+" auto save on focus lost
+:au FocusLost * silent! wa

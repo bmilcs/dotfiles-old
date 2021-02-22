@@ -23,8 +23,8 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'preservim/nerdtree'                     " file browser
       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
       \ Plug 'ryanoasis/vim-devicons'
-  "Plug '~/.fzf'                                 " fuzzy finder
-  Plug 'junegunn/fzf.vim'
+  Plug '~/.fzf'                                 " fuzzy finder
+  "Plug 'junegunn/fzf.vim'
 "  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
   Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   Plug 'vim-airline/vim-airline'                " status bar
@@ -57,6 +57,12 @@ colorscheme nord                              " color scheme
 set pyxversion=3
 set cmdheight=1
 set updatetime=300
+
+" close the preview window when completion is done
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" enable CocList
+let g:coc_enable_locationlist = 1
 
 "────────────────────────────────────────────────────────────
 " FILE(TYPE) AUTOMATION
@@ -150,66 +156,90 @@ let g:airline_highlighting_cache = 1
 " FZF: FUZZY FINDER
 "────────────────────────────────────────────────────────────
 
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+"  let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+"  
+"  " Customize fzf colors to match your color scheme.
+"  let g:fzf_colors =
+"  \ { 'fg':      ['fg', 'Normal'],
+"    \ 'bg':      ['bg', 'Normal'],
+"    \ 'hl':      ['fg', 'Comment'],
+"    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"    \ 'hl+':     ['fg', 'Statement'],
+"    \ 'info':    ['fg', 'PreProc'],
+"    \ 'prompt':  ['fg', 'Conditional'],
+"    \ 'pointer': ['fg', 'Exception'],
+"    \ 'marker':  ['fg', 'Keyword'],
+"    \ 'spinner': ['fg', 'Label'],
+"    \ 'header':  ['fg', 'Comment'] }
+"  
+"  let g:fzf_action = {
+"    \ 'ctrl-t': 'tab split',
+"    \ 'ctrl-b': 'split',
+"    \ 'ctrl-v': 'vsplit',
+"    \ 'ctrl-y': {lines -> setreg('*', join(lines, "\n"))}}
+"  
+"  " Launch fzf with CTRL+P.
+"  nnoremap <silent> <C-p> :FZF -m<CR>
+"  nnoremap <silent> <C-S-p> :FZF -m<CR>
+"  
+"  " Map a few common things to do with FZF.
+"  nnoremap <silent> <Leader>b :BMdotfiles<CR>
+"  nnoremap <silent> <Leader><Enter> :Buffers<CR>
+"  nnoremap <silent> <Leader>l :Lines<CR>
+"  
+"  " Allow \assing optional flags into the Rg command.
+"  "   Example: :Rg myterm -g '*.md'
+"  command! -bang -nargs=* Rg
+"    \ call fzf#vim#grep(
+"    \ "rg --column --line-number --no-heading --color=always --smart-case " .
+"    \ <q-args>, 0, fzf#vim#with_preview(), <bang>0)
+"  
+"  " FZF: ~/bm dotfile search
+"  command! -bang BMdotfiles call fzf#vim#files('~/bm', <bang>0)
+"  
+"  " Path completion with custom source command
+"  inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+"  
+"  " Word completion with custom spec with popup layout option
+"  inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 
-" Customize fzf colors to match your color scheme.
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-b': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-y': {lines -> setreg('*', join(lines, "\n"))}}
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
 
-" Launch fzf with CTRL+P.
-nnoremap <silent> <C-p> :FZF -m<CR>
-nnoremap <silent> <C-S-p> :FZF -m<CR>
+  let height = float2nr(50)
+  let width = float2nr(80)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
 
-" Map a few common things to do with FZF.
-nnoremap <silent> <Leader>b :BMdotfiles<CR>
-nnoremap <silent> <Leader><Enter> :Buffers<CR>
-nnoremap <silent> <Leader>l :Lines<CR>
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
 
-" Allow \assing optional flags into the Rg command.
-"   Example: :Rg myterm -g '*.md'
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \ "rg --column --line-number --no-heading --color=always --smart-case " .
-  \ <q-args>, 1, fzf#vim#with_preview(), <bang>0)
-
-" FZF: ~/bm dotfile search
-command! -bang BMdotfiles call fzf#vim#files('~/bm', <bang>0)
-
-" Path completion with custom source command
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
-
-" Word completion with custom spec with popup layout option
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+  call nvim_open_win(buf, v:true, opts)
+endfunction
 
 "────────────────────────────────────────────────────────────
 " ALE
 "────────────────────────────────────────────────────────────
 
 "call ale#handlers#shellcheck#DefineLinter('sh')
-let g:ale_linters = {
-    \ 'sh': ['language_server'],
-    \ }
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
+"let g:ale_linters = {
+"    \ 'sh': ['language_server'],
+"    \ }
+"let g:ale_fix_on_save = 1
+"let g:ale_completion_enabled = 1
+"let g:ale_completion_autoimport = 1
 
 " " remove trailing whitespaces / ^M chars
 " augroup ws
