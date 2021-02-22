@@ -74,12 +74,12 @@ setopt always_to_end          # mid-word completions get appended
 setopt auto_list              # list choices on ambiguous completion
 setopt hash_list_all 
 setopt numeric_glob_sort       # matched numeric filenames get sorted numerically
+setopt menu_complete          # insert 1st match immediately & toggle through them
 #setopt glob_complete          # current word glob creates selection menu
 #setopt list_ambiguous         # unambiguous prefix to insert w/o menu
 #setopt list_packed            # reduce list length
 #setopt list_rows_first        # horizontal a/ b/ c/ d.conf
 #setopt list_types             # completions show identifying mark as last char
-#setopt menu_complete          # insert 1st match immediately & toggle through them
 
 
 # MISC
@@ -111,25 +111,46 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 
 CASE_SENSITIVE="false"
 
-zstyle ':completion:*' menu select, tab  #menu style, tab
-zstyle ':completion:*:*:*:*:*' menu select
-
-zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}”
+zstyle ':completion:*' list-prompt   '' # remove warning, display all possibilities?
+zstyle ':completion:*' select-prompt '' # remove warning, display all possibilities?
+zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
+zstyle ':completion:*' menu select # menu style, tab
+zstyle ':completion:*:*:*:*:*' menu select # always use menu select
 zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
-
 zstyle ':completion:*:matches' group yes
-zstyle ':completion:*' group-name ''
-
 zstyle ':completion:*:options' description yes
-zstyle ':completion:*:options' auto-description 'specify: %d'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
+zstyle ':completion:*:messages' format '%F{magenta}%d%f'
+zstyle ':completion:*:warnings' format '%F{red}nothing%f'
+zstyle ':completion:*' format '%I%F{green}%d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+# git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
+fpath=(~/.zsh/completion $fpath)
 
-zstyle ':completion:*:corrections' format '%B%F{green}# guesses? %F{red}(%e)%f'
-zstyle ':completion:*:messages' format '%F{blue}%d%f'
-zstyle ':completion:*:warnings' format '%F{yellow}%d%f'
-zstyle ':completion:*' format '%B%I%F{magenta}# nothing'
-#zstyle ':completion:*' verbose yes
+# zstyle ':completion:*' menu select  #menu style, tab
+# zstyle ':completion:*:*:*:*:*' menu select
+# 
+# zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}”
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
+# zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
+# 
+# zstyle ':completion:*:matches' group yes
+# zstyle ':completion:*' group-name ''
+# 
+# zstyle ':completion:*:options' description yes
+# zstyle ':completion:*:options' auto-description 'specify: %d'
+# zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
+# 
+# zstyle ':completion:*:corrections' format '%B%F{green}# guesses? %d %F{red}(%e)%f'
+# zstyle ':completion:*:messages' format '%F{blue}%d%f'
+# zstyle ':completion:*:warnings' format '%F{yellow}%d%f'
+# zstyle ':completion:*' format '%B%I%F{magenta}# nothing%f'
+# zstyle ':completion:*' verbose yes
 # git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)

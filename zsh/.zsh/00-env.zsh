@@ -64,9 +64,8 @@ export TERMINAL=alacritty
 # FZF
 #────────────────────────────────────────────────────────────
 
+export FZF_DEFAULT_OPTS="--color=dark --height 70% --layout reverse"
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
-export FZF_DEFAULT_OPTS="--color=dark --height 40% --layout-reverse --border"
-#export FZF_DEFAULT_OPTS="--color=dark"
 
 #────────────────────────────────────────────────────────────
 # LOCALE

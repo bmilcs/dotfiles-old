@@ -12,3 +12,6 @@ source ~/.zinit/bin/zinit.zsh
 
 # load configs
 for cfg (~/.zsh/*.zsh) source $cfg
+
+TERMINAL=alacritty
+export TERMINAL
