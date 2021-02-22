@@ -29,63 +29,42 @@
 " COC
 "────────────────────────────────────────────────────────────
 
-nnoremap <space>e :CocCommand explorer<CR>
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '~/.config/coc',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
+" update CoC plugins
+nnoremap <space>uu :CocUpdate<CR>
 
-" Use preset argument to open it
-nnoremap <space>ed :CocCommand explorer --preset .vim<CR>
-nnoremap <space>ef :CocCommand explorer --preset floating<CR>
-nnoremap <space>ec :CocCommand explorer --preset cocConfig<CR>
-nnoremap <space>eb :CocCommand explorer --preset buffer<CR>
+" show marketplace
+nnoremap <space>ii :CocList marketplace<CR>
 
-" List all presets
-nnoremap <space>el :CocList explPresets
+nmap <silent> <space>k <Plug>(coc-diagnostic-prev)
+nmap <silent> <space>j <Plug>(coc-diagnostic-next)
 
+" Remap keys for gotos
+nmap <silent> <space>gd <Plug>(coc-definition)
+nmap <silent> <space>gr <Plug>(coc-references)
+nmap <silent> <space>go :<C-u>CocListResume<CR>
+
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 "────────────────────────────────────────────────────────────
 " FILES
 "────────────────────────────────────────────────────────────
 
 " (w)rite (w)indow as sudo
-nnoremap <leader>ww :execute ':silent w !sudo tee % > /dev/null' \| :edit!<CR>
+nnoremap <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
 
 " (s)ource vimrc config
 nnoremap <silent> <leader>` :source ~/.vimrc<CR>
