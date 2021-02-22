@@ -1,0 +1,114 @@
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 I3 GAPS WM [./config]
+#────────────────────────────────────────────────────────────
+#   TODO
+#     - fix hotkeys to match sxhkd
+#     - icons to rofi
+#     - add multipule rofi configs
+#       - ssh hostnames
+#       - programs
+#       - txt files? etc.
+#     - split cfg into organized files
+#────────────────────────────────────────────────────────────
+#MODS
+# LOG OUT / RESTART / RELOAD
+#bindcode $win+$tilde i3-msg "reload ; exec pkill -USR1 polybar" #\ xrdb -merge ~/.Xresources"
+#bindcode $win+$shift+49 exec '~/.config/i3/sh/xrdb-xresources.sh'
+#────────────────────────────────────────────────────────────
+# APPLICATIONS
+#────────────────────────────────────────────────────────────
+# ROFI
+# error:
+  # bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
+  # bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+  #-show drun -drun-display-format \{name\}
+# AUDIO
+# TERMINAL
+# BROWSER
+# SCREENSHOTS
+#────────────────────────────────────────────────────────────
+# WINDOW CONTROL
+#────────────────────────────────────────────────────────────
+# CLOSE
+# FOCUS 
+# bindsym $win+d focus right
+# bindsym $win+a focus left
+# bindsym $win+w focus up
+# bindsym $win+s focus down
+# bindsym $win+p focus parent
+# bindsym $win+o focus child
+# MOVE
+# bindsym $win+$ctrl+d move right 50 px
+# bindsym $win+$ctrl+a move left  50 px
+# bindsym $win+$ctrl+w move up  50 px
+# bindsym $win+$ctrl+s move down  50 px
+# RESIZE
+# bindsym $win+$shift+d resize grow width 1 px or 1 ppt
+# bindsym $win+$shift+a resize shrink width 1 px or 1 ppt
+# bindsym $win+$shift+w resize grow height 1 px or 1 ppt
+# bindsym $win+$shift+s resize shrink height 1 px or 1 ppt
+# GAPS
+# SPLITTING
+# FULL SCREEN
+# SCRATCHPAD [51=Backspace]
+# TOGGLE FLOATIN
+# FLOATING WINDOWS
+#────────────────────────────────────────────────────────────
+# WORKSPACES
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
+# GUI
+#────────────────────────────────────────────────────────────
+# FONT
+# BORDERS
+# GAPS
+# COLOR VARS
+# set $bg                 #434C5E
+# set $inactive-bg        #2E3440
+# set $urgent-bg          #EBCB8B
+# set $fg                 #ECEFF4
+# set $inactive-fg        #4C566A
+# set $urgent-fg          #BF616A
+# COLOR APPLICATION
+#class                  border   bg      fg      focus        child_border
+#class                   border        bg            fg             focus     child_border
+#client.focused          $inactive-fg  $bg           $white         $bg
+#client.unfocused        $background   $inactive-bg  $inactive-fg   $bg
+#client.focused_inactive $background   $inactive-bg  $inactive-fg   $bg
+#client.urgent           $urgent-bg    $urgent-bg    $fg            $bg
+#client.background       $bg
+#────────────────────────────────────────────────────────────
+# PACKAGE MANAGEMENT
+#────────────────────────────────────────────────────────────
+# DESKTOP ASSIGNMENT
+#────────────────────────────────────────────────────────────
+# BOOTSTRAP
+#────────────────────────────────────────────────────────────
+# # ESSENTIALS
+# exec --no-startup-id clipit
+# exec --no-startup-id /home/bmilcs/.config/polybar/launch.sh
+# exec --no-startup-id picom --experimental-backends --config ~/.config/picom/config
+# exec --no-startup-id pulseaudio --start
+# exec --no-startup-id unclutter
+# exec --no-startup-id xcape -e '$ctrl_L=Escape'
+# exec --no-startup-id nitrogen --restore
+# #exec --no-startup-id nm-applet
+# #exec --no-startup-id /usr/lib/kdeconnectd
+# #exec --no-startup-id kdeconnect-indicator
+# 
+# # MSG (2) WORKSPACE
+# exec --no-startup-id i3-msg 'workspace $ws2; append_layout /home/bmilcs/.config/i3/ws2.json'
+# exec --no-startup-id i3-msg 'workspace $ws2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
+# exec --no-startup-id telegram-desktop
+# exec --no-startup-id thunderbird --name bmtb
+# exec --no-startup-id android-messages-desktop
+# exec --no-startup-id discord
+# 
+# # DEV (1) WORKSPACE
+# exec --no-startup-id i3-msg 'workspace $ws1'
+#────────────────────────────────────────────────────────────
+# vi:syntax=i3config
