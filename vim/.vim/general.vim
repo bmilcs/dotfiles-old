@@ -46,7 +46,8 @@ if has("nvim")
 endif
 
 " set mapleader before other configs
-let mapleader="," 
+let mapleader=" " 
+nnoremap <SPACE> <Nop>
 
 set pumheight=50
 set completeopt=longest,menuone               " view full error msg pumheight?

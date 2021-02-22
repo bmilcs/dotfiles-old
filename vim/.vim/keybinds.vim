@@ -30,34 +30,18 @@
 "────────────────────────────────────────────────────────────
 
 " update CoC plugins
-nnoremap <space>uu :CocUpdate<CR>
+nnoremap <leader>uu :CocUpdate<CR>
 
 " show marketplace
-nnoremap <space>ii :CocList marketplace<CR>
+nnoremap <leader>ii :CocList marketplace<CR>
 
-nmap <silent> <space>k <Plug>(coc-diagnostic-prev)
-nmap <silent> <space>j <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> <space>gd <Plug>(coc-definition)
-nmap <silent> <space>gr <Plug>(coc-references)
-nmap <silent> <space>go :<C-u>CocListResume<CR>
-
-" navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
-" show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
-" show commit contains current position
-nmap gc <Plug>(coc-git-commit)
-" create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>go :<C-u>CocListResume<CR>
 
 "────────────────────────────────────────────────────────────
 " FILES
@@ -109,14 +93,37 @@ nnoremap <leader>/ :nohlsearch<CR>
 " GIT
 "────────────────────────────────────────────────────────────
 
-" git push
-nnoremap <silent> <leader>gp :Gpush<CR>
-
 " git diff split
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 
 " git status
-nnoremap <silent> <leader>gs :Gstatus<CR>
+" nnoremap <silent> <leader>gs :Gstatus<CR>
+
+" open vimagit pane (git status)
+nnoremap <silent> <leader>gs :Magit<CR>
+
+" allow magit to del untracked files
+" let g:magit_discard_untracked_do_delete=1
+
+nnoremap <silent> <leader>gh :GitGutterLineHighlightsToggle<CR>
+
+nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
+nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
+
+" git push 
+nnoremap <leader>gP :! git push<CR>  " git Push
+
+" show commits for all source lines
+nnoremap <Leader>gb :gq<CR>
+
+" open current line in the browser
+nnoremap <Leader>gb :.Gbrowse<CR>
+
+" open visual selection in the browser
+vnoremap <Leader>gb :Gbrowse<CR>
+
+" add the entire file to the staging area
+nnoremap <Leader>gaf :Gw<CR>
 
 "────────────────────────────────────────────────────────────
 " VISUAL

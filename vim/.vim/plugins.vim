@@ -10,8 +10,6 @@ filetype plugin indent on                       " help plugins load
 call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'arcticicestudio/nord-vim'               " colorscheme
   Plug 'tpope/vim-sensible'                     " general improvements
-  Plug 'airblade/vim-gitgutter'                 " git
-  Plug 'tpope/vim-fugitive'
   Plug '~/.fzf'                                 " fuzzy finder
   Plug 'vim-airline/vim-airline'                " status bar
   Plug 'christoomey/vim-tmux-navigator'         " tmux
@@ -19,8 +17,12 @@ call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
   Plug 'mboughaba/i3config.vim',                " language: i3config 
   Plug 'neoclide/coc.nvim',                     " completion
-  Plug 'dense-analysis/ale',                    " sh syntax analysis
   Plug 'kovetskiy/sxhkd-vim'                    " language: sxhkd
+  Plug 'tpope/vim-rhubarb'                      " git open lines > visually selected
+  Plug 'tpope/vim-fugitive'                     " git core
+  Plug 'jreybert/vimagit'                       " git diff
+  Plug 'airblade/vim-gitgutter'                 " git gutter symbols
+  " Plug 'dense-analysis/ale',                    " sh syntax analysis
   " Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
   " Plug 'junegunn/fzf.vim'
   "  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
@@ -72,6 +74,23 @@ filetype on
 autocmd BufRead,BufNewFile ~/txt/* set syntax=markdown
 autocmd BufRead,BufNewFile ~/bin/* set syntax=sh
 autocmd BufRead,BufNewFile ~/.config/i3/config set filetype=i3config
+
+"────────────────────────────────────────────────────────────
+" GIT GUTTER
+"────────────────────────────────────────────────────────────
+"
+" custom symbols
+let g:gitgutter_sign_added = '落'
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
+let g:gitgutter_override_sign_column_highlight = 0
+
+" speed update
+set updatetime=250
+
+command! Gqf GitGutterQuickFix | copen
 
 "────────────────────────────────────────────────────────────
 " MARKDOWN PREVIEW
@@ -165,8 +184,6 @@ endfunction
 "      \ 'Clean'     :'âï¸',
 "      \ 'Unknown'   :'?',
 "      \ }
-"
-"
 "────────────────────────────────────────────────────────────
 " COLORIZER
 "────────────────────────────────────────────────────────────
