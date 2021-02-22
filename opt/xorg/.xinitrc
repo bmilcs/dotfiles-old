@@ -5,7 +5,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   xinitrc              
+#   xinitrc
 #────────────────────────────────────────────────────────────
 
 # define config files
@@ -21,11 +21,11 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
 # start xinit extras
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
 #────────────────────────────────────────────────────────────
@@ -33,15 +33,15 @@ fi
 #────────────────────────────────────────────────────────────
 
 if [[ -d $HOME/bin && -z $(echo $PATH | grep -o $HOME/bin) ]]; then
-  export PATH=$PATH$( find $HOME/bin/ -type d -printf ":%p" )
+  export PATH=$PATH$(find $HOME/bin/ -type d -printf ":%p")
 fi
 
 #────────────────────────────────────────────────────────────
-# APPLICATIONS 
+# APPLICATIONS
 #────────────────────────────────────────────────────────────
 
 pgrep -f pulseaudio || pulseaudio --start &
-(sleep 0.1 && $HOME/bin/bootstrap) &
+(sleep 0.1 && "$HOME"/bin/bootstrap) &
 
 #────────────────────────────────────────────────────────────
 # WM
@@ -50,9 +50,9 @@ pgrep -f pulseaudio || pulseaudio --start &
 session=${1:-bspwm}
 
 case $session in
-    i3|i3wm           ) exec i3;; 
-    bsp|bspwm         ) exec bspwm;;
-    *                 ) exec $1;;
+  i3 | i3wm) exec i3 ;;
+  bsp | bspwm) exec bspwm ;;
+  *) exec $1 ;;
 esac
 
 #────────────────────────────────────────────────────────────

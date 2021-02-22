@@ -18,49 +18,55 @@ genls() {
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
     #f=$(echo $f | sed -En "s/(.*)\/home\/bmilcs\/bm(\/.*$)/\1 \2/p")
-  done < <(find "$1" -type f -name "*" -print0 | sort -z )
-  select opt in "${options[@]}" $3 ; do
+  done < <(find "$1" -type f -name "*" -print0 | sort -z)
+  select opt in "${options[@]}" $3; do
     case $opt in
-      *) [[ -f "$opt" ]] && nvim "$opt" ; exit 0 ;;
+      *)
+        [[ -f "$opt" ]] && nvim "$opt"
+        exit 0
+        ;;
     esac
   done
-  }
+}
 
 if [ $# = 0 ]; then
-  _o t     txt
-  _o b     bin
-  _o z     zsh  
-  _o v     vim  
-  _o p     polybar  
-  _o k     sxhkd  
-  _o bsp   bspwm  
-  _o i     i3  
-  _o tmux  tmux  
-  _o x     xorg
-  _o n     ncmpcpp
-  _o r     rofi
-  _o e     cfg script
+  echo
+  _o "  ${UL}opt${NC}\t  ${UL}desc"
+  _o "${B}   t  ${BLU}\t  txt${NC}"
+  _o "${B}   b  ${BLU}\t  bin${NC}"
+  _o "${B}   z  ${BLU}\t  zsh${NC}"
+  _o "${B}   v  ${BLU}\t  vim${NC}"
+  _o "${B}   p  ${BLU}\t  polybar${NC}"
+  _o "${B}   k  ${BLU}\t  sxhkd${NC}"
+  _o "${B}   x  ${BLU}\t  xorg${NC}"
+  _o "${B}   n  ${BLU}\t  ncmpcpp${NC}"
+  _o "${B}   r  ${BLU}\t  rofi${NC}"
+  _o "${B}   e  ${BLU}\t  cfg script${NC}"
+  _o "${B}   i  ${BLU}\t  i3${NC}"
+  _o "${B}  bms ${BLU}\t  dotfile install${NC}"
+  _o "${B}  bsp ${BLU}\t  bspwm${NC}"
+  _o "${B} tmux ${BLU}\t  tmux${NC}"
   read -r sel
 else
   sel=${1}
 fi
 
 case $sel in
-  t) genls "$D"/txt TXT;;
-  b) genls "$D"/bin BIN;;
-  i) genls "$D"/opt/i3/.config/i3/ I3;;
-  #z) nvim -S ~/dev/zsh.bm;;
-  z) genls "$D"/zsh ZSH;;
-  v) genls "$D"/vim VIM;;
-  p) genls "$D"/opt/polybar/.config/polybar/ POLYBAR;;
-  k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc;;
-  r) genls "$D"/opt/rofi ROFI;;
-  bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc;;
-  tm|tmux) nvim "$D"/opt/tmux/.tmux.conf;;
-  x|xorg) genls "$D"/opt/xorg XORG;;
-  n|ncm) genls "$D"/opt/ncmpcpp NCMPCPP;;
-  #8) sudovim /etc/hosts;;
-  #xterm) vim ~/.Xresources.d/xterm;;
-  e) nvim "$D"/bin/bin/cfg
+  t) genls "$D"/txt TXT ;;
+  b) genls "$D"/bin BIN ;;
+  i) genls "$D"/opt/i3/.config/i3/ I3 ;;
+  z) genls "$D"/zsh ZSH ;;
+  v) genls "$D"/vim VIM ;;
+  p) genls "$D"/opt/polybar/.config/polybar/ POLYBAR ;;
+  r) genls "$D"/opt/rofi ROFI ;;
+  x | xorg) genls "$D"/opt/xorg XORG ;;
+  n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
+  k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
+  bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
+  bms) nvim "$D"/install.sh ;;
+  tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
+  e) nvim "$D"/bin/bin/cfg ;;
+    #z)        nvim -S ~/dev/zsh.bm;;
+    #8)        sudovim /etc/hosts;;
+    #xterm)    vim ~/.Xresources.d/xterm;;
 esac
-

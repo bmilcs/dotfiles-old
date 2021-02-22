@@ -12,7 +12,7 @@
 
 " vim settings (not vi) 
 set nocompatible  " must be first
-"
+"────────────────────────────────────────────────────────────
 " security: turn off modelines
 set modelines=0
 
@@ -48,6 +48,7 @@ endif
 " set mapleader before other configs
 let mapleader="," 
 
+set pumheight=50
 set completeopt=longest,menuone               " view full error msg pumheight?
 set directory^=$HOME/.vim/swap//              " vim swap file location
 set encoding=utf-8                            " encoding 

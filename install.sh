@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
-#────────────────────────────────────────────────────────────
-#   DOTFILE REPO BOOTSTRAP / DEPLOYMENT
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 DOTFILE INSTALLATION [./install.sh]
 #────────────────────────────────────────────────────────────
 #   TODO 1. backup existing files
 #        2. for cfg in pwd, stow -R $cfg
@@ -120,7 +124,8 @@ if [[ ${DISTRO} == arch* ]]; then
   #fzf
   ifzf
 
-  if [[ $(_ask stow EVERYTHING?) == 0 ]]; then
+  _ask "stow EVERYTHING?"
+  if [[ $? == 0 ]]; then
 
     _a "${U}"symlink: starting
     _o distro: "$DISTRO"
@@ -158,8 +163,8 @@ if [[ ${DISTRO} == arch* ]]; then
       [[ "$match" == 1 ]] && continue
 
       # not a match && stow it :)
-      stow -R "$(basename "$dir")"
-      [[ $? -gt 0 ]] && _e "$(basename "$dir")"
+
+      [[ $(stow -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
 
     done # end of repo directory loop
 

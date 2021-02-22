@@ -5,36 +5,39 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   DISTRO-BASED SYSTEM UPDATE              
+#   DISTRO-BASED SYSTEM UPDATE
 #────────────────────────────────────────────────────────────
 
-source _head ; source _distro
+source _head
+source _distro
 
 _t system update
 
 # arch
 if [[ $DISTRO = arch* ]]; then
+  _a repositories
+  upr
   _a pacman \& aur
-	yay -Syyyuuu
+  yay -Syyyuuu
   _s
 
 # debian
 elif [[ $DISTRO = debian* ]]; then
 
-  _a apt full-upgrade 
-	sudo apt full-upgrade -y
+  _a apt full-upgrade
+  sudo apt full-upgrade -y
   _s
 
-  _a apt autoremove 
-	sudo apt autoremove -y
+  _a apt autoremove
+  sudo apt autoremove -y
   _s
 
-  _a apt clean 
-	sudo apt clean -y
+  _a apt clean
+  sudo apt clean -y
   _s
 
-  _a apt autoclean 
-	sudo apt autoclean -y
+  _a apt autoclean
+  sudo apt autoclean -y
   _s
 
   # update pihole test

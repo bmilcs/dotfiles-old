@@ -1,5 +1,8 @@
 #### NOTES/GITHUB.MD
 
+##### check history of specific lines
+    git log --pretty=short -u -L 100,150:01-core.zsh
+
 ##### common fixes
 
     git remote set-url origin git@github.com:bmilcs/dotfiles.git
