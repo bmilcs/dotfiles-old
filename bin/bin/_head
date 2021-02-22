@@ -42,21 +42,27 @@ _ask() {
     _q "$* ${YLW}${B}[y|n]${NC} "
 
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
-    read -r reply </dev/tty
+    read -r reply < /dev/tty
 
     # default?
     if [ -z "$reply" ]; then
-        reply=$default
+      reply=$default
     fi
 
     # check if the reply is valid
     case "$reply" in
-      ""|Y*|y*) _i yes; return 0 ;;
-      N*|n*) _i no; return 1 ;;
+      "" | Y* | y*)
+        _i yes
+        return 0
+        ;;
+      N* | n*)
+        _i no
+        return 1
+        ;;
     esac
 
   done
-  }
+}
 
 #────────────────────────────────────────────────────────────
 # OUTPUT
@@ -73,96 +79,97 @@ _t() {
 
   chr="\xE2\x94\x80"
   # 
-  s=⎨  #❯⎨ 
-  p=⎬  #❮⎬ 
-  t=  #❮⎬
-  q=  #❯⎨ 
-  toadd=0 
+  s=⎨ #❯⎨ 
+  p=⎬ #❮⎬ 
+  t= #❮⎬
+  q= #❯⎨
+  toadd=0
   tada=
 
   cols=$(tput cols)
   string=$*
   strlen=${#string}
   prelen=${#p}
-  toadd=$(( cols - strlen - 16 ))
+  toadd=$((cols - strlen - 16))
 
   for i in $(seq 1 $toadd); do
     tada="${tada}${chr}"
   done
 
-  printf "$BLU$p"
+  printf "\n$BLU$p"
   printf "${chr}%.0s" {1..3}
   if [[ $# -gt 0 ]]; then
-    printf "${t}${GRN}${B} $string ${BLU}${q}" && toadd=$(( $toadd-2 )); fi
+    printf "${t}${GRN}${B} $string ${BLU}${q}" && toadd=$(($toadd - 2))
+  fi
   printf $tada
-#  eval $(echo printf '"x"' {1..$toadd}) 
+  #  eval $(echo printf '"x"' {1..$toadd})
   printf "${chr}%.0s" {1..3}
   printf "${BLU}${B}bm${BLU}"
   printf "${chr}%.0s" {1..2}
   printf "$s${NC}\n"
-  }
+}
 
 # title
 _tt() {
   echo -e "${CYN}[ ${B}$* ${CYN}]${NC}"
-  }
+}
 
 # announce
 _a() {
   echo -e "\n${CYN}${B}[${CYN}$*${CYN}${B}]${NC}"
-  }
+}
 
 # announce [plain]
 _aa() {
   echo -e "\n${B}[${NC}$*${B}]${NC}"
-  }
+}
 
 # question
 _q() {
   printf "\n${PUR}${B}[?]${PUR} $* "
-  }
+}
 
 # output
 _o() {
   echo -e "$spaces${WHT}$*${NC}"
-  }
+}
 
 # inform
 _i() {
   echo -e "${spaces}${WHT}${B}-${WHT} $* ${NC}"
-  }
+}
 
 # warn
 _w() {
   echo -e "$spaces${YLW}[!] $* ${NC}"
-  }
+}
 
 _w2() {
   echo -e "$spaces${YLW}[!] $* ${NC}"
-  }
+}
 
 # success
 _s() {
-  if [ $# -eq 0 ] ; then 
+  if [ $# -eq 0 ]; then
     echo -e "$spaces${GRN} done${NC}"
-  else 
+  else
     echo -e "$spaces${GRN} $* ${NC}" # √
-  fi 
-  }
+  fi
+}
 
 # error
 _e() {
-  if [ $# -eq 0 ] ; then
+  if [ $# -eq 0 ]; then
     echo -e "$spaces${RED}${RED}${B} error${NC}"
   else
     echo -e "$spaces${RED}${RED}${B} ${NC}${RED}$*" # X
   fi
-  }
+}
 
-		#echo some text
+#echo some text
 #		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
-		#echo some text
+#echo some text
 
 #	pad=$(printf '%0.1s' '-'{1..60})
 #	padlength=40
