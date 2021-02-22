@@ -99,15 +99,15 @@ alias bms='cd $D && ./install.sh'
 [[ ! -f ~/.zsh/completion/_git ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 [[ ! -f ~/.zsh/completion/git-completion.bash ]] && mkdir -p ~/.zsh/completion && curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
+
 # ALIAS GIT AUTOCOMPLETION
-alias g='$(git rev-parse) || cd $D && git '
-alias gs='$(git rev-parse) || cd $D && git status -s'
-alias gss='$(git rev-parse) || cd $D && git status'
-alias gd='$(git rev-parse) || cd $D && git diff'
-alias ga='$(git rev-parse) || cd $D && git add'
-#alias ga='$(git rev-parse) || cd $D && git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p)'
-alias gps='$(git rev-parse) || cd $D && git push'
-alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
+# alias g='$(git rev-parse) || cd $D && git '
+# alias gs='$(git rev-parse) || cd $D && git status -s'
+# alias gss='$(git rev-parse) || cd $D && git status'
+# alias gd='$(git rev-parse) || cd $D && git diff'
+# alias ga='$(git rev-parse) || cd $D && git add'
+# alias gps='$(git rev-parse) || cd $D && git push'
+# alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
 
 #────────────────────────────────────────────────────────────
 # TMUX
