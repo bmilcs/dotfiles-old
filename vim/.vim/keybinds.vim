@@ -63,8 +63,14 @@ nnoremap <silent> <leader>wq :close<CR>
 " vertical (s)plit > explore
 nnoremap <silent> <leader>ws :Vexplore<CR>
 
+" vertical (s)plit
+nnoremap <silent> <leader>ss :Vsplit<CR>
+
 " horizontal (S)plit > explore
-nnoremap <silent> <leader>wS :Sexplore<CR>
+nnoremap <silent> <leader>WS :Split<CR>
+
+" horizontal (S)plit
+nnoremap <silent> <leader>SS :Split<CR>
 
 "────────────────────────────────────────────────────────────
 " TEXT MANIPULATION
