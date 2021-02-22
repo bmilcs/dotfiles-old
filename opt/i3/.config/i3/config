@@ -3,68 +3,61 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 I3 GAPS WM [./config]
 #────────────────────────────────────────────────────────────
-#   I3 GAPS WM
-#────────────────────────────────────────────────────────────
-#
 #   TODO
-#     - fix hotkeys to match sxhkd
 #     - icons to rofi
 #     - add multipule rofi configs
 #       - ssh hostnames
 #       - programs
 #       - txt files? etc.
-#     - split cfg into organized files
-#
 #────────────────────────────────────────────────────────────
-# I3 CORE
+# WM CONTROL
 #────────────────────────────────────────────────────────────
+
+exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/bmilcs/.config/i3/ws3_chat.json'"
 
 #MODS
-set $shift Shift
-set $ctrl Ctrl
-set $win Mod4
-set $alt Mod1
-set $tilde 49
-set $backspace 51
+set $shift           Shift
+set $ctrl            Ctrl
+set $alt             Mod1
+set $tilde           49
+set $backspace       51
+set $win             Mod4
+floating_modifier    Mod4 
 
-# LOG OUT / RESTART / RELOAD
-bindcode $win+$tilde exec ". ~/.config/polybar/launch.sh"
-bindcode $win+$ctrl+$tilde reload
-bindcode $win+$shift+$tilde restart
-bindcode $win+$alt+$tilde exec "i3-msg exit"
-#bindcode $win+$tilde i3-msg "reload ; exec pkill -USR1 polybar" #\ xrdb -merge ~/.Xresources"
-#bindcode $win+$shift+49 exec '~/.config/i3/sh/xrdb-xresources.sh'
+
+# EXIT, RESTART, RELOAD
+bindcode    $win+$tilde          exec ". ~/.config/polybar/launch.sh"
+bindcode    $win+$ctrl+$tilde    reload
+bindcode    $win+$shift+$tilde   restart
+bindcode    $win+$alt+$tilde     exec "i3-msg exit"
 
 #────────────────────────────────────────────────────────────
 # APPLICATIONS
 #────────────────────────────────────────────────────────────
 
-# ROFI
-bindsym F1 exec --no-startup-id rofi -config ~/.config/rofi/config.rasi -show drun
-# error:
-  # bindsym F2 exec --no-startup-id rofi -combi-modi window,drun,ssh -show combi -icon-theme "Zafiro-icons" -show-icons 
-  # bindsym F3 exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-  #-show drun -drun-display-format \{name\}
-
-# AUDIO
-bindsym XF86AudioRaiseVolume  exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo +5%
-bindsym XF86AudioLowerVolume  exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo -5%
-bindsym XF86AudioMute         exec pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo toggle
-bindsym XF86AudioPlay         exec mpc toggle
-bindsym XF86AudioStop         exec mpc stop
-bindsym XF86AudioNext         exec mpc next
-
-# TERMINAL
-bindsym $win+Return exec alacritty
-
-# BROWSER
-bindsym $win+a exec firefox
+# AUDIO #────────────────────────────────────────────────────
+bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo +5%
+bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo -5%
+bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo toggle
+bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
+bindsym XF86AudioStop         exec --no-startup-id    mpc stop
+bindsym XF86AudioNext         exec --no-startup-id    mpc next
 
 # SCREENSHOTS
-bindsym Print exec screenshot sel
-bindsym $ctrl+Print exec screenshot all
-bindsym $alt+Print exec screenshot win
+bindsym Print                 exec --no-startup-id    screenshot sel
+bindsym $ctrl+Print           exec --no-startup-id    screenshot all
+bindsym $alt+Print            exec --no-startup-id    screenshot win
+
+# TERMINAL
+bindsym $win+Return           exec --no-startup-id    alacritty
+
+# BROWSER
+bindsym $win+a                exec --no-startup-id    firefox
+
+# ROFI
+bindsym F1                    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
 
 #────────────────────────────────────────────────────────────
 # WINDOW CONTROL
@@ -73,195 +66,149 @@ bindsym $alt+Print exec screenshot win
 # CLOSE
 bindsym $win+w kill
 
-# FOCUS 
-bindsym $win+l focus right
-bindsym $win+h focus left
-bindsym $win+k focus up
-bindsym $win+j focus down
-bindsym $win+p focus parent
-bindsym $win+r focus child
-# bindsym $win+d focus right
-# bindsym $win+a focus left
-# bindsym $win+w focus up
-# bindsym $win+s focus down
-# bindsym $win+p focus parent
-# bindsym $win+o focus child
+# FOCUS
+bindsym $win+l              focus right
+bindsym $win+h              focus left
+bindsym $win+k              focus up
+bindsym $win+j              focus down
+bindsym $win+p              focus parent
+bindsym $win+o              focus child
+bindsym $win+$ctrl+space    floating toggle   # toggle tiling / floating
+bindsym $win+space focus    mode_toggle       # change focus between tiling / floating windows
 
 # MOVE
-bindsym $win+$ctrl+l move right 50 px
-bindsym $win+$ctrl+h move left  50 px
-bindsym $win+$ctrl+k move up    50 px
-bindsym $win+$ctrl+j move down  50 px
-# bindsym $win+$ctrl+d move right 50 px
-# bindsym $win+$ctrl+a move left  50 px
-# bindsym $win+$ctrl+w move up  50 px
-# bindsym $win+$ctrl+s move down  50 px
+bindsym $win+$ctrl+l        move   right  50 px
+bindsym $win+$ctrl+h        move   left   50 px
+bindsym $win+$ctrl+k        move   up     50 px
+bindsym $win+$ctrl+j        move   down   50 px
 
 # RESIZE
-bindsym $win+$alt+j resize shrink height 3 px or 3 ppt
-bindsym $win+$alt+k resize grow height 3 px or 3 ppt
-bindsym $win+$alt+h resize shrink width 3 px or 3 ppt
-bindsym $win+$alt+l resize grow width 3 px or 3 ppt
-# bindsym $win+$shift+d resize grow width 1 px or 1 ppt
-# bindsym $win+$shift+a resize shrink width 1 px or 1 ppt
-# bindsym $win+$shift+w resize grow height 1 px or 1 ppt
-# bindsym $win+$shift+s resize shrink height 1 px or 1 ppt
+bindsym $win+$shift+h       resize shrink  width   25 px or 25 ppt
+bindsym $win+$shift+j       resize shrink  height  25 px or 25 ppt
+bindsym $win+$shift+k       resize grow    height  25 px or 25 ppt
+bindsym $win+$shift+l       resize grow    width   25 px or 25 ppt 
+
+bindsym $win+$alt+h         resize shrink  width   3 px or 3 ppt
+bindsym $win+$alt+j         resize shrink  height  3 px or 3 ppt
+bindsym $win+$alt+k         resize grow    height  3 px or 3 ppt
+bindsym $win+$alt+l         resize grow    width   3 px or 3 ppt
 
 # GAPS
-bindsym $win+$ctrl+$alt+j gaps outer all plus 2
-bindsym $win+$ctrl+$alt+k gaps outer all minus 2
-bindsym $win+$ctrl+$alt+h gaps inner all plus 2
-bindsym $win+$ctrl+$alt+l gaps inner all minus 2
+bindsym $win+$ctrl+$alt+h   gaps   inner   all   plus 2
+bindsym $win+$ctrl+$alt+j   gaps   outer   all   plus 2
+bindsym $win+$ctrl+$alt+k   gaps   outer   all   minus 2
+bindsym $win+$ctrl+$alt+l   gaps   inner   all   minus 2
 
 # SPLITTING
-bindcode $win+47 split v
-bindcode $win+48 split h
+bindcode $win+47            split v
+bindcode $win+48            split h
 
 # FULL SCREEN
-bindsym $win+f fullscreen toggle
+bindsym $win+f              fullscreen toggle
 
-# SCRATCHPAD [51=Backspace]
-bindsym $win+s scratchpad show
-bindsym $win+$ctrl+s move scratchpad
+# SCRATCHPAD
+bindsym $win+s              scratchpad show
+bindsym $win+$ctrl+s        move scratchpad
 
-# TOGGLE FLOATIN
-bindsym $win+$shift+s floating toggle
-
-# FLOATING WINDOWS
-floating_modifier $win
+# TOGGLE FLOATING
+bindsym $win+$shift+s       floating toggle
 
 #────────────────────────────────────────────────────────────
 # WORKSPACES
 #────────────────────────────────────────────────────────────
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1    "1"
+set $ws2    "2"
+set $ws3    "3"
+set $ws4    "4"
+set $ws5    "5"
+set $ws6    "6"
+set $ws7    "7"
+set $ws8    "8"
+set $ws9    "9"
+set $ws10   "10"
 
-bindsym $win+1 workspace number $ws1
-bindsym $win+2 workspace number $ws2
-bindsym $win+3 workspace number $ws3
-bindsym $win+4 workspace number $ws4
-bindsym $win+5 workspace number $ws5
-bindsym $win+6 workspace number $ws6
-bindsym $win+7 workspace number $ws7
-bindsym $win+8 workspace number $ws8
-bindsym $win+9 workspace number $ws9
-bindsym $win+0 workspace number $ws10
+bindsym $win+1        workspace number $ws1; focus tiling
+bindsym $win+2        workspace number $ws2; focus tiling 
+bindsym $win+3        workspace number $ws3; focus tiling
+bindsym $win+4        workspace number $ws4; focus tiling
+bindsym $win+5        workspace number $ws5; focus tiling
+bindsym $win+6        workspace number $ws6; focus tiling
+bindsym $win+7        workspace number $ws7; focus tiling
+bindsym $win+8        workspace number $ws8; focus tiling
+bindsym $win+9        workspace number $ws9; focus tiling
+bindsym $win+0        workspace number $ws10; focus tiling
 
-bindsym $win+$alt+1 move container to workspace number $ws1
-bindsym $win+$alt+2 move container to workspace number $ws2
-bindsym $win+$alt+3 move container to workspace number $ws3
-bindsym $win+$alt+4 move container to workspace number $ws4
-bindsym $win+$alt+5 move container to workspace number $ws5
-bindsym $win+$alt+6 move container to workspace number $ws6
-bindsym $win+$alt+7 move container to workspace number $ws7
-bindsym $win+$alt+8 move container to workspace number $ws8
-bindsym $win+$alt+9 move container to workspace number $ws9
-bindsym $win+$alt+0 move container to workspace number $ws10
+bindsym $win+$alt+1   move container to workspace number $ws1
+bindsym $win+$alt+2   move container to workspace number $ws2
+bindsym $win+$alt+3   move container to workspace number $ws3
+bindsym $win+$alt+4   move container to workspace number $ws4
+bindsym $win+$alt+5   move container to workspace number $ws5
+bindsym $win+$alt+6   move container to workspace number $ws6
+bindsym $win+$alt+7   move container to workspace number $ws7
+bindsym $win+$alt+8   move container to workspace number $ws8
+bindsym $win+$alt+9   move container to workspace number $ws9
+bindsym $win+$alt+0   move container to workspace number $ws10
 
 #────────────────────────────────────────────────────────────
 # GUI
 #────────────────────────────────────────────────────────────
 
 # FONT
-font pango:DejaVu Sans Mono 12
+font pango:DejaVuSansMono Nerd Font 12
 
 # BORDERS
-smart_borders no_gaps
-hide_edge_borders both
-default_border pixel 2
-default_floating_border pixel 2
-for_window [class=".*"] border pixel 2
+smart_borders             no_gaps
+hide_edge_borders         both
+default_border            pixel 2
+default_floating_border   pixel 2
+for_window [class=".*"]   border pixel 2
 
 # GAPS
-smart_gaps on
-gaps inner 10
-gaps outer 10
+smart_gaps   on
+gaps         inner 10
+gaps         outer 10
 
 # COLOR VARS
-set $black1 #2E3440
-set $black2 #3B4252
-set $black3 #434C5E
-set $black4 #4C566A
-set $white1 #D8DEE9
-set $white2 #E5E9F0
-set $white3 #ECEFF4
-set $green1 #8FBCBB
-set $cyan1 #88C0D0
-set $blue2 #81A1C1
-set $blue1 #5E81AC
-set $red1 #BF616A
-set $orange1 #D08770
-set $yellow1 #EBCB8B
-set $green1 #A3BE8C
-set $purple1 #B48EAD
-# set $bg                 #434C5E
-# set $inactive-bg        #2E3440
-# set $urgent-bg          #EBCB8B
-# set $fg                 #ECEFF4
-# set $inactive-fg        #4C566A
-# set $urgent-fg          #BF616A
+set $black1   #2E3440
+set $black2   #3B4252
+set $black3   #434C5E
+set $black4   #4C566A
+set $white1   #D8DEE9
+set $white2   #E5E9F0
+set $white3   #ECEFF4
+set $green1   #8FBCBB
+set $cyan1    #88C0D0
+set $blue2    #81A1C1
+set $blue1    #5E81AC
+set $red1     #BF616A
+set $orange1  #D08770
+set $yellow1  #EBCB8B
+set $green1   #A3BE8C
+set $purple1  #B48EAD
 
 # COLOR APPLICATION
-#class                  border   bg      fg      focus        child_border
-client.focused          $yellow1 $blue2   $blue1   $blue2     $cyan1
-client.focused_inactive $black1  $blue1   $blue1   $blue1     $black4
-client.unfocused        $black1  $blue1   $gray2   $blue1     $black4
-client.urgent           $red1    $red1    $blue1   $red1      $yellow1
-client.placeholder      $black1  $black1  $yellow1 $black1    $yellow1
-client.background       $white1
-
-#class                   border        bg            fg             focus     child_border
-#client.focused          $inactive-fg  $bg           $white         $bg
-#client.unfocused        $background   $inactive-bg  $inactive-fg   $bg
-#client.focused_inactive $background   $inactive-bg  $inactive-fg   $bg
-#client.urgent           $urgent-bg    $urgent-bg    $fg            $bg
-#client.background       $bg
+#class                    border    bg       fg       focus      child_border
+client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
+client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
+client.unfocused          $black1   $blue1   $black2  $blue1     $black4
+client.urgent             $red1     $red1    $blue1   $red1      $yellow1
+client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
+client.background         $white1   
 
 #────────────────────────────────────────────────────────────
-# PACKAGE MANAGEMENT
+# AUTO WINDOW CONTROL
 #────────────────────────────────────────────────────────────
 
 # DESKTOP ASSIGNMENT
-assign [class="Thunderbird"] 3
-assign [class="discord"] 3
-assign [class="android-*"] 3
-assign [class="Telegram*"] 3
+assign        [class="Thunderbird"]      3
+assign        [class="discord"]          3
+assign        [class="android-*"]        3
+assign        [class="Telegram*"]        3
 
-for_window [class='Conky'] floating enable
-for_window [class='Gucharmap'] floating enable
+for_window    [class='Conky']            floating enable
+for_window    [class="Galculator"]       floating enable, focus
+for_window    [class="Gucharmap"]        floating enable, focus
+for_window    [class="Font-manager"]     floating enable, focus
 
-#────────────────────────────────────────────────────────────
-# BOOTSTRAP
-#────────────────────────────────────────────────────────────
 
-# # ESSENTIALS
-# exec --no-startup-id clipit
-# exec --no-startup-id /home/bmilcs/.config/polybar/launch.sh
-# exec --no-startup-id picom --experimental-backends --config ~/.config/picom/config
-# exec --no-startup-id pulseaudio --start
-# exec --no-startup-id unclutter
-# exec --no-startup-id xcape -e '$ctrl_L=Escape'
-# exec --no-startup-id nitrogen --restore
-# #exec --no-startup-id nm-applet
-# #exec --no-startup-id /usr/lib/kdeconnectd
-# #exec --no-startup-id kdeconnect-indicator
-# 
-# # MSG (2) WORKSPACE
-# exec --no-startup-id i3-msg 'workspace $ws2; append_layout /home/bmilcs/.config/i3/ws2.json'
-# exec --no-startup-id i3-msg 'workspace $ws2; exec firefox --class=\"reddit\" -new-window https://github.com/bmilcs/dotfiles'
-# exec --no-startup-id telegram-desktop
-# exec --no-startup-id thunderbird --name bmtb
-# exec --no-startup-id android-messages-desktop
-# exec --no-startup-id discord
-# 
-# # DEV (1) WORKSPACE
-# exec --no-startup-id i3-msg 'workspace $ws1'
