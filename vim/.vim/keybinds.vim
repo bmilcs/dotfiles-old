@@ -8,7 +8,6 @@
 "────────────────────────────────────────────────────────────
 "────────────────────────────────────────────────────────────
 " TODO    Add leader shortcuts:
-"         - delete double spaces
 "         - format/move comments to column #45
 "         - improve fzf shortcuts, for project files, within
 "           files, etc.
@@ -22,7 +21,6 @@
 " command-line        cmap
 " operator-pending    omap
 " terminal            tmap
-"────────────────────────────────────────────────────────────
 " <silent>            no command shown in statusline
 
 "────────────────────────────────────────────────────────────
@@ -82,7 +80,6 @@ nnoremap <silent> <leader>dS :%s/^$\n//g<CR>
 nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1────────────────────────────────────────────────────────────/g<CR>
 
 " find/replace all
-"nnoremap <leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 nnoremap <leader>r :%s///gc<left><left><left>
 nnoremap <leader>R :%s///g<left><left>
 
