@@ -101,9 +101,9 @@ alias bms='cd $D && ./install.sh'
 
 
 # ALIAS GIT AUTOCOMPLETION
+ alias gs='$(git rev-parse) || cd $D && git status -s'
+ alias gss='$(git rev-parse) || cd $D && git status'
 # alias g='$(git rev-parse) || cd $D && git '
-# alias gs='$(git rev-parse) || cd $D && git status -s'
-# alias gss='$(git rev-parse) || cd $D && git status'
 # alias gd='$(git rev-parse) || cd $D && git diff'
 # alias ga='$(git rev-parse) || cd $D && git add'
 # alias gps='$(git rev-parse) || cd $D && git push'

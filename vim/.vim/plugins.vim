@@ -61,7 +61,7 @@ let g:coc_enable_locationlist = 1
 "────────────────────────────────────────────────────────────
 " FILE(TYPE) AUTOMATION
 "────────────────────────────────────────────────────────────
-"
+
 filetype off
 syntax on
 augroup filetypedetect
