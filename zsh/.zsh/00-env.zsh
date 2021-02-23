@@ -26,27 +26,6 @@ if [[ -f "/etc/arch-release" ]]; then
   export DISTRO='arch'; else export DISTRO='debian'; fi
 
 #────────────────────────────────────────────────────────────
-# DAILY UPDATE
-#────────────────────────────────────────────────────────────
-
-source $HOME/bin/_head
-unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-ustatus=$HOME/.config/zsh/.bm-update
-
-if [ -f $ustatus ]; then 
-  ulast="$(cat "$ustatus")"
-else
-  ulast="00"
-  echo "$unow" > "$ustatus"
-fi
-
-if [[ ! "$unow" == "$ulast" ]]; then
-  echo "update: needed! starting now:"
-    zinit self-update
-  echo "$unow" > "$ustatus"
-fi
-
-#────────────────────────────────────────────────────────────
 # ENV VAR
 #────────────────────────────────────────────────────────────
 

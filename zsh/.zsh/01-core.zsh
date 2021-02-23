@@ -2,10 +2,8 @@
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
-#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https:"comment":d"ot.bmilcs.com",
 #               ZSH CORE
-#────────────────────────────────────────────────────────────
-
 #────────────────────────────────────────────────────────────
 # HISTORY
 #────────────────────────────────────────────────────────────
@@ -23,27 +21,44 @@ setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST #
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
 #────────────────────────────────────────────────────────────
-# PLUGINS
+# DAILY UPDATE
 #────────────────────────────────────────────────────────────
 
-# ZINIT
+source $HOME/bin/_head
+unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
+ustatus=$HOME/.config/zsh/.bm-update
+
+if [ -f $ustatus ]; then 
+  ulast="$(cat "$ustatus")"
+else
+  ulast="00"
+  echo "$unow" > "$ustatus"
+fi
+
+if [[ ! "$unow" == "$ulast" ]]; then
+  echo "update: needed! starting now:"
+    zinit self-update
+  echo "$unow" > "$ustatus"
+fi
+
+#────────────────────────────────────────────────────────────
+# ZINIT: PLUGINS
+#────────────────────────────────────────────────────────────
+
 zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit light wfxr/forgit
 
-# DIR_COLORS
+# dir_colors
 [ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
 
-# FUZZY FINDER (FZF)
-
-# add .fzf to $PATH
-if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then
+# fuzzy finder (fzf) - add .fzf to $PATH
+if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then  
   export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
 fi
 # add zsh fzf completions
 [[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.zsh" 2> /dev/null
-
 # add zsh fzf key bindings
 [[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
 
@@ -82,7 +97,6 @@ setopt menu_complete          # insert 1st match immediately & toggle through th
 #setopt list_rows_first        # horizontal a/ b/ c/ d.conf
 #setopt list_types             # completions show identifying mark as last char
 
-
 # MISC
 #
 setopt nobeep                 # disable beep
@@ -111,7 +125,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 #────────────────────────────────────────────────────────────
 
 CASE_SENSITIVE="false"
-
 zstyle ':completion:*' list-prompt   '' # remove warning, display all possibilities?
 zstyle ':completion:*' select-prompt '' # remove warning, display all possibilities?
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
@@ -129,34 +142,8 @@ zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '%I%F{green}%d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
-# git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
-
-# zstyle ':completion:*' menu select  #menu style, tab
-# zstyle ':completion:*:*:*:*:*' menu select
-# 
-# zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}”
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
-# zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
-# 
-# zstyle ':completion:*:matches' group yes
-# zstyle ':completion:*' group-name ''
-# 
-# zstyle ':completion:*:options' description yes
-# zstyle ':completion:*:options' auto-description 'specify: %d'
-# zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
-# 
-# zstyle ':completion:*:corrections' format '%B%F{green}# guesses? %d %F{red}(%e)%f'
-# zstyle ':completion:*:messages' format '%F{blue}%d%f'
-# zstyle ':completion:*:warnings' format '%F{yellow}%d%f'
-# zstyle ':completion:*' format '%B%I%F{magenta}# nothing%f'
-# zstyle ':completion:*' verbose yes
-# git completion
-zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
-fpath=(~/.zsh/completion $fpath)
-
-
 
 #────────────────────────────────────────────────────────────
 # AUTOLOADS
@@ -247,10 +234,3 @@ rehash_precmd() {
   fi
 }
 add-zsh-hook -Uz precmd rehash_precmd
-
-#────────────────────────────────────────────────────────────
-# UNDER CONSTRUCTION
-#────────────────────────────────────────────────────────────
-
-# 
-
