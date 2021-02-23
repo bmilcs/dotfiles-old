@@ -3,9 +3,7 @@
 "  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-"────────────────────────────────────────────────────────────
-"   VIM CUSTOM SHORTCUTS
-"────────────────────────────────────────────────────────────
+"              VIM CUSTOM SHORTCUTS
 "────────────────────────────────────────────────────────────
 " TODO    Add leader shortcuts:
 "         - format/move comments to column #45
@@ -14,15 +12,14 @@
 "────────────────────────────────────────────────────────────
 " CHEAT SHEET
 "────────────────────────────────────────────────────────────
-" mode 	              nmap
+" normal mode         nmap
 " insert              imap
 " visual & select     vmap
-" visual only 	      xmap
+" visual only         xmap
 " command-line        cmap
 " operator-pending    omap
 " terminal            tmap
-" <silent>            no command shown in statusline
-
+" <silent>            hide command in statusline
 "────────────────────────────────────────────────────────────
 " COC
 "────────────────────────────────────────────────────────────
@@ -108,13 +105,15 @@ nnoremap <silent> <leader>gs :Magit<CR>
 " allow magit to del untracked files
 " let g:magit_discard_untracked_do_delete=1
 
+" highlight changed lines
 nnoremap <silent> <leader>gh :GitGutterLineHighlightsToggle<CR>
 
+" navigate next/prev git hunk
 nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
 nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
 
-" git push 
-nnoremap <leader>gP :! git push<CR>  " git Push
+" git push  remote
+nnoremap <leader>gP :! git push<CR>
 
 " show commits for all source lines
 nnoremap <Leader>gb :gq<CR>
