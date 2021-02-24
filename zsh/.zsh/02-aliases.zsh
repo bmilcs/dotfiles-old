@@ -133,6 +133,9 @@ alias ncdu='ncdu --exclude /all --exclude /backup '
 alias nitrogen='nitrogen ~/wall'
 alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 
+# email
+alias mutt='neomutt'
+alias em='neomutt'
 #────────────────────────────────────────────────────────────
 # LS
 #────────────────────────────────────────────────────────────
