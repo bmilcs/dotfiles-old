@@ -12,7 +12,12 @@
     "sh"
   ],
   "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
+    "sh": "shellcheck",
+    "vim": "vint",
+    "markdown": [
+      "write-good",
+      "markdownlint"
+    ]
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
