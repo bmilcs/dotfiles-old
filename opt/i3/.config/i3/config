@@ -59,6 +59,9 @@ bindsym $win+a                exec --no-startup-id    firefox
 # ROFI
 bindsym F1                    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
 
+# DUNST (test)
+bindsym $win+z                exec --no-startup-id    "killall dunst;notify-send \\"$(date)\\""
+bindsym F3                    exec --no-startup-id    "killall dunst;notify-send 'bmilcs notification test'"
 #────────────────────────────────────────────────────────────
 # WINDOW CONTROL
 #────────────────────────────────────────────────────────────
@@ -73,8 +76,8 @@ bindsym $win+k              focus up
 bindsym $win+j              focus down
 bindsym $win+p              focus parent
 bindsym $win+o              focus child
-bindsym $win+$ctrl+space    floating toggle   # toggle tiling / floating
-bindsym $win+space focus    mode_toggle       # change focus between tiling / floating windows
+bindsym $win+$ctrl+space    floating toggle   
+bindsym $win+space          focus mode_toggle
 
 # MOVE
 bindsym $win+$ctrl+l        move   right  50 px
@@ -161,8 +164,8 @@ font pango:DejaVuSansMono Nerd Font 12
 smart_borders             no_gaps
 hide_edge_borders         both
 default_border            pixel 2
-default_floating_border   pixel 2
-for_window [class=".*"]   border pixel 2
+default_floating_border   pixel 5
+# for_window [class=".*"]   border pixel 2
 
 # GAPS
 smart_gaps   on
