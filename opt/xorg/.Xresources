@@ -15,7 +15,7 @@
 
 #define nord0 #2E3440
 #define nord1 #3B4252
-#define nord2 #434C5E
+#define nord3 #434C5E
 #define nord3 #4C566A
 #define nord4 #D8DEE9
 #define nord5 #E5E9F0
@@ -93,10 +93,10 @@ Xft.rgba:                     rgb
 !urxvt*boldFont:               xft:Hack-Bold:size=10
 !URxvt.font:                   xft:DejaVu Sans Mono:size 10
 !URxvt.boldFont:               xft:DejaVu Sans Mono:size 10 
-! URxvt.font: 								xft:Iosevka Term:size=12:antialias=true
-! URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
-URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
-URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
+ URxvt.font: 								xft:Iosevka Term:size=12:antialias=true
+ URxvt.boldFont: 						xft:Iosevka Term:bold:size=12:antialias=true
+!URxvt.font:     							-*-terminus-medium-*-normal-*-14-140-72-72-*-*-*-*
+!URxvt.boldFont:								-*-terminus-bold-*-normal-*-14-140-72-72-*-*-*-*
 
 !URxvt.boldFont:   xft:Inter-Bold:size 10
 !URxvt.font:       xft:Inter-Medium:size 10
