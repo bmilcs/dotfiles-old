@@ -17,7 +17,8 @@ pgrep -f thunderbird || thunderbird &
 pgrep -f telegram || telegram-desktop &
 pgrep -f android-messages || android-messages-desktop &
 pgrep -f discord || discord &
-pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
+#pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
+pgrep -f picom || picom --config ~/.config/picom/config &
 pgrep -f nitrogen || nitrogen --restore &
 pgrep -f unclutter || unclutter &
 

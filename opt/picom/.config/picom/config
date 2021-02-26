@@ -9,7 +9,7 @@
 
 # Backend to use: "xrender" or "glx".
 # GLX backend is typically much faster but depends on a sane driver.
-backend = "glx";
+backend = "xrender";
 
 #################################
 #
@@ -181,7 +181,7 @@ detect-client-opacity = true;
 refresh-rate = 144;
 
 # Vertical synchronization: match the refresh rate of the monitor
-vsync = false; 
+vsync = true; 
 
 # Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
 # Reported to have no effect, though.
@@ -227,10 +227,10 @@ wintypes:
     
     dock = 
     {
-	fade = true;
-	shadow = false;
-	opacity = 1.00;
-	focus = true;
+        fade = true;
+        shadow = false;
+        opacity = 1.00;
+        focus = true;
     };		
 };
 
