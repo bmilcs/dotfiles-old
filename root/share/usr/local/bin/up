@@ -4,8 +4,7 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   DISTRO-BASED SYSTEM UPDATE
+#                DISTRO-BASED SYSTEM UPDATE
 #────────────────────────────────────────────────────────────
 
 source _head
@@ -13,52 +12,77 @@ source _distro
 
 _t system update
 
-# arch
 if [[ $DISTRO = arch* ]]; then
-  _a repositories
-  upr
-  _a pacman \& aur
-  yay -Syyyuuu
-  _s
 
-# debian
+  #
+  # ARCH
+  #
+
+  _a pacman/aur
+  if [[ $# == 0 ]]; then
+    yay -Syyyuuu && _s
+  else _o skipped: debugging; fi
+
+  # repos: once daily
+  _a repos
+  ustatus="$HOME/.config/up/repos.bm"
+  unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
+  if [ -f $ustatus ]; then ulast="$(cat "$ustatus")"; else
+    ulast="00" && mkdir -p ~/.config/up && echo "$unow" > "$ustatus"
+  fi
+  if [[ ! "$unow" == "$ulast" ]]; then
+    _i "running: daily update for $DAYOFWEEK" "\n"
+    upr && echo "$unow" > "$ustatus" && echo && _s "\n"
+  else _o skipped: "$DAYOFWEEK's update completed earlier today"; fi
+
+  # ARCH END
+
 elif [[ $DISTRO = debian* ]]; then
 
+  #
+  # DEBIAN
+  #
+
   _a apt full-upgrade
-  sudo apt full-upgrade -y
-  _s
+  sudo apt full-upgrade -y && _s
 
   _a apt autoremove
-  sudo apt autoremove -y
-  _s
+  sudo apt autoremove -y && _s
 
   _a apt clean
-  sudo apt clean -y
-  _s
+  sudo apt clean -y && _s
 
   _a apt autoclean
-  sudo apt autoclean -y
-  _s
+  sudo apt autoclean -y && _s
 
-  # update pihole test
-  if pihole -v PIHOLE &> /dev/null; then
-    _a [bonus] pihole -up
-    sudo pihole -up
-  fi
+  # DEBIAN END
 
-  # docker-compose update test
-  if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
-    _a [bonus] docker-compose up
-    dcr
-  fi
-
-# end of debian
 else
 
-  _e unknown distro\! update me\!\!
-  echo
-  exit 1
+  # UNCONFIGURED
+  _e unknown distro\! update me\!\! && _i \"/usr/local/bin/up\"
 
 fi
 
+#
+# BONUS
+#
+
+# pihole
+if pihole -v PIHOLE &> /dev/null; then
+  _a [bonus] pihole -up
+  sudo pihole -up
+fi
+
+# docker
+if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
+  _a [bonus] docker-compose up
+  dcr
+fi
+
+#
+# CLEAN EXIT
+#
+
 echo
+exit 0
