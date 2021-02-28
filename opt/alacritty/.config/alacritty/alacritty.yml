@@ -25,7 +25,7 @@ live_config_reload: true
 #alt_send_esc: true
 # Send ESC (\x1b) before characters when alt is pressed.
 
-background_opacity: .93
+#background_opacity: .93
 
 #────────────────────────────────────────────────────────────
 # WINDOW SETTINGS 
@@ -36,8 +36,8 @@ window:
   dynamic_title: true
 
   padding:
-    x: 7
-    y: 9
+    x: 5
+    y: 5
 
   #dimensions:
   #  columns: 0
@@ -79,21 +79,29 @@ window:
 #────────────────────────────────────────────────────────────
 
 font:
-  size: 12
+  size: 10
   normal:
     #family: GohuFont Nerd Font
     #family: codenewroman nerd font 
-    #family: bitstreamverasansmono nerd font
+    family: bitstreamverasansmono nerd font
     #family: FantasqueSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
-    family: UbuntuMono Nerd Font
-    style: Book
+    #family: DejaVuSansMono Nerd Font
+    #family: Iosevka Nerd Font
+    #family: TerminessTTF Nerd Font
+    #family: Terminus
+    #family: SauceCodePro Nerd Font
+    #style: Book
+    #style: Medium
+    style: Regular
   bold:
     style: Bold
   italic:
-    style: Oblique
+    style: Italic
+    #style: Oblique
   bold_italic:
-    style: Bold Oblique
+    #style: Bold Oblique
+    style: Bold Italic
 
 # space around each character
   #offset:
