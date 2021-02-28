@@ -7,11 +7,6 @@
 #                 MY SILLY SCRIPT HEADER [./_head]
 #────────────────────────────────────────────────────────────
 
-# TODO: CLEAN UP PARAMETER : \& \: \= \|
-
-# clear screen on script launch
-#clear
-
 # color var
 NC='\033[0m'
 B='\033[1m'
@@ -28,8 +23,11 @@ BLU=${NC}'\033[34m'
 PUR=${NC}'\033[35m'
 CYN=${NC}'\033[36m'
 WHT=${NC}'\033[37m'
-TIME="$(date +"%I:%M %P")"
-DATE="$(date +"%Y-%m-%d")"
+TIME=$(date '+%I:%M %P')
+DATE=$(date '+%Y-%m-%d')
+MONTH=$(date '+%B')
+DAY=$(date '+%d')
+DAYOFWEEK=$(date '+%A')
 
 #────────────────────────────────────────────────────────────
 # INPUT

@@ -1,29 +1,73 @@
 #!/usr/bin/env bash
+
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   GLOBAL BOOTSTRAP
-#────────────────────────────────────────────────────────────
+#               GLOBAL BOOTSTRAP
 
-#pgrep -f pulseaudio || pulseaudio --start &
-[ ! -s ~/.config/mpd/pid ] && mpd
-xset r rate 200 35
+#
+# SYSTEM
+
+# usb automount (TODO FIX)
 pgrep -f udiskie || udiskie &
-pgrep -f blueman-tray || blueman-applet &
-pgrep -f thunderbird || thunderbird &
-pgrep -f telegram || telegram-desktop &
-pgrep -f android-messages || android-messages-desktop &
-pgrep -f discord || discord &
-#pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
-pgrep -f picom || picom --config ~/.config/picom/config &
-pgrep -f nitrogen || nitrogen --restore &
-pgrep -f unclutter || unclutter &
 
+# compositor
+pgrep -f picom || picom --config ~/.config/picom/config &
+
+# wallpaper
+pgrep -f nitrogen || nitrogen --restore &
+
+# notifications
+pgrep -f dunst || dunst
+
+#
+# INPUT
+#
+
+# keyboard: repeat rate
+xset r rate 300 50
+
+# keyboard: caps = ctrl (hold)
 setxkbmap -option ctrl:nocaps
+
+# keyboard: caps = esc (tap)
 pgrep -f xcape || xcape -e 'Control_L=Escape'
 
-sleep 1
+# keyboard: disable caps altogether
+xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock
+
+# mouse: autohide
+pgrep -f unclutter || unclutter &
+
+#
+# SOFTWARE
+#
+
+# music
+[ ! -s ~/.config/mpd/pid ] && mpd
+
+# email
+pgrep -f thunderbird || thunderbird &
+
+# telegram
+pgrep -f telegram || telegram-desktop &
+
+# sms
+pgrep -f android-messages || android-messages-desktop &
+
+# discord
+pgrep -f discord || discord &
+
+# polybar (giving apps a second to load)
+# sleep 1
 pgrep polybar || sh "$HOME/.config/polybar/launch.sh" &
+
+#
+# GRAVEYARD
+#
+
+# pgrep -f pulseaudio || pulseaudio --start &
+# pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
+# pgrep -f blueman-tray || blueman-applet &
