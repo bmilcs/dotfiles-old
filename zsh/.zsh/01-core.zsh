@@ -2,11 +2,13 @@
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
-#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https:"comment":d"ot.bmilcs.com",
-#               ZSH CORE
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 ZSH: CORE [./01-core.zsh]
 #────────────────────────────────────────────────────────────
+#
 # HISTORY
-#────────────────────────────────────────────────────────────
+#
+
 HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=~/.config/zsh/.zhistory
@@ -20,30 +22,24 @@ setopt HIST_REDUCE_BLANKS     # remove superfluous blanks for each command
 setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
-#────────────────────────────────────────────────────────────
-# DAILY UPDATE
-#────────────────────────────────────────────────────────────
+#
+# UPDATE
+#
 
-source $HOME/bin/_head
 unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-ustatus=$HOME/.config/zsh/.bm-update
-
-if [ -f $ustatus ]; then 
-  ulast="$(cat "$ustatus")"
-else
-  ulast="00"
-  echo "$unow" > "$ustatus"
-fi
-
+ustatus="$HOME/.config/up/zinit.bm"
+if [ -f $ustatus ]; then ulast="$(cat "$ustatus")" ; else
+  ulast="00" && echo "$unow" > "$ustatus" ; fi
 if [[ ! "$unow" == "$ulast" ]]; then
-  echo "update: needed! starting now:"
-    zinit self-update
-  echo "$unow" > "$ustatus"
+  source $HOME/bin/_head ; _t bmilcs: zinit updater
+  _o "last update: $DAYOFWEEK, $ulast of $MONTH" ; _a "zinit self-update"
+  zinit self-update && echo "$unow" > "$ustatus" && echo &&_s "\n" 
+  sleep 0.75 ; clear
 fi
 
-#────────────────────────────────────────────────────────────
-# ZINIT: PLUGINS
-#────────────────────────────────────────────────────────────
+#
+# PLUGINS
+#
 
 zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
@@ -51,29 +47,34 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light wfxr/forgit
 
 # dir_colors
-[ -f "$D/zsh/.zsh/dir_colors" ] && eval $(dircolors $D/zsh/.zsh/dir_colors)
+[[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors)
 
-# fuzzy finder (fzf) - add .fzf to $PATH
-if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then  
+# fzf path
+[[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]] && \
   export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
-fi
-# add zsh fzf completions
+
+# fzf completions
 [[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.zsh" 2> /dev/null
-# add zsh fzf key bindings
-[[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
 
-#────────────────────────────────────────────────────────────
+# fzf key bindings
+[[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && \
+  source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
+
+
+#
 # OPTIONS
-#────────────────────────────────────────────────────────────
+#
 
-set nocompatible
+set nocompatible              # not vi-backwards-compatible
 bindkey -v                    # vim mode
 
-# DIRECTORIES
+# directory
 
 setopt autocd                 # cd into dir's w/o cd prefix
 setopt cdable_vars            # autocd, expand non-/path as ~
 setopt cd_silent              # don't print dir after cd
+
+# history
 
 DIRSTACKSIZE=15               # dir stack limit
 setopt autopushd              # cd = pushd (dir stack)
@@ -83,71 +84,70 @@ setopt pushdtohome            # no arg =  ~ (dir stack)
 setopt pushd_ignore_dups      # no mulitples (dir stack)
 alias dh='dirs -v'            # ls (dir stack)
 
-# COMPLETION
+# completion
 
 setopt rec_exact              # accept exact commands, no selection menu
 setopt always_to_end          # mid-word completions get appended 
 setopt auto_list              # list choices on ambiguous completion
 setopt hash_list_all 
-setopt numeric_glob_sort       # matched numeric filenames get sorted numerically
-setopt menu_complete          # insert 1st match immediately & toggle through them
-#setopt glob_complete          # current word glob creates selection menu
-#setopt list_ambiguous         # unambiguous prefix to insert w/o menu
-#setopt list_packed            # reduce list length
-#setopt list_rows_first        # horizontal a/ b/ c/ d.conf
-#setopt list_types             # completions show identifying mark as last char
+setopt numeric_glob_sort      # matched numeric filenames get sorted numerically
+setopt menu_complete          # ins #1 match immediately & toggle thru them
+#setopt glob_complete         # current word glob creates selection menu
+#setopt list_ambiguous        # unambiguous prefix to insert w/o menu
+#setopt list_packed           # reduce list length
+#setopt list_rows_first       # horizontal a/ b/ c/ d.conf
+#setopt list_types            # completions show identifying mark as last char
 
-# MISC
-#
+# miscellaneous
+
 setopt nobeep                 # disable beep
-#setopt extendedglob          # disabled, breaks git reset HEAD^
 setopt nomatch                #
 setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
+#setopt extendedglob          # disabled, breaks git reset HEAD^
 
-#────────────────────────────────────────────────────────────
-# CORRECTIONS
-#────────────────────────────────────────────────────────────
+#
+# AUTOCORRECT
+#
 
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,italic"
 
-# fuzzy match mistypes
+# fuzzy-matching
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
-# NEW END
 
-#────────────────────────────────────────────────────────────
+#
 # AUTOCOMPLETE
-#────────────────────────────────────────────────────────────
+#
 
 CASE_SENSITIVE="false"
-zstyle ':completion:*' list-prompt   '' # remove warning, display all possibilities?
-zstyle ':completion:*' select-prompt '' # remove warning, display all possibilities?
+zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
+zstyle ':completion:*' select-prompt '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive
 zstyle ':completion:*' menu select # menu style, tab
 zstyle ':completion:*:*:*:*:*' menu select # always use menu select
 zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
-zstyle ':completion:*:matches' group yes
-zstyle ':completion:*:options' description yes
+zstyle ':completion:*:matches' group yes # group by type
+zstyle ':completion:*:options' description yes # show description
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 zstyle ':completion:*:messages' format '%F{magenta}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '%I%F{green}%d'
-zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
-#────────────────────────────────────────────────────────────
+#
 # AUTOLOADS
-#────────────────────────────────────────────────────────────
+#
 
 autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit -d ~/.config/zsh/.zcompdump
@@ -159,9 +159,13 @@ zmodload -i zsh/complist
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-#────────────────────────────────────────────────────────────
+# pip completion
+eval "`pip completion --zsh`"
+compctl -K _pip_completion pip3
+
+#
 # PROMPT, COLORS, ETC. 
-#────────────────────────────────────────────────────────────
+#
 
 NL=$'\n'
 PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
@@ -174,9 +178,9 @@ RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
 
-#────────────────────────────────────────────────────────────
+#
 # KEYBINDINGS
-#────────────────────────────────────────────────────────────
+#
 
 typeset -g -A key
 key[Home]="${terminfo[khome]}"
@@ -206,7 +210,8 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 
 # TODO: bindkey -> zle -al (show all registered commands)
 # TODO: FIX AUTOSUGGEST-ACCEPT BINDING
-bindkey '^l' autosuggest-accept 
+#bindkey '^l' autosuggest-accept 
+bindkey '^\n' autosuggest-accept 
 bindkey '^j' up-line-or-beginning-search
 bindkey '^k' down-line-or-beginning-search
 bindkey '^H' backward-kill-word # ctrl backspace delete word
