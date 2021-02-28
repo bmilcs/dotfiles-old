@@ -34,9 +34,9 @@ nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gr <Plug>(coc-references)
-nmap <silent> <leader>go :<C-u>CocListResume<CR>
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>cr <Plug>(coc-references)
+nmap <silent> <leader>co :<C-u>CocListResume<CR>
 
 "────────────────────────────────────────────────────────────
 " FILES

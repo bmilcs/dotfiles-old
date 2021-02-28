@@ -49,7 +49,7 @@ endif
 let mapleader=" " 
 nnoremap <SPACE> <Nop>
 
-set pumheight=50
+set pumheight=50                              " auto-complete drop down menu size
 set completeopt=longest,menuone               " view full error msg pumheight?
 set directory^=$HOME/.vim/swap//              " vim swap file location
 set encoding=utf-8                            " encoding 
@@ -66,11 +66,16 @@ set scrolloff=5                               " display 5 lines above/below the 
 set shell=zsh\ -l
 set showcmd                                   " display command
 set showmode                                  " display options
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}    " Set status line display
+
+" set status line display
+" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')} 
 "set ttyfast                                   " speed up scrolling in vim
 
 set list                                    " display different types of white spaces.
 " set wrap                                    " auto word wrap
+
+set cc=80
+"'let &colorcolumn = join(range(81,999), ',')
 
 "────────────────────────────────────────────────────────────
 " VIMINFO

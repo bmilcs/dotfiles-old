@@ -1,10 +1,8 @@
 {
-  "coc.preferences.previewMaxHeight": 20,
+  "coc.preferences.previewMaxHeight": 50,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
-    "javascript",
-    "graphql",
     "html",
     "yaml",
     "json",
@@ -30,7 +28,8 @@
         "2",
         "-bn",
         "-ci",
-        "-sr"
+        "-sr",
+        "-kp"
       ]
     }
   }
