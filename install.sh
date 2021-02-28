@@ -101,11 +101,13 @@ _a package prerequisites
 _o "${reqs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
-  pacman -Qi "${reqs[@]}" > /dev/null 2>&1 || (sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
+  pacman -Qi "${reqs[@]}" > /dev/null 2>&1 \
+    || (sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
 elif [[ ${DISTRO} == debian* ]]; then
-  dpkg -s "${reqs[@]}" > /dev/null 2>&1 || (sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
+  dpkg -s "${reqs[@]}" > /dev/null 2>&1 \
+    || (sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
 else
-  _e distro not setup yet\! update me\! install.sh
+  _e distro not setup yet\! update me\! && _i $D/install.sh
   exit 1
 fi
 
@@ -194,6 +196,11 @@ if [[ ${DISTRO} == arch* ]]; then
       [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
 
     done # end of repo directory loop
+
+    # set alacritty to xterm (i3 error, etc.)
+    if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
+    sudo ln -s /usr/bin/alacritty /usr/bin/xterm
+    fi
 
     _s
 
