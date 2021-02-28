@@ -3,20 +3,21 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#              zsh environment
+#                 ZSH: ENVIRONMENT [./00-env.zsh]
 #────────────────────────────────────────────────────────────
-# PATH
+# PATHS
 #────────────────────────────────────────────────────────────
 
 # add $PATH to path array | source: arch wiki
 if [[ ! $(echo $PATH|grep -q $HOME/bin) ]]; then
+  # TODO move .xinitrc's path script here
   typeset -U PATH path
-  path=("$HOME/bin"  "$path[@]")
+  path=("$HOME/bin" "$HOME/.local/bin" "$path[@]")
   export PATH
 fi
 
 #────────────────────────────────────────────────────────────
-# REPO DIR
+# DOTFILE RELATED
 #────────────────────────────────────────────────────────────
 
 export D=$HOME/bm
@@ -26,7 +27,21 @@ if [[ -f "/etc/arch-release" ]]; then
   export DISTRO='arch'; else export DISTRO='debian'; fi
 
 #────────────────────────────────────────────────────────────
-# ENV VAR
+# SOFTWARE
+#────────────────────────────────────────────────────────────
+
+# gnupg
+export GNUPGHOME='.gpg'
+
+# forgit
+export FORGIT_COPY_CMD='xclip -selection clipboard'
+
+# fzf
+export FZF_DEFAULT_OPTS="--color=dark --height 70% --layout reverse"
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
+
+#────────────────────────────────────────────────────────────
+# SYSTEM MODS
 #────────────────────────────────────────────────────────────
 
 # multi-core build
@@ -38,18 +53,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
 export TERMINAL=alacritty
-
-#────────────────────────────────────────────────────────────
-# FORGIT 
-#────────────────────────────────────────────────────────────
-FORGIT_COPY_CMD='xclip -selection clipboard'
-
-#────────────────────────────────────────────────────────────
-# FZF
-#────────────────────────────────────────────────────────────
-
-export FZF_DEFAULT_OPTS="--color=dark --height 70% --layout reverse"
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
 
 #────────────────────────────────────────────────────────────
 # LOCALE
