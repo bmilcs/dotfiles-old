@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#               REPO UPDATER              
+#────────────────────────────────────────────────────────────
+# TODO
+#   automate git-based software updates
+#────────────────────────────────────────────────────────────
+source _head
+
+exceptions=("nerd-fonts-2.0.0")
+
+rm -rf /tmp/{upno,upyes,uperror}
+
+chkout(){
+  printf "$NC$B${dir:-2}$NC\n"
+  out=$(( $1 ) 2>&1)
+  # debug: echo -e "\n\n" out: "$out\n\n"
+  if [[ $out == *"Already up to date"* ]]; then
+    echo $dir >> /tmp/upno
+  elif [[ $out == *"error"* ]]; then
+    echo $dir >> /tmp/uperror
+  else 
+    echo $dir >> /tmp/upyes
+  fi
+# $1 | \
+#   tee >(sleep 0.1; [[ $(tail -n1) =~ 'Already up to date' ]] && echo "$(pwd)" >> /tmp/upno || echo "$(pwd)" >> /tmp/upyes )
+  }
+
+updaterepo() {
+  # loop through dir
+  for dir in */; do
+
+    #printf "> "
+
+    match=0
+
+    # if looped dir from above = an exception, match!
+    for a in "${exceptions[@]}"; do
+      [[ $dir == */$a/ ]] && match=1
+    done
+
+    # if match is found, skip this iteration
+    [[ "$match" == 1 ]] && continue
+
+    cd $(pwd)/$dir
+    chkout "git pull"
+    #printf "${ITAL}$dir${NC}\n"
+    cd ..
+  done
+  }
+
+[ -d ~/repos ] && cd ~/repos && updaterepo 
+
+[ -f /tmp/upyes ] && _a successfully updated && cat /tmp/upyes 
+
+[ -f /tmp/uperror ] && _a ${RED}${B}problematic repos && _w "resolve issues" && \
+  cat /tmp/uperror
+
+# debugging: [ -f /tmp/upno ] && _a up-to-date && cat /tmp/upno 
