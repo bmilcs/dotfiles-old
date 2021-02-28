@@ -4,20 +4,17 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 GAPS WM [./config]
-#────────────────────────────────────────────────────────────
-#   TODO
+#     TODO
 #     - icons to rofi
-#     - add multipule rofi configs
-#       - ssh hostnames
-#       - programs
-#       - txt files? etc.
+#     - multi-rofi cfgs: ssh hosts, pkgs, txt files
 #────────────────────────────────────────────────────────────
-# WM CONTROL
+# I3 CORE
 #────────────────────────────────────────────────────────────
 
+# CHAT
 exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/bmilcs/.config/i3/ws3_chat.json'"
 
-#MODS
+# MODIFIERS
 set $shift           Shift
 set $ctrl            Ctrl
 set $alt             Mod1
@@ -26,7 +23,6 @@ set $backspace       51
 set $win             Mod4
 floating_modifier    Mod4 
 
-
 # EXIT, RESTART, RELOAD
 bindcode    $win+$tilde          exec ". ~/.config/polybar/launch.sh"
 bindcode    $win+$ctrl+$tilde    reload
@@ -34,13 +30,13 @@ bindcode    $win+$shift+$tilde   restart
 bindcode    $win+$alt+$tilde     exec "i3-msg exit"
 
 #────────────────────────────────────────────────────────────
-# APPLICATIONS
+# SYSTEM
 #────────────────────────────────────────────────────────────
 
-# AUDIO #────────────────────────────────────────────────────
-bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo +5%
-bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo 0 && pactl set-sink-volume alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo -5%
-bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute alsa_output.usb-Focusrite_Scarlett_2i2_USB-00.analog-stereo toggle
+# AUDIO 
+bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
 bindsym XF86AudioStop         exec --no-startup-id    mpc stop
 bindsym XF86AudioNext         exec --no-startup-id    mpc next
@@ -49,6 +45,9 @@ bindsym XF86AudioNext         exec --no-startup-id    mpc next
 bindsym Print                 exec --no-startup-id    screenshot sel
 bindsym $ctrl+Print           exec --no-startup-id    screenshot all
 bindsym $alt+Print            exec --no-startup-id    screenshot win
+bindsym Pause                 exec --no-startup-id    screenshot sel up
+bindsym $ctrl+Pause           exec --no-startup-id    screenshot all up
+bindsym $alt+Pause            exec --no-startup-id    screenshot win up
 
 # TERMINAL
 bindsym $win+Return           exec --no-startup-id    alacritty
@@ -59,9 +58,16 @@ bindsym $win+a                exec --no-startup-id    firefox
 # ROFI
 bindsym F1                    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
 
-# DUNST (test)
-bindsym $win+z                exec --no-startup-id    "killall dunst;notify-send \\"$(date)\\""
-bindsym F3                    exec --no-startup-id    "killall dunst;notify-send 'bmilcs notification test'"
+# DUNST (test) TODO: FIX NOTIFICATIONS
+bindsym $win+x                exec --no-startup-id    killall dunst;notify-send "$(date)"
+bindsym $win+c                exec --no-startup-id    killall dunst;notify-send 'bmilcs notification test'
+
+# I3SPY
+bindsym $win+z                exec --no-startup-id    "xdotool windowclose $(xdotool search --classname i3wspy) 2> /dev/null; alacritty --hold --class i3wspy -e i3spy"
+
+# MUSIC
+bindsym $win+m                exec --no-startup-id    ~/bin/wm/i3fruni ncmpcpp 'alacritty --class=ncmpcpp --title=ncmpcpp -e ncmpcpp &'
+
 #────────────────────────────────────────────────────────────
 # WINDOW CONTROL
 #────────────────────────────────────────────────────────────
@@ -107,7 +113,7 @@ bindcode $win+47            split v
 bindcode $win+48            split h
 
 # FULL SCREEN
-bindsym $win+f              fullscreen toggle
+bindsym $win+d              fullscreen toggle
 
 # SCRATCHPAD
 bindsym $win+s              scratchpad show
@@ -154,18 +160,17 @@ bindsym $win+$alt+9   move container to workspace number $ws9
 bindsym $win+$alt+0   move container to workspace number $ws10
 
 #────────────────────────────────────────────────────────────
-# GUI
+# APPEARANCE
 #────────────────────────────────────────────────────────────
 
 # FONT
-font pango:DejaVuSansMono Nerd Font 12
+font pango:Iosevka Nerd Font 12
 
 # BORDERS
-smart_borders             no_gaps
-hide_edge_borders         both
+smart_borders             on
+hide_edge_borders         none
 default_border            pixel 2
 default_floating_border   pixel 5
-# for_window [class=".*"]   border pixel 2
 
 # GAPS
 smart_gaps   on
@@ -200,7 +205,7 @@ client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
 client.background         $white1   
 
 #────────────────────────────────────────────────────────────
-# AUTO WINDOW CONTROL
+# PACKAGE CUSTOMIZATIONS
 #────────────────────────────────────────────────────────────
 
 # DESKTOP ASSIGNMENT
@@ -209,9 +214,11 @@ assign        [class="discord"]          3
 assign        [class="android-*"]        3
 assign        [class="Telegram*"]        3
 
-for_window    [class='Conky']            floating enable
-for_window    [class="Galculator"]       floating enable, focus
-for_window    [class="Gucharmap"]        floating enable, focus
-for_window    [class="Font-manager"]     floating enable, focus
-
-
+for_window    [instance="ncmpcpp"]                floating enable, resize set 575 725, move absolute position 2870 87
+for_window    [instance="i3wspy"]                 floating enable, resize set 1000 40, move absolute position 473 0
+for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1064 111, move absolute position 1214 51
+for_window    [class='Conky']                     floating enable
+for_window    [class="Galculator"]                floating enable, focus, resize set 1500 1200, move absolute position center
+for_window    [class="Gucharmap"]                 floating enable, focus
+for_window    [class="Font-manager"]              floating enable, focus
+for_window    [class="Lxappearance"]              floating enable, focus
