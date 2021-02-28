@@ -34,6 +34,7 @@
 [diff]
 	tool = nvimdiff
 	context = 0
+	colorMoved = zebra
 [merge]
 	tool = nvimdiff
 [advice]
@@ -51,3 +52,7 @@
 	detachedHead = false
 	amWorkDir = false
 	rmHints = false
+[pull]
+	rebase = true
+[fetch]
+	prune = true
