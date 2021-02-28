@@ -173,6 +173,4 @@ _a preview of: "${B}../$filename"
 printf "${CYN}\n"
 head -n 9 "$filename"
 echo
-sleep 2
-
 fi
