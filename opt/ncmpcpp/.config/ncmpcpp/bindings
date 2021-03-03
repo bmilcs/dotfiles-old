@@ -39,7 +39,12 @@ def_key "ctrl-f"
   page_down
 def_key "ctrl-b"
   page_up
-
+def_key "x"
+  delete_playlist_items
+def_key "x"
+  delete_browser_items
+def_key "shift-delete"
+  delete_stored_playlist
 ## OVERRIDE DEFAULT BINDING
 ##    def_key "C"
 ##      dummy
@@ -113,14 +118,6 @@ def_key "ctrl-b"
 #def_key "space"
 #  toggle_visualization_type
 #
-#def_key "delete"
-#  delete_playlist_items
-#
-#def_key "delete"
-#  delete_browser_items
-#
-#def_key "delete"
-#  delete_stored_playlist
 #
 #def_key "right"
 #  next_column
