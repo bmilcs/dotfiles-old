@@ -1,7 +1,5 @@
 ### scratchpad 
 
-
-
 https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/
 https://www.reddit.com/r/linux/comments/61dbym/managing_dotfiles_a_survey/
 

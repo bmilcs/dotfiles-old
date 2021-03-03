@@ -4,124 +4,124 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   my custom stow-ifier              
+#                MY CUSTOM STOW-IFIER [../stw]
 #────────────────────────────────────────────────────────────
 
 # TODO: filename argument passed
-# TODO: iteration, y/n per each file
-# TODO: check if symlink, skip if so
 
 source _head
 
 _t bmilcs stow prepper
 
-#
+#────────────────────────────────────────────────────────────
 # EXTRACT DATA
-#
+#────────────────────────────────────────────────────────────
 
-cdir=$(pwd)
-bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')
-nbdir=${bdir,,}
-idir=$(pwd | sed 's/\/home\/'"$USER"'\/\(.*\)/\1/')
-ndir=$D/$nbdir/$idir
+odir=$(pwd)                                             # original
+bdir=$(pwd | sed 's/\/home\/.*\/\(.*\)/\1/')            # base
+nbdir=${bdir,,}                                         # new base
+sdir=$(pwd | sed 's/\/home\/'"$USER"'\/\(.*\)/\1/')     # structure
+ndir=$D/$nbdir/$sdir                                    # new base + structure
 
-# debugging  
+# debugging
 # set -x  # debugging
-#  _i bdir: $bdir 
-#  _i nbdir: $nbdir 
-#  _i idir: $idir
-#  _i ndir: $ndir 
+#  _i bdir: $bdir
+#  _i nbdir: $nbdir
+#  _i sdir: $sdir
+#  _i ndir: $ndir
 #  _i dot dir: $D
 
 #
 # NO ARGUMENTS
 #
 
+#────────────────────────────────────────────────────────────
 # DIR STRUCTURE CHECK
-  if [[ $bdir == *"home"* ]]; then
-    _w \$HOME\ - really?
-    exit 1
-  # in dotfile repo dir?
-  elif [[ $cdir == $D* ]]; then
-    _w stow your stow - really?
-    exit 1
-  fi
+#────────────────────────────────────────────────────────────
 
-  # does dir exist already?
+# are you in $HOME?
+if [[ $bdir == *"home"* ]]; then
+  _w \$HOME\ files require manual intervention
+  exit 1
+# stowing from dotfile repo dir?
+elif [[ $odir == $D* ]]; then
+  _w stow your stow somewhere else
+  exit 1
+fi
+
+# does dir exist already?
+if [ -d "$ndir" ]; then
+  _i sweet. "$ndir" already exists
+else
+  _a creating "$ndir"
+  mkdir -p "$ndir"
   if [ -d "$ndir" ]; then
-    _i sweet. "$ndir" already exists
+    _s successfully created: ../"$nbdir"/"$sdir"
   else
-    _a creating "$ndir"
-    mkdir -p "$ndir"
-    if [ -d "$ndir" ]; then
-      _s successfully created: ../"$nbdir"/"$idir"
-    else
-      _e something went wrong. unable to create folder.
-      exit 3
-    fi
+    _e something went wrong. unable to create folder.
+    exit 3
   fi
-
+fi
 
 # STOW EVERYTHING?
-if [ $# -eq 0 ] ; then
+if [ $# -eq 0 ]; then
   _a "looping through dir"
-  if [ $? == "1" ];then _s all set ; exit 0;fi
+  [ $? == "1" ] && _s "all set" && exit 0
   loopz="*"
 else
   loopz="$*"
 fi
 
-
-
   # LOOP OVER DIR
-  for d in $loopz ; do
-    
-    # CHECK FOR ISSUES
-    if [ -L "$d" ];then
-      _w skipped "$d": symlink
-      continue
-    elif [[ $d == *.log ]];then
-      _w skipped "$d": log
-      continue
-    elif [ -d "$d" ]; then
-      _e skipped "$d": directory
-      continue
-    elif [ -f "$ndir"/"$d" ]; then
-      _ask "overwrite existing $d??"
-      if [ $? == "1" ]; then _w skipping "$d": declined; continue; fi
-      mv "$ndir"/"$d" "$ndir"/"$d".bak
-    else 
-      _ask "add $d to repo?"
-      if [ $? == "1" ];then _w skipping "$d"; continue; fi
+for d in $loopz; do
+
+  # CHECK FOR ISSUES
+  if [ -L "$d" ]; then
+    _w skipped "$d": symlink
+    continue
+  elif [[ $d == *.log ]]; then
+    _w skipped "$d": log
+    continue
+  elif [ -d "$d" ]; then
+    _e skipped "$d": directory
+    continue
+  elif [ -f "$ndir"/"$d" ]; then
+    _ask "overwrite existing $d??"
+    if [ $? == "1" ]; then
+      _w skipping "$d": declined && continue
     fi
+    mv "$ndir"/"$d" "$ndir"/"$d".bak
+  else
+    _ask "add $d to repo?"
+    if [ $? == "1" ]; then
+      _w skipping "$d"
+      continue
+    fi
+  fi
 
-    # PASSED ISSUE TEST
-    # create backup directory
-    mkdir -p "$BAK"/"$bdir"
-    _o copying \""$d"\" to \"../"$nbdir"/"$idir"\"
-    cp "$d" "$ndir"/"$d" 2>/dev/null
+  # PASSED: NO ISSUES
 
+  # BACKUP: create directory
+  mkdir -p "$BAK"/"$bdir"
+  _o copying \""$d"\" to \"../"$nbdir"/"$sdir"\"
+  cp "$d" "$ndir"/"$d" 2> /dev/null
 
-    if [ -f "$ndir"/"$d" ]; then
-      _s
-      rm "$ndir"/"$d".bak 2>/dev/null
-      mv "$d" "$BAK"/"$bdir"/"$d"-"$DATE"
-    else
-      _e copy failed! emergency exit.
-      mv "$ndir"/"$d".bak "$ndir"/"$d" 2>/dev/null
-      exit 1
-    fi 
-  done
+  if [ -f "$ndir"/"$d" ]; then
+    _s
+    rm "$ndir"/"$d".bak 2> /dev/null
+    mv "$d" "$BAK"/"$bdir"/"$d"-"$DATE"
+  else
+    _e copy failed! emergency exit.
+    mv "$ndir"/"$d".bak "$ndir"/"$d" 2> /dev/null
+    exit 1
+  fi
+done
 
-# 
+#────────────────────────────────────────────────────────────
 # CREATE SYMLINKS
-#
+#────────────────────────────────────────────────────────────
 
 _a stow time!
-cd "$D"
-stow -R "$nbdir"
-[[ $? != 0 ]] && _e something went wrong
-_s success \!
-
-
+cd "$D" || _e "unable to locate $D"
+[[ "$(stow -R "$nbdir")" ]] || _e "something went wrong"
+_s "success !"

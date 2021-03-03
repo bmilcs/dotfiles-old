@@ -7,9 +7,6 @@
 - docker, remote dev (rsync compose?)
 - mopidy docker (mpd server)
 
-[personal]
-- call baystate
-
 [house]
 - door hinge, patio
 - clean-up porch
