@@ -22,15 +22,15 @@ pth="$HOME/bin/neomutt"
 _a installing dependencies
 
 # required packages
-reqs=("neomutt" "curl" "isync" "msmtp" "pass" \
-  "pam-gnupg" "lynx" "notmuch" "abook" "urlview" \
-  "cronie" "mpop" )
+reqs=("neomutt" "curl" "isync" "msmtp" "pass"
+  "pam-gnupg" "lynx" "notmuch" "abook" "urlview"
+  "cronie" "mpop")
 
 # install dependencies
 if [[ ${DISTRO} == arch* ]]; then
   yay -Qi "${reqs[@]}" > /dev/null 2>&1 \
     || (yay -Syyy "${reqs[@]}" \
-    && _o installed "${reqs[@]}")
+      && _o installed "${reqs[@]}")
 fi
 
 #────────────────────────────────────────────────────────────
@@ -47,45 +47,44 @@ sudo make install
 #────────────────────────────────────────────────────────────
 
 #-- toggle mailsync without specifying minutes (default is 10)
-mw -T 
-
+mw -T
 
 #-- add an email account
 mw -a bmilcsn@gmail.com
 
 #-- sync all configured email accounts
-#mw -Y 
+#mw -Y
 
 #-- toggle automatic mailsync to every 2 minutes
 mw -t 2
 
 #-- choose an account to delete
-#mw -d 
+#mw -d
 
 #-- revise an account's password
 #pass edit mw-your@email.com
 
 #-- sync an email account
-#mw -y your@email.com 
+#mw -y your@email.com
 
 #-- list existing accounts
-#mw -l 
+#mw -l
 
 #-- delete account settings without confirmation
-#mw -D your@email.com 
+#mw -D your@email.com
 
 #────────────────────────────────────────────────────────────
 # ARGUMENTS
 #────────────────────────────────────────────────────────────
 
 # -u -- Give an account username if different from the email address.
-# -n -- A real name to be used by the account. 
+# -n -- A real name to be used by the account.
 #       Put in quotations if multiple words.
 # -i -- IMAP server address
 # -I -- IMAP server port (otherwise assumed to be 993)
 # -s -- SMTP server address
 # -S -- SMTP server port (otherwise assumed to be 587)
-# -m -- Maximum number of emails to be kept offline. 
+# -m -- Maximum number of emails to be kept offline.
 #       No maximum is default functionality.
 # -x -- Account password. You will be prompted for it otherwise.
 
@@ -94,7 +93,7 @@ mw -t 2
 #────────────────────────────────────────────────────────────
 
 # -p -- Add a Protonmail account.
-# -f -- Assume mailbox names and force account configuration 
+# -f -- Assume mailbox names and force account configuration
 #       without connecting online at all.
 # -o -- Configure mutt for an account, but do not keep mail offline.
 # -P -- Use POP protocol instead of IMAP (requires mpop installed).
