@@ -17,8 +17,6 @@ dbug() {
   set -x ; "$*" ; set +x
   }
 
-
-
 # commit changes
 #function ga() {
 #  cd $D && git add "$*"

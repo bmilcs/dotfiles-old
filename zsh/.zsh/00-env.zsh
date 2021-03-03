@@ -30,6 +30,9 @@ if [[ -f "/etc/arch-release" ]]; then
 # SOFTWARE
 #────────────────────────────────────────────────────────────
 
+# bat
+export BAT_THEME='Nord'
+
 # gnupg
 export GNUPGHOME='.gpg'
 
@@ -37,8 +40,10 @@ export GNUPGHOME='.gpg'
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 
 # fzf
-export FZF_DEFAULT_OPTS="--color=dark --height 70% --layout reverse"
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
+export FZF_DEFAULT_OPTS="--color=dark --height 50% --layout reverse"
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 
 #────────────────────────────────────────────────────────────
 # SYSTEM MODS

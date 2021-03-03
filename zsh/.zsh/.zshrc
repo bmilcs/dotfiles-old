@@ -3,8 +3,7 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   ZSHRC BOOTSTRAP
+#               ZSHRC: INTERACTIVE SHELLS
 #────────────────────────────────────────────────────────────
 
 # add plugin manager
@@ -13,5 +12,3 @@ source ~/.zinit/bin/zinit.zsh
 # load configs
 for cfg (~/.zsh/*.zsh) source $cfg
 
-TERMINAL=alacritty
-export TERMINAL

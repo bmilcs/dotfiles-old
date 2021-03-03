@@ -23,21 +23,6 @@ setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST #
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
 #
-# UPDATE
-#
-
-unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-ustatus="$HOME/.config/up/zinit.bm"
-if [ -f $ustatus ]; then ulast="$(cat "$ustatus")" ; else
-  ulast="00" && echo "$unow" > "$ustatus" ; fi
-if [[ ! "$unow" == "$ulast" ]]; then
-  source $HOME/bin/_head ; _t bmilcs: zinit updater
-  _o "last update: $DAYOFWEEK, $ulast of $MONTH" ; _a "zinit self-update"
-  zinit self-update && echo "$unow" > "$ustatus" && echo &&_s "\n" 
-  sleep 0.75 ; clear
-fi
-
-#
 # PLUGINS
 #
 
