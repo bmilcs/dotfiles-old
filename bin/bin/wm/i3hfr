@@ -6,7 +6,10 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 HIDE > FOCUS > RUN [./i3hfr]
 #────────────────────────────────────────────────────────────
-if [ ! "$(pgrep -f "$1")" ]; then
+
+set -x
+#if [ ! "$(pgrep "$1")" ]; then
+if [ "$(pgrep -c "$1")" -eq 0  ]; then
     $2
 else
   if [ "$(xdotool getactivewindow getwindowname)" = "$1" ]; then
@@ -20,3 +23,4 @@ else
     #i3-msg "[instance=$1] focus"
   fi
 fi
+set +x

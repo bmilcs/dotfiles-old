@@ -44,7 +44,6 @@ echo -e "${BLU}${ITAL}resize set${NC}${B} $w $h ${NC}${BLU}| move absolute posit
       -e "/^WM_NAME\(STRING\) = ($match_string)$/{s//title=\1/; h}" \
       -e "/^_NET_WM_NAME\(UTF8_STRING\) = ($match_qstring)$/{s//title=\1/; h}" \
       -e '${g; p}'
-  #} | sort | tr "\n" " " | sed -r 's/^(.*) $/"\1/'
 } | sort | tr "\n" " " | sed -r 's/^(.*) $/\1/'
 #echo "$w $h, $x $y" | xclip -sel clip
-#sleep 60
+sleep 60

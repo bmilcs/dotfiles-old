@@ -21,8 +21,8 @@ bindsym $win+$shift+n    exec --no-startup-id   i3hfr readmemd 'alacritty --clas
 for_window               [instance="readmemd"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
 
 # SCRATCHPAD
-bindsym $win+n           exec --no-startup-id    i3hfr i3scratch "alacritty --class=i3scratch --title=i3scratch -e i3nvim $HOME/txt/pad"
-for_window               [instance="i3scratch"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+bindsym $win+n           exec --no-startup-id    i3hfr i3pad "alacritty --class=i3pad --title=i3pad -e i3pad &"
+for_window               [instance="i3pad"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
 
 # MUSIC
 bindsym $win+m           exec --no-startup-id    i3hfr ncmpcpp 'alacritty --class=ncmpcpp --title=ncmpcpp -e ncmpcpp &'
