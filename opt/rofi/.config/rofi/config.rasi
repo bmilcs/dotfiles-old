@@ -1,7 +1,7 @@
 configuration {
 	width: 45;
 	lines: 25;
-	font: "DejaVu Sans Mono 11";
+	font: "Iosevka 11";
 	hide-scrollbar: true;
 	theme: "~/.config/rofi/nord.rasi";
   combi-modi: "window,drun,ssh";

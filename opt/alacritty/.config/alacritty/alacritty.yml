@@ -12,6 +12,44 @@ import:
 
 live_config_reload: true
 
+
+#────────────────────────────────────────────────────────────
+# FONT
+#────────────────────────────────────────────────────────────
+
+font:
+  size: 10
+  normal:
+    #family: GohuFont Nerd Font
+    #family: codenewroman nerd font 
+    family: bitstreamverasansmono nerd font
+    #family: FantasqueSansMono Nerd Font
+    #family: DejaVuSansMono Nerd Font
+    #family: DejaVuSansMono Nerd Font
+    #family: Iosevka Nerd Font
+    #family: TerminessTTF Nerd Font
+    #family: Terminus
+    #family: SauceCodePro Nerd Font
+    #style: Book
+    #style: Medium
+    style: Regular
+  bold:
+    style: Bold
+  italic:
+    style: Italic
+    #style: Oblique
+  bold_italic:
+    #style: Bold Oblique
+    style: Bold Italic
+
+# space around each character
+  #offset:
+  #  x: 0
+  #  y: 0
+  #glyph_offset:
+  #  x: 0
+  #  y: 1
+
 #env:
   #TERM: alacritty
 
@@ -74,42 +112,6 @@ window:
   #history: 10000
   #multiplier: 3    # number of lines
 
-#────────────────────────────────────────────────────────────
-# FONT
-#────────────────────────────────────────────────────────────
-
-font:
-  size: 10
-  normal:
-    #family: GohuFont Nerd Font
-    #family: codenewroman nerd font 
-    family: bitstreamverasansmono nerd font
-    #family: FantasqueSansMono Nerd Font
-    #family: DejaVuSansMono Nerd Font
-    #family: DejaVuSansMono Nerd Font
-    #family: Iosevka Nerd Font
-    #family: TerminessTTF Nerd Font
-    #family: Terminus
-    #family: SauceCodePro Nerd Font
-    #style: Book
-    #style: Medium
-    style: Regular
-  bold:
-    style: Bold
-  italic:
-    style: Italic
-    #style: Oblique
-  bold_italic:
-    #style: Bold Oblique
-    style: Bold Italic
-
-# space around each character
-  #offset:
-  #  x: 0
-  #  y: 0
-  #glyph_offset:
-  #  x: 0
-  #  y: 1
 
 #────────────────────────────────────────────────────────────
 # COLOR THEME

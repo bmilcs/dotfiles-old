@@ -12,7 +12,7 @@
 #     - zsh functions
 #     - zsh scripts
 #────────────────────────────────────────────────────────────
-# INTERACTION CHECK 
+# INTERACTION CHECK
 #────────────────────────────────────────────────────────────
 
 # if running non-interactively, end script
@@ -48,7 +48,6 @@ shopt -s checkwinsize
 # vim mode
 set editing-mode vi
 
-
 bind 'set show-all-if-ambiguous on'
 
 # menu completion
@@ -60,7 +59,7 @@ shopt -s globstar
 # colored GCC warnings and errors
 # TODO research GCC # export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# autocompletion 
+# autocompletion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -69,7 +68,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 #────────────────────────────────────────────────────────────
 #  ADDITIVES
 #────────────────────────────────────────────────────────────
@@ -77,13 +75,11 @@ fi
 # ls: group dotfiles together
 export LC_COLLATE="C"
 
-# fzf (via .fzf.bash)
+# fzf
 if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then
   export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
 fi
-
 [[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.bash" 2> /dev/null
-
 source "/home/bmilcs/.fzf/shell/key-bindings.bash"
 
 #────────────────────────────────────────────────────────────
@@ -95,13 +91,14 @@ source "/home/bmilcs/.fzf/shell/key-bindings.bash"
 #
 
 case "$TERM" in
-xterm*|rxvt*)
-  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1" ;;
+  xterm* | rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+                                                                   ;;
   *) ;;
 esac
 
 #
-# COLOR SUPPORT 
+# COLOR SUPPORT
 #
 
 if [ -x /usr/bin/dircolors ]; then
@@ -121,9 +118,9 @@ fi
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
   if [ "$(id -u)" -eq 0 ]; then # ROOT
     PS1="\[\e[1;30;41m\]    \[\e[1m\]\H  \[\e[m\]\[\e[0;31;40m\]  \u      \[\e[m\]\[\e[1;30m\] \d | \@ | \# | \[\e[34m\]\w\[\e[1;30m\] | \[\e[30m\] \[\e[m\]\n\[\e[1;31m\]$\[\e[m\] "
-  else 
+  else
     PS1="\[\e[1;30;44m\]    \[\e[1m\]\H  \[\e[m\]\[\e[0;34;40m\]  \u      \[\e[m\]\[\e[1;30m\] \d | \@ | \# | \[\e[34m\]\w\[\e[1;30m\] | \[\e[30m\] \[\e[m\]\n\[\e[1;34m\]#\[\e[m\] "
-  fi 
+  fi
 else
   PS1="\u@\H [\w] $ "
 fi
