@@ -73,13 +73,13 @@ fi
 
 # pihole
 if pihole -v PIHOLE &> /dev/null; then
-  _a [bonus] pihole -up
+  _a pihole -up
   sudo pihole -up
 fi
 
 # docker
 if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
-  _a [bonus] docker-compose up
+  _a docker-compose up
   dcr
 fi
 
