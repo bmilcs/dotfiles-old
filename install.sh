@@ -6,26 +6,29 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOTFILE INSTALLATION [./install.sh]
 #────────────────────────────────────────────────────────────
-#   TODO 1. backup existing files
-#        2. for cfg in pwd, stow -R $cfg
-#────────────────────────────────────────────────────────────
 source ./bin/bin/_head
 
-# minimum installation
+# title
+_t [bmilcs] dotfile installation
+_i this install script is specifically tailored to my needs.
+_i ${CYN}${B}arch${NC}: stows everything: home \& sys configs, networkd, iwctl, etc
+_i ${CYN}${B}debian${NC}: stows minimal setup, defined by \$mini
+
+#────────────────────────────────────────────────────────────
+# INPUT
+#────────────────────────────────────────────────────────────
+
+# debian: install
 mini=("bin" "git" "txt" "vim" "zsh")
 
-# mass installation exceptions
+# arch: exceptions
 exceptions=("img" "opt" "root")
 
-# required packages
-reqs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
+# all: req packages
+pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 
-# repo's base path
+# repo path
 D=$HOME/bm
-
-# title
-_t [bmilcs] bootstrap initiated
-_o stowing everything includes system configuration files, such as: networkd, iwctl, pacman.conf, etc.
 
 # FUNCTIONS
 
@@ -34,8 +37,10 @@ cleanup() {
   _a removing old dotfile content
   _w "content will be moved to ~/.backup/dotfiles"
   mkdir -p ~/.backup/dotfiles
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} ~/.backup/dotfiles 2> /dev/null
-  mv ~/.zsh/{completion/,}{_git,git-completion.bash} ~/.backup/dotfiles 2> /dev/null
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} \
+    ~/.backup/dotfiles 2> /dev/null
+  mv ~/.zsh/{completion/,}{_git,git-completion.bash} \
+    ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
   _a deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null
@@ -44,24 +49,40 @@ cleanup() {
   _s
 }
 
+ifzf() {
+  _a fzf
+  if [[ ! -f ~/.config/fzf/bin/fzf ]]; then
+    _o setup required
+    _a fzf: installation
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/fzf
+    ~/.config/fzf/install --xdg --no-update-rc --completion --key-bindings
+  else
+    _s all set
+  fi
+}
+
 izsh() {
   _a zsh
-  if [[ ! -f ~/.zsh/completion/_git ]] || [[ ! -f ~/.zsh/completion/git-completion.bash ]] || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] || [[ ! -d ~/.config/zsh ]]; then
+  if [[ ! -f ~/.zsh/completion/_git ]] \
+    || [[ ! -f ~/.zsh/completion/git-completion.bash ]] \
+    || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] \
+    || [[ ! -d ~/.config/zsh ]]; then
     _o setup required_
     # create directories
     mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
     # install zsh git completion
     _a zsh: git autocompletion
-    curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+    curl -o ~/.zsh/completion/git-completion.bash \
+      https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    curl -o ~/.zsh/completion/_git \
+      https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     _s
     # install zinit
     _a zsh: zinit plugin manager
     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
     _s
   else
-    _o setup not required
-    _s
+    _s all set
   fi
 }
 
@@ -70,22 +91,12 @@ ivim() {
   if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
     _o setup required
     _a vim: vim-plug plugin manager
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+      --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     _s
   else
-    _o setup not required
-    _s
-  fi
-}
-
-ifzf() {
-  _a fzf
-  if [[ ! -d ~/.fzf ]]; then
-    _o setup required
-    _a fzf: installation
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    sh ~/.fzf/install --all --no-update-rc
+    _s all set
   fi
 }
 
@@ -97,17 +108,17 @@ _s
 
 # INSTALL PACKAGES
 
-_a package prerequisites
-_o "${reqs[@]}"
+_a dependencies
+_o "${pkgs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
-  pacman -Qi "${reqs[@]}" > /dev/null 2>&1 \
-    || (sudo pacman -Syyy "${reqs[@]}" && _o installed "${reqs[@]}")
+  pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
+    || (sudo pacman -Syyy "${pkgs[@]}" && _o installed "${pkgs[@]}")
 elif [[ ${DISTRO} == debian* ]]; then
-  dpkg -s "${reqs[@]}" > /dev/null 2>&1 \
-    || (sudo apt-get install "${reqs[@]}" && _o installed "${reqs[@]}")
+  dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
+    || (sudo apt-get install "${pkgs[@]}" && _o installed "${pkgs[@]}")
 else
-  _e distro not setup yet\! update me\! && _i $D/install.sh
+  _e "distro not setup yet! update me!" && _i "fix: "$D"/install.sh"
   exit 1
 fi
 
@@ -193,13 +204,14 @@ if [[ ${DISTRO} == arch* ]]; then
 
       # not a match && stow it :)
 
-      [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
+      [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] \
+        && _e "$(basename "$dir")"
 
     done # end of repo directory loop
 
     # set alacritty to xterm (i3 error, etc.)
     if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
-    sudo ln -s /usr/bin/alacritty /usr/bin/xterm
+      sudo ln -s /usr/bin/alacritty /usr/bin/xterm
     fi
 
     _s

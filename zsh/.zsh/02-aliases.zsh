@@ -15,6 +15,9 @@
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'
 alias regex='vim $D/txt/txt/regex.md'
+alias sdir='echo $PWD >> $D/txt/txt/dir_list.md'
+alias odir='vim $D/txt/txt/dir_list.md'
+
 
 # cd path
 alias txt='cd $D/txt/txt ; c ; l'
@@ -39,9 +42,6 @@ alias tr="tmux source ~/.tmux.conf"
 alias zr="source ~/.zshrc"
 alias polyr=". ~/.config/polybar/launch.sh" 
 # tail -f ~/.config/polybar/log"
-
-alias sdir='echo $PWD >> $D/txt/txt/dir_list.md'
-alias odir='vim $D/txt/txt/dir_list.md'
 
 #────────────────────────────────────────────────────────────
 # DISTRO SPECIFIC

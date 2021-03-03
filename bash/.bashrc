@@ -76,11 +76,8 @@ fi
 export LC_COLLATE="C"
 
 # fzf
-if [[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
-fi
-[[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.bash" 2> /dev/null
-source "/home/bmilcs/.fzf/shell/key-bindings.bash"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] \
+  && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 
 #────────────────────────────────────────────────────────────
 # AESTHETICS

@@ -32,19 +32,11 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light wfxr/forgit
 
 # dir_colors
-[[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors)
+[[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors) 
 
 # fzf path
-[[ ! "$PATH" == */home/bmilcs/.fzf/bin* ]] && \
-  export PATH="${PATH:+${PATH}:}/home/bmilcs/.fzf/bin"
-
-# fzf completions
-[[ $- == *i* ]] && source "/home/bmilcs/.fzf/shell/completion.zsh" 2> /dev/null
-
-# fzf key bindings
-[[ -f /home/bmilcs/.fzf/shell/key-bindings.zsh ]] && \
-  source "/home/bmilcs/.fzf/shell/key-bindings.zsh"
-
+[ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ]  \
+  && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 #
 # OPTIONS
