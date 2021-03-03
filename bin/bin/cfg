@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -37,6 +37,7 @@ if [ $# = 0 ]; then
   _o "${B}   z  ${BLU}\t  zsh${NC}"
   _o "${B}   v  ${BLU}\t  vim${NC}"
   _o "${B}   p  ${BLU}\t  polybar${NC}"
+  _o "${B}   d  ${BLU}\t  dunst${NC}"
   _o "${B}   k  ${BLU}\t  sxhkd${NC}"
   _o "${B}   x  ${BLU}\t  xorg${NC}"
   _o "${B}   n  ${BLU}\t  ncmpcpp${NC}"
@@ -62,6 +63,7 @@ case $sel in
   x | xorg) genls "$D"/opt/xorg XORG ;;
   n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
   k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
+  d) nvim "$D"/opt/dunst/.config/dunst/dunstrc ;;
   bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
   bms) nvim "$D"/install.sh ;;
   tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;

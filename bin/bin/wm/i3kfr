@@ -1,0 +1,19 @@
+#!/bin/sh
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 I3 KILL > FOCUS > LAUNCH [./i3killfocrun]
+#────────────────────────────────────────────────────────────
+set -x
+if [ ! "$(pgrep -f "$1")" ]; then
+    $2
+else
+  if [ "$(xdotool getactivewindow getwindowname)" = "$1" ]; then
+    xdotool windowkill "$(xdotool getactivewindow)"
+  else
+    i3-msg "[instance=$1]" focus
+  fi
+fi
+set +x

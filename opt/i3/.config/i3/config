@@ -5,14 +5,61 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 GAPS WM [./config]
 #     TODO
-#     - icons to rofi
-#     - multi-rofi cfgs: ssh hosts, pkgs, txt files
+#     icons to rofi
+#     multi-rofi cfgs: ssh hosts, pkgs, txt files
+#     pre-configured workspaces exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/bmilcs/.config/i3/ws3_chat.json'"
 #────────────────────────────────────────────────────────────
-# I3 CORE
+# WORK IN PROGRESS
 #────────────────────────────────────────────────────────────
 
-# CHAT
-exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/bmilcs/.config/i3/ws3_chat.json'"
+set_from_resource $HOME echo "$HOME"
+set_from_resource $D echo "$D"
+
+
+# README
+bindsym $win+$shift+n    exec --no-startup-id   i3hfr readmemd 'alacritty --class=readmemd --title=readmemd -e i3nvim $D/readme.md'
+for_window               [instance="readmemd"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+
+# SCRATCHPAD
+bindsym $win+n           exec --no-startup-id    i3hfr i3scratch "alacritty --class=i3scratch --title=i3scratch -e i3nvim $HOME/txt/pad"
+for_window               [instance="i3scratch"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+
+# MUSIC
+bindsym $win+m           exec --no-startup-id    i3hfr ncmpcpp 'alacritty --class=ncmpcpp --title=ncmpcpp -e ncmpcpp &'
+for_window               [instance="ncmpcpp"]    floating enable, resize set 492 1065, move absolute position -2 142, border pixel 3
+
+# DEBUGGING
+bindsym $win+d           exec --no-startup-id    i3kr i3debug 'alacritty --class=i3debug --title=i3debug --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3debug &'
+for_window               [instance="i3debug"]    floating enable, resize set 515 309, move absolute position 12 1118, border pixel 3
+no_focus                 [instance="i3debug"]
+
+# SPY 
+bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &'
+for_window               [instance="i3spy"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
+#no_focus                 [instance="i3spy"]
+
+bindsym $win+r           exec --no-startup-id    i3tt i3scratched $HOME/txt/pad
+for_window               [instance="i3scratched"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
+
+
+# DUNST 
+bindsym $win+x    exec --no-startup-id    notify-send "$(date) is the date bitch. "
+
+# ROFI
+bindsym $win+q    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
+
+# FLOATING WINDOWS
+for_window    [class="Font-manager"]              floating enable, focus
+for_window    [class="Galculator"]                floating enable, focus, resize set 1500 1200, move absolute position center
+for_window    [class="Gucharmap"]                 floating enable, focus
+for_window    [class="Lxappearance"]              floating enable, focus
+for_window    [class='Conky']                     floating enable
+for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1616 120, move absolute position center
+for_window    [class="PkgBrowser"]                floating enable, focus, resize set 1558 1254, move absolute position 1214 51
+
+#────────────────────────────────────────────────────────────
+# CORE KEYBINDS
+#────────────────────────────────────────────────────────────
 
 # MODIFIERS
 set $shift           Shift
@@ -24,14 +71,10 @@ set $win             Mod4
 floating_modifier    Mod4 
 
 # EXIT, RESTART, RELOAD
-bindcode    $win+$tilde          exec ". ~/.config/polybar/launch.sh"
-bindcode    $win+$ctrl+$tilde    reload
-bindcode    $win+$shift+$tilde   restart
+bindcode    $win+$tilde          exec "xrdb -merge ~/.Xresources";exec ". ~/.config/polybar/launch.sh";restart
+bindcode    $win+$ctrl+$tilde    exec ". ~/.config/polybar/launch.sh";restart;exec notify-send "hi"
+bindcode    $win+$shift+$tilde   exec notify-send "hotkey not configured"
 bindcode    $win+$alt+$tilde     exec "i3-msg exit"
-
-#────────────────────────────────────────────────────────────
-# SYSTEM
-#────────────────────────────────────────────────────────────
 
 # AUDIO 
 bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -55,75 +98,8 @@ bindsym $win+Return           exec --no-startup-id    alacritty
 # BROWSER
 bindsym $win+a                exec --no-startup-id    firefox
 
-# ROFI
-bindsym F1                    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
-
-# DUNST (test) TODO: FIX NOTIFICATIONS
-bindsym $win+x                exec --no-startup-id    killall dunst;notify-send "$(date)"
-bindsym $win+c                exec --no-startup-id    killall dunst;notify-send 'bmilcs notification test'
-
-# I3SPY
-bindsym $win+z                exec --no-startup-id    "xdotool windowclose $(xdotool search --classname i3wspy) 2> /dev/null; alacritty --hold --class i3wspy -e i3spy"
-
-# MUSIC
-bindsym $win+m                exec --no-startup-id    ~/bin/wm/i3fruni ncmpcpp 'alacritty --class=ncmpcpp --title=ncmpcpp -e ncmpcpp &'
-
 #────────────────────────────────────────────────────────────
-# WINDOW CONTROL
-#────────────────────────────────────────────────────────────
-
-# CLOSE
-bindsym $win+w kill
-
-# FOCUS
-bindsym $win+l              focus right
-bindsym $win+h              focus left
-bindsym $win+k              focus up
-bindsym $win+j              focus down
-bindsym $win+p              focus parent
-bindsym $win+o              focus child
-bindsym $win+$ctrl+space    floating toggle   
-bindsym $win+space          focus mode_toggle
-
-# MOVE
-bindsym $win+$ctrl+l        move   right  50 px
-bindsym $win+$ctrl+h        move   left   50 px
-bindsym $win+$ctrl+k        move   up     50 px
-bindsym $win+$ctrl+j        move   down   50 px
-
-# RESIZE
-bindsym $win+$shift+h       resize shrink  width   25 px or 25 ppt
-bindsym $win+$shift+j       resize shrink  height  25 px or 25 ppt
-bindsym $win+$shift+k       resize grow    height  25 px or 25 ppt
-bindsym $win+$shift+l       resize grow    width   25 px or 25 ppt 
-
-bindsym $win+$alt+h         resize shrink  width   3 px or 3 ppt
-bindsym $win+$alt+j         resize shrink  height  3 px or 3 ppt
-bindsym $win+$alt+k         resize grow    height  3 px or 3 ppt
-bindsym $win+$alt+l         resize grow    width   3 px or 3 ppt
-
-# GAPS
-bindsym $win+$ctrl+$alt+h   gaps   inner   all   plus 2
-bindsym $win+$ctrl+$alt+j   gaps   outer   all   plus 2
-bindsym $win+$ctrl+$alt+k   gaps   outer   all   minus 2
-bindsym $win+$ctrl+$alt+l   gaps   inner   all   minus 2
-
-# SPLITTING
-bindcode $win+47            split v
-bindcode $win+48            split h
-
-# FULL SCREEN
-bindsym $win+d              fullscreen toggle
-
-# SCRATCHPAD
-bindsym $win+s              scratchpad show
-bindsym $win+$ctrl+s        move scratchpad
-
-# TOGGLE FLOATING
-bindsym $win+$shift+s       floating toggle
-
-#────────────────────────────────────────────────────────────
-# WORKSPACES
+# I3 WORKSPACES
 #────────────────────────────────────────────────────────────
 
 set $ws1    "1"
@@ -160,11 +136,11 @@ bindsym $win+$alt+9   move container to workspace number $ws9
 bindsym $win+$alt+0   move container to workspace number $ws10
 
 #────────────────────────────────────────────────────────────
-# APPEARANCE
+# I3 APPEARANCE
 #────────────────────────────────────────────────────────────
 
 # FONT
-font pango:Iosevka Nerd Font 12
+font Iosevka 12
 
 # BORDERS
 smart_borders             on
@@ -195,7 +171,6 @@ set $yellow1  #EBCB8B
 set $green1   #A3BE8C
 set $purple1  #B48EAD
 
-# COLOR APPLICATION
 #class                    border    bg       fg       focus      child_border
 client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
 client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
@@ -205,20 +180,71 @@ client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
 client.background         $white1   
 
 #────────────────────────────────────────────────────────────
-# PACKAGE CUSTOMIZATIONS
+# I3 WINDOW CONTROL
 #────────────────────────────────────────────────────────────
 
-# DESKTOP ASSIGNMENT
-assign        [class="Thunderbird"]      3
-assign        [class="discord"]          3
-assign        [class="android-*"]        3
-assign        [class="Telegram*"]        3
+# CLOSE
+bindsym $win+w kill
 
-for_window    [instance="ncmpcpp"]                floating enable, resize set 575 725, move absolute position 2870 87
-for_window    [instance="i3wspy"]                 floating enable, resize set 1000 40, move absolute position 473 0
-for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1064 111, move absolute position 1214 51
-for_window    [class='Conky']                     floating enable
-for_window    [class="Galculator"]                floating enable, focus, resize set 1500 1200, move absolute position center
-for_window    [class="Gucharmap"]                 floating enable, focus
-for_window    [class="Font-manager"]              floating enable, focus
-for_window    [class="Lxappearance"]              floating enable, focus
+# FOCUS
+bindsym $win+l                focus right
+bindsym $win+h                focus left
+bindsym $win+k                focus up
+bindsym $win+j                focus down
+bindsym $win+p                focus parent
+bindsym $win+o                focus child
+bindsym $win+$ctrl+space      floating toggle   
+bindsym $win+space            focus mode_toggle
+
+# MOVE
+bindsym $win+$ctrl+l          move   right  50 px
+bindsym $win+$ctrl+h          move   left   50 px
+bindsym $win+$ctrl+k          move   up     50 px
+bindsym $win+$ctrl+j          move   down   50 px
+
+bindsym $win+$shift+$ctrl+l   move   right  1 px
+bindsym $win+$shift+$ctrl+h   move   left   1 px
+bindsym $win+$shift+$ctrl+k   move   up     1 px
+bindsym $win+$shift+$ctrl+j   move   down   1 px
+
+# RESIZE
+bindsym $win+$shift+h         resize shrink  width   25 px or 25 ppt
+bindsym $win+$shift+j         resize shrink  height  25 px or 25 ppt
+bindsym $win+$shift+k         resize grow    height  25 px or 25 ppt
+bindsym $win+$shift+l         resize grow    width   25 px or 25 ppt 
+
+bindsym $win+$alt+h           resize shrink  width   3 px or 3 ppt
+bindsym $win+$alt+j           resize shrink  height  3 px or 3 ppt
+bindsym $win+$alt+k           resize grow    height  3 px or 3 ppt
+bindsym $win+$alt+l           resize grow    width   3 px or 3 ppt
+
+# GAPS
+bindsym $win+$ctrl+$alt+h     gaps   inner   all   plus 2
+bindsym $win+$ctrl+$alt+j     gaps   outer   all   plus 2
+bindsym $win+$ctrl+$alt+k     gaps   outer   all   minus 2
+bindsym $win+$ctrl+$alt+l     gaps   inner   all   minus 2
+
+# SPLITTING
+bindcode $win+47              split v
+bindcode $win+48              split h
+
+# FULL SCREEN
+bindsym $win+f                fullscreen toggle
+
+# SCRATCHPAD
+bindsym $win+s                scratchpad show
+bindsym $win+$ctrl+s          move scratchpad
+
+# TOGGLE FLOATING
+bindsym $win+$shift+s         floating toggle
+
+#────────────────────────────────────────────────────────────
+# I3 WINDOW MANAGEMENT
+#────────────────────────────────────────────────────────────
+
+
+# WINDOW TO WORKSPACE
+assign        [class="Thunderbird"]               3
+assign        [class="discord"]                   3
+assign        [class="android-*"]                 3
+assign        [class="Telegram*"]                 3

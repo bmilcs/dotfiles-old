@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -9,8 +9,9 @@
 # TODO coc (ctrl+n) on autocomplete popup, create hotkey for this.
 # learn more about coc!
 #────────────────────────────────────────────────────────────
+sleep 0.5
 source _head
-
+_a i3 spy
 PROGNAME=$(basename "$0")
 
 # Check for xwininfo and xprop
@@ -25,28 +26,25 @@ match_int='[0-9][0-9]*'
 match_string='".*"'
 match_qstring='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
 
+window_id=$(xwininfo -int | sed -nre "s/^xwininfo: Window id: ($match_int) .*$/\1/p")
+
+eval "$(xwininfo -id $window_id \
+  | sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
+    -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
+    -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
+    -e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p")"
+
+echo -e "${BLU}${ITAL}resize set${NC}${B} $w $h ${NC}${BLU}| move absolute position${NC}${B} $x $y ${NC}${BLU}| ${ITAL}id: ${NC}${B}$window_id${CYN}"
+
 {
-  # dimensions & position
-  window_id=$(xwininfo -int | sed -nre "s/^xwininfo: Window id: ($match_int) .*$/\1/p")
-
-  eval $(xwininfo -id $window_id |
-    sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
-           -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
-           -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
-           -e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p" )
-
-  echo -e "${BLU}resize set${NC}${B} $w $h ${NC}| ${CYN}move absolute position${NC}${B} $x $y ${NC}|${GRN} \n"
-
-  # window name, class, etc.
-  echo "id=$window_id"
-  xprop -id $window_id \
+  xprop -id "$window_id" \
     | sed -nr \
       -e "s/^WM_CLASS\(STRING\) = ($match_qstring), ($match_qstring)$/instance=\1\nclass=\3/p" \
       -e "s/^WM_WINDOW_ROLE\(STRING\) = ($match_qstring)$/window_role=\1/p" \
       -e "/^WM_NAME\(STRING\) = ($match_string)$/{s//title=\1/; h}" \
       -e "/^_NET_WM_NAME\(UTF8_STRING\) = ($match_qstring)$/{s//title=\1/; h}" \
       -e '${g; p}'
+  #} | sort | tr "\n" " " | sed -r 's/^(.*) $/"\1/'
 } | sort | tr "\n" " " | sed -r 's/^(.*) $/\1/'
-
-# breakdown
-# sed -n sed
+#echo "$w $h, $x $y" | xclip -sel clip
+#sleep 60

@@ -7,20 +7,9 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #               GLOBAL BOOTSTRAP
 
-#
-# SYSTEM
-
-# usb automount (TODO FIX)
-pgrep -f udiskie || udiskie &
-
-# compositor
-pgrep -f picom || picom --config ~/.config/picom/config &
-
-# wallpaper
-pgrep -f nitrogen || nitrogen --restore &
-
-# notifications
-pgrep -f dunst || dunst
+# audio
+pgrep -f pulseaudio || pulseaudio --start &
+sleep 0.3
 
 #
 # INPUT
@@ -37,6 +26,19 @@ pgrep -f xcape || xcape -e 'Control_L=Escape'
 
 # keyboard: disable caps altogether
 xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock
+
+#
+# SYSTEM
+#
+
+# usb automount (TODO FIX)
+pgrep -f udiskie || udiskie &
+
+# compositor
+pgrep -f picom || picom --config ~/.config/picom/config &
+
+# wallpaper
+pgrep -f nitrogen || nitrogen --restore &
 
 # mouse: autohide
 pgrep -f unclutter || unclutter &
@@ -62,7 +64,7 @@ pgrep -f discord || discord &
 
 # polybar (giving apps a second to load)
 # sleep 1
-pgrep polybar || sh "$HOME/.config/polybar/launch.sh" &
+pgrep -f polybar || sh "$HOME/.config/polybar/launch.sh" &
 
 #
 # GRAVEYARD
