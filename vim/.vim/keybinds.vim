@@ -89,6 +89,9 @@ nnoremap <leader>R :%s///g<left><left>
 " clear highlighted matches
 nnoremap <leader>/ :nohlsearch<CR>
 
+" surround selection: ()
+" xnoremap <leader>( c()<Esc>P
+
 "────────────────────────────────────────────────────────────
 " GIT
 "────────────────────────────────────────────────────────────

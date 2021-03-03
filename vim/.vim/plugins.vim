@@ -48,7 +48,8 @@ colorscheme nord                              " color scheme
   " https://www.chrisatmachine.com/Neovim/04-vim-coc/
   " https://github.com/neoclide/coc.nvim/network/dependents?dependents_before=NDA0MzM0NjQyNA
   " https://www.chrisatmachine.com/Neovim/04-vim-coc/
-set pyxversion=3
+  
+  " set pyxversion=3
 set cmdheight=1
 set updatetime=300
 

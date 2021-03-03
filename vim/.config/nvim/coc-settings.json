@@ -5,8 +5,8 @@
     "markdown",
     "html",
     "yaml",
-    "json",
     "python",
+    "json",
     "sh"
   ],
   "diagnostic-languageserver.filetypes": {
