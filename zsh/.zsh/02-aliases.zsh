@@ -39,7 +39,7 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
 alias tr="tmux source ~/.tmux.conf"
-alias zr="source ~/.zshrc"
+alias zr="source ~/.zshenv"
 alias polyr=". ~/.config/polybar/launch.sh" 
 # tail -f ~/.config/polybar/log"
 
