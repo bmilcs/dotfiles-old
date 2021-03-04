@@ -66,27 +66,29 @@ ifzf() {
 
 izsh() {
   _a zsh
-  if [[ ! -f ~/.zsh/completion/_git ]] \
+  set -x
+  if   [[ ! -f ~/.zsh/completion/_git ]] \
     || [[ ! -f ~/.zsh/completion/git-completion.bash ]] \
-    || [[ ! -d ~/.zinit ]] || [[ ! -d ~/.zsh/completion ]] \
+    || [[ ! -d ~/.zsh/completion ]] \
     || [[ ! -d ~/.config/zsh ]]; then
-    _o setup required_
+    set +x
     # create directories
     mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
     # install zsh git completion
-    _a zsh: git autocompletion
+    _o installing git autocompletion
     curl -o ~/.zsh/completion/git-completion.bash \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
     curl -o ~/.zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     _s
+  fi
+  if [[ ! -d ~/.zinit ]]; then
     # install zinit
-    _a zsh: zinit plugin manager
+    _o installing zinit plugin manager
     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
     _s
-  else
-    _s all set
   fi
+  _s all set
 }
 
 ivim() {
