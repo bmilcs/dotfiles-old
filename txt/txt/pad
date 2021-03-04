@@ -4,6 +4,7 @@
 - starship
 
 [homelab]
+- automate updates via ansible!!
 - docker, remote dev (rsync compose?)
 - mopidy docker (mpd server)
 
