@@ -49,7 +49,8 @@ bindkey -v                    # vim mode
 
 setopt autocd                 # cd into dir's w/o cd prefix
 setopt cdable_vars            # autocd, expand non-/path as ~
-setopt cd_silent              # don't print dir after cd
+[[ $DISTRO == arch ]] \
+&& setopt cd_silent              # don't print dir after cd
 
 # history
 
@@ -137,8 +138,10 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
 # pip completion
-eval "`pip completion --zsh`"
-compctl -K _pip_completion pip3
+if [[ "$DISTRO" == arch ]]; then
+  eval "`pip completion --zsh`"
+  compctl -K _pip_completion pip3
+fi
 
 #
 # PROMPT, COLORS, ETC. 
