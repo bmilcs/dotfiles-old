@@ -10,7 +10,7 @@ filetype plugin indent on                       " help plugins load
 call plug#begin('~/.vim/plugged')               " plugin manager
   Plug 'arcticicestudio/nord-vim'               " colorscheme
   Plug 'tpope/vim-sensible'                     " general improvements
-  Plug '~/.fzf'                                 " fuzzy finder
+  Plug '~/.config/fzf'                          " fuzzy finder
   Plug 'vim-airline/vim-airline'                " status bar
   Plug 'christoomey/vim-tmux-navigator'         " tmux
   Plug 'vim-airline/vim-airline-themes'         " status bar themes
