@@ -14,7 +14,6 @@ if [[ -f $ustatus ]]; then ulast="$(cat "$ustatus")" ; else
   ulast="00" && echo "$unow" > "$ustatus" ; fi
 
 if [[ ! "$unow" == "$ulast" ]]; then
-  exit 1
   source $HOME/bin/_head ; _t bmilcs daily update 
   _a "last ran" ; _i "$DAYOFWEEK, $ulast of $MONTH"
   _t "zinit self-update" && echo && zinit self-update && echo &&_s "\n" 
