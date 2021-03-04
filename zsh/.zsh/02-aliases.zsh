@@ -49,8 +49,8 @@ alias polyr=". ~/.config/polybar/launch.sh"
 
 if [[ $DISTRO = arch ]]; then # ARCH
   # aur | yay
-  alias pacman='sudo pacman' ; compdef pacman='pacman'
-  alias pm='pacman' ; compdef pm='pacman'
+  alias pacman='sudo pacman';compdef pacman='pacman'
+  alias pm='pacman';compdef pm='pacman'
   alias pms='pacman -S';compdef pms='pacman'
   alias pmls='pacman -Qe|less';compdef pmls='pacman'
   alias pmg='pacman -Qe|grep';compdef pmg='pacman'
@@ -61,6 +61,8 @@ if [[ $DISTRO = arch ]]; then # ARCH
   alias yayll='yay -Q | less';compdef yayll='yay'
   alias yayg='yay -Q | grep';compdef yayg='yay'
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
+  # arch specific
+  alias cat="bat";compdef cat="bat"
   alias netr='sudo systemctl restart \ 
     {systemd-networkd.service,systemd-resolved.service,iwd.service}'
 else # DEBIAN
@@ -130,9 +132,6 @@ alias lsd="ll -d */"           # ls: dirs only
 #────────────────────────────────────────────────────────────
 # STOCK ENHANCEMENTS
 #────────────────────────────────────────────────────────────
-
-# rust replacements
-alias cat="bat"                   ; compdef cat="bat"
 
 # text editors
 alias nano="nvim"                 ; compdef nano="nvim"
