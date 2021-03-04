@@ -79,7 +79,6 @@ fi
 
 # docker
 if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
-  _a docker-compose up
   dcr
 fi
 

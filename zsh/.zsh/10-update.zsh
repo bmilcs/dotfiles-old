@@ -7,14 +7,17 @@
 #────────────────────────────────────────────────────────────
 # ZINIT & SYSTEM
 #────────────────────────────────────────────────────────────
-
+set -x
 unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-ustatus="$HOME/.config/up/system_zinit.bm"
+ustatus="$HOME/.config/up/system.bm"
 
-if [ -f $ustatus ]; then ulast="$(cat "$ustatus")" ; else
+if [[ -f $ustatus ]]; then ulast="$(cat "$ustatus")" ; else
   ulast="00" && echo "$unow" > "$ustatus" ; fi
 
 if [[ ! "$unow" == "$ulast" ]]; then
+
+  set +x
+  exit 1
   source $HOME/bin/_head ; _t bmilcs daily update 
   _a "last ran" ; _i "$DAYOFWEEK, $ulast of $MONTH"
   _t "zinit self-update" && echo && zinit self-update && echo &&_s "\n" 

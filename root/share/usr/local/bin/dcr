@@ -6,22 +6,24 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOCKER-COMPOSE & REPO UPDATE [./dcr]
 #────────────────────────────────────────────────────────────
-
-source _head
-_a docker-compose update
 #set -e
 
+source _head
+_t docker-compose 
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
+
+_a docker: update
 docker-compose up -d --remove-orphans || _e && _s
 
-_a docker repo: commit all
+_a docker: add \& commit to repo
+
 /usr/bin/git \
   --git-dir="$HOME"/docker/.git/ \
   --work-tree="$HOME"/docker \
   commit -a -m "automated update" \
   && _s \
-  && _a docker repo: git push \
+  && _a docker: git push repo \
   && /usr/bin/git \
     --git-dir=/home/bmilcs/docker/.git/ \
     --work-tree=/home/bmilcs/docker push \

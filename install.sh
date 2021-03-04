@@ -11,7 +11,7 @@ source ./bin/bin/_head
 # title
 _t [bmilcs] dotfile installation
 _i this install script is specifically tailored to my needs.
-_i ${CYN}${B}arch${NC}: stows everything: home \& sys configs, networkd, iwctl, etc
+_i ${CYN}${B}arch${NC}: stows ALL: home \& sys configs, networkd, iwctl, etc
 _i ${CYN}${B}debian${NC}: stows minimal setup, defined by \$mini
 
 #────────────────────────────────────────────────────────────
@@ -26,6 +26,9 @@ exceptions=("img" "opt" "root")
 
 # all: req packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
+aptpkg=("fd-find") # "bat"
+pacpkg=("fd" "bat")
+
 
 # repo path
 D=$HOME/bm
@@ -114,9 +117,13 @@ _o "${pkgs[@]}"
 if [[ ${DISTRO} == arch* ]]; then
   pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo pacman -Syyy "${pkgs[@]}" && _o installed "${pkgs[@]}")
+  pacman -Qi "${pacpkg[@]}" > /dev/null 2>&1 \
+    || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
 elif [[ ${DISTRO} == debian* ]]; then
   dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install "${pkgs[@]}" && _o installed "${pkgs[@]}")
+  dpkg -s "${aptpkg[@]}" > /dev/null 2>&1 \
+    || (sudo apt-get install "${aptpkg[@]}" && _o installed "${aptpkg[@]}")
 else
   _e "distro not setup yet! update me!" && _i "fix: "$D"/install.sh"
   exit 1
