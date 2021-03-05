@@ -1,10 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 I3 SPY HELPER [./i3gospy]
+#                 I3 PAD [./i3pad]
 #────────────────────────────────────────────────────────────
 
-i3hfr i3spy "alacritty --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &"
+sleep .1
+nvim ~/bm/readme.md

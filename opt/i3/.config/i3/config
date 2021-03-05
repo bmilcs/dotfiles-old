@@ -17,8 +17,8 @@ set_from_resource $D echo "$D"
 
 
 # README
-bindsym $win+$shift+n    exec --no-startup-id   i3hfr readmemd 'alacritty --class=readmemd --title=readmemd -e i3nvim $D/readme.md'
-for_window               [instance="readmemd"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+bindsym $win+$shift+n    exec --no-startup-id   i3hfr i3readme "alacritty --class=i3readme --title=i3readme -e i3readme &"
+for_window               [instance="i3readme"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
 
 # SCRATCHPAD
 bindsym $win+n           exec --no-startup-id    i3hfr i3pad "alacritty --class=i3pad --title=i3pad -e i3pad &"
@@ -37,10 +37,6 @@ no_focus                 [instance="i3debug"]
 bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &'
 for_window               [instance="i3spy"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
 #no_focus                 [instance="i3spy"]
-
-bindsym $win+r           exec --no-startup-id    i3tt i3scratched $HOME/txt/pad
-for_window               [instance="i3scratched"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
-
 
 # DUNST 
 bindsym $win+x    exec --no-startup-id    notify-send "$(date) is the date bitch. "
