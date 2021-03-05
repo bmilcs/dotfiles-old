@@ -11,6 +11,24 @@
 source _head
 _t cfg editor
 
+sudogenls() {
+  _a "$2"
+  unset options i
+  unset optz ii
+  while IFS= read -r -d $'\0' f; do
+    options[i++]="$f"
+    #f=$(echo $f | sed -En "s/(.*)\/home\/bmilcs\/bm(\/.*$)/\1 \2/p")
+  done < <(find "$1" -type f -name "*" -print0 | sort -z)
+  select opt in "${options[@]}" $3; do
+    case $opt in
+      *)
+        [[ -f "$opt" ]] && sudo nvim "$opt"
+        exit 0
+        ;;
+    esac
+  done
+}
+
 genls() {
   _a "$2"
   unset options i
@@ -44,6 +62,7 @@ if [ $# = 0 ]; then
   _o "${B}   r  ${BLU}\t  rofi${NC}"
   _o "${B}   e  ${BLU}\t  cfg script${NC}"
   _o "${B}   i  ${BLU}\t  i3${NC}"
+  _o "${B}   u  ${BLU}\t  usr/local/bin${NC}"
   _o "${B}  bms ${BLU}\t  dotfile install${NC}"
   _o "${B}  bsp ${BLU}\t  bspwm${NC}"
   _o "${B} tmux ${BLU}\t  tmux${NC}"
@@ -60,6 +79,7 @@ case $sel in
   v) genls "$D"/vim VIM ;;
   p) genls "$D"/opt/polybar/.config/polybar/ POLYBAR ;;
   r) genls "$D"/opt/rofi ROFI ;;
+  u) sudogenls /usr/local/bin BIN ;;
   x | xorg) genls "$D"/opt/xorg XORG ;;
   n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
   k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;

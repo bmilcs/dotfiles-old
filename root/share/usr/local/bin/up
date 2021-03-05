@@ -10,8 +10,6 @@
 source _head
 source _distro
 
-_t system update
-
 if [[ $DISTRO = arch* ]]; then
 
   #
@@ -22,20 +20,27 @@ if [[ $DISTRO = arch* ]]; then
   _a pacman/aur
   if [[ $# == 0 ]]; then
     yay -Syyyuuu && _s
-  else _o skipped: debugging; fi
+  else
+    _o skipped: debugging
+  fi
 
   # repos: once daily
   if [[ -L /usr/local/bin/upr ]]; then
-    _a repos
-    ustatus="$HOME/.config/up/repos.bm"
-    unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-    if [ -f $ustatus ]; then ulast="$(cat "$ustatus")"; else
-      ulast="00" && mkdir -p ~/.config/up && echo "$unow" > "$ustatus"
+    rstatus="$HOME/.config/up/repos.bm"
+    today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
+
+    if [ -f "$rstatus" ]; then
+      rlast="$(cat "$rstatus")"
+    else
+      mkdir -p ~/.config/up
+      rlast="00"
     fi
-    if [[ ! "$unow" == "$ulast" ]]; then
+
+    if [[ ! "$today" == "$rlast" ]]; then
       _i "running: daily update for $DAYOFWEEK" "\n"
-      upr && echo "$unow" > "$ustatus" && echo && _s "\n"
+      upr && echo "$today" > "$rstatus" && echo && _s "\n"
     else _o skipped: "$DAYOFWEEK's update completed earlier today"; fi
+
   fi
 
   # ARCH END
