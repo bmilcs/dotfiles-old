@@ -1,14 +1,20 @@
-[arch]
-- fix notifications
-- udiskie/automount
-- starship
+[house]
+- door hinge, patio
+- clean porch
+- crown/base
 
 [homelab]
 - automate updates via ansible!!
 - docker, remote dev (rsync compose?)
 - mopidy docker (mpd server)
 
-[house]
-- door hinge, patio
-- clean-up porch
-- crown (office)
+[reminders]
+- i3: copy/paste to middle mouse clipboard
+- dunst: make larger in size & duration
+- udiskie: usb/automount/notifications
+- starship prompt
+
+[goals]
+- learn advanced bash
+  https://learnxinyminutes.com/docs/bash/
+
