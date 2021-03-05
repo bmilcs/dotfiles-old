@@ -7,16 +7,31 @@
 #────────────────────────────────────────────────────────────
 # ZINIT & SYSTEM
 #────────────────────────────────────────────────────────────
-unow="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-ustatus="$HOME/.config/up/system.bm"
+today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
+ustatus="$HOME/.config/up/up.bm"
+zstatus="$HOME/.config/up/zsh.bm"
 
-if [[ -f $ustatus ]]; then ulast="$(cat "$ustatus")" ; else
-  mkdir -p ~/.config/up ; ulast="00" && echo "$unow" > "$ustatus" ; fi
+[[ -f $ustatus ]] && slast="$(cat "$ustatus")" || slast=00 
+[[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 
-if [[ ! "$unow" == "$ulast" ]]; then
-  source $HOME/bin/_head ; _t bmilcs daily update 
-  _a "last ran" ; _i "$DAYOFWEEK, $ulast of $MONTH"
-  _t "zinit: self update" && echo && zinit self-update && echo &&_s "\n" 
-  _t "zinit: plugins update" && echo && zinit update && echo &&_s "\n" 
-  up && echo "$unow" > "$ustatus" 
+if [[ "$slast" == 0 ]] && [[ "$zlast" == 00 ]]; then
+  mkdir -p ~/.config/up; 
+fi
+
+if [[ ! "$today" == "$zlast" ]]; then
+  _t "daily update: zsh (zinit)"
+  _i "last ran" ; _i "$DAYOFWEEK, $zlast of $MONTH"
+
+  (
+  _a "zinit: self update" 
+  zinit self-update && _s
+  _a "zinit: plugins update"
+  zinit update && _s
+  ) && echo "$today" > "$zstatus" 
+fi
+
+if [[ ! "$today" == "$slast" ]]; then
+  _t "daily update: system"
+  _i "last ran" ; _i "$DAYOFWEEK, $slast of $MONTH"
+  up && echo "$today" > "$ustatus" 
 fi
