@@ -9,3 +9,4 @@ zsh/.zsh/completion/_git
 zsh/.zsh/completion/git-completion.bash
 .netrwhist
 neomutt
+.zcompdump
