@@ -97,12 +97,13 @@ alias bmi='cd $D && ./install.sh'
 alias bme='vim $D/install.sh'
 
 # git
-alias gs='$(git rev-parse) || cd $D && git status -s'
-alias gss='$(git rev-parse) || cd $D && git status'
-alias gps='$(git rev-parse) || cd $D && git push'
-alias gpl='$(git rev-parse) || {cd $D && git submodule update --remote --merge} && git pull'
-#alias g='$(git rev-parse) || cd $D && git '
+alias gs='$(git rev-parse > /dev/null 2>&1) || cd $D && git status -s'
+alias gss='$(git rev-parse > /dev/null 2>&1) || cd $D && git status'
+alias gps='$(git rev-parse > /dev/null 2>&1) || cd $D && git push'
+alias gpl='$(git rev-parse > /dev/null 2>&1) || {cd $D && git submodule update --remote --merge} && git pull'
+alias gd='$(git rev-parse > /dev/null 2>&1) || cd $D && forgit::diff --staged'
 #alias gd='$(git rev-parse) || cd $D && git diff'
+#alias g='$(git rev-parse) || cd $D && git '
 #alias ga='$(git rev-parse) || cd $D && git add'
 
 #────────────────────────────────────────────────────────────
