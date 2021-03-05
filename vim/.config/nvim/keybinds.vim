@@ -57,6 +57,13 @@ nnoremap <silent> <leader>wr :e!<CR>
 " (q)uit current file
 nnoremap <silent> <leader>wq :close<CR>
 
+" tab navigation
+nnoremap <C-j> :tabprevious<CR>                                                                            
+nnoremap <C-k> :tabnext<CR>
+
+" vertical (s)plit > explore
+nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
+
 " vertical (s)plit > explore
 nnoremap <silent> <leader>ws :Vexplore<CR>
 
@@ -74,10 +81,10 @@ nnoremap <silent> <leader>SS :Split<CR>
 "────────────────────────────────────────────────────────────
 
 " (d)elete double white(s)pace lines
-nnoremap <silent> <leader>ds :%s/^$\n^$//g<CR>
+nnoremap <silent> <leader>ds :%s/^$\n^$//g<CR><C-o>
 
 " (d)elete all white(s)pace lines
-nnoremap <silent> <leader>dS :%s/^$\n//g<CR>
+nnoremap <silent> <leader>dS :%s/^$\n//g<CR><C-o>
 
 " patented titlebar swap
 nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1────────────────────────────────────────────────────────────/g<CR>
@@ -91,6 +98,13 @@ nnoremap <leader>/ :nohlsearch<CR>
 
 " surround selection: ()
 " xnoremap <leader>( c()<Esc>P
+
+" replay last macro
+nnoremap , @
+nnoremap <leader>, @@
+
+" convert link to markdown
+nnoremap <leader>l   0Di[]()^[P^[F]i^[
 
 "────────────────────────────────────────────────────────────
 " GIT

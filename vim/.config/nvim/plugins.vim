@@ -6,32 +6,46 @@
 "                VIM PLUGINS RC
 "────────────────────────────────────────────────────────────
 
-filetype plugin indent on                       " help plugins load
-call plug#begin('~/.vim/plugged')               " plugin manager
-  Plug 'arcticicestudio/nord-vim'               " colorscheme
+filetype plugin indent on                     " help plugins load
+call plug#begin('~/.config/nvim/plugged')     " plugin manager
+
+Plug 'junegunn/vim-plug'
   Plug 'tpope/vim-sensible'                     " general improvements
+  Plug 'arcticicestudio/nord-vim'               " colorscheme
   Plug '~/.config/fzf'                          " fuzzy finder
   Plug 'vim-airline/vim-airline'                " status bar
-  Plug 'christoomey/vim-tmux-navigator'         " tmux
-  Plug 'vim-airline/vim-airline-themes'         " status bar themes
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+    Plug 'vim-airline/vim-airline-themes'         " status bar themes
+  Plug 'christoomey/vim-tmux-navigator'         " tmux vim nav
   Plug 'mboughaba/i3config.vim',                " language: i3config 
   Plug 'neoclide/coc.nvim',                     " completion
   Plug 'kovetskiy/sxhkd-vim'                    " language: sxhkd
-  Plug 'tpope/vim-rhubarb'                      " git open lines > visually selected
   Plug 'tpope/vim-fugitive'                     " git core
+  Plug 'tpope/vim-rhubarb'                      " git open lines > visually selected
   Plug 'jreybert/vimagit'                       " git diff
   Plug 'airblade/vim-gitgutter'                 " git gutter symbols
-  " Plug 'dense-analysis/ale',                    " sh syntax analysis
-  " Plug 'chrisbra/Colorizer'                     " color hexcode highlighter
-  " Plug 'junegunn/fzf.vim'
-  "  Plug 'mhinz/vim-grepper'                      " multi-file find and replace.
-  "  Plug 'preservim/nerdtree'                     " file browser
-  "      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-  "      \ Plug 'ryanoasis/vim-devicons'
-  "Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }      " sh parser, format, interpret
+  Plug 'godlygeek/tabular'                      " tabular (must before markdown)
+    Plug 'plasticboy/vim-markdown'                " markdown syntax, match, map
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+" Plug 'dense-analysis/ale',                  " sh syntax analysis
+" Plug 'chrisbra/Colorizer'                   " color hexcode highlighter
+" Plug 'junegunn/fzf.vim'
+"  Plug 'mhinz/vim-grepper'                   " multi-file find and replace.
+"  Plug 'preservim/nerdtree'                     " file browser
+"      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+"      \ Plug 'ryanoasis/vim-devicons'
+"Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }     " sh parser, format, interpret
+
 call plug#end()                                 " end of plugins
-set rtp+=~/.fzf
+delc PlugUpgrade                                " disable upgrade (automatic now)
+autocmd VimEnter *                              " auto-install missing plugins
+  \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall | q
+  \| endif
+
+set rtp+=~/.config/fzf
+
+" auto update vim-plug
+
 
 "────────────────────────────────────────────────────────────
 " NORD THEME
@@ -64,10 +78,10 @@ let g:coc_enable_locationlist = 1
 "────────────────────────────────────────────────────────────
 
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-j> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+vmap <C-k> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'

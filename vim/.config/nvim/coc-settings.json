@@ -1,5 +1,21 @@
 {
+  "codeLens.enable": true,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.formatOnType": true,
   "coc.preferences.previewMaxHeight": 50,
+  "diagnostic.format": "%message [%source]",
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "snippets.ultisnips.directories":
+  [
+    "UltiSnips",
+    "~/.vim/snips"
+  ],
+  "markdownlint.config": {
+    "default": true,
+    "line-length": false
+  },
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -32,5 +48,9 @@
         "-kp"
       ]
     }
-  }
+  },
+  // python config
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true
 }
+

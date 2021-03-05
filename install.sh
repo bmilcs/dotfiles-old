@@ -11,8 +11,8 @@ source ./bin/bin/_head
 # title
 _t [bmilcs] dotfile installation
 _i this install script is specifically tailored to my needs.
-_i ${CYN}${B}arch${NC}: stows ALL: home \& sys configs, networkd, iwctl, etc
-_i ${CYN}${B}debian${NC}: stows minimal setup, defined by \$mini
+_i "${CYN}${B}arch${NC}": stows ALL: home \& sys configs, networkd, iwctl, etc
+_i "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
 
 #────────────────────────────────────────────────────────────
 # INPUT
@@ -28,7 +28,6 @@ exceptions=("img" "opt" "root")
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find") # "bat"
 pacpkg=("fd" "bat")
-
 
 # repo path
 D=$HOME/bm
@@ -66,14 +65,15 @@ ifzf() {
 
 izsh() {
   _a zsh
-  set -x
+
   if   [[ ! -f ~/.zsh/completion/_git ]] \
     || [[ ! -f ~/.zsh/completion/git-completion.bash ]] \
     || [[ ! -d ~/.zsh/completion ]] \
     || [[ ! -d ~/.config/zsh ]]; then
-    set +x
+
     # create directories
     mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
+
     # install zsh git completion
     _o installing git autocompletion
     curl -o ~/.zsh/completion/git-completion.bash \
@@ -82,23 +82,33 @@ izsh() {
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     _s
   fi
+
   if [[ ! -d ~/.zinit ]]; then
     # install zinit
     _o installing zinit plugin manager
     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
     _s
   fi
+
   _s all set
 }
 
 ivim() {
   _a vim
-  if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]; then
+  if [[ ! -L ~/.config/nvim/plugged/vim-plug/plug.vim ]] \
+    || [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+
     _o setup required
     _a vim: vim-plug plugin manager
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
-      --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+    # cleanup previous install method
+    rm -rf "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
+
+    mkdir -p ~/.config/nvim/{autoload,plugged}
+    git clone https://github.com/junegunn/vim-plug.git ~/.config/nvim/plugged/vim-plug
+    # bm - auto-update itself:
+    ln -s ~/.config/nvim/plugged/vim-plug/plug.vim ~/.config/nvim/autoload
+    vim +PlugInstall
     _s
   else
     _s all set
