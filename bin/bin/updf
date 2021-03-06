@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 UPDATE DOTFILES TEST [./updf]
+#────────────────────────────────────────────────────────────
+source _head
+_t  
+#────────────────────────────────────────────────────────────
+# PULL DOTFILE UPDATES IF CLEAN GS
+#────────────────────────────────────────────────────────────
+
+_t dotfile repo
+set -x
+
+clean="$(git --git-dir="$D"/.git status | grep -i clean)"
+echo $clean
+
+if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;
+then
+  _a git status
+  _o clean repo: issuing git pull
+  git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
+else
+  _w unclean: skipping sync 
+  _o commit changes \& manually git pull
+fi
+set +x 
