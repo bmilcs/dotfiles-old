@@ -15,10 +15,14 @@ _t
 _t dotfile repo
 set -x
 
-clean="$(git --git-dir="$D"/.git status | grep -i clean)"
+git --git-dir="$D"/.git status | grep "clean"
+
+exit 1
+
+clean="$(git --git-dir="$D"/.git status | grep "clean")"
 echo $clean
 
-if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;
+if [[ ! -z "$clean" ]] ;
 then
   _a git status
   _o clean repo: issuing git pull
