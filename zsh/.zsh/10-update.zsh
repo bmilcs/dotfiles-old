@@ -13,7 +13,7 @@ today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
 ustatus="$HOME/.config/up/up.bm"
 zstatus="$HOME/.config/up/zsh.bm"
 dstatus="$HOME/.config/up/dotfiles.bm"
-D=${D:-/home/bmilcs/bm}
+D="${D:-/home/bmilcs/bm}"
 
 [[ -d ~/.config/up ]] || mkdir -p ~/.config/up
 [[ -f $ustatus ]] && slast="$(cat "$ustatus")" || slast=00 
@@ -21,14 +21,15 @@ D=${D:-/home/bmilcs/bm}
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
 
+alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
-
-  #D="${D:-/home/bmilcs/bm}"
-  g="git --git-dir="$D"/.git"
-  clean="$(git --git-dir="$D"/.git status | grep "clean")"
 
   _a local health
   _i checking for undocumented changes
+
+  D="${D:-/home/bmilcs/bm}"
+  clean="$(g status | grep "clean")"
+
 
   if [[ ! -z "$clean" ]] ; then
 
@@ -36,20 +37,20 @@ if [[ ! "$today" == "$dlast" ]]; then
 
     _a update check
     _i comparing local vs remote dotfiles
-    $g remote update > /dev/null 2>&1 # hide this afterward
+    g remote update > /dev/null 2>&1 # hide this afterward
 
-    if [[ "$($g status -uno)" == *"ahead"* ]]; then
+    if [[ "$(g status -uno)" == *"ahead"* ]]; then
       _w "ahead of origin/main"
       _a pushing changes
       _i updating remote dotfiles repo "\n"
-      $g push \
+      g push \
       && echo && _s
 
-    elif [[ "$($g status -uno)" == *"behind"* ]]; then
+    elif [[ "$(g status -uno)" == *"behind"* ]]; then
       _w "behind origin/main"
       _a git pull
       _i updating local dotfiles "\n"
-      $g pull \
+      g pull \
       && echo && _s
     else
       _s "up-to-date": no action necessary
@@ -59,7 +60,7 @@ if [[ ! "$today" == "$dlast" ]]; then
     _aa todo
     _i commit local changes "\n"
 
-    $g status -s && echo
+    g status -s && echo
 
     _s done "\n"
   fi
