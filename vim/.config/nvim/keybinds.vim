@@ -21,6 +21,11 @@
 " terminal            tmap
 " <silent>            hide command in statusline
 "────────────────────────────────────────────────────────────
+" PERSISTENT MACROS
+"────────────────────────────────────────────────────────────
+let @v='"v   ciW`^R"`^[l'
+
+"────────────────────────────────────────────────────────────
 " COC
 "────────────────────────────────────────────────────────────
 
@@ -92,6 +97,9 @@ nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1───────�
 " find/replace all
 nnoremap <leader>r :%s///gc<left><left><left>
 nnoremap <leader>R :%s///g<left><left>
+
+" search literally
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " clear highlighted matches
 nnoremap <leader>/ :nohlsearch<CR>
@@ -188,6 +196,11 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+y$
 nnoremap <leader>y "+y
+
+" delete to system clipboard (cut)
+vnoremap <leader>d "+d
+nnoremap <leader>D "+d$
+nnoremap <leader>d "+d
 
 " put from system clipboard (paste)
 nnoremap <leader>p "+p
