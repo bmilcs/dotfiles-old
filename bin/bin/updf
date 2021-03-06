@@ -18,17 +18,15 @@ D="${D:-/home/bmilcs/bm}"
 g="git --git-dir="$D"/.git"
 clean="$(git --git-dir="$D"/.git status | grep "clean")"
 
+_a local health
+_i checking for undocumented changes
 
-_a local dotfiles
-_i checking for changes
+if [[ ! -z "$clean" ]] ; then
 
+  _s clean: no action necessary
 
-if [[ ! -z "$clean" ]] ;
-then
-
-  _s clean repo
-  _a universal update check
-
+  _a update check
+  _i comparing local vs remote dotfiles
   $g remote update # hide this afterward
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
@@ -42,8 +40,14 @@ then
     _o updating local dotfiles
     $g pull
   else
-    _i "up-to-date": no changes needed
+    _s "up-to-date": no action necessary
   fi
 else
-  _e unclean: add \& commit local changes
+  _e dirty: unable to proceed
+  _aa todo
+  _i commit local changes "\n"
+
+  $g status -s && echo
+
+  _s done "\n"
 fi
