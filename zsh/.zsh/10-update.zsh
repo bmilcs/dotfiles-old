@@ -21,6 +21,8 @@ D=${D:-/home/bmilcs/bm}
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
 _t dotfile repo
+echo "if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;"
+
 if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;
 then
   _a git status
