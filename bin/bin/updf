@@ -27,7 +27,7 @@ if [[ ! -z "$clean" ]] ; then
 
   _a update check
   _i comparing local vs remote dotfiles
-  $g remote update # hide this afterward
+  $g remote update > /dev/null 2>&1 # hide this afterward
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
     _w "ahead of origin/main"
