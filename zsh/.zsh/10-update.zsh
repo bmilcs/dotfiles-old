@@ -24,7 +24,6 @@ D="${D:-/home/bmilcs/bm}"
 alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
 
-  confirm='echo "$today" > "$dstatus"'
   _a local health
   _i checking for undocumented changes
 
@@ -33,7 +32,7 @@ if [[ ! "$today" == "$dlast" ]]; then
 
 
   if [[ ! -z "$clean" ]] ; then
-    $confirm
+    echo "$today" > "$dstatus"
     _s clean: no action necessary
 
     _a update check
