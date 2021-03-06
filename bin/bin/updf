@@ -33,12 +33,15 @@ if [[ ! -z "$clean" ]] ; then
     _w "ahead of origin/main"
     _a pushing changes
     _o updating remote dotfiles repo
-    $g push 
+    $g push \
+    && echo && _s
+
   elif [[ "$($g status -uno)" == *"behind"* ]]; then
     _w "behind origin/main"
     _a git pull
     _o updating local dotfiles
-    $g pull
+    $g pull \
+    && echo && _s
   else
     _s "up-to-date": no action necessary
   fi
