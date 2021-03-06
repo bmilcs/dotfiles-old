@@ -15,10 +15,6 @@ _t
 _t dotfile repo
 set -x
 
-git --git-dir="$D"/.git status | grep "clean"
-
-exit 1
-
 clean="$(git --git-dir="$D"/.git status | grep "clean")"
 echo $clean
 
@@ -26,6 +22,7 @@ if [[ ! -z "$clean" ]] ;
 then
   _a git status
   _o clean repo: issuing git pull
+  exit
   git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
 else
   _w unclean: skipping sync 
