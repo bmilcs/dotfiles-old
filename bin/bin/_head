@@ -119,7 +119,7 @@ _a() {
 
 # announce [plain]
 _aa() {
-  echo -e "\n${B}[${NC}$*${B}]${NC}"
+  echo -e "\n${YLW}${B}[${YLW}$*${YLW}${B}]${NC}"
 }
 
 # question
