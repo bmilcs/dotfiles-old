@@ -21,8 +21,7 @@ D=${D:-/home/bmilcs/bm}
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
 _t dotfile repo
-echo "if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;"
-
+set -x
 if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;
 then
   _a git status
@@ -32,6 +31,7 @@ else
   _w unclean: skipping sync 
   _o commit changes \& manually git pull
 fi
+set +x 
 
 if [[ ! "$today" == "$zlast" ]]; then
   _t "daily update: zsh (zinit)"
