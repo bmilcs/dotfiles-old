@@ -22,13 +22,12 @@ echo $clean
 
 git remote update
 if [[ "$(git status -uno)" == *"ahead"* ]]; then
-  echo "ahead"
+  _i "ahead"
 elif [[ "$(git status -uno)" == *"behind"* ]]; then
-  echo "behind"
+  _i "behind"
 else
-  echo "up-to-date"
+  _i "up-to-date"
 fi
-
 
   exit 1
 
