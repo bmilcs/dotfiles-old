@@ -55,7 +55,7 @@ colorscheme nord                              " color scheme
 " COC
 "────────────────────────────────────────────────────────────
 
-let g:float_preview#docked = 1
+let g:coc_disable_startup_warning = 1
 
 " close the preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
