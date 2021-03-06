@@ -32,12 +32,12 @@ elif [[ "$($g status -uno)" == *"behind"* ]]; then
   _w "behind origin/main"
   _a git pull
   _o updating local dotfiles
+  $g pull
 else
-  _i "up-to-date"
-  _o no changes needed
+  _i "up-to-date": no changes needed
 fi
 
-  exit 1
+exit 1
 
 clean="$(git --git-dir="$D"/.git status | grep "clean")"
 echo $clean
