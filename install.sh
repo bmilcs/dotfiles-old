@@ -149,6 +149,9 @@ _s all set
 # ARCH LINUX
 if [[ ${DISTRO} == arch* ]]; then
 
+  # allow dmesg as user
+  sudo sysctl kernel.dmesg_restrict=0
+
   # shell
   izsh
 
