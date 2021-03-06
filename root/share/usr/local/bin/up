@@ -25,6 +25,7 @@ if [[ $DISTRO = arch* ]]; then
   fi
 
   # repos: once daily
+  _a repos
   if [[ -L /usr/local/bin/upr ]]; then
     rstatus="$HOME/.config/up/repos.bm"
     today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
@@ -39,7 +40,7 @@ if [[ $DISTRO = arch* ]]; then
     if [[ ! "$today" == "$rlast" ]]; then
       _i "running: daily update for $DAYOFWEEK" "\n"
       upr && echo "$today" > "$rstatus" && echo && _s "\n"
-    else _o skipped: "$DAYOFWEEK's update completed earlier today"; fi
+    else _o skipped: "${DAYOFWEEK,,}'s update completed earlier today"; fi
 
   fi
 

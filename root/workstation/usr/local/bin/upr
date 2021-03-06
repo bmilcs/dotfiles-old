@@ -7,6 +7,7 @@
 #               REPO UPDATER              
 #────────────────────────────────────────────────────────────
 source _head
+_a repos
 
 exceptions=("nerd-fonts-2.0.0")
 

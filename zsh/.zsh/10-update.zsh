@@ -24,6 +24,7 @@ D="${D:-/home/bmilcs/bm}"
 alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
 
+  confirm='echo "$today" > "$dstatus"'
   _a local health
   _i checking for undocumented changes
 
@@ -32,7 +33,7 @@ if [[ ! "$today" == "$dlast" ]]; then
 
 
   if [[ ! -z "$clean" ]] ; then
-
+    $confirm
     _s clean: no action necessary
 
     _a update check
@@ -58,12 +59,11 @@ if [[ ! "$today" == "$dlast" ]]; then
   else
     _e dirty: unable to proceed
     _aa todo
-    _i commit local changes "\n"
-
-    g status -s && echo
-
+    _i commit local changes
+    g status -s
     _s done "\n"
   fi
+
 fi
 
 if [[ ! "$today" == "$zlast" ]]; then
@@ -78,10 +78,7 @@ if [[ ! "$today" == "$zlast" ]]; then
   ) && echo "$today" > "$zstatus" 
 fi
 
-cd $D || \
-  {
-    _e \$D not set && exit 1
-  }
+cd $D || { _e \$D not set && exit 1 }
 
 if [[ ! "$today" == "$slast" ]]; then
   _t "daily update: system"
