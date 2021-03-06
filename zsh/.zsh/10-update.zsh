@@ -21,9 +21,30 @@ D="${D:-/home/bmilcs/bm}"
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
 
+if [[ ! "$today" == "$zlast" ]]; then
+  _t "daily update: zsh (zinit)"
+  _i "last ran" ; _i "$DAYOFWEEK, $zlast of $MONTH"
+
+  (
+  _a "zinit: self update" 
+  zinit self-update && _s
+  _a "zinit: plugins update"
+  zinit update && _s
+  ) && echo "$today" > "$zstatus" 
+fi
+
+cd $D || { _e \$D not set && exit 1 }
+
+if [[ ! "$today" == "$slast" ]]; then
+  _t "daily update: system"
+  _i "last ran" ; _i "$DAYOFWEEK, $slast of $MONTH"
+  up && echo "$today" > "$ustatus" 
+fi
+
 alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
 
+  _t dotfiles
   _a local health
   _i checking for undocumented changes
 
@@ -63,25 +84,5 @@ if [[ ! "$today" == "$dlast" ]]; then
     _s done "\n"
   fi
 
-fi
-
-if [[ ! "$today" == "$zlast" ]]; then
-  _t "daily update: zsh (zinit)"
-  _i "last ran" ; _i "$DAYOFWEEK, $zlast of $MONTH"
-
-  (
-  _a "zinit: self update" 
-  zinit self-update && _s
-  _a "zinit: plugins update"
-  zinit update && _s
-  ) && echo "$today" > "$zstatus" 
-fi
-
-cd $D || { _e \$D not set && exit 1 }
-
-if [[ ! "$today" == "$slast" ]]; then
-  _t "daily update: system"
-  _i "last ran" ; _i "$DAYOFWEEK, $slast of $MONTH"
-  up && echo "$today" > "$ustatus" 
 fi
 
