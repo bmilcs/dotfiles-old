@@ -20,18 +20,50 @@ D=${D:-/home/bmilcs/bm}
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
-_t dotfile repo
-set -x
-if [[ "$(git --git-dir="$D"/.git status | grep -q clean)" ]] ;
-then
-  _a git status
-  _o clean repo: issuing git pull
-  git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
-else
-  _w unclean: skipping sync 
-  _o commit changes \& manually git pull
+
+if [[ ! "$today" == "$dlast" ]]; then
+
+  #D="${D:-/home/bmilcs/bm}"
+  g="git --git-dir="$D"/.git"
+  clean="$(git --git-dir="$D"/.git status | grep "clean")"
+
+  _a local health
+  _i checking for undocumented changes
+
+  if [[ ! -z "$clean" ]] ; then
+
+    _s clean: no action necessary
+
+    _a update check
+    _i comparing local vs remote dotfiles
+    $g remote update > /dev/null 2>&1 # hide this afterward
+
+    if [[ "$($g status -uno)" == *"ahead"* ]]; then
+      _w "ahead of origin/main"
+      _a pushing changes
+      _i updating remote dotfiles repo "\n"
+      $g push \
+      && echo && _s
+
+    elif [[ "$($g status -uno)" == *"behind"* ]]; then
+      _w "behind origin/main"
+      _a git pull
+      _i updating local dotfiles "\n"
+      $g pull \
+      && echo && _s
+    else
+      _s "up-to-date": no action necessary
+    fi
+  else
+    _e dirty: unable to proceed
+    _aa todo
+    _i commit local changes "\n"
+
+    $g status -s && echo
+
+    _s done "\n"
+  fi
 fi
-set +x 
 
 if [[ ! "$today" == "$zlast" ]]; then
   _t "daily update: zsh (zinit)"
