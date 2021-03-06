@@ -19,13 +19,24 @@ _t dotfile repo
 clean="$(git --git-dir="$D"/.git status | grep "clean")"
 echo $clean
 
+
+git remote update
+if [[ "$(git status -uno)" == *"ahead"* ]]; then
+  echo "ahead"
+elif [[ "$(git status -uno)" == *"behind"* ]]; then
+  echo "behind"
+else
+  echo "up-to-date"
+fi
+
+
+  exit 1
+
+
 if [[ ! -z "$clean" ]] ;
 then
   _a git status
   _o clean repo: checking for updates
-  git remote update
-  git status -uno
-  exit 1
   git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
 else
   _w unclean: skipping sync 
