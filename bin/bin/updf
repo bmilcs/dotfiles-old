@@ -8,34 +8,43 @@
 #────────────────────────────────────────────────────────────
 
 source _head
-_t  
+_t dotfiles 
 
 #────────────────────────────────────────────────────────────
 # PULL DOTFILE UPDATES IF CLEAN GS
 #────────────────────────────────────────────────────────────
 
-_t dotfile repo
+D="${D:-/home/bmilcs/bm}"
+g="git --git-dir="$D"/.git"
 
-clean="$(git --git-dir="$D"/.git status | grep "clean")"
-echo $clean
+_a local dotfiles
+_o clean repo
+_a checking for updates
 
+$g remote update # hide this afterward
 
-git remote update
-if [[ "$(git status -uno)" == *"ahead"* ]]; then
-  _i "ahead"
-elif [[ "$(git status -uno)" == *"behind"* ]]; then
-  _i "behind"
+if [[ "$($g status -uno)" == *"ahead"* ]]; then
+  _w "ahead of origin/main"
+  _a pushing changes
+  _o updating remote dotfiles repo
+  $g push 
+elif [[ "$($g status -uno)" == *"behind"* ]]; then
+  _w "behind origin/main"
+  _a git pull
+  _o updating local dotfiles
 else
   _i "up-to-date"
+  _o no changes needed
 fi
 
   exit 1
 
+clean="$(git --git-dir="$D"/.git status | grep "clean")"
+echo $clean
 
 if [[ ! -z "$clean" ]] ;
 then
-  _a git status
-  _o clean repo: checking for updates
+
   git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
 else
   _w unclean: skipping sync 
