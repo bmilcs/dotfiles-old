@@ -12,10 +12,6 @@
 # WORK IN PROGRESS
 #────────────────────────────────────────────────────────────
 
-set_from_resource $HOME echo "$HOME"
-set_from_resource $D echo "$D"
-
-
 # README
 bindsym $win+$shift+n    exec --no-startup-id   i3hfr i3readme "alacritty --class=i3readme --title=i3readme -e i3readme &"
 for_window               [instance="i3readme"]  floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
@@ -36,13 +32,15 @@ no_focus                 [instance="i3debug"]
 # SPY 
 bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &'
 for_window               [instance="i3spy"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
-#no_focus                 [instance="i3spy"]
+no_focus                 [instance="i3spy"]
 
 # DUNST 
-bindsym $win+x    exec --no-startup-id    notify-send "$(date) is the date bitch. "
+bindsym $win+x           exec --no-startup-id    notify-send "$(date) is the date bitch. "
 
 # ROFI
-bindsym $win+q    exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
+bindsym $win+q           exec --no-startup-id    rofi -config ~/.config/myrofi/config.rasi -show drun
+bindsym $win+e           exec --no-startup-id    rofibin
+bindsym $win+$ctrl+q     exec --no-startup-id    ~/.config/rofi/bin/launcher_ribbon
 
 # FLOATING WINDOWS
 for_window    [class="Font-manager"]              floating enable, focus
@@ -50,8 +48,8 @@ for_window    [class="Galculator"]                floating enable, focus, resize
 for_window    [class="Gucharmap"]                 floating enable, focus
 for_window    [class="Lxappearance"]              floating enable, focus
 for_window    [class='Conky']                     floating enable
-for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1616 120, move absolute position center
 for_window    [class="PkgBrowser"]                floating enable, focus, resize set 1558 1254, move absolute position 1214 51
+for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1616 120, move absolute position center
 
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS

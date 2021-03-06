@@ -1,0 +1,29 @@
+configuration {
+    theme:               "config";
+    show-icons:          true;
+    font:                "DejaVu Sans 13";
+    drun-display-format: "{name}";
+    drun-match-fields:   "name";
+}
+
+element {
+    orientation:         vertical;
+}
+
+listview {
+    columns:             11;
+    padding:             12px 12px;
+    dynamic:             true;
+}
+
+
+element-icon {
+    size:                96;
+    border:              0px;
+}
+
+element-text {
+    expand:              true;
+    horizontal-align:    0.5;
+    width:               160px;
+}
