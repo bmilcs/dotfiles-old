@@ -16,37 +16,34 @@ _t dotfiles
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir="$D"/.git"
+clean="$(git --git-dir="$D"/.git status | grep "clean")"
+
 
 _a local dotfiles
-_o clean repo
-_a checking for updates
+_i checking for changes
 
-$g remote update # hide this afterward
-
-if [[ "$($g status -uno)" == *"ahead"* ]]; then
-  _w "ahead of origin/main"
-  _a pushing changes
-  _o updating remote dotfiles repo
-  $g push 
-elif [[ "$($g status -uno)" == *"behind"* ]]; then
-  _w "behind origin/main"
-  _a git pull
-  _o updating local dotfiles
-  $g pull
-else
-  _i "up-to-date": no changes needed
-fi
-
-exit 1
-
-clean="$(git --git-dir="$D"/.git status | grep "clean")"
-echo $clean
 
 if [[ ! -z "$clean" ]] ;
 then
 
-  git --git-dir="$D"/.git pull && _s || _e git pull: something went wrong
+  _s clean repo
+  _a universal update check
+
+  $g remote update # hide this afterward
+
+  if [[ "$($g status -uno)" == *"ahead"* ]]; then
+    _w "ahead of origin/main"
+    _a pushing changes
+    _o updating remote dotfiles repo
+    $g push 
+  elif [[ "$($g status -uno)" == *"behind"* ]]; then
+    _w "behind origin/main"
+    _a git pull
+    _o updating local dotfiles
+    $g pull
+  else
+    _i "up-to-date": no changes needed
+  fi
 else
-  _w unclean: skipping sync 
-  _o commit changes \& manually git pull
+  _e unclean: add \& commit local changes
 fi
