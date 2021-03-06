@@ -18,7 +18,7 @@ sudogenls() {
   while IFS= read -r -d $'\0' f; do
     options[i++]="$f"
     #f=$(echo $f | sed -En "s/(.*)\/home\/bmilcs\/bm(\/.*$)/\1 \2/p")
-  done < <(find "$1" -type f -name "*" -print0 | sort -z)
+  done < <(find "$1" \( -type l -o -type f \) -name "*" -print0 | sort -z)
   select opt in "${options[@]}" $3; do
     case $opt in
       *)

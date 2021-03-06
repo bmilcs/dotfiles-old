@@ -95,20 +95,19 @@ izsh() {
 
 ivim() {
   _a vim
-  if [[ ! -L ~/.config/nvim/plugged/vim-plug/plug.vim ]] \
-    || [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
-
+  plugvim=~/.config/nvim/plugged/vim-plug/plug.vim
+  plugsym=~/.config/nvim/autoload/plug.vim
+  if [[ ! -f $plugvim ]] \
+    || [[ ! -L $plugsym ]]; then
     _o setup required
     _a vim: vim-plug plugin manager
-
     # cleanup previous install method
-    rm -rf "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
-
+    rm -rf ~/.local/share/nvim/site/autoload/plug.vim ~/.vim
     mkdir -p ~/.config/nvim/{autoload,plugged}
-    git clone https://github.com/junegunn/vim-plug.git ~/.config/nvim/plugged/vim-plug
+    git clone https://github.com/junegunn/vim-plug.git \
+      ~/.config/nvim/plugged/vim-plug
     # bm - auto-update itself:
-    ln -s ~/.config/nvim/plugged/vim-plug/plug.vim ~/.config/nvim/autoload
-    vim +PlugInstall
+    ln -s $plugvim ~/.config/nvim/autoload
     _s
   else
     _s all set
