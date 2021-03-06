@@ -12,7 +12,7 @@
 
 " vim settings (not vi) 
 set nocompatible  " must be first
-"────────────────────────────────────────────────────────────
+
 " security: turn off modelines
 set modelines=0
 
@@ -25,7 +25,14 @@ set lazyredraw
 " retain undo history
 set undofile
 set undodir=~/.config/nvim/undo
-"set noswapfile
+set noswapfile
+
+" disable backup 
+set nobackup       " coc: backup is removed after successful write
+set nowritebackup  " coc: backup does not run at all
+set updatetime=300 " coc
+set shortmess+=c   " coc: don't pass messages to |ins-completion-menu|.
+" set cmdheight=2  " bottom bar height
 
 " case insensitivity
 set ignorecase   " match upper/lowercase versions of search term          

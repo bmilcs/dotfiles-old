@@ -1,12 +1,16 @@
 {
   "codeLens.enable": true,
+  "signature.preferShownAbove": "false",
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
   "coc.preferences.previewMaxHeight": 50,
+  "coc.prefences.hoverTarget":"echo",
+  "coc.prefences.hoverTarget":"preview",
+  "suggest.floatEnable": true,
   "diagnostic.format": "%message [%source]",
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": false,
   "snippets.ultisnips.directories":
   [
     "UltiSnips",
@@ -45,7 +49,8 @@
         "-bn",
         "-ci",
         "-sr",
-        "-kp"
+        "-kp",
+        "-x"
       ]
     }
   },
