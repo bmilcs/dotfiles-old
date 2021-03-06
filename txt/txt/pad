@@ -18,3 +18,9 @@
 - learn advanced bash
   https://learnxinyminutes.com/docs/bash/
 
+[arch]
+- resolve /bin/sh (.profile) env var
+- rofi menus for common tasks bin/rofibin 
+
+git repo pw
+https://stackoverflow.com/a/13405207/10066675

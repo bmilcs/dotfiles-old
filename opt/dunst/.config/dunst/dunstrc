@@ -16,7 +16,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "600x10-10+40"
+    geometry = "400x10-10+40"
 
     progress_bar = true
 
@@ -272,20 +272,19 @@
 
     # Close notification. Equivalent dunstctl command:
     # dunstctl close
-    #close = ctrl+space
+    #close = ctrl+return
 
     # Close all notifications. Equivalent dunstctl command:
     # dunstctl close-all
-    close_all = ctrl+shift+space
+    close_all = ctrl+alt+return
 
     # Redisplay last message(s). Equivalent dunstctl command:
     # dunstctl history-pop
-    history = ctrl+space
+    history = ctrl+return
 
     # Context menu. Equivalent dunstctl command:
     # dunstctl context
-    context = shift+space
-
+    context = shift+return
 
 [urgency_low]
     msg_urgency = low

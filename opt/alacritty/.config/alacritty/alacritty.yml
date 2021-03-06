@@ -18,15 +18,15 @@ live_config_reload: true
 #────────────────────────────────────────────────────────────
 
 font:
-  size: 10
+  size: 11
   normal:
     #family: GohuFont Nerd Font
     #family: codenewroman nerd font 
-    family: bitstreamverasansmono nerd font
+    #family: bitstreamverasansmono nerd font
     #family: FantasqueSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
-    #family: Iosevka Nerd Font
+    family: Iosevka Nerd Font
     #family: TerminessTTF Nerd Font
     #family: Terminus
     #family: SauceCodePro Nerd Font

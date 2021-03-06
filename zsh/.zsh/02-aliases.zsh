@@ -15,9 +15,6 @@
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'
 alias regex='vim $D/txt/txt/regex.md'
-alias sdir='echo $PWD >> $D/txt/txt/dir_list.md'
-alias odir='vim $D/txt/txt/dir_list.md'
-
 
 # cd path
 alias txt='cd $D/txt/txt ; c ; l'
@@ -39,7 +36,7 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
 alias tr="tmux source ~/.tmux.conf"
-alias zr="source ~/.zshenv"
+alias zr='source ~/.zsh/.zshrc'
 alias polyr=". ~/.config/polybar/launch.sh" 
 # tail -f ~/.config/polybar/log"
 
@@ -183,8 +180,8 @@ alias smb='sudo vim /etc/samba/smb.conf'
 #────────────────────────────────────────────────────────────
 
 # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
-alias sudo="nocorrect sudo -E "
-compdef sudo="sudo"
+alias sudo="nocorrect sudo -E ";compdef sudo="sudo"
+alias s="sudo";compdef s="sudo"
 
 # reboot, shutdown, etc.
 alias rex="sudo systemctl restart display-manager"

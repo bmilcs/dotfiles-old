@@ -38,7 +38,7 @@ This will return the last 5 characters (note the space before -5)
 echo ${#Variable} # => 11
 ```
 
-# Indirect expansion
+### Indirect expansion
 ``` bash
 OtherVariable="Variable"
 echo ${!OtherVariable} # => Some String

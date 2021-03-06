@@ -4,7 +4,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   ZSH FUNCTIONS              
+#   ZSH FUNCTIONS
 #────────────────────────────────────────────────────────────
 
 source $D/bin/bin/_head
@@ -12,10 +12,6 @@ source $D/bin/bin/_head
 #────────────────────────────────────────────────────────────
 # GIT
 #────────────────────────────────────────────────────────────
-
-dbug() {
-  set -x ; "$*" ; set +x
-  }
 
 # commit changes
 #function ga() {
@@ -27,7 +23,6 @@ function gc() {
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
   git commit -m "$*"
   }
-
 
 # git reset hard
 function grh() {
@@ -42,7 +37,6 @@ function grh() {
   _ask "do you really want to reset --hard? (all changes will be lost" && git reset --hard && git clean -fdx
 
   }
-
 
 # # commit changes w/ add .
 # function gaca() {
@@ -60,28 +54,28 @@ function grh() {
 #────────────────────────────────────────────────────────────
 
 # create dir & cd into it
-function mbin() {
-
-  if [[ $# == 0 ]]; then
-    _e filename argument missing
-    exit 1
-  elif [[ -f $1 ]]; then
-    _e file already exists!
-    exit 1
-  fi
-
-  touch $@ 
-  logo "$@"
-
-  echo -e "source _head\n" >> $@
-  echo -e "#────────────────────────────────────────────────────────────" >> $@
-  echo -e "# " >> $@
-  echo -e "#────────────────────────────────────────────────────────────" >> $@
-
-  sed -i '1s/^/\#\!\/bin\/sh\n/' $@
-  chmod +x $@ 
-  nvim $@
-  }
+# function mbin() {
+# 
+#   if [[ $# == 0 ]]; then
+#     _e filename argument missing
+#     exit 1
+#   elif [[ -f $1 ]]; then
+#     _e file already exists!
+#     exit 1
+#   fi
+# 
+#   touch $@ 
+#   logo "$@"
+# 
+#   echo -e "source _head\n" >> $@
+#   echo -e "#────────────────────────────────────────────────────────────" >> $@
+#   echo -e "# " >> $@
+#   echo -e "#────────────────────────────────────────────────────────────" >> $@
+# 
+#   sed -i '1s/^/\#\!\/bin\/sh\n/' $@
+#   chmod +x $@ 
+#   nvim $@
+#   }
 
 # create dir & cd into it
 function mdir() {

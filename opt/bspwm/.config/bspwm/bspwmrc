@@ -27,10 +27,6 @@ bspc config bottom_padding          0
 bspc config right_padding           0
 bspc config left_padding            0
 
-#bspc config automatic_scheme        spiral
-#bspc config automatic_scheme      		spiral
-#bspc config automatic_scheme longest_side
-#bspc config initial_polarity second_child
 bspc config border_width            2
 bspc config split_ratio             0.50
 bspc config borderless_monocle      false
@@ -40,7 +36,10 @@ bspc config focus_follows_pointer   true
 bspc config ignore_ewmh_focus       true
 bspc config center_pseudo_tiled     true
 bspc config focus_follows_pointer   false
-
+#bspc config automatic_scheme        spiral
+#bspc config automatic_scheme      		spiral
+#bspc config automatic_scheme longest_side
+#bspc config initial_polarity second_child
 
 # window placement
 # desktop='^4' state=floating follow=on # state=floating #focus=on #manage=off
@@ -49,35 +48,34 @@ bspc rule -a Thunderbird desktop='^2'
 bspc rule -a android-messages-desktop desktop='^2'
 bspc rule -a Firefox desktop='^2'
 bspc rule -a discord desktop='^2'
-bspc rule -a Pidgin desktop='^2' state=floating 
+bspc rule -a Pidgin desktop='^2' state=floating
 bspc rule -a TelegramDesktop desktop='^2'
 
 bspc rule -a "Blueman-manager:*" state=floating
 bspc rule -a "*:Blueman-manager" state=floating
 
-
-# scratchpad
+# scratchpad - work in progress
 bw=5
 bspc rule -a Alacritty:bmpad sticky=on state=floating hidden=on rectangle=2440x488+-$bw+-$bw
     $ddterm_cmd &
-alacritty --class=bmpad --title="bmpad" --command zsh -i &
+alacritty --class=bmpad --title="bmpad" --command zsh -i -e bsppad &
 
 # # autostart [always]
 # pgrep polybar || sh $HOME/.config/polybar/launch.sh &
-# 
+#
 # thunderbird &
 # sleep 8
-# 
+#
 # telegram-desktop &
 # sleep 2
 # android-messages-desktop &
 # sleep 2
 # discord &
 # sleep 10
-# 
-# 
-# # autostart [initial launch] 
-# [ "$1" = 0 ] && {   
+#
+#
+# # autostart [initial launch]
+# [ "$1" = 0 ] && {
 #   picom --experimental-backends --config ~/.config/picom/config &
 #   nitrogen --restore &
 #   pulseaudio --start &
@@ -85,9 +83,8 @@ alacritty --class=bmpad --title="bmpad" --command zsh -i &
 #   xcape -e 'Control_L=Escape'
 #   }
 
-
 # graveyard -------------------------------------------------------------------
-# 
+#
 #  $HOME/.local/bin/bootstrap &
 #  bspc wm -l ~/.config/bspwm/canvas.json
 #  bspc wm -l ~/.config/bspwm/states/state.json
