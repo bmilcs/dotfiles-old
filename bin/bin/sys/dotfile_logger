@@ -8,6 +8,12 @@
 
 logpath=/tmp/dotfile.log
 
+dotc() {
+    echo > "$logpath"
+    _a dotlog
+    _i cleared
+}
+
 dotls() {
     sed -i -e 's/\/home\/bmilcs/~/g' $logpath
     cat "$logpath"

@@ -8,3 +8,7 @@
 # PATHS
 #────────────────────────────────────────────────────────────
 
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/00-env.zsh'
+
