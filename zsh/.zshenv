@@ -6,8 +6,9 @@
 #                 ZSH ENVIRONMENTAL RC [./.zshenv]
 #────────────────────────────────────────────────────────────
 
-# set custom zsh config location
-# & execute my env file
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/.zshenv'
 
-ZDOTDIR=$HOME/.zsh
-. $ZDOTDIR/00-env.zsh
+ZDOTDIR=$HOME/.zsh      # set custom zsh config location
+. $ZDOTDIR/00-env.zsh   # & execute my env file

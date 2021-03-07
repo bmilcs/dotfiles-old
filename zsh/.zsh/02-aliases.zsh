@@ -7,6 +7,11 @@
 #   TODO
 #         split up into separate .zsh files
 #         add working savedir alias > select
+#────────────────────────────────────────────────────────────
+
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/02-aliases.zsh'
 
 #────────────────────────────────────────────────────────────
 # DOCUMENTS
@@ -345,7 +350,6 @@ alias gitkeys='
 
 #alias rnet="sudo /etc/init.d/networking restart"
 #alias enet="sudo vim /etc/network/interfaces"
-
 
 #################################################################
 # GRAVEYARD

@@ -8,6 +8,10 @@
 #   xinitrc
 #────────────────────────────────────────────────────────────
 
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/.xinitrc'
+
 # define config files
 userresources=~/.Xresources
 usermodmap=~/.Xmodmap
@@ -28,39 +32,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-#────────────────────────────────────────────────────────────
-# BMILCS CUSTOMIZATIONS
-#────────────────────────────────────────────────────────────
-
-# clean up $HOME
-export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
-export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
-
-# path var: add ~/bin & all subdir's
-[[ -d $HOME/bin && -z $(echo $PATH | grep -o $HOME/bin) ]] \
-  && export PATH=$PATH$(find $HOME/bin/ -type d -printf ":%p")
-
-#────────────────────────────────────────────────────────────
-# ESSENTIALS
-#────────────────────────────────────────────────────────────
-
+# essentials
 ~/bin/bootstrap &
 
-#────────────────────────────────────────────────────────────
-# WM
-#────────────────────────────────────────────────────────────
-
-session=${1:-bspwm}
-
+# window manager
+session=${1:-i3}
 case $session in
   i3 | i3wm) exec i3 ;;
   bsp | bspwm) exec bspwm ;;
   *) exec $1 ;;
 esac
-
-#────────────────────────────────────────────────────────────
-# EXTRAS
-#────────────────────────────────────────────────────────────
 
 # disable beep sound
 set bell-style none

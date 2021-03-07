@@ -7,6 +7,10 @@
 #   ZSH DIR_COLORS              
 #────────────────────────────────────────────────────────────
 
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/dir_colors'
+
 COLOR tty
 
 TERM alacritty

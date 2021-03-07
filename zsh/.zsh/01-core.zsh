@@ -5,6 +5,11 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH: CORE [./01-core.zsh]
 #────────────────────────────────────────────────────────────
+
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/01-core.zsh'
+
 #
 # HISTORY
 #

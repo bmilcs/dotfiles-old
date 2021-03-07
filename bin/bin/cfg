@@ -8,7 +8,7 @@
 #   config file editor
 #────────────────────────────────────────────────────────────
 
-source _head
+. _head
 _t cfg editor
 
 sudogenls() {
