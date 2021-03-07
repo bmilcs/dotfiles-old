@@ -13,17 +13,17 @@ _i "instructions: cd into the directory (of the files/dir) you want to test"
 dir="$(echo $PWD)"
 [[ $dir == *"$HOME"* ]] && sdir="~"${dir#$HOME}
 
-_a base path
-[[ -L "$dir" ]] && _s "symlink: "$sdir"/." || _e "real: "$sdir"/."
-
 _a files
 if [[ "$#" -ne 0 ]]; then
-for i in "$@"; do
-#  echo "$i"
-  [[ -L $i ]] && _s symlink: $i || _i normal: $i
-done
+  for i in "$@"; do
+  #  echo "$i"
+    [[ -L $i ]] && _s symlink: $i || _i normal: $i
+  done
 else
   for i in *; do
     [[ -L $i ]] && _s symlink: $i || _i normal: $i
   done
 fi
+
+_a base path
+[[ -L "$dir" ]] && _s "symlink: "$sdir"/." || _e "real: "$sdir"/."
