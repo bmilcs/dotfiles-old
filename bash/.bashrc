@@ -3,18 +3,18 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
-#   BASH RC
-#────────────────────────────────────────────────────────────
+#               BASH RC
 # TODO
 #   complete cross-platform functionality with
 #     - zsh aliases
 #     - zsh functions
-#     - zsh scripts
-#────────────────────────────────────────────────────────────
-# INTERACTION CHECK
 #────────────────────────────────────────────────────────────
 
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/.bashrc'
+
+# interaction check
 # if running non-interactively, end script
 case $- in
     *i*)        ;;

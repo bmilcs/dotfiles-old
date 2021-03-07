@@ -7,4 +7,8 @@
 #   bash profile
 #────────────────────────────────────────────────────────────
 
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: /home/bmilcs/.bash_profile'
+
 [ -f ~/.bashrc ] && . ~/.bashrc
