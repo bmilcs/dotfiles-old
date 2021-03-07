@@ -8,6 +8,7 @@
 #────────────────────────────────────────────────────────────
 source _head
 _t symlink test
+_i "instructions: cd into the directory (of the files/dir) you want to test"
 
 dir="$(echo $PWD)"
 [[ $dir == *"$HOME"* ]] && sdir="~"${dir#$HOME}
