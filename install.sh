@@ -39,7 +39,7 @@ cleanup() {
   _a removing old dotfile content
   _w "content will be moved to ~/.backup/dotfiles"
   mkdir -p ~/.backup/dotfiles
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions} \
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile} \
     ~/.backup/dotfiles 2> /dev/null
   mv ~/.zsh/{completion/,}{_git,git-completion.bash} \
     ~/.backup/dotfiles 2> /dev/null
