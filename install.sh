@@ -46,7 +46,7 @@ cleanup() {
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
   _a deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null
-  _a deleting broken symlinks "${B}"/etc]
+  _a deleting broken symlinks "${B}"/etc
   sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
   _s
 }
