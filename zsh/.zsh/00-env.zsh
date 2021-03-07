@@ -12,3 +12,10 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/00-env.zsh'
 
+# execute profile on missing env [ssh]
+if [ -z $D ]; then
+  dotlog 'notice: env var missing!'
+  dotlog '00-env.zsh launching .profile'
+  . ~/.profile
+fi
+
