@@ -6,6 +6,13 @@ dotlog 'launched: `!v expand('%:p')`'
 
 endsnippet
 
+snippet foreachargument "loop through & print all arguments"
+for i in "$@"; do
+  echo "$i"
+done
+endsnippet
+
+
 snippet path "full path: current open file"
 `!p snip.rv = os.path.abspath(path)`
 endsnippet

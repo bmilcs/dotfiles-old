@@ -19,7 +19,7 @@ _i "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
 #────────────────────────────────────────────────────────────
 
 # debian: install
-mini=("bin" "git" "txt" "vim" "zsh" "shell")
+mini=("bin" "git" "txt" "vim" "zsh" "shell" "bash" "git")
 
 # arch: exceptions
 exceptions=("img" "opt" "root")
@@ -39,14 +39,16 @@ cleanup() {
   _a removing old dotfile content
   _w "content will be moved to ~/.backup/dotfiles"
   mkdir -p ~/.backup/dotfiles
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,\
+    .gitconfig} \
     ~/.backup/dotfiles 2> /dev/null
   mv ~/.zsh/{completion/,}{_git,git-completion.bash} \
     ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
-  _a deleting broken symlinks in "${B}"~
+  _i deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null
-  _a deleting broken symlinks "${B}"/etc
+  _s
+  _i deleting broken symlinks "${B}"/etc
   sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
   _s
 }
