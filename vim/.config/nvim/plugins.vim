@@ -26,6 +26,8 @@ Plug 'junegunn/vim-plug'
   Plug 'godlygeek/tabular'                      " tabular (must before markdown)
     Plug 'plasticboy/vim-markdown'                " markdown syntax, match, map
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
+  Plug 'SirVer/ultisnips'                       " snippets
+  Plug 'honza/vim-snippets'
 " Plug 'dense-analysis/ale',                  " sh syntax analysis
 " Plug 'chrisbra/Colorizer'                   " color hexcode highlighter
 " Plug 'junegunn/fzf.vim'
@@ -201,8 +203,20 @@ autocmd BufRead,BufNewFile ~/bin/* set syntax=sh
 autocmd BufRead,BufNewFile ~/.config/i3/config set filetype=i3config
 
 "────────────────────────────────────────────────────────────
-" GIT GUTTER
+" ULTISNIPS
 "────────────────────────────────────────────────────────────
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" remove Ultisnips if you don't want plugin addons
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+"
+"────────────────────────────────────────────────────────────
+" GIT GUTTER
 "────────────────────────────────────────────────────────────
 " custom symbols
 let g:gitgutter_sign_added = '落'

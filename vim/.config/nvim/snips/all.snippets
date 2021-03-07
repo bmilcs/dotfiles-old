@@ -1,0 +1,35 @@
+snippet df "dotfile log debugger"
+
+# dotfile rc file debugging
+. "${HOME}/bin/sys/dotfile_logger"
+dotlog 'launched: `!v expand('%:p')`'
+
+endsnippet
+
+snippet path "full path: current open file"
+`!p snip.rv = os.path.abspath(path)`
+endsnippet
+
+snippet filename "basename: open file's name"
+`!p snip.rv = snip.basename`
+endsnippet
+
+
+snippet line "#──── line"
+#────────────────────────────────────────────────────────────
+endsnippet
+
+snippet tb "#──── title bar"
+#────────────────────────────────────────────────────────────
+# $1
+#────────────────────────────────────────────────────────────
+endsnippet
+
+snippet sedswapall "swap all occurences in file"
+sed -i -e 's/word/new/g' filename
+endsnippet
+
+snippet seddeleteall "delete all occurences in file"
+sed -i -e 's/word//g' filename
+endsnippet
+
