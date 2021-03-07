@@ -7,8 +7,8 @@
 - mopidy (mpd server)
 - integrate arch w/ ansible & homelab
 - docker, remote dev (rsync compose?)
+
 [ arch ]
-- udiskie: usb/automount/notifications
 - i3: copy/paste to middle mouse clipboard
 - dunst: make larger in size & duration
 - starship prompt
