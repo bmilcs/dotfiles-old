@@ -54,6 +54,7 @@ if [ $# = 0 ]; then
   _o "${B}   b  ${BLU}\t  bin${NC}"
   _o "${B}   z  ${BLU}\t  zsh${NC}"
   _o "${B}   v  ${BLU}\t  vim${NC}"
+  _o "${B}   s  ${BLU}\t  snippets${NC}"
   _o "${B}   p  ${BLU}\t  polybar${NC}"
   _o "${B}   d  ${BLU}\t  dunst${NC}"
   _o "${B}   k  ${BLU}\t  sxhkd${NC}"
@@ -79,6 +80,7 @@ case $sel in
   v) genls "$D"/vim VIM ;;
   p) genls "$D"/opt/polybar/.config/polybar/ POLYBAR ;;
   r) genls "$D"/opt/rofi ROFI ;;
+  s) genls "$D"/vim/.config/nvim/snips SNIPS ;;
   u) sudogenls /usr/local/bin BIN ;;
   x | xorg) genls "$D"/opt/xorg XORG ;;
   n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;

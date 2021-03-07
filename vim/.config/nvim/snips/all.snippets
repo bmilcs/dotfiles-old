@@ -12,6 +12,22 @@ for i in "$@"; do
 done
 endsnippet
 
+snippet rmprefixsuffix "remove suffix/prefix from string"
+foo=${string#"$prefix"}
+foo=${foo%"$suffix"}
+endsnippet
+
+snippet swaphome_~ "swap home w/ ~"
+DIR="$(echo $PWD)"
+[[ $DIR == *"$HOME"* ]] && SDIR="~"${DIR#$HOME}
+endsnippet
+
+
+snippet pathfromfilename "get leading path of a filename"
+# realpath $1 #=> /path/to/file.name
+# dirname $1 #=> .
+realpath . #=> /path/to
+endsnippet
 
 snippet path "full path: current open file"
 `!p snip.rv = os.path.abspath(path)`
@@ -20,7 +36,6 @@ endsnippet
 snippet filename "basename: open file's name"
 `!p snip.rv = snip.basename`
 endsnippet
-
 
 snippet line "#──── line"
 #────────────────────────────────────────────────────────────
