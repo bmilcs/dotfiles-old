@@ -15,10 +15,10 @@ dotfile_paths=$(/usr/bin/git --git-dir="$dotdir/.git" \
 sel="$(echo -e "$dotfile_paths" | rofi -dmenu -no-custom)"
 
 # avoid excessive text in rofi menu by adding this afterward
-sel=$dotdir/$sel
+[[ -n $sel ]] && sel=$dotdir/$sel
 
 if [[ -f "$sel" ]]; then
   alacritty -e i3nvim "$sel" &
-else
+elif [[ -n $sel ]]; then
   dunstify "$sel No such file"
 fi
