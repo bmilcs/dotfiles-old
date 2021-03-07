@@ -19,7 +19,7 @@ _i "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
 #────────────────────────────────────────────────────────────
 
 # debian: install
-mini=("bin" "git" "txt" "vim" "zsh")
+mini=("bin" "git" "txt" "vim" "zsh" "shell")
 
 # arch: exceptions
 exceptions=("img" "opt" "root")
