@@ -28,6 +28,7 @@ Plug 'junegunn/vim-plug'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
   Plug 'SirVer/ultisnips'                       " snippets
   Plug 'honza/vim-snippets'
+
 " Plug 'dense-analysis/ale',                  " sh syntax analysis
 " Plug 'chrisbra/Colorizer'                   " color hexcode highlighter
 " Plug 'junegunn/fzf.vim'
