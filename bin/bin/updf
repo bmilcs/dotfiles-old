@@ -23,14 +23,14 @@ if [[ ! -z "$clean" ]] ; then
   _i comparing local vs remote dotfiles
   $g remote update > /dev/null 2>&1 # hide this afterward
 
-  if [[ "$(g status -uno)" == *"ahead"* ]]; then
+  if [[ "$($g status -uno)" == *"ahead"* ]]; then
     _w "ahead of origin/main"
     _a pushing changes
     _i updating remote dotfiles repo "\n"
    $g push \
     && echo && _s
 
-  elif [[ "$(g status -uno)" == *"behind"* ]]; then
+  elif [[ "$($g status -uno)" == *"behind"* ]]; then
     _w "behind origin/main"
     _a git pull
     _i updating local dotfiles "\n"
