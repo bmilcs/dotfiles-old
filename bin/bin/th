@@ -26,6 +26,9 @@ done
 _o output: _o
 for i in r y g b p c; do _o$i output: _o$i ; done
 
+_f feedback: _f
+for i in r y g b p c; do _f$i feedback: _f$i ; done
+
 _i inform: _i
 for i in r y g b p c; do _i$i inform: _i$i ; done
 

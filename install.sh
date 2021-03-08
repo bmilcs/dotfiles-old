@@ -10,9 +10,9 @@ source ./bin/bin/_head
 
 # title
 _t [bmilcs] dotfile installation
-_i this install script is specifically tailored to my needs.
-_i "${CYN}${B}arch${NC}": stows ALL: home \& sys configs, networkd, iwctl, etc
-_i "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
+_o this install script is specifically tailored to my needs.
+_iy "${CYN}${B}arch${NC}": stows ALL: home \& sys configs, networkd, iwctl, etc
+_iy "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
 
 #────────────────────────────────────────────────────────────
 # INPUT
@@ -45,10 +45,10 @@ cleanup() {
   mv ~/.zsh/{completion/,}{_git,git-completion.bash} \
     ~/.backup/dotfiles 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
-  _i deleting broken symlinks in "${B}"~
+  _o deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null
   _s
-  _i deleting broken symlinks "${B}"/etc
+  _o deleting broken symlinks "${B}"/etc
   sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
   _s
 }
@@ -85,14 +85,12 @@ izsh() {
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     curl -o ~/.zsh/completion/_docker-compose \
     https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
-    _s
   fi
 
   if [[ ! -d ~/.zinit ]]; then
     # install zinit
     _o installing zinit plugin manager
     git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-    _s
   fi
 
   _s all set
@@ -123,12 +121,13 @@ ivim() {
 
 _a distro check
 source ./bin/bin/_distro
+
 _s
 
 # INSTALL PACKAGES
 
 _a dependencies
-_o "${pkgs[@]}"
+_o checking for: "${pkgs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
   pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \

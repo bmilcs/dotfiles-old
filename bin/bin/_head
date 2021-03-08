@@ -37,7 +37,7 @@ _askk() {
   while true; do
     default=y
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    echo -e "${color}${B}  ${color}$* ${B}[y|n]${NC} "
+    echo -e "\n${color}${B}  ${color}$* ${B}[y|n]${NC} "
 
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply < /dev/tty
@@ -50,13 +50,9 @@ _askk() {
     # check if the reply is valid
     case "$reply" in
       "" | Y* | y*)
-        _i yes
-        return 0
-        ;;
+        _i yes ; return 0 ;;
       N* | n*)
-        _i no
-        return 1
-        ;;
+        _i no ; return 1 ;;
     esac
 
   done
@@ -151,6 +147,21 @@ _ob() { color="$BLU";   _oo "$*"; }
 _op() { color="$PUR";   _oo "$*"; }
 _oc() { color="$CYN";   _oo "$*"; }
 
+
+# output
+_ff() {
+  echo -e "$spaces${color} $*${NC}"
+}
+_f()  { color="$WHT";   _ff "$*"; }
+_fr() { color="$RED";   _ff "$*"; }
+_fy() { color="$YLW";   _ff "$*"; }
+_fg() { color="$GRN";   _ff "$*"; }
+_fb() { color="$BLU";   _ff "$*"; }
+_fp() { color="$PUR";   _ff "$*"; }
+_fc() { color="$CYN";   _ff "$*"; }
+
+
+
 # inform
 _ii() {
   echo -e "${spaces}${color}  $* ${NC}"
@@ -177,10 +188,10 @@ _wc() { color="$CYN";   _www "$*"; }
 
 # success
 _ss() {
-  if [ $# -eq 0 ]; then
-    echo -e "$spaces${color}  done${NC}"
+  if [ "$*" == "" ]; then
+    echo -e "$spaces${color}  done${NC}"
   else
-    echo -e "$spaces${color}  $* ${NC}" # √
+    echo -e "$spaces${color}  $* ${NC}" # √
   fi
 }
 _s()  { color="$GRN";   _ss "$*"; }
@@ -195,9 +206,9 @@ _sc() { color="$CYN";   _ss "$*"; }
 # error
 _ee() {
   if [ $# -eq 0 ]; then
-    echo -e "$spaces${color}${color}  error${NC}"
+    echo -e "$spaces${color}ﲅ${color}  error${NC}"
   else
-    echo -e "$spaces${color}${color}  ${color}$*" # X
+    echo -e "$spaces${color}ﲅ${color}  ${color}$*" # X
   fi
 }
 _e()  { color="$RED";   _ee "$*"; }

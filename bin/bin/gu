@@ -41,7 +41,7 @@ if [[ ! -z "$clean" ]] ; then
   fi
 else
   _e dirty: unable to proceed
-  _aa todo
+  _ap todo
   _i commit local changes
  $g status -s
   _s done "\n"
