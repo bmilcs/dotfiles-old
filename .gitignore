@@ -10,5 +10,5 @@ zsh/.zsh/completion/git-completion.bash
 .netrwhist
 neomutt
 .zcompdump
-
 _docker-compose
+bin/bin/pipes
