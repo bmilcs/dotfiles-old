@@ -11,3 +11,4 @@ zsh/.zsh/completion/git-completion.bash
 neomutt
 .zcompdump
 
+_docker-compose
