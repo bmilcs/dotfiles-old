@@ -13,23 +13,39 @@ source _head
 #echo -e
 # TODO get script dir wherever you is.
 
-_t titlebar [t]
+_t titlebar: _t
+for i in r y g b p w; do _t$i titlebar _t$i ; done
 
-echo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+# echo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-_a action [a]
+_a action: _a
+for i in r y g b p w; do
+  _a$i action: _a$i
+done
 
-_o output [o]
+_o output: _o
+for i in r y g b p c; do _o$i output: _o$i ; done
 
-_i inform [i]
+_i inform: _i
+for i in r y g b p c; do _i$i inform: _i$i ; done
 
-_w warning [w]
+_w warning: _w
+for i in r w g b p c; do _w$i inform: _w$i ; done
 
-_s success [s]
-_s 
+_s success: _s
+for i in r y w b p c; do _s$i success: _s$i ; done
 
-_e error [e]
-_e 
+_e error: [e]
+for i in w y g b p c; do _e$i error: _e$i ; done
+
+_ask keep it going\?
+
+if [[ $? == 0 ]] ; then
+  echo -e "\n\n\n"
+	$(basename $0) && exit
+else
+exit 0
+fi
 
 #  pad=$(printf '%0.1s' "-"{1..60})
 #  padlength=40
@@ -41,13 +57,4 @@ _e
 #       printf '%s\n' "$string2"
 #       string2=${string2:1}
 #  done
-
-_ask keep it going\?
-
-if [[ $? == 0 ]] ; then
-  echo -e "\n\n\n"
-	$(basename $0) && exit
-else
-exit 0
-fi
 
