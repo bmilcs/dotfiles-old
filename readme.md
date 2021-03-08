@@ -1,7 +1,7 @@
 # BMILCS: DOTFILES
 > A few weeks into my journey... 01.02.2021
 
-![desktop](img/rice.png)
+![desktop](img/rice-2020-03-08.png)
  
 **Welcome to version 2 of my dotfiles.** 
 
@@ -32,33 +32,34 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [ ] **qtile**
 - [ ] **entr**
 - [ ] github.com/chubin/rate.sx
-- [ ] dunst notifications
-- [ ] udisk2 / udiskie automount
+- [x] udisk2 / udiskie automount
+  - [ ] android phone 
+- [x] dunst notifications
 
 **rust**
 
 - [ ] tldr
-- [ ] fd
-- [ ] bat
 - [ ] prox
 - [ ] exa
-- [ ] ripgrep
+- [x] fd
+- [x] bat
+- [x] ripgrep
 - [x] github aliases
 
 **misc**
-- [ ] autocomplete git status > diff > to add workflow
+- [x] autocomplete git status > diff > to add workflow
 - [ ] ssh keys > private repo
 
 **VIM** [ref: youtube vim super powers]
 - [ ] npm
 - [ ] nettree
-- [ ] vim autocomplete
-    - [ ]  all stuff within file 
-    - [ ]  /path/to autocomplete
-    - [ ] coc.vim [visual studio-like]
+- [x] vim autocomplete
+    - [x]  all stuff within file 
+    - [x]  /path/to autocomplete
+    - [x] coc.vim [visual studio-like]
 - [ ] ctrlsf - 'command line searching"
 - [ ] fzf fuzzy find - to "//"
-- [ ] rip grep? same thing?
+- [ ] rip grep
 - [ ] bcommits? git history-like plugin
 - [ ] lazygit, lazydocker, lazynpm
 - [ ] anyjump search across workspace
