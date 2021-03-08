@@ -3,7 +3,7 @@ configuration {
 	lines: 25;
 	font: "Iosevka 11";
 	hide-scrollbar: true;
-	theme: "~/.config/rofi/nord.rasi";
+	theme: "~/.config/myrofi/nord.rasi";
   combi-modi: "window,drun,ssh";
 }
 
