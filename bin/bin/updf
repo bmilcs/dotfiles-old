@@ -10,15 +10,12 @@
 source _head
 _t dotfiles 
 
+D="${D:-/home/bmilcs/bm}"
 g="git --git-dir="$D"/.git --work-tree="$D""
+clean="$($g status | grep "clean")"
 
-_t dotfiles
 _a local health
 _i checking for undocumented changes
-
-D="${D:-/home/bmilcs/bm}"
-clean="$(g status | grep "clean")"
-
 
 if [[ ! -z "$clean" ]] ; then
   _s clean: no action necessary
