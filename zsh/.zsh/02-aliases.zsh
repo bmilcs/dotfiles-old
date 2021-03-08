@@ -231,6 +231,12 @@ alias pid="cat /etc/passwd"
 # DOCKER
 #────────────────────────────────────────────────────────────
 
+# edit bmilcs.com
+alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
+
+# edit docker-compose
+alias dce='vim ~/docker/docker-compose.yaml'
+
 # remove unused: containers | vol | networks | etc
 alias drmu='docker system prune -a'
 
