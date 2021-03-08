@@ -12,7 +12,6 @@
 - i3: copy/paste to middle mouse clipboard
 - dunst: make larger in size & duration
 - starship prompt
-- /bin/sh (.profile) env var
 - rofi menus for common tasks bin/rofibin 
 
 [goals]
