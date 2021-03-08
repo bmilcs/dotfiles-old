@@ -47,48 +47,7 @@ if [[ ! "$today" == "$slast" ]]; then
 fi
 
 # dotfiles
-alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
-
-  _t dotfiles
-  _a local health
-  _i checking for undocumented changes
-
-  D="${D:-/home/bmilcs/bm}"
-  clean="$(g status | grep "clean")"
-
-
-  if [[ ! -z "$clean" ]] ; then
-    echo "$today" > "$dstatus"
-    _s clean: no action necessary
-
-    _a update check
-    _i comparing local vs remote dotfiles
-    g remote update > /dev/null 2>&1 # hide this afterward
-
-    if [[ "$(g status -uno)" == *"ahead"* ]]; then
-      _w "ahead of origin/main"
-      _a pushing changes
-      _i updating remote dotfiles repo "\n"
-      g push \
-      && echo && _s
-
-    elif [[ "$(g status -uno)" == *"behind"* ]]; then
-      _w "behind origin/main"
-      _a git pull
-      _i updating local dotfiles "\n"
-      g pull \
-      && echo && _s
-    else
-      _s "up-to-date": no action necessary
-    fi
-  else
-    _e dirty: unable to proceed
-    _aa todo
-    _i commit local changes
-    g status -s
-    _s done "\n"
-  fi
+    gu
 fi
-unalias g
 
