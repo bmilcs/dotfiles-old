@@ -234,9 +234,26 @@ if where docker-compose > /dev/null; then
 
   # edit bmilcs.com
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
-
   # edit docker-compose
   alias dce='vim ~/docker/docker-compose.yaml'
+
+  # docker logs
+  alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
+  compdef dclog='docker'
+
+  # docker-compose
+  alias dcs="docker-compose stop";compdef dcs='docker'
+  alias dcre="docker-compose restart";compdef dcre='docker'
+  alias dcd="docker-compose down";compdef dcd='docker'
+
+  # list all dockers
+  alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
+  alias dnet='docker network ls'
+
+  # letsencrypt restart
+  alias le="docker restart swag && docker logs -f swag"
+  alias swag="docker restart swag && docker logs -f swag"
+  alias ddf='docker system df'
 
   # remove unused: containers | vol | networks | etc
   alias dcrmunused='docker system prune -a'
@@ -268,23 +285,6 @@ if where docker-compose > /dev/null; then
   # nuke all
   alias dnuke="dstop;drmc;dvol;drmi"
 
-  # docker logs
-  alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
-  compdef dclog='docker'
-
-  # docker-compose
-  alias dcs="docker-compose stop";compdef dcs='docker'
-  alias dcre="docker-compose restart";compdef dcre='docker'
-  alias dcd="docker-compose down";compdef dcd='docker'
-
-  # list all dockers
-  alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
-  alias dnet='docker network ls'
-
-  # letsencrypt restart
-  alias le="docker restart swag && docker logs -f swag"
-  alias swag="docker restart swag && docker logs -f swag"
-  alias ddf='docker system df'
 fi
 
 #────────────────────────────────────────────────────────────
@@ -353,7 +353,6 @@ fi
 #────────────────────────────────────────────────────────────
 # BACKUP
 #────────────────────────────────────────────────────────────
-
 
 #────────────────────────────────────────────────────────────
 # DEBIAN NETWORKING
