@@ -26,10 +26,10 @@ D="${D:-/home/bmilcs/bm}"
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 
-
+# zinit
 if [[ ! "$today" == "$zlast" ]]; then
   _t "daily update: zsh (zinit)"
-  _i "last ran" ; _i "$DAYOFWEEK, $zlast of $MONTH"
+  _i "last ran: $MONTH/$zlast"
 
   (
   _a "zinit: self update" 
@@ -39,12 +39,14 @@ if [[ ! "$today" == "$zlast" ]]; then
   ) && echo "$today" > "$zstatus" 
 fi
 
+# system
 if [[ ! "$today" == "$slast" ]]; then
   _t "daily update: system"
-  _i "last ran" ; _i "$DAYOFWEEK, $slast of $MONTH"
+  _i "last ran: $MONTH/$zlast"
   up && echo "$today" > "$ustatus" 
 fi
 
+# dotfiles
 alias g="git --git-dir="$D"/.git --work-tree="$D""
 if [[ ! "$today" == "$dlast" ]]; then
 
