@@ -149,8 +149,8 @@ alias wget="wget -c"              ; compdef wget="wget"
 
 # confirmations
 alias ln="ln -i"
-#alias mv="mv -i"
-#alias cp="cp -i"
+  #alias mv="mv -i"
+  #alias cp="cp -i"
 
 # shortcuts
 alias c="clear"
@@ -215,141 +215,145 @@ alias hn="_a hostname && _o host: $HOST && echo"
 alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
 alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 
-# elevate user
-alias rt="sudo su"
-
 # pid
 alias pid="cat /etc/passwd"
 
 #############################################################
-#────────────────────────────────────────────────────────────
-# VERSION 1.0 DOTFILES (VM use only)
-#   debian-based | github.com/bmilcs/linux.git
-#────────────────────────────────────────────────────────────
 #############################################################
+#     VERSION 1.0 DOTFILES (early days of linux)
+#       debian-based vm's | github.com/bmilcs/linux.git
+#       TODO: review & optimize
+#############################################################
+#############################################################
+
 #────────────────────────────────────────────────────────────
 # DOCKER
 #────────────────────────────────────────────────────────────
 
-# edit bmilcs.com
-alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
+if where docker-compose > /dev/null; then
 
-# edit docker-compose
-alias dce='vim ~/docker/docker-compose.yaml'
+  # edit bmilcs.com
+  alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
 
-# remove unused: containers | vol | networks | etc
-alias dcrmunused='docker system prune -a'
+  # edit docker-compose
+  alias dce='vim ~/docker/docker-compose.yaml'
 
-# remove all containers
-alias dcrmallcontainers='docker rm $(docker ps -a -q)'
+  # remove unused: containers | vol | networks | etc
+  alias dcrmunused='docker system prune -a'
 
-# remove all images
-alias dcrmallimages='docker rmi $(docker images -a -q)'
+  # remove all containers
+  alias dcrmallcontainers='docker rm $(docker ps -a -q)'
 
-# stop all containres
-alias dcstopall='docker stop $(docker ps -a -q)'
+  # remove all images
+  alias dcrmallimages='docker rmi $(docker images -a -q)'
 
-# clean up docker system
-alias dcclean='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
+  # stop all containres
+  alias dcstopall='docker stop $(docker ps -a -q)'
 
-# remove nfs share volumes
-alias dvol='
-	volz="audiobooks cloud dl movies music plexlog podcasts tv"
-	for vz in $volz
-	do
-		docker volume rm docker_${vz}
-	done
-	'
+  # clean up docker system
+  alias dcclean='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
 
-# remove: containers | volumes
-alias dnew="dstop;drmc;dvol;"
+  # remove nfs share volumes
+  alias dvol='
+    volz="audiobooks cloud dl movies music plexlog podcasts tv"
+    for vz in $volz
+    do
+      docker volume rm docker_${vz}
+    done
+    '
 
-# nuke all
-alias dnuke="dstop;drmc;dvol;drmi"
+  # remove: containers | volumes
+  alias dnew="dstop;drmc;dvol;"
 
-# docker logs
-alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
-compdef dclog='docker'
+  # nuke all
+  alias dnuke="dstop;drmc;dvol;drmi"
 
-# docker-compose
-alias dcs="docker-compose stop";compdef dcs='docker'
-alias dcre="docker-compose restart";compdef dcre='docker'
-alias dcd="docker-compose down";compdef dcd='docker'
+  # docker logs
+  alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
+  compdef dclog='docker'
 
-# list all dockers
-alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
-alias dnet='docker network ls'
+  # docker-compose
+  alias dcs="docker-compose stop";compdef dcs='docker'
+  alias dcre="docker-compose restart";compdef dcre='docker'
+  alias dcd="docker-compose down";compdef dcd='docker'
 
-# letsencrypt restart
-alias le="docker restart swag && docker logs -f swag"
-alias swag="docker restart swag && docker logs -f swag"
-alias ddf='docker system df'
+  # list all dockers
+  alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
+  alias dnet='docker network ls'
+
+  # letsencrypt restart
+  alias le="docker restart swag && docker logs -f swag"
+  alias swag="docker restart swag && docker logs -f swag"
+  alias ddf='docker system df'
+fi
 
 #────────────────────────────────────────────────────────────
 # DEBIAN CONFIGURE
 #────────────────────────────────────────────────────────────
 
-alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
+if [[ $DISTRO == "debian" ]]; then
+  alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
 
+  alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
+  alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
+  alias ibakadd="sudo /bin/bash ~/.bmilcs/script/backup.sh add"
+  alias rsnap="sudo vim /etc/rsnapshot.conf"
+
+  # minecraft
+
+  alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
+
+  # install nfs
+  # TODO > FUNCTION conversion
+
+  alias infs='
+    sudo apt install nfs-kernel-server 
+    echo && echo "====================================================================================================="
+    echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
+    echo "sudo vim /etc/exports"
+    echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
+    echo "-----------------------------------------------------------------------------------------------------"'
+
+  # install smb
+  # TODO > function conversion
+
+  alias ismb='
+    sudo apt install samba
+    echo && echo "====================================================================================================="
+    echo "====  bmilcs: samba instructions  ==================================================================="
+    echo "=====================================================================================================" && echo
+    echo "sudo vim /etc/samba/smb.conf"
+    echo "#       workgroup = BM"
+    echo "#       interfaces = 192.168.1.0/24 eth0"
+    echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
+    echo "# [docker]"
+    echo "#         comment = docker vm config files"
+    echo "#         path = /home/bmilcs/docker"
+    echo "#         browseable = yes"
+    echo "#         read only = no"
+    echo "#         guest ok = no"
+    echo "#         valid users = bmilcs"
+    echo "-----------------------------------------------------------------------------------------------------"		'
+
+  #────────────────────────────────────────────────────────────
+  # GITHUB RSA KEY
+  #────────────────────────────────────────────────────────────
+
+  alias gitkeys='
+    git config --global user.name bmilcs
+    git config --global user.email bmilcs@yahoo.com
+    git config --global color.ui auto
+    mkdir -m 700 -p ~/.ssh
+    curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/authorized_keys
+    eval "$(ssh-agent -s)"
+    echo "> enter github private key as follows:"
+    echo "  ssh-add ~/.ssh/id_github"'
+fi
 #────────────────────────────────────────────────────────────
 # BACKUP
 #────────────────────────────────────────────────────────────
 
-alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
-alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
-alias ibakadd="sudo /bin/bash ~/.bmilcs/script/backup.sh add"
-alias rsnap="sudo vim /etc/rsnapshot.conf"
-
-# minecraft
-
-alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
-
-# install nfs
-# TODO > FUNCTION conversion
-
-alias infs='
-	sudo apt install nfs-kernel-server 
-	echo && echo "====================================================================================================="
-	echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-	echo "sudo vim /etc/exports"
-	echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
-	echo "-----------------------------------------------------------------------------------------------------"'
-
-# install smb
-# TODO > function conversion
-
-alias ismb='
-	sudo apt install samba
-	echo && echo "====================================================================================================="
-	echo "====  bmilcs: samba instructions  ==================================================================="
-	echo "=====================================================================================================" && echo
-	echo "sudo vim /etc/samba/smb.conf"
-	echo "#       workgroup = BM"
-	echo "#       interfaces = 192.168.1.0/24 eth0"
-	echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
-	echo "# [docker]"
-	echo "#         comment = docker vm config files"
-	echo "#         path = /home/bmilcs/docker"
-	echo "#         browseable = yes"
-	echo "#         read only = no"
-	echo "#         guest ok = no"
-	echo "#         valid users = bmilcs"
-	echo "-----------------------------------------------------------------------------------------------------"		'
-
-#────────────────────────────────────────────────────────────
-# GITHUB RSA KEY
-#────────────────────────────────────────────────────────────
-
-alias gitkeys='
-	git config --global user.name bmilcs
-	git config --global user.email bmilcs@yahoo.com
-	git config --global color.ui auto
-	mkdir -m 700 -p ~/.ssh
-	curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
-  chmod 600 ~/.ssh/authorized_keys
-	eval "$(ssh-agent -s)"
-	echo "> enter github private key as follows:"
-	echo "  ssh-add ~/.ssh/id_github"'
 
 #────────────────────────────────────────────────────────────
 # DEBIAN NETWORKING

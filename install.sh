@@ -70,6 +70,7 @@ izsh() {
 
   if   [[ ! -f ~/.zsh/completion/_git ]] \
     || [[ ! -f ~/.zsh/completion/git-completion.bash ]] \
+    || [[ ! -f ~/.zsh/completion/_docker-compose ]] \
     || [[ ! -d ~/.zsh/completion ]] \
     || [[ ! -d ~/.config/zsh ]]; then
 
@@ -82,6 +83,8 @@ izsh() {
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
     curl -o ~/.zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+    curl -o ~/.zsh/completion/_docker-compose \
+    https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
     _s
   fi
 
@@ -152,7 +155,7 @@ _s all set
 if [[ ${DISTRO} == arch* ]]; then
 
   # allow dmesg as user
-  sudo sysctl kernel.dmesg_restrict=0
+  sudo sysctl kernel.dmesg_restrict=0 > /dev/null
 
   # shell
   izsh
