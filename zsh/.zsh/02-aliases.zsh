@@ -238,19 +238,19 @@ alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
 alias dce='vim ~/docker/docker-compose.yaml'
 
 # remove unused: containers | vol | networks | etc
-alias drmu='docker system prune -a'
+alias dcrmunused='docker system prune -a'
 
 # remove all containers
-alias drmc='docker rm $(docker ps -a -q)'
+alias dcrmallcontainers='docker rm $(docker ps -a -q)'
 
 # remove all images
-alias drmi='docker rmi $(docker images -a -q)'
+alias dcrmallimages='docker rmi $(docker images -a -q)'
 
 # stop all containres
-alias dstop='docker stop $(docker ps -a -q)'
+alias dcstopall='docker stop $(docker ps -a -q)'
 
 # clean up docker system
-alias dcln='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
+alias dcclean='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
 
 # remove nfs share volumes
 alias dvol='
@@ -268,12 +268,13 @@ alias dnew="dstop;drmc;dvol;"
 alias dnuke="dstop;drmc;dvol;drmi"
 
 # docker logs
-alias dclog='docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
+alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
+compdef dclog='docker'
 
 # docker-compose
-alias dcs="docker-compose stop"
-alias dcre="docker-compose restart"
-alias dcd="docker-compose down"
+alias dcs="docker-compose stop";compdef dcs='docker'
+alias dcre="docker-compose restart";compdef dcre='docker'
+alias dcd="docker-compose down";compdef dcd='docker'
 
 # list all dockers
 alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'

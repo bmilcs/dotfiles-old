@@ -14,7 +14,11 @@ _t docker-compose
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
 _a docker: update
-docker-compose up -d --remove-orphans || _e && _s
+if docker-compose up -d --remove-orphans; then
+  _s
+else
+  _e something went wrong
+fi
 
 _a docker: add \& commit to repo
 
