@@ -124,7 +124,7 @@ _tw() { color="$WHT";   _tt "$*"; }
 
 # announce
 _aa() {
-  echo -e "\n${color}${B}[${color}$*${color}${B}]${NC}"
+  echo -e "\n${color}${B}$*${NC}"
 }
 _a()  { color="$CYN";   _aa "$*"; }
 _ar() { color="$RED";   _aa "$*"; }
