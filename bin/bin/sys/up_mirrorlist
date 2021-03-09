@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 ARCH MIRRORLIST BENCHMARK [./up_mirrorlist]
+#────────────────────────────────────────────────────────────
+
+source _head
+_t mirrorlist update
+_o archlinux mirror benchmark utility
+
+pkgs=("reflector")
+
+_a checking dependencies
+if [[ ${DISTRO} == arch* ]]; then
+  if [[ $(pacman -Qi "${pkgs[@]}" > /dev/null 2>&1) ]] ; then
+    _a "installing: $pkgs"
+    sudo pacman -Sy "${pkgs[@]}" && _o installed "${pkgs[@]}" && _s
+  else
+    _o "all set"
+  fi
+else
+  _e archlinux only 
+  exit 1
+fi
+
+_a mirrorlist backup
+_o "copying /etc/pacman.d/mirrorlist > mirrorlist.bak"
+sudo cp -v /etc/pacman.d/mirrorlist{,.bak} && _s
+
+_a running benchmark
+_o reflector: 
+_i USA 
+_i updated within last 12 hours
+_i overwrite existing mirrorlist "\n"
+
+sudo reflector --verbose --country US --age 12 --protocol https \
+  --sort rate --save /etc/pacman.d/mirrorlist > ~/config/up/mirrorlist.bm \
+  && _s
+
