@@ -9,26 +9,40 @@
 #set -e
 
 source _head
-_t docker-compose 
+_t docker
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
-_a docker: update
+_a docker-compose update
 if docker-compose up -d --remove-orphans; then
   _s
 else
   _e something went wrong
 fi
 
-_a docker: add \& commit to repo
+_a docker git
 
-/usr/bin/git \
-  --git-dir="$HOME"/docker/.git/ \
-  --work-tree="$HOME"/docker \
-  commit -a -m "automated update" \
-  && _s \
-  && _a docker: git push repo \
-  && /usr/bin/git \
-    --git-dir=/home/bmilcs/docker/.git/ \
-    --work-tree=/home/bmilcs/docker push \
-  && _s
+DC="${DC:-/home/bmilcs/docker}"
+g="git --git-dir="$DC"/.git --work-tree="$DC""
+clean="$($g status | grep "clean")"
+
+_o checking for undocumented edits
+
+if [[ ! -z "$clean" ]] ; then
+  _s clean: no action necessary
+else
+  _w modifications present
+  _a commiting
+  /usr/bin/git \
+    --git-dir="$HOME"/docker/.git/ \
+    --work-tree="$HOME"/docker \
+    commit -a -m "automated update" && _s \
+    && _a pushing \
+    && /usr/bin/git \
+      --git-dir=/home/bmilcs/docker/.git/ \
+      --work-tree=/home/bmilcs/docker push \
+    && _s done
+fi
+
+
+
