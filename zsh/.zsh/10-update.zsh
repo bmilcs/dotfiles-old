@@ -48,6 +48,6 @@ fi
 
 # dotfiles
 if [[ ! "$today" == "$dlast" ]]; then
-    gu
+  gp
 fi
 
