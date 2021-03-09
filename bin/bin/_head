@@ -37,7 +37,7 @@ _askk() {
   while true; do
     default=y
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    echo -e "\n${color}${B}  ${color}$* ${B}[y|n]${NC} "
+    _qq "$* ${B}[y|n]${NC} "
 
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply < /dev/tty
@@ -58,6 +58,8 @@ _askk() {
   done
 }
 
+
+_qq() { echo -e "\n${color}${B}  ${color}$* ${B}[y|n]${NC} " ;}
 _ask()  { color="$PUR";   _askk "$*"; }
 _askr() { color="$RED";   _askk "$*"; }
 _asky() { color="$YLW";   _askk "$*"; }
@@ -65,6 +67,13 @@ _askg() { color="$GRN";   _askk "$*"; }
 _askb() { color="$BLU";   _askk "$*"; }
 _askc() { color="$CYN";   _askk "$*"; }
 _askw() { color="$WHT";   _askk "$*"; }
+_q()    { color="$PUR";   _qq "$*"; }
+_qr()   { color="$RED";   _qq "$*"; }
+_qy()   { color="$YLW";   _qq "$*"; }
+_qg()   { color="$GRN";   _qq "$*"; }
+_qb()   { color="$BLU";   _qq "$*"; }
+_qc()   { color="$CYN";   _qq "$*"; }
+_qw()   { color="$WHT";   _qq "$*"; }
 
 #────────────────────────────────────────────────────────────
 # OUTPUT
