@@ -28,7 +28,7 @@ fi
 
 _a mirrorlist backup
 _o "copying /etc/pacman.d/mirrorlist > mirrorlist.bak"
-sudo cp -v /etc/pacman.d/mirrorlist{,.bak} && _s
+sudo cp -v /etc/pacman.d/mirrorlist{,.bak}
 
 _a running benchmark
 _o reflector: 
@@ -37,6 +37,6 @@ _i updated within last 12 hours
 _i overwrite existing mirrorlist "\n"
 
 sudo reflector --verbose --country US --age 12 --protocol https \
-  --sort rate --save /etc/pacman.d/mirrorlist > ~/config/up/mirrorlist.bm \
+  --sort rate --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm \
   && _s
 
