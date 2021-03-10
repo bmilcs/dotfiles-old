@@ -1,9 +1,17 @@
+snippet regexdelallafterchar "delete everything after character"
+echo "Hello: world" | cut -f1 -d":"
+endsnippet
+
 snippet df "dotfile log debugger"
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog 'launched: `!v expand('%:p')`'
 
+endsnippet
+
+snippet sedaddnewfirstline "add a new line to beginning of a file"
+sed -i '1s/^/...\#\!\/usr...\n/' "$filename"
 endsnippet
 
 snippet foreachargument "loop through & print all arguments"
