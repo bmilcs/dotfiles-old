@@ -7,27 +7,14 @@
 #                 MY SILLY SCRIPT HEADER [./_head]
 #────────────────────────────────────────────────────────────
 
-# color var
-NC='\033[0m'
-B='\033[1m'
-DIM='\033[2m'
-ITAL='\033[3m'
-UL='\033[4m'
-BLINK='\033[5m'
-INV='\033[7m'
-BLK=${NC}'\033[30m'
-RED=${NC}'\033[31m'
-GRN=${NC}'\033[32m'
-YLW=${NC}'\033[33m'
-BLU=${NC}'\033[34m'
-PUR=${NC}'\033[35m'
-CYN=${NC}'\033[36m'
-WHT=${NC}'\033[37m'
-TIME=$(date '+%I:%M %P')
-DATE=$(date '+%Y-%m-%d')
-MONTH=$(date '+%B')
-DAY=$(date '+%d')
-DAYOFWEEK=$(date '+%A')
+# text/color mods
+NC='\033[0m'; B='\033[1m'; DIM='\033[2m'; ITAL='\033[3m'; UL='\033[4m'
+BLINK='\033[5m'; INV='\033[7m'; BLK=${NC}'\033[30m'; RED=${NC}'\033[31m'
+GRN=${NC}'\033[32m'; YLW=${NC}'\033[33m'; BLU=${NC}'\033[34m'
+PUR=${NC}'\033[35m'; CYN=${NC}'\033[36m'; WHT=${NC}'\033[37m'
+# time/date | TODO: fix execution on command run
+TIME=$(date '+%I:%M %P'); DATE=$(date '+%Y-%m-%d')
+MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
 
 #────────────────────────────────────────────────────────────
 # INPUT
@@ -38,15 +25,10 @@ _askk() {
     default=y
     # ask the question (not using "read -p" as it uses stderr not stdout)
     _qq "$* ${B}[y|n]${NC} "
-
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply < /dev/tty
-
     # default?
-    if [ -z "$reply" ]; then
-      reply=$default
-    fi
-
+    [ -z "$reply" ] && reply=$default
     # check if the reply is valid
     case "$reply" in
       "" | Y* | y*)
@@ -54,12 +36,10 @@ _askk() {
       N* | n*)
         _i no ; return 1 ;;
     esac
-
   done
 }
 
-
-_qq() { echo -e "\n${color}${B}  ${color}$* {NC} " ;}
+_qq() { echo -e "\n${color}${B}  ${color}$* ${NC} " ;}
 _ask()  { color="$PUR";   _askk "$*"; }
 _askr() { color="$RED";   _askk "$*"; }
 _asky() { color="$YLW";   _askk "$*"; }
@@ -78,25 +58,20 @@ _qw()   { color="$WHT";   _qq "$*"; }
 #────────────────────────────────────────────────────────────
 # OUTPUT
 #────────────────────────────────────────────────────────────
+ spaces=" "
+#────────────────────────────────────────────────────────────
 
-# TODO  parse parameters for illegal symbol &
-# msg=${echo $*| sed -e 's/\&/\\\&/g'}
-
-# echo $msg
-spaces=" "
 
 # titlebar
 _tt() {
-
   chr="\xE2\x94\x80"
-  # 
-  s=⎨ #❯⎨ 
+  s=⎨ #❯⎨   #         
   p=⎬ #❮⎬ 
   t= #❮⎬
   q= #❯⎨
   toadd=0
   tada=
-  nick=bmilcs
+  nick=BM
 
   nicklen=${#nick}
   cols=$(tput cols)
@@ -111,11 +86,9 @@ _tt() {
 
   printf "\n$BLU$p"
   printf "${chr}%.0s" {1..3}
-  if [[ $# -gt 0 ]]; then
-    printf "${t}${color}${B} $string ${BLU}${q}" && toadd=$(($toadd - 2))
-  fi
+  [[ $# -gt 0 ]] \
+    && printf "${t}${color}${B} $string ${BLU}${q}" && toadd=$(($toadd - 2))
   printf $tada
-  #  eval $(echo printf '"x"' {1..$toadd})
   printf "${chr}%.0s" {1..3}
   printf "${BLU}${B} "$nick" ${BLU}"
   printf "${chr}%.0s" {1..2}
@@ -130,11 +103,8 @@ _tb() { color="$BLU";   _tt "$*"; }
 _tp() { color="$PUR";   _tt "$*"; }
 _tw() { color="$WHT";   _tt "$*"; }
 
-
 # announce
-_aa() {
-  echo -e "\n${color}${B}$*${NC}"
-}
+_aa() { echo -e "\n${color}${B}$*${NC}"; }
 _a()  { color="$CYN";   _aa "$*"; }
 _ar() { color="$RED";   _aa "$*"; }
 _ay() { color="$YLW";   _aa "$*"; }
@@ -143,11 +113,8 @@ _ab() { color="$BLU";   _aa "$*"; }
 _ap() { color="$PUR";   _aa "$*"; }
 _aw() { color="$WHT";   _aa "$*"; }
 
-
 # output
-_oo() {
-  echo -e "$spaces${color}$*${NC}"
-}
+_oo() { echo -e "$spaces${color}$*${NC}"; }
 _o()  { color="$WHT";   _oo "$*"; }
 _or() { color="$RED";   _oo "$*"; }
 _oy() { color="$YLW";   _oo "$*"; }
@@ -156,11 +123,8 @@ _ob() { color="$BLU";   _oo "$*"; }
 _op() { color="$PUR";   _oo "$*"; }
 _oc() { color="$CYN";   _oo "$*"; }
 
-
 # output
-_ff() {
-  echo -e "$spaces${color} $*${NC}"
-}
+_ff() { echo -e "$spaces${color} $*${NC}"; }
 _f()  { color="$WHT";   _ff "$*"; }
 _fr() { color="$RED";   _ff "$*"; }
 _fy() { color="$YLW";   _ff "$*"; }
@@ -169,12 +133,8 @@ _fb() { color="$BLU";   _ff "$*"; }
 _fp() { color="$PUR";   _ff "$*"; }
 _fc() { color="$CYN";   _ff "$*"; }
 
-
-
 # inform
-_ii() {
-  echo -e "${spaces}${color}  $* ${NC}"
-}
+_ii() { echo -e "${spaces}${color}  $* ${NC}"; }
 _i()  { color="$WHT";   _ii "$*"; }
 _ir() { color="$RED";   _ii "$*"; }
 _iy() { color="$YLW";   _ii "$*"; }
@@ -184,9 +144,7 @@ _ip() { color="$PUR";   _ii "$*"; }
 _ic() { color="$CYN";   _ii "$*"; }
 
 # warn
-_www() {
-  echo -e "$spaces${color}${B} ${color} $* ${NC}"
-}
+_www() { echo -e "$spaces${color}${B} ${color} $* ${NC}"; }
 _w()  { color="$YLW";   _www "$*"; }
 _wr() { color="$RED";   _www "$*"; }
 _ww() { color="$WHT";   _www "$*"; }
@@ -196,30 +154,17 @@ _wp() { color="$PUR";   _www "$*"; }
 _wc() { color="$CYN";   _www "$*"; }
 
 # success
-_ss() {
-  if [ "$*" == "" ]; then
-    echo -e "$spaces${color}  done${NC}"
-  else
-    echo -e "$spaces${color}  $* ${NC}" # √
-  fi
-}
-_s()  { color="$GRN";   _ss "$*"; }
-_sr() { color="$RED";   _ss "$*"; }
-_sw() { color="$WHT";   _ss "$*"; }
-_sy() { color="$YLW";   _ss "$*"; }
-_sb() { color="$BLU";   _ss "$*"; }
-_sp() { color="$PUR";   _ss "$*"; }
-_sc() { color="$CYN";   _ss "$*"; }
-
+_scs() { echo -e "$spaces${color}  ${*:-done} ${NC}"; } # √ 
+_s()  { color="$GRN";   _scs "$*"; }
+_sr() { color="$RED";   _scs "$*"; }
+_sw() { color="$WHT";   _scs "$*"; }
+_sy() { color="$YLW";   _scs "$*"; }
+_sb() { color="$BLU";   _scs "$*"; }
+_sp() { color="$PUR";   _scs "$*"; }
+_sc() { color="$CYN";   _scs "$*"; }
 
 # error
-_ee() {
-  if [ $# -eq 0 ]; then
-    echo -e "$spaces${color}ﲅ${color}  error${NC}"
-  else
-    echo -e "$spaces${color}ﲅ${color}  ${color}$*" # X
-  fi
-}
+_ee() { echo -e "$spaces${color}ﲅ${color}  ${*:-error}${NC}"; }
 _e()  { color="$RED";   _ee "$*"; }
 _eg() { color="$GRN";   _ee "$*"; }
 _ew() { color="$WHT";   _ee "$*"; }
@@ -227,7 +172,6 @@ _ey() { color="$YLW";   _ee "$*"; }
 _eb() { color="$BLU";   _ee "$*"; }
 _ep() { color="$PUR";   _ee "$*"; }
 _ec() { color="$CYN";   _ee "$*"; }
-
 
 #echo some text
 #		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
