@@ -4,57 +4,63 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#               REPO UPDATER              
+#               REPO UPDATER
 #────────────────────────────────────────────────────────────
 source _head
 _a repos
 
 exceptions=("nerd-fonts-2.0.0")
+autostash=("zafiro-icons")
 
 rm -rf /tmp/{upno,upyes,uperror}
 
 chkout(){
-  out=$(( $1 ) 2>&1)
+  out=$($1 2>&1)
   if [[ $out == *"Already up to date"* ]]; then
-    _i $dir
-    echo "$dir" >> /tmp/upno
+    if [[ "$stash" == 1 ]]; then _ob "- ${ITAL}$sdir [${B}stash${BLU}]"
+      else _ob "- ${ITAL}$sdir"; fi; echo "$sdir" >> /tmp/upno
   elif [[ $out == *"error"* ]]; then
-    _e $dir
-    echo "$dir" >> /tmp/uperror
+    if [[ "$stash" == 1 ]]; then _w "${B}$sdir [${B}stash${BLU}]"
+      else _w "$sdir "; fi; echo "$sdir" >> /tmp/uperror
   else 
-    _s $dir
-    echo "$dir" >> /tmp/upyes
+    if [[ "$stash" == 1 ]]; then _s "$sdir [${B}stash${BLU}]"
+      else _s "$sdir"; fi; echo "$sdir" >> /tmp/upyes
   fi
-  }
+}
 
 updaterepo() {
   # loop through dir
   for dir in */; do
-
-    #printf "> "
-
-    match=0
-
-    # if looped dir from above = an exception, match!
-    for a in "${exceptions[@]}"; do
-      [[ $dir == */$a/ ]] && match=1
+    sdir=${dir:0:$(( ${#dir}-1 ))}
+    match=0 ; stash=0
+    # if exception, skip iteration
+    for a in "/${exceptions[@]}/"; do
+      [[ "/$dir" == *"$a" ]] && match=1
     done
-
+    # if autostash, stash repo before updating
+    for b in "/${autostash[@]}/"; do
+      [[ "/$dir" == *"$b" ]] && stash=1
+    done
     # if match is found, skip this iteration
-    [[ "$match" == 1 ]] && continue
-
-    cd $(pwd)/$dir
+    [[ "$match" == 1 ]] && _wb skipped: $sdir && continue
+    cd "$(pwd)/$dir" || _e "unable to cd into $sdir"
+    [[ "$stash" == 1 ]] && git stash > /dev/null 
     chkout "git pull"
-    #printf "${ITAL}$dir${NC}\n"
     cd ..
   done
-  }
+}
 
 [ -d ~/repos ] && cd ~/repos && updaterepo 
-
 [ -f /tmp/upyes ] && _a successfully updated && cat /tmp/upyes 
 
-[ -f /tmp/uperror ] && _a ${RED}${B}problematic repos && _w "resolve issues" && \
-  cat /tmp/uperror
-
-# debugging: [ -f /tmp/upno ] && _a up-to-date && cano 
+if [ -f /tmp/uperror ] ; then
+  _a repo update failure
+  _wb "cleaning required: "
+  while read repo; do
+    _oy "$repo" [~/repos/"$repo"]
+    alacritty --class=gitdirty --working-directory=$HOME/repos/$repo --config-file=$HOME/.config/alacritty/gitadd.yml -e zsh -c "cd ~/repos/$repo && git status && exec zsh" &
+    cd ~/repos/"$repo" || _e "can't find repo"
+    git status -s
+  done </tmp/uperror
+fi    
+_s
