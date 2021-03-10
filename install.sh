@@ -254,7 +254,7 @@ else # DEBIAN
   #fzf
   ifzf
 
-  _a "${B}"symlink: "${GRN}""${B}"starting"${NC}"
+  _a "${B}symlink: ${GRN}${B}starting${NC}"
   _o distro: "$DISTRO"
   _i minimal install
 
