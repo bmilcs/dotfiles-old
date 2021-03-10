@@ -12,14 +12,38 @@ dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/03-functions.zsh'
 
 source $D/bin/bin/_head
 
-#────────────────────────────────────────────────────────────
-# GIT
+# VIM
 #────────────────────────────────────────────────────────────
 
-# commit changes
-#function ga() {
-#  cd $D && git add "$*"
-#  }
+function vimm() {
+
+  if [ $# -eq 0 ]; then   # no argument, launch nvim
+    nvim .
+  elif [ $# -gt 1 ]; then  # multiple arguments, skip function
+    _e single command please
+  else
+    file="$(where $1)" || _e "$1: doesn't appear to be a command"
+      echo $file
+      if [ -d "$file" ]; then    # if argument = a directory, error
+        echo "error: \"$file\" is a DIRECTORY. Denied."
+      elif [ -w $file ]; then    # if exists and writeable. nvim TIME!"
+        command nvim "$file" 
+      elif [ -e $file ]; then    # if exists, not writeable, auto SUDO 
+        sudo nvim "$file"
+      else                    # if arg doesn't exist...
+        if touch $file; then     # if user has permission, create & launch nvim:
+          command nvim "$file"
+        else                  # elevate to sudo & create/launch nvim: 
+          sudo nvim \"$file\"
+        fi
+      fi
+  fi
+
+}
+compdef vvim="where"
+
+# GIT
+#────────────────────────────────────────────────────────────
 
 # commit changes
 function gc() {
@@ -38,54 +62,26 @@ function grh() {
   git diff
   echo
   _ask "do you really want to reset --hard? (all changes will be lost" && git reset --hard && git clean -fdx
-
   }
 
-# # commit changes w/ add .
-# function gaca() {
-#   _ask "mass git {add,commit,push} - are you sure?" \
-#   && _t dotfile repo commit \
-#   && _a add missing files \& commit \
-#   && ga . \
-#   && gc "$@" \
-#   && gps \
-#   && _s done.
-#   }
+# add & commit all: lazy mode
+function gacall() {
+  _ask "mass git {add,commit,push} - are you sure?" \
+  && _t dotfile repo commit \
+  && _a add missing files \& commit \
+  && ga . \
+  && gc "$@" \
+  && _s done.
+  }
 
-#────────────────────────────────────────────────────────────
 # SHELL
 #────────────────────────────────────────────────────────────
-
-# create dir & cd into it
-# function mbin() {
-# 
-#   if [[ $# == 0 ]]; then
-#     _e filename argument missing
-#     exit 1
-#   elif [[ -f $1 ]]; then
-#     _e file already exists!
-#     exit 1
-#   fi
-# 
-#   touch $@ 
-#   logo "$@"
-# 
-#   echo -e "source _head\n" >> $@
-#   echo -e "#────────────────────────────────────────────────────────────" >> $@
-#   echo -e "# " >> $@
-#   echo -e "#────────────────────────────────────────────────────────────" >> $@
-# 
-#   sed -i '1s/^/\#\!\/bin\/sh\n/' $@
-#   chmod +x $@ 
-#   nvim $@
-#   }
 
 # create dir & cd into it
 function mdir() {
   mkdir -p "$@" && cd "$@";
   }
 
-#────────────────────────────────────────────────────────────
 # SYSTEM SERVICES
 #────────────────────────────────────────────────────────────
 
@@ -109,7 +105,6 @@ function svst() {
   sudo service $@ status
   }
 
-#────────────────────────────────────────────────────────────
 # COLORS
 #────────────────────────────────────────────────────────────
 
