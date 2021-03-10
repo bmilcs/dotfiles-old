@@ -49,6 +49,8 @@ alias polyr=". ~/.config/polybar/launch.sh"
 # DISTRO SPECIFIC
 #────────────────────────────────────────────────────────────
 
+alias rmup="rm -rf ~/.config/up/"
+
 if [[ $DISTRO = arch ]]; then # ARCH
   # aur | yay
   alias pacman='sudo pacman';compdef pacman='pacman'
