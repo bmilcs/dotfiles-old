@@ -4,14 +4,10 @@
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 "              VIM CUSTOM SHORTCUTS
-"────────────────────────────────────────────────────────────
-" TODO    Add leader shortcuts:
+" TODO    add leader shortcuts:
 "         - format/move comments to column #45
 "         - improve fzf shortcuts, for project files, within
 "           files, etc.
-"────────────────────────────────────────────────────────────
-" CHEAT SHEET
-"────────────────────────────────────────────────────────────
 " normal mode         nmap
 " insert              imap
 " visual & select     vmap
@@ -20,12 +16,17 @@
 " operator-pending    omap
 " terminal            tmap
 " <silent>            hide command in statusline
+
+" FILE SHORTCUTS
 "────────────────────────────────────────────────────────────
+nnoremap <leader>os :tabedit /home/bmilcs/.config/nvim/snips/all.snippets<CR>
+nnoremap <leader>op :tabedit /home/bmilcs/.config/nvim/plugins.vim<CR>
+nnoremap <leader>ok :tabedit /home/bmilcs/.config/nvim/keybinds.vim<CR>
+
 " PERSISTENT MACROS
 "────────────────────────────────────────────────────────────
 let @v='"v   ciW`^R"`^[l'
 
-"────────────────────────────────────────────────────────────
 " COC
 "────────────────────────────────────────────────────────────
 
@@ -48,7 +49,7 @@ nmap <silent> <leader>co :<C-u>CocListResume<CR>
 "────────────────────────────────────────────────────────────
 
 " (w)rite (w)indow as sudo
-nnoremap <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
+nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
 
 " (s)ource vimrc config
 nnoremap <silent> <leader>` :source ~/.vimrc<CR>
