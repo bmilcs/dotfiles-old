@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 I3 FLOATER [./i3floater]
+#────────────────────────────────────────────────────────────
+
+source _head 
+_a i3 floater
+
+_o extracting class
+class="$(xprop -id "$(xdotool getactivewindow)" \
+  | grep -hn "WM_CLASS" \
+  | cut -f1 -d"," \
+  | cut -f3 -d " " \
+  | cut -f2 -d "\"")"
+
+eval "$(xwininfo -id "$(xdotool getactivewindow)" \
+  | sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
+    -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
+    -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
+    -e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p")"
+
+if [[ -z "$class" ]] ; then
+
+  _e unable to extract classname
+
+elif [[ -z "$x" ]] || [[ -z "$y" ]] || [[ -z "$h" ]] || [[ -z "$w" ]] ; then
+
+  _e unable to extract position or dimensions for "$class"
+
+else
+
+  _o class: \""$class"\"
+  _o 
+  _s 
+
+  line="\
+    for_window               [instance=\""$class"\"]  \
+    floating enable, \
+    resize set $w $h, \
+    move absolute position $x $y, \
+    border pixel 3"
+  echo $line
+
+  conf=~/.config/i3/config
+
+# check if rule exists already
+
+  if grep -F "instance=\"$class\"" "$conf"; then
+    notify-send --icon="dialog-warning" "bin/i3floater" "[class=\"$class\"] \na floating rule class exists already! "
+  fi
+    cp "$conf"{,.bak}
+    sed '/^for_window.*instance=\"'$class'\"/ s/^#*/#/' -i "$conf"
+    echo $line >> ~/.config/i3/config
+    if grep -F "instance=\"$class\"" "$conf"; then
+      i3-msg "restart"
+      notify-send --icon="dialog-success" "bin/i3floater" "[class=\"$class\"] \na floating rule added successfully!"
+    fi
+fi
+
