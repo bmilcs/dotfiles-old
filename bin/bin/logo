@@ -42,14 +42,15 @@ if [[ $# == 0 ]]; then
     echo 
   done
 
-# argument passed; check if file exists
-elif [[ ! -f $1 ]]; then
-
-  _e "\"$1\" doesn't exist"
-  exit 1
-
-# argument passed & file exists
 else
+
+  # argument passed; check if file exists
+  if [[ ! -f $1 ]]; then
+    _w "\"$1\" doesn't exist"
+    _a creating a new script: $1
+    touch "$1" || { _e unable to create "$1"; exit 1 ; }
+    fi
+  fi
 
   _t logo creator
 

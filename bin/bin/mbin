@@ -6,6 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 MAKE BIN FILE [./mbin]
 #────────────────────────────────────────────────────────────
+
 source _head
 _t mbin script creator
 
@@ -17,20 +18,20 @@ elif [[ -f $1 ]]; then
   exit 1
 fi
 
-touch "$1"
+# add logo
 logo "$1"
 
-echo -e "\
-source _head\n\
+# add header/title
+echo -e "\n\
+source _head\n
 _t  \n\
-#────────────────────────────────────────────────────────────\n\
-#\n\
-#────────────────────────────────────────────────────────────\n\n\n" >> "$1"
+\n\n\n" >> "$1"
 
-# echo -e "#────────────────────────────────────────────────────────────" >> "$1"
-# echo -e "# " >> "$1"
-# echo -e "#────────────────────────────────────────────────────────────" >> "$1"
-
+# add shebang
 sed -i '1s/^/\#\!\/usr\/bin\/env bash\n/' "$1"
+
+# make executable
 chmod +x "$1"
+
+# open editor
 nvim "$1"

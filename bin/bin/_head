@@ -59,7 +59,7 @@ _askk() {
 }
 
 
-_qq() { echo -e "\n${color}${B}  ${color}$* ${B}[y|n]${NC} " ;}
+_qq() { echo -e "\n${color}${B}  ${color}$* {NC} " ;}
 _ask()  { color="$PUR";   _askk "$*"; }
 _askr() { color="$RED";   _askk "$*"; }
 _asky() { color="$YLW";   _askk "$*"; }
