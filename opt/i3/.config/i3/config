@@ -253,3 +253,5 @@ for_window               [instance="i3spy"]      floating enable, resize set 696
 for_window [instance="i3debug"] floating enable, resize set 536 355, move absolute position 14 1070, border pixel 3
 for_window [instance="ncmpcpp"] floating enable, resize set 486 434, move absolute position 1 495, border pixel 3
 for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute position 3028 439, border pixel 3
+#for_window [instance="gitdirty"] floating enable, resize set 550 600, move absolute position 970 437, border pixel 3
+for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
