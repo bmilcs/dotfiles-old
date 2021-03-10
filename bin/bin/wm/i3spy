@@ -4,11 +4,9 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 I3 WINDOW SPY [./i3winspy]
-#                 source: https://gist.github.com/8645010.git
-# TODO coc (ctrl+n) on autocomplete popup, create hotkey for this.
-# learn more about coc!
+#                 I3 SPY [./i3spy]
 #────────────────────────────────────────────────────────────
+
 sleep 0.5
 source _head
 _a i3 spy
