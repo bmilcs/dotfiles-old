@@ -8,46 +8,34 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/10-update.zsh'
+  dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/10-update.zsh'
 
-#────────────────────────────────────────────────────────────
-# ZINIT & SYSTEM
-#────────────────────────────────────────────────────────────
 source _head
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
 ustatus="$HOME/.config/up/system.bm"
 zstatus="$HOME/.config/up/zsh.bm"
 dstatus="$HOME/.config/up/dotfiles.bm"
-D="${D:-/home/bmilcs/bm}"
+rstatus="$HOME/.config/up/repos.bm"
 
+# logfile check
 [[ -d ~/.config/up ]] || mkdir -p ~/.config/up
 [[ -f $ustatus ]] && slast="$(cat "$ustatus")" || slast=00 
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
+[[ -f $rstatus ]] && rlast="$(cat "$rstatus")" || rlast=00
 
-# zinit
-if [[ ! "$today" == "$zlast" ]]; then
-  _t "daily update: zsh (zinit)"
-  _i "last ran: $MONTH/$zlast"
+# zsh plugins & manager
+[[ ! "$today" == "$zlast" ]] \
+&& _a "zinit" && zinit self-update && _s \
+&& _a "plugins" && zinit update --all && _s \
+&& echo "$today" > "$zstatus"
 
-  (
-  _a "zinit: self update" 
-  zinit self-update && _s
-  _a "zinit: plugins update"
-  zinit update && _s
-  ) && echo "$today" > "$zstatus" 
-fi
+# system (pacman & aur)
+[[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
 
-# system
-if [[ ! "$today" == "$slast" ]]; then
-  _t "daily update: system"
-  _i "last ran: $MONTH/$zlast"
-  up && echo "$today" > "$ustatus" 
-fi
+# github repo software
+[[ ! "$today" == "$rlast" ]] && upr && echo "$today" > "$rstatus"
 
-# dotfiles
-if [[ ! "$today" == "$dlast" ]]; then
-  gp
-fi
-
+# dotfiles repo
+[[ ! "$today" == "$dlast" ]] && gp && echo "$today" > "$dstatus"
