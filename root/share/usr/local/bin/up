@@ -10,47 +10,22 @@
 source _head
 source _distro
 
+# ARCH
 if [[ $DISTRO = arch* ]]; then
-
-  #
-  # ARCH
-  #
 
   # yay
   _a pacman/aur
   if [[ $# == 0 ]]; then
     yay -Syyyuuu && _s
   else
-    _o skipped: debugging
-  fi
-
-  # repos: once daily
-  _a repos
-  if [[ -L /usr/local/bin/upr ]]; then
-    rstatus="$HOME/.config/up/repos.bm"
-    today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-
-    if [ -f "$rstatus" ]; then
-      rlast="$(cat "$rstatus")"
-    else
-      mkdir -p ~/.config/up
-      rlast="00"
-    fi
-
-    if [[ ! "$today" == "$rlast" ]]; then
-      _i "running: daily update for $DAYOFWEEK" "\n"
-      upr && echo "$today" > "$rstatus" && echo && _s "\n"
-    else _o skipped: "${DAYOFWEEK,,}'s update completed earlier today"; fi
-
+    _ib skipped: debugging
   fi
 
   # ARCH END
 
 elif [[ $DISTRO = debian* ]]; then
 
-  #
   # DEBIAN
-  #
 
   _a apt full-upgrade
   sudo apt full-upgrade -y && _s
@@ -73,9 +48,7 @@ else
 
 fi
 
-#
 # BONUS
-#
 
 # pihole
 if pihole -v PIHOLE &> /dev/null; then
@@ -88,9 +61,7 @@ if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
   dcr
 fi
 
-#
 # CLEAN EXIT
-#
 
 echo
 exit 0
