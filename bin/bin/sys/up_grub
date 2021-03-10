@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -16,26 +16,22 @@ ds=~/.backup/grub/
 fn=$ds/$(date +%Y-%m-%d_%H-%m-%s).cfg
 
 _i creating dir: $ds
-mkdir -p $ds
+[[ ! -d ~/.backup/grub ]] && mkdir -p $ds
 
 _i copying cfg to: "$fn"
 sudo cp /boot/grub/grub.cfg "$fn"
 
 if [[ ! -f $fn ]]; then
   _e unable to backup config: now exiting
-  exit 1
+else
+  _s
+  _a updating grub
+
+  _i grub-mkconfig
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+  _i checking for changes
+  sudo diff /boot/grub/grub.cfg $fn
+  _s
 fi
 
-_s
-
-_a updating grub
-
-_i grub-mkconfig
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-_i checking for changes
-sudo diff /boot/grub/grub.cfg $fn
-
-_s
-
-exit 0
