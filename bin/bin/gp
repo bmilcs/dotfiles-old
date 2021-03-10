@@ -8,20 +8,21 @@
 #────────────────────────────────────────────────────────────
 
 source _head
-_t dotfiles 
+_t dotfile repo helper
 
 D="${D:-/home/bmilcs/bm}"
-g="git --git-dir="$D"/.git --work-tree="$D""
+g="git --git-dir=$D/.git --work-tree=$D"
 clean="$($g status | grep "clean")"
 
-_a local
-_o checking for undocumented changes
+_a local repo
+_o health check
 
 if [[ ! -z "$clean" ]] ; then
   _s clean: no action necessary
-  _a remote
-  _o comparing local vs upstream dotfiles
-  $g remote update > /dev/null 2>&1 # hide this afterward
+
+  _a remote repo
+  _o "diff local & upstream dotfiles"
+  $g remote update > /dev/null 2>&1
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
     _w "ahead of origin/main"
@@ -32,16 +33,17 @@ if [[ ! -z "$clean" ]] ; then
 
   elif [[ "$($g status -uno)" == *"behind"* ]]; then
     _w "behind origin/main"
-    _a git pull
-    _o updating local dotfiles "\n"
+    _a "git pull"
+    _o "updating local dotfiles \n"
    $g pull \
     && echo && _s
   else
     _s "up-to-date": no action necessary
   fi
 else
-  _ww dirty: unable to proceed
-  _or commit local changes
+  _wb "dirty: unable to proceed"
+  _ay "commit:"
   $g status -s
-  _e done
+  echo
+  _s done "\n"
 fi
