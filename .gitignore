@@ -12,3 +12,4 @@ neomutt
 .zcompdump
 _docker-compose
 bin/bin/pipes
+opt/i3/.config/i3/config.bak
