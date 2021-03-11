@@ -47,6 +47,12 @@ genls() {
   done
 }
 
+fzfls() {
+  _a "$2"
+  ls "$1/"* | fzf | xargs -I file nvim "$1"/file
+
+}
+
 if [ $# = 0 ]; then
   echo
   _o "  ${UL}opt${NC}\t  ${UL}desc"
@@ -73,6 +79,7 @@ else
 fi
 
 case $sel in
+  tt) fzfls "$D"/txt TXT ;;
   t) genls "$D"/txt TXT ;;
   b) genls "$D"/bin BIN ;;
   i) genls "$D"/opt/i3/.config/i3/ I3 ;;
