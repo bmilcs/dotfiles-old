@@ -156,6 +156,9 @@ if [[ ${DISTRO} == arch* ]]; then
   # allow dmesg as user
   sudo sysctl kernel.dmesg_restrict=0 > /dev/null
 
+  # remove diff menu (yay)
+  yay --editmenu --nodiffmenu --save
+
   # shell
   izsh
 
