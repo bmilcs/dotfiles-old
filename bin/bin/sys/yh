@@ -4,15 +4,16 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 YAY INSTALLER [./yi]
+#                 YAY HELPER [./yh]
 #────────────────────────────────────────────────────────────
 
 source _head
-_t yay install 
 
-
-yay -Slq \
+url=$(yay -Slq \
   | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \
   | awk "{print \$2}")' \
-  | xargs -ro sudo yay -S
+  | xargs -ro sudo yay -Si \
+  | grep -hn "URL" \
+  | cut -f3,4 -d":" )
 
+[[ -n $url ]] && firefox --new-tab "$url"

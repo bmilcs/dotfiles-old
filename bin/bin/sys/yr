@@ -4,15 +4,13 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 YAY INSTALLER [./yi]
+#                 YAY REMOVER [./yr]
 #────────────────────────────────────────────────────────────
 
 source _head
-_t yay install 
+_t yay remover 
 
-
-yay -Slq \
-  | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \
-  | awk "{print \$2}")' \
-  | xargs -ro sudo yay -S
+yay -Qq \
+  | fzf --multi --preview 'yay -Qi {1}' \
+  | xargs -ro sudo yay -Rns
 
