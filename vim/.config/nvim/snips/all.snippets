@@ -1,3 +1,13 @@
+snippet regextractline "extract line containing a string"
+_o extracting class
+class="$(xprop -id "$(xdotool getactivewindow)" \
+  | grep -hn "WM_CLASS" \
+  | cut -f1 -d"," \
+  | cut -f3 -d " " \
+  | cut -f2 -d "\"")"
+endsnippet
+
+
 snippet regexdelallafterchar "delete everything after character"
 echo "Hello: world" | cut -f1 -d":"
 endsnippet
