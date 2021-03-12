@@ -49,8 +49,7 @@ genls() {
 
 fzfls() {
   _a "$2"
-  ls "$1/"* | fzf | xargs -I file nvim "$1"/file
-
+  find "$1/"* |  fzf --delimiter / --with-nth -1 | xargs -I file nvim file
 }
 
 if [ $# = 0 ]; then
@@ -76,8 +75,8 @@ if [ $# = 0 ]; then
   read -r sel
 else
   sel=${1}
-fi
 
+fi
 case $sel in
   tt) fzfls "$D"/txt TXT ;;
   t) genls "$D"/txt TXT ;;
