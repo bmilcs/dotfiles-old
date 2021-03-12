@@ -7,6 +7,9 @@
 - mopidy (mpd server)
 - integrate arch w/ ansible & homelab
 - docker, remote dev (rsync compose?)
+- user authentication across all dockers
+  - simplify, harden
+- bmilcs.com > it's own VM
 
 [ arch ]
 - i3: copy/paste to middle mouse clipboard
