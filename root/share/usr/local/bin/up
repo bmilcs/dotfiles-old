@@ -10,10 +10,9 @@
 source _head
 source _distro
 
-# ARCH
 if [[ $DISTRO = arch* ]]; then
 
-  # yay
+  # ARCH
   _a pacman/aur
   if [[ $# == 0 ]]; then
     yay -Syyyuuu && _s
@@ -21,47 +20,32 @@ if [[ $DISTRO = arch* ]]; then
     _ib skipped: debugging
   fi
 
-  # ARCH END
-
 elif [[ $DISTRO = debian* ]]; then
 
   # DEBIAN
-
   _a apt full-upgrade
   sudo apt full-upgrade -y && _s
-
   _a apt autoremove
   sudo apt autoremove -y && _s
-
   _a apt clean
   sudo apt clean -y && _s
-
   _a apt autoclean
   sudo apt autoclean -y && _s
 
-  # DEBIAN END
+  # PIHOLE
+  if pihole -v PIHOLE &> /dev/null; then
+    _a pihole -up
+    sudo pihole -up
+  fi
 
-else
+  # DOCKER
+  if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
+    dcr
+  fi
 
-  # UNCONFIGURED
-  _e unknown distro\! update me\!\! && _i \"/usr/local/bin/up\"
-
+else # NOT CONFIGURED
+  _e unconfigured distro\! update me\!\! && _i \"/usr/local/bin/up\"
 fi
-
-# BONUS
-
-# pihole
-if pihole -v PIHOLE &> /dev/null; then
-  _a pihole -up
-  sudo pihole -up
-fi
-
-# docker
-if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
-  dcr
-fi
-
-# CLEAN EXIT
 
 echo
 exit 0
