@@ -38,5 +38,5 @@ maimall() {
 [ "$1" == win ] && maimwin
 [ "$1" == sel ] && maimsel
 
-dunstify -i "$f"
+notify-send -i "$f" screenshot taken
 exit 0
