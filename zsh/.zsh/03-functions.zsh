@@ -15,15 +15,15 @@ source $D/bin/bin/_head
 # VIM
 #────────────────────────────────────────────────────────────
 
-function vimm() {
-
+# requires function form (where command)
+function vm() {
+source _head
   if [ $# -eq 0 ]; then   # no argument, launch nvim
     nvim .
   elif [ $# -gt 1 ]; then  # multiple arguments, skip function
     _e single command please
   else
-    file="$(where $1)" || _e "$1: doesn't appear to be a command"
-      echo $file
+    if file="$(where $1)"; then 
       if [ -d "$file" ]; then    # if argument = a directory, error
         echo "error: \"$file\" is a DIRECTORY. Denied."
       elif [ -w $file ]; then    # if exists and writeable. nvim TIME!"
@@ -31,14 +31,14 @@ function vimm() {
       elif [ -e $file ]; then    # if exists, not writeable, auto SUDO 
         sudo nvim "$file"
       else                    # if arg doesn't exist...
-        if touch $file; then     # if user has permission, create & launch nvim:
-          command nvim "$file"
-        else                  # elevate to sudo & create/launch nvim: 
-          sudo nvim \"$file\"
-        fi
+        _a "where $1 output:"
+        where $1
+        _w "${B}$1${YLW}: function/alias? can't open it with an editor."
       fi
+    else
+      _e "$1: doesn't appear to be a command"
+    fi  
   fi
-
 }
 compdef vvim="where"
 
