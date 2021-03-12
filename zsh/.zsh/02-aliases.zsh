@@ -42,7 +42,6 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 alias tr="tmux source ~/.tmux.conf"
 alias zr='source ~/.zsh/.zshrc'
 alias polyr=". ~/.config/polybar/launch.sh" 
-# tail -f ~/.config/polybar/log"
 
 #────────────────────────────────────────────────────────────
 # DISTRO SPECIFIC
@@ -220,6 +219,11 @@ alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 # pid
 alias pid="cat /etc/passwd"
 
+#────────────────────────────────────────────────────────────
+# SSH SHORTCUTS
+#────────────────────────────────────────────────────────────
+alias doc="ssh docker"
+
 #############################################################
 #############################################################
 #     VERSION 1.0 DOTFILES (early days of linux)
@@ -337,9 +341,9 @@ if [[ $DISTRO == "debian" ]]; then
     echo "#         valid users = bmilcs"
     echo "-----------------------------------------------------------------------------------------------------"		'
 
-  #────────────────────────────────────────────────────────────
-  # GITHUB RSA KEY
-  #────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
+# GITHUB RSA KEY
+#────────────────────────────────────────────────────────────
 
   alias gitkeys='
     git config --global user.name bmilcs
