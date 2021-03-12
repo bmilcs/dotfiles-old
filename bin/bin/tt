@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -x 
+
+b="2	/usr/share/icons/Papirus/24x24/actions"
+substr='@"^[\w\-. ]+$";'
+substr='.*[\w]'
+
+expr match "$b" '.*\([\w]*\).*'
+
+echo ha
+
+set +x
