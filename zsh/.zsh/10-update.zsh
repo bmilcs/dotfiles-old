@@ -33,16 +33,18 @@ fstatus="$HOME/.config/up/fzf.bm"
   && _a "plugins" && zinit update --all && _s \
   && echo "$today" > "$zstatus"
 
+# fzf update
+[[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
+
 # system (pacman & aur)
 [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
 
 # github repo software
-[[ ! "$today" == "$rlast" ]] && upr && echo "$today" > "$rstatus"
+if [[ ! "$today" == "$rlast" ]] && [[ -f /usr/local/bin/upr ]]; then
+  upr && echo "$today" > "$rstatus"
+fi
 
 # dotfiles repo
 [[ ! "$today" == "$dlast" ]] && gp && echo "$today" > "$dstatus"
-
-# fzf update
-[[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
 
 # TODO: What else is manually installed?
