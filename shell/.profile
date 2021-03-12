@@ -16,9 +16,14 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog 'launched: /home/bmilcs/.profile'
 
-# path var: add ~/bin & all of it's subdirs
+# path: add ~/bin + subdirs
 [ -d "$HOME/bin" ] && [ -z "$(echo $PATH | grep -o "$HOME/bin")" ] \
   && export PATH=$PATH$(find $HOME/bin/ -type d -printf ":%p")
+
+# path: add ~/.local/bin/
+[ -d "$HOME/.local/bin" ] \
+  && [ -z "$(echo $PATH | grep -o "$HOME/.local/bin")" ] \
+  && export PATH=$PATH:"$HOME/.local/bin"
 
 # clean up $HOME
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
