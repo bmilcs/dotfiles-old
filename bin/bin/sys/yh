@@ -12,7 +12,7 @@ source _head
 url=$(yay -Slq \
   | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \
   | awk "{print \$2}")' \
-  | xargs -ro sudo yay -Si \
+  | xargs -ro yay -Si \
   | grep -hn "URL" \
   | cut -f3,4 -d":" )
 
