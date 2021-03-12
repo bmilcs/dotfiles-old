@@ -41,7 +41,7 @@ zinit light wfxr/forgit
 
 # fzf path
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ]  \
-  && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+  && source "$HOME/.config/fzf/fzf.zsh"
 
 #
 # OPTIONS

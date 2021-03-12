@@ -22,7 +22,6 @@ alias pad='vim $D/txt/txt/pad.md'
 alias regex='vim $D/txt/txt/regex.md'
 
 # cd path
-alias txt='cd $D/txt/txt ; c ; l'
 alias cf='cd ~/.config/ ; c ; l'
 
 # dotfiles
@@ -56,13 +55,13 @@ if [[ $DISTRO = arch ]]; then # ARCH
   alias pacman='sudo pacman';compdef pacman='pacman'
   alias pm='pacman';compdef pm='pacman'
   alias pms='pacman -S';compdef pms='pacman'
-  alias pmls='pacman -Qe|less';compdef pmls='pacman'
+  alias pmls='pacman -Qe|yay';compdef pmls='pacman'
   alias pmg='pacman -Qe|grep';compdef pmg='pacman'
   alias pmgg='pacman -Q|grep';compdef pmgg='pacman'
   alias yays='yay -S';compdef yays='yay'
-  alias yayls='yay -Qe | less';compdef yayls='yay'
+  alias yayls='yay -Qe | fzf';compdef yayls='yay'
   alias yayl='yayls';compdef yayl='yay'
-  alias yayll='yay -Q | less';compdef yayll='yay'
+  alias yayll='yay -Q | fzf';compdef yayll='yay'
   alias yayg='yay -Q | grep';compdef yayg='yay'
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   # arch specific
@@ -132,6 +131,7 @@ alias lst='command ls \
   compdef lst="ls"
 
 alias lsg="ll | grep"          # search in dir
+alias lst="ll -tr"             # sort time/reverse
 alias lsd="ll -d */"           # ls: dirs only
 
 #────────────────────────────────────────────────────────────
