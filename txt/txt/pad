@@ -13,6 +13,10 @@
 - dunst: make larger in size & duration
 - starship prompt
 - rofi menus for common tasks bin/rofibin 
+- search commands w/ examples
+  - cut
+  - awk
+  - xargs
 
 [goals]
 - learn advanced bash
