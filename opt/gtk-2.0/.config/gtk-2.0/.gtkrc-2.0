@@ -3,7 +3,7 @@
 
 include "/home/bmilcs/.gtkrc-2.0.mine"
 gtk-theme-name="Nordic"
-gtk-icon-theme-name="Zafiro-icons"
+gtk-icon-theme-name="Papirus-Light"
 gtk-font-name="Iosevka 10"
 gtk-cursor-theme-name="volantes_cursors"
 gtk-cursor-theme-size=0
@@ -13,7 +13,7 @@ gtk-button-images=1
 gtk-menu-images=1
 gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=1
-gtk-xft-antialias=0
-gtk-xft-hinting=0
+gtk-xft-antialias=1
+gtk-xft-hinting=1
 gtk-xft-hintstyle="hintslight"
 gtk-xft-rgba="rgb"
