@@ -28,29 +28,17 @@ bindsym $win+m           exec --no-startup-id    i3hfr ncmpcpp 'alacritty --clas
 
 # DEBUGGING
 bindsym $win+d           exec --no-startup-id    i3kr i3debug 'alacritty --class=i3debug --title=i3debug --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3debug &'
-no_focus                 [instance="i3debug"]
 
 # SPY 
 bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &'
-no_focus                 [instance="i3spy"]
 
 # DUNST 
-bindsym $win+x           exec --no-startup-id    "killall dunst ; sleep 0.5 ; notify-send \\"title\\" \\"msg\\""
+bindsym $win+x           exec --no-startup-id    "killall dunst ; sleep 0.5 ; notify-send -i dialogue-error \\"title\\" \\"msg\\""
 
 # ROFI
 bindsym $win+q           exec --no-startup-id    rofi -config ~/.config/myrofi/config.rasi -show drun
 bindsym $win+e           exec --no-startup-id    rofibin
 bindsym $win+$ctrl+q     exec --no-startup-id    ~/.config/rofi/bin/launcher_ribbon
-
-
-# FLOATING WINDOWS
-for_window    [class="Font-manager"]              floating enable, focus
-for_window    [class="Galculator"]                floating enable, focus, resize set 1500 1200, move absolute position center
-for_window    [class="Gucharmap"]                 floating enable, focus
-for_window    [class="Lxappearance"]              floating enable, focus
-for_window    [class='Conky']                     floating enable
-for_window    [class="PkgBrowser"]                floating enable, focus, resize set 1558 1254, move absolute position 1214 51
-for_window    [instance="nvidia-settings"]        floating enable, focus, resize set 1616 120, move absolute position center
 
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS
@@ -237,17 +225,31 @@ bindsym $win+$shift+s         floating toggle
 #────────────────────────────────────────────────────────────
 
 # WINDOW TO WORKSPACE
-assign        [class="Thunderbird"]               3
-assign        [class="discord"]                   3
-assign        [class="android-*"]                 3
-assign        [class="Telegram*"]                 3
+assign        [class="Thunderbird"]        3
+assign        [class="discord"]            3
+assign        [class="android-*"]          3
+assign        [class="Telegram*"]          3
 
-# MANUAL ENTRIES
-for_window               [instance="i3readme"]   floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
-for_window               [instance="i3pad"]      floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
-for_window               [instance="ncmpcpp"]    floating enable, resize set 492 1065, move absolute position -2 142, border pixel 3
-for_window               [instance="i3debug"]    floating enable, resize set 515 309, move absolute position 12 1118, border pixel 3
-for_window               [instance="i3spy"]      floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
+# MISC
+no_focus      [instance="Navigator"]
+no_focus      [instance="i3debug"]
+no_focus      [instance="i3spy"]
+
+# FLOATING: APPLICATIONS
+for_window    [class="Font-manager"]        floating enable, focus
+for_window    [class="Galculator"]          floating enable, focus, resize set 1500 1200, move absolute position center
+for_window    [class="Gucharmap"]           floating enable, focus
+for_window    [class="Lxappearance"]        floating enable, focus
+for_window    [class='Conky']               floating enable
+for_window    [class="PkgBrowser"]          floating enable, focus, resize set 1558 1254, move absolute position 1214 51
+for_window    [instance="nvidia-settings"]  floating enable, focus, resize set 1616 120, move absolute position center
+
+# FLOATING: CUSTOM
+for_window    [instance="i3debug"]          floating enable, resize set 515 309, move absolute position 12 1118, border pixel 3
+for_window    [instance="i3pad"]            floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+for_window    [instance="i3readme"]         floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+for_window    [instance="i3spy"]            floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
+for_window    [instance="ncmpcpp"]          floating enable, resize set 492 1065, move absolute position -2 142, border pixel 3
 
 # WINDOW RULES VIA I3FLOATER
 for_window [instance="i3debug"] floating enable, resize set 536 355, move absolute position 14 1070, border pixel 3
@@ -255,3 +257,4 @@ for_window [instance="ncmpcpp"] floating enable, resize set 486 434, move absolu
 for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute position 3028 439, border pixel 3
 #for_window [instance="gitdirty"] floating enable, resize set 550 600, move absolute position 970 437, border pixel 3
 for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
+for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
