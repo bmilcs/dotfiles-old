@@ -12,5 +12,5 @@ _t yay remover
 
 yay -Qq \
   | fzf --multi --preview 'yay -Qi {1}' \
-  | xargs -ro sudo yay -Rns
+  | xargs -ro yay -Rns
 
