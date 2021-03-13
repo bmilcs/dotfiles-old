@@ -1,9 +1,18 @@
+snippet forexceptionsloop "for loop, exceptions, install script"
+exceptions=("img" "opt" "root")
+
+match=0
+
+# if looped dir from above = an exception, match!
+for a in "${exceptions[@]}"; do
+  [[ $dir == $D/$a/ ]] && match=1
+done
+endsnippet
 
 snippet pipe_clipboard "pipe x to system clipboard"
 xclip -selection clipboard
 # xclip -sel clip # -t image/png "$f"
 endsnippet
-
 
 snippet regextractline "extract line containing a string"
 _o extracting class
