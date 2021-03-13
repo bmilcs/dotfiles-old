@@ -12,7 +12,7 @@ dotdir=$HOME/bm
 dotfile_paths=$(/usr/bin/git --git-dir="$dotdir/.git" \
   --work-tree="$dotdir" ls-tree -r main --name-only)
 
-sel="$(echo -e "$dotfile_paths" | rofi -dmenu -theme ~/.config/myrofi/leftmenu.rofi)" #-dmenu 
+sel="$(echo -e "$dotfile_paths" | rofi -dmenu -theme nord)" #-dmenu 
 
 # avoid excessive text in rofi menu by adding this afterward
 [[ -n $sel ]] && sel=$dotdir/$sel
