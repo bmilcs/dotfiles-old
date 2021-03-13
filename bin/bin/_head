@@ -173,6 +173,21 @@ _eb() { color="$BLU";   _ee "$*"; }
 _ep() { color="$PUR";   _ee "$*"; }
 _ec() { color="$CYN";   _ee "$*"; }
 
+#────────────────────────────────────────────────────────────
+# NOTIFICATIONS
+#────────────────────────────────────────────────────────────
+
+_ne() {
+  notify-send \
+    --category="bmerror" \
+    --urgency="critical" \
+    --icon="dialog-warning" \
+    "$(basename $0)" \
+    "$2"
+}
+
+
+
 #echo some text
 #		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 
