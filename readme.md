@@ -1,54 +1,47 @@
-## bmilcs/dotfiles
+<kbd>
+  <img src="img/rice-2020-03-08.png">
+</kbd>
 
-![desktop](img/rice-2020-03-08.png)
+### bmilcs/dotfiles
 
----
-
-- [i3-gaps](/opt/i3/.config/i3) (window manager)
-- [picom](/opt/picom/.config/picom/config) (compositor)
+- [zsh](/zsh/.zsh/) (shell)
+- [vim](/vim/) (text editor)
+- [i3](/opt/i3/.config/i3) (window manager)
 - [polybar](/opt/polybar/.config/polybar/)(/polybar/.config/polybar/) (*task/status bar*)
 - [rofi](/opt/rofi/.config/rofi/config.rasi) (dmenu replacement)
 - [tmux](/opt/tmux/.tmux.conf) (ide )
-- [vim](/vim/) (text editor)
-- [zsh](/zsh/.zsh/) (shell)
-- [goals](#goals)
+- [picom](/opt/picom/.config/picom/config) (compositor)
 - [to do](#todo)
+
+### HISTORY
 ---
-## BACKGROUND
-
-**Welcome to version 2 of my dotfiles.** 
-
-Established in December of 2020 with 2 years of [***light* Debian experience**](https://github.com/bmilcs/linux) under my belt, this GitHub repository became the official home for my personal configuration files. Putting food on the table binds me to Microsoft Windows for 40 hours a week. However, I took the plunge and installed ArchLinux as my primary operating system within a dual-boot configuration and vow to use nothing else in my leisure time. 
-<a name="goals"/>
 <img align="right" src="img/gw.jpeg" width=200 style="border: 25px solid white">
 
-## GOALS
-
-> In the mid-1990's, a box arrived in beautiful black & white cow print. It was love at first sight. It's now 24 years later and very little has changed. 
+> In the mid-90's, a beautiful cow-print box arrived on my parents' door step.  It was love at first sight. Twenty-four years have passed and very little has changed. 
 
 ---
 
-**VIM**
-- Adapt to, Learn & Master 
-- Combine Visual Studio Code's visual appeal & functionality via plugins, vimrc, shortcuts, etc.
-- Universally adopt VIM-functionality across most applications
-  - IE: zsh, ranger, mutt, etc.
 
-**GitHub**
- - Learn & adopt all common functions
- - Learn & practice version control w/ dotfiles
+I was was an avid gamer for much of my twenties and *shamefully*, I must admit: **Linux never interested me.**
 
- **Dotfiles**
- - Automate installation & backup w/o third party tool
- - Review 100's of published repo's
- - Adopt favorite means of management
- - CAT bmilcs/linux bmilcs/dotfiles >> bmilcs/bm
-  - Combine Debian-based VM dotfiles with Archlinux based workstation dotfiles, achieving uniform functionality across all Linux platforms.
+Microsoft Windows was always there for all my computing needs: from 3.1 & Win95, to 98 & 2000 Pro, to 7 and now 10. Linux was 
+was always the barely-known and "inferior" alternative -- why would I bother?
 
-**Programming | Scripting**
- - Setup a proper IDE 
- - Dive into Python
- - Increase exposure to BASH syntax
+Well... In 2016, network attached storage (NAS) became a personal obsession, and I stumbled my way into an UnRaid license.
+It's storage functionality was appreciated, but the real kicker was Docker. One thing lead to the next, a few 
+enterprise level networking devices later, and it's virtualization tab started calling my name.
+
+[**I discovered Debian and my love for Linux was born.**](https://github.com/bmilcs/linux) Outside of work hours, I lived inside PuTTY, an SSH client. From the command line to the Linux philosophy, I was hooked.
+
+Putting food on the table still binds me to Windows for 40 hours each week.
+
+*However*, I decided to use Linux and nothing else in my leisure time. I took the plunge 
+and installed Arch as my primary OS in December of 2020:
+
+**Welcome to my dotfiles.** 
+
+-- bmilcs
+
 
 ---
 
@@ -77,22 +70,22 @@ Established in December of 2020 with 2 years of [***light* Debian experience**](
 - [x] github aliases
 
 **misc**
-- [x] autocomplete git status > diff > to add workflow
 - [ ] ssh keys > private repo
+- [x] autocomplete git status > diff > to add workflow
 
 **VIM** [ref: youtube vim super powers]
 - [ ] npm
 - [ ] nettree
-- [x] vim autocomplete
-    - [x]  all stuff within file 
-    - [x]  /path/to autocomplete
-    - [x] coc.vim [visual studio-like]
 - [ ] ctrlsf - 'command line searching"
 - [ ] fzf fuzzy find - to "//"
 - [ ] rip grep
 - [ ] bcommits? git history-like plugin
 - [ ] lazygit, lazydocker, lazynpm
 - [ ] anyjump search across workspace
+- [x] vim autocomplete
+    - [x]  all stuff within file 
+    - [x]  /path/to autocomplete
+    - [x] coc.vim [visual studio-like]
 
 ---
 
