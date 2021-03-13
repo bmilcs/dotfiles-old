@@ -36,7 +36,9 @@ _i USA
 _i updated within last 12 hours
 _i overwrite existing mirrorlist "\n"
 
-sudo reflector --verbose --country US --age 12 --protocol https \
+sudo reflector --verbose --latest 500 --protocol https \
   --sort rate --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm \
   && _s
+# --country US
+# --age 12
 
