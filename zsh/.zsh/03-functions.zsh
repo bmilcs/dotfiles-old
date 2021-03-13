@@ -40,7 +40,7 @@ source _head
     fi  
   fi
 }
-compdef vvim="where"
+compdef vm="where"
 
 # GIT
 #────────────────────────────────────────────────────────────
