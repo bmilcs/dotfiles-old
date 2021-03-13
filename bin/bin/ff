@@ -18,14 +18,14 @@ unset c
 case $1 in
     
 
-  b ) f="$D"/bin ;; bb ) c="$D"/bin ;;
+  b ) f="$D/bin" ;; bb ) c="$D/bin" ;;
   t ) f=~/txt ;; tt) c=~/txt ;;
 
-  i ) f="$D"/opt/i3/.config/i3 ;; ii) c="$D"/opt/i3/.config/i3 ;;
-  v ) f="$D"/vim ;; vv) c="$D"/vim ;;
-  p ) f="$D"/opt/polybar/.config/polybar;; pp) c="$D"/opt/polybar/.config/polybar/ ;;
-  r ) f="$D"/opt/rofi ;; rr) c="$D"/opt/rofi ;;
-  s ) f="$D"/vim/.config/nvim/snips;; ss) c="$D"/vim/.config/nvim/snips ;;
+  i ) f="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
+  v ) f="$D/vim";; vv) c="$D/vim";;
+  p ) f="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
+  r ) f="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
+  s ) f="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
 
 
   z ) f="$D/zsh" ;;            zz) c="$D/zsh" ;;
@@ -66,4 +66,5 @@ if [ -z $c ]; then
 else
   _o c: cd \'"$c"\'
   cd $c || _e "$c doesn't exist"
+  $SHELL
 fi
