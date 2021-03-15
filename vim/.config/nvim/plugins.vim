@@ -15,6 +15,7 @@ Plug 'junegunn/vim-plug'
   Plug '~/.config/fzf'                          " fuzzy finder
   Plug 'vim-airline/vim-airline'                " status bar
     Plug 'vim-airline/vim-airline-themes'         " status bar themes
+  Plug 'ojroques/vim-oscyank'                   " ssh copy/paste
   Plug 'christoomey/vim-tmux-navigator'         " tmux vim nav
   Plug 'mboughaba/i3config.vim',                " language: i3config 
   Plug 'neoclide/coc.nvim',                     " completion
@@ -27,8 +28,9 @@ Plug 'junegunn/vim-plug'
     Plug 'plasticboy/vim-markdown'                " markdown syntax, match, map
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}  " language: markdown (.md)
   Plug 'SirVer/ultisnips'                       " snippets
-  Plug 'honza/vim-snippets'
-
+  Plug 'honza/vim-snippets'                     " library of snippets
+  Plug 'sheerun/vim-polyglot'                   " tons of language supports
+  Plug 'vim-scripts/indentpython.vim'         " python indentation
 " Plug 'dense-analysis/ale',                  " sh syntax analysis
 " Plug 'chrisbra/Colorizer'                   " color hexcode highlighter
 " Plug 'junegunn/fzf.vim'
@@ -39,19 +41,20 @@ Plug 'junegunn/vim-plug'
 "Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }     " sh parser, format, interpret
 
 call plug#end()                                 " end of plugins
+
 delc PlugUpgrade                                " disable upgrade (automatic now)
+
 autocmd VimEnter *                              " auto-install missing plugins
   \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall | q
   \| endif
 
+" TODO: auto-update & auto-install missing plugins
+
+" FZF integration
 set rtp+=~/.config/fzf
 
-" auto update vim-plug
-
-"────────────────────────────────────────────────────────────
 " NORD THEME
-"────────────────────────────────────────────────────────────
 colorscheme nord                              " color scheme
 
 "────────────────────────────────────────────────────────────
@@ -199,6 +202,19 @@ augroup filetypedetect
 augroup END
 filetype on
 
+" python
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+  " unnecessary whitespace
+  au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" custom
 autocmd BufRead,BufNewFile ~/txt/* set syntax=markdown
 autocmd BufRead,BufNewFile ~/bin/* set syntax=sh
 autocmd BufRead,BufNewFile ~/.config/i3/config set filetype=i3config
@@ -206,6 +222,7 @@ autocmd BufRead,BufNewFile ~/.config/i3/config set filetype=i3config
 "────────────────────────────────────────────────────────────
 " ULTISNIPS
 "────────────────────────────────────────────────────────────
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"

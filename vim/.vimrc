@@ -12,6 +12,7 @@ let configs = [
 \  "interface",
 \  "keybinds",
 \  "plugins",
+\  "filetypes",
 \]
 
 for file in configs
