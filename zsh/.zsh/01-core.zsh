@@ -48,7 +48,18 @@ zinit light wfxr/forgit
 #
 
 set nocompatible              # not vi-backwards-compatible
+
+# vim
+
 bindkey -v                    # vim mode
+export KEYTIMEOUT=1           # vim speed increase
+function vi-yank-xclip {      # yank to the system clipboard
+    zle vi-yank
+    echo "$CUTBUFFER" | xclip -sel clip # -i
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
 
 # directory
 
@@ -65,7 +76,9 @@ setopt pushdminus             # swaps + and - (dir stack)
 setopt pushdsilent            # don't echo each pushd (dir stack)
 setopt pushdtohome            # no arg =  ~ (dir stack)
 setopt pushd_ignore_dups      # no mulitples (dir stack)
-alias dh='dirs -v'            # ls (dir stack)
+alias d='dirs -v'             # d list dirstack, 1-9<enter> cds into it
+for index ({1..15}) alias "$index"="cd +${index}"; unset index
+
 
 # completion
 
@@ -132,9 +145,16 @@ fpath=(~/.zsh/completion $fpath)
 # '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
 #
 
+#zmodload -i zsh/complist
 zmodload zsh/complist 
 zstyle ':completion:*' menu yes select
 bindkey -M menuselect '?' history-incremental-search-forward
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
 #
 # AUTOLOADS
@@ -146,9 +166,6 @@ autoload -Uz bashcompinit && bashcompinit
 autoload -Uz colors && colors # autoload colors
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 _comp_options+=(globdots)       # autocomplete .dotfiles
-zmodload -i zsh/complist
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
 
 # pip completion
 if [[ "$DISTRO" == arch ]]; then
@@ -161,7 +178,7 @@ fi
 #
 
 NL=$'\n'
-PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
+#PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
