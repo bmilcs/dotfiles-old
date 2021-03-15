@@ -4,6 +4,7 @@
 - make room: doors/windows
 
 [homelab]
+- FIX DOCKER UPDATES!!!
 - mopidy (mpd server)
 - integrate arch w/ ansible & homelab
 - docker, remote dev (rsync compose?)
@@ -12,6 +13,8 @@
 - bmilcs.com > it's own VM
 
 [ arch ]
+CHECK FOR GEMS:
+- https://thevaluable.dev/zsh-install-configure-mouseless/
 - i3: copy/paste to middle mouse clipboard
 - dunst: make larger in size & duration
 - starship prompt
