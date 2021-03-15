@@ -129,6 +129,14 @@ zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
 #
+# '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
+#
+
+zmodload zsh/complist 
+zstyle ':completion:*' menu yes select
+bindkey -M menuselect '?' history-incremental-search-forward
+
+#
 # AUTOLOADS
 #
 
