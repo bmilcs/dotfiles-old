@@ -67,6 +67,10 @@ if [[ $DISTRO = arch ]]; then # ARCH
   alias cat="bat";compdef cat="bat"
   alias netr='sudo systemctl restart \ 
     {systemd-networkd.service,systemd-resolved.service,iwd.service}'
+  alias xc='xclip -selection clipboard'
+  alias xp='xclip -selection clipboard -o'
+  alias xcc='xclip -selection primary'
+  alias xpp='xclip -selection primary -o'
 else # DEBIAN
   # syslog
   alias syslogg="sudo cat /var/log/syslog | grep "
