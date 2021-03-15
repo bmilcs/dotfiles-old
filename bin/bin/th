@@ -5,9 +5,9 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #────────────────────────────────────────────────────────────
-#   throw away _head test companion              
+#   throw away _bm test companion              
 #────────────────────────────────────────────────────────────
-source _head
+source _bm
 
 # set -x
 #echo -e
@@ -41,14 +41,14 @@ for i in r y w b p c; do _s$i success: _s$i ; done
 _e error: [e]
 for i in w y g b p c; do _e$i error: _e$i ; done
 
-_ask keep it going\?
-
-if [[ $? == 0 ]] ; then
-  echo -e "\n\n\n"
-	$(basename $0) && exit
-else
-exit 0
+if _askn "repeat test?"; then
+  clear
+  sleep 0.5
+  if _ask "u sure?"; then
+    $(basename $0)
+  fi
 fi
+exit 0
 
 #  pad=$(printf '%0.1s' "-"{1..60})
 #  padlength=40
