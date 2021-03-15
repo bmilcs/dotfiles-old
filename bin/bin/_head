@@ -20,47 +20,65 @@ MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
 # INPUT
 #────────────────────────────────────────────────────────────
 
+
 _askk() {
+    local prompt default reply
+    if [[ ${2:-} = 'Y' ]]; then
+        prompt="${NC}${B}Y${color}|n"
+        default='Y'
+    elif [[ ${2:-} = 'N' ]]; then
+        prompt="y|${NC}${B}N${color}"
+        default='N'
+    else
+        prompt="y/n"
+        default=''
+    fi
   while true; do
-    default=y
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    _qq "$* ${B}[y|n]${NC} "
+    _qq "$1 [$prompt]${NC}"
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply < /dev/tty
     # default?
     [ -z "$reply" ] && reply=$default
     # check if the reply is valid
     case "$reply" in
-      "" | Y* | y*)
-        _i yes ; return 0 ;;
-      N* | n*)
-        _i no ; return 1 ;;
+      Y* | y*) _i yes [0] ; return 0 ;;
+      N* | n*) _i no [1] ; return 1 ;;
     esac
   done
 }
 
-_qq() { echo -e "\n${color}${B}  ${color}$* ${NC} " ;}
-_ask()  { color="$PUR";   _askk "$*"; }
-_askr() { color="$RED";   _askk "$*"; }
-_asky() { color="$YLW";   _askk "$*"; }
-_askg() { color="$GRN";   _askk "$*"; }
-_askb() { color="$BLU";   _askk "$*"; }
-_askc() { color="$CYN";   _askk "$*"; }
-_askw() { color="$WHT";   _askk "$*"; }
-_q()    { color="$PUR";   _qq "$*"; }
-_qr()   { color="$RED";   _qq "$*"; }
-_qy()   { color="$YLW";   _qq "$*"; }
-_qg()   { color="$GRN";   _qq "$*"; }
-_qb()   { color="$BLU";   _qq "$*"; }
-_qc()   { color="$CYN";   _qq "$*"; }
-_qw()   { color="$WHT";   _qq "$*"; }
+_qq() { echo -e "\n${color}${B}  ${color}$1${NC}" ;}
+
+_askn()  { color="$PUR";   _askk "$*" N; }
+_asknr() { color="$RED";   _askk "$*" N; }
+_askny() { color="$YLW";   _askk "$*" N; }
+_askng() { color="$GRN";   _askk "$*" N; }
+_asknb() { color="$BLU";   _askk "$*" N; }
+_asknc() { color="$CYN";   _askk "$*" N; }
+_asknw() { color="$WHT";   _askk "$*" N; }
+
+_ask()   { color="$PUR";   _askk "$*" Y; }
+_askr()  { color="$RED";   _askk "$*" Y; }
+_asky()  { color="$YLW";   _askk "$*" Y; }
+_askg()  { color="$GRN";   _askk "$*" Y; }
+_askb()  { color="$BLU";   _askk "$*" Y; }
+_askc()  { color="$CYN";   _askk "$*" Y; }
+_askw()  { color="$WHT";   _askk "$*" Y; }
+
+_q()     { color="$PUR";   _qq "$*"; }
+_qr()    { color="$RED";   _qq "$*"; }
+_qy()    { color="$YLW";   _qq "$*"; }
+_qg()    { color="$GRN";   _qq "$*"; }
+_qb()    { color="$BLU";   _qq "$*"; }
+_qc()    { color="$CYN";   _qq "$*"; }
+_qw()    { color="$WHT";   _qq "$*"; }
 
 #────────────────────────────────────────────────────────────
 # OUTPUT
 #────────────────────────────────────────────────────────────
  spaces=" "
 #────────────────────────────────────────────────────────────
-
 
 # titlebar
 _tt() {
@@ -185,8 +203,6 @@ _ne() {
     "$(basename $0)" \
     "$2"
 }
-
-
 
 #echo some text
 #		printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
