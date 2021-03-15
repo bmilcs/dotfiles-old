@@ -4,11 +4,23 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 CD PATH SAVER [./cds]
-#
-#      based off my original aliases:
-#         alias sdir='echo $PWD >> $D/txt/txt/dir_list.md'
-#         alias odir='vim $D/txt/txt/dir_list.md'
-#
-#────────────────────────────────────────────────────────────
-source _head
+#               $ sdir - PATH SAVER
+
+. _bm
+_a sdir
+
+dpath="$D/txt/txt/saved_dirs"
+
+[ $# -gt 0 ] && nvim "$dpath" && exit 0
+
+_ob saving: \'$PWD\'
+
+if grep "^$PWD$" $dpath > /dev/null; then
+  _w skipped: "$PWD": redundant
+else
+  echo "$PWD" >> "$dpath"
+  _s
+fi
+
+eval cd "$(cat "$dpath" | fzf)"
+
