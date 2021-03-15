@@ -44,13 +44,6 @@ call plug#end()                                 " end of plugins
 
 delc PlugUpgrade                                " disable upgrade (automatic now)
 
-autocmd VimEnter *                              " auto-install missing plugins
-  \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall | q
-  \| endif
-
-" TODO: auto-update & auto-install missing plugins
-
 " FZF integration
 set rtp+=~/.config/fzf
 
@@ -95,7 +88,7 @@ endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-space> coc#refesh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
@@ -228,7 +221,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="horizontal"
 
 " remove Ultisnips if you don't want plugin addons
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
