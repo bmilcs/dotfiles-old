@@ -7,7 +7,7 @@
 #                 FZF UPDATE SCRIPT [./upfzf]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _a fzf update
 
 cd ~/.config/fzf || exit

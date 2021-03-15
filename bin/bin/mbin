@@ -7,7 +7,7 @@
 #                 MAKE BIN FILE [./mbin]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _t mbin script creator
 
 if [[ -z $# ]]; then
@@ -23,7 +23,7 @@ logo "$1"
 
 # add header/title
 echo -e "\n\
-source _head\n
+source _bm\n
 _t  \n\
 \n\n\n" >> "$1"
 

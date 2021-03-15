@@ -7,7 +7,7 @@
 #                 ARCH MIRRORLIST BENCHMARK [./up_mirrorlist]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _t mirrorlist update
 _o archlinux mirror benchmark utility
 

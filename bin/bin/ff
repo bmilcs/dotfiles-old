@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #              FOLDER FZF > NVIM [./cn]
 #────────────────────────────────────────────────────────────
-source _head
+source _bm
 
 unset f
 unset c

@@ -7,7 +7,7 @@
 #                DISTRO-BASED SYSTEM UPDATE
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 source _distro
 
 if [[ $DISTRO = arch* ]]; then

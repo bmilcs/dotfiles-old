@@ -8,7 +8,7 @@
 #                 YAY INSTALLER [./yi]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _t yay install 
 
 

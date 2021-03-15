@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $D/bin/bin/_head
+source $D/bin/bin/_bm
 
 _t dev: check if dotfile structure exists elsewhere
 

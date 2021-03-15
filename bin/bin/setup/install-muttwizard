@@ -7,7 +7,7 @@
 #                 MUTT-WIZARD [./muttwizard]
 #────────────────────────────────────────────────────────────
 
-source _head && _t mutt-wizard setup
+source _bm && _t mutt-wizard setup
 
 #────────────────────────────────────────────────────────────
 # VARIABLES

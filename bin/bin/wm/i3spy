@@ -8,7 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 sleep 0.5
-source _head
+source _bm
 _a i3 spy
 PROGNAME=$(basename "$0")
 

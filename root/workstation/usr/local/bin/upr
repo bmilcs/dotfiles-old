@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #               REPO UPDATER
 #────────────────────────────────────────────────────────────
-source _head
+source _bm
 _a repos
 
 exceptions=("nerd-fonts-2.0.0")

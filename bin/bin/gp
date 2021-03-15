@@ -7,7 +7,7 @@
 #                 UPDATE DOTFILES TEST [./updf]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _t dotfile repo helper
 
 D="${D:-/home/bmilcs/bm}"

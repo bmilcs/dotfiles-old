@@ -7,7 +7,7 @@
 #                 I3 FLOATER [./i3floater]
 #────────────────────────────────────────────────────────────
 
-source _head 
+source _bm 
 _a i3 floater
 
 prevent=("Navigator" "Alacritty")

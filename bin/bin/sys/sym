@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 SYSMLINK TESTER [./symtest]
 #────────────────────────────────────────────────────────────
-source _head
+source _bm
 _t symlink test
 _i "instructions: cd into the directory (of the files/dir) you want to test"
 

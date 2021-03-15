@@ -5,7 +5,7 @@
 #   TODO 1. backup existing files
 #        2. for cfg in pwd, stow -R $cfg
 #────────────────────────────────────────────────────────────
-source ./bin/bin/_head
+source ./bin/bin/_bm
 
 # minimum installation
 mini=("bin" "zsh" "vim" "git" "txt")

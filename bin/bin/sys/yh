@@ -7,7 +7,7 @@
 #                 YAY HELPER [./yh]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 
 url=$(yay -Slq \
   | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \

@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 GIT REMOVE HINTS [./gitrmhints]
 #────────────────────────────────────────────────────────────
-source _head
+source _bm
 
 #────────────────────────────────────────────────────────────
 # REMOVE HINTS FROM GLOBAL CFG

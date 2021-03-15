@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOTFILE INSTALLATION [./install.sh]
 #────────────────────────────────────────────────────────────
-source ./bin/bin/_head
+source ./bin/bin/_bm
 
 # title
 _t [bmilcs] dotfile installation

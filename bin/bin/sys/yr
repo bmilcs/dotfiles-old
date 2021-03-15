@@ -7,7 +7,7 @@
 #                 YAY REMOVER [./yr]
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 _t yay remover 
 
 yay -Qq \
