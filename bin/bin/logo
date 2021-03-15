@@ -4,11 +4,10 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#────────────────────────────────────────────────────────────
 #   text-file logo-ifier
 #────────────────────────────────────────────────────────────
 
-source _head
+source _bm
 
 # no arguments passed
 if [[ $# == 0 ]]; then
@@ -42,13 +41,19 @@ if [[ $# == 0 ]]; then
     echo 
   done
 
+#────────────────────────────────────────────────────────────
+
 else
 
   # argument passed; check if file exists
   if [[ ! -f $1 ]]; then
     _w "\"$1\" doesn't exist"
-    _a creating a new script: $1
-    touch "$1" || { _e unable to create "$1"; exit 1 ; }
+    if _askn create a new script called "$1"?; then
+      _a creating a new script: $1
+      touch "$1" || { _e unable to create "$1"; exit 1 ; }
+    else
+      _w skipped: now exiting
+      exit 0
     fi
   fi
 
@@ -154,7 +159,7 @@ else
   # clean up
 
   _a clean up
-  if [[ shebang -eq 1 ]]; then
+  if [[ $shebang -eq 1 ]]; then
     _o adding shebang: $firstline
     echo $firstline | cat - $filename > logotemp 
     mv logotemp $filename 
