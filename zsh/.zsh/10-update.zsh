@@ -4,7 +4,8 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DAILY AUTO-UPDATE [./10-update.zsh]
-#────────────────────────────────────────────────────────────
+
+# TODO: What else is manually installed?
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
@@ -47,4 +48,5 @@ fi
 # dotfiles repo
 [[ ! "$today" == "$dlast" ]] && gp && echo "$today" > "$dstatus"
 
-# TODO: What else is manually installed?
+# dotfiles every time (vm's)
+[[ ! "$HOST" == "bm"* ]] && gp
