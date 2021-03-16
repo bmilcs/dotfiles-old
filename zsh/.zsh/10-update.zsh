@@ -56,6 +56,8 @@ if [[ -n $outdated ]]; then
     # cloned repos
     if [[ ! "$today" == "$rlast" ]] && [[ -f /usr/local/bin/upr ]]; then
       upr && echo "$today" > "$rstatus"
+    else # vm's via ssh 
+      echo "$today" > "$rstatus"
     fi
 
     # dotfiles repo: pc/laptop
@@ -66,7 +68,6 @@ if [[ -n $outdated ]]; then
     _sb "skipped for now"
   fi
 fi
-
 
 # dotfiles repo: vm via ssh
 [[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
