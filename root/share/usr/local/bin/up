@@ -25,14 +25,19 @@ elif [[ $DISTRO = debian* ]]; then
   # DEBIAN
   _a apt update
   sudo apt update -y && _s
+
+  _a apt dist-upgrade
+  sudo apt dist-upgrade -y && _s
+
   _a apt upgrade
   sudo apt upgrade -y && _s
-  _a apt dist-upgrade
-  sudo apt full-upgrade -y && _s
-  _a apt autoremove
-  sudo apt autoremove -y && _s
+
   _a apt clean
   sudo apt clean -y && _s
+
+  _a apt autoremove
+  sudo apt autoremove --purge -y && _s
+
   _a apt autoclean
   sudo apt autoclean -y && _s
 
@@ -45,6 +50,10 @@ elif [[ $DISTRO = debian* ]]; then
   # DOCKER
   if docker-compose -v DOCKER-COMPOSE &> /dev/null; then
     dcr
+  fi
+
+  if [ -f /var/run/reboot-required ]; then
+    _e "reboot is required!"
   fi
 
 else # NOT CONFIGURED
