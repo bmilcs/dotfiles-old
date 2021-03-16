@@ -23,7 +23,11 @@ if [[ $DISTRO = arch* ]]; then
 elif [[ $DISTRO = debian* ]]; then
 
   # DEBIAN
-  _a apt full-upgrade
+  _a apt update
+  sudo apt update -y && _s
+  _a apt upgrade
+  sudo apt upgrade -y && _s
+  _a apt dist-upgrade
   sudo apt full-upgrade -y && _s
   _a apt autoremove
   sudo apt autoremove -y && _s
