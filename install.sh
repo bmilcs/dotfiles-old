@@ -29,6 +29,9 @@ pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find") # "bat"
 pacpkg=("fd" "bat")
 
+# backup location
+backup=~/.backup/dotfiles
+
 # repo path
 D=$HOME/bm
 
@@ -36,21 +39,22 @@ D=$HOME/bm
 
 # removal of old dotfile content
 cleanup() {
+
   _a removing old dotfile content
-  _w "content will be moved to ~/.backup/dotfiles"
-  mkdir -p ~/.backup/dotfiles
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,\
-    .gitconfig} \
-    ~/.backup/dotfiles 2> /dev/null
-  mv ~/.zsh/{completion/,}{_git,git-completion.bash} \
-    ~/.backup/dotfiles 2> /dev/null
-  sudo mv /usr/local/bin/{up,upp} ~/.backup/dotfiles 2> /dev/null
+  _w "content will be moved to $backup"
+  mkdir -p "$backup"
+
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
+    "$backup" 2> /dev/null
+  mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
+  sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
+  #mv ~/.zsh/{_git,git-completion.bash} "$backup" 2> /dev/null
+
   _o deleting broken symlinks in "${B}"~
-  find ~ -xtype l -exec rm {} \; 2> /dev/null
-  _s
+  find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
+
   _o deleting broken symlinks "${B}"/etc
-  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
-  _s
+  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
 }
 
 ifzf() {
@@ -98,20 +102,23 @@ izsh() {
 
 ivim() {
   _a vim
+
   plugvim=~/.config/nvim/plugged/vim-plug/plug.vim
   plugsym=~/.config/nvim/autoload/plug.vim
-  if [[ ! -f $plugvim ]] \
-    || [[ ! -L $plugsym ]]; then
-    _o setup required
-    _a vim: vim-plug plugin manager
+
+  if [[ ! -f $plugvim ]] || [[ ! -L $plugsym ]]; then
+    _a vim-plug: plugin manager
+
     # cleanup previous install method
     rm -rf ~/.local/share/nvim/site/autoload/plug.vim ~/.vim
-    mkdir -p ~/.config/nvim/{autoload,plugged}
+
+    # create & deploy paths for autoload/plugged
+    mkdir -p ~/.config/nvim/{autoload,cache,plugged,swap,undo}
     git clone https://github.com/junegunn/vim-plug.git \
       ~/.config/nvim/plugged/vim-plug
+
     # bm - auto-update itself:
-    ln -s $plugvim ~/.config/nvim/autoload
-    _s
+    ln -s $plugvim ~/.config/nvim/autoload && _s
   else
     _s all set
   fi
@@ -120,9 +127,7 @@ ivim() {
 # DISTRO CHECK
 
 _a distro check
-source ./bin/bin/_distro
-
-_s
+source ./bin/bin/_distro && _s
 
 # INSTALL PACKAGES
 
