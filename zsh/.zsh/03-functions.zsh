@@ -160,33 +160,6 @@ function myip() {
   }
 
 #────────────────────────────────────────────────────────────
-# DEBIAN-ONLY
-#────────────────────────────────────────────────────────────
-
-if [[ ! $DISTRO = arch ]]; then
-
-  # debian: install app
-  function apti() {
-    sudo apt-get install $@ -y
-    }
-
-  # debian: delete & purge app
-  function aptr() {
-    sudo apt-get purge $@ -y
-    }
-
-  # debian: find app
-  function aptf() {
-    dpkg --get-selections | grep $@
-    }
-
-  # debian: get app status
-  function apts() {	
-    systemctl status $@; 
-    }
-fi
-
-#────────────────────────────────────────────────────────────
 # DOCKER
 #────────────────────────────────────────────────────────────
 

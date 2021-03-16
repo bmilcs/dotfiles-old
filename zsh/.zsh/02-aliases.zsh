@@ -75,6 +75,13 @@ else # DEBIAN
   # syslog
   alias syslogg="sudo cat /var/log/syslog | grep "
   alias syslogls="sudo cat /var/log/syslog"
+  alias apti='sudo apt-get install -y'
+  alias aptr='sudo apt-get purge -y'
+  alias aptg='dpkg --get-selections | grep'
+  alias apts='systemctl status '
+fi
+
+
 fi
 
 #────────────────────────────────────────────────────────────
