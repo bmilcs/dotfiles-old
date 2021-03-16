@@ -19,14 +19,14 @@ _iy "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
 #────────────────────────────────────────────────────────────
 
 # debian: install
-mini=("bin" "git" "txt" "vim" "zsh" "shell" "bash" "git")
+mini=("bin" "git" "txt" "vim" "zsh" "shell" "bash") 
 
 # arch: exceptions
 exceptions=("img" "opt" "root")
 
 # all: req packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
-aptpkg=("fd-find") # "bat"
+aptpkg=("fd-find" "nodejs" "npm") # "bat"
 pacpkg=("fd" "bat")
 
 # backup location
@@ -46,6 +46,7 @@ cleanup() {
 
   mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
     "$backup" 2> /dev/null
+  rm -rf "$backup/git"
   mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
   #mv ~/.zsh/{_git,git-completion.bash} "$backup" 2> /dev/null
@@ -141,9 +142,9 @@ if [[ ${DISTRO} == arch* ]]; then
     || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
 elif [[ ${DISTRO} == debian* ]]; then
   dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
-    || (sudo apt-get install "${pkgs[@]}" && _o installed "${pkgs[@]}")
+    || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
   dpkg -s "${aptpkg[@]}" > /dev/null 2>&1 \
-    || (sudo apt-get install "${aptpkg[@]}" && _o installed "${aptpkg[@]}")
+    || (sudo apt-get install -y "${aptpkg[@]}" && _o installed "${aptpkg[@]}")
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
   [[ ! -L ~/.local/bin/fd ]] && ln -s $(which fdfind) ~/.local/bin/fd
 else
