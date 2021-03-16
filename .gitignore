@@ -13,3 +13,7 @@ neomutt
 _docker-compose
 bin/bin/pipes
 opt/i3/.config/i3/config.bak
+vim/.config/nvim/autoload/
+vim/.config/nvim/cache/
+vim/.config/nvim/plugged/
+vim/.config/nvim/undo/
