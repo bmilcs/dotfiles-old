@@ -10,4 +10,4 @@
 source _bm
 _a vim-plug
 
-vim +'PlugUpdate' +qall &> /dev/null
+nvim +'PlugUpdate' +qall # &> /dev/null
