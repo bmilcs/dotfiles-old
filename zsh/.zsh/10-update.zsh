@@ -58,11 +58,15 @@ if [[ -n $outdated ]]; then
       upr && echo "$today" > "$rstatus"
     fi
 
-    # dotfiles repo
-    if [[ ! "$HOST" == "bm"* ]] || [[ ! "$today" == "$dlast" ]]; then 
+    # dotfiles repo: pc/laptop
+    if [[ "$HOST" == "bm"* ]] && [[ ! "$today" == "$dlast" ]]; then 
       gp && echo "$today" > "$dstatus"
     fi
   else
     _sb "skipped for now"
   fi
 fi
+
+
+# dotfiles repo: vm via ssh
+[[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
