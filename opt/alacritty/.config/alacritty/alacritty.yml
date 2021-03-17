@@ -14,7 +14,6 @@ font:
     #family: GohuFont Nerd Font
     #family: InconsolataGo Nerd Font
     #family: Iosevka Nerd Font
-    family: JetBrainsMono Nerd Font
     #family: SauceCodePro Nerd Font
     #family: TerminessTTF Nerd Font
     #family: Terminus
@@ -25,12 +24,13 @@ font:
     #family: codenewroman nerd font 
     #family: mononoki Nerd Font
     #family: FantasqueSansMono Nerd Font
-    style: Regular
+    #style: Regular
     #style: Book
-    #style: Medium
+    family: JetBrainsMono
+    style: Medium
   size: 10
   bold:
-    style: Bold
+    style: Extra Bold
   italic:
     style: Italic
     #style: Oblique

@@ -128,7 +128,7 @@ ivim() {
 # DISTRO CHECK
 
 _a distro check
-source ./bin/bin/_distro && _s
+source "./bin/bin/_distro" && _s
 
 # INSTALL PACKAGES
 
@@ -249,6 +249,9 @@ if [[ ${DISTRO} == arch* ]]; then
     if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
       sudo ln -s /usr/bin/alacritty /usr/bin/xterm
     fi
+
+    # update font cache
+    fc-cache
 
     _s
 
