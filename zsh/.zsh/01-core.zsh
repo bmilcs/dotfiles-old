@@ -177,9 +177,6 @@ fi
 # PROMPT, COLORS, ETC. 
 #
 
-NL=$'\n'
-#PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${NL}${cyan}# %b%f%k"
-
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -249,3 +246,8 @@ rehash_precmd() {
   fi
 }
 add-zsh-hook -Uz precmd rehash_precmd
+
+# add help
+autoload -Uz run-help
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
