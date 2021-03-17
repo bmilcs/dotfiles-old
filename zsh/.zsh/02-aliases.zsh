@@ -167,7 +167,7 @@ alias ..="cd ..&& c && l"
 alias ...="cd ../.. && c && l"
 
 # fzf
-alias -g zz="fzf -m"
+# alias -g zz="fzf -m"
 
 #────────────────────────────────────────────────────────────
 # FILE SYSTEM
