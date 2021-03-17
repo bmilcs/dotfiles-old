@@ -8,41 +8,48 @@
 #────────────────────────────────────────────────────────────
 source _bm
 
+unset s
 unset f
 unset c
 
 # TODO
 # add -h options, with print-outs, based on case statement
 
+_a opt: "$1"
+
 # definitions
 case $1 in
-    
 
-  b ) f="$D/bin" ;; bb ) c="$D/bin" ;;
-  t ) f=~/txt ;; tt) c=~/txt ;;
-
+  a ) f="$D/opt/alacritty";; aa) c="$D/opt/alacritty";;
+  b ) f="$D/bin";; bb ) c="$D/bin" ;;
+  d ) f=~/.config/dunst;; dd) c=~/.config/dunst ;;
   i ) f="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
-  v ) f="$D/vim";; vv) c="$D/vim";;
   p ) f="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
   r ) f="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
   s ) f="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
+  t ) f=~/txt;; tt) c=~/txt ;;
+  u ) f="/usr/local/bin";; uu) s="/usr/local/bin" ;;
+  v ) f="$D/vim";; vv) c="$D/vim";;
+  z ) f="$D/zsh";; zz) c="$D/zsh";;
 
+  # x | xorg) genls "$D"/opt/xorg XORG ;;
+  # n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
+  # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
+  # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
+  # bms) nvim "$D"/install.sh ;;
+  # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
+  # e) nvim "$D"/bin/bin/cfg ;;
 
-  z ) f="$D/zsh" ;;            zz) c="$D/zsh" ;;
-  d ) f=~/.config/dunst ;;     dd) c=~/.config/dunst ;;
-  * ) f="$1" ;;
-
+  * ) _e no input found 
+      _a $filename
+      #nvim "$DIR"
 esac
 
-# "$D"/txt TXT ;;
-# "$D"/txt TXT ;;
-# "$D"/bin BIN ;;
-# "$D"/opt/i3/.config/i3/ I3 ;;
-# "$D"/zsh ZSH ;;
-# "$D"/vim VIM ;;
-# "$D"/opt/polybar/.config/polybar/ POLYBAR ;;
-# "$D"/opt/rofi ROFI ;;
-# "$D"/vim/.config/nvim/snips SNIPS ;;
+
+_w s: $s
+_w c: $c
+_w f: $f
+
 # u) sudogenls /usr/local/bin BIN ;;
 # x | xorg) genls "$D"/opt/xorg XORG ;;
 # n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
@@ -56,13 +63,18 @@ esac
 #   #8)        sudovim /etc/hosts;;
 #   #xterm)    vim ~/.Xresources.d/xterm;;
 
-# actions
-if [ -z $c ]; then
-  _o f: \'"$f"\'
+if [ -z "$c" ] && [ -z "$s" ]; then
+  _o nvim: \'"$f"\'
   fd -uu . "$f"\
     | sort \
     | fzf --preview 'bat --color "always"' --delimiter / --with-nth -1 --multi \
     | xargs -I bm nvim bm
+elif [ -z "$c" ] && [ -z "$f" ]; then
+  _o sudo nvim: \'"$f"\'
+  fd -uu . "$f"\
+    | sort \
+    | fzf --preview 'bat --color "always"' --delimiter / --with-nth -1 --multi \
+    | xargs -I bm sudo nvim bm
 else
   _o c: cd \'"$c"\'
   cd $c || _e "$c doesn't exist"
