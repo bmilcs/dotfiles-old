@@ -86,6 +86,9 @@ nnoremap <silent> <leader>SS :Split<CR>
 " TEXT MANIPULATION
 "────────────────────────────────────────────────────────────
 
+" sort paragraph
+nnoremap <silent> <leader>1 :'{,'}sort<CR>
+
 " (d)elete double white(s)pace lines
 nnoremap <silent> <leader>ds :%s/^$\n^$//g<CR><C-o>
 
