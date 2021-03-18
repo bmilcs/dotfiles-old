@@ -4,7 +4,7 @@ configuration {
 	font: "Iosevka 14";
 	hide-scrollbar: true;
 	theme: "nord";
-  //combi-modi: "window,drun,ssh";
+  combi-modi: "window,ssh,drun,run";
   display-drun: "";
 }
 
