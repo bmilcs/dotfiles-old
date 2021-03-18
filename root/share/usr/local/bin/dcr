@@ -9,16 +9,18 @@
 #set -e
 
 source _bm
-_t docker
+_t docker-compose
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
-_a docker-compose update
-if docker-compose up -d --remove-orphans; then
-  _s
-else
-  _e something went wrong
-fi
+_a docker-compose pull
+docker-compose pull && _s
+#docker-compose up --force-recreate --build -d --remove-orphans
+_a docker-compose restart
+docker-compose restart && _s
+# TODO AUTOMATE CLEANUP
+#_a docker-compose image prune -f
+#docker-compose image prune -f && _s
 
 _a docker git
 
@@ -43,6 +45,4 @@ else
       --work-tree=/home/bmilcs/docker push \
     && _s done
 fi
-
-
 
