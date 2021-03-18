@@ -49,7 +49,7 @@ cleanup() {
   rm -rf "$backup/git"
   mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
-  #mv ~/.zsh/{_git,git-completion.bash} "$backup" 2> /dev/null
+  #mv ~/.config/zsh/{_git,git-completion.bash} "$backup" 2> /dev/null
 
   _o deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
@@ -73,22 +73,23 @@ ifzf() {
 izsh() {
   _a zsh
 
-  if   [[ ! -f ~/.zsh/completion/_git ]] \
-    || [[ ! -f ~/.zsh/completion/git-completion.bash ]] \
-    || [[ ! -f ~/.zsh/completion/_docker-compose ]] \
-    || [[ ! -d ~/.zsh/completion ]] \
-    || [[ ! -d ~/.config/zsh ]]; then
+  if [[ ! -d ~/.config/zsh ]] \
+    || [[ ! -d ~/.config/zsh/completion ]] \
+    || [[ ! -f ~/.config/zsh/completion/_git ]] \
+    || [[ ! -f ~/.config/zsh/completion/git-completion.bash ]] \
+    || [[ ! -f ~/.config/zsh/completion/_docker-compose ]]
+  then
 
     # create directories
-    mkdir -p ~/.zinit ~/.config/zsh/ ~/.zsh/completion
+    mkdir -p ~/.zinit ~/.config/zsh/ ~/.config/zsh/completion
 
     # install zsh git completion
     _o installing git autocompletion
-    curl -o ~/.zsh/completion/git-completion.bash \
+    curl -o ~/.config/zsh/completion/git-completion.bash \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    curl -o ~/.zsh/completion/_git \
+    curl -o ~/.config/zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-    curl -o ~/.zsh/completion/_docker-compose \
+    curl -o ~/.config/zsh/completion/_docker-compose \
     https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
   fi
 
