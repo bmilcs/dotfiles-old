@@ -14,6 +14,7 @@ _o archlinux benchmark utility
 pkgs=("reflector")
 
 _a checking dependencies
+echo $DISTRO
 if [[ ${DISTRO} == arch* ]]; then
   if [[ $(pacman -Qi "${pkgs[@]}" > /dev/null 2>&1) ]] ; then
     _a "installing: $pkgs"
