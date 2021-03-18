@@ -64,13 +64,13 @@ if [[ $DISTRO = arch ]]; then # ARCH
   alias yayg='yay -Q | grep';compdef yayg='yay'
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   # arch specific
-  alias cat="bat";compdef cat="bat"
   alias netr='sudo systemctl restart \ 
     {systemd-networkd.service,systemd-resolved.service,iwd.service}'
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
   alias xpp='xclip -selection primary -o'
+  alias cat="bat";compdef cat="bat"
 else # DEBIAN
   # syslog
   alias syslogg="sudo cat /var/log/syslog | grep "
