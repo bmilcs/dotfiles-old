@@ -20,6 +20,6 @@ dotls() {
 }
 
 dotlog() {
-    echo "[$(date)] $*" >> "$logpath"
+    echo "[$(date "+%m.%d.%G | %r")] $*" >> "$logpath"
 }
 

@@ -10,7 +10,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/.xinitrc'
+dotlog '+ ~/.xinitrc'
 
 # define config files
 userresources=~/.Xresources

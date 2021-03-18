@@ -12,7 +12,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/.bashrc'
+dotlog '+ ~/.bashrc'
 
 # interaction check
 # if running non-interactively, end script

@@ -15,10 +15,10 @@
 #────────────────────────────────────────────────────────────
 
 # FLOATER
-bindsym $win+i           exec --no-startup-id   i3floater
+bindsym $win+i           exec --no-startup-id    i3floater
 
 # README
-bindsym $win+$shift+n    exec --no-startup-id   i3hfr i3readme "alacritty --class=i3readme --title=i3readme -e i3readme &"
+bindsym $win+$shift+n    exec --no-startup-id    i3hfr i3readme "alacritty --class=i3readme --title=i3readme -e i3readme &"
 
 # SCRATCHPAD
 bindsym $win+n           exec --no-startup-id    i3hfr i3pad "alacritty --class=i3pad --title=i3pad -e i3pad &"

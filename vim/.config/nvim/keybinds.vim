@@ -19,9 +19,9 @@
 
 " FILE SHORTCUTS
 "────────────────────────────────────────────────────────────
-nnoremap <leader>os :tabedit /home/bmilcs/.config/nvim/snips/all.snippets<CR>
-nnoremap <leader>op :tabedit /home/bmilcs/.config/nvim/plugins.vim<CR>
-nnoremap <leader>ok :tabedit /home/bmilcs/.config/nvim/keybinds.vim<CR>
+nnoremap <leader>os :tabedit ~/.config/nvim/snips/all.snippets<CR>
+nnoremap <leader>op :tabedit ~/.config/nvim/plugins.vim<CR>
+nnoremap <leader>ok :tabedit ~/.config/nvim/keybinds.vim<CR>
 
 " PERSISTENT MACROS
 "────────────────────────────────────────────────────────────

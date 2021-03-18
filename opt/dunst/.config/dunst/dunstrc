@@ -58,7 +58,7 @@
 
 # left right none
     min_icon_size = 32   # 0
-    max_icon_size = 64  # 64
+    max_icon_size = 32   # 64
 
     ### History ###
 
