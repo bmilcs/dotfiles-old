@@ -31,7 +31,6 @@ case $1 in
   u ) f="/usr/local/bin";; uu) s="/usr/local/bin" ;;
   v ) f="$D/vim";; vv) c="$D/vim";;
   z ) f="$D/zsh";; zz) c="$D/zsh";;
-
   # x | xorg) genls "$D"/opt/xorg XORG ;;
   # n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
   # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
@@ -39,6 +38,9 @@ case $1 in
   # bms) nvim "$D"/install.sh ;;
   # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
   # e) nvim "$D"/bin/bin/cfg ;;
+  # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
+  # e) nvim "$D"/bin/bin/cfg ;;
+  # #xterm)    vim ~/.Xresources.d/xterm;;
 
   * ) _e no input found 
       _a $filename
@@ -46,22 +48,6 @@ case $1 in
 esac
 
 
-_w s: $s
-_w c: $c
-_w f: $f
-
-# u) sudogenls /usr/local/bin BIN ;;
-# x | xorg) genls "$D"/opt/xorg XORG ;;
-# n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
-# k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
-# d) nvim "$D"/opt/dunst/.config/dunst/dunstrc ;;
-# bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
-# bms) nvim "$D"/install.sh ;;
-# tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
-# e) nvim "$D"/bin/bin/cfg ;;
-#   #z)        nvim -S ~/dev/zsh.bm;;
-#   #8)        sudovim /etc/hosts;;
-#   #xterm)    vim ~/.Xresources.d/xterm;;
 
 if [ -z "$c" ] && [ -z "$s" ]; then
   _o nvim: \'"$f"\'
