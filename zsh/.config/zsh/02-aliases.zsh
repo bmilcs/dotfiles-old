@@ -26,8 +26,8 @@ alias cf='cd ~/.config/ ; c ; l'
 
 # dotfiles
 alias bm='cd $D' # only while root
-alias ali='vim $D/zsh/.zsh/02-aliases.zsh'
-alias fun='vim $D/zsh/.zsh/03-functions.zsh'
+alias ali='vim $D/zsh/.config/zsh/02-aliases.zsh'
+alias fun='vim $D/zsh/.config/zsh/03-functions.zsh'
 alias txs='c ; tail -f ~/.xsession-errors'
 alias readme='vim ~/bm/readme.md'
 
@@ -40,7 +40,7 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
 alias tr="tmux source ~/.tmux.conf"
-alias zr='source ~/.zsh/.zshrc'
+alias zr='source ~/.config/zsh/.zshrc'
 alias polyr=". ~/.config/polybar/launch.sh" 
 
 #────────────────────────────────────────────────────────────
