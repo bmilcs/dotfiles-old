@@ -46,38 +46,68 @@ export BAK=$HOME/.backup
 . "$HOME/bin/_distro"
 
 #────────────────────────────────────────────────────────────
-# SOFTWARE
-#────────────────────────────────────────────────────────────
-
-# terminal/text
-export EDITOR=nvim
-export VISUAL=nvim
-export TERM=xterm-256color
-export TERMINAL=alacritty
-
-# bat
-export BAT_THEME='Nord'
-
-# gnupg
-export GNUPGHOME='.gpg'
-
-# forgit
-export FORGIT_COPY_CMD='xclip -selection clipboard'
-
-#────────────────────────────────────────────────────────────
 # FZF
 #────────────────────────────────────────────────────────────
+#   fg             Text
+#   fg+             Text (current line)
+#   hl             Highlighted substrings
+#   hl+             Highlighted substrings (current line)
+#   preview-fg             Preview window text
+#   info             Info
+#   header             Header
+
+#   bg             Background
+#   bg+             Background (current line)
+#   preview-bg             Preview window background
+#   gutter             Gutter on the left (defaults to bg+)
+
+#   border             Border of the preview window and horizontal separators (--border)
+#   prompt             Prompt
+#   pointer             Pointer to the current line
+#   marker             Multi-select marker
+#   spinner             Streaming input indicator
 
 # options
-export FZF_DEFAULT_OPTS='--color=dark --height 90% --layout reverse --border --info=inline'
+#export FZF_DEFAULT_OPTS='--color=dark --height 90% --layout reverse --border --info=inline'
+export FZF_DEFAULT_OPTS="
+  --height 90%
+  --layout reverse
+  --border
+  --info=inline
+
+  --color fg:#5e81ac
+  --color fg+:#81a1c1
+  --color hl:#d8dee9
+  --color hl+:#eceff4
+  --color preview-fg:#2e3440
+  --color info:#4c566a
+  --color header:#81a1c1
+
+  --color bg:#2e3440
+  --color bg+:#2e3440
+  --color preview-bg:#2e3440
+  --color border:#3b4252
+  --color gutter:#2e3440
+
+  --color prompt:#5e81ac
+
+  --color pointer:#eceff4
+  --color marker:#88c0d0
+  --color spinner:#b48ead
+  "
+
+#export FZF_DEFAULT_OPTS='
+#  --color=bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
+#  --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
+#  --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07'
 
 # commands
-export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
-export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
-export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
-#export FZF_DEFAULT_COMMAND="fd . $HOME"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
+# export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
+# export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
+# export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
 
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
@@ -98,6 +128,25 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
+
+#────────────────────────────────────────────────────────────
+# SOFTWARE
+#────────────────────────────────────────────────────────────
+
+# terminal/text
+export EDITOR=nvim
+export VISUAL=nvim
+export TERM=xterm-256color
+export TERMINAL=alacritty
+
+# bat
+export BAT_THEME='Nord'
+
+# gnupg
+export GNUPGHOME='.gpg'
+
+# forgit
+export FORGIT_COPY_CMD='xclip -selection clipboard'
 
 #────────────────────────────────────────────────────────────
 # COLOR VAR
