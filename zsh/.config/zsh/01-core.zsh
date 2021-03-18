@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/01-core.zsh'
+dotlog '+ ~/.config/zsh//01-core.zsh'
 
 #
 # HISTORY
@@ -31,10 +31,11 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 # PLUGINS
 #
 
-zinit light zsh-users/zsh-completions 
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions 
 zinit light zdharma/fast-syntax-highlighting
 zinit light wfxr/forgit
+zinit light softmoth/zsh-vim-mode
 
 # dir_colors
 [[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors) 

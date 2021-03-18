@@ -9,7 +9,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-  dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/10-update.zsh'
+  dotlog '+ ~/.config/zsh//10-update.zsh'
 
 source _bm
 

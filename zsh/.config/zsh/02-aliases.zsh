@@ -11,7 +11,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/02-aliases.zsh'
+dotlog '+ ~/.config/zsh/02-aliases.zsh'
 
 #────────────────────────────────────────────────────────────
 # DOCUMENTS

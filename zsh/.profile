@@ -1,4 +1,4 @@
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────────────────
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -14,7 +14,11 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/.profile'
+dotlog '+ ~/.profile'
+
+#────────────────────────────────────────────────────────────
+# $PATH
+#────────────────────────────────────────────────────────────
 
 # path: add ~/bin + subdirs
 [ -d "$HOME/bin" ] && [ -z "$(echo $PATH | grep -o "$HOME/bin")" ] \
@@ -24,20 +28,24 @@ dotlog 'launched: /home/bmilcs/.profile'
 [ -d "$HOME/.local/bin" ] \
   && [ -z "$(echo $PATH | grep -o "$HOME/.local/bin")" ] \
   && export PATH=$PATH:"$HOME/.local/bin"
+#────────────────────────────────────────────────────────────
+# CLEAN $HOME
+#────────────────────────────────────────────────────────────
 
-# clean up $HOME
+# mv gtk files
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
 #────────────────────────────────────────────────────────────
-# DOTFILE RELATED
+# DOTFILE
 #────────────────────────────────────────────────────────────
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
 
-if [ -f "/etc/arch-release" ]; then
-  export DISTRO='arch'; else export DISTRO='debian'; fi
+. "$HOME/bin/_distro"
+
+echo $DISTRO
 
 #────────────────────────────────────────────────────────────
 # SOFTWARE
@@ -58,14 +66,41 @@ export GNUPGHOME='.gpg'
 # forgit
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 
-# fzf
-export FZF_DEFAULT_OPTS="--color=dark --height 80% --layout reverse"
-#export FZF_DEFAULT_COMMAND="fd . $HOME"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+#────────────────────────────────────────────────────────────
+# FZF
+#────────────────────────────────────────────────────────────
+
+# options
+export FZF_DEFAULT_OPTS='--color=dark --height 90% --layout reverse --border --info=inline'
+
+# commands
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
+#export FZF_DEFAULT_COMMAND="fd . $HOME"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+    ssh)          fzf "$@" --preview 'dig {}' ;;
+    *)            fzf "$@" ;;
+  esac
+}
+
 #────────────────────────────────────────────────────────────
 # COLOR VAR
 #────────────────────────────────────────────────────────────
@@ -97,17 +132,16 @@ export DAYOFWEEK="$(date '+%A')"
 LANG="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
-#LC_TIME="nl_NL.utf-8"
 LC_COLLATE="en_US.UTF-8"
 LC_MONETARY="en_US.UTF-8"
 LC_MESSAGES="en_US.UTF-8"
-LC_PAPER="en_US.UTF-8"
-LC_NAME="en_US.UTF-8"
-LC_ADDRESS="en_US.UTF-8"
-LC_TELEPHONE="en_US.UTF-8"
-LC_MEASUREMENT="en_US.UTF-8"
-LC_IDENTIFICATION="en_US.UTF-8"
 LC_ALL="en_US"
+#LC_PAPER="en_US.UTF-8"
+#LC_NAME="en_US.UTF-8"
+#LC_ADDRESS="en_US.UTF-8"
+#LC_TELEPHONE="en_US.UTF-8"
+#LC_MEASUREMENT="en_US.UTF-8"
+#LC_IDENTIFICATION="en_US.UTF-8"
 
 #────────────────────────────────────────────────────────────
 # SYSTEM MODS

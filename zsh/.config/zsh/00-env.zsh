@@ -3,19 +3,19 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#               ZSHRC: INTERACTIVE SHELLS
+#                 ZSH: ENVIRONMENT [./00-env.zsh]
+#────────────────────────────────────────────────────────────
+# PATHS
 #────────────────────────────────────────────────────────────
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/.zshrc'
+dotlog '+ ~/.config/zsh//00-env.zsh'
 
-# add dotfile launch debugger functions to shell
-source "${HOME}/bin/sys/dotfile_logger"
-
-# add plugin manager
-source ~/.zinit/bin/zinit.zsh
-
-# load configs
-for cfg (~/.zsh/*.zsh) source $cfg
+# execute profile on missing env [ssh]
+if [ -z $D ]; then
+  dotlog 'notice: env var missing!'
+  dotlog '00-env.zsh launching .profile'
+  . ~/.profile
+fi
 

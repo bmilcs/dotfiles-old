@@ -9,7 +9,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/dir_colors'
+dotlog '+ ~/.config/zsh//dir_colors'
 
 COLOR tty
 

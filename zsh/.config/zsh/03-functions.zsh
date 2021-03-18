@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog 'launched: /home/bmilcs/bm/zsh/.zsh/03-functions.zsh'
+dotlog '+ ~/.config/zsh//03-functions.zsh'
 
 source $D/bin/bin/_bm
 
