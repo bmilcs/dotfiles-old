@@ -8,8 +8,8 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_t mirrorlist update
-_o archlinux mirror benchmark utility
+_t pacman mirror update
+_o archlinux benchmark utility
 
 pkgs=("reflector")
 
@@ -26,21 +26,38 @@ else
   exit 1
 fi
 
+_a checking active processes
+if pid=$(pgrep reflector); then
+  echo
+  _e "reflector is currently running (pid: $pid)"
+  _w "be patient: alert will appear when done\n"
+  exit 1
+else
+  _s "all set"
+fi
+
 _a mirrorlist backup
 _o "copying /etc/pacman.d/mirrorlist > mirrorlist.bak"
-sudo cp -v /etc/pacman.d/mirrorlist{,.bak}
+if sudo cp -v /etc/pacman.d/mirrorlist{,.bak} >/dev/null 2>&1; then
+  _s
+else
+  _e unable to backup mirrorlist
+  _s now exiting
+  exit 1
+fi
 
-_a running benchmark
-_o reflector: 
-_i USA 
-_i updated within last 12 hours
-_i overwrite existing mirrorlist "\n"
 
+(
 sudo reflector --country=Canada --country=US \
   --verbose --latest 500 --age 12 --protocol https --sort rate \
-  --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm > ~/.config/up/mirrors.log \
-  &
-  _a pacman mirror update
-  _s now complete
-# --country US
-# --age 12
+  --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm 2>&1> ~/.config/up/mirrors.log \
+  && _a pacman mirror update \
+  && _s now complete && exit 0
+) &
+
+_a "running benchmark ${YLW}[in background]"
+_ob process: "$(pgrep reflector)"
+_ib countries: usa, canada
+_ib updated: last 12 hours
+_ib overwrite: yes "\n"
+
