@@ -5,17 +5,15 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #              FOLDER FZF > NVIM [./cn]
+#
+# TODO
+# add -h options, with print-outs, based on case statement
 #────────────────────────────────────────────────────────────
 source _bm
 
 unset s
 unset f
 unset c
-
-# TODO
-# add -h options, with print-outs, based on case statement
-
-_a opt: "$1"
 
 # definitions
 case $1 in
@@ -28,38 +26,35 @@ case $1 in
   r ) f="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
   s ) f="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
   t ) f=~/txt;; tt) c=~/txt ;;
-  u ) f="/usr/local/bin";; uu) s="/usr/local/bin" ;;
+  u ) s="/usr/local/bin";; uu) c="/usr/local/bin" ;;
   v ) f="$D/vim";; vv) c="$D/vim";;
   z ) f="$D/zsh";; zz) c="$D/zsh";;
-  # x | xorg) genls "$D"/opt/xorg XORG ;;
-  # n | ncm) genls "$D"/opt/ncmpcpp NCMPCPP ;;
-  # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
-  # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
-  # bms) nvim "$D"/install.sh ;;
-  # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
+  x ) s="$D/opt/xorg" ;; ss) c=$"D/opt/xorg" ;;
+  n ) genls "$D"/opt/ncmpcpp NCMPCPP ;;
+  tm ) nvim "$D"/opt/tmux/.tmux.conf ;;
   # e) nvim "$D"/bin/bin/cfg ;;
   # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
   # e) nvim "$D"/bin/bin/cfg ;;
   # #xterm)    vim ~/.Xresources.d/xterm;;
+  # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
+  # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
 
   * ) _e no input found 
-      _a $filename
-      #nvim "$DIR"
+      nvim $(which ff)
+      exit 1;;
 esac
-
-
 
 if [ -z "$c" ] && [ -z "$s" ]; then
   _o nvim: \'"$f"\'
-  fd -uu . "$f"\
+  fd -uu -tf -tl . "$f"\
     | sort \
-    | fzf --preview 'bat --color "always"' --delimiter / --with-nth -1 --multi \
+    | fzf --preview 'bat --color "always" {}' --delimiter / --with-nth -1 --multi \
     | xargs -I bm nvim bm
 elif [ -z "$c" ] && [ -z "$f" ]; then
   _o sudo nvim: \'"$f"\'
-  fd -uu . "$f"\
+  fd -uu -tf -tl . "$f"\
     | sort \
-    | fzf --preview 'bat --color "always"' --delimiter / --with-nth -1 --multi \
+    | fzf --preview 'bat --color "always" {}' --delimiter / --with-nth -1 --multi \
     | xargs -I bm sudo nvim bm
 else
   _o c: cd \'"$c"\'
