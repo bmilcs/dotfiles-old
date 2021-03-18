@@ -36,9 +36,11 @@ _i USA
 _i updated within last 12 hours
 _i overwrite existing mirrorlist "\n"
 
-sudo reflector --verbose --latest 500 --protocol https \
-  --sort rate --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm \
-  && _s
+sudo reflector --country=Canada --country=US \
+  --verbose --latest 500 --age 12 --protocol https --sort rate \
+  --save /etc/pacman.d/mirrorlist > ~/.config/up/mirrorlist.bm > ~/.config/up/mirrors.log \
+  &
+  _a pacman mirror update
+  _s now complete
 # --country US
 # --age 12
-
