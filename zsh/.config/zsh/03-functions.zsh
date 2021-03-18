@@ -12,34 +12,6 @@ dotlog '+ ~/.config/zsh//03-functions.zsh'
 
 source $D/bin/bin/_bm
 
-# VIM
-#────────────────────────────────────────────────────────────
-
-# requires function form (where command)
-function vm() {
-source _head
-  if [ $# -eq 0 ]; then   # no argument, launch nvim
-    nvim .
-  elif [ $# -gt 1 ]; then  # multiple arguments, skip function
-    _e single command please
-  else
-    if file="$(where $1)"; then 
-      if [ -d "$file" ]; then    # if argument = a directory, error
-        echo "error: \"$file\" is a DIRECTORY. Denied."
-      elif [ -w $file ]; then    # if exists and writeable. nvim TIME!"
-        command nvim "$file" 
-      elif [ -e $file ]; then    # if exists, not writeable, auto SUDO 
-        sudo nvim "$file"
-      else                    # if arg doesn't exist...
-        _a "where $1 output:"
-        where $1
-        _w "${B}$1${YLW}: function/alias? can't open it with an editor."
-      fi
-    else
-      _e "$1: doesn't appear to be a command"
-    fi  
-  fi
-}
 compdef vm="where"
 
 # GIT
@@ -160,6 +132,36 @@ function myip() {
   }
 
 #────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+=======
+# DEBIAN-ONLY
+#────────────────────────────────────────────────────────────
+
+if [[ ! $DISTRO = arch* ]]; then
+
+  # debian: install app
+  function apti() {
+    sudo apt-get install $@ -y
+    }
+
+  # debian: delete & purge app
+  function aptr() {
+    sudo apt-get purge $@ -y
+    }
+
+  # debian: find app
+  function aptf() {
+    dpkg --get-selections | grep $@
+    }
+
+  # debian: get app status
+  function apts() {	
+    systemctl status $@; 
+    }
+fi
+
+#────────────────────────────────────────────────────────────
+>>>>>>> aea0518 (fixed distro conditional to include wildcard)
 # DOCKER
 #────────────────────────────────────────────────────────────
 

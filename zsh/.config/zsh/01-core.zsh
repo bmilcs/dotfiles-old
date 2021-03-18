@@ -32,10 +32,9 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 #
 
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions 
+zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit light wfxr/forgit
-zinit light softmoth/zsh-vim-mode
 
 # dir_colors
 [[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors) 
@@ -66,7 +65,7 @@ bindkey -M vicmd 'y' vi-yank-xclip
 
 setopt autocd                 # cd into dir's w/o cd prefix
 setopt cdable_vars            # autocd, expand non-/path as ~
-[[ $DISTRO == arch ]] \
+[[ $DISTRO == "arch"* ]] \
 && setopt cd_silent              # don't print dir after cd
 
 # history
