@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 DIRECT BIN EDITOR [./vm]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+# no argument, launch nvim
+if [ $# -eq 0 ]; then
+  nvim .
+
+# multiple arguments, skip
+elif [ $# -gt 1 ]; then
+  _e single command please
+
+# safe to proceed
+else
+
+  # if command exists
+  if file="$(which "$1")"; then 
+
+    # if file path is a directory
+    if [ -d "$file" ]; then
+      echo "error: \"$file\" is a DIRECTORY. Denied."
+
+    # if writeable
+    elif [ -w "$file" ]; then
+      command nvim "$file" 
+
+    # if exists
+    elif [ -e "$file" ]; then
+      sudo nvim "$file"
+
+    else
+
+      _a "${B}$1${CYN} output: \n"
+      which "$1"
+      echo
+      _w "${B}$1${YLW}: function/alias? can't open it with an editor."
+
+    fi
+
+  # command doesn't exist
+  else
+
+    _e "$1: doesn't appear to be a command"
+
+  fi  
+fi
