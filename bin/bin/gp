@@ -12,17 +12,22 @@ _t dotfile repo helper
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
-clean="$($g status | grep "clean")"
+gstatus="$($g status | grep "clean")"
+
+gremote="$($g remote update 2> /dev/null)"
+echo "$gremote"
 
 _a local repo
 _o health check
 
-if [[ ! -z "$clean" ]] ; then
-  _s clean: no action necessary
+if [[ ! -z "$gstatus" ]] ; then
+  _s gstatus: no action necessary
 
   _a remote repo
   _o "diff local & upstream dotfiles"
   $g remote update > /dev/null 2>&1
+
+  $g status -uno
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
     _w "ahead of origin/main"
