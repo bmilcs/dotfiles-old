@@ -35,10 +35,16 @@ bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --
 # DUNST 
 bindsym $win+x           exec --no-startup-id    "killall dunst ; sleep 0.5 ; notify-send -i dialogue-error \\"title\\" \\"msg\\""
 
+#────────────────────────────────────────────────────────────
 # ROFI
-bindsym $win+q           exec --no-startup-id    rofi -config ~/.config/rofi/config.rasi -show drun
+#────────────────────────────────────────────────────────────
+# standard
+bindsym $win+q           exec --no-startup-id    rofiapp
+# dotfiles
 bindsym $win+e           exec --no-startup-id    rofibin
-bindsym $win+$ctrl+q     exec --no-startup-id    ~/.config/rofi/bin/launcher_ribbon
+# dmenu
+bindsym $win+r           exec --no-startup-id    rofidmenu
+
 
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS
