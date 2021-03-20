@@ -1,3 +1,21 @@
+snippet cleanexit_trap "trap command for capturing ^c exits"
+# <ctrl-c>: exit trap
+cEXIT() {
+  if [[ -f "$name" ]] && [[ -w "$name" ]] && \
+    [[ $(wc -c $name) == "0 $name" ]]
+  then
+    echo -e "\n"
+    _w emergency exit
+    _f cleanup
+    rm "$name" && _s
+  fi
+  exit 1
+}
+
+trap 'cleanexit' SIGINT
+endsnippet
+
+
 snippet rightaligntexttocolumn "right align text to a certain column"
 printf "%80s\n" "$text"
 endsnippet
@@ -35,10 +53,17 @@ snippet regexdelnumofcharsinstring "remove # of chars from string"
 dir=${dir:0:$(( ${#dir}-1 ))}
 endsnippet
 
-snippet df "dotfile log debugger"
+snippet dotfilelogsudo "dotfile log debugger"
+# dotfile rc file debugging [sudo]
+[ -f ~/bin/sys/dotfile_logger ] \
+&& . ~/bin/sys/dotfile_logger \
+&& dotlog '+ `!v expand('%:p')`'
+endsnippet
+
+snippet dotfilelog "dotfile log debugger"
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
-	dotlog 'launched: `!v expand('%:p')`'
+	dotlog '+ `!v expand('%:p')`'
 endsnippet
 
 snippet sedaddnewfirstline "add a new line to beginning of a file"
