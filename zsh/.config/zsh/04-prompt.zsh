@@ -22,13 +22,15 @@
 # RPS1="%B%K{red}bar"
 #────────────────────────────────────────────────────────────
  if [ -n "$SSH_CLIENT" ]; then
-   PROMPT="%B%K{red}%F{black}   %M   "
+   PROMPT="%B%K{green}%F{black}   %M   "
  else
    PROMPT="%B%K{blue}%F{black}   %M   "
  fi
  
  PROMPT+="%k%b %F{blue}%~ [%?] "
- RPROMPT+=" %b%K{black}%F{blue}%n"
+if [[ ! $USER == bmilcs ]]; then
+ RPROMPT+=" %b%K{blue}%F{black}%n"
+fi
  # "$'\n'"
  
  
