@@ -6,48 +6,68 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DIRECT BIN EDITOR [./vm]
 #────────────────────────────────────────────────────────────
-
 source _bm
+source ~/.profile
+unset bp
 
 # no argument, launch nvim
 if [ $# -eq 0 ]; then
-  nvim .
+  
+  _a "direct bin editor"
+  _o "target: ${YLW}<empty>\n"
+  _f "launching neovim $PWD"
+  _s all set\\n
+  ( nvim . )
+  exit 0
 
 # multiple arguments, skip
 elif [ $# -gt 1 ]; then
-  _e single command please
+
+  _a "direct bin editor"
+  _o "target: ${RED}$*\n"
+  _w "multiple arguments detected"
+  _e "unable to process input\n"
 
 # safe to proceed
 else
 
-  # if command exists
-  if file="$(which "$1")"; then 
+  vmlog=/tmp/bm-vm
+  bp=$(which "$1" 2> $vmlog)
 
-    # if file path is a directory
-    if [ -d "$file" ]; then
-      echo "error: \"$file\" is a DIRECTORY. Denied."
+  # which command produce output?
+  if [[ -n "$bp" ]]; then 
 
-    # if writeable
-    elif [ -w "$file" ]; then
-      command nvim "$file" 
+    # output: is file writeable?
+    if [[ -w "$bp" ]]; then
+      command nvim "$bp" 
 
-    # if exists
-    elif [ -e "$file" ]; then
-      sudo nvim "$file"
+    # output, not writeable: is it even a file?
+    elif [[ -e "$bp" ]]; then
 
-    else
-
-      _a "${B}$1${CYN} output: \n"
-      which "$1"
-      echo
-      _w "${B}$1${YLW}: function/alias? can't open it with an editor."
-
+      # file exists, inside /usr/bin?
+      if [[ "$bp" == "/usr/bin"* ]]; then
+        _a "direct bin editor"
+        _o "target:   ${GRN}$1"
+        _o "path: ${RED}$bp"
+        _or "$(bat $vmlog)"
+        exit 1
+      else
+        # exists, not inside /usr/bin
+        sudo nvim "$bp"
+      fi
+    # output is not a file:
+    else 
+      _a "direct bin editor"
+      _o "target: ${GRN}$1"
+      _o "path:   ${RED}$bp"
+      _w possible alias/function
+      _or "$(bat /tmp/bm_bin_vm)"
     fi
-
   # command doesn't exist
   else
-
-    _e "$1: doesn't appear to be a command"
-
+      _a "direct bin editor"
+      _o "target: ${GRN}$1"
+      _o "path: ${RED}???\n"
+      _e "$1: doesn't appear to be a command\n"
   fi  
 fi
