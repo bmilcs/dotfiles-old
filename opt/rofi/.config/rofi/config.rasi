@@ -1,11 +1,17 @@
 configuration {
-	width: 30;
-	lines: 25;
-	font: "Iosevka 14";
-	hide-scrollbar: true;
-	theme: "nord";
+  width: 30;
+  lines: 25;
+  font: "Iosevka 14";
+  hide-scrollbar: true;
+  theme: "nord";
   combi-modi: "window,ssh,drun,run";
+  modi: "window,run,ssh,drun";
   display-drun: "";
+}
+
+element-icon {
+  size:                18;
+  border:              0px;
 }
 
 /* element {
@@ -19,10 +25,6 @@ configuration {
 * }
 * 
 * 
-* element-icon {
-*     size:                96;
-*     border:              0px;
-* }
 * 
 * element-text {
 *     expand:              true;

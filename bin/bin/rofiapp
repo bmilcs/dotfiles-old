@@ -4,21 +4,7 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 ROFI MENU FOR ~/BIN [./binr]
+#                 ROFI: LIST OF APPS [./rofiapp]
 #────────────────────────────────────────────────────────────
 
-dotdir=$HOME/bm/
-
-dotfile_paths=$(/usr/bin/git --git-dir="$dotdir.git" \
-  --work-tree="$dotdir" ls-tree -r main --name-only)
-
-sel="$(echo -e "$dotfile_paths" | rofi -dmenu)" #-dmenu 
-
-# avoid excessive text in rofi menu by adding this afterward
-[[ -n $sel ]] && sel=$dotdir/$sel
-
-if [[ -f "$sel" ]]; then
-  alacritty -e i3nvim "$sel" &
-elif [[ -n $sel ]]; then
-  dunstify "$sel No such file"
-fi
+rofi -config ~/.config/rofi/config.rasi -show drun
