@@ -13,8 +13,6 @@
 - bmilcs.com > it's own VM
 
 [ arch ]
-CHECK FOR GEMS:
-- https://thevaluable.dev/zsh-install-configure-mouseless/
 - i3: copy/paste to middle mouse clipboard
 - dunst: make larger in size & duration
 - starship prompt
@@ -23,6 +21,12 @@ CHECK FOR GEMS:
   - cut
   - awk
   - xargs
+  CHECK FOR GEMS:
+  - https://thevaluable.dev/zsh-install-configure-mouseless/
+
+[ dmenus ]
+- prompt for url (rofi)
+- clone repo to ~/repos
 
 [ django/python ]
   https://docs.djangoproject.com/en/3.1/intro/tutorial01/
