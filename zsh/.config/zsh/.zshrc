@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/bm/zsh/.config/zsh/.zshrc'
+dotlog '+ ~/.config/zsh/.zshrc'
 
 # add plugin manager
 source ~/.zinit/bin/zinit.zsh

@@ -8,9 +8,8 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh//03-functions.zsh'
+dotlog '+ ~/.config/zsh/03-functions.zsh'
 
-source $D/bin/bin/_bm
 
 compdef vm="where"
 
@@ -25,6 +24,7 @@ function gc() {
 
 # git reset hard
 function grh() {
+  source $D/bin/bin/_bm
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
   _t git reset hard
   _w WILL BE LOST:
@@ -38,6 +38,7 @@ function grh() {
 
 # add & commit all: lazy mode
 function gacall() {
+  source $D/bin/bin/_bm
   _ask "mass git {add,commit,push} - are you sure?" \
   && _t dotfile repo commit \
   && _a add missing files \& commit \

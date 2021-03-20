@@ -6,10 +6,9 @@
 #                 DAILY AUTO-UPDATE [./10-update.zsh]
 
 # TODO: What else is manually installed?
-
 # dotfile rc file debugging
-. "${HOME}/bin/sys/dotfile_logger"
-  dotlog '+ ~/.config/zsh//10-update.zsh'
+. ~/bin/sys/dotfile_logger
+  dotlog '+ ~/.config/zsh/10-update.zsh'
 
 source _bm
 

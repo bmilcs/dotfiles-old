@@ -8,11 +8,11 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh//01-core.zsh'
+dotlog '+ ~/.config/zsh/01-core.zsh'
 
-#
+#────────────────────────────────────────────────────────────
 # HISTORY
-#
+#────────────────────────────────────────────────────────────
 
 HISTSIZE=5000
 SAVEHIST=5000
@@ -27,9 +27,9 @@ setopt HIST_REDUCE_BLANKS     # remove superfluous blanks for each command
 setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
-#
+#────────────────────────────────────────────────────────────
 # PLUGINS
-#
+#────────────────────────────────────────────────────────────
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
@@ -43,9 +43,9 @@ zinit light wfxr/forgit
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ]  \
   && source "$HOME/.config/fzf/fzf.zsh"
 
-#
+#────────────────────────────────────────────────────────────
 # OPTIONS
-#
+#────────────────────────────────────────────────────────────
 
 set nocompatible              # not vi-backwards-compatible
 
@@ -102,9 +102,9 @@ setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
 #setopt extendedglob          # disabled, breaks git reset HEAD^
 
-#
+#────────────────────────────────────────────────────────────
 # AUTOCORRECT
-#
+#────────────────────────────────────────────────────────────
 
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
@@ -116,9 +116,9 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
 
-#
+#────────────────────────────────────────────────────────────
 # AUTOCOMPLETE
-#
+#────────────────────────────────────────────────────────────
 
 CASE_SENSITIVE="false"
 zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
@@ -141,9 +141,9 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
 
-#
+#────────────────────────────────────────────────────────────
 # '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
-#
+#────────────────────────────────────────────────────────────
 
 #zmodload -i zsh/complist
 zmodload zsh/complist 
@@ -156,9 +156,9 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-#
+#────────────────────────────────────────────────────────────
 # AUTOLOADS
-#
+#────────────────────────────────────────────────────────────
 
 autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit -d ~/.config/zsh/.zcompdump
@@ -173,9 +173,9 @@ if [[ "$DISTRO" == arch ]]; then
   compctl -K _pip_completion pip3
 fi
 
-#
+#────────────────────────────────────────────────────────────
 # PROMPT, COLORS, ETC. 
-#
+#────────────────────────────────────────────────────────────
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -185,9 +185,9 @@ RPROMPT=\$vcs_info_msg_0_
 # PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
 
-#
+#────────────────────────────────────────────────────────────
 # KEYBINDINGS
-#
+#────────────────────────────────────────────────────────────
 
 typeset -g -A key
 key[Home]="${terminfo[khome]}"

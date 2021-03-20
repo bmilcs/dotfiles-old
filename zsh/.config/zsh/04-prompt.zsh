@@ -5,6 +5,10 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH PROMPT [./04-prompt.zsh]
 #────────────────────────────────────────────────────────────
+# dotfile rc file debugging
+. ~/bin/sys/dotfile_logger
+  dotlog '+ ~/.config/zsh/04-prompt.zsh'
+#────────────────────────────────────────────────────────────
 # original
 # PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${cyan}# %b%f%k"
 #────────────────────────────────────────────────────────────

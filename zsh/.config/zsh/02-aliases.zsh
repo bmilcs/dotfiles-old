@@ -39,7 +39,7 @@ alias picomrc='vim $D/opt/picom/.config/picom/config'
 alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
-alias tr="tmux source ~/.tmux.conf"
+alias trc="tmux source ~/.tmux.conf"
 alias zr='source ~/.config/zsh/.zshrc'
 alias polyr=". ~/.config/polybar/launch.sh" 
 
