@@ -137,7 +137,9 @@ _fzf_comprun() {
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
-export TERMINAL=alacritty
+if [[ $HOST == bm* ]]; then
+  export TERMINAL=alacritty
+fi
 
 # bat
 export BAT_THEME='Nord'
