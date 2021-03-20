@@ -12,26 +12,27 @@
 source _bm
 
 unset s
-unset f
+unset p
 unset c
+unset f
 
 # definitions
 case $1 in
 
-  a ) f="$D/opt/alacritty";; aa) c="$D/opt/alacritty";;
-  b ) f="$D/bin";; bb ) c="$D/bin" ;;
-  d ) f=~/.config/dunst;; dd) c=~/.config/dunst ;;
-  i ) f="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
-  p ) f="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
-  r ) f="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
-  s ) f="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
-  t ) f=~/txt;; tt) c=~/txt ;;
+  a ) p="$D/opt/alacritty";; aa) c="$D/opt/alacritty";;
+  b ) p="$D/bin";; bb ) c="$D/bin" ;;
+  d ) p=~/.config/dunst;; dd) c=~/.config/dunst ;;
+  i ) p="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
+  p ) p="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
+  r ) p="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
+  s ) p="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
+  t ) p=~/txt;; tt) c=~/txt ;;
   u ) s="/usr/local/bin";; uu) c="/usr/local/bin" ;;
-  v ) f="$D/vim";; vv) c="$D/vim";;
-  z ) f="$D/zsh";; zz) c="$D/zsh";;
-  x ) s="$D/opt/xorg" ;; ss) c=$"D/opt/xorg" ;;
-  n ) genls "$D"/opt/ncmpcpp NCMPCPP ;;
-  tm ) nvim "$D"/opt/tmux/.tmux.conf ;;
+  v ) p="$D/vim";; vv) c="$D/vim";;
+  z ) p="$D/zsh";; zz) c="$D/zsh";;
+  x ) s="$D/opt/xorg";; xx) c="$D/opt/xorg" ;;
+  n ) p="$D/opt/ncmpcpp";; nn ) c="$D/opt/ncmpcpp";;
+  tm ) f="$D/opt/tmux/.tmux.conf" ;;
   # e) nvim "$D"/bin/bin/cfg ;;
   # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
   # e) nvim "$D"/bin/bin/cfg ;;
@@ -39,25 +40,48 @@ case $1 in
   # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
   # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
 
-  * ) _e no input found 
+  e ) _e no input found 
       nvim $(which ff)
-      exit 1;;
+      exit 1
+      ;;
+  * ) _a ff options
+    _o ${B} a  ${NC}
+    _o ${B} b  ${NC}
+    _o ${B} d  ${NC}
+    _o ${B} i  ${NC}
+    _o ${B} p  ${NC}
+    _o ${B} r  ${NC}
+    _o ${B} s  ${NC}
+    _o ${B} t  ${NC}
+    _o ${B} u  ${NC}
+    _o ${B} v  ${NC}
+    _o ${B} z  ${NC}
+    _o ${B} x  ${NC}
+    _o ${B} n  ${NC}
+    _o ${B} tm ${NC}
+    ;;
 esac
 
-if [ -z "$c" ] && [ -z "$s" ]; then
-  _o nvim: \'"$f"\'
-  fd -uu -tf -tl . "$f"\
+if [ -n "$p" ]; then
+  _o edit: \'"$p"\'
+  fd -uu -tf -tl . "$p"\
     | sort \
     | fzf --preview 'bat --color "always" {}' --delimiter / --with-nth -1 --multi \
     | xargs -I bm nvim bm
-elif [ -z "$c" ] && [ -z "$f" ]; then
-  _o sudo nvim: \'"$f"\'
-  fd -uu -tf -tl . "$f"\
+elif [ -n "$s" ]; then
+  _o sudo edit: \'"$p"\'
+  fd -uu -tf -tl . "$p"\
     | sort \
     | fzf --preview 'bat --color "always" {}' --delimiter / --with-nth -1 --multi \
     | xargs -I bm sudo nvim bm
-else
-  _o c: cd \'"$c"\'
+elif [ -n "$c" ]; then
+  _o cd \'"$c"\'
   cd $c || _e "$c doesn't exist"
   $SHELL
+elif [ -n "$f" ]; then
+  _o nvim \'"$c"\'
+  nvim "$f" || _e "$f doesn't exist"
+else
+  _w "ff ${B}$1${YLW} not found"
+  exit 1
 fi
