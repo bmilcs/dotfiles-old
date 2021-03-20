@@ -149,7 +149,9 @@ elif [[ ${DISTRO} == debian* ]]; then
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
   [[ ! -L ~/.local/bin/fd ]] && ln -s $(which fdfind) ~/.local/bin/fd
 else
-  _e "distro not setup yet! update me!" && _i "fix: "$D"/install.sh"
+  _w "distro not configured" 
+  _f distro: "$DISTRO"
+  _i "fix: $D/install.sh"
   exit 1
 fi
 
