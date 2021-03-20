@@ -35,7 +35,7 @@ _askk() {
     fi
   while true; do
     # ask the question (not using "read -p" as it uses stderr not stdout)
-    _qq "$1 [$prompt]${NC}"
+    _qq "$1 ${color}[$prompt]${NC}"
     # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
     read -r reply < /dev/tty
     # default?
@@ -48,7 +48,7 @@ _askk() {
   done
 }
 
-_qq() { echo -e "\n${color}${B}  ${color}$1${NC}" ;}
+_qq() { printf "\n${color}${B}  ${color}$1${NC}  " ;}
 
 _askn()  { color="$PUR"; _askk "$*" N; }
 _asknr() { color="$RED"; _askk "$*" N; }
@@ -82,6 +82,7 @@ _qw()    { color="$WHT"; _qq "$*"; }
 
 # titlebar
 _tt() {
+
   chr="\xE2\x94\x80"
   s=⎨ #❯⎨   #         
   p=⎬ #❮⎬ 
@@ -142,7 +143,7 @@ _op() { color="$PUR";   _oo "$*"; }
 _oc() { color="$CYN";   _oo "$*"; }
 
 # output
-_ff() { echo -e "$spaces${color} $*${NC}"; }
+_ff() { echo -e "$spaces${color}  $*${NC}"; }
 _f()  { color="$WHT";   _ff "$*"; }
 _fr() { color="$RED";   _ff "$*"; }
 _fy() { color="$YLW";   _ff "$*"; }
