@@ -36,7 +36,7 @@ done
 
 if [[ -n $outdated ]]; then
   if [[ $(_askb "run daily update?") ]] || \
-    [[ ! $HOST == "bm"* ; then
+    [[ ! $HOST == "bm"* ]] ; then
 
     # zsh: plugins w/ manager
     [[ ! "$today" == "$zlast" ]] \
