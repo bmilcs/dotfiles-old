@@ -6,32 +6,90 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 MAKE BIN FILE [./mbin]
 #────────────────────────────────────────────────────────────
-
 source _bm
-_t mbin script creator
+name=$1
 
-if [[ -z $# ]]; then
-  _e filename argument missing
+cEXIT() {
+  if [[ -f "$name" ]] && [[ -w "$name" ]] && \
+    [[ $(wc -c $name) == "0 $name" ]]
+  then
+    echo -e "\n"
+    _wr emergency exit
+    _f cleanup
+    rm "$name" && _s
+  fi
   exit 1
-elif [[ -f $1 ]]; then
-  _e "$1" already exists!
+}
+
+trap 'cEXIT' SIGINT
+
+_t bin maker
+_a parsing arguments
+
+# were args passed?
+if [[ -z $name ]]; then
+  _o "filename: ${RED}???\n"
+  _w missing argument
+  _e unable to proceed\\n
   exit 1
+else
+  _o filename: "$name"
+  _s
 fi
 
+# does it exist already?
+_a existing file check
+if [[ -f $name ]]; then
+
+  _w \'"$name"\' already exists!
+
+  # is it a useless file?
+  if [[ "$(wc -c "$name")" == "0 $name" ]]; then
+    _f "${B}however, it is empty (size 0 kb)"
+    _f deleting \'$name\'
+    rm "$name" || { _w unable to delete; _e unable to proceed\\n; exit 1; }
+    _s done \\n
+  else
+    _w "${B}NOT empty"
+    _e unable to proceed\\n
+    exit 1
+  fi
+else
+  _f all clear\\n
+fi
+
+# create file
+_oc "creating file"
+touch "$name"
+if [[ ! -f "$name" ]]; then
+  _e unable to create "$name" 
+  exit 1
+else
+  _s done
+fi
+
+while [[ -z $title ]]; do
+  _qy please enter a title: 
+  read title
+done
+
 # add logo
-logo "$1"
+logo "$name" "$title"
 
 # add header/title
-echo -e "\n\
-source _bm\n
-_t  \n\
-\n\n\n" >> "$1"
+echo -e "\
+source _bm
+_a $title\n\n\
+#\n" >> "$name"
 
 # add shebang
-sed -i '1s/^/\#\!\/usr\/bin\/env bash\n/' "$1"
+sed -i '1s/^/\#\!\/usr\/bin\/env bash\n/' "$name"
 
 # make executable
-chmod +x "$1"
+chmod +x "$name"
+
+# pause for pretty stdout
+sleep 1.5
 
 # open editor
-nvim "$1"
+nvim "$name"

@@ -6,11 +6,15 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #   text-file logo-ifier
 #────────────────────────────────────────────────────────────
-
 source _bm
 
+filename="$1"
+shift 1
+title="$*"
+
 # no arguments passed
-if [[ $# == 0 ]]; then
+#────────────────────────────────────────────────────────────
+if [[ -z $filename ]]; then
 
   # find center position
   x=$(($(tput lines)/2-4))
@@ -41,45 +45,62 @@ if [[ $# == 0 ]]; then
     echo 
   done
 
-#────────────────────────────────────────────────────────────
 
 else
 
-  # argument passed; check if file exists
-  if [[ ! -f $1 ]]; then
-    _w "\"$1\" doesn't exist"
-    if _askn create a new script called "$1"?; then
-      _a creating a new script: $1
-      touch "$1" || { _e unable to create "$1"; exit 1 ; }
-    else
-      _w skipped: now exiting
-      exit 0
-    fi
-  fi
+# argument(s) passed
+#────────────────────────────────────────────────────────────
+  _a logo maker
+  _o pre-check\\n
+  # check if file exists
+  if [[ ! -f $filename ]]; then
 
-  _t logo creator
+  # check if a command and whether or not to edit it
+    cmdpath=$(which "$filename" 2> /dev/null) 
+
+    # if file var isn't empty
+    if [[ -n $cmdpath ]]; then
+
+      _ww "$filename: invalid path"
+      _s "${B}$filename: binary was found!"
+
+      # valid command: ask permission to edit it
+      if _asknw "modify the binary ${YLW}$cmdpath --- \$ ${YLW}${B}$filename?"
+      then
+
+        # yes, edit cmd
+        filename="$cmdpath"
+
+      else
+
+        # no, exit
+        echo
+        _s now exiting\\n
+        exit 1
+
+      fi
+
+    else
+
+      _w "$filename: invalid ${B}PATH or COMMAND."
+      _e "unable to proceed. now exiting.\\n"
+      exit 1
+
+    fi
+
+  fi
 
   rechmod=0
   shebang=0
   firstline=0
-  filename="$1"
 
   # single argument passed
-  if [[ $# == 1 ]]; then 
+  while [[ -z $title ]]; do 
+    _qy please enter a title: 
+    read -r title
+  done
 
-    _q please enter a title: 
-    read title
-  
-  # remaining arguments as title
-  else
-
-    # ignore $1
-    shift 1
-    title="$*"
-
-  fi
-
-  _a go-go-gadget logo!
+  _ag logo starting...
   _o file: "${B}""$filename"
   _o title: "${B}""$title"
 
@@ -101,7 +122,8 @@ else
   if [[ -w $filename ]]; then
     _o true
   else
-    _e "false: nice try, wise-guy"
+    _w "false"
+    _e "unable to proceed"
     exit 1
   fi
 
@@ -120,16 +142,14 @@ else
   _a shebang?
 
   # first line contain shebang?
-  if [[ $(head -1 $filename) == "#!"* ]]; then
-
-    shebang=1 
+  if [[ $(head -1 "$filename") == "#!"* ]]; then
 
     # extract shebang
-    firstline=$(head -1 $filename) 
+    shebang=1 
+    firstline=$(head -1 "$filename") 
 
     # delete shebang
     sed -i -e 1,1d "$filename"
-
     _o true: \""$firstline"\"
 
   else
