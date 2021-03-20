@@ -35,7 +35,8 @@ for i in $dlast $flast $rlast $slast $vlast $zlast; do
 done
 
 if [[ -n $outdated ]]; then
-  if _askb "run daily update?"; then
+  if [[ $(_askb "run daily update?") ]] || \
+    [[ ! $HOST == "bm"* ; then
 
     # zsh: plugins w/ manager
     [[ ! "$today" == "$zlast" ]] \
