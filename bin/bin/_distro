@@ -1,5 +1,4 @@
-#!/bin/sh
-###!/usr/bin/env bash
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -31,8 +30,8 @@ else # resort to "linux <version>" (misc, bsd, etc)
 
 fi
 
-DISTRO="${DISTRO,,}"
-VER=${VER,,}
+DISTRO="$(echo $DISTRO | tr '[:upper:]' '[:lower:]')"
+VER="$(echo $VER | tr '[:upper:]' '[:lower:]')"
 
 export DISTRO
 export VER
