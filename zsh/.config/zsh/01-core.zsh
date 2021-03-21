@@ -14,8 +14,8 @@ dotlog '+ $ZDOTDIR/01-core.zsh'
 # HISTORY
 #────────────────────────────────────────────────────────────
 
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=$ZDOTDIR/history/history
 setopt SHARE_HISTORY          # share history between all sessions.
 setopt APPEND_HISTORY         # add to history file, across sessions, not replace
@@ -31,7 +31,7 @@ unsetopt HIST_VERIFY          # history expansion, execute the line directly
 # ZINIT
 #────────────────────────────────────────────────────────────
 
-# zinit: custom paths
+# custom paths
 declare -A ZINIT
 ZINIT[HOME_DIR]=${HOME}/.config/zinit
 ZINIT[BIN_DIR]=${ZINIT[HOME_DIR]}/bin
@@ -39,8 +39,6 @@ ZINIT[PLUGINS_DIR]=${ZINIT[HOME_DIR]}/plugins
 ZINIT[COMPLETIONS_DIR]=${ZINIT[HOME_DIR]}/completions
 ZINIT[SNIPPETS_DIR]=${ZINIT[HOME_DIR]}/snippets
 ZINIT[ZCOMPDUMP_PATH]=${ZDOTDIR}/compdump/zcompdump
-#ZINIT[COMPINIT_OPTS]
-#ZINIT[MUTE_WARNINGS]=1
 source ${ZINIT[BIN_DIR]}/zinit.zsh
 
 # plugins
@@ -53,7 +51,7 @@ zinit load wfxr/forgit
 [[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
 
 # fzf path
-[ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ]  \
+[ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ] \
   && source "$HOME/.config/fzf/fzf.zsh"
 
 #────────────────────────────────────────────────────────────
