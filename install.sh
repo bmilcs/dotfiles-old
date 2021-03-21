@@ -44,12 +44,12 @@ cleanup() {
   _w "content will be moved to $backup"
   mkdir -p "$backup"
 
+  rm -rf "$backup/git"
   mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
     "$backup" 2> /dev/null
-  rm -rf "$backup/git"
   mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
+  rm -rf ~/zsh ~/zinit
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
-  #mv ~/.config/zsh/{_git,git-completion.bash} "$backup" 2> /dev/null
 
   _o deleting broken symlinks in "${B}"~
   find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
