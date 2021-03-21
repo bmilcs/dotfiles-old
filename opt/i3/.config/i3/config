@@ -43,7 +43,9 @@ bindsym $win+q           exec --no-startup-id    rofiapp
 # dotfiles
 bindsym $win+e           exec --no-startup-id    rofibin
 # dmenu
-bindsym $win+r           exec --no-startup-id    rofidmenu
+bindsym $win+r           exec --no-startup-id    rofiinput
+# roficlone
+bindsym $win+c           exec --no-startup-id    roficlone
 
 
 #────────────────────────────────────────────────────────────
@@ -265,3 +267,4 @@ for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute
 for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
 for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1091 1302, move absolute position 19 99, border pixel 3
+  for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 1466 1218,   move absolute position 991 123,   border pixel 3
