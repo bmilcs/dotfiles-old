@@ -11,7 +11,7 @@
 dotlog '+ ~/.config/zsh/.zshrc'
 
 # load configs
-for cfg (~/.config/zsh/*.zsh) source $cfg
+for cfg ($ZDOTDIR/*.zsh) source $cfg
 
 # run update script (subprocess to prevent trap from closing term)
-(. ~/.config/zsh/10-update.sh)
+(. $ZDOTDIR/10-update.sh)

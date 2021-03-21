@@ -72,17 +72,21 @@ ifzf() {
 
 izsh() {
   _a zsh
+  export ZDOTDIR=~/.config/zsh
+  ZINITDIR=~/.config/zinit
 
-  if   [[ ! -d ~/.config/zsh ]] \
-    || [[ ! -d ~/.config/zinit ]] \
-    || [[ ! -d ~/.config/zsh/completion ]] \
-    || [[ ! -f ~/.config/zsh/completion/_git ]] \
-    || [[ ! -f ~/.config/zsh/completion/git-completion.bash ]] \
-    || [[ ! -f ~/.config/zsh/completion/_docker-compose ]]
+  if [[ ! -d ~/.config/zinit ]] \
+    || [[ ! -d $ZDOTDIR ]] \
+    || [[ ! -d $ZDOTDIR/compdump ]] \
+    || [[ ! -d $ZDOTDIR/history ]] \
+    || [[ ! -d $ZDOTDIR/completion ]] \
+    || [[ ! -f $ZDOTDIR/completion/_git ]] \
+    || [[ ! -f $ZDOTDIR/completion/git-completion.bash ]] \
+    || [[ ! -f $ZDOTDIR/completion/_docker-compose ]]
   then
 
     # create directories
-    mkdir -p ~/.config/zinit ~/.config/zsh/completion
+    mkdir -p $ZINITDIR $ZDOTDIR/{completion,compdump,history}
 
     # install zinit
     _o installing zinit plugin manager

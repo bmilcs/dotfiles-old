@@ -16,7 +16,7 @@ dotlog '+ ~/.config/zsh/01-core.zsh'
 
 HISTSIZE=5000
 SAVEHIST=5000
-HISTFILE=~/.config/zsh/.zhistory
+HISTFILE=$ZDOTDIR/history/history
 setopt SHARE_HISTORY          # share history between all sessions.
 setopt APPEND_HISTORY         # add to history file, across sessions, not replace
 setopt EXTENDED_HISTORY       # write the history file in the ':start:elapsed;command' format.
@@ -38,7 +38,7 @@ ZINIT[BIN_DIR]=${ZINIT[HOME_DIR]}/bin
 ZINIT[PLUGINS_DIR]=${ZINIT[HOME_DIR]}/plugins
 ZINIT[COMPLETIONS_DIR]=${ZINIT[HOME_DIR]}/completions
 ZINIT[SNIPPETS_DIR]=${ZINIT[HOME_DIR]}/snippets
-ZINIT[ZCOMPDUMP_PATH]=${ZDOTDIR}/zcompdump
+ZINIT[ZCOMPDUMP_PATH]=${ZDOTDIR}/compdump/zcompdump
 #ZINIT[COMPINIT_OPTS]
 #ZINIT[MUTE_WARNINGS]=1
 source ${ZINIT[BIN_DIR]}/zinit.zsh
@@ -50,7 +50,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit load wfxr/forgit
 
 # dir_colors
-[[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors) 
+[[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
 
 # fzf path
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ]  \
@@ -151,8 +151,8 @@ zstyle ':completion:*:warnings' format '%F{red}nothing%f'
 zstyle ':completion:*' format '%I%F{green}%d'
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
-fpath=(~/.zsh/completion $fpath)
+zstyle ':completion:*:*:git:*' script $ZDOTDIR/completion/git-completion.bash
+fpath=($ZDOTDIR/completion $fpath)
 
 #────────────────────────────────────────────────────────────
 # '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
@@ -174,7 +174,7 @@ zle -N down-line-or-beginning-search
 #────────────────────────────────────────────────────────────
 
 autoload -Uz promptinit && promptinit
-autoload -Uz compinit && compinit -d ~/.config/zsh/.zcompdump
+autoload -Uz compinit && compinit -d $ZDOTDIR/compdump/zcompdump
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz colors && colors # autoload colors
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
