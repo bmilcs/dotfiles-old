@@ -140,7 +140,7 @@ default_floating_border   pixel 5
 # GAPS
 smart_gaps   on
 gaps         inner 10
-gaps         outer 10
+gaps         outer 0
 
 # COLOR VARS
 set $black1   #2E3440
