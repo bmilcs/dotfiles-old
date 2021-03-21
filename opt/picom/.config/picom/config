@@ -1,21 +1,9 @@
-# Thank you code_nomad: http://9m.no/ꪯ鵞
-# and Arch Wiki contributors: https://wiki.archlinux.org/index.php/Compton
+#────────────────────────────────────────────────────────────
+# backend
+#────────────────────────────────────────────────────────────
 
-#################################
-#
-# Backend
-#
-#################################
-
-# Backend to use: "xrender" or "glx".
-# GLX backend is typically much faster but depends on a sane driver.
-backend = "xrender";
-
-#################################
-#
-# GLX backend
-#
-#################################
+# "xrender" or "glx".
+backend = "glx";
 
 glx-no-stencil = true;
 
@@ -36,7 +24,6 @@ glx-copy-from-front = false;
 # Recommended if it works.
 glx-no-rebind-pixmap = true;
 
-# GLX backend: GLX buffer swap method we assume.
 # Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
 # undefined is the slowest and the safest, and the default value.
 # copy is fastest, but may fail on some drivers,
@@ -48,11 +35,9 @@ glx-no-rebind-pixmap = true;
 # Defaults to undefined.
 #glx-swap-method = "undefined";
 
-#################################
-#
-# Shadows
-#
-#################################
+#────────────────────────────────────────────────────────────
+# shadows
+#────────────────────────────────────────────────────────────
 
 # Enabled client-side shadows on windows.
 shadow = true;
@@ -97,23 +82,23 @@ shadow-exclude = [
     "_GTK_FRAME_EXTENTS@:c",
     "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
 ];
+
 # Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
 shadow-ignore-shaped = false;
 
-#################################
-#
+#────────────────────────────────────────────────────────────
 # Opacity
-#
-#################################
+#────────────────────────────────────────────────────────────
 
-inactive-opacity = 0.93;
+inactive-opacity = 0.90;
 active-opacity = 1;
-frame-opacity = 0.53;
+frame-opacity = 0.75;
 inactive-opacity-override = false;
 
 opacity-rule = [
-  "90:class_g = 'rofi'",
-  "98:class_g = 'firefox'",
+  "75:class_g = 'rofi'",
+  "100:class_g = 'firefox'",
+  "100:class_g = 'firefox'",
 ]
 
 # Dim inactive windows. (0.0 - 1.0)
@@ -125,9 +110,11 @@ opacity-rule = [
 # Blur background of opaque windows with transparent frames as well.
 # blur-background-frame = true;
 # Do not let blur radius adjust based on window opacity.
-blur-method = "dual_kawase";
+#blur-method = "dual_kawase";
+blur-method = "gaussian";
 blur-strength = 10;
-blur-background-fixed = true;
+#blur-background-fixed = true;
+blur-background-frame = true;
 blur-background-exclude = [
     "class_g = 'firefox'",
     "class_g = 'slop'",
@@ -135,11 +122,9 @@ blur-background-exclude = [
     "window_type = 'desktop'",
 ];
 
-#################################
-#
+#────────────────────────────────────────────────────────────
 # Fading
-#
-#################################
+#────────────────────────────────────────────────────────────
 
 # Fade windows during opacity changes.
 fading = true;
@@ -155,11 +140,9 @@ fade-out-step = 0.03;
 # Specify a list of conditions of windows that should not be faded.
 fade-exclude = [ ];
 
-#################################
-#
+#────────────────────────────────────────────────────────────
 # Other
-#
-#################################
+#────────────────────────────────────────────────────────────
 
 # Try to detect WM windows and mark them as active.
 mark-wmwin-focused = true;
@@ -178,7 +161,7 @@ detect-client-opacity = true;
 
 # Specify refresh rate of the screen.
 # If not specified or 0, picom will try detecting this with X RandR extension.
-refresh-rate = 144;
+refresh-rate = 60;
 
 # Vertical synchronization: match the refresh rate of the monitor
 vsync = true; 
@@ -197,7 +180,7 @@ dbe = false;
 unredir-if-possible = false;
 
 # Specify a list of conditions of windows that should always be considered focused.
-focus-exclude = [ ];
+focus-exclude = [ "_NET_WM_NAME@:s = 'rofi'" ];
 
 # Use WM_TRANSIENT_FOR to group windows, and consider windows in the same group focused at the same time.
 detect-transient = true;
@@ -205,11 +188,9 @@ detect-transient = true;
 # WM_TRANSIENT_FOR has higher priority if --detect-transient is enabled, too.
 detect-client-leader = true;
 
-#################################
-#
+#────────────────────────────────────────────────────────────
 # Window type settings
-#
-#################################
+#────────────────────────────────────────────────────────────
 
 wintypes:
 {
@@ -234,12 +215,10 @@ wintypes:
     };		
 };
 
-######################
-#
+#────────────────────────────────────────────────────────────
 # XSync
 # See: https://github.com/yshui/picom/commit/b18d46bcbdc35a3b5620d817dd46fbc76485c20d
-#
-######################
+#────────────────────────────────────────────────────────────
 
 # Use X Sync fence to sync clients' draw calls. Needed on nvidia-drivers with GLX backend for some users.
 xrender-sync-fence = true;
