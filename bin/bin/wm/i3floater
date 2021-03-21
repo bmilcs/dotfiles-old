@@ -28,7 +28,7 @@ eval "$(xwininfo -id "$(xdotool getactivewindow)" \
 if [[ -z "$class" ]] ; then
 
   _e unable to extract classname
-  _ne "i3floater" "unable to extract classname"
+  _ne "unable to extract classname"
   exit 1
 
 else 
@@ -44,13 +44,13 @@ else
   if [[ -n $skipped ]] ; then
 
     _e "class: \'$class\' matches predefined '\$prevent' variable"
-    _ne "i3floater" "class: \"$class\" matches predefined '\$prevent' variable"
+    _ne  "class: \"$class\" matches predefined '\$prevent' variable"
     exit 1
 
   elif [[ -z "$x" ]] || [[ -z "$y" ]] || [[ -z "$h" ]] || [[ -z "$w" ]] ; then
 
     _e "unable to extract position or dimensions for class: \'"$class"\'"
-    _ne "i3floater" "unable to extract position or dimensions for class: \'"$class"\'"
+    _ne "unable to extract position or dimensions for class: \'"$class"\'"
 
   fi
 fi
@@ -72,14 +72,14 @@ conf=~/.config/i3/config
 # check if rule exists already
 
 if grep -F "instance=\"$class\"" "$conf"; then
-  notify-send --icon="dialog-warning" "bin/i3floater" "[class=\"$class\"] \na floating rule class exists already! "
+  _n "[class=\"$class\"] \na floating rule class exists already! "
 fi
 
 cp "$conf"{,.bak}
-sed '/^for_window.*instance=\"'$class'\"/ s/^#*/#/' -i "$conf"
-echo $line >> ~/.config/i3/config
+sed '/^for_window.*instance=\"'"$class"'\"/ s/^#*/#/' -i "$conf"
+echo "$line" >> ~/.config/i3/config
 if grep -F "instance=\"$class\"" "$conf"; then
   i3-msg "restart"
-  notify-send --icon="dialog-success" "bin/i3floater" "[class=\"$class\"] \na floating rule added successfully!"
+  _ns "[class=\"$class\"] \na floating rule added successfully!"
 fi
 
