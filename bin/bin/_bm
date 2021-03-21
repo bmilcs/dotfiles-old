@@ -7,11 +7,15 @@
 #                 MY SILLY SCRIPT HEADER [./_bm]
 #────────────────────────────────────────────────────────────
 
-# text/color mods
-NC='\033[0m'; B='\033[1m'; DIM='\033[2m'; ITAL='\033[3m'; UL='\033[4m'
-BLINK='\033[5m'; INV='\033[7m'; BLK=${NC}'\033[30m'; RED=${NC}'\033[31m'
+# text mods
+NC='\033[0m';    B='\033[1m';   DIM='\033[2m';  UL='\033[4m'
+BLINK='\033[5m'; INV='\033[7m'; ITAL='\033[3m';
+
+# colors
+BLK=${NC}'\033[30m'; RED=${NC}'\033[31m'
 GRN=${NC}'\033[32m'; YLW=${NC}'\033[33m'; BLU=${NC}'\033[34m'
 PUR=${NC}'\033[35m'; CYN=${NC}'\033[36m'; WHT=${NC}'\033[37m'
+
 # time/date | TODO: fix execution on command run
 TIME=$(date '+%I:%M %P'); DATE=$(date '+%Y-%m-%d')
 MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
@@ -19,7 +23,6 @@ MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
 #────────────────────────────────────────────────────────────
 # INPUT
 #────────────────────────────────────────────────────────────
-
 
 _askk() {
     local prompt default reply
@@ -34,10 +37,10 @@ _askk() {
         default=''
     fi
   while true; do
-    # ask the question (not using "read -p" as it uses stderr not stdout)
+    # ask the question 
     _qq "$1 ${color}[$prompt]${NC}"
-    # read the answer (use /dev/tty in case stdin is redirected from somewhere else)
-    read -r reply < /dev/tty
+    # read the answer
+    read -r reply #< /dev/tty
     # default?
     [ -z "$reply" ] && reply=$default
     # check if the reply is valid
@@ -47,32 +50,32 @@ _askk() {
     esac
   done
 }
+#_qq() { printf "\n%b%b  %b%s%b " "${color}" "${B}" "${color}" "${1}" "${NC}" ;}
+_qq() { echo -e "\n${B}${color}  ${1}" ;}
 
-_qq() { printf "\n${color}${B}  ${color}$1${NC}  " ;}
+_askn()  { color="${PUR}"; _askk "$*" N; }
+_asknr() { color="${RED}"; _askk "$*" N; }
+_askny() { color="${YLW}"; _askk "$*" N; }
+_askng() { color="${GRN}"; _askk "$*" N; }
+_asknb() { color="${BLU}"; _askk "$*" N; }
+_asknc() { color="${CYN}"; _askk "$*" N; }
+_asknw() { color="${WHT}"; _askk "$*" N; }
 
-_askn()  { color="$PUR"; _askk "$*" N; }
-_asknr() { color="$RED"; _askk "$*" N; }
-_askny() { color="$YLW"; _askk "$*" N; }
-_askng() { color="$GRN"; _askk "$*" N; }
-_asknb() { color="$BLU"; _askk "$*" N; }
-_asknc() { color="$CYN"; _askk "$*" N; }
-_asknw() { color="$WHT"; _askk "$*" N; }
+_ask()   { color="${PUR}"; _askk "$*" Y; }
+_askr()  { color="${RED}"; _askk "$*" Y; }
+_asky()  { color="${YLW}"; _askk "$*" Y; }
+_askg()  { color="${GRN}"; _askk "$*" Y; }
+_askb()  { color="${BLU}"; _askk "$*" Y; }
+_askc()  { color="${CYN}"; _askk "$*" Y; }
+_askw()  { color="${WHT}"; _askk "$*" Y; }
 
-_ask()   { color="$PUR"; _askk "$*" Y; }
-_askr()  { color="$RED"; _askk "$*" Y; }
-_asky()  { color="$YLW"; _askk "$*" Y; }
-_askg()  { color="$GRN"; _askk "$*" Y; }
-_askb()  { color="$BLU"; _askk "$*" Y; }
-_askc()  { color="$CYN"; _askk "$*" Y; }
-_askw()  { color="$WHT"; _askk "$*" Y; }
-
-_q()     { color="$PUR"; _qq "$*"; }
-_qr()    { color="$RED"; _qq "$*"; }
-_qy()    { color="$YLW"; _qq "$*"; }
-_qg()    { color="$GRN"; _qq "$*"; }
-_qb()    { color="$BLU"; _qq "$*"; }
-_qc()    { color="$CYN"; _qq "$*"; }
-_qw()    { color="$WHT"; _qq "$*"; }
+_q()     { color="${PUR}"; _qq "$*"; }
+_qr()    { color="${RED}"; _qq "$*"; }
+_qy()    { color="${YLW}"; _qq "$*"; }
+_qg()    { color="${GRN}"; _qq "$*"; }
+_qb()    { color="${BLU}"; _qq "$*"; }
+_qc()    { color="${CYN}"; _qq "$*"; }
+_qw()    { color="${WHT}"; _qq "$*"; }
 
 #────────────────────────────────────────────────────────────
 # OUTPUT
