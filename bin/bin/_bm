@@ -199,13 +199,31 @@ _ec() { color="$CYN";   _ee "$*"; }
 # NOTIFICATIONS
 #────────────────────────────────────────────────────────────
 
+_n() {
+  notify-send \
+    --category="bmerror" \
+    --urgency="critical" \
+    --icon="dialog-error" \
+    "$(basename $0)" \
+    "$1"
+}
+
 _ne() {
   notify-send \
     --category="bmerror" \
     --urgency="critical" \
-    --icon="dialog-warning" \
+    --icon="dialog-error" \
     "$(basename $0)" \
-    "$2"
+    "$1"
+}
+
+_ns() {
+  notify-send \
+    --category="bmsuccess" \
+    --urgency="normal" \
+    --icon="object-select" \
+    "$(basename $0)" \
+    "$1"
 }
 
 #echo some text
