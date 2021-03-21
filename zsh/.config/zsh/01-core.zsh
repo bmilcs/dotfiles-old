@@ -28,13 +28,26 @@ setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST #
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
 #────────────────────────────────────────────────────────────
-# PLUGINS
+# ZINIT
 #────────────────────────────────────────────────────────────
 
+# zinit: custom paths
+declare -A ZINIT
+ZINIT[HOME_DIR]=${HOME}/.config/zinit
+ZINIT[BIN_DIR]=${ZINIT[HOME_DIR]}/bin
+ZINIT[PLUGINS_DIR]=${ZINIT[HOME_DIR]}/plugins
+ZINIT[COMPLETIONS_DIR]=${ZINIT[HOME_DIR]}/completions
+ZINIT[SNIPPETS_DIR]=${ZINIT[HOME_DIR]}/snippets
+ZINIT[ZCOMPDUMP_PATH]=${ZDOTDIR}/zcompdump
+#ZINIT[COMPINIT_OPTS]
+#ZINIT[MUTE_WARNINGS]=1
+source ${ZINIT[BIN_DIR]}/zinit.zsh
+
+# plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
-zinit light wfxr/forgit
+zinit load wfxr/forgit
 
 # dir_colors
 [[ -f "$D/zsh/.zsh/dir_colors" ]] && eval $(dircolors $D/zsh/.zsh/dir_colors) 

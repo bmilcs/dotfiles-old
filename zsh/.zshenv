@@ -10,5 +10,8 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ ~/.zshenv'
 
-ZDOTDIR=$HOME/.config/zsh      # set custom zsh config location
+# zsh: custom paths
+ZDOTDIR=$HOME/.config/zsh
+
+# execute env vars
 . $ZDOTDIR/00-env.zsh   # & execute my env file

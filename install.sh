@@ -73,7 +73,8 @@ ifzf() {
 izsh() {
   _a zsh
 
-  if [[ ! -d ~/.config/zsh ]] \
+  if   [[ ! -d ~/.config/zsh ]] \
+    || [[ ! -d ~/.config/zinit ]] \
     || [[ ! -d ~/.config/zsh/completion ]] \
     || [[ ! -f ~/.config/zsh/completion/_git ]] \
     || [[ ! -f ~/.config/zsh/completion/git-completion.bash ]] \
@@ -81,7 +82,11 @@ izsh() {
   then
 
     # create directories
-    mkdir -p ~/.zinit ~/.config/zsh/ ~/.config/zsh/completion
+    mkdir -p ~/.config/zinit ~/.config/zsh/completion
+
+    # install zinit
+    _o installing zinit plugin manager
+    git clone https://github.com/zdharma/zinit.git ~/.config/zinit/bin
 
     # install zsh git completion
     _o installing git autocompletion
@@ -89,15 +94,13 @@ izsh() {
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
     curl -o ~/.config/zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+    _o installing docker-compose autocompletion
+    curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
     curl -o ~/.config/zsh/completion/_docker-compose \
-    https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
+      https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
   fi
 
-  if [[ ! -d ~/.zinit ]]; then
-    # install zinit
-    _o installing zinit plugin manager
-    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-  fi
 
   _s all set
 }

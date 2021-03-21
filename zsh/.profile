@@ -28,6 +28,7 @@ dotlog '+ ~/.profile'
 [ -d "$HOME/.local/bin" ] \
   && [ -z "$(echo $PATH | grep -o "$HOME/.local/bin")" ] \
   && export PATH=$PATH:"$HOME/.local/bin"
+
 #────────────────────────────────────────────────────────────
 # CLEAN $HOME
 #────────────────────────────────────────────────────────────
@@ -43,7 +44,7 @@ export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 export D=$HOME/bm
 export BAK=$HOME/.backup
 
-. "$HOME/bin/_distro"
+[ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
 
 #────────────────────────────────────────────────────────────
 # FZF
@@ -95,16 +96,11 @@ export FZF_DEFAULT_OPTS="
   --color marker:#88c0d0
   --color spinner:#b48ead
   "
-
-#export FZF_DEFAULT_OPTS='
-#  --color=bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75
-#  --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07
-#  --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07'
-
 # commands
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
+
 # export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 # export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 # export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
@@ -137,9 +133,7 @@ _fzf_comprun() {
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
-if [[ $HOST == bm* ]]; then
-  export TERMINAL=alacritty
-fi
+[[ $HOST == bm* ]] && export TERMINAL=alacritty
 
 # bat
 export BAT_THEME='Nord'
@@ -153,6 +147,7 @@ export FORGIT_COPY_CMD='xclip -selection clipboard'
 #────────────────────────────────────────────────────────────
 # COLOR VAR
 #────────────────────────────────────────────────────────────
+
 export NC='\033[0m'
 export B='\033[1m'
 export DIM='\033[2m'
@@ -168,11 +163,12 @@ export BLU=${NC}'\033[34m'
 export PUR=${NC}'\033[35m'
 export CYN=${NC}'\033[36m'
 export WHT=${NC}'\033[37m'
-export TIME="$(date '+%I:%M %P')" # TODO fix to update everytime
-export DATE="$(date '+%Y-%m-%d')"
-export MONTH="$(date '+%B')"
-export DAY="$(date '+%d')"
-export DAYOFWEEK="$(date '+%A')"
+
+#export TIME="$(date '+%I:%M %P')" # TODO fix to update everytime
+#export DATE="$(date '+%Y-%m-%d')"
+#export MONTH="$(date '+%B')"
+#export DAY="$(date '+%d')"
+#export DAYOFWEEK="$(date '+%A')"
 
 #────────────────────────────────────────────────────────────
 # LOCALE
@@ -185,6 +181,7 @@ LC_COLLATE="en_US.UTF-8"
 LC_MONETARY="en_US.UTF-8"
 LC_MESSAGES="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
+
 #LC_PAPER="en_US.UTF-8"
 #LC_NAME="en_US.UTF-8"
 #LC_ADDRESS="en_US.UTF-8"

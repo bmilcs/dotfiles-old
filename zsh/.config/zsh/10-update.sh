@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
@@ -19,6 +20,19 @@ rstatus="$HOME/.config/up/repos.bm"
 ustatus="$HOME/.config/up/system.bm"
 vstatus="$HOME/.config/up/vim.bm"
 zstatus="$HOME/.config/up/zsh.bm"
+running="$HOME/.config/up/running.bm"
+unset outdated
+
+# clean exit
+cEXIT() {
+  echo
+  _w "${B}dirty exit"
+  _o "cleaning up"
+  rm -rf $running && _s "done\n"
+  exit 1
+}
+
+trap 'cEXIT' SIGINT
 
 # log path check
 [[ -d ~/.config/up ]] || mkdir -p ~/.config/up
@@ -29,20 +43,24 @@ zstatus="$HOME/.config/up/zsh.bm"
 [[ -f $vstatus ]] && vlast="$(cat "$vstatus")" || vlast=00
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 
-unset outdated
+# zinit update function
+upzsh() {
+  _a "zinit" && zinit self-update && _s \
+  && _a "plugins" && zinit update --all && _s \
+  && echo "$today" > "$zstatus"
+}
+
 for i in $dlast $flast $rlast $slast $vlast $zlast; do
   [[ ! $today == "$i" ]] && outdated=1 && break
 done
 
 if [[ -n $outdated ]]; then
-  if [[ $(_askb "run daily update?") ]] || \
-    [[ ! $HOST == "bm"* ]] ; then
-
+  if [[ ! -f "$running" ]]; then
+    # create $running
+    touch "$running"
+    
     # zsh: plugins w/ manager
-    [[ ! "$today" == "$zlast" ]] \
-      && _a "zinit" && zinit self-update && _s \
-      && _a "plugins" && zinit update --all && _s \
-      && echo "$today" > "$zstatus"
+    if [[ ! "$today" == "$zlast" ]] && [[ $HOST == "bm"* ]]; then upzsh; fi
 
     # packages: pacman & aur
     [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
@@ -64,10 +82,15 @@ if [[ -n $outdated ]]; then
     if [[ "$HOST" == "bm"* ]] && [[ ! "$today" == "$dlast" ]]; then 
       gp && echo "$today" > "$dstatus"
     fi
+
+    # delete $running var
+    rm -rf "$running"
   else
-    _sb "skipped for now"
+    _wb "auto-update is being ran."
+    _s "exiting..."
   fi
+else
+  # force non-workstations to update repo everytime (vm's, etc)
+  [[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
 fi
 
-# dotfiles repo: vm via ssh
-[[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
