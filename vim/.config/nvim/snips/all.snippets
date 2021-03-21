@@ -1,39 +1,32 @@
+snippet rofi-anyinput "rofi single blank input line"
+# giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
+endsnippet
+
 snippet trap_cleanexit "trap command for capturing ^c exits"
 # <ctrl-c>: exit trap
-cEXIT() {
-  if [[ -f "$name" ]] && [[ -w "$name" ]] && \
-    [[ $(wc -c $name) == "0 $name" ]]
-  then
-    echo -e "\n"
-    _w emergency exit
-    _f cleanup
-    rm "$name" && _s
-  fi
+cleanexit() {
+  # do something
   exit 1
 }
 
 trap 'cleanexit' SIGINT
 endsnippet
 
-
 snippet rightaligntexttocolumn "right align text to a certain column"
 printf "%80s\n" "$text"
 endsnippet
 
 snippet forexceptionsloop "for loop, exceptions, install script"
-exceptions=("img" "opt" "root")
-
+list=("img" "opt" "root")
 match=0
 
-# if looped dir from above = an exception, match!
-for a in "${exceptions[@]}"; do
-  [[ $dir == $D/$a/ ]] && match=1
+for a in "${list[@]}"; do
+  [[ $dir == $a ]] && match=1
 done
 endsnippet
 
 snippet pipe_clipboard "pipe x to system clipboard"
-xclip -selection clipboard
-# xclip -sel clip # -t image/png "$f"
+xclip -sel clip
 endsnippet
 
 snippet regextractline "extract line containing a string"
