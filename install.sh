@@ -40,22 +40,35 @@ D=$HOME/bm
 # removal of old dotfile content
 cleanup() {
 
-  _a removing old dotfile content
+  _a clean-up time
   _w "content will be moved to $backup"
   mkdir -p "$backup"
 
-  rm -rf "$backup/git"
+  # backup old dotfiles
+  _f "backup: ~/.dotfiles"
   mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
     "$backup" 2> /dev/null
-  mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
-  rm -rf ~/zsh ~/zinit
+
+  # backup old update scripts
+  _f "backup: up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
 
-  _o deleting broken symlinks in "${B}"~
-  find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
+  # git config
+  _f "backup: git config"
+  rm -rf "$backup/git"
+  mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
 
-  _o deleting broken symlinks "${B}"/etc
-  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null && _s
+  # remove old zsh configs
+  _f "deleting: old zsh content"
+  rm -rf ~/{.zsh,.zinit}
+
+  _f "deleting broken symlinks in ${B}\$HOME"
+  find ~ -xtype l -exec rm {} \; 2> /dev/null
+
+  _f "deleting broken symlinks ${B}/etc"
+  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
+
+  _s complete
 }
 
 ifzf() {
@@ -66,7 +79,7 @@ ifzf() {
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/fzf
     ~/.config/fzf/install --xdg --no-update-rc --completion --key-bindings
   else
-    _s all set
+    _o all set
   fi
 }
 
@@ -81,8 +94,7 @@ izsh() {
     || [[ ! -d $ZDOTDIR/history ]] \
     || [[ ! -d $ZDOTDIR/completion ]] \
     || [[ ! -f $ZDOTDIR/completion/_git ]] \
-    || [[ ! -f $ZDOTDIR/completion/git-completion.bash ]] \
-    || [[ ! -f $ZDOTDIR/completion/_docker-compose ]]
+    || [[ ! -f $ZDOTDIR/completion/git-completion.bash ]]
   then
 
     # create directories
@@ -99,14 +111,15 @@ izsh() {
     curl -o ~/.config/zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
+    if $(which docker-compose); then
     _o installing docker-compose autocompletion
     curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
     curl -o ~/.config/zsh/completion/_docker-compose \
       https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
+    fi
   fi
 
-
-  _s all set
+  _o all set
 }
 
 ivim() {
@@ -129,7 +142,7 @@ ivim() {
     # bm - auto-update itself:
     ln -s $plugvim ~/.config/nvim/autoload && _s
   else
-    _s all set
+    _o all set
   fi
 }
 
@@ -162,7 +175,7 @@ else
   exit 1
 fi
 
-_s all set
+_o all set
 
 #────────────────────────────────────────────────────────────
 # GET STARTED
