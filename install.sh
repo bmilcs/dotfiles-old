@@ -60,7 +60,7 @@ cleanup() {
 
   # remove old zsh configs
   _f "deleting: old zsh content"
-  rm -rf ~/{.zsh,.zinit}
+  rm -rf ~/{.zsh,.zinit,.zplugin}
 
   _f "deleting broken symlinks in ${B}\$HOME"
   find ~ -xtype l -exec rm {} \; 2> /dev/null
