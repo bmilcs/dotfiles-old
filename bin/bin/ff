@@ -24,7 +24,7 @@ case $1 in
   d ) p=~/.config/dunst;; dd) c=~/.config/dunst ;;
   i ) p="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
   p ) p="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
-  r ) p="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/myrofi/" ;;
+  r ) p="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/rofi/" ;;
   s ) p="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
   t ) p=~/txt;; tt) c=~/txt ;;
   u ) s="/usr/local/bin";; uu) c="/usr/local/bin" ;;
