@@ -4,6 +4,11 @@
 
 ### bmilcs/dotfiles
 
+``` bash
+# deploy my dotfiles
+git clone https://dot.bmilcs.com bm
+```
+
 - [zsh](/zsh/.zsh/) (shell)
 - [vim](/vim/) (text editor)
 - [i3](/opt/i3/.config/i3) (window manager)
@@ -20,7 +25,6 @@
 > In the mid-90's, a beautiful cow-print box arrived on my parents' door step.  It was love at first sight. Twenty-four years have passed and very little has changed. 
 
 ---
-
 
 I was was an avid gamer for much of my twenties and *shamefully*, I must admit: **Linux never interested me.**
 
@@ -41,7 +45,6 @@ and installed Arch as my primary OS in December of 2020:
 **Welcome to my dotfiles.** 
 
 -- bmilcs
-
 
 ---
 
