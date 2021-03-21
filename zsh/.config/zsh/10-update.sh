@@ -9,7 +9,7 @@
 # TODO: What else is manually installed?
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
-  dotlog '+ ~/.config/zsh/10-update.zsh'
+  dotlog '+ $ZDOTDIR/10-update.sh'
 
 source _bm
 

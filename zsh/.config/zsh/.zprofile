@@ -9,5 +9,5 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh//.zprofile'
+dotlog '+ $ZDOTDIR/.zprofile'
  

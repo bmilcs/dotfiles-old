@@ -5,9 +5,11 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH PROMPT [./04-prompt.zsh]
 #────────────────────────────────────────────────────────────
+
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
-  dotlog '+ ~/.config/zsh/04-prompt.zsh'
+  dotlog '+ $ZDOTDIR/04-prompt.zsh'
+
 #────────────────────────────────────────────────────────────
 # original
 # PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${cyan}# %b%f%k"
@@ -21,21 +23,23 @@
 # PS1="%B%K{red}foo > "
 # RPS1="%B%K{red}bar"
 #────────────────────────────────────────────────────────────
- if [ -n "$SSH_CLIENT" ]; then
-   PROMPT="%B%K{green}%F{black}   %M   "
- else
-   PROMPT="%B%K{blue}%F{black}   %M   "
- fi
- 
- PROMPT+="%k%b %F{blue}%~ [%?] "
+
+if [ -n "$SSH_CLIENT" ]; then
+  PROMPT="%B%K{green}%F{black}   %M   "
+else
+  PROMPT= #%B%K{blue}%F{black}   %M   "
+fi
+
+PROMPT+="%K{black}%b%F{blue} %~ %k [%?] "
+
 if [[ ! $USER == bmilcs ]]; then
- RPROMPT+=" %b%K{blue}%F{black}%n"
+ RPROMPT+=" %b%K{blue}%F{yellow}%n"
 fi
  # "$'\n'"
- 
- 
+
  PROMPT+=$'\n%b%k'
  PROMPT+="%F{cyan}# %b%f%k"
+
 #────────────────────────────────────────────────────────────
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {

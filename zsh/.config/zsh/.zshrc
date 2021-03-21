@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh/.zshrc'
+dotlog '+ $ZDOTDIR/.zshrc'
 
 # load configs
 for cfg ($ZDOTDIR/*.zsh) source $cfg

@@ -10,7 +10,7 @@
 
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
-dotlog '+ ~/.config/zsh/00-env.zsh'
+dotlog '+ $ZDOTDIR/00-env.zsh'
 
 # execute profile on missing env [ssh]
 if [ -z $D ]; then

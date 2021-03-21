@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh/03-functions.zsh'
+dotlog '+ $ZDOTDIR/03-functions.zsh'
 
 
 compdef vm="where"

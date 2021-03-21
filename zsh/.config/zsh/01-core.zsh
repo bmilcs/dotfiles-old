@@ -8,7 +8,7 @@
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.config/zsh/01-core.zsh'
+dotlog '+ $ZDOTDIR/01-core.zsh'
 
 #────────────────────────────────────────────────────────────
 # HISTORY
