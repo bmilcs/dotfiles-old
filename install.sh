@@ -46,8 +46,9 @@ cleanup() {
 
   # backup old dotfiles
   _f "backup: ~/.dotfiles"
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*} \
-    "$backup" 2> /dev/null
+  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,\
+  .zcompdump} "$backup" 2> /dev/null
+
 
   # backup old update scripts
   _f "backup: up & upp scripts"
