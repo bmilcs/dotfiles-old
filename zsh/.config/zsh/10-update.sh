@@ -53,7 +53,7 @@ upzsh() {
 for i in $dlast $flast $rlast $slast $vlast $zlast; do
   [[ ! $today == "$i" ]] && outdated=1 && break
 done
-
+set -x
 if [[ -n $outdated ]]; then
   if [[ ! -f "$running" ]]; then
     # create $running
@@ -79,7 +79,7 @@ if [[ -n $outdated ]]; then
     fi
 
     # dotfiles repo: pc/laptop
-    if [[ "$HOST" == "bm"* ]] && [[ ! "$today" == "$dlast" ]]; then 
+    if [[ ! "$today" == "$dlast" ]]; then 
       gp && echo "$today" > "$dstatus"
     fi
 
@@ -93,4 +93,4 @@ else
   # force non-workstations to update repo everytime (vm's, etc)
   [[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
 fi
-
+set +x
