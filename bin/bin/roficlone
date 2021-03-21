@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 GIT CLONE WITH ROFI [./roficlone]
+#────────────────────────────────────────────────────────────
+source _bm
+_a git clone with rofi
+
+#giturl=$( (echo ) | rofi  -show "" -dmenu \
+#  -matching fuzzy -location 0 -p "git:" -config ~/.config/rofi/bottom.rasi)
+giturl=$(xclip -sel clip -o)
+
+if [[ ! $giturl == "http"* ]]; then
+  _ne "clipboard: \n\'$giturl\'"
+  exit 1
+fi
+
+path="$(echo "$giturl" | cut -f4,5 -d"/")"
+path=${path,,}
+user="$(echo "$path" | cut -f1 -d"/")"
+git="$(echo "$path" | cut -f2 -d"/")"
+path="$HOME/repos/$git-$user"
+
+[[ -e $path ]] && _ne "path already exists!\n$git-$user" && exit 1
+
+if git clone "$giturl" "$path"; then
+  _ns "roficlone" "successfully cloned: $path"
+fi

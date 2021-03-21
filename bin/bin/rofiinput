@@ -6,15 +6,28 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DMENU ALTERNATIVE VIA ROFI [./rofidmenu]
 #────────────────────────────────────────────────────────────
+# example:
+#   giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
 
-rofi -show run -modi run -location 1 -width 5r \
-  -lines 2 -line-margin 0 -line-padding 1 \
-  -separator-style none -font "mono 10" -columns 9 -bw 0 \
-  -disable-history \
-  -hide-scrollbar \
-  -color-window "#222222, #222222, #b1b4b3" \
-  -color-normal "#222222, #b1b4b3, #222222, #005577, #b1b4b3" \
-  -color-active "#222222, #b1b4b3, #222222, #007763, #b1b4b3" \
-  -color-urgent "#222222, #b1b4b3, #222222, #77003d, #b1b4b3" \
-  -kb-row-select "Tab" -kb-row-tab ""
+# rofi -show run -modi run -config bottom.rasi -width 25 -height 5\
+#   -lines 5 -line-margin 0 -line-padding 0 \
+#   -separator-style none -font "Iosevka 14" -columns 1 -bw 0 \
+#   -disable-history \
+#   -hide-scrollbar \
+#   -color-window "#222222, #222222, #b1b4b3" \
+#   -color-normal "#222222, #b1b4b3, #222222, #005577, #b1b4b3" \
+#   -color-active "#222222, #b1b4b3, #222222, #007763, #b1b4b3" \
+#   -color-urgent "#222222, #b1b4b3, #222222, #77003d, #b1b4b3" \
+#   -kb-row-select "Tab" -kb-row-tab "" \
+#   -location: south
 
+rofi -dmenu -p ${1:-""} \ #-config ~/.config/rofi/bottom.rasi \
+  -lines 0 -line-margin 0 -line-padding 0 \
+  -separator-style none -columns 1 -bw 0 \
+  -disable-history -hide-scrollbar \
+  -location: south
+  #-width 25 -height 0 \
+
+
+#rofi  -show "" -dmenu \
+#  -matching fuzzy -location 0 -p "git:" -config ~/.config/rofi/bottom.rasi)

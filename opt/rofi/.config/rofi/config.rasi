@@ -1,34 +1,34 @@
 configuration {
-  width: 30;
-  lines: 25;
-  font: "Iosevka 14";
-  hide-scrollbar: true;
+  font: "Iosevka 12";
   theme: "nord";
+  width: 30;              
+  lines: 15;              
+  columns: 5;             
+  hide-scrollbar: true;
   combi-modi: "window,ssh,drun,run";
   modi: "window,run,ssh,drun";
   display-drun: "";
+  show-icons: true;
 }
 
 element-icon {
-  size:                18;
+  size:                20;
   border:              0px;
 }
 
-/* element {
-*     orientation:         vertical;
-* }
-* 
-* listview {
-*     columns:             10;
-*     padding:             12px 12px;
-*     dynamic:             true;
-* }
-* 
-* 
-* 
-* element-text {
-*     expand:              true;
-*     horizontal-align:    0.5;
-*     width:               160px;
-* }
-*/
+//  modi: "window,run,ssh"; 
+//  width: 50;              
+//  lines: 15;              
+//  columns: 1;             
+//  font: "mono 12";        
+//  bw: 1;                  
+//  location: 0;            
+//  padding: 5;             
+//  yoffset: 0;             
+//  xoffset: 0;             
+//  fixed-num-lines: true;  
+//  show-icons: true;         
+//  ml-row-down: "ScrollDown";                                                                                        /*  me-select-entry: "MousePrimary";                                                                                  
+//  me-accept-entry: "MouseDPrimary"; 
+//  me-accept-custom: "Control+MouseDPrimary"; 
+

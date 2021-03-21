@@ -1,0 +1,8 @@
+@import "./config.rasi"
+
+window {
+  location:   south;
+  anchor:   south;
+  y-offset:   10px;
+  //x-offset:   8px;        
+}
