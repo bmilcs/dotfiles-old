@@ -1,5 +1,5 @@
 configuration {
-  font: "Iosevka 12";
+  font: "Iosevka 10";
   theme: "nord";
   width: 30;              
   lines: 15;              
