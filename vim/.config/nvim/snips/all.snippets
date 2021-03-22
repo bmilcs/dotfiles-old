@@ -1,3 +1,16 @@
+snippet regex-removeliteralsuffixprefix "remove predetermined suffix/prefix"
+string="hello-world"
+prefix="hell"
+suffix="ld"
+foo=${string#"$prefix"}
+foo=${foo%"$suffix"}
+echo "${foo}"
+endsnippet
+
+snippet alacritty-launch-cmd "launch alacritty, execute command, keep open"
+alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
+endsnippet  
+
 snippet rofi-anyinput "rofi single blank input line"
 # giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
 endsnippet
