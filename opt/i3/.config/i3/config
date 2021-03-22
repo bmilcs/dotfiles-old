@@ -33,7 +33,10 @@ bindsym $win+d           exec --no-startup-id    i3kr i3debug 'alacritty --class
 bindsym $win+z           exec --no-startup-id    i3kr i3spy 'alacritty --hold --class=i3spy --title=i3spy --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e i3spy &'
 
 # DUNST 
-bindsym $win+x           exec --no-startup-id    "killall dunst ; sleep 0.5 ; notify-send -i dialogue-error \\"title\\" \\"msg\\""
+bindsym $win+x           exec --no-startup-id    "killall dunst ; sleep 0.5 ; th"
+
+# roficlone
+bindsym $win+c           exec --no-startup-id    bmclone
 
 #────────────────────────────────────────────────────────────
 # ROFI
@@ -44,8 +47,6 @@ bindsym $win+q           exec --no-startup-id    rofiapp
 bindsym $win+e           exec --no-startup-id    rofibin
 # dmenu
 bindsym $win+r           exec --no-startup-id    rofiinput
-# roficlone
-bindsym $win+c           exec --no-startup-id    roficlone
 
 
 #────────────────────────────────────────────────────────────
@@ -268,3 +269,5 @@ for_window [instance="gitdirty"] floating enable, resize set 708 596, move absol
 for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1091 1302, move absolute position 19 99, border pixel 3
   for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 1466 1218,   move absolute position 991 123,   border pixel 3
+  for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 735 1343,   move absolute position 2441 73,   border pixel 3
+  for_window               [instance="roficlone"]    floating enable,   resize set 800 600,   move absolute position 1320 437,   border pixel 3
