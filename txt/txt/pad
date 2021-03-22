@@ -4,7 +4,6 @@
 - make room: doors/windows
 
 [homelab]
-- FIX DOCKER UPDATES!!!
 - mopidy (mpd server)
 - integrate arch w/ ansible & homelab
 - docker, remote dev (rsync compose?)

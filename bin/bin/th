@@ -41,6 +41,12 @@ for i in r y w b p c; do _s$i success: _s$i ; done
 _e error: [e]
 for i in w y g b p c; do _e$i error: _e$i ; done
 
+_n "normal notification"
+_ns "success notification"
+_nw "warning notification"
+_ne "error notification"
+#notify-send "basic" "example"
+
 if _askn "repeat test?"; then
   clear
   sleep 0.5
