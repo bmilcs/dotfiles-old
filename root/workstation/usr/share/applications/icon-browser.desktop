@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GTK Icon Browser
+Exec=gtk3-icon-browser
+StartupNotify=false
+Terminal=false
+Icon=mail-message-new
+Categories=System;Monitor;
