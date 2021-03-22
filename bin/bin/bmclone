@@ -4,28 +4,38 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 GIT CLONE WITH ROFI [./roficlone]
+#                 GIT CLONER  [./bmclone]
 #────────────────────────────────────────────────────────────
 source _bm
-_a git clone with rofi
-
 #giturl=$( (echo ) | rofi  -show "" -dmenu \
 #  -matching fuzzy -location 0 -p "git:" -config ~/.config/rofi/bottom.rasi)
+
 giturl=$(xclip -sel clip -o)
 
-if [[ ! $giturl == "http"* ]]; then
-  _ne "clipboard: \n\'$giturl\'"
+if [[ ! $giturl =~ ^(git[@]github|http).* ]]; then
+  _ne "not a git repo!\n\'$giturl\'"
   exit 1
 fi
 
 path="$(echo "$giturl" | cut -f4,5 -d"/")"
 path=${path,,}
 user="$(echo "$path" | cut -f1 -d"/")"
-git="$(echo "$path" | cut -f2 -d"/")"
-path="$HOME/repos/$git-$user"
+repo="$(echo "$path" | cut -f2 -d"/")"
+# TODO FIX removal of .git
+#repo=${repo%.git}
 
-[[ -e $path ]] && _ne "path already exists!\n$git-$user" && exit 1
+path="$HOME/repos/$repo-$user"
 
-if git clone "$giturl" "$path"; then
-  _ns "roficlone" "successfully cloned: $path"
+#_n $path
+#exit
+
+if [[ -e $path ]]; then
+  _ne "path already exists!\n$repo-$user\n\n$path"
+  alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
+  exit 1
+elif git clone "$giturl" "$path"; then
+  _ns "successfully cloned: $path\n\n$repo-$user\n\n$path"
+  alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
+else
+  _ne "something went wrong.\n\nurl: $giturl\npath: $path"
 fi
