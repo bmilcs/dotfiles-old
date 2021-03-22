@@ -26,12 +26,12 @@ case $1 in
   p ) p="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
   r ) p="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/rofi/" ;;
   s ) p="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
-  t ) p=~/txt;; tt) c=~/txt ;;
+  t ) p=~/txt;; tt) c=$D/txt/txt ;;
   u ) s="/usr/local/bin";; uu) c="/usr/local/bin" ;;
-  v ) p="$D/vim";; vv) c="$D/vim";;
-  z ) p="$D/zsh";; zz) c="$D/zsh";;
+  v ) p="$D/vim";; vv) c="$D/vim/.config/nvim/";;
+  z ) p="$D/zsh";; zz) c="$D/zsh/.config/zsh";;
   x ) s="$D/opt/xorg";; xx) c="$D/opt/xorg" ;;
-  n ) p="$D/opt/ncmpcpp";; nn ) c="$D/opt/ncmpcpp";;
+  n ) p="$D/opt/ncmpcpp";; nn ) c="$D/opt/ncmpcpp/.config/ncmpcpp";;
   tm ) f="$D/opt/tmux/.tmux.conf" ;;
   # e) nvim "$D"/bin/bin/cfg ;;
   # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
@@ -40,11 +40,8 @@ case $1 in
   # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
   # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
 
-  e ) _e no input found 
-      nvim $(which ff)
-      exit 1
-      ;;
-  * ) _a ff options
+  e ) nvim $(which ff) ;;
+  * ) _a " opt"
     _o ${B} a  ${NC}
     _o ${B} b  ${NC}
     _o ${B} d  ${NC}
@@ -58,7 +55,8 @@ case $1 in
     _o ${B} z  ${NC}
     _o ${B} x  ${NC}
     _o ${B} n  ${NC}
-    _o ${B} tm ${NC}
+    _o ${B} tm ${NC}\\n
+    exit
     ;;
 esac
 
