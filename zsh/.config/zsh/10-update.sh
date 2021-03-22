@@ -53,7 +53,7 @@ upzsh() {
 for i in $dlast $flast $rlast $slast $vlast $zlast; do
   [[ ! $today == "$i" ]] && outdated=1 && break
 done
-set -x
+
 if [[ -n $outdated ]]; then
   if [[ ! -f "$running" ]]; then
     # create $running
@@ -93,4 +93,3 @@ else
   # force non-workstations to update repo everytime (vm's, etc)
   [[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
 fi
-set +x
