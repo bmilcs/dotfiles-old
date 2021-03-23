@@ -13,7 +13,7 @@ font:
     #family: DejaVuSansMono Nerd Font
     #family: GohuFont Nerd Font
     #family: InconsolataGo Nerd Font
-    #family: Iosevka Nerd Font
+    family: Iosevka Nerd Font
     #family: SauceCodePro Nerd Font
     #family: TerminessTTF Nerd Font
     #family: Terminus
@@ -26,8 +26,8 @@ font:
     #family: FantasqueSansMono Nerd Font
     #style: Regular
     #style: Book
-    family: JetBrainsMono
-    style: Medium
+    #family: JetBrainsMono
+    style: regular
   size: 10
   bold:
     style: Extra Bold
