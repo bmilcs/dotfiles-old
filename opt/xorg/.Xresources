@@ -83,7 +83,7 @@ URxvt*saveLines:							16384
 URxvt*colorUL:								yellow
 Xft.antialias:                1
 Xft.autohint:                 0
-Xft.dpi:                      96
+Xft.dpi:                      110
 Xft.hinting:                  1
 Xft.hintstyle:                hintslight
 Xft.lcdfilter:                lcddefault
