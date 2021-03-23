@@ -13,33 +13,17 @@ source _distro
 if [[ $DISTRO = arch* ]]; then
 
   # ARCH
-  _a pacman/aur
-  if [[ $# == 0 ]]; then
-    yay -Syyyuuu && _s
-  else
-    _ib skipped: debugging
-  fi
+  _a pacman/aur && yay -Syyyuuu && _s
 
 elif [[ $DISTRO = debian* ]]; then
 
   # DEBIAN
-  _a apt update
-  sudo apt update -y && _s
-
-  _a apt dist-upgrade
-  sudo apt dist-upgrade -y && _s
-
-  _a apt upgrade
-  sudo apt upgrade -y && _s
-
-  _a apt clean
-  sudo apt clean -y && _s
-
-  _a apt autoremove
-  sudo apt autoremove --purge -y && _s
-
-  _a apt autoclean
-  sudo apt autoclean -y && _s
+  _a apt update && sudo apt update -y && _s
+  _a apt dist-upgrade && sudo apt dist-upgrade -y && _s
+  _a apt upgrade && sudo apt upgrade -y && _s
+  _a apt clean && sudo apt clean -y && _s
+  _a apt autoremove && sudo apt autoremove --purge -y && _s
+  _a apt autoclean && sudo apt autoclean -y && _s
 
   # PIHOLE
   if pihole -v PIHOLE &> /dev/null; then
