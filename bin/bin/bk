@@ -8,6 +8,18 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-if cp "$1"{,."$(date +%Y.%m.%d)".bak}; then
-  _f "$1.$(date +%Y.%m.%d).bak"
+
+if [[ -f "$1" ]]; then
+  if cp "$1"{,."$(date +%Y.%m.%d)".bak}; then
+    _f file: "$1.$(date +%Y.%m.%d).bak"
+  fi
+elif [[ -d "$1" ]]; then
+  if cp -r "$1"{,."$(date +%Y.%m.%d)".bak}; then
+    _f dir: "$1.$(date +%Y.%m.%d).bak"
+  fi
+elif [[ -e "$1" ]]; then
+  _e suspected permission issue: "$1"
+else
+  _e unable to process: "$1"
 fi
+
