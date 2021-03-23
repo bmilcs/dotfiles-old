@@ -35,9 +35,9 @@ PROMPT+="%K{black}%b%F{blue} %~ %k [%?] "
 if [[ ! $USER == bmilcs ]]; then
  RPROMPT+=" %b%K{blue}%F{yellow}%n"
 fi
- # "$'\n'"
 
- PROMPT+=$'\n%b%k'
+# PROMPT+=$'\n%b%k'
+ PROMPT+='%b%k'
  PROMPT+="%F{cyan}# %b%f%k"
 
 #────────────────────────────────────────────────────────────

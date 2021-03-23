@@ -86,8 +86,8 @@ if [[ -n $outdated ]]; then
     # delete $running var
     rm -rf "$running"
   else
-    _wb "auto-update is being ran."
-    _s "exiting..."
+    _wb "another instance of ${B}auto-update${BLU} is already running."
+    _s "now exiting.\b"
   fi
 else
   # force non-workstations to update repo everytime (vm's, etc)

@@ -135,6 +135,9 @@ export VISUAL=nvim
 export TERM=xterm-256color
 [[ $HOST == bm* ]] && export TERMINAL=alacritty
 
+# firefox [webrender compositor test]
+export MOZ_WEBRENDER=1
+
 # bat
 export BAT_THEME='Nord'
 

@@ -49,7 +49,7 @@ alias polyr=". ~/.config/polybar/launch.sh"
 
 alias rmup="rm -rf ~/.config/up/"
 
-if [[ $DISTRO = arch ]]; then # ARCH
+if [[ $DISTRO = "arch"* ]]; then # ARCH
   # aur | yay
   alias pacman='sudo pacman';compdef pacman='pacman'
   alias pm='pacman';compdef pm='pacman'
@@ -63,6 +63,7 @@ if [[ $DISTRO = arch ]]; then # ARCH
   alias yayll='yay -Q | fzf';compdef yayll='yay'
   alias yayg='yay -Q | grep';compdef yayg='yay'
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
+  alias yayc='yay -Sc --aur';compdef yaygg='yay'
   # arch specific
   alias netr='sudo systemctl restart \ 
     {systemd-networkd.service,systemd-resolved.service,iwd.service}'
@@ -206,13 +207,26 @@ alias halt="sudo systemctl halt"
 alias shutdown="sudo systemctl poweroff"
 
 # systemctl
-alias sc="sudo systemctl"                             ;compdef sc="systemctl"
-alias scl="sc list-units --type=service --all"        ;compdef scl="systemctl"
-alias scll="sc list-units --type=service"             ;compdef scll="systemctl"
-alias scg="sc list-units --type=service --all | grep" ;compdef scg="systemctl"
-alias scu="sc start"                                  ;compdef scu="systemctl"
-alias scs="sc status"                                 ;compdef scs="systemctl"
-alias scd="sc stop"                                   ;compdef scd="systemctl"
+alias sc="sudo systemctl"                               ;compdef sc="systemctl"
+alias scu="systemctl --user"                            ;compdef scu="systemctl"
+alias scl="sc list-units --type=service --all"          ;compdef scl="systemctl"
+alias scul="scu list-units --type=service --all"        ;compdef scul="systemctl"
+alias scll="sc list-units --type=service"               ;compdef scll="systemctl"
+alias scull="scu list-units --type=service"             ;compdef scull="systemctl"
+alias scg="sc list-units --type=service --all | grep"   ;compdef scg="systemctl"
+alias scug="scu list-units --type=service --all | grep" ;compdef scug="systemctl"
+alias scon="sc start"                                   ;compdef scup="systemctl"
+alias scuon="scu start"                                 ;compdef scuup="systemctl"
+alias scr="sc restart"                                  ;compdef scup="systemctl"
+alias scur="scu restart"                                ;compdef scuup="systemctl"
+alias scs="sc status"                                   ;compdef scs="systemctl"
+alias scus="scu status"                                 ;compdef scus="systemctl"
+alias scoff="sc stop"                                   ;compdef scd="systemctl"
+alias scuoff="scu stop"                                 ;compdef scud="systemctl"
+alias sce="sc enable"                                   ;compdef scud="systemctl"
+alias scue="scu enable"                                 ;compdef scud="systemctl"
+alias scd="sc disable"                                  ;compdef scud="systemctl"
+alias scud="scu disable"                                ;compdef scud="systemctl"
 
 # print outs
 alias a="alias | sed 's/=.*//'"
