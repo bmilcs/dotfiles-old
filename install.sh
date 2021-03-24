@@ -44,24 +44,19 @@ cleanup() {
   _w "content will be moved to $backup"
   mkdir -p "$backup"
 
-  # backup old dotfiles
   _f "backup: ~/.dotfiles"
-  mv ~/{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,\
-  .zcompdump} "$backup" 2> /dev/null
+  mv ~/"{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,\
+    .bashrc*,.zcompdump}" "$backup" 2> /dev/null
 
-
-  # backup old update scripts
-  _f "backup: up & upp scripts"
+  _f "backup: old up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
 
-  # git config
   _f "backup: git config"
   rm -rf "$backup/git"
   mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
 
-  # remove old zsh configs
-  _f "deleting: old zsh content"
-  rm -rf ~/{.zsh,.zinit,.zplugin}
+  _f "deleting: old zsh configs"
+  rm -rf ~/{.zsh,.zinit,.zplugin} 2> /dev/null
 
   _f "deleting broken symlinks in ${B}\$HOME"
   find ~ -xtype l -exec rm {} \; 2> /dev/null
@@ -185,19 +180,22 @@ _o all set
 # ARCH LINUX
 if [[ ${DISTRO} == arch* ]]; then
 
-  # allow dmesg as user
+  # make x11 folder [xsession-errors]
+  [ -d ~/.config/x11 ] || mkdir -p ~/.config/x11
+
+  # allow dmesg as user [notifications]
   sudo sysctl kernel.dmesg_restrict=0 > /dev/null
 
-  # remove diff menu (yay)
+  # remove diff menu [yay]
   yay --editmenu --nodiffmenu --save
 
-  # shell
+  # install shell
   izsh
 
-  #vim
+  # install vim
   ivim
 
-  #fzf
+  # install fzf
   ifzf
 
   _ask "stow EVERYTHING?"
