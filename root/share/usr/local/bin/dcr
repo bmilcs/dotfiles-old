@@ -15,9 +15,13 @@ cd ~/docker || (_e "~/docker missing!" && exit 1)
 
 _a docker-compose pull
 docker-compose pull && _s
+_a docker-compose up -d
+docker-compose up -d --remove-orphans
+
+#_a docker-compose restart
+#docker-compose restart && _s
+
 #docker-compose up --force-recreate --build -d --remove-orphans
-_a docker-compose restart
-docker-compose restart && _s
 # TODO AUTOMATE CLEANUP
 #_a docker-compose image prune -f
 #docker-compose image prune -f && _s

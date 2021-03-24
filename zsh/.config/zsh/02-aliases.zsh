@@ -271,6 +271,7 @@ if where docker-compose > /dev/null; then
   compdef dclog='docker'
 
   # docker-compose
+  alias dcu="docker-compose up -d"
   alias dcs="docker-compose stop";compdef dcs='docker'
   alias dcre="docker-compose restart";compdef dcre='docker'
   alias dcd="docker-compose down";compdef dcd='docker'
