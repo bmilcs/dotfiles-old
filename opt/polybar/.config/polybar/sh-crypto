@@ -9,9 +9,9 @@ ethereum=$(LANG=C printf "%.2f" "$ethereum")
 bitcoin=$(curl -sf $API?pair=BTCUSD | jq -r ".result.XXBTZUSD.c[0]")
 bitcoin=$(LANG=C printf "%.2f" "$bitcoin")
 
-ethereum=$(printf "\$%'.0f\n" $ethereum)
-bitcoin=$(printf "\$%'.0f\n" $bitcoin)
-echo $ethereum " " $bitcoin
+ethereum=$(printf " \$%'.0f\n" $ethereum)
+bitcoin=$(printf " \$%'.0f\n" $bitcoin)
+echo $bitcoin $ethereum 
 
 #ethereum=$(curl -sf "$API?pair=ETHUSD" | jq -r ".result.XXETHUSD.c[0]")
 #ethereum=$(LANG=C printf "%.2f" "$ethereum")
