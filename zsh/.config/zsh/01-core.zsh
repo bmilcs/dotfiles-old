@@ -124,7 +124,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,italic"
 # fuzzy-matching
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
 
 #────────────────────────────────────────────────────────────
@@ -174,12 +174,15 @@ zle -N down-line-or-beginning-search
 autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit -d $ZDOTDIR/compdump/zcompdump
 autoload -Uz bashcompinit && bashcompinit
-autoload -Uz colors && colors # autoload colors
+# autoload up/down w/ search
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
-_comp_options+=(globdots)       # autocomplete .dotfiles
+# autoload colors
+autoload -Uz colors && colors 
+# autocomplete .dotfiles
+_comp_options+=(globdots)       
 
 # pip completion
-if [[ "$DISTRO" == arch ]]; then
+if [[ "$DISTRO" == "arch"* ]]; then
   eval "`pip completion --zsh`"
   compctl -K _pip_completion pip3
 fi
