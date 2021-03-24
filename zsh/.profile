@@ -68,8 +68,9 @@ export BAK=$HOME/.backup
 #   marker             Multi-select marker
 #   spinner             Streaming input indicator
 
+export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||
+cat {} || tree -C {}) 2> /dev/null | head -200'"
 # options
-#export FZF_DEFAULT_OPTS='--color=dark --height 90% --layout reverse --border --info=inline'
 export FZF_DEFAULT_OPTS="
   --height 90%
   --layout reverse
@@ -95,11 +96,14 @@ export FZF_DEFAULT_OPTS="
   --color pointer:#eceff4
   --color marker:#88c0d0
   --color spinner:#b48ead
+  --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} \
+    || tree -C {}) 2> /dev/null | head -200'
   "
 # commands
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
+
 
 # export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 # export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
