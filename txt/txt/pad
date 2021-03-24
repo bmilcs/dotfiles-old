@@ -4,6 +4,8 @@
 - make room: doors/windows
 
 [homelab]
+- *** app.git-simple-login
+  domain email forwarding!
 - arch>ansible & homelab
 - remote docker dev (rsync compose?)
 - authentication all dockers
@@ -11,19 +13,20 @@
 - bmilcs.com > it's own VM
 
 [ arch ]
-- i3: copy/paste to middle mouse clipboard
-- starship prompt
+- VIM: Create titlebars, 
+  --- center ---
+- i3: binding: selection copy/paste
+- zsh: prompt, minimal
 - search commands w/ examples
   - cut
   - awk
   - xargs
 - scripts: find > exclude nfs
-  CHECK FOR GEMS:
-  - https://thevaluable.dev/zsh-install-configure-mouseless/
+- dir-stack > fzf
+- fzf [zsh/vim] custom shortcuts
 
-[ dmenus ]
-- prompt for url (rofi)
-- clone repo to ~/repos
+[ rofi ]
+- power menu
 
 [ django/python ]
   https://docs.djangoproject.com/en/3.1/intro/tutorial01/
