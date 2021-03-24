@@ -106,3 +106,6 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.config/nvim/cache/.viminfo
 
 " auto save on focus lost
 :au FocusLost * silent! wa
+
+" disable folding
+set nofoldenable    " disable folding
