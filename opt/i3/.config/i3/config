@@ -4,14 +4,6 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 GAPS WM [./config]
-#     TODO
-#     icons to rofi
-#     multi-rofi cfgs: ssh hosts, pkgs, txt files
-#     pre-configured workspaces exec --no-startup-id 
-#     "i3-msg 'workspace 3; append_layout /home/bmilcs/.config/i3/ws3_chat.json'"
-# [class="Alacritty"]
-#────────────────────────────────────────────────────────────
-# WORK IN PROGRESS
 #────────────────────────────────────────────────────────────
 
 # FLOATER
@@ -41,13 +33,13 @@ bindsym $win+c           exec --no-startup-id    bmclone
 #────────────────────────────────────────────────────────────
 # ROFI
 #────────────────────────────────────────────────────────────
+
 # standard
 bindsym $win+q           exec --no-startup-id    rofiapp
 # dotfiles
 bindsym $win+e           exec --no-startup-id    rofibin
 # dmenu
 bindsym $win+r           exec --no-startup-id    rofiinput
-
 
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS
@@ -189,26 +181,26 @@ bindsym $win+$ctrl+space      floating toggle
 bindsym $win+space            focus mode_toggle
 
 # MOVE
-bindsym $win+$ctrl+l          move   right  50 px
-bindsym $win+$ctrl+h          move   left   50 px
-bindsym $win+$ctrl+k          move   up     50 px
-bindsym $win+$ctrl+j          move   down   50 px
+bindsym $win+$ctrl+l          move   right   50 px
+bindsym $win+$ctrl+h          move   left    50 px
+bindsym $win+$ctrl+k          move   up      50 px
+bindsym $win+$ctrl+j          move   down    50 px
 
-bindsym $win+$shift+$ctrl+l   move   right  1 px
-bindsym $win+$shift+$ctrl+h   move   left   1 px
-bindsym $win+$shift+$ctrl+k   move   up     1 px
-bindsym $win+$shift+$ctrl+j   move   down   1 px
+bindsym $win+$shift+$ctrl+l   move   right   1 px
+bindsym $win+$shift+$ctrl+h   move   left    1 px
+bindsym $win+$shift+$ctrl+k   move   up      1 px
+bindsym $win+$shift+$ctrl+j   move   down    1 px
 
 # RESIZE
-bindsym $win+$shift+h         resize shrink  width   25 px or 25 ppt
-bindsym $win+$shift+j         resize shrink  height  25 px or 25 ppt
-bindsym $win+$shift+k         resize grow    height  25 px or 25 ppt
-bindsym $win+$shift+l         resize grow    width   25 px or 25 ppt 
+bindsym $win+$shift+h         resize shrink  width    25 px or 25 ppt
+bindsym $win+$shift+j         resize shrink  height   25 px or 25 ppt
+bindsym $win+$shift+k         resize grow    height   25 px or 25 ppt
+bindsym $win+$shift+l         resize grow    width    25 px or 25 ppt 
 
-bindsym $win+$alt+h           resize shrink  width   3 px or 3 ppt
-bindsym $win+$alt+j           resize shrink  height  3 px or 3 ppt
-bindsym $win+$alt+k           resize grow    height  3 px or 3 ppt
-bindsym $win+$alt+l           resize grow    width   3 px or 3 ppt
+bindsym $win+$alt+h           resize shrink  width    3 px or 3 ppt
+bindsym $win+$alt+j           resize shrink  height   3 px or 3 ppt
+bindsym $win+$alt+k           resize grow    height   3 px or 3 ppt
+bindsym $win+$alt+l           resize grow    width    3 px or 3 ppt
 
 # GAPS
 bindsym $win+$ctrl+$alt+h     gaps   inner   all   plus 2
@@ -268,6 +260,6 @@ for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute
 for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
 for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1091 1302, move absolute position 19 99, border pixel 3
-  for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 1466 1218,   move absolute position 991 123,   border pixel 3
-  for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 735 1343,   move absolute position 2441 73,   border pixel 3
-  for_window               [instance="roficlone"]    floating enable,   resize set 800 600,   move absolute position 1320 437,   border pixel 3
+for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 1466 1218,   move absolute position 991 123,   border pixel 3
+for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 735 1343,   move absolute position 2441 73,   border pixel 3
+for_window               [instance="roficlone"]    floating enable,   resize set 800 600,   move absolute position 1320 437,   border pixel 3
