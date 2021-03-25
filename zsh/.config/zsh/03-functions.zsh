@@ -49,6 +49,23 @@ function gacall() {
 
 # SHELL
 #────────────────────────────────────────────────────────────
+# using ripgrep combined with preview
+# find-in-file - usage: fif <searchTerm>
+fif() {
+  [ $# -eq 0 ] && echo "arg needed." && return 1
+  rg --files-with-matches --no-messages "$1" \
+    | fzf --preview "highlight -O ansi -l {} 2> /dev/null \
+    | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' \
+    || rg --ignore-case --pretty --context 10 '$1' {}" \
+    | xargs nvim
+}
+fh() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+
+# SHELL
+#────────────────────────────────────────────────────────────
 
 # create dir & cd into it
 function mdir() {
