@@ -5,16 +5,16 @@
 
 [homelab]
 - *** app.git-simple-login
-  domain email forwarding!
+      domain email forwarding!
 - arch>ansible & homelab
 - remote docker dev (rsync compose?)
 - authentication all dockers
   - simplify, harden
 - bmilcs.com > it's own VM
+- email server: postfix+dovecot+spamassassin
 
 [ arch ]
-- VIM: Create titlebars, 
-  --- center ---
+- security pop-up keybind (req https)
 - i3: binding: selection copy/paste
 - zsh: prompt, minimal
 - search commands w/ examples
@@ -25,6 +25,13 @@
 - dir-stack > fzf
 - fzf [zsh/vim] custom shortcuts
 
+[ vim ]
+- auto-titlebars --- hi ---
+
+[ ncmpcpp ]
+- autosave playlist
+- hotkeys
+
 [ rofi ]
 - power menu
 
@@ -34,8 +41,7 @@
   - optimize vim for python
 
 [goals]
-- learn advanced bash
-  https://learnxinyminutes.com/docs/bash/
+- learn advanced bash https://learnxinyminutes.com/docs/bash/
 
 [sleep apnea]
 - March 31, Wednesday
