@@ -71,7 +71,7 @@
 #   old nvidia, multi-monitor
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_right_click = do_action, close_current
 #   none:          don't do anything.
 #   do_action:     if the notification has exactly one action, or one is marked as default,
 #                  invoke it. if there are multiple and no default, open the context menu.
@@ -82,9 +82,9 @@
 [shortcuts]
 # "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
 # use alias 'kc' | 'xmodmap -pke'
-    close_all = mod4+Tab
-    history = mod4+shift+Tab
-    context = mod4+Shift_R
+    close_all = mod1+Tab
+    history = mod4+Tab
+    context = mod1+mod4+Tab
 [urgency_low]
     background = "#2e3440"
     foreground = "#81a1c1"
