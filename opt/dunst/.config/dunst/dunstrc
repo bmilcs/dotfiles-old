@@ -32,205 +32,102 @@
     show_age_threshold = 60
     ignore_newline = no
 # word wrap or ellipsize
-    word_wrap = no
+    word_wrap = yes
     ellipsize = start
-    # start, middle, end
-
+#   start, middle, end
     format = "<b>%s</b><i>%p</i>\n%b"
-#   %a  appname
-#   %s  summary
-#   %b  body
-#   %i  iconname (including its path)
-#   %I  iconname (without its path)
-#   %p  progress value if set ([  0%] to [100%]) or nothing
-#   %n  progress value if set without any extra characters
-#   %%  Literal %
-
+#   %a appname            %s summary            %b  body
+#   %i iconname [path]    %I iconname no path   %%  literal %
+#   %p progress [0%-100%] %n progress simple
     stack_duplicates = true
     hide_duplicate_count = false
-
-# show: urls (u) actions (a).
     show_indicators = yes
-
-### Icons ###
-#    icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/places/:/usr/share/icons/Papirus-Dark/32x32/status/
+#   show: urls (u) actions (a).
     icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/places/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/symbolic/actions/:/usr/share/icons/Papirus-Dark/symbolic/apps/:/usr/share/icons/Papirus-Dark/symbolic/categories/:/usr/share/icons/Papirus-Dark/symbolic/devices/:/usr/share/icons/Papirus-Dark/symbolic/emblems/:/usr/share/icons/Papirus-Dark/symbolic/emotes/:/usr/share/icons/Papirus-Dark/symbolic/mimetypes/:/usr/share/icons/Papirus-Dark/symbolic/places/:/usr/share/icons/Papirus-Dark/symbolic/status/
     icon_position = right
-
 # left right none
     min_icon_size = 32   # 0
     max_icon_size = 32   # 64
-
-    ### History ###
-
-    # Should a notification popped up from history be sticky or timeout
-    # as if it would normally do.
     sticky_history = yes
-
-    # Maximum amount of notifications kept in history
-    history_length = 20
-
-    ### Misc/Advanced ###
-
-    # dmenu path.
+# keep reopened notifications stay
+    history_length = 1000
     dmenu = /usr/bin/dmenu -p dunst:
-
-    # Browser for opening urls in context menu.
     browser = /usr/bin/firefox -new-tab
-
-    # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
-
-    # Define the title of the windows spawned by dunst
+# dunst window classified as:
     title = Dunst
-
-    # Define the class of the windows spawned by dunst
     class = Dunst
-
-    # Print a notification on startup.
-    # This is mainly for error detection, since dbus (re-)starts dunst
-    # automatically after a crash.
-    startup_notification = false
-
-    # Manage dunst's desire for talking
-    # Can be one of the following values:
-    #  crit: Critical features. Dunst aborts
-    #  warn: Only non-fatal warnings
-    #  mesg: Important Messages
-    #  info: all unimportant stuff
-    # debug: all less than unimportant stuff
+    startup_notification = true
     verbosity = mesg
-
-    # Define the corner radius of the notification window
-    # in pixel size. If the radius is 0, you have no rounded
-    # corners.
-    # The radius will be automatically lowered if it exceeds half of the
-    # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
-
-    # Ignore the dbus closeNotification message.
-    # Useful to enforce the timeout set by dunst configuration. Without this
-    # parameter, an application may close the notification sent before the
-    # user defined timeout.
+#   crit: Critical features. Dunst aborts
+#   warn: Only non-fatal warnings
+#   mesg: Important Messages
+#   info: all unimportant stuff
+#   debug: all less than unimportant stuff
+    corner_radius = 10
     ignore_dbusclose = false
-
-    ### Legacy
-
-    # Use the Xinerama extension instead of RandR for multi-monitor support.
-    # This setting is provided for compatibility with older nVidia drivers that
-    # do not support RandR and using it on systems that support RandR is highly
-    # discouraged.
-    #
-    # By enabling this setting dunst will not be able to detect when a monitor
-    # is connected or disconnected which might break follow mode if the screen
-    # layout changes.
-    force_xinerama = false
-
-    ### mouse
-
-    # Defines list of actions for each mouse event
-    # Possible values are:
-    # * none: Don't do anything.
-    # * do_action: If the notification has exactly one action, or one is marked as default,
-    #              invoke it. If there are multiple and no default, open the context menu.
-    # * close_current: Close current notification.
-    # * close_all: Close all notifications.
-    # These values can be strung together for each mouse event, and
-    # will be executed in sequence.
+#   ignore programs built-in timers
+      force_xinerama = false
+#   old nvidia, multi-monitor
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
-
-# Experimental features that may or may not work correctly. Do not expect them
-# to have a consistent behaviour across releases.
+#   none:          don't do anything.
+#   do_action:     if the notification has exactly one action, or one is marked as default,
+#                  invoke it. if there are multiple and no default, open the context menu.
+#   close_current: close current notification.
+#   close_all:     close all notifications.
 [experimental]
-    # Calculate the dpi to use on a per-monitor basis.
-    # If this setting is enabled the Xft.dpi value will be ignored and instead
-    # dunst will attempt to calculate an appropriate dpi value for each monitor
-    # using the resolution and physical size. This might be useful in setups
-    # where there are multiple screens with very different dpi values.
-    per_monitor_dpi = false
-
+    per_monitor_dpi = true
 [shortcuts]
-
-    # Shortcuts are specified as [modifier+][modifier+]...key
-    # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-    # "mod3" and "mod4" (windows-key).
-    # Xev might be helpful to find names for keys.
-
-    # Close notification.
-    close = ctrl+space
-
-    # Close all notifications.
-    close_all = ctrl+shift+space
-
-    # Redisplay last message(s).
-    # On the US keyboard layout "grave" is normally above TAB and left
-    # of "1". Make sure this key actually exists on your keyboard layout,
-    # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
-
-    # Context menu.
-    context = ctrl+shift+period
-
+# "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
+# use alias 'kc' | 'xmodmap -pke'
+    close_all = mod4+Tab
+    history = mod4+shift+Tab
+    context = mod4+Shift_R
 [urgency_low]
     background = "#2e3440"
     foreground = "#81a1c1"
-    timeout = 30
-    #icon = /path/to/icon
-
+    timeout = 120
 [urgency_normal]
     background = "#2e3440"
     foreground = "#81a1c1"
-    timeout = 30
-    #icon = /path/to/icon
-
+    timeout = 120
 [urgency_critical]
     background = "#2e3440"
     foreground = "#ebcb8b"
-    timeout = 30
-    #icon = /path/to/icon
-
+    timeout = 120
 #────────────────────────────────────────────────────────────
-# scripting
+# %a appname            %s summary            %b  body
+# %i iconname [path]    %I iconname no path   %%  literal %
+# %p progress [0%-100%] %n progress simple
 #────────────────────────────────────────────────────────────
-#   %a  appname
-#   %s  summary
-#   %b  body
-#   %i  iconname (including its path)
-#   %I  iconname (without its path)
-#   %p  progress value if set ([  0%] to [100%]) or nothing
-#   %n  progress value if set without any extra characters
-#   %%  Literal %
-
-
-[bmnormal]
+[norm]
     category = "bmnormal"
     background = "#2e3440"
     format = "<b><span foreground='#81a1c1'>%s</span></b>\n%b"
-    timeout = 15
-
-[bmwarning]
+    timeout = 60
+[warn]
     category = "bmwarning"
     background = "#ebcb8b"
     foreground = "#2e3440"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 30
-
-[bmbmerror]
+    timeout = 60
+[error]
     category = "bmerror"
     background = "#bf616a"
     foreground = "#eceff4"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 30
-
-[bmsuccess]
+    timeout = 60
+[success]
     category = "bmsuccess"
     background = "#8fbcbb"
     foreground = "#2e3440"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 30
-
+    timeout = 60
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
 #────────────────────────────────────────────────────────────
@@ -274,7 +171,6 @@
 # to "".
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
-
 # Disable the transient hint so that idle_threshold cannot be bypassed from the
 # client
 #[transient_disable]
@@ -286,7 +182,6 @@
 #[transient_history_ignore]
 #    match_transient = yes
 #    history_ignore = yes
-
 # fullscreen values
 # show: show the notifications, regardless if there is a fullscreen window opened
 # delay: displays the new notification, if there is no fullscreen window active
@@ -298,30 +193,24 @@
 #[fullscreen_show_critical]
 #    msg_urgency = critical
 #    fullscreen = show
-
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
-
 #[script-test]
 #    summary = "*script*"
 #    script = dunst_test.sh
-
 #[ignore]
 #    # This notification will not be displayed
 #    summary = "foobar"
 #    format = ""
-
 #[history-ignore]
 #    # This notification will not be saved in history
 #    summary = "foobar"
 #    history_ignore = yes
-
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
 #    summary = "foobar"
 #    skip_display = yes
-
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
