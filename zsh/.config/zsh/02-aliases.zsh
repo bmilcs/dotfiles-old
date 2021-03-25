@@ -86,6 +86,10 @@ fi
 # APPS
 #────────────────────────────────────────────────────────────
 
+# xev keycodes
+alias kc='xev | grep -o "keycode[^\)]\+"'
+alias kcc='xmodmap -pke | fzf'
+
 # tmux
 alias t='tmux -u'         ; compdef t='tmux'
 alias ta='t a -t'         ; compdef ta='tmux'
