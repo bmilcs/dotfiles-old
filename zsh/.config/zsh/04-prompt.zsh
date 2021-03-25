@@ -24,21 +24,19 @@
 # RPS1="%B%K{red}bar"
 #────────────────────────────────────────────────────────────
 
-if [ -n "$SSH_CLIENT" ]; then
-  PROMPT="%B%K{green}%F{black}   %M   "
-else
-  PROMPT= #%B%K{blue}%F{black}   %M   "
+if [ -n "$SSH_CLIENT" ]
+  then
+    PROMPT="%B%K{black}%F{blue}   %M   "
+  else
+    PROMPT=""
 fi
 
-PROMPT+="%K{black}%b%F{blue} %~ %k [%?] "
+[[ ! $USER == bmilcs ]] && PROMPT+=" %B%K{blue}%F{yellow}%n"
 
-if [[ ! $USER == bmilcs ]]; then
- RPROMPT+=" %b%K{blue}%F{yellow}%n"
-fi
+PROMPT+="%K{black}%F{blue}%b %~ %k [%?] "
 
-# PROMPT+=$'\n%b%k'
- PROMPT+='%b%k'
- PROMPT+="%F{cyan}# %b%f%k"
+PROMPT+='%b%k'
+PROMPT+="%F{cyan}$ %b%f%k"
 
 #────────────────────────────────────────────────────────────
 #ERRCOL="%(?:%F{green}:%F{red})"
