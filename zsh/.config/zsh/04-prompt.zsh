@@ -9,14 +9,14 @@
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
 
-# Load version control information
+# load version control information
 autoload -Uz vcs_info
 precmd() { vcs_info }
 
-# Format the vcs_info_msg_0_ variable
+# format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats '%b'
  
-# Set up the prompt (with git branch name)
+# set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
@@ -24,48 +24,47 @@ PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 PROMPT=""
 RPROMPT=""
 
-# core
-#PROMPT+="%K{blue}"
-PROMPT+="%F{blue}"
-PROMPT+=" %~ "
-
-# user-based 
-[[ ! $USER == bmilcs ]]  \
-&&  PROMPT+="%n"         \
-#&&  PROMPT+="%F{blue}"  \
-
-
-[[ ! $USER == bmilcs ]] && \
-[[ -n "$SSH_CLIENT" ]]     \
-&& PROMPT+="@"
-#&& PROMPT+="%F{black}"     \
+# user-based
+[[ ! $USER == bmilcs ]]   \
+  && PROMPT+="%F{magenta}" \
+  && PROMPT+="%n "
 
 # ssh clients
-[[ -n "$SSH_CLIENT" ]]   \
-&&  PROMPT+="%M"
-#&&  PROMPT+="%B" \
-#&&  PROMPT+="%F{blue}" \
+[[ -n "$SSH_CLIENT" ]]     \
+  &&  PROMPT+="%F{blue}" \
+  &&  PROMPT+="%M"
 
-# operating system
-[[ ! "$DISTRO" == "arch"* ]]   \
-&&  RPROMPT+="%F{blue}"        \
-&&  RPROMPT+="${DISTRO}"
+# directory
+PROMPT+="%F{blue}"
+PROMPT+="%B"
+PROMPT+=" %~ "
 
-#────────────────────────────────────────────────────────────
-# GLOBAL
-#────────────────────────────────────────────────────────────
-#➡
-# clear formatting
 PROMPT+='%b%k%f'
 
+# end
+PROMPT+="%F{cyan}"
+PROMPT+=" ❱ "
+
+# clear
+PROMPT+="%b%f%k"
 
 # ▶▷ ▸▹ ►▻
 #❬❭❮❯❨❩❪❫❰❱❲❳❴❵➡
+
+#────────────────────────────────────────────────────────────
+# RIGHT
+#────────────────────────────────────────────────────────────
+
+# operating system
+[[ ! "$DISTRO" == "arch"* ]]   \
+&&  RPROMPT+="%F{black}"       \
+&&  RPROMPT+="${DISTRO} "
+
+# exit status
 RPROMPT+="❬%?❭"
 RPROMPT+="${vcs_info_msg_0_}"
-PROMPT+="%F{cyan}"
-PROMPT+=" ❱ "
-PROMPT+="%b%f%k "
+
+#────────────────────────────────────────────────────────────
 
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {
