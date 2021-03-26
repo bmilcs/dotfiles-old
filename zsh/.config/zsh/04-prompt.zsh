@@ -26,12 +26,12 @@
 
 if [ -n "$SSH_CLIENT" ]
   then
-    PROMPT="%B%K{black}%F{blue}   %M   "
+    PROMPT="%B%K{black}%F{cyan} %M %k "
   else
     PROMPT=""
 fi
 
-[[ ! $USER == bmilcs ]] && PROMPT+=" %B%K{blue}%F{yellow}%n"
+[[ ! $USER == bmilcs ]] && PROMPT+=" %B%K{black}%F{red}%n"
 
 PROMPT+="%K{black}%F{blue}%b %~ %k [%?] "
 
