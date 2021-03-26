@@ -4,11 +4,58 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH PROMPT [./04-prompt.zsh]
-#────────────────────────────────────────────────────────────
 
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
+user="yellow"
+# initialize
+PROMPT=""
+RPROMPT=""
+
+# core
+#PROMPT+="%K{blue}"
+PROMPT+="%F{blue}"
+PROMPT+=" %~ "
+
+# user-based 
+[[ ! $USER == bmilcs ]]  \
+&&  PROMPT+="%n"        \
+#&&  PROMPT+="%F{blue}"  \
+
+
+[[ ! $USER == bmilcs ]] && \
+[[ -n "$SSH_CLIENT" ]]     \
+&& PROMPT+="@"
+#&& PROMPT+="%F{black}"     \
+
+# ssh clients
+[[ -n "$SSH_CLIENT" ]]   \
+&&  PROMPT+="%M"
+#&&  PROMPT+="%B" \
+#&&  PROMPT+="%F{blue}" \
+
+# operating system
+[[ ! "$DISTRO" == "arch"* ]]   \
+&&  RPROMPT+="%F{blue}"        \
+&&  RPROMPT+="${DISTRO}"
+
+prompt fade blue
+
+#────────────────────────────────────────────────────────────
+# GLOBAL
+#────────────────────────────────────────────────────────────
+#➡
+# clear formatting
+PROMPT+='%b%k%f'
+
+
+# ▶▷ ▸▹ ►▻
+#❬❭❮❯❨❩❪❫❰❱❲❳❴❵➡
+RPROMPT+="❬%?❭"
+PROMPT+="%F{cyan}"
+PROMPT+=" ❱ "
+PROMPT+="%b%f%k"
 
 #────────────────────────────────────────────────────────────
 # original
@@ -22,22 +69,6 @@
 # }
 # PS1="%B%K{red}foo > "
 # RPS1="%B%K{red}bar"
-#────────────────────────────────────────────────────────────
-
-if [ -n "$SSH_CLIENT" ]
-  then
-    PROMPT="%B%K{black}%F{cyan} %M %k "
-  else
-    PROMPT=""
-fi
-
-[[ ! $USER == bmilcs ]] && PROMPT+=" %B%K{black}%F{red}%n"
-
-PROMPT+="%K{black}%F{blue}%b %~ %k [%?] "
-
-PROMPT+='%b%k'
-PROMPT+="%F{cyan}$ %b%f%k"
-
 #────────────────────────────────────────────────────────────
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {
