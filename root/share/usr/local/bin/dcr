@@ -6,47 +6,40 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOCKER-COMPOSE & REPO UPDATE [./dcr]
 #────────────────────────────────────────────────────────────
-#set -e
-
+# UPDATE DOCKER
+#────────────────────────────────────────────────────────────
 source _bm
 _t docker-compose
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
-_a docker-compose pull
-docker-compose pull && _s
-_a docker-compose up -d
-docker-compose up -d --remove-orphans
+_a docker-compose pull && docker-compose pull && _s
 
-#_a docker-compose restart
-#docker-compose restart && _s
+_a docker-compose up -d --remove-orphans && docker-compose up -d --remove-orphans && _s
 
-#docker-compose up --force-recreate --build -d --remove-orphans
-# TODO AUTOMATE CLEANUP
-#_a docker-compose image prune -f
-#docker-compose image prune -f && _s
+#────────────────────────────────────────────────────────────
+# COMMIT/PUSH GIT UPDATES
+#────────────────────────────────────────────────────────────
 
 _a docker git
 
-DC="${DC:-/home/bmilcs/docker}"
-g="git --git-dir="$DC"/.git --work-tree="$DC""
-clean="$($g status | grep "clean")"
+docdir="${docdir:-/home/bmilcs/docker}"
+docgit="/usr/bin/git --git-dir="$docdir"/.git --work-tree="$docdir""
+docclean="$($docgit status | grep "clean")"
 
 _o checking for undocumented edits
 
-if [[ ! -z "$clean" ]] ; then
+if [[ ! -z "$docclean" ]] ; then
   _s clean: no action necessary
 else
-  _w modifications present
-  _a commiting
-  /usr/bin/git \
-    --git-dir="$HOME"/docker/.git/ \
-    --work-tree="$HOME"/docker \
-    commit -a -m "automated update" && _s \
+  _w mods found
+  _a commit
+  $docgit commit -a -m "automated update" \
+    && _s \
     && _a pushing \
-    && /usr/bin/git \
-      --git-dir=/home/bmilcs/docker/.git/ \
-      --work-tree=/home/bmilcs/docker push \
+    && $docgit push \
     && _s done
 fi
 
+_ay clean old docker content
+_f run: dclean
