@@ -267,57 +267,61 @@ if where docker-compose > /dev/null; then
 
   # edit bmilcs.com
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
+
   # edit docker-compose
   alias dce='vim ~/docker/docker-compose.yaml'
 
   # docker logs
-  alias dclog='cd ~/docker && docker-compose -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
-  compdef dclog='docker'
-
-  # docker-compose
-  alias dcu="docker-compose up -d"
-  alias dcs="docker-compose stop";compdef dcs='docker'
-  alias dcre="docker-compose restart";compdef dcre='docker'
-  alias dcd="docker-compose down";compdef dcd='docker'
-
-  # list all dockers
-  alias dps='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
-  alias dnet='docker network ls'
+  alias dclog='cd ~/docker && docker-compose \
+    -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
 
   # letsencrypt restart
   alias le="docker restart swag && docker logs -f swag"
-  alias swag="docker restart swag && docker logs -f swag"
-  alias ddf='docker system df'
+  alias swag="le"
 
-  # remove unused: containers | vol | networks | etc
-  alias dcrmunused='docker system prune -a'
+  # docker-compose
+  alias dcup="cd ~/docker && docker-compose up -d";compdef dcs='docker-compose'
+  alias dcstop="cd ~/docker && docker-compose stop";compdef dcs='docker-compose'
+  alias dcrestart="cd ~/docker && docker-compose restart";compdef dcre='docker-compose'
+  alias dcdown="cd ~/docker && docker-compose down";compdef dcd='docker-compose'
+  alias dcinfo='docker system df'
 
-  # remove all containers
-  alias dcrmallcontainers='docker rm $(docker ps -a -q)'
+  # list all dockers
+  alias dps='docker ps -a \
+    --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" \
+    | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
+  alias dnet='docker network ls'
 
-  # remove all images
-  alias dcrmallimages='docker rmi $(docker images -a -q)'
+  # CLEANING
+  
+  # clean up docker system
+  alias dclean='dcleani && dcleane'
+  alias dcleani='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
+  alias dcleane='docker rm $(docker ps -qa --no-trunc --filter "status=exited")'
 
   # stop all containres
-  alias dcstopall='docker stop $(docker ps -a -q)'
-
-  # clean up docker system
-  alias dcclean='docker image prune -a ; docker container prune ; docker volume prune ; docker network prune'
+  alias dcsa='docker stop $(docker ps -a -q)'
 
   # remove nfs share volumes
-  alias dvol='
+  alias dcrmvols='
     volz="audiobooks cloud dl movies music plexlog podcasts tv"
-    for vz in $volz
-    do
-      docker volume rm docker_${vz}
-    done
+    for vz in $volz; do docker volume rm docker_${vz}; done
     '
 
-  # remove: containers | volumes
-  alias dnew="dstop;drmc;dvol;"
+  # remove unused: containers | vol | networks | etc
+  alias dcnukeold='docker system prune -af'
 
-  # nuke all
-  alias dnuke="dstop;drmc;dvol;drmi"
+  # remove all containers
+  alias dcnukeac='docker rm $(docker ps -a -q)'
+
+  # remove all images
+  alias dcnukei='docker rmi $(docker images -a -q)'
+
+  # remove ALL: containers | volumes
+  alias dcnukecv="dcsa && dcrmac && dcrmvols"
+
+  # nuke ALL: containers | volumes | images
+  alias dcnukeall="dcnukecv && dcrmai"
 
 fi
 
