@@ -175,10 +175,14 @@ zle -N down-line-or-beginning-search
 autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit -d $ZDOTDIR/compdump/zcompdump
 autoload -Uz bashcompinit && bashcompinit
+
 # autoload up/down w/ search
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 # autoload colors
 autoload -Uz colors && colors 
+# load prompt
+prompt starship
+
 # autocomplete .dotfiles
 _comp_options+=(globdots)       
 
