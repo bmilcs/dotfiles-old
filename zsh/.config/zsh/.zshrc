@@ -14,4 +14,4 @@ dotlog '+ $ZDOTDIR/.zshrc'
 for cfg ($ZDOTDIR/*.zsh) source $cfg
 
 # run update script (subprocess to prevent trap from closing term)
-(. $ZDOTDIR/10-update.sh)
+(. $ZDOTDIR/05-update.sh)

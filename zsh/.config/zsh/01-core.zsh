@@ -46,6 +46,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit load wfxr/forgit
+zinit light denysdovhan/spaceship-prompt
 
 # dir_colors
 [[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
