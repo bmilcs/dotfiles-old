@@ -6,12 +6,18 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DAILY AUTO-UPDATE [./10-update.zsh]
 
-# TODO: What else is manually installed?
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/10-update.sh'
 
 source _bm
+
+# clean exit
+cexit() {
+  echo && _w "${B}dirty exit" && _o "cleaning up"
+  rm -rf $running && _s "done\n" && exit 1
+  }
+trap 'cexit' SIGINT
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
 dstatus="$HOME/.config/up/dotfiles.bm"
@@ -21,18 +27,6 @@ ustatus="$HOME/.config/up/system.bm"
 vstatus="$HOME/.config/up/vim.bm"
 zstatus="$HOME/.config/up/zsh.bm"
 running="$HOME/.config/up/running.bm"
-unset outdated
-
-# clean exit
-cEXIT() {
-  echo
-  _w "${B}dirty exit"
-  _o "cleaning up"
-  rm -rf $running && _s "done\n"
-  exit 1
-}
-
-trap 'cEXIT' SIGINT
 
 # log path check
 [[ -d ~/.config/up ]] || mkdir -p ~/.config/up
@@ -43,53 +37,47 @@ trap 'cEXIT' SIGINT
 [[ -f $vstatus ]] && vlast="$(cat "$vstatus")" || vlast=00
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 
-# zinit update function
-upzsh() {
-  _a "zinit" && zinit self-update && _s \
-  && _a "plugins" && zinit update --all && _s \
-  && echo "$today" > "$zstatus"
-}
+# force non-workstations to update repo everytime (vm's, etc)
+[[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
 
-for i in $dlast $flast $rlast $slast $vlast $zlast; do
-  [[ ! $today == "$i" ]] && outdated=1 && break
-done
+# process check
+if [[ ! -f "$running" ]]; then
 
-if [[ -n $outdated ]]; then
-  if [[ ! -f "$running" ]]; then
-    # create $running
-    touch "$running"
-    
-    # zsh: plugins w/ manager
-    if [[ ! "$today" == "$zlast" ]] && [[ $HOST == "bm"* ]]; then upzsh; fi
+  # create $running
+  touch "$running"
+  
+  # packages
+  [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
 
-    # packages: pacman & aur
-    [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
-
-    # fzf
-    [[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
-
-    # vim plug install & update  / vim +'PlugInstall --sync' +qall &> /dev/null
-    [[ ! "$today" == "$vlast" ]] && upvim && echo "$today" > "$vstatus"
-
-    # cloned repos
-    if [[ ! "$today" == "$rlast" ]] && [[ -f /usr/local/bin/upr ]]; then
-      upr && echo "$today" > "$rstatus"
-    else # vm's via ssh 
-      echo "$today" > "$rstatus"
-    fi
-
-    # dotfiles repo: pc/laptop
-    if [[ ! "$today" == "$dlast" ]]; then 
-      gp && echo "$today" > "$dstatus"
-    fi
-
-    # delete $running var
-    rm -rf "$running"
-  else
-    _wb "another instance of ${B}auto-update${BLU} is already running."
-    _s "now exiting.\b"
+  # repos
+  if [[ ! "$today" == "$rlast" ]] && [[ -f /usr/local/bin/upr ]]; then
+    upr && echo "$today" > "$rstatus"
+  else # vm's via ssh 
+    echo "$today" > "$rstatus"
   fi
-else
-  # force non-workstations to update repo everytime (vm's, etc)
-  [[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
+
+  # zinit
+  [[ ! "$today" == "$zlast" ]] \
+    && _a "zinit: self update" && zinit self-update && _s \
+    && _a "zinit: plugins" && zinit update --all && _s \
+    && echo "$today" > "$zstatus"
+
+  # fzf
+  [[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
+
+  # vim plugins
+  [[ ! "$today" == "$vlast" ]] && upvim && echo "$today" > "$vstatus"
+
+  # dotfiles repo: pc/laptop
+  if [[ ! "$today" == "$dlast" ]] && [[ "$HOST" == "bm"* ]]; then 
+    gp && echo "$today" > "$dstatus"
+  fi
+
+  # clean finish
+  rm -rf "$running"
+
+else # update process already exists
+
+  _wb "instance of ${B}auto-update${BLU} running in another terminal."
+
 fi
