@@ -46,7 +46,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit load wfxr/forgit
-zinit light denysdovhan/spaceship-prompt
 
 # dir_colors
 [[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
@@ -172,16 +171,20 @@ zle -N down-line-or-beginning-search
 # AUTOLOADS
 #────────────────────────────────────────────────────────────
 
+# prompt
 autoload -Uz promptinit && promptinit
+
+# autocomplete
 autoload -Uz compinit && compinit -d $ZDOTDIR/compdump/zcompdump
+
+# bash autocomplete
 autoload -Uz bashcompinit && bashcompinit
 
 # autoload up/down w/ search
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
+
 # autoload colors
 autoload -Uz colors && colors 
-# load prompt
-prompt starship
 
 # autocomplete .dotfiles
 _comp_options+=(globdots)       
@@ -200,8 +203,8 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-# PROMPT=\$vcs_info_msg_0_'%# '
+#RPROMPT=\$vcs_info_msg_0_
+PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
 
 #────────────────────────────────────────────────────────────
