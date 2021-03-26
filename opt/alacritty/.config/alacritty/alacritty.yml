@@ -30,7 +30,8 @@ font:
     style: regular
   size: 10
   bold:
-    style: Extra Bold
+    #style: Extra Bold
+    style: Bold
   italic:
     style: Italic
     #style: Oblique
