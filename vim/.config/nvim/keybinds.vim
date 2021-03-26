@@ -86,6 +86,9 @@ nnoremap <silent> <leader>SS :Split<CR>
 " TEXT MANIPULATION
 "────────────────────────────────────────────────────────────
 
+" title bar test
+nnoremap <silent> <leader>tt :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+
 " sort paragraph
 nnoremap <silent> <leader>1 :'{,'}sort<CR>
 
@@ -170,8 +173,8 @@ vmap > >gv
 "────────────────────────────────────────────────────────────
 
 " remove shift requirement for issuing cmds
-nnoremap ; :
-nnoremap : ;
+map ; :
+noremap ;; ;
 
 " logical replacement; copy from cursor > end of line
 map Y y$

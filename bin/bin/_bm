@@ -50,6 +50,7 @@ _askk() {
     esac
   done
 }
+
 #_qq() { printf "\n%b%b  %b%s%b " "${color}" "${B}" "${color}" "${1}" "${NC}" ;}
 _qq() { echo -e "\n${B}${color}  ${1}" ;}
 
