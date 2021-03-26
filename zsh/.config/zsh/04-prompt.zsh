@@ -8,7 +8,18 @@
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
-user="yellow"
+
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '%b'
+ 
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+
 # initialize
 PROMPT=""
 RPROMPT=""
@@ -20,7 +31,7 @@ PROMPT+=" %~ "
 
 # user-based 
 [[ ! $USER == bmilcs ]]  \
-&&  PROMPT+="%n"        \
+&&  PROMPT+="%n"         \
 #&&  PROMPT+="%F{blue}"  \
 
 
@@ -40,8 +51,6 @@ PROMPT+=" %~ "
 &&  RPROMPT+="%F{blue}"        \
 &&  RPROMPT+="${DISTRO}"
 
-prompt fade blue
-
 #────────────────────────────────────────────────────────────
 # GLOBAL
 #────────────────────────────────────────────────────────────
@@ -53,23 +62,11 @@ PROMPT+='%b%k%f'
 # ▶▷ ▸▹ ►▻
 #❬❭❮❯❨❩❪❫❰❱❲❳❴❵➡
 RPROMPT+="❬%?❭"
+RPROMPT+="${vcs_info_msg_0_}"
 PROMPT+="%F{cyan}"
 PROMPT+=" ❱ "
-PROMPT+="%b%f%k"
+PROMPT+="%b%f%k "
 
-#────────────────────────────────────────────────────────────
-# original
-# PROMPT="%B%K{blue}%F{black}   %M   %b%K{black}%F{blue}   %n   %k%b%F{blue}  %~   %W   %@  [%?] ${cyan}# %b%f%k"
-#────────────────────────────────────────────────────────────
-# precmd() {
-#   LEFT="The time is"
-#   RIGHT="$(date) "
-#   RIGHTWIDTH=$(($COLUMNS-${#LEFT}))
-#   print $LEFT${(l:$RIGHTWIDTH::.:)RIGHT}
-# }
-# PS1="%B%K{red}foo > "
-# RPS1="%B%K{red}bar"
-#────────────────────────────────────────────────────────────
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {
 #    left="${ERRCOL}[%F%B%D{%H:%M:%S}%b${ERRCOL}]%f "
