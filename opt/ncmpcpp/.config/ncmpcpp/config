@@ -1,82 +1,124 @@
+#────────────────────────────────────────────────────────────
+# ESSENTIALS
+#────────────────────────────────────────────────────────────
 #mpd_music_dir = "/all/media/audio/music"
 lyrics_directory = "/all/media/audio/lyrics"
 ncmpcpp_directory = "/home/bmilcs/.config/ncmpcpp"
-mpd_crossfade_time = "5"
-mpd_connection_timeout = "5"
 #mpd_host = "127.0.0.1"
 mpd_host = "mpd.bm.bmilcs.com"
 mpd_port = "6600"
 
-# # Playlist
-# song_columns_list_format = "[blue]$L(9)[blue]{l} (20)[red]{a} (30)[green]{b}$R(20)[cyan]{t}"
-# now_playing_prefix = "$b"
-# playlist_display_mode = "classic" (classic/columns)
-# autocenter_mode = "no"
-# centered_cursor = "no"
-# cyclic_scrolling = "no"
-# mouse_list_scroll_whole_page = "no"
-# #song_list_format = "{$8$9}{[%l] >> }{%t }$R{%a - %b}"
-# song_list_format = " $0$8$8%l$0$8 $1|$7 $7%a$7 $1|$7 $6%t$1 $R $1%b$1"
-# song_library_format = "{%n > }{%t}|{%f}"
-# 
-# # Bars
-# song_status_format = "{%a - }{%t - }{%b}"
-# progressbar_look = "─╼ "
-# titles_visibility = "yes"
-# header_visibility = "yes"
-# statusbar_visibility = "yes" 
-# 
-# # Browser
-# browser_playlist_prefix = "$2plist »$9 "
-# browser_display_mode = "classic" (classic/columns)
-# 
-# # Colors
-# discard_colors_if_item_is_selected = "yes"
-# header_window_color = "cyan"
-# volume_color = "black"
-# state_line_color = "black"
-# state_flags_color = "blue"
-# main_window_color = "blue"
-# color1 = "cyan"
-# color2 = "black"
-# progressbar_color = "blue"
-# statusbar_color = "black"
-# visualizer_color = "cyan"
-# 
-# # Others
-# song_window_title_format = "MPD: {%a > }{%t}{ [%b{ Disc %d}]}|{%f}"
-# search_engine_display_mode = "columns" (classic/columns)
-# follow_now_playing_lyrics = "yes"
-# # display_screens_numbers_on_start = "no"
-# #  vim: set ts=2 sw=2 tw=0 :
+#────────────────────────────────────────────────────────────
+# GUI
+#────────────────────────────────────────────────────────────
 
-
-header_visibility = no
-titles_visibility = no
-statusbar_visibility = no
-display_bitrate = yes
-main_window_color = 5
-statusbar_color = 7
-message_delay_time = 1
-playlist_disable_highlight_delay = 1
-
-now_playing_prefix = $b$r
-now_playing_suffix = $/r$/b
-current_item_prefix = $r
-current_item_suffix = $/r
-
-playlist_display_mode = "classic" (classic/columns)
-song_window_title_format = "{%t} -- {%a} {"%b" (%y)}"
-song_list_format = "$8 %t $R$7 %a   $6 %l "
-song_columns_list_format = "(2f)[5]{} (4f)[5]{n} (2f)[8]{} (25)[8]{t} (2f)[7]{} (20)[7]{a} (25)[7]{b} (6f)[7]{y} (7f)[5]{lr} (1f)[5]{}"
-
-progressbar_look = "─╼"
-progressbar_color = 243
-progressbar_elapsed_color = 6
-
-visualizer_data_source = "/tmp/mpd.fifo"
-visualizer_output_name = "my_fifo"
-visualizer_in_stereo = "yes"
+# Visualizer
 visualizer_type = "spectrum"
-visualizer_look = "+|"
-execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+visualizer_color = "green, green, yellow, red"
+
+# Playlist
+playlist_show_remaining_time = yes
+playlist_shorten_total_times = yes
+playlist_separate_albums = no
+song_list_format = "{{$2%a$0 $3-$0 $5%b$0 $3- $7%t$0}|{%f}}{$R$2%l$0}"
+current_item_prefix = "$3──────────── $0"
+current_item_suffix = "$3 ────────────$0"
+playlist_display_mode = "classic"
+titles_visibility = "yes"
+header_visibility = "no"
+statusbar_visibility = "yes"
+fetch_lyrics_for_current_song_in_background = "yes"
+
+# How the browser looks
+browser_display_mode = columns
+search_engine_display_mode = columns
+playlist_editor_display_mode = columns
+
+# Centering
+autocenter_mode = yes
+centered_cursor = yes
+
+# Don't delete items
+allow_for_physical_item_deletion = yes
+
+# Startup screens
+startup_screen = "playlist"
+startup_slave_screen = "visualizer"
+locked_screen_width_part = 50
+ask_for_locked_screen_width_part = yes
+
+# Title
+clock_display_seconds = yes
+display_volume_level = yes
+display_bitrate = no
+display_remaining_time = yes
+enable_window_title = yes
+
+# Media library settings
+ignore_leading_the = no
+media_library_sort_by_mtime = no
+media_library_primary_tag = album_artist
+default_place_to_search_in = database
+cyclic_scrolling = yes
+mpd_crossfade_time = "3"
+playlist_disable_highlight_delay = 0
+now_playing_suffix = "$/b$/r"
+
+# Editor
+external_editor = nvim
+use_console_editor = yes
+
+# Looks
+statusbar_color = "blue"
+progressbar_color = "white"
+progressbar_elapsed_color = "cyan"
+progressbar_look = "─╼"
+alternative_ui_separator_color = "blue"
+color1 = "blue"
+color2 = "cyan"
+main_window_color = "blue"
+statusbar_time_color = "blue"
+player_state_color = "blue"
+window_border_color = "black"
+active_window_border = "black"
+user_interface = alternative
+song_status_format = "$2%a$0 $3-$0 $5%b$0 $3- $7%t$0"
+message_delay_time = 1
+
+execute_on_song_change = notify-send "Now playing" "`mpc current`"
+
+#────────────────────────────────────────────────────────────
+# ORIGINAL
+#────────────────────────────────────────────────────────────
+# mpd_crossfade_time = "5"
+# mpd_connection_timeout = "5"
+# header_visibility = no
+# titles_visibility = no
+# statusbar_visibility = no
+# display_bitrate = yes
+# main_window_color = 5
+# statusbar_color = 7
+# message_delay_time = 1
+# playlist_disable_highlight_delay = 1
+# 
+# now_playing_prefix = $b$r
+# now_playing_suffix = $/r$/b
+# current_item_prefix = $r
+# current_item_suffix = $/r
+# 
+# playlist_display_mode = "classic" (classic/columns)
+# song_window_title_format = "{%t} -- {%a} {"%b" (%y)}"
+# song_list_format = "$8 %t $R$7 %a   $6 %l "
+# song_columns_list_format = "(2f)[5]{} (4f)[5]{n} (2f)[8]{} (25)[8]{t} (2f)[7]{} (20)[7]{a} (25)[7]{b} (6f)[7]{y} (7f)[5]{lr} (1f)[5]{}"
+# 
+# progressbar_look = "─╼"
+# progressbar_color = 243
+# progressbar_elapsed_color = 6
+# 
+# visualizer_data_source = "/tmp/mpd.fifo"
+# visualizer_output_name = "my_fifo"
+# visualizer_in_stereo = "yes"
+# visualizer_type = "spectrum"
+# visualizer_look = "+|"
+# execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+#────────────────────────────────────────────────────────────
