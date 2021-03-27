@@ -62,8 +62,8 @@ window:
   #dynamic_padding: true
   dynamic_title: true
   padding:
-    x: 5
-    y: 5
+    x: 10
+    y: 10
   #dimensions:
   #  columns: 0
   #  lines: 0
@@ -397,6 +397,8 @@ cursor:
 #    the mode is *not* active, e.g. `~Alt`.
 
 key_bindings:
+- { key: K,      mods: Alt,           mode: ~Alt, action: ScrollHalfPageUp }
+- { key: J,      mods: Alt,           mode: ~Alt, action: ScrollHalfPageDown }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -428,6 +430,8 @@ key_bindings:
   #- { key: V,      mods: Shift,         mode: Vi|~Search, action: ToggleLineSelection     }
   #- { key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    }
   #- { key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection }
+#   - ScrollHalfPageUp
+#   - ScrollHalfPageDown
   #- { key: Return,                      mode: Vi|~Search, action: Open                    }
   #- { key: K,                           mode: Vi|~Search, action: Up                      }
   #- { key: J,                           mode: Vi|~Search, action: Down                    }
