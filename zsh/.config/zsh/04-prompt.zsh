@@ -77,9 +77,6 @@ precmd() {
   RPROMPT+="${vcs_info_msg_0_}"
 }
 
-
-#────────────────────────────────────────────────────────────
-
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {
 #    left="${ERRCOL}[%F%B%D{%H:%M:%S}%b${ERRCOL}]%f "
