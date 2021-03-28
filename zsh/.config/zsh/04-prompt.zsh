@@ -29,19 +29,21 @@ precmd() {
 
   # user-based
   [[ ! $USER == bmilcs ]]    \
-    && pstatus=1             \
+    && pstatus+=1            \
     && PROMPT+="%F{blue}"    \
     && PROMPT+="%K{black}"   \
     && PROMPT+=" %n@"        # user
 
   # ssh clients
-  [[ -n "$SSH_CLIENT" ]]     \
-    && pstatus=1             \
-    && PROMPT+="%F{blue}"   \
-    && PROMPT+="%K{black}"  \
-    && PROMPT+="%B"         \
-    && PROMPT+="%M"         \
-    && PROMPT+="%b"         \
+  [[ -n "$SSH_CLIENT" ]]      \
+    && PROMPT+="%F{blue}"     \
+    && PROMPT+="%K{black}"    \
+    && PROMPT+="%B"           \
+    && if [[ -z $pstatus ]]   \
+    && then PROMPT+=" "; fi   \
+    && PROMPT+="%M"           \
+    && PROMPT+="%b"           \
+    && pstatus=1              \
     && PROMPT+=" "
 
   # directory
