@@ -9,6 +9,8 @@
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
 
+unset pstatus
+
 # load version control information
 autoload -Uz vcs_info
 precmd() { vcs_info }
@@ -27,18 +29,20 @@ precmd() {
 
   # user-based
   [[ ! $USER == bmilcs ]]    \
+    && pstatus=1             \
     && PROMPT+="%F{blue}"    \
     && PROMPT+="%K{black}"   \
     && PROMPT+=" %n@"        # user
 
   # ssh clients
   [[ -n "$SSH_CLIENT" ]]     \
-    &&  PROMPT+="%F{blue}"   \
-    &&  PROMPT+="%K{black}"  \
-    &&  PROMPT+="%B"         \
-    &&  PROMPT+="%M"         \
-    &&  PROMPT+="%b"         \
-    &&  PROMPT+=" "
+    && pstatus=1             \
+    && PROMPT+="%F{blue}"   \
+    && PROMPT+="%K{black}"  \
+    && PROMPT+="%B"         \
+    && PROMPT+="%M"         \
+    && PROMPT+="%b"         \
+    && PROMPT+=" "
 
   # directory
   PROMPT+="%k"
@@ -50,7 +54,8 @@ precmd() {
   fi
 
   PROMPT+="%B"
-  PROMPT+=" %~"
+  [ -n pstatus ] && PROMPT+=" "
+  PROMPT+="%~"
   PROMPT+='%b%k%f'
 
   # end
@@ -76,6 +81,9 @@ precmd() {
   RPROMPT+="❬%?❭"
   RPROMPT+="${vcs_info_msg_0_}"
 }
+
+
+#────────────────────────────────────────────────────────────
 
 #ERRCOL="%(?:%F{green}:%F{red})"
 #() {
