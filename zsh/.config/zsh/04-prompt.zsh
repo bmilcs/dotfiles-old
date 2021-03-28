@@ -54,7 +54,7 @@ precmd() {
   fi
 
   PROMPT+="%B"
-  [ -n pstatus ] && PROMPT+=" "
+  [ -n $pstatus ] && PROMPT+=" "
   PROMPT+="%~"
   PROMPT+='%b%k%f'
 
