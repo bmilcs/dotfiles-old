@@ -9,13 +9,18 @@
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
 
-# load version control information
-autoload -Uz vcs_info
-precmd() { vcs_info }
+git_prompt() {
+  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
-# format the vcs_info_msg_0_ variable
-zstyle ':vcs_info:git:*' formats '%b'
- 
+  if [ ! -z $BRANCH ]; then
+    echo -n "%F{yellow}$BRANCH"
+
+    if [ ! -z "$(git status --short)" ]; then
+      echo " %F{red}✗"
+    fi
+  fi
+}
+
 # set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 # PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
@@ -79,9 +84,10 @@ precmd() {
 
   # exit status
   RPROMPT+="❬%?❭"
-  RPROMPT+="${vcs_info_msg_0_}"
-}
 
+  # minimalist git 
+  RPROMPT+="$(git_prompt)"
+}
 
 #────────────────────────────────────────────────────────────
 
