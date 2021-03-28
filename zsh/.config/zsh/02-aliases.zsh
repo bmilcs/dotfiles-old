@@ -236,7 +236,7 @@ alias scud="scu disable"                                ;compdef scud="systemctl
 alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
-alias hn="_a hostname && _o host: $HOST && echo"
+alias hn="echo $HOST"
 
 # audio sinks
 alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
