@@ -20,55 +20,63 @@ zstyle ':vcs_info:git:*' formats '%b'
 setopt PROMPT_SUBST
 PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
-# initialize
-PROMPT=""
-RPROMPT=""
+precmd() {
+  # initialize
+  PROMPT=""
+  RPROMPT=""
 
-# user-based
-[[ ! $USER == bmilcs ]]    \
-  && PROMPT+="%F{blue}"    \
-  && PROMPT+="%K{black}"   \
-  && PROMPT+=" %n@"        # user
+  # user-based
+  [[ ! $USER == bmilcs ]]    \
+    && PROMPT+="%F{blue}"    \
+    && PROMPT+="%K{black}"   \
+    && PROMPT+=" %n@"        # user
 
-# ssh clients
-[[ -n "$SSH_CLIENT" ]]     \
-  &&  PROMPT+="%F{blue}"   \
-  &&  PROMPT+="%K{black}"  \
-  &&  PROMPT+="%B"         \
-  &&  PROMPT+="%M"         \
-  &&  PROMPT+="%b"         \
-  &&  PROMPT+=" "
+  # ssh clients
+  [[ -n "$SSH_CLIENT" ]]     \
+    &&  PROMPT+="%F{blue}"   \
+    &&  PROMPT+="%K{black}"  \
+    &&  PROMPT+="%B"         \
+    &&  PROMPT+="%M"         \
+    &&  PROMPT+="%b"         \
+    &&  PROMPT+=" "
 
-# directory
-PROMPT+="%k"
-PROMPT+="%F{blue}"
-PROMPT+="%B"
-PROMPT+=" %~ "
+  # directory
+  PROMPT+="%k"
 
-PROMPT+='%b%k%f'
+  if [ -r ${PWD} ] && [ -w ${PWD} ]; then
+    PROMPT+="%F{blue}"
+  else
+    PROMPT+="%F{red}"
+  fi
 
-# end
-PROMPT+="%F{cyan}"
-PROMPT+=" ❱ "
+  PROMPT+="%B"
+  PROMPT+=" %~"
+  PROMPT+='%b%k%f'
 
-# clear
-PROMPT+="%b%f%k"
+  # end
+  PROMPT+="%F{cyan}"
+  PROMPT+=" ❱ "
 
-# ▶▷ ▸▹ ►▻
-#❬❭❮❯❨❩❪❫❰❱❲❳❴❵➡
+  # clear
+  PROMPT+="%b%f%k"
 
-#────────────────────────────────────────────────────────────
-# RIGHT
-#────────────────────────────────────────────────────────────
+  # ▶▷ ▸▹ ►▻
+  #❬❭❮❯❨❩❪❫❰❱❲❳❴❵➡
 
-# operating system
-[[ ! "$DISTRO" == "arch"* ]]   \
-&&  RPROMPT+="%F{black}"       \
-&&  RPROMPT+="${DISTRO} "
+  #────────────────────────────────────────────────────────────
+  # RIGHT
+  #────────────────────────────────────────────────────────────
 
-# exit status
-RPROMPT+="❬%?❭"
-RPROMPT+="${vcs_info_msg_0_}"
+  # operating system
+  [[ ! "$DISTRO" == "arch"* ]]   \
+    &&  RPROMPT+="%F{black}"       \
+    &&  RPROMPT+="${DISTRO} "
+
+  # exit status
+  RPROMPT+="❬%?❭"
+  RPROMPT+="${vcs_info_msg_0_}"
+}
+
 
 #────────────────────────────────────────────────────────────
 
