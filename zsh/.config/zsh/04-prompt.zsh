@@ -83,6 +83,7 @@ precmd() {
     &&  RPROMPT+="${DISTRO} "
 
   # exit status
+  RPROMPT+="%F{black}"
   RPROMPT+="❬%?❭"
 
   # minimalist git 
