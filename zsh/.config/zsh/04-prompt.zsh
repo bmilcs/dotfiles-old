@@ -25,16 +25,22 @@ PROMPT=""
 RPROMPT=""
 
 # user-based
-[[ ! $USER == bmilcs ]]   \
-  && PROMPT+="%F{magenta}" \
-  && PROMPT+="%n "
+[[ ! $USER == bmilcs ]]    \
+  && PROMPT+="%F{blue}"    \
+  && PROMPT+="%K{black}"   \
+  && PROMPT+=" %n@"        # user
 
 # ssh clients
 [[ -n "$SSH_CLIENT" ]]     \
-  &&  PROMPT+="%F{blue}" \
-  &&  PROMPT+="%M"
+  &&  PROMPT+="%F{blue}"   \
+  &&  PROMPT+="%K{black}"  \
+  &&  PROMPT+="%B"         \
+  &&  PROMPT+="%M"         \
+  &&  PROMPT+="%b"         \
+  &&  PROMPT+=" "
 
 # directory
+PROMPT+="%k"
 PROMPT+="%F{blue}"
 PROMPT+="%B"
 PROMPT+=" %~ "
