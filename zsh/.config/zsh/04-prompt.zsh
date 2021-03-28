@@ -9,8 +9,6 @@
 . ~/bin/sys/dotfile_logger
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
 
-unset pstatus
-
 # load version control information
 autoload -Uz vcs_info
 precmd() { vcs_info }
@@ -20,16 +18,17 @@ zstyle ':vcs_info:git:*' formats '%b'
  
 # set up the prompt (with git branch name)
 setopt PROMPT_SUBST
-PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+# PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
 precmd() {
   # initialize
   PROMPT=""
   RPROMPT=""
+  pstatus=0
 
   # user-based
   [[ ! $USER == bmilcs ]]    \
-    && pstatus+=1            \
+    && pstatus=1             \
     && PROMPT+="%F{blue}"    \
     && PROMPT+="%K{black}"   \
     && PROMPT+=" %n@"        # user
@@ -39,7 +38,7 @@ precmd() {
     && PROMPT+="%F{blue}"     \
     && PROMPT+="%K{black}"    \
     && PROMPT+="%B"           \
-    && if [[ -z $pstatus ]]   \
+    && if [[ $pstatus == 0 ]] \
     && then PROMPT+=" "; fi   \
     && PROMPT+="%M"           \
     && PROMPT+="%b"           \

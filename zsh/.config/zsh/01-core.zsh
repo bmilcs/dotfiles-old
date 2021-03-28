@@ -200,10 +200,10 @@ fi
 #────────────────────────────────────────────────────────────
 setopt prompt_subst
 #RPROMPT=\$vcs_info_msg_0_
-RPROMPT=\$vcs_info_msg_0_'%# '
-zstyle ':vcs_info:git:*' formats '%b'
-autoload -Uz vcs_info
-#precmd_vcs_info() { vcs_info }
+# RPROMPT=\$vcs_info_msg_0_'%# '
+# zstyle ':vcs_info:git:*' formats '%b'
+# autoload -Uz vcs_info
+# #precmd_vcs_info() { vcs_info }
 
 #────────────────────────────────────────────────────────────
 # KEYBINDINGS
