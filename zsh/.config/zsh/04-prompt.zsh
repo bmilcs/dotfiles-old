@@ -45,7 +45,7 @@ precmd() {
     && PROMPT+=" "
 
   # directory
-  PROMPT+="%k"
+  PROMPT+="%k%b%f"
 
   if [ -r ${PWD} ] && [ -w ${PWD} ]; then
     PROMPT+="%F{blue}"
@@ -53,7 +53,6 @@ precmd() {
     PROMPT+="%F{red}"
   fi
 
-  PROMPT+="%B"
   [ -n $pstatus ] && PROMPT+=" "
   PROMPT+="%~"
   PROMPT+='%b%k%f'
