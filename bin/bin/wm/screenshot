@@ -7,36 +7,54 @@
 #                 SCREENSHOT SCRIPT [./screenshot]
 #────────────────────────────────────────────────────────────
 
-up=0
+source _bm
 
-[[ ! $2 == "" ]] && up=1
+set -x 
+unset up
+
+[[ $# -gt 1 ]] && up=1
 
 if mount | grep /all/bm > /dev/null; then
-  f=/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+  f="/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
-  f=~/img/$(date +%Y-%m-%d_%H-%m-%s).png
+  f="$HOME/img/$(date +%Y-%m-%d_%H-%m-%s).png"
 fi
 
 maimsel() {
   maim -s "$f"
-  [[ $up == 1 ]] && upl "$f" || xclip -sel clip -t image/png "$f"
+  if [[ -n $up ]]; then 
+    upl "$f"
+  else
+    xclip -sel clip -t image/png "$f"
+  fi
+  _ns "$f" "selection"
 }
 
 maimwin() {
-  set -x 
-  maim -i "$(xdotool getactivewindow) $f"
-  [[ $up == 1 ]] && upl "$f" || xclip -sel clip -t image/png "$f"
-  set +x
+  maim -i "$(xdotool getactivewindow)" "$f"
+  if [[ -n $up ]]; then
+    upl "$f"
+  else 
+    xclip -sel clip -t image/png "$f"
+  fi
+  _ns "$f" "window"
 }
 
 maimall() {
   maim "$f"
-  [[ $up == 1 ]] && upl "$f" || xclip -sel clip -t image/png "$f"
+  if [[ -n $up ]]; then 
+    upl "$f"
+  else 
+    xclip -sel clip -t image/png "$f"
+  fi
+  _ns "$f" "desktop"
 }
 
 [ "$1" == all ] && maimall
 [ "$1" == win ] && maimwin
 [ "$1" == sel ] && maimsel
 
-notify-send -i "$f" screenshot taken
+set +x
+
+_s
 exit 0
