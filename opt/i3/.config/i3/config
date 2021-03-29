@@ -55,7 +55,8 @@ set $win             Mod4
 floating_modifier    Mod4 
 
 # EXIT, RESTART, RELOAD
-bindcode    $win+$tilde          exec "xrdb -merge ~/.Xresources";exec ". ~/.config/polybar/launch.sh";restart
+bindcode    $win+$tilde          exec "xrdb -merge ~/.Xresources";restart
+bindcode    $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
 bindcode    $win+$ctrl+$tilde    exec ". ~/.config/polybar/launch.sh";restart;exec notify-send "hi"
 bindcode    $win+$shift+$tilde   exec notify-send "hotkey not configured"
 bindcode    $win+$alt+$tilde     exec "i3-msg exit"
@@ -70,11 +71,11 @@ bindsym XF86AudioNext         exec --no-startup-id    mpc next
 
 # SCREENSHOTS
 bindsym Print                 exec --no-startup-id    screenshot sel
+bindsym $shift+Print          exec --no-startup-id    screenshot win
 bindsym $ctrl+Print           exec --no-startup-id    screenshot all
-bindsym $alt+Print            exec --no-startup-id    screenshot win
 bindsym Pause                 exec --no-startup-id    screenshot sel up
+bindsym $shift+Pause          exec --no-startup-id    screenshot win up
 bindsym $ctrl+Pause           exec --no-startup-id    screenshot all up
-bindsym $alt+Pause            exec --no-startup-id    screenshot win up
 
 # TERMINAL
 bindsym $win+Return           exec --no-startup-id    alacritty
