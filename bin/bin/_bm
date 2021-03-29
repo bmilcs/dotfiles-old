@@ -201,39 +201,75 @@ _ec() { color="$CYN";   _ee "$*"; }
 #────────────────────────────────────────────────────────────
 
 _n() {
+if [[ "$#" -gt 1 ]]; then
   notify-send \
-    --category="bmnormal" \
-    --urgency="low" \
-    --icon="pan-start-symbolic" \
+    --category="bmnormal"     \
+    --urgency="low"           \
+    --icon="$1"               \
     "$(basename $0) [normal]" \
+    "$2"
+else
+  notify-send \
+    --category="bmnormal"       \
+    --urgency="low"             \
+    --icon="pan-start-symbolic" \
+    "$(basename $0) [normal]"   \
     "$1"
+fi
 }
 
 _nw() {
-  notify-send \
-    --category="bmwarning" \
-    --urgency="low" \
-    --icon="mail-mark-junk-symbolic" \
+if [[ "$#" -gt 1 ]]; then
+  notify-send                  \
+    --category="bmwarning"     \
+    --urgency="low"            \
+    --icon="$1"                \
     "$(basename $0) [warning]" \
+    "$2"
+else
+  notify-send                        \
+    --category="bmwarning"           \
+    --urgency="low"                  \
+    --icon="mail-mark-junk-symbolic" \
+    "$(basename $0) [warning]"       \
     "$1"
+fi
 }
 
 _ne() {
-  notify-send \
-    --category="bmerror" \
-    --urgency="low" \
-    --icon="window-close-symbolic" \
+if [[ "$#" -gt 1 ]]; then
+  notify-send                \
+    --category="bmerror"     \
+    --urgency="low"          \
+    --icon="$1"              \
     "$(basename $0) [error]" \
+    "$2"
+else
+  notify-send                      \
+    --category="bmerror"           \
+    --urgency="low"                \
+    --icon="window-close-symbolic" \
+    "$(basename $0) [error]"       \
     "$1"
+fi
 }
 
 _ns() {
-  notify-send \
-    --category="bmsuccess" \
-    --urgency="low" \
-    --icon="object-select-symbolic" \
+if [[ "$#" -gt 1 ]]; then
+  notify-send                  \
+    --category="bmsuccess"     \
+    --urgency="low"            \
+    --icon="$1"                \
     "$(basename $0) [success]" \
+    "$2"
+else
+  notify-send                       \
+    --category="bmsuccess"          \
+    --urgency="low"                 \
+    --icon="object-select-symbolic" \
+    "$(basename $0) [success]"      \
     "$1"
+fi
 }
 
 #echo some text
