@@ -14,6 +14,7 @@
 - email server: postfix+dovecot+spamassassin
 
 [ arch ]
+- fix notification functions w/ 1 arg
 - security pop-up keybind (req https)
 - i3: binding: selection copy/paste
 - zsh: prompt, minimal
