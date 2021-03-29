@@ -68,8 +68,8 @@ export BAK=$HOME/.backup
 #   marker             Multi-select marker
 #   spinner             Streaming input indicator
 
-export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||
-cat {} || tree -C {}) 2> /dev/null | head -200'"
+#export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||
+#cat {} || tree -C {}) 2> /dev/null | head -200'"
 # options
 export FZF_DEFAULT_OPTS="
   --height 90%
@@ -81,7 +81,7 @@ export FZF_DEFAULT_OPTS="
   --color fg+:#81a1c1
   --color hl:#d8dee9
   --color hl+:#eceff4
-  --color preview-fg:#2e3440
+  --color preview-fg:#d8dee9
   --color info:#4c566a
   --color header:#81a1c1
 
@@ -96,7 +96,7 @@ export FZF_DEFAULT_OPTS="
   --color pointer:#eceff4
   --color marker:#88c0d0
   --color spinner:#b48ead
-  --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} \
+  --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} \
     || tree -C {}) 2> /dev/null | head -200'
   "
 # commands

@@ -6,14 +6,10 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 YAY INSTALLER [./yi]
-#────────────────────────────────────────────────────────────
 
 source _bm
 _t yay install 
 
-
-yay -Slq \
-  | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \
-  | awk "{print \$2}")' \
-  | xargs -ro yay -S
-
+yay -Slq | fzf --multi \
+  --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' \
+  | xargs -ro sudo yay -S
