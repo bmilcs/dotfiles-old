@@ -248,7 +248,7 @@ for_window    [instance="nvidia-settings"]  floating enable, focus, resize set 1
 
 # FLOATING: CUSTOM
 for_window    [instance="i3debug"]          floating enable, resize set 515 309, move absolute position 12 1118, border pixel 3
-for_window    [instance="i3pad"]            floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
+#for_window    [instance="i3pad"]            floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
 for_window    [instance="i3readme"]         floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
 for_window    [instance="i3spy"]            floating enable, resize set 696 50, move absolute position 457 11, border pixel 3
 #for_window    [instance="ncmpcpp"]          floating enable, resize set 492 1065, move absolute position -2 142, border pixel 3
@@ -256,7 +256,7 @@ for_window    [instance="i3spy"]            floating enable, resize set 696 50, 
 # WINDOW RULES VIA I3FLOATER
 for_window [instance="i3debug"] floating enable, resize set 536 355, move absolute position 14 1070, border pixel 3
 #for_window [instance="ncmpcpp"] floating enable, resize set 486 434, move absolute position 1 495, border pixel 3
-for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute position 3028 439, border pixel 3
+#for_window [instance="i3pad"] floating enable, resize set 414 568, move absolute position 3028 439, border pixel 3
 #for_window [instance="gitdirty"] floating enable, resize set 550 600, move absolute position 970 437, border pixel 3
 for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
 for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
@@ -264,6 +264,7 @@ for_window [instance="font-manager"] floating enable, resize set 1091 1302, move
 for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 1466 1218,   move absolute position 991 123,   border pixel 3
 for_window               [instance="gtk3-icon-browser"]    floating enable,   resize set 735 1343,   move absolute position 2441 73,   border pixel 3
 for_window               [instance="roficlone"]    floating enable,   resize set 800 600,   move absolute position 1320 437,   border pixel 3
-  for_window               [instance="ncmpcpp"]    floating enable,   resize set 708 1043,   move absolute position 4 198,   border pixel 3
-  for_window               [instance="ncmpcpp"]    floating enable,   resize set 730 1037,   move absolute position 0 205,   border pixel 3
-  for_window               [instance="picard"]    floating enable,   resize set 1716 1076,   move absolute position 812 199,   border pixel 3
+for_window               [instance="ncmpcpp"]    floating enable,   resize set 708 1043,   move absolute position 4 198,   border pixel 3
+for_window               [instance="ncmpcpp"]    floating enable,   resize set 730 1037,   move absolute position 0 205,   border pixel 3
+for_window               [instance="picard"]    floating enable,   resize set 1716 1076,   move absolute position 812 199,   border pixel 3
+for_window               [instance="i3pad"]    floating enable,   resize set 408 1212,   move absolute position 3031 142,   border pixel 3
