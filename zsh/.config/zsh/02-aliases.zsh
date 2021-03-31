@@ -65,8 +65,7 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yayc='yay -Sc --aur';compdef yaygg='yay'
   # arch specific
-  alias netr='sudo systemctl restart \ 
-    {systemd-networkd.service,systemd-resolved.service,iwd.service}'
+  alias netr="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
@@ -85,6 +84,10 @@ fi
 #────────────────────────────────────────────────────────────
 # APPS
 #────────────────────────────────────────────────────────────
+
+# ranger
+alias ranger='ranger --choosedir=$HOME/.rangerdir; \
+  LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # xev keycodes
 alias kc='xev | grep -o "keycode[^\)]\+"'
@@ -138,12 +141,10 @@ alias lll='command ls -l \
 alias llll='command ls -C \
   --color=auto --group-directories-first --time-style='+%D %H:%M'' 
   compdef llll="ls"
-alias lst='command ls \
-  --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef lst="ls"
+
+alias lst="l -tr" ; compdef lst="ls"
 
 alias lsg="ll | grep"          # search in dir
-alias lst="ll -tr"             # sort time/reverse
 alias lsd="ll -d */"           # ls: dirs only
 
 #────────────────────────────────────────────────────────────
