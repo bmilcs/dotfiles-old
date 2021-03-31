@@ -6,14 +6,15 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #               GLOBAL BOOTSTRAP
-
+#────────────────────────────────────────────────────────────
 # audio
+#────────────────────────────────────────────────────────────
 pgrep -f pulseaudio || pulseaudio --start &
 sleep 0.3
 
-#
-# INPUT
-#
+#────────────────────────────────────────────────────────────
+# input
+#────────────────────────────────────────────────────────────
 
 # keyboard: repeat rate
 xset r rate 300 50
@@ -27,9 +28,9 @@ pgrep -f xcape || xcape -e 'Control_L=Escape'
 # keyboard: disable caps altogether
 xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock
 
-#
-# SYSTEM
-#
+#────────────────────────────────────────────────────────────
+# system
+#────────────────────────────────────────────────────────────
 
 # usb automount (TODO FIX)
 pgrep -f udiskie || udiskie &
@@ -43,9 +44,9 @@ pgrep -f nitrogen || nitrogen --restore &
 # mouse: autohide
 pgrep -f unclutter || unclutter &
 
-#
-# SOFTWARE
-#
+#────────────────────────────────────────────────────────────
+# software
+#────────────────────────────────────────────────────────────
 
 # music
 [ ! -s ~/.config/mpd/pid ] && mpd
@@ -63,12 +64,17 @@ pgrep -f android-messages || android-messages-desktop &
 pgrep -f discord || discord &
 
 # polybar (giving apps a second to load)
-# sleep 1
 pgrep -f polybar || sh "$HOME/.config/polybar/launch.sh" &
 
-#
-# GRAVEYARD
-#
+# kde connect
+pgrep -f kdeconnectd || /usr/lib/kdeconnectd
+
+# kde connect
+pgrep -f kdeconnect-indicator || kdeconnect-indicator
+
+#────────────────────────────────────────────────────────────
+# graveyard
+#────────────────────────────────────────────────────────────
 
 # pgrep -f pulseaudio || pulseaudio --start &
 # pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
