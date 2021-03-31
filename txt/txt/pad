@@ -1,10 +1,22 @@
+PLEXXX
+PLEXXX
+
 [house]
-- storm door knob
-- crown/base
-- make room: doors/windows
+- install doors & hardware
+  - install door casing
+  - uninstall doors/hardware
+- paint prime
+- install windows
+
+[wtb]
+- 2-cycle 40:1 gas mix
+- window stool!
+- shorts
+- boxer briefs
+- yubikey
 
 [homelab]
-- *** app.git-simple-login
+- app.git-simple-login
       domain email forwarding!
 - arch>ansible & homelab
 - remote docker dev (rsync compose?)
