@@ -157,7 +157,7 @@ if [[ ${DISTRO} == arch* ]]; then
     || (sudo pacman -Syyy "${pkgs[@]}" && _o installed "${pkgs[@]}")
   pacman -Qi "${pacpkg[@]}" > /dev/null 2>&1 \
     || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
-elif [[ ${DISTRO} =~ ^(rasp|deb)ian* ]]; then
+elif [[ ${DISTRO} =~ ^(rasp|deb)ian*|ubuntu* ]]; then
   dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
   dpkg -s "${aptpkg[@]}" > /dev/null 2>&1 \
