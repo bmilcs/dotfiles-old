@@ -103,7 +103,7 @@ alias tls='t ls'          ; compdef tls='tmux'
 alias ncdu='ncdu --exclude /all --exclude /backup '
 
 # wallpaper
-alias nitrogen='nitrogen ~/wall'
+alias nitro='nitrogen ~/wall'
 alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 
 # email
@@ -180,8 +180,8 @@ alias ...="cd ../.. && c && l"
 #────────────────────────────────────────────────────────────
 
 # mount | umount
-alias mount="sudo mount" ; compdef mount="mount"
-alias umount="sudo umount" ; compdef umount="umount"
+alias mav="sudo mount" ; compdef mount="mount"
+alias umav="sudo umount" ; compdef umount="umount"
 
 # fstab
 alias fstab="sudo vim /etc/fstab"
@@ -323,6 +323,9 @@ if where docker-compose > /dev/null; then
 
   # nuke ALL: containers | volumes | images
   alias dcnukeall="dcnukecv && dcrmai"
+
+  # beets
+  alias beetsdl="docker exec -u abc -it beets /bin/bash -c 'beet import /downloads/usenet/complete/music'"
 
 fi
 
