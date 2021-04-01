@@ -17,7 +17,7 @@ unset up
 if mount | grep /all/bm > /dev/null; then
   f="/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
-  f="$HOME/img/$(date +%Y-%m-%d_%H-%m-%s).png"
+  f="$HOME/img/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 fi
 
 maimsel() {
