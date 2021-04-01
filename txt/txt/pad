@@ -26,6 +26,7 @@ PLEXXX
 - email server: postfix+dovecot+spamassassin
 
 [ arch ]
+- sign up for 
 - fix notification functions w/ 1 arg
 - security pop-up keybind (req https)
 - i3: binding: selection copy/paste
