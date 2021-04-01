@@ -15,6 +15,31 @@ PLEXXX
 - boxer briefs
 - yubikey
 
+[ arch ]
+- fix freenas to zsh
+- sign up for 
+  - fix notification functions w/ 1 arg
+- security pop-up keybind (req https)
+  - i3: binding: selection copy/paste
+  - zsh: prompt, minimal
+  - search commands w/ examples
+  - cut
+  - awk
+  - xargs
+  - scripts: find > exclude nfs
+  - dir-stack > fzf
+  - fzf [zsh/vim] custom shortcuts
+
+  [ vim ]
+  - auto-titlebars --- hi ---
+
+  [ ncmpcpp ]
+  - autosave playlist
+  - hotkeys
+
+  [ rofi ]
+  - power menu
+
 [homelab]
 - app.git-simple-login
       domain email forwarding!
@@ -24,30 +49,6 @@ PLEXXX
   - simplify, harden
 - bmilcs.com > it's own VM
 - email server: postfix+dovecot+spamassassin
-
-[ arch ]
-- sign up for 
-- fix notification functions w/ 1 arg
-- security pop-up keybind (req https)
-- i3: binding: selection copy/paste
-- zsh: prompt, minimal
-- search commands w/ examples
-  - cut
-  - awk
-  - xargs
-- scripts: find > exclude nfs
-- dir-stack > fzf
-- fzf [zsh/vim] custom shortcuts
-
-[ vim ]
-- auto-titlebars --- hi ---
-
-[ ncmpcpp ]
-- autosave playlist
-- hotkeys
-
-[ rofi ]
-- power menu
 
 [ django/python ]
   https://docs.djangoproject.com/en/3.1/intro/tutorial01/
