@@ -59,11 +59,11 @@ _o class: \""$class"\"
 _s 
 
 line="\
-  for_window               [instance=\""$class"\"]  \
-  floating enable, \
-  resize set $w $h, \
-  move absolute position $x $y, \
-  border pixel 3"
+for_window [instance=\""$class"\"] \
+floating enable, \
+resize set $w $h, \
+move absolute position $x $y, \
+border pixel 3"
 
 echo $line
 
