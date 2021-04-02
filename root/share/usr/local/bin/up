@@ -10,12 +10,12 @@
 source _bm
 source _distro
 
-if [[ $DISTRO = arch* ]]; then
+if [[ $DISTRO == arch* ]]; then
 
   # ARCH
   _a pacman/aur && yay -Syyyuuu && _s
 
-elif [[ $DISTRO = debian* ]]; then
+elif [[ $DISTRO =~ (rasp|deb)ian*|ubuntu* ]]; then
 
   # DEBIAN
   _a apt update && sudo apt update -y && _s
