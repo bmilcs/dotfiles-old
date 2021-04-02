@@ -74,8 +74,8 @@ bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
 bindsym XF86AudioStop         exec --no-startup-id    mpc stop
 bindsym XF86AudioNext         exec --no-startup-id    mpc next
 
-# SCREENSHOTS
 bindsym Print                 exec --no-startup-id    screenshot sel
+# SCREENSHOTS
 bindsym $ctrl+Print           exec --no-startup-id    screenshot win
 bindsym $shift+Print          exec --no-startup-id    screenshot all
 bindsym Pause                 exec --no-startup-id    screenshot sel up
@@ -139,9 +139,9 @@ default_border            pixel 2
 default_floating_border   pixel 5
 
 # GAPS
-smart_gaps   on
 gaps         inner 10
 gaps         outer 0
+smart_gaps   on
 
 # COLOR VARS
 set $black1   #2E3440
@@ -259,7 +259,6 @@ for_window    [instance="i3spy"]            floating enable, resize set 696 50, 
 for_window [instance="i3debug"] floating enable, resize set 536 355, move absolute position 14 1070, border pixel 3
 for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
 for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
-#for_window [instance="font-manager"] floating enable, resize set 1091 1302, move absolute position 19 99, border pixel 3
 for_window [instance="gtk3-icon-browser"] floating enable, resize set 1466 1218, move absolute position 991 123, border pixel 3
 for_window [instance="gtk3-icon-browser"] floating enable, resize set 735 1343, move absolute position 2441 73, border pixel 3
 for_window [instance="roficlone"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
