@@ -10,6 +10,12 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/03-functions.zsh'
 
+function d() {
+  home=$(echo $HOME | sed -e 's/[\/]/\\\//g')
+  cd $(dirs -v | sed 's/^[0-9 \t]*//' | fzf | sed 's/^[^\/]/'$home'/')
+}
+
+
 
 compdef vm="where"
 

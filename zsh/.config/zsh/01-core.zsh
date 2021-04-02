@@ -87,9 +87,7 @@ setopt pushdminus             # swaps + and - (dir stack)
 setopt pushdsilent            # don't echo each pushd (dir stack)
 setopt pushdtohome            # no arg =  ~ (dir stack)
 setopt pushd_ignore_dups      # no mulitples (dir stack)
-alias d='dirs -v'             # d list dirstack, 1-9<enter> cds into it
-for index ({1..15}) alias "$index"="cd +${index}"; unset index
-
+# d() function                # fzf dir stack
 
 # completion
 
@@ -270,4 +268,4 @@ add-zsh-hook -Uz precmd rehash_precmd
 # add help
 autoload -Uz run-help
 (( ${+aliases[run-help]} )) && unalias run-help
-alias help=run-help
+alias zhelp=run-help
