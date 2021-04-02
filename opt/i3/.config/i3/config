@@ -9,7 +9,7 @@
 #────────────────────────────────────────────────────────────
 
 # LAUNCH FIREFOX
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/env firefox'
+exec --no-startup-id     i3-msg 'workspace 2; exec /usr/bin/env firefox'
 
 # FLOATER
 bindsym $win+i           exec --no-startup-id    i3floater
@@ -42,6 +42,11 @@ bindsym $win+e           exec --no-startup-id    rofibin
 # ROFI: DMENU
 bindsym $win+r           exec --no-startup-id    rofiinput
 
+# FZF
+
+# FZF: TEXT
+bindsym $win+t           exec --no-startup-id    fzftxt
+
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS
 #────────────────────────────────────────────────────────────
@@ -56,11 +61,10 @@ set $win             Mod4
 floating_modifier    Mod4 
 
 # EXIT, RESTART, RELOAD
-bindcode    $win+$tilde          exec "xrdb -merge ~/.Xresources";restart
-bindcode    $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
-bindcode    $win+$ctrl+$tilde    exec ". ~/.config/polybar/launch.sh";restart;exec notify-send "hi"
-bindcode    $win+$shift+$tilde   exec notify-send "hotkey not configured"
-bindcode    $win+$alt+$tilde     exec "i3-msg exit"
+bindcode $win+$tilde          exec "xrdb -merge ~/.Xresources";restart
+bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
+bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
+bindcode $win+$alt+$tilde     exec "i3-msg exit"
 
 # AUDIO 
 bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -72,11 +76,11 @@ bindsym XF86AudioNext         exec --no-startup-id    mpc next
 
 # SCREENSHOTS
 bindsym Print                 exec --no-startup-id    screenshot sel
-bindsym $shift+Print          exec --no-startup-id    screenshot win
-bindsym $ctrl+Print           exec --no-startup-id    screenshot all
+bindsym $ctrl+Print           exec --no-startup-id    screenshot win
+bindsym $shift+Print          exec --no-startup-id    screenshot all
 bindsym Pause                 exec --no-startup-id    screenshot sel up
-bindsym $shift+Pause          exec --no-startup-id    screenshot win up
-bindsym $ctrl+Pause           exec --no-startup-id    screenshot all up
+bindsym $ctrl+Pause           exec --no-startup-id    screenshot win up
+bindsym $shift+Pause          exec --no-startup-id    screenshot all up
 
 # TERMINAL
 bindsym $win+Return           exec --no-startup-id    alacritty
@@ -99,16 +103,16 @@ set $ws8    "8"
 set $ws9    "9"
 set $ws10   "10"
 
-bindsym $win+1        workspace number $ws1; focus tiling
-bindsym $win+2        workspace number $ws2; focus tiling 
-bindsym $win+3        workspace number $ws3; focus tiling
-bindsym $win+4        workspace number $ws4; focus tiling
-bindsym $win+5        workspace number $ws5; focus tiling
-bindsym $win+6        workspace number $ws6; focus tiling
-bindsym $win+7        workspace number $ws7; focus tiling
-bindsym $win+8        workspace number $ws8; focus tiling
-bindsym $win+9        workspace number $ws9; focus tiling
-bindsym $win+0        workspace number $ws10; focus tiling
+bindsym $win+1        workspace number $ws1;     focus tiling
+bindsym $win+2        workspace number $ws2;     focus tiling 
+bindsym $win+3        workspace number $ws3;     focus tiling
+bindsym $win+4        workspace number $ws4;     focus tiling
+bindsym $win+5        workspace number $ws5;     focus tiling
+bindsym $win+6        workspace number $ws6;     focus tiling
+bindsym $win+7        workspace number $ws7;     focus tiling
+bindsym $win+8        workspace number $ws8;     focus tiling
+bindsym $win+9        workspace number $ws9;     focus tiling
+bindsym $win+0        workspace number $ws10;    focus tiling
 
 bindsym $win+$alt+1   move container to workspace number $ws1
 bindsym $win+$alt+2   move container to workspace number $ws2
