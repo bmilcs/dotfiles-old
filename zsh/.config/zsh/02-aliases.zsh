@@ -86,8 +86,9 @@ fi
 #────────────────────────────────────────────────────────────
 
 # ranger
-alias ranger='ranger --choosedir=$HOME/.rangerdir; \
-  LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ranger='ranger --choosedir=$HOME/.config/ranger/sdir; \
+  LASTDIR=`cat $HOME/.config/ranger/sdir`; cd "$LASTDIR"'
+alias rr='ranger'
 
 # xev keycodes
 alias kc='xev | grep -o "keycode[^\)]\+"'
