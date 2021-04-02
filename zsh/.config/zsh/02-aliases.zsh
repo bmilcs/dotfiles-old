@@ -144,8 +144,8 @@ alias llll='command ls -C \
 
 alias lst="l -tr" ; compdef lst="ls"
 
-alias lsg="ll | grep"          # search in dir
-alias lsd="ll -d */"           # ls: dirs only
+alias lsg="l | grep"          # search in dir
+alias lsd="l -d */"           # ls: dirs only
 
 #────────────────────────────────────────────────────────────
 # STOCK ENHANCEMENTS
