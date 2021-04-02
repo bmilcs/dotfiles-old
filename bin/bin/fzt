@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 ROFI MENU FOR ~/TXT [./rofitext]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+sel="$(fd . ~/txt | fzf | xargs -I url firefox -new-tab url )" #-dmenu 
+
+# avoid excessive text in rofi menu by adding this afterward
+[[ -n $sel ]] && sel=~/txt/$sel
+
+if [[ -f "$sel" ]]; then
+  alacritty -e i3nvim "$sel" &
+elif [[ -n $sel ]]; then
+  dunstify "$sel No such file"
+fi
