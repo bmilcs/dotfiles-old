@@ -49,33 +49,22 @@ export BAK=$HOME/.backup
 #────────────────────────────────────────────────────────────
 # FZF
 #────────────────────────────────────────────────────────────
-#   fg             Text
-#   fg+             Text (current line)
-#   hl             Highlighted substrings
-#   hl+             Highlighted substrings (current line)
-#   preview-fg             Preview window text
-#   info             Info
-#   header             Header
-
-#   bg             Background
-#   bg+             Background (current line)
-#   preview-bg             Preview window background
-#   gutter             Gutter on the left (defaults to bg+)
-
-#   border             Border of the preview window and horizontal separators (--border)
-#   prompt             Prompt
-#   pointer             Pointer to the current line
-#   marker             Multi-select marker
-#   spinner             Streaming input indicator
-
 #export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||
 #cat {} || tree -C {}) 2> /dev/null | head -200'"
 # options
 export FZF_DEFAULT_OPTS="
-  --height 90%
-  --layout reverse
-  --border
-  --info=inline
+
+  --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} \
+    || tree -C {}) 2> /dev/null | head -200'
+
+  --preview-window=right:sharp:wrap
+  --height 97%
+  --reverse
+  --info=hidden
+  --margin=0
+  --padding=0
+  --marker='>'
+  --pointer='-'
 
   --color fg:#5e81ac
   --color fg+:#81a1c1
@@ -96,14 +85,12 @@ export FZF_DEFAULT_OPTS="
   --color pointer:#eceff4
   --color marker:#88c0d0
   --color spinner:#b48ead
-  --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} \
-    || tree -C {}) 2> /dev/null | head -200'
   "
+
 # commands
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
-
 
 # export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 # export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
@@ -120,7 +107,6 @@ _fzf_compgen_dir() {
 _fzf_comprun() {
   local command=$1
   shift
-
   case "$command" in
     cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
     export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
@@ -128,6 +114,23 @@ _fzf_comprun() {
     *)            fzf "$@" ;;
   esac
 }
+
+#   fg             Text
+#   fg+             Text (current line)
+#   hl             Highlighted substrings
+#   hl+             Highlighted substrings (current line)
+#   preview-fg             Preview window text
+#   info             Info
+#   header             Header
+#   bg             Background
+#   bg+             Background (current line)
+#   preview-bg             Preview window background
+#   gutter             Gutter on the left (defaults to bg+)
+#   border             Border of the preview window and horizontal separators (--border)
+#   prompt             Prompt
+#   pointer             Pointer to the current line
+#   marker             Multi-select marker
+#   spinner             Streaming input indicator
 
 #────────────────────────────────────────────────────────────
 # SOFTWARE
@@ -137,6 +140,7 @@ _fzf_comprun() {
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
+
 [[ $HOST == bm* ]] && export TERMINAL=alacritty
 
 # firefox [webrender compositor test]
@@ -200,9 +204,12 @@ LC_ALL="en_US.UTF-8"
 # SYSTEM MODS
 #────────────────────────────────────────────────────────────
 
-# multi-core build
-export MAKEFLAGS="-j$(nproc)"
+if [[ $DISTRO == arch* ]]; then
 
-# build dir to ram
-export BUILDDIR=/tmp/makepkg makepkg
+  # multi-core build
+  export MAKEFLAGS="-j$(nproc)"
 
+  # build dir to ram
+  export BUILDDIR=/tmp/makepkg makepkg
+
+fi
