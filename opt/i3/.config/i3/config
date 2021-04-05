@@ -135,7 +135,7 @@ font Iosevka 12
 # BORDERS
 smart_borders             on
 hide_edge_borders         none
-default_border            pixel 2
+default_border            pixel 3
 default_floating_border   pixel 5
 
 # GAPS
