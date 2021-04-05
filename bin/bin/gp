@@ -8,7 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_a dotfiles: local repo
+_a dotfiles: local
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
@@ -19,20 +19,16 @@ gremote="$($g remote update 2> /dev/null)"
 if [[ ! -z "$gstatus" ]] ; then
   _s clean
 
-  _a dotfiles: remote repo
+  _a dotfiles: remote
   gstatus=$($g status -uno 2> /dev/null)
 
   if [[ "$gstatus" == *"ahead"* ]]; then
-    _w "ahead of origin/main"
-    _a pushing changes
-    _o updating remote dotfiles repo "\n"
+    _a "pushing updates (ahead)"
     $g push \
     && echo && _s
   elif [[ "$gstatus" == *"behind"* ]]; then
-    _w "behind origin/main"
-    _a "git pull"
-    _o "updating local dotfiles \n"
-   $g pull \
+    _a "pulling updates (behind)"
+    $g pull \
     && echo && _s
   else
     _s "up-to-date": no action necessary
