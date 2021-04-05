@@ -15,10 +15,6 @@ g="git --git-dir=$D/.git --work-tree=$D"
 gstatus="$($g status | grep "clean")"
 
 gremote="$($g remote update 2> /dev/null)"
-echo "$gremote"
-
-_a local repo
-_o health check
 
 if [[ ! -z "$gstatus" ]] ; then
   _s gstatus: no action necessary
