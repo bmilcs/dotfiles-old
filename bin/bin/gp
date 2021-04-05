@@ -17,26 +17,35 @@ gstatus="$($g status | grep "clean")"
 gremote="$($g remote update 2> /dev/null)"
 
 if [[ ! -z "$gstatus" ]] ; then
+
   _s clean
 
   _a dotfiles: remote
   gstatus=$($g status -uno 2> /dev/null)
 
   if [[ "$gstatus" == *"ahead"* ]]; then
+
     _a "pushing updates (ahead)"
     $g push \
     && echo && _s
+
   elif [[ "$gstatus" == *"behind"* ]]; then
+
     _a "pulling updates (behind)"
     $g pull \
     && echo && _s
+
   else
     _s "up-to-date": no action necessary
   fi
+
 else
+  
   _wb "dirty: unable to proceed"
   _ay "commit:"
   $g status -s
-  echo
-  _s done "\n"
+
 fi
+
+echo
+_s done "\n"
