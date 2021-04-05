@@ -37,6 +37,11 @@ if [[ ! -z "$gstatus" ]] ; then
     _s "up-to-date": no action necessary
   fi
 
+elif [[ $gstatus == *"diverged"* ]]; then
+
+  _e "repo has ${B}diverged!"
+  _ay rebase required
+
 else
   
   _wb "dirty: unable to proceed"
