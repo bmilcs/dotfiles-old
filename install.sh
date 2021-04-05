@@ -42,12 +42,10 @@ cleanup() {
 
   _a clean-up time
   _w "content will be moved to $backup"
+
   mkdir -p "$backup"
-
   _f "backup: ~/.dotfiles"
-  mv ~/"{.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,\
-    .bashrc*,.zcompdump}" "$backup" 2> /dev/null
-
+  mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,.zcompdump} "$backup" 2> /dev/null
   _f "backup: old up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
 
