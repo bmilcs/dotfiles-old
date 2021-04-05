@@ -34,7 +34,7 @@ if [[ ! -z "$gstatus" ]] ; then
     $g pull \
 
   else
-    _s "up-to-date"
+    _f "up-to-date"
   fi
 
 elif [[ $gstatus == *"diverged"* ]]; then
