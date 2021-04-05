@@ -27,13 +27,11 @@ if [[ ! -z "$gstatus" ]] ; then
 
     _a "pushing updates (ahead)"
     $g push \
-    && echo && _s
 
   elif [[ "$gstatus" == *"behind"* ]]; then
 
     _a "pulling updates (behind)"
     $g pull \
-    && echo && _s
 
   else
     _s "up-to-date": no action necessary
