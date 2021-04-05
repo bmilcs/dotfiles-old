@@ -8,7 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_a dotfiles: local
+_a local: dotfiles
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
@@ -20,7 +20,7 @@ if [[ ! -z "$gstatus" ]] ; then
 
   _s clean
 
-  _a dotfiles: remote
+  _a remote dotfiles 
   gstatus=$($g status -uno 2> /dev/null)
 
   if [[ "$gstatus" == *"ahead"* ]]; then
@@ -34,7 +34,7 @@ if [[ ! -z "$gstatus" ]] ; then
     $g pull \
 
   else
-    _s "up-to-date": no action necessary
+    _s "up-to-date"
   fi
 
 elif [[ $gstatus == *"diverged"* ]]; then
@@ -43,8 +43,8 @@ elif [[ $gstatus == *"diverged"* ]]; then
   _ay rebase required
 
 else
-  
-  _wb "dirty: unable to proceed"
+
+  _wb "dirty!"
   _ay "commit:"
   $g status -s
 
