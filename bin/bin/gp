@@ -21,8 +21,6 @@ if [[ ! -z "$gstatus" ]] ; then
 
   _a remote repo
   _o "diff local & upstream dotfiles"
-  $g remote update > /dev/null 2>&1
-
   $g status -uno
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
