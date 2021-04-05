@@ -23,16 +23,13 @@ if [[ ! -z "$gstatus" ]] ; then
   _o "diff local & upstream dotfiles"
   gstatus=$($g status -uno 2> /dev/null)
 
-  echo "gggg status: " $gstatus
-
-  if [[ "$($g status -uno)" == *"ahead"* ]]; then
+  if [[ "$gstatus" == *"ahead"* ]]; then
     _w "ahead of origin/main"
     _a pushing changes
     _o updating remote dotfiles repo "\n"
-   $g push \
+    $g push \
     && echo && _s
-
-  elif [[ "$($g status -uno)" == *"behind"* ]]; then
+  elif [[ "$gstatus" == *"behind"* ]]; then
     _w "behind origin/main"
     _a "git pull"
     _o "updating local dotfiles \n"
