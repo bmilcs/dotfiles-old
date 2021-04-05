@@ -17,11 +17,13 @@ gstatus="$($g status | grep "clean")"
 gremote="$($g remote update 2> /dev/null)"
 
 if [[ ! -z "$gstatus" ]] ; then
-  _s gstatus: no action necessary
+  _s no action necessary
 
   _a remote repo
   _o "diff local & upstream dotfiles"
-  $g status -uno
+  gstatus=$($g status -uno 2> /dev/null)
+
+  echo "gggg status: " $gstatus
 
   if [[ "$($g status -uno)" == *"ahead"* ]]; then
     _w "ahead of origin/main"
