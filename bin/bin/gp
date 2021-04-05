@@ -8,7 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_t dotfile repo helper
+_a dotfile repo helper
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
