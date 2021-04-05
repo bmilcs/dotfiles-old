@@ -285,10 +285,10 @@ if where docker-compose > /dev/null; then
   alias swag="le"
 
   # docker-compose
-  alias dcup="cd ~/docker && docker-compose up -d";compdef dcs='docker-compose'
-  alias dcstop="cd ~/docker && docker-compose stop";compdef dcstop='docker-compose'
-  alias dcrestart="cd ~/docker && docker-compose restart";compdef dcrestart='docker-compose'
-  alias dcdown="cd ~/docker && docker-compose down";compdef dcdown='docker-compose'
+  alias dcup="cd ~/docker && docker-compose up -d" #;compdef dcs='docker'
+  alias dcstop="cd ~/docker && docker-compose stop" #;compdef dcstop='docker stop '
+  alias dcrestart="cd ~/docker && docker-compose restart" #;compdef dcrestart='docker restart '
+  alias dcdown="cd ~/docker && docker-compose down" #;compdef dcdown='docker down'
   alias dcinfo='docker system df'
 
   # list all dockers
