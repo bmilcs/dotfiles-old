@@ -8,19 +8,18 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_a dotfile repo helper
+_a dotfiles: local repo
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
-gstatus="$($g status | grep "clean")"
 
+gstatus="$($g status | grep "clean")"
 gremote="$($g remote update 2> /dev/null)"
 
 if [[ ! -z "$gstatus" ]] ; then
-  _s no action necessary
+  _s clean
 
-  _a remote repo
-  _o "diff local & upstream dotfiles"
+  _a dotfiles: remote repo
   gstatus=$($g status -uno 2> /dev/null)
 
   if [[ "$gstatus" == *"ahead"* ]]; then
