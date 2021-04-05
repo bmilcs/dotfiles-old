@@ -25,12 +25,12 @@ if [[ ! -z "$gstatus" ]] ; then
 
   if [[ "$gstatus" == *"ahead"* ]]; then
 
-    _a "pushing updates (ahead)"
+    _ic "pushing updates (ahead)"
     $g push \
 
   elif [[ "$gstatus" == *"behind"* ]]; then
 
-    _a "pulling updates (behind)"
+    _ic "pulling updates (behind)"
     $g pull \
 
   else
