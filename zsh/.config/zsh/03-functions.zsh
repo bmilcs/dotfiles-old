@@ -25,7 +25,7 @@ function gc() {
   }
 
 # git reset hard
-function grh() {
+function greset() {
   source _bm
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
   _t git reset hard
