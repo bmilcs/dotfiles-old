@@ -194,6 +194,34 @@ function man() {
 # needed for bin
 compdef vm="where"
 
+#────────────────────────────────────────────────────────────
+# FZF
+#────────────────────────────────────────────────────────────
+fzf_find_edit() {
+    local file=$(
+      fzf --query="$1" --no-multi --select-1 --exit-0 \
+          --preview 'bat --color=always --line-range :500 {}'
+      )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}
+
+alias ffe='fzf_find_edit'
+
+fzf_change_directory() {
+    local directory=$(
+      fd --type d | \
+      fzf --query="$1" --no-multi --select-1 --exit-0 \
+          --preview 'tree -C {} | head -100'
+      )
+    if [[ -n $directory ]]; then
+        cd "$directory"
+    fi
+}
+
+alias fcd='fzf_change_directory'
+
 
 #────────────────────────────────────────────────────────────
 #────────────────────────────────────────────────────────────
