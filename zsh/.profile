@@ -49,25 +49,24 @@ export BAK=$HOME/.backup
 #────────────────────────────────────────────────────────────
 # FZF
 #────────────────────────────────────────────────────────────
-#export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null ||
-#cat {} || tree -C {}) 2> /dev/null | head -200'"
-# options
+
 export FZF_DEFAULT_OPTS="
 
   --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} \
     || tree -C {}) 2> /dev/null | head -200'
 
-  --preview-window=right:sharp:wrap
+  --keep-right
+  --preview-window=right:sharp 
   --height 97%
   --reverse
   --info=hidden
   --margin=0
   --padding=0
-  --marker='>'
+  --marker='#'
   --pointer='-'
 
-  --color fg:#5e81ac
-  --color fg+:#81a1c1
+  --color fg:#81a1c1
+  --color fg+:#88c0d0
   --color hl:#d8dee9
   --color hl+:#eceff4
   --color preview-fg:#d8dee9
@@ -76,14 +75,13 @@ export FZF_DEFAULT_OPTS="
 
   --color bg:#2e3440
   --color bg+:#2e3440
-  --color preview-bg:#2e3440
-  --color border:#3b4252
+  --color preview-bg:#3b4252
+  --color border:#81a1c1
   --color gutter:#2e3440
 
   --color prompt:#5e81ac
-
   --color pointer:#eceff4
-  --color marker:#88c0d0
+  --color marker:#ebcb8b
   --color spinner:#b48ead
   "
 
