@@ -255,6 +255,7 @@ alias pid="cat /etc/passwd"
 # SSH SHORTCUTS
 #────────────────────────────────────────────────────────────
 alias doc="ssh docker"
+alias plx="ssh plex"
 alias ans="ssh bmdev@ansible"
 
 #############################################################
