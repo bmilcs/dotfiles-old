@@ -35,7 +35,10 @@ function grsh() {
   _a git diff
   git diff
   echo
-  _ask "do you really want to reset --hard? (all changes will be lost" && git reset --hard && git clean -fdx
+  _ask "do you really want to reset --hard? (all changes will be lost)" \
+    && git reset --hard \
+    && git clean -fdx \
+    && gp
   }
 
 # add & commit all: lazy mode
