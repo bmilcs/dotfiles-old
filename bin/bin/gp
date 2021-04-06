@@ -13,15 +13,18 @@ _a local: dotfiles
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
 
-gstatus="$($g status | grep "clean")"
+gclean="$($g status | grep "clean")"
+gstatus=$($g status -uno 2> /dev/null)
 gremote="$($g remote update 2> /dev/null)"
 
-if [[ ! -z "$gstatus" ]] ; then
+[ $# -gt 0 ] && _w "${GRN}${B}gstatus${YLW}: $gstatus" \
+             && _w "${RED}${B}gremote${YLW}: $gremote"
+
+if [[ ! -z "$gclean" ]] ; then
 
   _f clean
 
   _a remote dotfiles 
-  gstatus=$($g status -uno 2> /dev/null)
 
   if [[ "$gstatus" == *"ahead"* ]]; then
 
@@ -37,17 +40,21 @@ if [[ ! -z "$gstatus" ]] ; then
     _f "up-to-date"
   fi
 
-elif [[ $gstatus == *"diverged"* ]]; then
-
-  _e "repo has ${B}diverged!"
-  _ay rebase required
-
 else
 
   _wb "dirty!"
   _ay "commit:"
   $g status -s
 
+fi
+
+if [[ $gstatus == *"diverged"* ]]; then
+  _tr "repo has ${B}diverged!"
+  _ww rebase required\\n
+  _ob "1. ${CYN}${B}git rebase${BLU} or ${CYN}${B}grb${BLU} (forgit)"
+  _ob "2. fix conflicts via ${CYN}${B}vim"
+  _ob "3. ${CYN}${B}git add${BLU} or ${CYN}${B}ga${BLU} (forgit)"
+  _ob "4. ${CYN}${B}git rebase --continue${BLU}, then ${CYN}${B}gp"
 fi
 
 echo
