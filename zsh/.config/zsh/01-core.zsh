@@ -120,7 +120,7 @@ ENABLE_CORRECTION="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,italic"
 
 # fuzzy-matching
-zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' completer _complete _match _approximate _prefix # test: prefix
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
@@ -133,7 +133,8 @@ CASE_SENSITIVE="false"
 zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' select-prompt '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive
+zstyle ':completion:*' matcher-list '' \
+  '+m:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' # case insensitive
 zstyle ':completion:*' menu select # menu style, tab
 zstyle ':completion:*:*:*:*:*' menu select # always use menu select
 zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
