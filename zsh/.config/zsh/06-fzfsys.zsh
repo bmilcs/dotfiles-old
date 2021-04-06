@@ -1,4 +1,4 @@
-fzsc() {
+fsc() {
 halp() {
     cat >&2 <<EOF
 Usage: fuzzy-sys [options]
