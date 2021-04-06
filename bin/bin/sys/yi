@@ -12,4 +12,4 @@ _t yay install
 
 yay -Slq | fzf --multi \
   --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' \
-  | xargs -ro sudo yay -S
+  | xargs -ro yay -S
