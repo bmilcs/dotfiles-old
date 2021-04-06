@@ -65,7 +65,8 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yayc='yay -Sc --aur';compdef yaygg='yay'
   # arch specific
-  alias netr="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
+  alias rnet="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
+  alias cdns="sudo systemd-resolve --flush-caches"
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
