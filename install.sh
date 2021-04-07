@@ -323,11 +323,9 @@ else # DEBIAN
   if [[ ! $SHELL == *zsh ]]; then
     # shell != zsh, ask to swap
 
-    if [[ $(_ask swap to ZSH now?) == 0 ]]; then
-      chsh -s /usr/bin/zsh
-    else
-      _i skipping. reboot recommended!
-    fi
+      _a directions
+      _oy chsh -s /usr/bin/zsh
+      _i reboot recommended!
   fi
 
 # end of debian
