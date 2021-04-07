@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 GIT SSH RSA SENDER [./gitssh]
+#────────────────────────────────────────────────────────────
+source _bm
+_a git ssh rsa sender
+
+host=$1
+
+# if ssh "$host" false > /dev/null; then
+#   _w "$host" is unavailable via ssh
+#   _e now exiting\n
+#   exit 1
+# else
+#   _s
+#   echo
+# fi
+
+if scp ~/.ssh/config ~/.ssh/id_github.com $host:/home/bmilcs/.ssh/; then
+  _s
+else
+  _e unable to transfer files
+fi
