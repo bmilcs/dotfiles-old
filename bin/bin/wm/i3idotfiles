@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 DOTFILE INSTALL CMDS [./i3idotfiles]
+#────────────────────────────────────────────────────────────
+source _bm
+_a i3idotfiles
+
+cmd='[ ! -d ~/bm ] && git clone --depth 1 https://dot.bmilcs.com bm && cd bm && ./install.sh'
+echo "$cmd" | xclip -sel clip
+sleep 0.2
+xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel clip -o)"
+
