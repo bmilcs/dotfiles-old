@@ -62,6 +62,9 @@ cleanup() {
   _f "deleting broken symlinks ${B}/etc"
   sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
 
+  _f "changing /etc/banner"
+  [[ -f "/etc/banner" ]] && sudo echo "welcome to: $HOST" > /etc/banner
+
   _s complete
 }
 
