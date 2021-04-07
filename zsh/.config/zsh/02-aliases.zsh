@@ -119,6 +119,7 @@ alias bme='vim $D/install.sh'
 # git
 alias gs='$(git rev-parse > /dev/null 2>&1) || cd $D && git status -s'
 alias gss='$(git rev-parse > /dev/null 2>&1) || cd $D && git status'
+alias greb='$(git rev-parse > /dev/null 2>&1) || cd $D && git rebase'
 alias gcc='$(git rev-parse > /dev/null 2>&1) || cd $D && git commend --amend --no-edit'
 alias gca='gcc'
 alias glog='glo'

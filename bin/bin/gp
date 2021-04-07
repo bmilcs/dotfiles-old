@@ -26,15 +26,15 @@ if [[ ! -z "$gclean" ]] ; then
 
   _a remote dotfiles 
 
-  if [[ "$gstatus" == *"ahead"* ]]; then
-
-    _ic "pushing updates (ahead)"
-    $g push \
-
-  elif [[ "$gstatus" == *"behind"* ]]; then
+  if [[ "$gstatus" == *"behind"* ]]; then
 
     _ic "pulling updates (behind)"
     $g pull \
+
+  elif [[ "$gstatus" == *"ahead"* ]]; then
+
+    _ic "pushing updates (ahead)"
+    $g push \
 
   else
     _f "up-to-date"
