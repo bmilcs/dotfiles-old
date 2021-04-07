@@ -13,11 +13,17 @@
 source _bm
 
 # clean exit
-cexit() {
-  echo && _w "${B}dirty exit" && _o "cleaning up"
+ctrlC() {
+  echo && _w "${B}now exiting" && _o "cleaning up"
   rm -rf $running && _s "done\n" && exit 1
   }
-trap 'cexit' SIGINT
+trap 'ctrlC' SIGINT
+
+error() {
+  echo && _e "something went wrong"
+  ctrlC
+}
+trap 'error' ERR
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
 dstatus="$HOME/.config/up/dotfiles.bm"
