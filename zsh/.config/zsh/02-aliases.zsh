@@ -79,7 +79,7 @@ else # DEBIAN
   alias apti='sudo apt-get install -y'
   alias aptr='sudo apt-get purge -y'
   alias aptg='dpkg --get-selections | grep'
-  alias apts='systemctl status '
+  alias aptls='sudo apt list --installed'
 fi
 
 #────────────────────────────────────────────────────────────
