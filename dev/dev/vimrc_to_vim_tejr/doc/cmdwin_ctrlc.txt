@@ -1,0 +1,24 @@
+*cmdwin_ctrlc.txt*	For Vim version 7.0	Last change: 2018 June 30
+
+DESCRIPTION					*cmdwin_ctrlc*
+
+This plugin tweaks CTRL-C in |cmdline-window| mode to close the command line
+window and insert the command or search line the cursor was on at a new command
+of the appropriate type, with the cursor at the end of the line.
+
+REQUIREMENTS					*cmdwin_ctrlc-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires
+|autocmd|.
+
+AUTHOR						*cmdwin_ctrlc-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+Original idea and prototyping by m1n <dylnmc@gmail.com>.
+First working map implementation by jamessan <jamessan@jamessan.com>.
+
+LICENSE						*cmdwin_ctrlc-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

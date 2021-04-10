@@ -1,0 +1,22 @@
+*foldlevelstart_stdin.txt*	For Vim version 7.0	Last change: 2018 Aug 16
+
+DESCRIPTION				*foldlevelstart_stdin*
+
+This tiny plugin sets 'foldlevel' to 'foldlevelstart' after reading from
+standard input, which Vim doesn't do by default.
+
+REQUIREMENTS				*foldlevelstart_stdin-requirements*
+
+This plugin only loads if 'compatible' is not set. It requires the |+autocmd|
+and |+folding| features, with the |StdinReadPre| event introduced in
+|version7|.
+
+AUTHOR					*foldlevelstart_stdin-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*foldlevelstart_stdin-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

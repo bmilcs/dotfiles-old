@@ -1,0 +1,55 @@
+*make_target.txt*	For Vim version 7.0	Last change: 2018 June 28
+
+DESCRIPTION					*make_target*
+
+This filetype plugin for Makefiles ("make" filetype) provides an autoload
+function `make#target#Make()` and buffer-local mapping `<Plug>(MakeTarget)` to
+`make!` the target for the recipe under the cursor, if it can be identified.
+
+REQUIREMENTS					*make_target-requirements*
+
+This plugin is only available if 'compatible' is not set. It requires Vim 7.0
+or newer. It won't load at all if you have `g:no_plugin_maps` or
+`g:no_make_maps` set.
+
+MAPPINGS					*make_target-mappings*
+
+						*<Plug>(MakeTarget)*
+The |map-local| mapping `<Plug>(MakeTarget)` attempts to identify the target or
+targets for the recipe under the cursor, and runs `make!` in sequence on each
+of those targets.
+
+There is no default key binding; you could do this in your `.vimrc` to bind
+`_m`, for example:
+>
+	autocmd FileType make
+	      \ nmap <buffer> _m <Plug>(MakeTarget)
+<
+A cleaner and more complete implementation that correctly clears the group on
+reload and the mapping on filetype switch might be:
+>
+	let g:maplocalleader = '_'
+	augroup vimrc_filemap
+	  autocmd!
+	  autocmd FileType *
+	        \ silent! nmapclear <buffer> <LocalLeader>m
+	  autocmd FileType make
+	        \ nmap <buffer> <LocalLeader>m <Plug>(MakeTarget)
+	augroup END
+<
+FUNCTIONS					*make_target-functions*
+
+						*make#target#Make()*
+The |autoload| function used by |<Plug>(MakeTarget)| is accessible as
+`make#target#Make()` if wanted. It's hardcoded to look for the target under
+the cursor.
+
+AUTHOR						*make_target-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*make_target-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

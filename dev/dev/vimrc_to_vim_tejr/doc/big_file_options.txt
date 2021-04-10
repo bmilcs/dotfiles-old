@@ -1,0 +1,54 @@
+*big_file_options.txt*	For Vim version 6.0	Last change: 2018 July 7
+
+DESCRIPTION					*big_file_options*
+
+This plugin adds an |autocmd| hook to check the file size of an incoming
+buffer, and if it's over a certain threshold, disables certain options in order
+to make the file a bit easier to edit. It makes the buffer read-only, and
+disables filetypes, swap files, undo files, and syntax highlighting.
+
+It's similar to the much older and more sophisticated LargeFile plugin by
+Charles Campbell, which is based on VimTip #611:
+<http://vim.wikia.com/wiki/Faster_loading_of_large_files>
+
+If you want more options and bells and whistles, you should definitely use
+that instead. I'm intentionally keeping this very small and simple; it should
+be install-and-forget.
+
+REQUIREMENTS					*big_file_options-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+autocmd| feature.
+
+OPTIONS						*big_file_options-options*
+
+There are a few options you can set at any time before loading big files; it's
+probably best to put them in your |vimrc|.
+
+						*g:big_file_options_limit*
+Set `g:big_file_options_limit` to the threshold in bytes beyond which a file
+should be considered "big"; this defaults to 10 MiB.
+
+						*g:big_file_options_readonly*
+Set `g:big_file_options_readonly` to either 1 or 0 depending on whether you
+want to make the buffer read-only; this defaults to on.
+
+						*g:big_file_options_syntax*
+Set `g:big_file_options_syntax` to either 1 or 0 depending on whether you want
+to disable syntax highlighting completely on large files; this defaults to on.
+
+						*g:big_file_options_synmaxcol*
+Set `g:big_file_options_synmaxcol` to the number of columns for which syntax
+highlighting should be done on big files, assuming |g:big_file_options_syntax|
+is enabled. This defaults to 256, and only works if you have the |+synmaxcol|
+feature.
+
+AUTHOR						*big_file_options-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*big_file_options-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

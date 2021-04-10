@@ -1,0 +1,30 @@
+*toggle_flags.txt*	For Vim version 6.0	Last change: 2018 July 19
+
+DESCRIPTION					*toggle_flags*
+
+						*:ToggleFlag* *:ToggleFlagLocal*
+This plugin provides `:ToggleFlag` and `:ToggleFlagLocal` commands
+to toggle the values of options like |'formatoptions'| or |'complete'| that
+have values comprised of single-character or comma-separated flags. The author
+originally designed it for toggling flags in |'formatoptions'| quickly.
+
+EXAMPLES					*toggle_flags-examples*
+>
+	:ToggleFlag formatoptions a
+	:ToggleFlag switchbuf useopen
+	:ToggleFlagLocal shortmess I
+<
+REQUIREMENTS					*toggle_flags-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+user_commands| Vim feature.
+
+AUTHOR						*toggle_flags-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*toggle_flags-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

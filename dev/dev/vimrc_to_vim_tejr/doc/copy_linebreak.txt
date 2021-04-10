@@ -1,0 +1,39 @@
+*copy_linebreak.txt*	For Vim version 6.0	Last change: 2018 June 27
+
+DESCRIPTION					*copy_linebreak*
+
+This plugin provides mapping targets for a user to set, unset, or toggle
+'linebreak'-related settings when 'wrap' is enabled, to switch between
+human-readable output and a format friendly for copy-pasting with terminal
+emulators or screen/tmux.
+
+REQUIREMENTS					*copy_linebreak-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+linebreak| feature.
+
+MAPPINGS					*copy_linebreak-mappings*
+
+Mapping targets provided are:
+
+|<Plug>(CopyLinebreakEnable)|:			*<Plug>(CopyLinebreakEnable)*
+    Enable copy-paste friendly line break options.
+|<Plug>(CopyLinebreakDisable)|:			*<Plug>(CopyLinebreakDisable)*
+    Revert to human-readable line break options.
+|<Plug>(CopyLinebreakToggle)|:			*<Plug>(CopyLinebreakToggle)*
+    Toggle between the above two states.
+
+There are no default key mappings to any of these targets; you should define
+them yourself in your |vimrc|. For example:
+>
+	nmap <Leader>b <Plug>(CopyLinebreakToggle)
+<
+AUTHOR						*copy_linebreak-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*copy_linebreak-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

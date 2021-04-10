@@ -1,0 +1,46 @@
+*diff_prune.txt*	For Vim version 7.0	Last change: 2018 July 14
+
+DESCRIPTION					*diff_prune*
+
+This filetype plugin for diffs/patches ("diff" filetype) provides buffer-local
+mappings in normal and visual mode to reverse changes defined by a linewise
+motion or visual mode selection: leading minus signs are removed, and lines
+with leading plus signs are deleted.
+
+If the changes result in a diff block or file block having no changes left, it
+is also removed.
+
+This can be handy for using with the `-e` or `--edit` option to `git-add`,
+which allows you to edit a diff before applying changes to the staging area. It
+also seems to work for the `-p` or `--patch` option.
+
+REQUIREMENTS					*diff_prune-requirements*
+
+This plugin is only available if 'compatible' is not set. It requires Vim 7.0
+or newer.
+
+MAPPINGS					*diff_prune-mappings*
+						*<Plug>(DiffPrune)*
+
+A single mapping target name `<Plug>(DiffPrune)` for normal and visual modes
+provided. There is no default key mapping. You could put this in
+`after/ftplugin/diff.vim` to use `<LocalLeader>p`, with `<LocalLeader>pp` to
+prune the current line:
+>
+	nmap <buffer> <LocalLeader>p <Plug>(DiffPrune)
+	xmap <buffer> <LocalLeader>p <Plug>(DiffPrune)
+	nmap <buffer> <LocalLeader>pp <Plug>(DiffPrune)_
+	let b:undo_ftplugin = b:undo_ftplugin
+	      \ . '|nunmap <buffer> <LocalLeader>p'
+	      \ . '|xunmap <buffer> <LocalLeader>p'
+	      \ . '|nunmap <buffer> <LocalLeader>pp'
+<
+AUTHOR						*diff_prune-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*diff_prune-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

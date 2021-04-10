@@ -1,0 +1,35 @@
+*scroll_next.txt*	For Vim version 6.0	Last change: 2018 Aug 15
+
+DESCRIPTION				*scroll_next*
+
+This plugin provides a mapping target that scrolls through the current buffer
+with |PageDown| while the final line of the buffer is not visible in the
+window, and |:next| to move to the next file in the argument list when it is.
+It's therefore a lazy way to read several buffers in sequence while just
+tapping one key. The author likes to use it for reading several buffers on
+limited keyboards, such as a mobile phone terminal client.
+
+REQUIREMENTS				*scroll_next-requirements*
+
+This plugin only loads if 'compatible' is not set. It works on |version6| and
+newer. If you have |version7| then you don't have to hit the last line of the
+buffer; it just has to be visible in the window.
+
+MAPPINGS				*scroll_next-mappings*
+
+					*<Plug>(ScrollNext)*
+The single normal mode mapping target is `<Plug>(ScrollNext)`. There is no
+default key mapping; you should define one yourself in your |vimrc|. For
+example:
+>
+	nmap <Space> <Plug>(ScrollNext)
+<
+AUTHOR					*scroll_next-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*scroll_next-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

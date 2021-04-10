@@ -1,0 +1,43 @@
+*put_blank_lines.txt*	For Vim version 7.0	Last change: 2018 July 13
+
+DESCRIPTION					*put_blank_lines*
+
+This plugin provides mapping targets for inserting blank lines above or below
+the current line without going into insert mode, including count prefixes and
+repeating with the dot command.
+
+The idea and insert method is lifted from the same mappings for
+unimpaired.vim, but called with `'operatorfunc'` to allow counts and repeating
+without requiring repeat.vim.
+
+CONFIGURATION					*put_blank_lines-configuration*
+
+To set mappings exactly like those from the original plugin, you might
+write this in your |vimrc|:
+>
+    nmap [<Space> <Plug>(PutBlankLinesAbove)
+    nmap ]<Space> <Plug>(PutBlankLinesBelow)
+<
+REQUIREMENTS					*put_blank_lines-requirements*
+
+This plugin is only available if 'compatible' is not set.
+
+MAPPINGS					*put_blank_lines-mappings*
+
+						*<Plug>(PutBlankLinesAbove)*
+The `<Plug>(PutBlankLinesAbove)` target inserts a blank line above the current
+line. Mappings through it can be prefixed with an optional count.
+
+						*<Plug>(PutBlankLinesBelow)*
+The `<Plug>(PutBlankLinesBelow)` target inserts a blank line below the current
+line. Mappings through it can be prefixed with an optional count.
+
+AUTHOR						*put_blank_lines-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*put_blank_lines-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

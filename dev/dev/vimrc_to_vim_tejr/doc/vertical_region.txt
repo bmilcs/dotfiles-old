@@ -1,0 +1,71 @@
+*vertical_region.txt*	For Vim version 7.0	Last change: 2018 Aug 10
+
+DESCRIPTION				*vertical_region*
+
+This plugin provides mapping targets to move up or down to lines that have
+non-space characters before or in the current column, usually to find lines
+that begin or end blocks in languages where indenting is used to show or
+specify structure.
+
+REQUIREMENTS				*vertical_region-requirements*
+
+This plugin only loads if 'compatible' is not set.
+
+MAPPINGS				*vertical_region-mappings*
+
+Six mappings are provided:
+
+					*<Plug>(VerticalRegionUpNormal)*
+`<Plug>(VerticalRegionUpNormal)` moves up to the previous line with non-space
+characters before or in the current column, in normal mode.
+
+					*<Plug>(VerticalRegionDownNormal)*
+`<Plug>(VerticalRegionDownNormal)` moves down to the next line with non-space
+characters before or in the current column, in normal mode.
+
+					*<Plug>(VerticalRegionUpOperator)*
+`<Plug>(VerticalRegionUpOperator)` moves up to the previous line with
+non-space characters before or in the current column, in visual mode.
+
+					*<Plug>(VerticalRegionDownOperator)*
+`<Plug>(VerticalRegionDownOperator)` moves down to the next line with
+non-space characters before or in the current column, in operating-pending
+mode.
+
+					*<Plug>(VerticalRegionUpVisual)*
+`<Plug>(VerticalRegionUpVisual)` moves up to the previous line with non-space
+characters before or in the current column, in visual mode.
+
+					*<Plug>(VerticalRegionDownVisual)*
+`<Plug>(VerticalRegionDownVisual)` moves down to the next line with non-space
+characters before or in the current column, in visual mode.
+
+All of them accept a [count] prefix to move by more than one matching line.
+
+There are no default key mappings; you should define those yourself in your
+|vimrc|. Here are the author's choices, using \{ and \} in all three modes:
+>
+	nmap <Bslash>{ <Plug>(VerticalRegionUpNormal)
+	nmap <Bslash>} <Plug>(VerticalRegionDownNormal)
+	omap <Bslash>{ <Plug>(VerticalRegionUpOperator)
+	omap <Bslash>} <Plug>(VerticalRegionDownOperator)
+	xmap <Bslash>{ <Plug>(VerticalRegionUpVisual)
+	xmap <Bslash>} <Plug>(VerticalRegionDownVisual)
+<
+AUTHOR					*vertical_region-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+CREDITS					*vertical_region-credits*
+
+Thanks to Antony in Freenode #vim for providing a working implementation of a
+very similar approach for reference, and informing the choice of plugin name.
+
+Antony has a funny habit of always already having written some form of what
+you're currently writing in Vimscript.
+
+LICENSE					*vertical_region-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

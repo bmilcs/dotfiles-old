@@ -1,0 +1,37 @@
+*squeeze_repeat_blanks.txt*	For Vim version 7.0	Last change: 2018 Aug 30
+
+DESCRIPTION				*squeeze_repeat_blanks*
+
+This plugin provides a user command to reduce multiple blank lines to the last
+blank line in that group, for the given range or the whole buffer by default.
+What constitutes a "blank" line is configurable per-buffer.
+
+REQUIREMENTS				*squeeze_repeat_blanks-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+user_commands| feature.
+
+COMMANDS				*squeeze_repeat_blanks-commands*
+
+					*:SqueezeRepeatBlanks*
+Find repeated blank lines matching the |b:squeeze_repeat_blanks_blank| pattern
+and delete all but the last line of every such group, reporting the number of
+lines removed. Accepts a range and defaults to the whole buffer.
+
+OPTIONS					*squeeze_repeat_blanks-options*
+
+					*b:sequeeze_repeat_blanks_blank*
+The |buffer-variable| `b:squeeze_repeat_blanks_blank` can be set to a pattern
+that constitutes a blank line, for example including whitespace, or a comment
+or quoting leader. This might be desirable for some filetypes. The
+`:SqueezeRepeatBlanks` command defaults to using `^$`, for a true blank line.
+
+AUTHOR					*squeeze_repeat_blanks-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*squeeze_repeat_blanks-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

@@ -1,0 +1,47 @@
+*perl_version_bump.txt*	For Vim version 7.0	Last change: 2018 June 29
+
+DESCRIPTION					*perl_version_bump*
+
+This filetype plugin for Perl code ("perl" filetype) provides buffer-local
+mapping targets for normal mode to increment either the major or minor version
+number of a package-scoped `$VERSION` assignment.
+
+So with this format:
+>
+	our $VERSION = '1.23';
+<
+Keying a map to  `<Plug>(PerlVersionBumpMinor)` would yield:
+>
+	our $VERSION = '1.24';
+<
+Keying a map to `<Plug>(PerlVersionBumpMajor)` would yield:
+>
+	our $VERSION = '2.00';
+<
+There is no support for development versions with underscore prefixes like
+`1.23_001` (yet).
+
+REQUIREMENTS					*perl_version_bump-requirements*
+
+This plugin is only available if 'compatible' is not set. It requires Vim 7.0
+or newer.
+
+MAPPINGS					*perl_version_bump-mappings*
+
+						*<Plug>(PerlVersionBumpMajor)*
+`<Plug>(PerlVersionBumpMajor)</Plug>` bumps the major (first) part of the version
+number, and sets the minor (second) part to zero.
+
+						*<Plug>(PerlVersionBumpMinor)*
+`<Plug>(PerlVersionBumpMinor)</Plug>` bumps the minor (second) part of the
+version number.
+
+AUTHOR						*perl_version_bump-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*perl_version_bump-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

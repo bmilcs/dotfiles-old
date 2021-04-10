@@ -1,0 +1,24 @@
+*quickfix_auto_open.txt*	For Vim version 7.0	Last change: 2018 Jul 24
+
+DESCRIPTION					*quickfix_auto_open*
+
+This is a tiny plugin packaging of hooks to automatically open the quickfix
+and location lists when a command that changes their contents is run.
+
+REQUIREMENTS					*quickfix_auto_open-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+autocmd| feature.
+
+AUTHOR						*quickfix_auto_open-author*
+
+Original commands were found in romainl's "minivimrc" project on GitHub:
+<https://github.com/romainl/minivimrc>
+
+Plugin packaging and documentation by by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*quickfix_auto_open-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

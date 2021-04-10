@@ -1,0 +1,21 @@
+*equalalways_resized.txt*	For Vim version 7.0	Last change: 2018 Aug 16
+
+DESCRIPTION				*equalalways_resized*
+
+This tiny plugin extends 'equalalways' to rebalance windows when Vim itself is
+resized.
+
+REQUIREMENTS				*equalalways_resized-requirements*
+
+This plugin only loads if 'compatible' is not set. It requires the |+autocmd|
+and |+windows| features, with the |VimResized| event introduced in |version7|.
+
+AUTHOR					*equalalways_resized-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*equalalways_resized-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

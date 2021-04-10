@@ -1,0 +1,35 @@
+*replace_operator.txt*	For Vim version 7.0	Last change: 2018 Aug 22
+
+DESCRIPTION				*replace_operator*
+
+This plugin provides normal and visual mode mapping targets to replace the
+text bounded by a motion with the contents of a register, by default the
+unnamed register.
+
+This allows you, for example, to select a set of lines and replace any other
+set of lines with it in one repeatable operation. The text you replace stacks
+up in the numbered registers as normal, if you do end up needing it back.
+
+REQUIREMENTS				*replace_operator-requirements*
+
+This plugin only loads if 'compatible' is not set.
+
+MAPPINGS				*replace_operator-mappings*
+
+					*<Plug>(RepeatOperator)*
+The normal and visual mode mapping targets are both named
+|<Plug>(RepeatOperator)|. There is no default key mapping; you should define
+one yourself in your |vimrc|. For example:
+>
+	nmap <Leader>r <Plug>(ReplaceOperator)
+	xmap <Leader>r <Plug>(ReplaceOperator)
+<
+AUTHOR					*replace_operator-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*replace_operator-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

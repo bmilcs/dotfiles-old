@@ -1,0 +1,33 @@
+*cursorline_current.txt*	For Vim version 7.0	Last change: 2018 Aug 4
+
+DESCRIPTION				*cursorline_current*
+
+This plugin tweaks the behaviour of the 'cursorline' option to enable it only
+in the current window, when not in insert mode, and (if supported) when Vim
+has focus. It essentially makes 'cursorline' follow the cursor in normal mode
+as much as possible.
+
+It uses the global value of 'cursorline' as its default, and should also
+correctly handle local values for windows.
+
+REQUIREMENTS				*cursorline_current-requirements*
+
+This plugin only loads if 'compatible' is not set. It requires the |+autocmd|
+and |+windows| features.
+
+OPTIONS 				*cursorline_current-options*
+
+					*g:cursorline_current_insert*
+Set `g:cursorline_current_insert` to 0 in your |vimrc| if you don't like the
+cursor line switching off while you're in insert mode. This option defaults to
+1.
+
+AUTHOR					*cursorline_current-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*cursorline_current-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

@@ -1,0 +1,28 @@
+*insert_timeout.txt*	For Vim version 7.0	Last change: 2018 June 30
+
+DESCRIPTION					*insert_timeout*
+
+This plugin leaves insert mode automatically if there is no activity for a
+certain number of seconds, with an 'updatetime' hook. This is just a plugin
+packaging of Vim tip #1540.
+
+REQUIREMENTS					*insert_timeout-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+autocmd| feature.
+
+OPTIONS						*insert_timeout-options*
+
+						*g:insert_timeout_duration*
+Set `g:insert_timeout_duration` to the number of milliseconds after which
+insert mode should time out. The default value is 10000 (10 seconds).
+
+AUTHOR						*insert_timeout-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*insert_timeout-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

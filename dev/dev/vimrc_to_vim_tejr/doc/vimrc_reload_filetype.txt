@@ -1,0 +1,25 @@
+*vimrc_reload_filetype.txt*	For Vim version 7.1	Last change: 2018 July 14
+
+DESCRIPTION				*vimrc_reload_filetype*
+
+This plugin installs a hook for re-sourcing the |vimrc| file that follows it
+with a command to reload filetype detection and filetype plugin loading for
+the current buffer, to correct the issue of |vimrc| |:set| commands clobbering
+filetype-specific |:setlocal| options.
+
+It also echoes a nice "Reloaded vimrc" message so you know it's working.
+
+REQUIREMENTS				*vimrc_reload_filetype-requirements*
+
+This plugin only loads if 'compatible' is not set. It requires |version-7.1|
+(or |version-7.0| with patch 187) for the |SourceCmd| |autocmd-event|.
+
+AUTHOR					*vimrc_reload_filetype-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*vimrc_reload_filetype-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

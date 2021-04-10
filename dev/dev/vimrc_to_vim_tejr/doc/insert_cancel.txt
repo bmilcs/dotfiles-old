@@ -1,0 +1,37 @@
+*insert_cancel.txt*	For Vim version 6.0	Last change: 2018 July 12
+
+DESCRIPTION				*insert_cancel*
+
+This plugin provides a mapping target to cancel an insert operation. It leaves
+insert mode normally, firing |InsertLeave|, and then runs |:undo| if the
+buffer was changed by the insert. This is intended as a remap of |i_CTRL-C|.
+
+REQUIREMENTS				*insert_cancel-requirements*
+
+This plugin only loads if 'compatible' is not set. It works best if you
+have at least |vim7| with |autocmd|, because it leans on the |CursorMoved|
+event.
+
+If you don't have |CursorMoved|, the |'[| and |']| marks are used to detect
+changes instead. This still works for undoing insert additions, but it won't
+restore text that was erased when insert mode was entered with |c| or |s| or
+their variants, and it doesn't undo new unindented blank lines.
+
+MAPPINGS				*insert_cancel-mappings*
+
+					*<Plug>(InsertCancel)*
+The single insert mode mapping target is |<Plug>(InsertCancel)|. There is no
+default key mapping; you should define one yourself in your |vimrc|. For
+example:
+>
+	imap <C-C> <Plug>(InsertCancel)
+<
+AUTHOR					*insert_cancel-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*insert_cancel-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

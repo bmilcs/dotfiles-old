@@ -1,0 +1,45 @@
+*strip_trailing_whitespace.txt*	For Vim version 6.0	Last change: 2018 Jul 20
+
+DESCRIPTION				*strip_trailing_whitespace*
+
+This plugin provides a user command with the author's approach to stripping
+trailing whitespace from an entire buffer, including removing empty or
+whitespace-only lines at the end of the buffer, without making command noise
+and without moving the cursor from its current position.
+
+This is a very commonly written and implemented plugin, but I wrote my own
+because I could not find a plugin that did this in exactly the way I wanted:
+
+- Accept an optional range
+- Strip trailing lines as well as trailing spaces
+- Report what was changed, accurately
+- Work with even very old Vim (>=6.0)
+- Work with a single |undo|
+- Don't move the cursor
+- Don't change the search pattern
+- Don't define an |autocmd|
+- Don't force a key mapping
+- Don't define a global function
+
+REQUIREMENTS				*strip_trailing_whitespace-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+user_commands| feature.
+
+COMMANDS				*strip_trailing_whitespace-commands*
+
+					*:StripTrailingWhitespace*
+Strip trailing space appropriately for the range of lines selected, defaulting
+to the entire buffer. Remove all horizontal whitespace from the end of each
+line. If the last line of the range is also the last line of the buffer, strip
+trailing blank or whitespace-only lines as well.
+
+AUTHOR					*strip_trailing_whitespace-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*strip_trailing_whitespace-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

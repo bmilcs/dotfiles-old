@@ -1,0 +1,31 @@
+*colon_operator.txt*	For Vim version 7.0	Last change: 2018 July 24
+
+DESCRIPTION				*colon_operator*
+
+This plugin provides a mapping target to use an Ex command as an operator, in
+a way repeatable with the |.| (dot) operator. This allows you to, for example,
+|:sort| a text object like a paragraph, and then repeat it on another
+paragraph. Think of it as the |:| analogue to the |!| motion.
+
+REQUIREMENTS				*colon_operator-requirements*
+
+This plugin only loads if 'compatible' is not set.
+
+MAPPINGS				*colon_operator-mappings*
+
+					*<Plug>(ColonOperator)*
+The single insert mode mapping target is |<Plug>(ColonOperator)|. There is no
+default key mapping; you should define one yourself in your |vimrc|. For
+example:
+>
+	nmap g: <Plug>(ColonOperator)
+<
+AUTHOR					*colon_operator-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE					*colon_operator-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:

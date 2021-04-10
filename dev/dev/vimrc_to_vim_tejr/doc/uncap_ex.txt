@@ -1,0 +1,22 @@
+*uncap_ex.txt*	For Vim version 6.0	Last change: 2018 June 17
+
+DESCRIPTION					*uncap_ex*
+
+This plugin defines custom commands like `:W`, `:Qa`, and `:Wq` to match their
+lowercase analogues, to forgive me when my pinky finger doesn't roll off the
+Shift key quite soon enough after pressing the colon key.
+
+REQUIREMENTS					*uncap_ex-requirements*
+
+This plugin is only available if 'compatible' is not set. It also requires the
+|+user_cmds| feature.
+
+AUTHOR						*uncap_ex-author*
+
+Written and maintained by Tom Ryder <tom@sanctum.geek.nz>.
+
+LICENSE						*uncap_ex-license*
+
+Licensed for distribution under the same terms as Vim itself (see |license|).
+
+ vim:tw=78:ts=8:ft=help:norl:
