@@ -3,26 +3,23 @@
 "  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-"────────────────────────────────────────────────────────────
-"   VIM RC BOOTSTRAP
+"                 VIMRC AND INIT.VIM [./.vimrc]
 "────────────────────────────────────────────────────────────
 
-let configs = [
-\  "general",
-\  "interface",
-\  "keybinds",
-\  "plugins",
-\  "filetypes",
+let &rtp = '~/.config/nvim'.&rtp
+
+let cfg = [
+\  "00-general",
+\  "01-plugins",
+\  "02-plugin-settings",
+\  "03-keybinds",
+\  "04-filetype",
 \]
 
-for file in configs
+for file in cfg
   let x = expand("~/.config/nvim/".file.".vim")
   if filereadable(x)
     execute 'source' x
   endif
 endfor
 
-" source all .vim files
-" for rcfile in split(globpath("~/.vim/rc", "*.vim"), '\n') 
-"     execute('source '.rcfile)
-" endfor
