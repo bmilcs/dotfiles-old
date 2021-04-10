@@ -56,7 +56,7 @@ export FZF_DEFAULT_OPTS="
     || tree -C {}) 2> /dev/null | head -200'
 
   --keep-right
-  --preview-window=right:sharp 
+  --preview-window=right:sharp
   --height 97%
   --reverse
   --info=hidden
@@ -86,7 +86,7 @@ export FZF_DEFAULT_OPTS="
   "
 
 # commands
-export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+export FZF_DEFAULT_COMMAND="fd -H -E '{.git,*cache*,*Cache*}' . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
 
@@ -94,10 +94,11 @@ export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
 # export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 # export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
 
+# files & dirs (vim **<tab>)
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
-
+# dirs only (cd **<tab>)
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
