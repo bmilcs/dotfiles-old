@@ -88,6 +88,11 @@ fi
 # APPS
 #────────────────────────────────────────────────────────────
 
+# rsync
+alias rscp='rsync -zahv --progress --partial'
+alias rsmv='rscp --remove-source-files'
+alias rsdirstructure='rsync -av -f"+ */" -f"- *"'
+
 # ranger
 alias ranger='ranger --choosedir=$HOME/.config/ranger/sdir; \
   LASTDIR=`cat $HOME/.config/ranger/sdir`; cd "$LASTDIR"'
@@ -98,10 +103,11 @@ alias kc='xev | grep -o "keycode[^\)]\+"'
 alias kcc='xmodmap -pke | fzf'
 
 # tmux
-alias t='tmux -u'         ; compdef t='tmux'
-alias ta='t a -t'         ; compdef ta='tmux'
-alias tn='t new -t'       ; compdef tn='tmux'
-alias tls='t ls'          ; compdef tls='tmux'
+alias t='tmux -u'         ; compdef t='tmux'        # tmux, UTF-8
+alias ta='t a -t'         ; compdef ta='tmux'       # attach to target name
+alias tn='t new -t'       ; compdef tn='tmux'       # new session, target name
+alias tls='t ls'          ; compdef tls='tmux'      # list sessions
+
 
 # ncdu
 alias ncdu='ncdu --exclude /all --exclude /backup '
