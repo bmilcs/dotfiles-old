@@ -37,7 +37,7 @@ _askk() {
         default=''
     fi
   while true; do
-    # ask the question 
+    # ask the question
     _qq "$1 ${color}[$prompt]${NC}"
     # read the answer
     read -r reply #< /dev/tty
@@ -81,14 +81,14 @@ _qw()    { color="${WHT}"; _qq "$*"; }
 #────────────────────────────────────────────────────────────
 # OUTPUT
 #────────────────────────────────────────────────────────────
+
  spaces=" "
-#────────────────────────────────────────────────────────────
 
 # titlebar
 _tt() {
 
   chr="\xE2\x94\x80"
-  s=" " #⎨❯⎨   #         
+  s=" " #⎨❯⎨   #        
   p=" " #⎬❮⎬ 
   t= #❮⎬
   q= #❯⎨
@@ -177,7 +177,7 @@ _wp() { color="$PUR";   _www "$*"; }
 _wc() { color="$CYN";   _www "$*"; }
 
 # success
-_scs() { echo -e "$spaces${color}  ${*:-done} ${NC}"; } # √ 
+_scs() { echo -e "$spaces${color}  ${*:-done} ${NC}"; } # √
 _s()  { color="$GRN";   _scs "$*"; }
 _sr() { color="$RED";   _scs "$*"; }
 _sw() { color="$WHT";   _scs "$*"; }
