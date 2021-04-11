@@ -1,3 +1,16 @@
+snippet argument_check "check for arguments"
+if [[ $# -eq 0 ]]; then
+  _e "missing arguments"
+  _o "arg 1: example"
+  exit 1
+elif [[ $# -gt 1 ]]; then
+  _e "too many arguments"
+  _o "arg 1: example"
+  exit 1
+fi
+endsnippet
+
+
 snippet regex-removeliteralsuffixprefix "remove predetermined suffix/prefix"
 string="hello-world"
 prefix="hell"
@@ -9,7 +22,7 @@ endsnippet
 
 snippet alacritty-launch-cmd "launch alacritty, execute command, keep open"
 alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
-endsnippet  
+endsnippet
 
 snippet rofi-anyinput "rofi single blank input line"
 # giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
