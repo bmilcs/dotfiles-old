@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 FSTAB MOUNT CHECK [./mntchk]
+#────────────────────────────────────────────────────────────
+source _bm
+
+if [[ $# -eq 0 ]]; then
+  _e "missing arguments"
+  _o "arg 1: hostname / ip"
+  exit 1
+fi
+
+_a fstab check
+_f network vs local paths
+
+for host in "$@"; do
+  if mountpoint "$host" > /dev/null; then
+    _s "LAN: ${B}$host"
+  else
+    _e "HDD: ${B}$host"
+  fi
+done
+
+echo
