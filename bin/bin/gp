@@ -13,10 +13,11 @@ _a local: dotfiles
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
 
+# check modded files & pull remote status
 gclean="$($g status | grep "clean")"
-gstatus=$($g status -uno 2> /dev/null)
 gremote="$($g remote update 2> /dev/null)"
 
+# debugging
 [ $# -gt 0 ] && _w "${GRN}${B}gstatus${YLW}: $gstatus" \
              && _w "${RED}${B}gremote${YLW}: $gremote"
 
@@ -24,7 +25,9 @@ if [[ ! -z "$gclean" ]] ; then
 
   _f clean
 
-  _a remote dotfiles 
+  _a remote dotfiles
+
+  gstatus="$($g status -uno 2> /dev/null)"
 
   if [[ "$gstatus" == *"behind"* ]]; then
 
