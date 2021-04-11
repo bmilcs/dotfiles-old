@@ -9,29 +9,26 @@
 
 source _bm
 
-#INITIAL_QUERY=""
-#RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-#FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'" \
-#  fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-#      --ansi --disabled --query "$INITIAL_QUERY"
-
-bmilcs=$(
-RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-INITIAL_QUERY=""
-FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY' || true" \
-fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-    --ansi --phony --query "$INITIAL_QUERY"
-  )
-
-echo bmilcs: $bmilcs
-#sel="$(fd . ~/txt | fzf | xargs -I url firefox -new-tab url )" #-dmenu 
-
+# bmilcs=$(
+# RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+# INITIAL_QUERY=""
+# FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY' || true" \
+# fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+#     --ansi --phony --query "$INITIAL_QUERY"
+#   )
+#
+# echo bmilcs: $bmilcs
+# sel="$(fd . ~/txt | fzf | xargs -I url firefox -new-tab url )" #-dmenu
 
 # avoid excessive text in rofi menu by adding this afterward
-[[ -n $sel ]] && sel=~/txt/$sel
+#[[ -n $sel ]] && sel=~/txt/$sel
+
+sel="$(fd . ~/txt | rofi -dmenu )" #-dmenu
 
 if [[ -f "$sel" ]]; then
-  alacritty -e i3nvim "$sel" &
+  . ~/bin/uniqterm "rofitxt" "i3nvim $sel"
+#  alacritty -e i3nvim "$sel" &
 elif [[ -n $sel ]]; then
   dunstify "$sel No such file"
 fi
+

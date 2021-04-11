@@ -44,11 +44,11 @@ bindsym $win+q           exec --no-startup-id    rofiapp
 bindsym $win+e           exec --no-startup-id    rofibin
 # ROFI: DMENU
 bindsym $win+r           exec --no-startup-id    rofiinput
+# ROFI: TEXT
+bindsym $win+t           exec --no-startup-id    rofitxt
 
 # FZF
 
-# FZF: TEXT
-bindsym $win+t           exec --no-startup-id    fzftxt
 
 #────────────────────────────────────────────────────────────
 # CORE KEYBINDS
@@ -61,15 +61,15 @@ set $alt             Mod1
 set $tilde           49
 set $backspace       51
 set $win             Mod4
-floating_modifier    Mod4 
+floating_modifier    Mod4
 
 # EXIT, RESTART, RELOAD
-bindcode $win+$tilde          exec "xrdb -merge ~/.Xresources";restart
+bindcode $win+$tilde          exec "source ~/.profile;xrdb -merge ~/.Xresources";restart
 bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
 bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
 bindcode $win+$alt+$tilde     exec "i3-msg exit"
 
-# AUDIO 
+# AUDIO
 bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -107,7 +107,7 @@ set $ws9    "9"
 set $ws10   "10"
 
 bindsym $win+1        workspace number $ws1;     focus tiling
-bindsym $win+2        workspace number $ws2;     focus tiling 
+bindsym $win+2        workspace number $ws2;     focus tiling
 bindsym $win+3        workspace number $ws3;     focus tiling
 bindsym $win+4        workspace number $ws4;     focus tiling
 bindsym $win+5        workspace number $ws5;     focus tiling
@@ -170,7 +170,7 @@ client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
 client.unfocused          $black1   $blue1   $black2  $blue1     $black4
 client.urgent             $red1     $red1    $blue1   $red1      $yellow1
 client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
-client.background         $white1   
+client.background         $white1
 
 #────────────────────────────────────────────────────────────
 # I3 WINDOW CONTROL
@@ -186,7 +186,7 @@ bindsym $win+k                focus up
 bindsym $win+j                focus down
 bindsym $win+p                focus parent
 bindsym $win+o                focus child
-bindsym $win+$ctrl+space      floating toggle   
+bindsym $win+$ctrl+space      floating toggle
 bindsym $win+space            focus mode_toggle
 
 # MOVE
@@ -204,7 +204,7 @@ bindsym $win+$shift+$ctrl+j   move   down    1 px
 bindsym $win+$shift+h         resize shrink  width    25 px or 25 ppt
 bindsym $win+$shift+j         resize shrink  height   25 px or 25 ppt
 bindsym $win+$shift+k         resize grow    height   25 px or 25 ppt
-bindsym $win+$shift+l         resize grow    width    25 px or 25 ppt 
+bindsym $win+$shift+l         resize grow    width    25 px or 25 ppt
 
 bindsym $win+$alt+h           resize shrink  width    3 px or 3 ppt
 bindsym $win+$alt+j           resize shrink  height   3 px or 3 ppt
@@ -271,3 +271,4 @@ for_window [instance="picard"] floating enable, resize set 1716 1076, move absol
 for_window [instance="i3pad"] floating enable, resize set 408 1212, move absolute position 3031 142, border pixel 3
 for_window [instance="nvidia-settings"] floating enable, resize set 1608 996, move absolute position 916 253, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1551 977, move absolute position 919 249, border pixel 3
+for_window [instance="rofitxt"] floating enable, resize set 789 1074, move absolute position 2113 200, border pixel 3

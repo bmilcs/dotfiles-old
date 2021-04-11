@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 UNIQUE TERMINAL INSTANCE LAUNCHER [./uniqterm]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+if [[ $# -eq 0 ]]; then
+  _e "missing arguments"
+  _o "arg 1: class / title name"
+  _o "arg 2: commands to run"
+  exit 1
+elif [[ $# -gt 3 ]]; then
+  _e "too many arguments"
+  _o "arg 1: class / title name"
+  _o "arg 2: commands to run"
+  exit 1
+elif [[ $# -eq 3 ]]; then
+  conf=$3
+fi
+
+name=$1
+cmd=$2
+
+if [[ -n "$conf" ]]; then
+  alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e $cmd &
+else
+  alacritty --class="$name" --title="$name" -e $cmd &
+fi
