@@ -41,7 +41,7 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 # restarting
 alias trc="tmux source ~/.tmux.conf"
 alias zr='source "$ZDOTDIR"/.zshrc'
-alias polyr=". ~/.config/polybar/launch.sh" 
+alias polyr=". ~/.config/polybar/launch.sh"
 
 #────────────────────────────────────────────────────────────
 # DISTRO SPECIFIC
@@ -72,6 +72,8 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias xcc='xclip -selection primary'
   alias xpp='xclip -selection primary -o'
   alias cat="bat";compdef cat="bat"
+  alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
+
 else # DEBIAN
   # syslog
   alias syslogg="sudo cat /var/log/syslog | grep "
@@ -135,7 +137,7 @@ alias gd='$(git rev-parse > /dev/null 2>&1) || cd $D && forgit::diff --staged'
 # LS
 #────────────────────────────────────────────────────────────
 
-alias l='ls' ; compdef l="ls" 
+alias l='ls' ; compdef l="ls"
 alias ls='LC_ALL=C ls -AlhF \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
   compdef ls="ls"
@@ -143,10 +145,10 @@ alias ll='LC_ALL=C command ls -AC \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
   compdef lll="ls"
 alias lll='command ls -l \
-  --color=auto --group-directories-first --time-style='+%D %H:%M'' 
+  --color=auto --group-directories-first --time-style='+%D %H:%M''
     compdef ll="ls"
 alias llll='command ls -C \
-  --color=auto --group-directories-first --time-style='+%D %H:%M'' 
+  --color=auto --group-directories-first --time-style='+%D %H:%M''
   compdef llll="ls"
 
 alias lst="l -tr" ; compdef lst="ls"
@@ -302,7 +304,7 @@ if where docker-compose > /dev/null; then
   alias dnet='docker network ls'
 
   # CLEANING
-  
+
   # clean up docker system
   alias dclean='dcleani && dcleane'
   alias dcleani='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
@@ -357,7 +359,7 @@ if [[ $DISTRO == "debian" ]]; then
   # TODO > FUNCTION conversion
 
   alias infs='
-    sudo apt install nfs-kernel-server 
+    sudo apt install nfs-kernel-server
     echo && echo "====================================================================================================="
     echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
     echo "sudo vim /etc/exports"
