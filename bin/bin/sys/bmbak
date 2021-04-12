@@ -1,0 +1,211 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 RSNAPSHOT BACKUP TOOL [./backup.sh]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_t bmbackup
+
+# backup path
+mount="/backup"
+user="bmilcs"
+group="bmilcs"
+pkgs="rsnapshot"
+if ip a | grep 10.9.9 ; then
+  fst="truenaswww.bm.bmilcs.com:/mnt/bm/backup/${HOSTNAME}       /backup       nfs auto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min 0 0"
+else
+  fst="freenas.bm.bmilcs.com:/mnt/bm/backup/${HOSTNAME}       /backup       nfs auto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min 0 0"
+fi
+
+# root check
+_a root check
+if [[ $EUID -ne 0 ]]; then
+  _o "user: $USER"
+  _e "sudo priveledges required: now exiting.\n"
+  exit 1
+else
+  _s "done."
+fi
+
+#────────────────────────────────────────────────────────────
+# ADD
+#────────────────────────────────────────────────────────────
+
+if [ "$1" = "add" ] ; then
+
+  _a add to backup list
+  if _ask "add $PWD to automated backup?"; then # answer: YES
+
+    # add header if missing
+    grep "# BACKUP LIST" /etc/rsnapshot.conf ||\
+      echo -e "\n# BACKUP LIST" >> /etc/rsnapshot.conf
+
+    # add current path if missing
+    path_to_backup=$(basename $PWD)
+    grep 'backup\t\t'$PWD'/./' /etc/rsnapshot.conf ||\
+      echo -e "backup\t\t${PWD}/./\t\t${path_to_backup}/" >> /etc/rsnapshot.conf
+
+    # check if rsnapshot config is valid
+    _o "rsnapshot configtest output:"
+    rsnapshot configtest
+
+    _s "done"
+    exit 0
+
+  else # answer: NO
+    _f "request cancelled. now exiting."
+    _s "done"
+    exit 0
+  fi
+
+#────────────────────────────────────────────────────────────
+# INSTALL
+#────────────────────────────────────────────────────────────
+
+elif [[ $1 = "install" ]] ; then
+   _a "installation"
+   _ob "truenas requirements:"
+
+   _o "  1. create ${B}${HOSTNAME}${NC} datastore for this host"
+   _o "     path:  ${YLW}/mnt/bm/backup/${B}$HOSTNAME"
+   _o "     puid:  ${YLW}bmilcs"
+   _o "     guid:  ${YLW}bmilcs_group"
+   _o "  2. create ${B}${HOSTNAME}${NC} nfs share:"
+   _o "     nfs:   ${YLW}/mnt/bm/backup/${B}$HOSTNAME"
+
+  #ensure folder is created on freenas
+  if _ask "is datastore setup under ${B}$HOSTNAME"; then
+    _o excellent.
+  else
+    _w "please follow instructions above. now exiting"
+    exit 1
+  fi
+
+  _a dependency check
+  if [[ ${DISTRO} == arch* ]]; then
+    pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
+      || (sudo pacman -Syyuu "${pkgs[@]}" && _o installed "${pkgs[@]}")
+  elif [[ ${DISTRO} =~ ^(rasp|deb)ian*|ubuntu* ]]; then
+    dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
+      || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
+  fi
+  _s all set
+
+
+  _a backup destination
+  if grep -qs "$mount" /proc/mounts; then
+    _w "${B}$mount${YLW} exists and is mounted already!"
+    if _ask "unmount and recreate fstab entry?"; then
+      _o "unmounting $mount"
+      umount "$mount" && _s         # for testing
+    else
+      _o now exiting.
+      exit 1
+    fi
+  fi
+
+  _a "installing destination path"
+
+  if mkdir -p "/$mount/" \
+    && chown "$user":"$group" "/$mount" \
+    && chmod 770 "/$mount/" ; then
+      _s "created $mount"
+    else
+      _e "unable to create file share"
+      _o "now exiting"
+      exit 1
+    fi
+
+  _a creating fstab entry
+  grep -qxF "${fst}" /etc/fstab || echo "${fst}" >> /etc/fstab
+
+  if grep -qxF "${fst}" /etc/fstab; then
+    _s
+  else
+    _e something went wrong: fstab mount missing.
+    _o now exiting.
+    exit 1
+  fi
+
+  # mount folder
+  _a mounting nfs
+  if mount $mount; then
+    _s "backup destination created successfully!"
+  else
+    _e "something went wrong: unable to mount fstab entry"
+    exit 1
+  fi
+exit
+
+
+
+  # sudo sed -i.bak "/^#backup/d" /etc/rsnapshot.conf # backup stock rsnapshot config, containing #backup lines
+  sudo sed -i. '/BACKUP POINTS \/ SCRIPTS/,$ d' /etc/rsnapshot.conf
+  # sudo sed -n '/BACKUP POINTS \/ SCRIPTS/q;p' /etc/rsnapshot.conf
+  sudo sed -i "/^backup\t\//d" /etc/rsnapshot.conf # delete backup w/ single tab (not created by script \t\t
+  sudo sed -i "/#######################/d" /etc/rsnapshot.conf
+  sudo sed -i "/^#\s/d" /etc/rsnapshot.conf # delete all # explainations
+  sudo sed -i "/^#$/d" /etc/rsnapshot.conf # delete # only lines
+  sudo sed -i "/^$/d" /etc/rsnapshot.conf # delete blank lines
+  sudo sed -i "/^snapshot_root/c\snapshot_root\t/nfs" /etc/rsnapshot.conf
+  sudo sed -i "/^#no_create_root/c\no_create_root\t1" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\tdaily/c\retain\tdaily\t7" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\talpha/c\retain\tdaily\t7" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\tweekly/c\retain\tweekly\t4" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\tbeta/c\retain\tweekly\t4" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\tmonthly/c\#retain\tmonthly\t2" /etc/rsnapshot.conf
+  sudo sed -i "/^retain\tgamma/c\#retain\tmonthly\t2" /etc/rsnapshot.conf
+  sudo sed -i "/logfile\t\//c\logfile\t/nfs/backup.log" /etc/rsnapshot.conf
+  sudo sed -i "/^lockfile/c\lockfile\t/home\/$2\/rnapshot.pid" /etc/rsnapshot.conf
+
+  echo -e "reset rsnapshot config for testing" > /etc/cron.d/rsnapshot
+  grep '# bmilcs.backup automation' /etc/cron.d/rsnapshot || echo -e "#-> bmilcs.backup automation" > /etc/cron.d/rsnapshot
+  grep 'rsnapshot daily' /etc/cron.d/rsnapshot || echo -e "30 3 * * *\t${2}\trsnapshot daily" >> /etc/cron.d/rsnapshot
+  grep 'rsnapshot weekly' /etc/cron.d/rsnapshot || echo -e "30 0 * * 1\t${2}\trsnapshot weekly" >> /etc/cron.d/rsnapshot
+  # grep 'rsnapshot monthly' /etc/crontab || echo "30 2          1 * *           root    rsnapshot monthly" >> /etc/crontab
+
+  echo -e "${PUR}• ${BLU}checking rsnapshot config ${NC}"
+  rsnapshot configtest
+  exit 0
+elif [ $1 = "" ]; then
+        echo -e "${RED}  [X] ${B}error     ${YLW}argument missingoptions: add | install\n${NC}"
+        exit 1
+else
+        what are you saying? \"${2}\"
+        echo -e "${RED}  [X] ${B}error     ${YLW}what are you saying? \"$1\" is not a valid argument\n${NC}"
+fi
+
+
+
+
+
+# # CHECK IF BACKUP USER GROUP EXISTS
+# echo -e "\n${PUR}• ${BLU}$2 group check ${NC}\n"
+# # grep bmbak /etc/group 2>&1>/dev/null
+# # if [ $? != 0 ]  # BMBAK MISSING?
+
+# if getent group $2 | grep -q "\broot\b"; then
+#         echo -e "  ${GRN}[√] done.${NC}\n"
+# else
+#   # echo -e "      ${PUR}• ${YLW}creating bmbak (1999) ${NC}\n"
+#   # CREATE BMBAK GROUP
+#   # groupadd -g 1999 bmbak
+#   # usermod -a -G bmbak $2  # LOGNAME = original user
+#   # if getent group bmbak | grep -q "\b$2\b"; then
+#   #         echo -e "        ${GRN}[√] $2 added to group${NC}\n"
+#   # else
+#   #         echo -e "${RED}        [X] ${B}error     ${YLW}unable to add $2 to bmbak group.\n${NC}\n"
+#   # fi
+#   usermod -a -G $2 root
+#   if getent group $2 | grep -q "\broot\b"; then
+#           echo -e "        ${GRN}[√] root added to group${NC}\n"
+#   else
+#           echo -e "${RED}        [X] ${B}error     ${YLW}unable to add root to $2 group.\n${NC}\n"
+#           exit 1
+#   fi
+#   # useradd -g $USERGROUP -d /home/$USERNAME -s /bin/bash -m $USERNAME
+# fi
