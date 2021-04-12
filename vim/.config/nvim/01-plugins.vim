@@ -12,7 +12,7 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " UNIVERSAL
 "────────────────────────────────────────────────────────────
 " sensible improvements
-  Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 " color scheme
   Plug 'arcticicestudio/nord-vim'
 " status bar
@@ -42,7 +42,7 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " LANGUAGES
 "────────────────────────────────────────────────────────────
 " universal
-  Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " .md markdown
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " python
