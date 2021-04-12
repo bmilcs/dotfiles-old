@@ -10,12 +10,15 @@ filetype off
 syntax on
 augroup filetypedetect
 
+  " config files
   au BufRead,BufNewFile *.conf set filetype=dosini
   au BufRead,BufNewFile *rc set filetype=dosini
 
+  " notes
   au BufRead,BufNewFile */txt/* set filetype=markdown
   au BufRead,BufNewFile */txt/* set syntax=markdown
 
+  " scripts
   au BufRead,BufNewFile */bin/* set filetype=sh
   au BufRead,BufNewFile */bin/* set syntax=sh
 
