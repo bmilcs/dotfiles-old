@@ -49,15 +49,15 @@ set ignorecase   " match upper/lowercase versions of search term
 set smartcase    " only uppercase words w/ uppercase search term
 
 " <tab> behavior
-set shiftwidth=2 " columns of whitespace: “level of indentation"
-set tabstop=2 " columns of whitespace: \t char
+set shiftwidth=2  " columns of whitespace: “level of indentation"
+set tabstop=2     " columns of whitespace: \t char
 set softtabstop=2 " columns of whitespace per tab/backspace keypresses
-set expandtab " convert \t to spaces
-set autoindent " auto indentation
+set expandtab     " convert \t to spaces
+set autoindent    " auto indentation
 
 " search features
-set hlsearch    " highlight matching search patterns
-set incsearch   " enable incremental search
+set hlsearch      " highlight matching search patterns
+set incsearch     " enable incremental search
 if has("nvim")
   set inccommand=split
 endif
@@ -88,8 +88,16 @@ set showmode                                  " display options
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 "set ttyfast                                   " speed up scrolling in vim
 
-set list                                    " display different types of white spaces.
+" set list                                    " display different types of white spaces.
 " set wrap                                    " auto word wrap
+
+
+"set list listchars=trail:.,extends:>
+"set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+"set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
 
 set cc=80
 "'let &colorcolumn = join(range(81,999), ',')

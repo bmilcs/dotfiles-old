@@ -19,19 +19,23 @@ nnoremap <leader>of :tabedit ~/.config/nvim/04-filetype.vim<CR>
 " WHITESPACE
 "────────────────────────────────────────────────────────────
 " Removes trailing spaces
-function TrimWhiteSpace()
-  %s/\s*$//
-  ''
-endfunction
-
-set list listchars=trail:.,extends:>
-autocmd FileWritePre * call TrimWhiteSpace()
-autocmd FileAppendPre * call TrimWhiteSpace()
-autocmd FilterWritePre * call TrimWhiteSpace()
-autocmd BufWritePre * call TrimWhiteSpace()
+ function TrimWhiteSpace()
+   %s/\s*$//
+   ''
+ endfunction
+" autocmd FileWritePre * call TrimWhiteSpace()
+" autocmd FileAppendPre * call TrimWhiteSpace()
+" autocmd FilterWritePre * call TrimWhiteSpace()
+" autocmd BufWritePre * call TrimWhiteSpace()
 
 map <F2> :call TrimWhiteSpace()<CR>
 map! <F2> :call TrimWhiteSpace()<CR>
+
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
+
+
 "────────────────────────────────────────────────────────────
 " COC
 "────────────────────────────────────────────────────────────
