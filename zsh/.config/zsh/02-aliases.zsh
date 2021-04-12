@@ -319,26 +319,20 @@ if where docker-compose > /dev/null; then
   # stop all containres
   alias dcsa='docker stop $(docker ps -a -q)'
 
-  # remove nfs share volumes
-  alias dcrmvols='
-    volz="audiobooks cloud dl movies music plexlog podcasts tv"
-    for vz in $volz; do docker volume rm docker_${vz}; done
-    '
-
   # remove unused: containers | vol | networks | etc
   alias dcnukeold='docker system prune -af'
+  
+  # remove nfs share volumes
+  alias dcnukev='docker volume rm $(docker volume ls | grep docker_)'
 
   # remove all containers
-  alias dcnukeac='docker rm $(docker ps -a -q)'
+  alias dcnukec='docker rm $(docker ps -a -q)'
 
   # remove all images
   alias dcnukei='docker rmi $(docker images -a -q)'
 
-  # remove ALL: containers | volumes
-  alias dcnukecv="dcsa && dcrmac && dcrmvols"
-
   # nuke ALL: containers | volumes | images
-  alias dcnukeall="dcnukecv && dcrmai"
+  alias dcnukeall="dcsa && dcnukec && dcnukei && dcnukev"
 
   # beets
   alias beetsdl="docker exec -u abc -it beets /bin/bash -c 'beet import /downloads/usenet/complete/music'"
