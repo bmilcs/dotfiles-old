@@ -39,15 +39,15 @@ alias picomrc='vim $D/opt/picom/.config/picom/config'
 alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 
 # restarting
-alias trc="tmux source ~/.tmux.conf"
-alias zr='source "$ZDOTDIR"/.zshrc'
-alias polyr=". ~/.config/polybar/launch.sh"
+alias trc='tmux source ~/.tmux.conf'
+alias zr='source '$ZDOTDIR'/.zshrc'
+alias polyr='. ~/.config/polybar/launch.sh'
 
 #────────────────────────────────────────────────────────────
 # DISTRO SPECIFIC
 #────────────────────────────────────────────────────────────
 
-alias rmup="rm -rf ~/.config/up/"
+alias rmup='rm -rf ~/.config/up/'
 
 if [[ $DISTRO = "arch"* ]]; then # ARCH
   # aur | yay
@@ -65,19 +65,19 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yayc='yay -Sc --aur';compdef yaygg='yay'
   # arch specific
-  alias rnet="sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}"
-  alias cdns="sudo systemd-resolve --flush-caches"
+  alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}'
+  alias cdns='sudo systemd-resolve --flush-caches'
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
   alias xpp='xclip -selection primary -o'
-  alias cat="bat";compdef cat="bat"
+  alias cat='bat';compdef cat='bat'
   alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
 
 else # DEBIAN
   # syslog
-  alias syslogg="sudo cat /var/log/syslog | grep "
-  alias syslogls="sudo cat /var/log/syslog"
+  alias syslogg='sudo cat /var/log/syslog | grep '
+  alias syslogls='sudo cat /var/log/syslog'
   alias apti='sudo apt-get install -y'
   alias aptr='sudo apt-get purge -y'
   alias aptg='dpkg --get-selections | grep'
@@ -125,6 +125,7 @@ alias bmi='cd $D && ./install.sh'
 alias bme='vim $D/install.sh'
 
 # git
+alias gcl='git clone --depth=1'
 alias gs='$(git rev-parse > /dev/null 2>&1) || cd $D && git status -s'
 alias gss='$(git rev-parse > /dev/null 2>&1) || cd $D && git status'
 alias greb='$(git rev-parse > /dev/null 2>&1) || cd $D && git rebase && gp'
@@ -143,52 +144,55 @@ alias gd='$(git rev-parse > /dev/null 2>&1) || cd $D && forgit::diff --staged'
 # LS
 #────────────────────────────────────────────────────────────
 
-alias l='ls' ; compdef l="ls"
+alias l='ls' ; compdef l='ls'
 alias ls='LC_ALL=C ls -AlhF \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef ls="ls"
+  compdef ls='ls'
 alias ll='LC_ALL=C command ls -AC \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef lll="ls"
+  compdef lll='ls'
 alias lll='command ls -l \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
-    compdef ll="ls"
+    compdef ll='ls'
 alias llll='command ls -C \
   --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef llll="ls"
+  compdef llll='ls'
 
-alias lst="l -tr" ; compdef lst="ls"
+alias lst='l -tr' ; compdef lst='ls'
 
-alias lsg="l | grep"          # search in dir
-alias lsd="l -d */"           # ls: dirs only
+alias lsg='l | grep'          # search in dir
+alias lsd='l -d */'           # ls: dirs only
 
 #────────────────────────────────────────────────────────────
 # STOCK ENHANCEMENTS
 #────────────────────────────────────────────────────────────
 
+# alias
+alias rM='rm -rf'
+
 # text editors
-alias nano="nvim"                 ; compdef nano="nvim"
-alias vim="nvim"                  ; compdef vim="nvim"
+alias nano='nvim'                 ; compdef nano='nvim'
+alias vim='nvim'                  ; compdef vim='nvim'
 
 # colorize
-alias ip="ip -color=auto"         ; compdef ip="ip"
-alias grep="grep --color=auto"    ; compdef grep="grep"
+alias ip='ip -color=auto'         ; compdef ip='ip'
+alias grep='grep --color=auto'    ; compdef grep='grep'
 
 # autoresume
-alias wget="wget -c"              ; compdef wget="wget"
+alias wget='wget -c'              ; compdef wget='wget'
 
 # confirmations
-alias ln="ln -i"
-  #alias mv="mv -i"
-  #alias cp="cp -i"
+alias ln='ln -i'
+  #alias mv='mv -i'
+  #alias cp='cp -i'
 
 # shortcuts
-alias c="clear"
-alias ..="cd ..&& c && l"
-alias ...="cd ../.. && c && l"
+alias c='clear'
+alias ..='cd ..&& c && l'
+alias ...='cd ../.. && c && l'
 
 # fzf
-# alias -g zz="fzf -m"
+# alias -g zz='fzf -m'
 
 #────────────────────────────────────────────────────────────
 # FILE SYSTEM
