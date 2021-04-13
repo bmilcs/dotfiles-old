@@ -1,5 +1,7 @@
-eric old: dc:44:b6:25:09:95
-eric new: 70:1f:3c:04:61:25
+
+** segment docker-compose by purpose
+  - www
+  - media
 
 [house]
 - install doors & hardware
