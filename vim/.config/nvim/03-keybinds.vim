@@ -15,6 +15,10 @@ nnoremap <leader>opp :tabedit ~/.config/nvim/01-plugins.vim<CR>
 nnoremap <leader>ops :tabedit ~/.config/nvim/02-plugin-settings.vim<CR>
 nnoremap <leader>ok :tabedit ~/.config/nvim/03-keybinds.vim<CR>
 nnoremap <leader>of :tabedit ~/.config/nvim/04-filetype.vim<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>ps :PlugStatus<CR>
+nnoremap <leader>pc :PlugClean<CR>
 "────────────────────────────────────────────────────────────
 " WHITESPACE
 "────────────────────────────────────────────────────────────
@@ -31,10 +35,14 @@ nnoremap <leader>of :tabedit ~/.config/nvim/04-filetype.vim<CR>
 map <F2> :call TrimWhiteSpace()<CR>
 map! <F2> :call TrimWhiteSpace()<CR>
 
-noremap <F5> :set list!<CR>
-inoremap <F5> <C-o>:set list!<CR>
-cnoremap <F5> <C-c>:set list!<CR>
+noremap <F3> :set list!<CR>
+inoremap <F3> <C-o>:set list!<CR>
+cnoremap <F3> <C-c>:set list!<CR>
 
+"────────────────────────────────────────────────────────────
+" VIMSPECTOR
+"────────────────────────────────────────────────────────────
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 "────────────────────────────────────────────────────────────
 " COC
@@ -95,7 +103,9 @@ nnoremap <silent> <leader>SS :Split<CR>
 "────────────────────────────────────────────────────────────
 
 " title bar test
-nnoremap <silent> <leader>tt :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+nnoremap <silent> <leader>tT :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#
+nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp
 
 " sort paragraph
 nnoremap <silent> <leader>1 :'{,'}sort<CR>
