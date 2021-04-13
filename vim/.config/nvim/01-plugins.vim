@@ -39,16 +39,19 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " gutter symbols
   Plug 'airblade/vim-gitgutter'
 "────────────────────────────────────────────────────────────
-" LANGUAGES
+" PROGRAMMING
 "────────────────────────────────────────────────────────────
 " universal
-" Plug 'sheerun/vim-polyglot'
+  Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'puremourning/vimspector'
 " .md markdown
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " python
   Plug 'vim-scripts/indentpython.vim'
 " i3 wm
   Plug 'mboughaba/i3config.vim',
+  " universal
+  " Plug 'sheerun/vim-polyglot'
 "────────────────────────────────────────────────────────────
 " end of plugins
 call plug#end()
