@@ -67,6 +67,7 @@ floating_modifier    Mod4
 bindcode $win+$tilde          exec "source ~/.profile;xrdb -merge ~/.Xresources";restart
 bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
 bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
+bindcode $win+$ctrl+$tilde    exec "bootstrap"
 bindcode $win+$alt+$tilde     exec "i3-msg exit"
 
 # AUDIO
@@ -265,10 +266,11 @@ for_window [instance="lxappearance"] floating enable, resize set 1561 716, move 
 for_window [instance="gtk3-icon-browser"] floating enable, resize set 1466 1218, move absolute position 991 123, border pixel 3
 for_window [instance="gtk3-icon-browser"] floating enable, resize set 735 1343, move absolute position 2441 73, border pixel 3
 for_window [instance="roficlone"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
-for_window [instance="ncmpcpp"] floating enable, resize set 708 1043, move absolute position 4 198, border pixel 3
-for_window [instance="ncmpcpp"] floating enable, resize set 730 1037, move absolute position 0 205, border pixel 3
+#for_window [instance="ncmpcpp"] floating enable, resize set 708 1043, move absolute position 4 198, border pixel 3
+#for_window [instance="ncmpcpp"] floating enable, resize set 730 1037, move absolute position 0 205, border pixel 3
 for_window [instance="picard"] floating enable, resize set 1716 1076, move absolute position 812 199, border pixel 3
 for_window [instance="i3pad"] floating enable, resize set 408 1212, move absolute position 3031 142, border pixel 3
 for_window [instance="nvidia-settings"] floating enable, resize set 1608 996, move absolute position 916 253, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1551 977, move absolute position 919 249, border pixel 3
 for_window [instance="rofitxt"] floating enable, resize set 789 1074, move absolute position 2113 200, border pixel 3
+#for_window [instance="ncmpcpp"] floating enable, resize set 724 1031, move absolute position 1753 208, border pixel 3
