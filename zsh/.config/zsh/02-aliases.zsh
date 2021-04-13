@@ -321,7 +321,7 @@ if where docker-compose > /dev/null; then
   alias dcleane='docker rm $(docker ps -qa --no-trunc --filter "status=exited")'
 
   # stop all containres
-  alias dcsa='docker stop $(docker ps -a -q)'
+  alias dcstopall='docker stop $(docker ps -a -q)'
 
   # remove unused: containers | vol | networks | etc
   alias dcnukeold='docker system prune -af'
@@ -336,7 +336,7 @@ if where docker-compose > /dev/null; then
   alias dcnukei='docker rmi $(docker images -a -q)'
 
   # nuke ALL: containers | volumes | images
-  alias dcnukeall="dcsa && dcnukec && dcnukei && dcnukev"
+  alias dcnukeall="dcstopall ; dcnukec ; dcnukei ; dcnukev"
 
   # beets
   alias beetsdl="docker exec -u abc -it beets /bin/bash -c 'beet import /downloads/usenet/complete/music'"
