@@ -1,95 +1,225 @@
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 BMILCS NCMPCPP CONFIG [./config]
 #────────────────────────────────────────────────────────────
-# ESSENTIALS
+# CORE
 #────────────────────────────────────────────────────────────
 #mpd_music_dir = "/all/media/audio/music"
+#mpd_host = "127.0.0.1"
 lyrics_directory = "/all/media/audio/lyrics"
 ncmpcpp_directory = "/home/bmilcs/.config/ncmpcpp"
-#mpd_host = "127.0.0.1"
 mpd_host = "mpd.bm.bmilcs.com"
 mpd_port = "6600"
-
+mpd_crossfade_time = 5
 #────────────────────────────────────────────────────────────
-# GUI
+# MOUSE
 #────────────────────────────────────────────────────────────
-
-# Visualizer
-visualizer_data_source = "/tmp/mpd.fifo"
-visualizer_output_name = "my_fifo"
+mouse_support = "yes"
+mouse_list_scroll_whole_page = "yes"
+lines_scrolled = "5"
+#────────────────────────────────────────────────────────────
+# VISUALIZER
+#────────────────────────────────────────────────────────────
+visualizer_type = "spectrum"
+visualizer_look = "▋▋"
 visualizer_in_stereo = "yes"
-visualizer_type = "ellipse"
-visualizer_look = "+|"
-visualizer_color = "green, green, yellow, red"
+visualizer_data_source = "/all/media/audio/mpd/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_fps = 60
+visualizer_autoscale = "yes"
 
-# Playlist
-playlist_show_remaining_time = yes
-playlist_shorten_total_times = yes
-playlist_separate_albums = no
-song_list_format = "{{$2%a$0 $3-$0 $5%b$0 $3- $7%t$0}|{%f}}{$R$2%l$0}"
-current_item_prefix = "$3──────────── $0"
-current_item_suffix = "$3 ────────────$0"
+#────────────────────────────────────────────────────────────
+# MISC
+#────────────────────────────────────────────────────────────
+follow_now_playing_lyrics = "yes"
+external_editor = "nvim"
+message_delay_time = "3"
+playlist_shorten_total_times = "yes"
+
+#────────────────────────────────────────────────────────────
+# DISPLAY MODE
+#────────────────────────────────────────────────────────────
+user_interface = "classic"
 playlist_display_mode = "classic"
-titles_visibility = "yes"
-header_visibility = "no"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+
+locked_screen_width_part = "60"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+display_bitrate = "no"
+
 statusbar_visibility = "yes"
-fetch_lyrics_for_current_song_in_background = "yes"
+header_visibility = "no"
+titles_visibility = "no"
 
-# How the browser looks
-browser_display_mode = columns
-search_engine_display_mode = columns
-playlist_editor_display_mode = columns
-
-# Centering
-autocenter_mode = yes
-centered_cursor = yes
-
-# Don't delete items
-allow_for_physical_item_deletion = yes
-
-# Startup screens
-startup_screen = "playlist"
-startup_slave_screen = "visualizer"
-locked_screen_width_part = 50
-ask_for_locked_screen_width_part = yes
-
-# Title
-clock_display_seconds = yes
-display_volume_level = yes
-display_bitrate = no
-display_remaining_time = yes
-enable_window_title = yes
-
-# Media library settings
-ignore_leading_the = no
-media_library_sort_by_mtime = no
-media_library_primary_tag = album_artist
-default_place_to_search_in = database
-cyclic_scrolling = yes
-mpd_crossfade_time = "3"
-playlist_disable_highlight_delay = 0
-now_playing_suffix = "$/b$/r"
-
-# Editor
-external_editor = nvim
-use_console_editor = yes
-
-# Looks
-statusbar_color = "blue"
-progressbar_color = "white"
 progressbar_elapsed_color = "cyan"
-progressbar_look = "─╼"
-alternative_ui_separator_color = "blue"
-color1 = "blue"
-color2 = "cyan"
-main_window_color = "blue"
-statusbar_time_color = "blue"
-player_state_color = "blue"
-window_border_color = "black"
-active_window_border = "black"
-user_interface = alternative
-song_status_format = "$2%a$0 $3-$0 $5%b$0 $3- $7%t$0"
-message_delay_time = 1
+progressbar_color = "black"
+progressbar_look = "▃▃▃"
+#progressbar_look = "─⊙ "
 
-execute_on_song_change = notify-send "Now playing" "`mpc current`"
+statusbar_color = "white"
+visualizer_color = "white"
+enable_window_title = "yes"
+
+
+#now_playing_prefix = "$u$2"
+#now_playing_suffix = "$2$/u$2"
+
+now_playing_prefix = "$b"
+now_playing_suffix = "$8$/b"
+
+color1 = "blue"
+color2 = "black"
+
+song_list_format = "$b$7%a$/b $5%t $R$6%b $R$5%l"
+#song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+
+#uncomment both statement's below if you want to display the albumart
+#execute_on_song_change="~/.ncmpcpp/art.sh"
+#song_list_format = "                       $2%t $R$5%a "
+
+song_columns_list_format = "(33)[blue]{a} (33)[cyan]{t|f} (31)[yellow]{b} (3)[green]{l}"
+
+song_status_format = "$b$7♫ $7%a $4%t $5[%b]"
+
+song_window_title_format = "{%a} - {%t}"
+
+
+# song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+# song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+# song_library_format = {%n - }{%t}|{%f}
+# alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+# alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+# current_item_prefix = $(yellow)$r
+# current_item_suffix = $/r$(end)
+# current_item_inactive_column_prefix = $(white)$r
+# current_item_inactive_column_suffix = $/r$(end)
+# browser_playlist_prefix = "$2playlist$9 "
+# selected_item_prefix = $6
+# selected_item_suffix = $9
+# modified_item_prefix = $3> $9
+
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %A - album artist
+## %t - title
+## %b - album
+## %y - date
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## %P - priority
+## $R - begin right alignment
+
+## - 0 - default window color (discards all other colors)
+## - 1 - black
+## - 2 - red
+## - 3 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+## - b - bold text
+## - u - underline text
+## - r - reverse colors
+## - a - use alternative character set
+
+
+#────────────────────────────────────────────────────────────
+# DUAL COLUMN GUI
+#────────────────────────────────────────────────────────────
+
+#  # Visualizer
+#  visualizer_data_source = "~/.config/mpd/mpd.fifo"
+#  visualizer_output_name = "my_fifo"
+#  visualizer_in_stereo = "yes"
+#  visualizer_type = "ellipse"
+#  visualizer_look = "+|"
+#  visualizer_color = "green, green, yellow, red"
+#  
+#  # Playlist
+#  playlist_show_remaining_time = yes
+#  playlist_shorten_total_times = yes
+#  playlist_separate_albums = no
+#  song_list_format = "{{$2%a$0 $3-$0 $5%b$0 $3- $7%t$0}|{%f}}{$R$2%l$0}"
+#  current_item_prefix = "$3──────────── $0"
+#  current_item_suffix = "$3 ────────────$0"
+#  playlist_display_mode = "classic"
+#  titles_visibility = "yes"
+#  header_visibility = "yes"
+#  statusbar_visibility = "yes"
+#  fetch_lyrics_for_current_song_in_background = "yes"
+#  
+#  # How the browser looks
+#  browser_display_mode = columns
+#  search_engine_display_mode = columns
+#  playlist_editor_display_mode = columns
+#  
+#  # Centering
+#  autocenter_mode = yes
+#  centered_cursor = yes
+#  
+#  # Don't delete items
+#  allow_for_physical_item_deletion = yes
+#  
+#  # Startup screens
+#  startup_screen = "playlist"
+#  startup_slave_screen = "visualizer"
+#  locked_screen_width_part = 50
+#  ask_for_locked_screen_width_part = yes
+#  
+#  # Title
+#  clock_display_seconds = yes
+#  display_volume_level = yes
+#  display_bitrate = no
+#  display_remaining_time = yes
+#  enable_window_title = yes
+#  
+#  # Media library settings
+#  ignore_leading_the = no
+#  media_library_sort_by_mtime = no
+#  media_library_primary_tag = album_artist
+#  default_place_to_search_in = database
+#  cyclic_scrolling = yes
+#  mpd_crossfade_time = "3"
+#  playlist_disable_highlight_delay = 0
+#  now_playing_suffix = "$/b$/r"
+#  
+#  # Editor
+#  external_editor = nvim
+#  use_console_editor = yes
+#  
+#  # Looks
+#  statusbar_color = "blue"
+#  progressbar_color = "white"
+#  progressbar_elapsed_color = "cyan"
+#  progressbar_look = "─╼"
+#  alternative_ui_separator_color = "blue"
+#  color1 = "blue"
+#  color2 = "cyan"
+#  main_window_color = "blue"
+#  statusbar_time_color = "blue"
+#  player_state_color = "blue"
+#  window_border_color = "black"
+#  active_window_border = "black"
+#  user_interface = alternative
+#  song_status_format = "$2%a$0 $3-$0 $5%b$0 $3- $7%t$0"
+#  message_delay_time = 1
+#  
+#  execute_on_song_change = notify-send "Now playing" "`mpc current`"
 
 #────────────────────────────────────────────────────────────
 # ORIGINAL
