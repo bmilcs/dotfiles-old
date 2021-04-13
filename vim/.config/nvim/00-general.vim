@@ -10,7 +10,7 @@
 set nocompatible  " must be first
 
 " better autocomplete
-"set wildmenu
+set wildmenu
 
 " ask to save
 set confirm
@@ -54,6 +54,7 @@ set tabstop=2     " columns of whitespace: \t char
 set softtabstop=2 " columns of whitespace per tab/backspace keypresses
 set expandtab     " convert \t to spaces
 set autoindent    " auto indentation
+set showtabline=2 
 
 " search features
 set hlsearch      " highlight matching search patterns
@@ -127,3 +128,4 @@ set viminfo=%,<1500,'25,/250,:1000,n~/.config/nvim/cache/.viminfo
 
 " disable folding
 " set nofoldenable    " disable folding
+" setlocal foldmethod=indent
