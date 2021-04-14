@@ -44,6 +44,8 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " universal
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'puremourning/vimspector'
+" nginx
+  Plug 'chr4/nginx.vim'
 " .md markdown
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " python

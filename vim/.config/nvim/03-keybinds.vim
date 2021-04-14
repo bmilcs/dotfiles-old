@@ -104,8 +104,8 @@ nnoremap <silent> <leader>SS :Split<CR>
 
 " title bar test
 nnoremap <silent> <leader>tT :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
-nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#
-nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp
+nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0
+nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp0
 
 " sort paragraph
 nnoremap <silent> <leader>1 :'{,'}sort<CR>
@@ -134,6 +134,7 @@ nnoremap <leader>/ :nohlsearch<CR>
 
 " replay last macro
 nnoremap , @
+nnoremap ,, @@
 nnoremap <leader>, @@
 
 " convert link to markdown
