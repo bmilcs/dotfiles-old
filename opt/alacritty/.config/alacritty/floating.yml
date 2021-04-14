@@ -81,14 +81,14 @@ window:
 font:
   size: 8
   normal:
-    family: UbuntuMono Nerd Font
+    #family: UbuntuMono Nerd Font
     #family: GohuFont Nerd Font
     #family: codenewroman nerd font 
     #family: bitstreamverasansmono nerd font
     #family: FantasqueSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
-    #family: Iosevka Nerd Font
+    family: Iosevka Nerd Font
     #family: TerminessTTF Nerd Font
     #family: Terminus
     #family: SauceCodePro Nerd Font
