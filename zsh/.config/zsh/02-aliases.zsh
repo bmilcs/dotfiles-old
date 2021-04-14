@@ -108,7 +108,6 @@ alias ta='t a -t'         ; compdef ta='tmux'       # attach to target name
 alias tn='t new -t'       ; compdef tn='tmux'       # new session, target name
 alias tls='t ls'          ; compdef tls='tmux'      # list sessions
 
-
 # ncdu
 alias ncdu='ncdu --exclude /all --exclude /backup '
 
@@ -136,6 +135,15 @@ alias glog='glo'
 alias gps='$(git rev-parse > /dev/null 2>&1) || cd $D && git push'
 alias gpl='$(git rev-parse > /dev/null 2>&1) || {cd $D && git submodule update --remote --merge} && git pull'
 alias gd='$(git rev-parse > /dev/null 2>&1) || cd $D && forgit::diff --staged'
+alias gituser='git config user.name bmilcs \
+  && git config user.email bmilcs@yahoo.com \
+  && git config color.ui auto'
+#   mkdir -m 700 -p ~/.ssh
+#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+#   chmod 600 ~/.ssh/authorized_keys
+#   eval "$(ssh-agent -s)"
+#   echo "> enter github private key as follows:"
+#   echo "  ssh-add ~/.ssh/id_github"'
 #alias gd='$(git rev-parse) || cd $D && git diff'
 #alias g='$(git rev-parse) || cd $D && git '
 #alias ga='$(git rev-parse) || cd $D && git add'
@@ -391,20 +399,6 @@ if [[ $DISTRO == "debian" ]]; then
     echo "#         valid users = bmilcs"
     echo "-----------------------------------------------------------------------------------------------------"		'
 
-#────────────────────────────────────────────────────────────
-# GITHUB RSA KEY
-#────────────────────────────────────────────────────────────
-
-  alias gitkeys='
-    git config --global user.name bmilcs
-    git config --global user.email bmilcs@yahoo.com
-    git config --global color.ui auto
-    mkdir -m 700 -p ~/.ssh
-    curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
-    chmod 600 ~/.ssh/authorized_keys
-    eval "$(ssh-agent -s)"
-    echo "> enter github private key as follows:"
-    echo "  ssh-add ~/.ssh/id_github"'
 fi
 #────────────────────────────────────────────────────────────
 # BACKUP
