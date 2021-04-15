@@ -26,6 +26,16 @@ augroup filetypedetect
   au BufRead,BufNewFile */.config/i3/config set filetype=i3config
   au BufRead,BufNewFile */.config/i3/config set syntax=i3config
 
+  " docker-compose
+  au BufRead,BufNewFile *docker-compose* set filetype=docker-compose.yaml
+  au BufRead,BufNewFile *.docker set filetype=docker-compose.yaml
+  au BufRead,BufNewFile *docker-compose* set syntax=docker-compose.yaml
+  au BufRead,BufNewFile *.docker set syntax=docker-compose.yaml
+
+  " nginx
+  au BufRead,BufNewFile *nginx* set filetype=nginx
+  au BufRead,BufNewFile *nginx* set filetype=nginx
+
 augroup END
 filetype on
 
