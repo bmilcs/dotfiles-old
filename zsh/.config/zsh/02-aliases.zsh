@@ -175,6 +175,9 @@ alias lsd='l -d */'           # ls: dirs only
 # STOCK ENHANCEMENTS
 #────────────────────────────────────────────────────────────
 
+# fd
+alias fd="fd -E /all/bm -E /all/media -E /backup "
+
 # alias
 alias rM='rm -rf'
 
