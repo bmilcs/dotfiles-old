@@ -3,8 +3,8 @@
 ### cp/sync: preserve perms, ownership, etc.
 
 ``` bash
-rsync -zahv --progress --partial
-      # -z  compresses data via send, reducing amount sent
+rsync -zahvP
+      # -z  COMPRESSES data via send, reducing amount sent
       # -a  ARCHIVE:
       #     -r  (r)ecursive
       #     -l  retain sym(l)inks
@@ -13,10 +13,10 @@ rsync -zahv --progress --partial
       #     -g  retain (g)roup (group id)
       #     -o  retain (o)wner (user id)
       #     -D  retain (D)evices
-      # -h  human-readable
-      # -v  verbose
-      # --progress: shows progress
-      # --partial: allows resuming of aborted syncs
+      # -h  HUMAN-readable
+      # -v  VERBOSE
+      # -P  --progress: shows progress
+      #     --partial: allows resuming of aborted syncs
 ```
 
 ### cp/sync: normal, without preservation
