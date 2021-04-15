@@ -1,14 +1,9 @@
-
-** segment docker-compose by purpose
-  - www
-  - media
-
 [house]
 - install doors & hardware
   - install door casing
   - uninstall doors/hardware
-- paint prime
 - install windows
+- paint prime
 
 [wtb]
 - 2-cycle 40:1 gas mix
