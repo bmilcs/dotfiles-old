@@ -9,7 +9,7 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_t yay install 
+_t yay grep [currently installed]
 
 
 yay -Q \
