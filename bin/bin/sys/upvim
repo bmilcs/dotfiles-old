@@ -9,8 +9,6 @@
 
 source _bm
 _a vim
-_o installing plugins
-  nvim +'PlugInstall' +qall \
-  && _o updating plugins \
-  && nvim +'PlugUpdate' +qall \
-  && _s # &> /dev/null
+_o plugins: clean, install, update
+  nvim +'PlugClean!' +'PlugInstall --sync' +'PlugUpdate' +qa \
+    && _s
