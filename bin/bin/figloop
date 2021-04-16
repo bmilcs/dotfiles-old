@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 FIGLET FONT TESTER [./figloop]
+#────────────────────────────────────────────────────────────
+source _bm
+_a figlet 
+
+string="$*"
+path="/tmp/figgy.bmilcs"
+echo > $path
+
+[ -z "$string" ] && string="bmilcs BMILCS"
+
+# for f in /usr/share/figlet/*/*/*
+# do 
+#   fs=$(basename $f)
+#   fname=${fs%%.tlf}
+#   toilet -f $fname $fname
+# done
+# exit
+
+for fontfile in /usr/share/figlet/fonts/*
+do
+  fontname="$(basename "$fontfile" | cut -d'.' -f 1)"
+  #echo $fontname
+  ( figlet -f "$fontname" "$string" >> "$path" || \
+    toilet -f "$fontname" "$string" >> "$path") \
+    && echo -e "^ ^ ^ ^ $fontname ^ ^ ^ ^" >> $path 
+done \
+  && _s export complete
+
+for fontfile in /usr/share/figlet/*
+do
+  fontname="$(basename "$fontfile" | cut -d'.' -f 1)"
+  #echo $fontname
+  ( figlet -f "$fontname" "$string" >> "$path" || \
+    toilet -f "$fontname" "$string" >> "$path") \
+    && echo -e "^ ^ ^ ^ $fontname ^ ^ ^ ^" >> $path 
+done \
+  && _s export complete
+
+bat $path
+
+_a view figgy examples:
+_o nvim $path
+echo 
+exit 0
