@@ -4,24 +4,23 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 GIT SSH RSA SENDER [./gitssh]
+#                 SCP SSH CFG SENDER [./scp-ssh]
 #────────────────────────────────────────────────────────────
 source _bm
-_a git ssh rsa sender
+_t .ssh config sender
 
-host=$1
+declare -n arrayName=$1
 
-# if ssh "$host" false > /dev/null; then
-#   _w "$host" is unavailable via ssh
-#   _e now exiting\n
-#   exit 1
-# else
-#   _s
-#   echo
-# fi
+host="$*"
 
-if scp ~/.ssh/config ~/.ssh/id_github.com $host:/home/bmilcs/.ssh/; then
-  _s
-else
-  _e unable to transfer files
-fi
+files=("$HOME/.ssh/config" "$HOME/.ssh/id_github.com")
+
+for file in "${files[@]}"
+do
+  _a copying: $file
+  if scp "$file" "$host:/home/bmilcs/.ssh/" ; then # &> /dev/null; then
+    _s
+  else
+    _e unable to transfer files
+  fi
+done
