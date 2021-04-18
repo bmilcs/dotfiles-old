@@ -5,8 +5,6 @@
 " ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀    ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 " vim plugins
 
-
-
 "────────────────────────────────────────────────────────────  MANAGER  ──────"
 
 filetype plugin indent on                     " help plugins load
@@ -38,15 +36,6 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 
-" core
-" Plug 'tpope/vim-fugitive'
-
-" open lines > visually selected
-" Plug 'tpope/vim-rhubarb'
-
-" diff
-" Plug 'jreybert/vimagit'
-
 " gutter symbols
   Plug 'airblade/vim-gitgutter'
 
@@ -55,6 +44,9 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " universal
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'puremourning/vimspector'
+
+" html css 
+  Plug 'turbio/bracey.vim'
 
 " nginx
   Plug 'chr4/nginx.vim'
@@ -76,9 +68,18 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 call plug#end()
 delc PlugUpgrade " disable upgrade (automatic now)
 
-"─────────────────────────────────────────────────────────────────────────────"
 "──────────────────────────────────────────────────────────  graveyard  ──────"
-"─────────────────────────────────────────────────────────────────────────────"
+"
+"────────────────────────────────────────────────────────────────  git  ──────"
+" core
+" Plug 'tpope/vim-fugitive'
+
+" open lines > visually selected
+" Plug 'tpope/vim-rhubarb'
+
+" diff
+" Plug 'jreybert/vimagit'
+
 "
 " universal
 " Plug 'sheerun/vim-polyglot'

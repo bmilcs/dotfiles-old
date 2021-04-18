@@ -1,3 +1,9 @@
+snippet bmsnip "new snippet"
+snippet bm-  ""
+
+ endsnippet
+endsnippet
+
 snippet argument_check "check for arguments"
 if [[ $# -eq 0 ]]; then
   _e "missing arguments"
@@ -10,8 +16,23 @@ elif [[ $# -gt 1 ]]; then
 fi
 endsnippet
 
+snippet bm-arrays "basic array example"
+declare -n arrayName=$1
 
-snippet regex-removeliteralsuffixprefix "remove predetermined suffix/prefix"
+for i in $*
+do
+  arrayName+=("new item $i")
+done
+
+echo "Tot items in function: ${#arrayName[@]}"
+for item in "${arrayName[@]}"
+do
+  echo $item
+done
+echo
+endsnippet
+
+snippet bm-substring-brace-exansion-delete-suffix-prefix "remove predetermined suffix/prefix"
 string="hello-world"
 prefix="hell"
 suffix="ld"
@@ -20,29 +41,78 @@ foo=${foo%"$suffix"}
 echo "${foo}"
 endsnippet
 
-snippet alacritty-launch-cmd "launch alacritty, execute command, keep open"
+snippet bm-alacritty-launch-cmd "launch alacritty, execute command, keep open"
 alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
 endsnippet
 
-snippet rofi-anyinput "rofi single blank input line"
+snippet bm-rofi-anyinput "rofi single blank input line"
 # giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
 endsnippet
 
-snippet trap_cleanexit "trap command for capturing ^c exits"
-# <ctrl-c>: exit trap
-cleanexit() {
-  # do something
-  exit 1
+snippet bm-traps-short-exit-error "trap command examples"
+on_event() {
+  _w "something happened"
+	_s
+	exit 1
 }
 
-trap 'cleanexit' SIGINT
+trap 'on_event' SIGINT # ctrl-c
+trap 'on_event' ERR		 # error
+
+# #   sig       definition
+#-----------------------------------------
+# 0		0					on exit from shell: hang up
+# 1		SIGHUP		clean tidyup - controlling terminal has "gone away" - exited
+# 2		SIGINT		interrupt: Ctrl+C,DEL
+# 3		SIGQUIT		quit
+# 6		SIGABRT		abort
+# 9		SIGKILL		die now (cannot be trapped)
+# 14	SIGALRM		alarm clock
+# 15	SIGTERM		terminate
+
 endsnippet
 
-snippet rightaligntexttocolumn "right align text to a certain column"
+snippet "bm-traps-long-examples"
+ctrlc_count=0
+
+function no_ctrlc()
+{
+    let ctrlc_count++
+    echo
+    if [[ $ctrlc_count == 1 ]]; then
+        echo "Stop that."
+    elif [[ $ctrlc_count == 2 ]]; then
+        echo "Once more and I quit."
+    else
+        echo "That's it.  I quit."
+        exit
+    fi
+}
+trap no_ctrlc SIGINT
+
+while true
+do
+    echo Sleeping
+    sleep 10
+done
+endsnippet
+
+snippet bm-traps-prevent-ctrl-c "prevent cancellation of important cmd"
+# Run something important, no Ctrl-C allowed.
+trap "" SIGINT
+important_command
+
+# Less important stuff from here on out, Ctrl-C allowed.
+trap - SIGINT
+not_so_important_command
+
+endsnippet
+
+snippet bm-printf-right-align-text "printf: right align" 
 printf "%80s\n" "$text"
 endsnippet
 
-snippet forexceptionsloop "for loop, exceptions, install script"
+snippet bm-array-for-loop "for loop, exceptions, install script"
 list=("img" "opt" "root")
 match=0
 
@@ -51,11 +121,11 @@ for a in "${list[@]}"; do
 done
 endsnippet
 
-snippet pipe_clipboard "pipe x to system clipboard"
+snippet bm-xclip "pipe x to system clipboard"
 xclip -sel clip
 endsnippet
 
-snippet regextractline "extract line containing a string"
+snippet bm-regex-substring-extract "extract line containing a string"
 _o extracting class
 class="$(xprop -id "$(xdotool getactivewindow)" \
   | grep -hn "WM_CLASS" \
@@ -64,76 +134,66 @@ class="$(xprop -id "$(xdotool getactivewindow)" \
   | cut -f2 -d "\"")"
 endsnippet
 
-snippet regexdelallafterchar "delete everything after character"
+snippet bm-regex-del-all-after-char "delete everything after character"
 echo "Hello: world" | cut -f1 -d":"
 endsnippet
 
-snippet regexdelnumofcharsinstring "remove # of chars from string"
+snippet bm-regex-del-num-of-chars-in-string "remove # of chars from string"
 dir=${dir:0:$(( ${#dir}-1 ))}
 endsnippet
 
-snippet dotfilelogsudo "dotfile log debugger"
+snippet bm-dotfile-log-sudo "dotfile log debugger"
 # dotfile rc file debugging [sudo]
 [ -f ~/bin/sys/dotfile_logger ] \
 && . ~/bin/sys/dotfile_logger \
 && dotlog '+ `!v expand('%:p')`'
 endsnippet
 
-snippet dotfilelog "dotfile log debugger"
+snippet bm-dotfile-log "dotfile log debugger"
 # dotfile rc file debugging
 . ~/bin/sys/dotfile_logger
-	dotlog '+ `!v expand('%:p')`'
+  dotlog '+ `!v expand('%:p')`'
 endsnippet
 
-snippet sedaddnewfirstline "add a new line to beginning of a file"
+snippet bm-sed-add-new-first-line "add a new line to beginning of a file"
 sed -i '1s/^/...\#\!\/usr...\n/' "$filename"
 endsnippet
 
-snippet foreachargument "loop through & print all arguments"
+snippet bm-for-each-argument "loop through & print all arguments"
 for i in "$@"; do
   echo "$i"
 done
 endsnippet
 
-snippet rmprefixsuffix "remove suffix/prefix from string"
+snippet bm-rmprefixsuffix "remove suffix/prefix from string"
 foo=${string#"$prefix"}
 foo=${foo%"$suffix"}
 endsnippet
 
-snippet swaphome_~ "swap home w/ ~"
+snippet bm-swap-~-$home "swap home w/ ~"
 DIR="$(echo $PWD)"
 [[ $DIR == *"$HOME"* ]] && SDIR="~"${DIR#$HOME}
 endsnippet
 
-snippet pathfromfilename "get leading path of a filename"
-# realpath $1 #=> /path/to/file.name
-# dirname $1 #=> .
-realpath . #=> /path/to
+snippet bm-path-from-filename "get leading path of a filename"
+# realpath $1 # /path/to/file.name
+# dirname $1 # .
+realpath . # /path/to/current/script
 endsnippet
 
-snippet path "full path: current open file"
+snippet bm-path "full path: current open file"
 `!p snip.rv = os.path.abspath(path)`
 endsnippet
 
-snippet filename "basename: open file's name"
+snippet bm-snippet-filename "basename: open file's name"
 `!p snip.rv = snip.basename`
 endsnippet
 
-snippet line "#──── line"
-#────────────────────────────────────────────────────────────
-endsnippet
-
-snippet tb "#──── title bar"
-#────────────────────────────────────────────────────────────
-# $1
-#────────────────────────────────────────────────────────────
-endsnippet
-
-snippet sedswapall "swap all occurences in file"
+snippet bm-sed-swap-all "swap all occurences in file"
 sed -i -e 's/word/new/g' filename
 endsnippet
 
-snippet seddeleteall "delete all occurences in file"
+snippet bm-sed-delete_all "delete all occurences in file"
 sed -i -e 's/word//g' filename
 endsnippet
 

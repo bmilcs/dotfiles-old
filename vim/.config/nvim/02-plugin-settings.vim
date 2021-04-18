@@ -4,17 +4,15 @@
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 "                VIM PLUGIN SETTINGS
-"────────────────────────────────────────────────────────────
+"───────────────────────────────────────────────────────────────  misc  ──────"
 
-" FZF integration
+" fzf integration
 set rtp+=~/.config/fzf
 
-" NORD THEME
-colorscheme nord                              " color scheme
+" nord theme
+colorscheme nord
 
-"────────────────────────────────────────────────────────────
-" COC
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────────────  coc  ──────"
 
 let g:coc_disable_startup_warning = 1
 
@@ -135,7 +133,6 @@ nnoremap <silent><nowait> <space>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
 
-
 " TODO: :CocConfig
 " figure out global langauge server, linter, prettier, etc.
 " coc-sh, coc-diagnostic,
@@ -144,9 +141,7 @@ nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
   " https://github.com/neoclide/coc.nvim/network/dependents?dependents_before=NDA0MzM0NjQyNA
   " https://www.chrisatmachine.com/Neovim/04-vim-coc/
 
-"────────────────────────────────────────────────────────────
-" ULTISNIPS
-"────────────────────────────────────────────────────────────
+"──────────────────────────────────────────────────────────  ULTISNIPS  ──────"
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -158,9 +153,7 @@ let g:UltiSnipsEditSplit="horizontal"
 " remove Ultisnips if you don't want plugin addons
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
-"────────────────────────────────────────────────────────────
-" GIT GUTTER
-"────────────────────────────────────────────────────────────
+"─────────────────────────────────────────────────────────  GIT GUTTER  ──────"
 " custom symbols
 let g:gitgutter_sign_added = '落'
 let g:gitgutter_sign_modified = ''
@@ -174,9 +167,7 @@ set updatetime=250
 
 command! Gqf GitGutterQuickFix | copen
 
-"────────────────────────────────────────────────────────────
-" MARKDOWN PREVIEW
-"────────────────────────────────────────────────────────────
+"───────────────────────────────────────────────────  MARKDOWN PREVIEW  ──────"
 
 let g:mkdp_auto_start = 1 " auto-start w/ .md file
 let g:mkdp_auto_close = 1 " auto-close on .md exit
@@ -184,9 +175,7 @@ let g:mkdp_refresh_slow = 0 " reduce refresh speed
 let g:mkdp_command_for_global = 0 " md can be used on all files
 let g:vim_markdown_no_default_key_mappings = 1
 
-"────────────────────────────────────────────────────────────
-" AIRLINE STATUS BAR
-"────────────────────────────────────────────────────────────
+"─────────────────────────────────────────────────  AIRLINE STATUS BAR  ──────"
 
 let g:airline_powerline_fonts = 1
 
@@ -196,9 +185,8 @@ endif
 
 let g:airline_highlighting_cache = 1
 
-"────────────────────────────────────────────────────────────
-" FZF: FUZZY FINDER
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────────────  FZF   ─────"
+
 let $FZF_DEFAULT_OPTS=''
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path './**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4  --bind=ctrl-j:preview-down,ctrl-k:preview-up'
@@ -225,13 +213,10 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 
-"────────────────────────────────────────────────────────────
-" G R A V E Y A  R D
-"────────────────────────────────────────────────────────────
-"────────────────────────────────────────────────────────────
-" NERDTREE
-"────────────────────────────────────────────────────────────
-"  
+"─────────────────────────────────────────────────  G R A V E Y A  R D  ──────"
+
+"───────────────────────────────────────────────────────────  NERDTREE  ──────"
+  
 "  set modifiable " allow d
 "  let g:NERDTreeWinSize=20 " column width
 "  
@@ -249,9 +234,7 @@ endfunction
 "  " nerdtree clone on every tab
 "  autocmd BufWinEnter * silent NERDTreeMirror
 "  
-"  "────────────────────────────────────────────────────────────
-"  " NERDTREE GIT STATUS
-"  "────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────  NERDTREE GIT STATUS  ──────"
 "  
 "  " show untracked & custom icons:
 "  let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
@@ -269,9 +252,6 @@ endfunction
 "      \ 'Clean'     :'âï¸',
 "      \ 'Unknown'   :'?',
 "      \ }
-"────────────────────────────────────────────────────────────
-" COLORIZER
-"────────────────────────────────────────────────────────────
-
+"──────────────────────────────────────────────────────────  COLORIZER  ──────"
 " let g:colorizer_auto_color = 1  " colorizer (auto)
 
