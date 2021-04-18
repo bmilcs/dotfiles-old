@@ -1,3 +1,15 @@
+[wtb]
+- water bottles for berkey
+- e-toothbrush
+- heating gun
+- nail gun rubber tip
+- router table mount plate?
+- paint, exterior, aluminum/wood
+- 2-cycle 40:1 gas mix
+- shorts
+- boxer briefs
+- yubikey
+
 [house]
 - install doors & hardware
   - install door casing
@@ -5,27 +17,14 @@
 - install windows
 - paint prime
 
-[wtb]
-- 2-cycle 40:1 gas mix
-- window stool!
-- window frames
-- yubikey
-- shorts
-- boxer briefs
-- sanding discs
-
 [ arch ]
   - fix notification functions w/ 1 arg
   - security pop-up keybind (req https)
   - i3: binding: selection copy/paste
-  - zsh: prompt, minimal
-  - search commands w/ examples
+  - research commands w/ examples
   - cut
   - awk
   - xargs
-  - scripts: find > exclude nfs
-  - dir-stack > fzf
-  - fzf [zsh/vim] custom shortcuts
 
   [ vim ]
   - auto-titlebars --- hi ---
