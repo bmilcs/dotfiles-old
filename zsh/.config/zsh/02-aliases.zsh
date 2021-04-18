@@ -42,6 +42,7 @@ alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
 alias trc='tmux source ~/.tmux.conf'
 alias zr='source '$ZDOTDIR'/.zshrc'
 alias polyr='. ~/.config/polybar/launch.sh'
+alias picomr='killall -q picom ; picom -b'
 
 #────────────────────────────────────────────────────────────
 # DISTRO SPECIFIC
