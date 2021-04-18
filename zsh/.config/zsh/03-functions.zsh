@@ -18,7 +18,7 @@ function d() {
 # GIT
 #────────────────────────────────────────────────────────────
 
-# commit changes
+# commit
 function gc() {
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
   git commit -m "$*"
@@ -54,6 +54,13 @@ function gacall() {
 
 # SHELL
 #────────────────────────────────────────────────────────────
+
+# CD BIN
+cdd() {
+  cd $(dirname $(which "$1"))
+}
+
+
 # using ripgrep combined with preview
 # find-in-file - usage: fif <searchTerm>
 fif() {
