@@ -6,6 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 DEBUGGING XSESSION-ERRORS [./i3debug]
 #────────────────────────────────────────────────────────────
+
 source _bm
 
 sleep 0.5
