@@ -9,24 +9,37 @@
 
 source _bm
 
-if [[ $# -eq 0 ]]; then
-  _e "missing arguments"
-  _o "arg 1: class / title name"
-  _o "arg 2: commands to run"
-  exit 1
-elif [[ $# -gt 3 ]]; then
-  _e "too many arguments"
-  _o "arg 1: class / title name"
-  _o "arg 2: commands to run"
-  exit 1
-elif [[ $# -eq 3 ]]; then
-  conf=$3
+usage() { 
+  ( _oc $(basename $0) 
+  _oy   -n   name
+  _oy   -c   cmd
+  _o    -f   config
+  ) 1>&2
+  exit 1; 
+}
+
+while getopts "n:c:f" opt; do
+    case "${opt}" in
+        n)
+            name=${OPTARG}
+            ;;
+        c)
+            cmd=${OPTARG}
+            ;;
+        f)
+            cfg="1"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+if [ -z "${name}" ] || [ -z "${cmd}" ]; then
+    usage
 fi
 
-name=$1
-cmd=$2
-
-if [[ -n "$conf" ]]; then
+if [[ -n "$cfg" ]]; then
   alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e $cmd &
 else
   alacritty --class="$name" --title="$name" -e $cmd &

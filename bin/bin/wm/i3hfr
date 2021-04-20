@@ -7,20 +7,55 @@
 #                 I3 HIDE > FOCUS > RUN [./i3hfr]
 #────────────────────────────────────────────────────────────
 
+source _bm
+
+usage() { 
+  ( _oc $(basename $0) 
+  _oy   -n   name
+  _oy   -c   cmd
+  _o    -f   config
+  ) 1>&2
+  exit 1; 
+}
+
+while getopts "n:c:f" opt; do
+    case "${opt}" in
+        n)
+            name=${OPTARG}
+            ;;
+        c)
+            cmd=${OPTARG}
+            ;;
+        f)
+            cfg="1"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+if [ -z "${name}" ] || [ -z "${cmd}" ]; then
+    usage
+fi
+
 set -x
-#if [ ! "$(pgrep "$1")" ]; then
-if [ "$(pgrep -c "$1")" -eq 0  ]; then
-    $2
+
+if [ "$(pgrep -fc "$name")" -eq 1  ]; then
+  if [ -n "$cfg" ]; then
+    alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e "$cmd" &
+  else
+    alacritty --class="$name" --title="$name" -e $cmd &
+  fi
 else
-  if [ "$(xdotool getactivewindow getwindowname)" = "$1" ]; then
+  if [ "$(xdotool getactivewindow getwindowname)" = "$name" ]; then
     #i3-msg move scratchpad
     i3-msg move container to workspace number 5
   else
     cws="$(i3-msg -t get_workspaces \
       | jq '.[] | select(.focused==true).name' \
       | cut -d"\"" -f2)"
-    i3-msg "[instance=$1] move container to workspace $cws, focus"
-    #i3-msg "[instance=$1] focus"
+    i3-msg "[instance=$name] move container to workspace $cws, focus"
   fi
 fi
 set +x

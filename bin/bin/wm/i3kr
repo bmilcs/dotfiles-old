@@ -6,12 +6,36 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 KILL > FOCUS > LAUNCH [./i3killfocrun]
 #────────────────────────────────────────────────────────────
-set -x
+source _bm
 
-#if [ ! "$(pgrep "$1")" ]; then
-if [[ "$(pgrep -c "$1")" -eq 0  ]]; then
-  $2
-else
-  xdotool windowkill "$(xdotool search --name "$1")"
+usage() { 
+  ( _oc $(basename $0) 
+  _oy   -n   name
+  _oy   -c   cmd
+  _o    -f   config) 1>&2; exit 1; 
+}
+
+while getopts "n:c:f" opt; do
+    case "${opt}" in
+        n) name=${OPTARG} ;;
+        c) cmd=${OPTARG} ;;
+        f) cfg="1" ;;
+        *) usage
+            ;;
+    esac
+done
+
+if [ -z "${name}" ] || [ -z "${cmd}" ]; then
+    usage
 fi
-set +x
+
+
+if [ "$(pgrep -fc "$name")" -eq 1  ]; then
+  if [ -n "$cfg" ]; then
+    alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e "$cmd" &
+  else
+    alacritty --class="$name" --title="$name" -e "$cmd &"
+  fi
+else
+  xdotool windowkill "$(xdotool search --name "$name")"
+fi
