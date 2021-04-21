@@ -151,6 +151,9 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:git:*' script $ZDOTDIR/completion/git-completion.bash
 fpath=($ZDOTDIR/completion $fpath)
 
+# custom script completion
+fpath=(~/bin/completions $fpath)
+
 #────────────────────────────────────────────────────────────
 # '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
 #────────────────────────────────────────────────────────────
