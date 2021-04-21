@@ -28,6 +28,44 @@ working_directory: ~
 #background_opacity: .93
 
 #────────────────────────────────────────────────────────────
+# FONT
+#────────────────────────────────────────────────────────────
+
+font:
+  size: 9
+  normal:
+    #family: GohuFont Nerd Font
+    #family: UbuntuMono Nerd Font
+    #family: codenewroman nerd font 
+    #family: bitstreamverasansmono nerd font
+    #family: FantasqueSansMono Nerd Font
+    #family: DejaVuSansMono Nerd Font
+    family: Iosevka Nerd Font
+    #family: TerminessTTF Nerd Font
+    #family: Terminus
+    #family: SauceCodePro Nerd Font
+    #style: Book
+    #style: Medium
+    style: Regular
+    #style: Medium
+  bold:
+    style: Bold
+  italic:
+    style: Italic
+    #style: Oblique
+  bold_italic:
+    #style: Bold Oblique
+    style: Bold Italic
+
+# space around each character
+  #offset:
+  #  x: 0
+  #  y: 0
+  #glyph_offset:
+  #  x: 0
+  #  y: 1
+
+#────────────────────────────────────────────────────────────
 # WINDOW SETTINGS 
 #────────────────────────────────────────────────────────────
 
@@ -73,44 +111,6 @@ window:
 #scrolling:
   #history: 10000
   #multiplier: 3    # number of lines
-
-#────────────────────────────────────────────────────────────
-# FONT
-#────────────────────────────────────────────────────────────
-
-font:
-  size: 8
-  normal:
-    #family: UbuntuMono Nerd Font
-    #family: GohuFont Nerd Font
-    #family: codenewroman nerd font 
-    #family: bitstreamverasansmono nerd font
-    #family: FantasqueSansMono Nerd Font
-    #family: DejaVuSansMono Nerd Font
-    #family: DejaVuSansMono Nerd Font
-    family: Iosevka Nerd Font
-    #family: TerminessTTF Nerd Font
-    #family: Terminus
-    #family: SauceCodePro Nerd Font
-    #style: Book
-    #style: Medium
-    style: Regular
-  bold:
-    style: Bold
-  italic:
-    style: Italic
-    #style: Oblique
-  bold_italic:
-    #style: Bold Oblique
-    style: Bold Italic
-
-# space around each character
-  #offset:
-  #  x: 0
-  #  y: 0
-  #glyph_offset:
-  #  x: 0
-  #  y: 1
 
 #────────────────────────────────────────────────────────────
 # COLOR THEME
