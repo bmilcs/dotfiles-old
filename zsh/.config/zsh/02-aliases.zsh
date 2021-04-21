@@ -66,6 +66,10 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yayc='yay -Sc --aur';compdef yaygg='yay'
   # arch specific
+  # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
+  alias sudo="nocorrect sudo -E ";compdef sudo="sudo"
+  alias s="sudo";compdef s="sudo"
+
   alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}'
   alias cdns='sudo systemd-resolve --flush-caches'
   alias xc='xclip -selection clipboard'
@@ -230,10 +234,6 @@ alias smb='sudo vim /etc/samba/smb.conf'
 #────────────────────────────────────────────────────────────
 # SYSTEM
 #────────────────────────────────────────────────────────────
-
-# nocorrect [zsh autocorrect > sudo] -E [respect orig env]
-alias sudo="nocorrect sudo -E ";compdef sudo="sudo"
-alias s="sudo";compdef s="sudo"
 
 # reboot, shutdown, etc.
 alias rex="sudo systemctl restart display-manager"
