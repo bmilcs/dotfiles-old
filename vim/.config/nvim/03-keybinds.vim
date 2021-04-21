@@ -99,14 +99,15 @@ nnoremap <silent> <leader>WS :Split<CR>
 nnoremap <silent> <leader>SS :Split<CR>
 
 "────────────────────────────────────────────────────────────
-" TEXT MANIPULATION
+"────────────────────────────────────────────────  " TEXT MANIPULATION  ──────#
 "────────────────────────────────────────────────────────────                  
 
 " title bar test
-nnoremap <silent> <leader>Tt :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
-nnoremap <silent> <leader>TT :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0
-nnoremap <silent> <leader>TY :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp0
-nnoremap <silent> <leader>TB :%s/^\(#\<bar>"\<bar>;\)$/\1─────────────────────────────────────────────────────────────────────────────\1/g<CR>
+nnoremap <silent> <leader>TT :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0
+nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp0
+nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1─────────────────────────────────────────────────────────────────────────────\1/g<CR>
+
 
 " sort paragraph
 nnoremap <silent> <leader>1 :'{,'}sort<CR>
