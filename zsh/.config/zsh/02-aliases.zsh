@@ -185,6 +185,7 @@ alias rM='rm -rf'
 # text editors
 alias nano='nvim'                 ; compdef nano='nvim'
 alias vim='nvim'                  ; compdef vim='nvim'
+alias svim='sudo nvim'            ; compdef svim='nvim'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
