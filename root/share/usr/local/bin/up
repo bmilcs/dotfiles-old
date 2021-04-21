@@ -13,7 +13,7 @@ source _distro
 if [[ $DISTRO == arch* ]]; then
 
   # ARCH
-  _a pacman/aur && yay -Syyyuuu && _s
+  _a pacman/aur && yay -Syyyuuu --noconfirm && _s
 
 elif [[ $DISTRO =~ (rasp|deb)ian*|ubuntu* ]]; then
 
