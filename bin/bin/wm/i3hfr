@@ -20,18 +20,10 @@ usage() {
 
 while getopts "n:c:f" opt; do
     case "${opt}" in
-        n)
-            name=${OPTARG}
-            ;;
-        c)
-            cmd=${OPTARG}
-            ;;
-        f)
-            cfg="1"
-            ;;
-        *)
-            usage
-            ;;
+        n) name=${OPTARG} ;;
+        c) cmd=${OPTARG} ;;
+        f) cfg="1" ;;
+        *) usage ;;
     esac
 done
 
