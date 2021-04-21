@@ -44,8 +44,10 @@ cleanup() {
   _w "content will be moved to $backup"
 
   mkdir -p "$backup"
+
   _f "backup: ~/.dotfiles"
   mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,.zcompdump} "$backup" 2> /dev/null
+
   _f "backup: old up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
 
@@ -56,11 +58,19 @@ cleanup() {
   _f "deleting: old zsh configs"
   rm -rf ~/{.zsh,.zinit,.zplugin} 2> /dev/null
 
-  _f "deleting broken symlinks in ${B}\$HOME"
-  find ~ -xtype l -exec rm {} \; 2> /dev/null
+  _f "broken symlink removal: ${B}\$HOME"
+  find ~ -xtype l 2> /dev/null | while read -r line; do
+    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]]; then
+    _fb removing: "$line" && sudo rm "$line"
+    fi
+  done
+  #-exec rm {} \; 2> /dev/null
 
-  _f "deleting broken symlinks ${B}/etc"
-  sudo find ~ -xtype l -exec rm {} \; 2> /dev/null
+  _f "broken symlink removal: ${B}/etc"
+  sudo find /etc -xtype l 2> /dev/null | while read -r line; do
+    _fb removing: "$line" && sudo rm "$line"
+  done
+#-exec rm {} \; 2> /dev/null
 
   _f "changing /etc/banner"
   [[ -f "/etc/banner" ]] && sudo echo "welcome to: $HOST" > /etc/banner
