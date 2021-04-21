@@ -7,20 +7,37 @@
 #                 SCP SSH CFG SENDER [./scp-ssh]
 #────────────────────────────────────────────────────────────
 source _bm
-_t .ssh config sender
 
-declare -n arrayName=$1
+set -e #exit on error
 
-host="$*"
+help() { 
+  ( _or error: ${B}$(basename $0)${NC} ${YLW}-h host ${NC}-u user
+  ) 1>&2
+  exit 1; 
+}
 
+while getopts "h:u:" opt; do
+    case "${opt}" in
+        h) host=${OPTARG} ;;
+        u) user=${OPTARG} ;;
+        *) help          ;;
+    esac
+done
+
+[ -z "${host}" ] && help
+[ -z "${user}" ] && user="bmilcs"
+
+_t scp ssh config sender
+_o "host: $host"
+_o "user: $user"
 files=("$HOME/.ssh/config" "$HOME/.ssh/id_github.com")
 
 for file in "${files[@]}"
 do
-  _a copying: $file
-  if scp "$file" "$host:/home/bmilcs/.ssh/" ; then # &> /dev/null; then
+  _f copying: $file
+  if scp "$file" "$host:/home/$user/.ssh/" ; then # &> /dev/null; then
     _s
   else
-    _e unable to transfer files
+    _e failed.
   fi
 done
