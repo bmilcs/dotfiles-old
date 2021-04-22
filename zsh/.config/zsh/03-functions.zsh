@@ -52,6 +52,22 @@ function gacall() {
   && _s done.
   }
 
+endot()
+{
+  cd ~/$D
+  tar czf encrypted.tar.gz etc/.local/share/misc
+  gpg -er abdullah@abdullah.today encrypted.tar.gz
+  rm encrypted.tar.gz
+}
+
+dedot()
+{
+  cd ~/$D
+  gpg -do encrypted.tar.gz encrypted.tar.gz.gpg
+  tar xvf encrypted.tar.gz
+  rm encrypted.tar.gz
+}
+
 # SHELL
 #────────────────────────────────────────────────────────────
 
