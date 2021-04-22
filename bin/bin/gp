@@ -23,8 +23,17 @@ _a local repo
 
 if [[ "$gstatus" == *"behind"* ]]; then
 
-  _ic "pull updates (behind)"
-  $g pull
+  _ig "${B}behind: ${GRN}updates available"
+
+  if [[ $gstatus == *clean* ]]; then
+
+    $g pull
+
+  else
+
+    _f unable to update
+
+  fi
 
 elif [[ "$gstatus" == *"ahead"* ]]; then
 
@@ -67,3 +76,6 @@ if [[ $gstatus == *"diverged"* ]]; then
 
   fi
 fi
+
+# clean looking exit
+echo
