@@ -12,7 +12,6 @@ source _bm
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
 
-# check modded files & pull remote status
 gremote="$($g remote update 2> /dev/null)"
 gstatus="$($g status -uno 2> /dev/null)"
 
