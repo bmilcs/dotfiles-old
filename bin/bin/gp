@@ -32,18 +32,20 @@ if [[ ! -z "$gclean" ]] ; then
   if [[ "$gstatus" == *"behind"* ]]; then
 
     _ic "pulling updates (behind)"
-    $g pull \
+    $g pull
 
   elif [[ "$gstatus" == *"ahead"* ]]; then
 
     _ic "pushing updates (ahead)"
-    $g push \
+    $g push
 
   else
     _f "up-to-date"
   fi
 
 else
+
+  $g push
 
   _wb "dirty!"
   _ay "commit:"
@@ -53,11 +55,16 @@ fi
 
 if [[ $gstatus == *"diverged"* ]]; then
   _tr "repo has ${B}diverged!"
-  _ww rebase required\\n
-  _ob "1. ${CYN}${B}git rebase${BLU} or ${CYN}${B}greb${BLU} (forgit)"
-  _ob "2. fix conflicts via ${CYN}${B}vim"
-  _ob "3. ${CYN}${B}git add${BLU} or ${CYN}${B}ga${BLU} (forgit)"
-  _ob "4. ${CYN}${B}git rebase --continue${BLU} or ${CYN}${B}grebc${BLU}, then ${CYN}${B}gp"
+  _a attempting rebase
+  if greb; then 
+    _s 
+  else
+    _ww rebase unsuccessful\\n
+    _ob "1. fix conflicts via ${CYN}${B}vim"
+    _ob "2. ${CYN}${B}git add${BLU} or ${CYN}${B}ga${BLU} (forgit)"
+    _ob "3. ${CYN}${B}git rebase --continue${BLU} \
+      or ${CYN}${B}grebc${BLU}, then ${CYN}${B}gp"
+  fi
 fi
 
 echo
