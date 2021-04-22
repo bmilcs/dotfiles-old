@@ -23,7 +23,7 @@ _a local repo
 
 if [[ $gstatus == *"behind"* ]]; then
 
-  _ew "${B}behind: ${GRN}updates available"
+  _ew "${B}behind: updates available"
 
   if [[ $gstatus == *clean* ]] || [[ $gstatus == *"nothing to commit" ]]; then
 
