@@ -6,7 +6,7 @@
 
 ``` bash
 # deploy my dotfiles
-git clone https://dot.bmilcs.com bm
+git clone --depth=1 https://dot.bmilcs.com bm && cd bm && ./install.sh
 ```
 
 - [zsh](/zsh/.zsh/) (shell)
