@@ -21,7 +21,7 @@ gstatus="$($g status -uno 2> /dev/null)"
 
 _a local repo
 
-if [[ "$gstatus" == *"behind"* ]]; then
+if [[ $gstatus == *clean* ]] || [[ $gstatus == *"nothing to commit" ]]; then
 
   _ew "${B}behind: ${GRN}updates available"
 
