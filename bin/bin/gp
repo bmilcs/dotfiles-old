@@ -38,7 +38,7 @@ else
 
 fi
 
-if [[ ! $gstatus == *clean* ]] ; then
+if [[ ! $gstatus == *clean* ]] && [[ ! $gstatus == *"nothing to commit"* ]]; then
 
   _ay "commits needed:"
   $g status -s
