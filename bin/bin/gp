@@ -40,7 +40,7 @@ fi
 
 if [[ ! $gstatus == *clean* ]] && [[ ! $gstatus == *"nothing to commit"* ]]; then
 
-  _ay "commits needed:"
+  _ay "commit:"
   $g status -s
   echo
 
@@ -52,21 +52,19 @@ if [[ $gstatus == *"diverged"* ]]; then
   _a attempting rebase
 
   if git rebase; then 
-    _s 
 
+    _s 
     _ic "push updates (ahead)"
     $g push
 
   else
 
     _ww rebase unsuccessful\\n
-    _ob "1. fix conflicts via ${CYN}${B}vim"
+    _ob "1. fix conflicts"
+    $g status -s
     _ob "2. ${CYN}${B}git add${BLU} or ${CYN}${B}ga${BLU} (forgit)"
     _ob "3. ${CYN}${B}git rebase --continue${BLU} \
       or ${CYN}${B}grebc${BLU}, then ${CYN}${B}gp"
 
   fi
 fi
-
-echo
-_s done "\n"
