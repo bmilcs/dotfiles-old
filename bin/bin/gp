@@ -13,42 +13,36 @@ D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
 
 # check modded files & pull remote status
-gclean="$($g status | grep "clean")"
 gremote="$($g remote update 2> /dev/null)"
 
 # debugging
 [ $# -gt 0 ] && _w "${GRN}${B}gstatus${YLW}: $gstatus" \
              && _w "${RED}${B}gremote${YLW}: $gremote"
 
-if [[ ! -z "$gclean" ]] ; then
+_a local repo
+gstatus="$($g status -uno 2> /dev/null)"
 
-  _a remote dotfiles
+if [[ "$gstatus" == *"behind"* ]]; then
 
-  gstatus="$($g status -uno 2> /dev/null)"
+  _ic "pull updates (behind)"
+  $g pull
 
-  if [[ "$gstatus" == *"behind"* ]]; then
+elif [[ "$gstatus" == *"ahead"* ]]; then
 
-    _ic "pulling updates (behind)"
-    $g pull
-
-  elif [[ "$gstatus" == *"ahead"* ]]; then
-
-    _ic "pushing updates (ahead)"
-    $g push
-
-  else
-
-    _f "up-to-date"
-
-  fi
+  _ic "push updates (ahead)"
+  $g push
 
 else
 
-  $g push
+  _sb "up-to-date"
 
-  _wb "dirty!"
-  _ay "commit:"
+fi
+
+if [[ ! $gstatus == *clean* ]] ; then
+
+  _ay "commits needed:"
   $g status -s
+  echo
   exit 1
 
 fi
