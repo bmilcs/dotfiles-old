@@ -27,6 +27,7 @@ if [[ $gstatus == *"behind"* ]]; then
 
   if [[ $gstatus == *clean* ]] || [[ $gstatus == *"nothing to commit" ]]; then
 
+    echo 
     $g pull
 
   else
