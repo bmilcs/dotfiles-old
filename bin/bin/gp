@@ -51,9 +51,11 @@ if [[ $gstatus == *"diverged"* ]]; then
   _tr "repo has ${B}diverged!"
   _a attempting rebase
 
-  if greb 2> /dev/null; then 
-
+  if git rebase; then 
     _s 
+
+    _ic "push updates (ahead)"
+    $g push
 
   else
 
