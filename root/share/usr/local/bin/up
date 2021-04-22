@@ -15,7 +15,7 @@ if [[ $DISTRO == arch* ]]; then
   # ARCH
   _a pacman/aur && yay -Syyyuuu --noconfirm && _s
 
-elif [[ $DISTRO =~ (rasp|deb)ian*|ubuntu* ]]; then
+elif [[ $DISTRO =~ raspian*|debian*|ubuntu* ]]; then
 
   # DEBIAN
   _t apt
