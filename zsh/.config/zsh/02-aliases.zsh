@@ -64,7 +64,8 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yayll='yay -Q | fzf';compdef yayll='yay'
   alias yayg='yay -Q | grep';compdef yayg='yay'
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
-  alias yayc='yay -Sc --aur';compdef yaygg='yay'
+  alias yaycln='yay -Sc --aur';compdef yayc='yay'
+  alias pmreport='pacreport --unowned-files'
   # arch specific
   # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
   alias sudo="nocorrect sudo -E ";compdef sudo="sudo"
