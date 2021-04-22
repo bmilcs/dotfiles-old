@@ -13,6 +13,8 @@ _t docker-compose
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
+_a docker-compose down && docker-compose down && _s
+
 _a docker-compose pull && docker-compose pull && _s
 
 _a docker-compose up -d --remove-orphans && docker-compose up -d --remove-orphans && _s
