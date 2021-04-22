@@ -5,17 +5,15 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 I3 HIDE > FOCUS > RUN [./i3hfr]
-#────────────────────────────────────────────────────────────
 
 source _bm
 
 usage() { 
-  ( _oc $(basename $0) 
+  ( _oc "$(basename $0)"
   _oy   -n   name
   _oy   -c   cmd
   _o    -f   config
-  ) 1>&2
-  exit 1; 
+  ) 1>&2; exit 1; 
 }
 
 while getopts "n:c:f" opt; do

@@ -17,12 +17,13 @@ ctrlC() {
   echo && _w "${B}now exiting" && _o "cleaning up"
   rm -rf $running && _s "done\n" && exit 1
   }
-trap 'ctrlC' SIGINT
 
 error() {
   echo && _e "something went wrong"
   ctrlC
 }
+
+trap 'ctrlC' SIGINT
 trap 'error' ERR
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
