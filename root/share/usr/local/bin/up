@@ -18,12 +18,21 @@ if [[ $DISTRO == arch* ]]; then
 elif [[ $DISTRO =~ (rasp|deb)ian*|ubuntu* ]]; then
 
   # DEBIAN
-  _a apt update && sudo apt update -y && _s
-  _a apt dist-upgrade && sudo apt dist-upgrade -y && _s
-  _a apt upgrade && sudo apt upgrade -y && _s
-  _a apt clean && sudo apt clean -y && _s
-  _a apt autoremove && sudo apt autoremove --purge -y && _s
-  _a apt autoclean && sudo apt autoclean -y && _s
+  _t apt
+  _a update && \
+    sudo apt update -y && _s
+  _a dist-upgrade && \
+    sudo apt dist-upgrade -y && _s
+  _a upgrade && \
+    sudo apt upgrade -y && _s
+  _a clean && \
+    sudo apt clean -y && _s
+  _a autoremove \
+    && sudo apt autoremove --purge -y && _s
+  _a autoclean \
+    && sudo apt autoclean -y && _s
+  _a purge old configs \
+    && sudo apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }') && _s
 
   # PIHOLE
   if pihole -v PIHOLE &> /dev/null; then
