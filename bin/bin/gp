@@ -21,11 +21,11 @@ gstatus="$($g status -uno 2> /dev/null)"
 
 _a local repo
 
-if [[ $gstatus == *clean* ]] || [[ $gstatus == *"nothing to commit" ]]; then
+if [[ $gstatus == *"behind"* ]]; then
 
   _ew "${B}behind: ${GRN}updates available"
 
-  if [[ $gstatus == *clean* ]]; then
+  if [[ $gstatus == *clean* ]] || [[ $gstatus == *"nothing to commit" ]]; then
 
     $g pull
 
