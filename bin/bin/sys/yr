@@ -4,13 +4,11 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 YAY REMOVER [./yr]
+#                 YAY REMOVER VIA FZF [./yr]
 #────────────────────────────────────────────────────────────
-
 source _bm
 _t yay remover 
 
 yay -Qq \
   | fzf --multi --preview 'yay -Qi {1}' \
   | xargs -ro yay -Rns
-

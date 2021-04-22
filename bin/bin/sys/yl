@@ -12,7 +12,14 @@ source _bm
 _t yay grep [currently installed]
 
 
-yay -Q \
-  | fzf --multi --preview 'cat <(yay -Si {1}) <(yay -Fl {1} \
-  | awk "{print \$2}")'
+yay -Qq \
+  | fzf --multi \
+    --preview 'yay -Qil {}' \
+    --bind 'enter:execute(yay -Qil {} | less)'
 
+
+# 'cat <(yay -Si {1}) <(yay -Fl {1} \
+#   | awk "{print \$2}")'
+# 
+# 
+# yay -Qq | fzf --preview 'yay -Qil {}' --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'
