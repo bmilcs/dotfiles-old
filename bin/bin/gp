@@ -14,13 +14,13 @@ g="git --git-dir=$D/.git --work-tree=$D"
 
 # check modded files & pull remote status
 gremote="$($g remote update 2> /dev/null)"
+gstatus="$($g status -uno 2> /dev/null)"
 
 # debugging
 [ $# -gt 0 ] && _w "${GRN}${B}gstatus${YLW}: $gstatus" \
              && _w "${RED}${B}gremote${YLW}: $gremote"
 
 _a local repo
-gstatus="$($g status -uno 2> /dev/null)"
 
 if [[ "$gstatus" == *"behind"* ]]; then
 
