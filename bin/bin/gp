@@ -8,7 +8,6 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
-_a local: dotfiles
 
 D="${D:-/home/bmilcs/bm}"
 g="git --git-dir=$D/.git --work-tree=$D"
@@ -22,8 +21,6 @@ gremote="$($g remote update 2> /dev/null)"
              && _w "${RED}${B}gremote${YLW}: $gremote"
 
 if [[ ! -z "$gclean" ]] ; then
-
-  _f clean
 
   _a remote dotfiles
 
@@ -40,7 +37,9 @@ if [[ ! -z "$gclean" ]] ; then
     $g push
 
   else
+
     _f "up-to-date"
+
   fi
 
 else
@@ -50,20 +49,27 @@ else
   _wb "dirty!"
   _ay "commit:"
   $g status -s
+  exit 1
 
 fi
 
 if [[ $gstatus == *"diverged"* ]]; then
+
   _tr "repo has ${B}diverged!"
   _a attempting rebase
-  if greb; then 
+
+  if greb 2> /dev/null; then 
+
     _s 
+
   else
+
     _ww rebase unsuccessful\\n
     _ob "1. fix conflicts via ${CYN}${B}vim"
     _ob "2. ${CYN}${B}git add${BLU} or ${CYN}${B}ga${BLU} (forgit)"
     _ob "3. ${CYN}${B}git rebase --continue${BLU} \
       or ${CYN}${B}grebc${BLU}, then ${CYN}${B}gp"
+
   fi
 fi
 
