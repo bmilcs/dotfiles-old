@@ -45,7 +45,10 @@ running="$HOME/.config/up/running.bm"
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
 
 # force non-workstations to update repo everytime (vm's, etc)
-[[ ! "$HOST" == "bm"* ]] && gp && echo "$today" > "$dstatus"
+if [[ ! "$HOST" == "bm"* ]]; then
+  gp &> /dev/null & 
+  echo "$today" > "$dstatus"
+fi
 
 # process check
 if [[ ! -f "$running" ]]; then
