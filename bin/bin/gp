@@ -38,8 +38,7 @@ if [[ $gstatus == *"behind"* ]]; then
 
 elif [[ "$gstatus" == *"ahead"* ]]; then
 
-  _ew "ahead: pushing updates"
-  echo
+  _ew ahead: pushing updates\\n
   $g push
 
 else
@@ -59,12 +58,11 @@ fi
 if [[ $gstatus == *"diverged"* ]]; then
 
   _ar "repo has ${B}diverged!"
-  _a attempting rebase
+  _a attempting rebase\\n
 
   if git rebase; then 
 
-    _s 
-    echo
+    _s done\\n
     _ic "push updates (ahead)"
     $g push
 
