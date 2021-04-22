@@ -38,7 +38,8 @@ if [[ $gstatus == *"behind"* ]]; then
 
 elif [[ "$gstatus" == *"ahead"* ]]; then
 
-  _ic "push updates (ahead)"
+  _ic "ahead: pushing updates"
+  echo
   $g push
 
 else
