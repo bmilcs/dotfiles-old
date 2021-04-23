@@ -64,7 +64,6 @@ function vi-yank-xclip {      # yank to the system clipboard
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
-
 # directory
 
 setopt autocd                 # cd into dir's w/o cd prefix
@@ -182,15 +181,6 @@ if [[ "$DISTRO" == "arch"* ]]; then
   compctl -K _pip_completion pip3
 fi
 
-#───────────────────────────────────────────────  PROMPT, COLORS, ETC. ────────
-
-setopt prompt_subst
-#RPROMPT=\$vcs_info_msg_0_
-# RPROMPT=\$vcs_info_msg_0_'%# '
-# zstyle ':vcs_info:git:*' formats '%b'
-# autoload -Uz vcs_info
-# #precmd_vcs_info() { vcs_info }
-
 #────────────────────────────────────────────────────────  KEYBINDINGS  ───────
 
 typeset -g -A key
@@ -225,8 +215,8 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 bindkey '^\n' autosuggest-accept 
 bindkey '^j' up-line-or-beginning-search
 bindkey '^k' down-line-or-beginning-search
-bindkey '^H' backward-kill-word # ctrl backspace delete word
-bindkey '^[[3;5~' kill-word
+#bindkey '^H' backward-kill-word # ctrl backspace delete word
+#bindkey '^[[3;5~' kill-word
 
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
@@ -237,7 +227,7 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
-# coax into rehashing its own command cache once out of date | needed by /etc/pacman.d/hooks/zsh.hook (arch manual - bmilcs)
+# find new executables in $PATH
 zshcache_time="$(date +%s%N)"
 autoload -Uz add-zsh-hook
 rehash_precmd() {
@@ -250,8 +240,3 @@ rehash_precmd() {
   fi
 }
 add-zsh-hook -Uz precmd rehash_precmd
-
-# add help
-autoload -Uz run-help
-(( ${+aliases[run-help]} )) && unalias run-help
-alias zhelp=run-help
