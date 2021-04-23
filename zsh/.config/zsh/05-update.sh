@@ -12,7 +12,7 @@
 
 source _bm
 
-# clean exit
+#──────────────────────────────────────────────────────────────  traps  ───────
 ctrlC() {
   echo && _w "${B}now exiting" && _o "cleaning up"
   rm -rf $running && _s "done\n" && exit 1
@@ -24,7 +24,9 @@ error() {
 }
 
 trap 'ctrlC' SIGINT
-trap 'error' ERR
+trap 'error' EXIT
+
+#───────────────────────────────────────────────────────────────  vars  ───────
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
 dstatus="$HOME/.config/up/dotfiles.bm"
@@ -35,7 +37,8 @@ vstatus="$HOME/.config/up/vim.bm"
 zstatus="$HOME/.config/up/zsh.bm"
 running="$HOME/.config/up/running.bm"
 
-# log path check
+#──────────────────────────────────────────────────────  history check  ───────
+
 [[ -d ~/.config/up ]] || mkdir -p ~/.config/up
 [[ -f $dstatus ]] && dlast="$(cat "$dstatus")" || dlast=00
 [[ -f $fstatus ]] && flast="$(cat "$fstatus")" || flast=00
@@ -43,6 +46,8 @@ running="$HOME/.config/up/running.bm"
 [[ -f $ustatus ]] && slast="$(cat "$ustatus")" || slast=00 
 [[ -f $vstatus ]] && vlast="$(cat "$vstatus")" || vlast=00
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
+
+#──────────────────────────────────────────────────────────────  begin  ───────
 
 # force non-workstations to update repo everytime (vm's, etc)
 if [[ ! "$HOST" == "bm"* ]]; then
