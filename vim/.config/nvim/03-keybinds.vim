@@ -6,9 +6,9 @@
 "                 VIM CUSTOM KEYBINDS [./03-keybinds.vim]
 " TODO  - format/move comments to column #45
 "       - fzf shortcuts, project files, ripgrep project dir
-"────────────────────────────────────────────────────────────
-" FILE SHORTCUTS
-"────────────────────────────────────────────────────────────
+
+"─────────────────────────────────────────────────────  FILE SHORTCUTS  ──────"
+
 nnoremap <leader>os :tabedit ~/.config/nvim/snips/all.snippets<CR>
 nnoremap <leader>op :tabedit ~/.config/nvim/01-plugins.vim<CR>
 nnoremap <leader>opp :tabedit ~/.config/nvim/01-plugins.vim<CR>
@@ -17,16 +17,16 @@ nnoremap <leader>ok :tabedit ~/.config/nvim/03-keybinds.vim<CR>
 nnoremap <leader>of :tabedit ~/.config/nvim/04-filetype.vim<CR>
 nnoremap <leader>pu :PlugUpdate<CR>
 nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>ps :PlugStatus<CR>
 nnoremap <leader>pc :PlugClean<CR>
-"────────────────────────────────────────────────────────────
-" WHITESPACE
-"────────────────────────────────────────────────────────────
+
+"─────────────────────────────────────────────────────────  WHITESPACE  ──────"
+
 " Removes trailing spaces
  function TrimWhiteSpace()
    %s/\s*$//
    ''
  endfunction
+
 " autocmd FileWritePre * call TrimWhiteSpace()
 " autocmd FileAppendPre * call TrimWhiteSpace()
 " autocmd FilterWritePre * call TrimWhiteSpace()
@@ -39,30 +39,26 @@ noremap <F3> :set list!<CR>
 inoremap <F3> <C-o>:set list!<CR>
 cnoremap <F3> <C-c>:set list!<CR>
 
-"────────────────────────────────────────────────────────────
-" VIMSPECTOR
-"────────────────────────────────────────────────────────────
+"─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
+
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
-"────────────────────────────────────────────────────────────
-" COC
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────────────  COC  ──────"
+
 " update CoC
 nnoremap <leader>cu :CocUpdate<CR>
 " show marketplace
 nnoremap <leader>ci :CocList marketplace<CR>
 
-nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>K <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>J <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <silent> <leader>co :<C-u>CocListResume<CR>
 
-"────────────────────────────────────────────────────────────
-" FILES
-"────────────────────────────────────────────────────────────
+"──────────────────────────────────────────────────────────────  FILES  ──────"
 
 " (w)rite (w)indow as sudo
 nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
@@ -80,8 +76,8 @@ nnoremap <silent> <leader>wr :e!<CR>
 nnoremap <silent> <leader>wq :close<CR>
 
 " tab navigation
-nnoremap <silent> <C-j> :tabprevious<CR>
-nnoremap <silent> <C-k> :tabnext<CR>
+nnoremap <silent> <C-A-j> :tabprevious<CR>
+nnoremap <silent> <C-A-k> :tabnext<CR>
 
 " vertical (s)plit > explore
 nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
@@ -98,25 +94,23 @@ nnoremap <silent> <leader>WS :Split<CR>
 " horizontal (S)plit
 nnoremap <silent> <leader>SS :Split<CR>
 
-"────────────────────────────────────────────────────────────
-"────────────────────────────────────────────────  " TEXT MANIPULATION  ──────#
-"────────────────────────────────────────────────────────────                  
+"──────────────────────────────────────────────────  TEXT MANIPULATION   ──────
 
 " title bar test
-nnoremap <silent> <leader>TT :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
-nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0
-nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>r#0YpVr─0r#A<esc>r#Ykkp0
+nnoremap <silent> <leader>tr :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
+nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>
+nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>0YpVr─0r#A<esc>Ykkp0
+nnoremap <silent> <leader>tu g$dF x0df x
 nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1─────────────────────────────────────────────────────────────────────────────\1/g<CR>
-
 
 " sort paragraph
 nnoremap <silent> <leader>1 :'{,'}sort<CR>
 
 " (d)elete double white(s)pace lines
-nnoremap <silent> <leader>ds :%s/^$\n^$//g<CR><C-o>
+nnoremap          <leader>ds :%s/^\(\s\+\)\?$\n^\(\s\+\)\?$//g<CR><C-o>
 
 " (d)elete all white(s)pace lines
-nnoremap <silent> <leader>dS :%s/^$\n//g<CR><C-o>
+nnoremap          <leader>dS :%s/^\(\s\+\)\?$\n//g<CR><C-o>
 
 " find/replace all
 nnoremap <leader>r :%s///gc<left><left><left>
@@ -139,9 +133,7 @@ nnoremap <leader>, @@
 " convert link to markdown
 nnoremap <leader>l   0Di[]()^[P^[F]i^[
 
-"────────────────────────────────────────────────────────────
-" GIT
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────────────  GIT   ──────
 
 " git diff split
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
@@ -177,29 +169,27 @@ vnoremap <Leader>gb :Gbrowse<CR>
 " add the entire file to the staging area
 nnoremap <Leader>gaf :Gw<CR>
 
-"────────────────────────────────────────────────────────────
-" VISUAL
-"────────────────────────────────────────────────────────────
+"─────────────────────────────────────────────────────────────  VISUAL    ─────
 
 " retain visual block after issuing command
 nmap Y y$
 vmap < <gv
 vmap > >gv
 
-"────────────────────────────────────────────────────────────
-" STOCK REMAP
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────  STOCK REMAP  ──────"
 
 " remove shift requirement for issuing cmds
-map ; :
-noremap ;; ;
+map     ;     :
+noremap ;;    ;
+"noremap K     {
+"noremap J     }
+noremap H     ^
+noremap L     $
 
 " logical replacement; copy from cursor > end of line
 map Y y$
 
-"────────────────────────────────────────────────────────────
-" VS CODE
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────────────────  VS CODE  ──────"
 
 " new line = shift+enter
 nmap <S-Enter> O<Esc>
@@ -213,9 +203,7 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-"────────────────────────────────────────────────────────────
-" SYSTEM CLIPBOARD
-"────────────────────────────────────────────────────────────
+"───────────────────────────────────────────────────  SYSTEM CLIPBOARD  ──────"
 
 " yank to system clipboard (copy)
 vnoremap <leader>y "+y
@@ -233,9 +221,7 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-"────────────────────────────────────────────────────────────
-" TOGGLE VE=BLOCK|ALL
-"────────────────────────────────────────────────────────────
+"────────────────────────────────────────────────  TOGGLE VE=BLOCK|ALL  ──────"
 
 nnoremap <leader>v :call ToggleVE()<cr>
 function! ToggleVE()
@@ -249,9 +235,9 @@ function! ToggleVE()
 endfunction
 
 " https://www.hillelwayne.com/post/intermediate-vim/
-"────────────────────────────────────────────────────────────
-" CHEATSHEET
-"────────────────────────────────────────────────────────────
+
+"─────────────────────────────────────────────────────────  CHEATSHEET  ──────"
+
 " normal mode         nmap
 " insert              imap
 " visual & select     vmap
