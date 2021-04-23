@@ -78,7 +78,8 @@ cleanup() {
 
   _f "broken symlink removal: ${B}\$HOME"
   find ~ -xtype l 2> /dev/null | while read -r line; do
-    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]]
+    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]] \
+      && [[ ! $line == "$HOME/plex/"* ]]
     then
     _fb removing: "$line" && sudo rm "$line"
     fi
