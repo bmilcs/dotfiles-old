@@ -32,7 +32,7 @@ elif [ $# -gt 1 ]; then
 else
 
   vmlog=/tmp/bm-vm
-  bp=$(which "$1" 2> $vmlog)
+  bp=$(which "$1" &> /dev/null)
 
   # which command produce output?
   if [[ -n "$bp" ]]; then 
