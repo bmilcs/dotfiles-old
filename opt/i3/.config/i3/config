@@ -9,7 +9,7 @@
 # install dotfiles
 bindsym $win+ctrl+d      exec --no-startup-id    i3idotfiles
 # readme
-bindsym $win+$shift+n    exec --no-startup-id    i3hfr -n i3readme -c i3readme
+bindsym $win+$ctrl+m     exec --no-startup-id    i3hfr -n i3readme -c i3readme
 # scratchpad
 bindsym $win+n           exec --no-startup-id    i3hfr -n i3pad -c i3pad
 # music
