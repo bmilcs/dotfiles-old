@@ -5,29 +5,44 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOTFILE INSTALLATION [./install.sh]
-#────────────────────────────────────────────────────────────
+
 source ./bin/bin/_bm
 
-# title
-_t [bmilcs] dotfile installation
-_o this install script is specifically tailored to my needs.
-_iy "${CYN}${B}arch${NC}": stows ALL: home \& sys configs, networkd, iwctl, etc
-_iy "${CYN}${B}debian${NC}": stows minimal setup, defined by \$mini
+#─────────────────────────────────────────────────────────  disclaimer  ──────#
 
-#────────────────────────────────────────────────────────────
-# INPUT
-#────────────────────────────────────────────────────────────
+_t [bmilcs] dotfile installer && echo
 
-# debian: install
+_w disclaimer: this script can be destructive! \\n
+
+_o i attempt to preserve existing configuration files \\n \
+  within ${B}\'~/.backup\'${NC} but procede with caution. \\n 
+
+_o thoroughly review this script before proceding. \\n 
+
+_oc installation type is determined by your distro:\\n
+
+_i "${CYN}${B}archlinux${NC}"\\n \
+  --  ${B}my workstation setup${NC} \\n \
+  --  installs: everything \\n \
+  --  home \& sys configs, networkd, iwctl, etc. \\n
+
+_i "${CYN}${B}debian/ubuntu users${NC}" \\n \
+  --  ${B}my virtual machine setup${NC} \\n \
+  --  installs: minimal setup: \\n \
+  --  defined by \$mini in the variable section.
+
+#──────────────────────────────────────────────────────────  variables  ──────#
+
+# arch exceptions
+exceptions=("img" "opt")
+
+# debian vm's
 mini=("bin" "git" "txt" "vim" "zsh" "bash") 
-
-# arch: exceptions
-exceptions=("img" "opt" "root")
 
 # all: req packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find" "nodejs" "npm") # "bat"
-pacpkg=("fd" "bat")
+pacpkg=("fd" "bat" "unzip")
 
 # backup location
 backup=~/.backup/dotfiles
@@ -35,10 +50,13 @@ backup=~/.backup/dotfiles
 # repo path
 D=$HOME/bm
 
-# FUNCTIONS
+#──────────────────────────────────────────────────────────  functions   ─────#
 
-# removal of old dotfile content
-cleanup() {
+#
+# cleanup (dotfile remnants, git cfg, broken symlinks, etc)
+#
+
+cleanup() { 
 
   _a clean-up time
   _w "content will be moved to $backup"
@@ -60,37 +78,52 @@ cleanup() {
 
   _f "broken symlink removal: ${B}\$HOME"
   find ~ -xtype l 2> /dev/null | while read -r line; do
-    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]]; then
+    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]]
+    then
     _fb removing: "$line" && sudo rm "$line"
     fi
   done
-  #-exec rm {} \; 2> /dev/null
 
   _f "broken symlink removal: ${B}/etc"
   sudo find /etc -xtype l 2> /dev/null | while read -r line; do
     _fb removing: "$line" && sudo rm "$line"
   done
-#-exec rm {} \; 2> /dev/null
 
   _f "changing /etc/banner"
-  [[ -f "/etc/banner" ]] && sudo echo "welcome to: $HOST" > /etc/banner
+  [[ -f "/etc/banner" ]] && echo "welcome to: $HOST" | sudo tee /etc/banner
 
   _s complete
-}
 
-ifzf() {
+} # cleanup()
+
+#
+# fzf: fuzzy finder
+#
+
+ifzf() { 
+
   _a fzf
+
   if [[ ! -f ~/.config/fzf/bin/fzf ]]; then
+
     _o setup required
     _a fzf: installation
+
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.config/fzf
     ~/.config/fzf/install --xdg --no-update-rc --completion --key-bindings
+
   else
     _o all set
   fi
-}
+
+} 
+
+#
+# zsh: shell
+#
 
 izsh() {
+
   _a zsh
   export ZDOTDIR=~/.config/zsh
   ZINITDIR=~/.config/zinit
@@ -108,26 +141,31 @@ izsh() {
     mkdir -p $ZINITDIR $ZDOTDIR/{completion,compdump,history}
 
     # install zinit
-    _o installing zinit plugin manager
+    _o zsh: zinit plugin manager
     git clone https://github.com/zdharma/zinit.git ~/.config/zinit/bin
 
     # install zsh git completion
-    _o installing git autocompletion
+    _o zsh: git autocompletion
     curl -o ~/.config/zsh/completion/git-completion.bash \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
     curl -o ~/.config/zsh/completion/_git \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
     if $(which docker-compose); then
-    _o installing docker-compose autocompletion
-    curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
-    curl -o ~/.config/zsh/completion/_docker-compose \
-      https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
+      _o zsh: docker-compose autocompletion
+      curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose \
+        > ~/.zsh/completion/_docker-compose
+      curl -o ~/.config/zsh/completion/_docker-compose \
+        https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
     fi
   fi
 
   _o all set
 }
+
+#
+# (n)vim: neovim
+#
 
 ivim() {
   _a vim
@@ -153,45 +191,105 @@ ivim() {
   fi
 }
 
-# DISTRO CHECK
+#
+# bitwarden (cli)
+#
 
-_a distro check
-source "./bin/bin/_distro" && _s
+btw() {
+  _a bw
 
-# INSTALL PACKAGES
+  tmp=/tmp/bw.zip
+  bwp=/usr/local/bin/bw
+
+  [[ -f "$bwp" ]] && sudo rm "$bwp"
+
+  (sudo curl -L -o "$tmp" \
+    'https://vault.bitwarden.com/download/?app=cli&platform=linux' \
+    && sudo unzip $tmp -d /usr/local/bin) &> /dev/null
+
+  sudo chmod +x "$bwp"
+
+  bw completion --shell zsh > ~/.config/zsh/completion/_bw
+
+  _o all set
+}
+
+#───────────────────────────────────────────────────────  dependencies  ──────#
+
+source "./bin/bin/_distro"
 
 _a dependencies
-_o checking for: "${pkgs[@]}"
+_o "${pkgs[@]}"
+
+#
+# archlinux
+#
 
 if [[ ${DISTRO} == arch* ]]; then
+
+  # universal packages
   pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo pacman -Syyy "${pkgs[@]}" && _o installed "${pkgs[@]}")
+
+  # pacman specific
   pacman -Qi "${pacpkg[@]}" > /dev/null 2>&1 \
     || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
+
+#
+# debian, raspbian, ubuntu
+#
+
 elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
+
+  # universal packages
   dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
+
+  # apt specific
   dpkg -s "${aptpkg[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${aptpkg[@]}" && _o installed "${aptpkg[@]}")
+
+  # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
-  [[ ! -L ~/.local/bin/fd ]] && ln -s $(which fdfind) ~/.local/bin/fd
+
+  # link fdfind to fd
+  [[ ! -L ~/.local/bin/fd ]] && ln -s "$(which fdfind)" ~/.local/bin/fd
+
+#
+# unknown distros
+#
+
 else
+
   _w "distro not configured" 
   _f distro: "$DISTRO"
-  _i "fix: $D/install.sh"
   exit 1
+
 fi
 
-_o all set
+_s all set
 
-#────────────────────────────────────────────────────────────
-# GET STARTED
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────  archlinux  ──────#
 
-# ARCH LINUX
 if [[ ${DISTRO} == arch* ]]; then
 
-  # make x11 folder [xsession-errors]
+  # ask permission to procede
+  if  _ask "archlinux: install everything?"; then
+    _a "${U}"symlink: starting
+    _o distro: "$DISTRO"
+  else
+    _a thank you for coming
+    exit 0
+  fi
+
+  # prep for install
+  cleanup
+
+  #
+  # tweaks
+  #
+
+  # make x11 folder [xsession-errors] TODO FIX .xsessions-error, still in ~
   [ -d ~/.config/x11 ] || mkdir -p ~/.config/x11
 
   # allow dmesg as user [notifications]
@@ -200,97 +298,79 @@ if [[ ${DISTRO} == arch* ]]; then
   # remove diff menu [yay]
   yay --editmenu --nodiffmenu --save
 
-  # install shell
+  #
+  # install core dependencies
+  #
+
   izsh
-
-  # install vim
   ivim
-
-  # install fzf
   ifzf
+  btw 
 
-  _ask "stow EVERYTHING?"
-  if [[ $? == 0 ]]; then
+  #
+  # move repo content into place
+  #
 
-    _a "${U}"symlink: starting
-    _o distro: "$DISTRO"
+  # stow /root
+  _a root
+  cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
-    # remove old dotfile stuff
-    cleanup
+  _o symlink: root/share to "${B}"/
+  sudo stow -t / -R share
 
-    # stow /root
-    _a system-wide
-    cd "$D"/root/ || (_e unable to cd root/ && exit 1)
+  _o symlink: root/workstation to "${B}"/
+  sudo stow -t / -R workstation && _s
 
-    _o stowing: root/share to "${B}"/
-    sudo stow -t / -R share
+  # stow /home
+  cd "$D" || (_e unable to cd base repo dir && exit 1)
 
-    _o stowing: root/workstation to "${B}"/
-    sudo stow -t / -R workstation
-    _s
+  _a home
+  _o symlink: [base dir] "${B}"\~
 
-    cd "$D" || (_e unable to cd base repo dir && exit 1)
+  # repo: / (base dir)
+  for dir in "$D"/*/; do
 
-    _a user-specific
-    _o stowing: essentials [base dir] "${B}"\~
+    match=0
 
-    # repo: base dir stows
-    for dir in "$D"/*/; do
+    # if dir = an exception, match!
+    for a in "${exceptions[@]}"; do
+      [[ $dir =~ $D/$a/|$D/root/ ]] && match=1
+    done
 
-      match=0
+    # if match, skip this iteration
+    [[ "$match" == 1 ]] && continue
 
-      # if looped dir from above = an exception, match!
-      for a in "${exceptions[@]}"; do
-        [[ $dir == $D/$a/ ]] && match=1
-      done
+    # not a match && stow it :)
+    [[ $(stow -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
 
-      # if match is found, skip this iteration
-      [[ "$match" == 1 ]] && continue
+  done # end of repo directory loop
 
-      # not a match && stow it :)
+  # repo: opt/
+  cd "$D"/opt || (_e unable to cd into opt && exit 1)
 
-      [[ $(stow -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
+  _o symlink: opt [rice cfg] "${B}"\~
 
-    done # end of repo directory loop
+  # repo: /opt/
+  for dir in "$D"/opt/*/; do
 
-    # repo: opt/
-    cd "$D"/opt || (_e unable to cd into opt && exit 1)
+    [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] \
+      && _e "$(basename "$dir")"
 
-    _o stowing: opt [rice cfg] "${B}"\~
+  done 
 
-    # loop through repo
-    for dir in "$D"/opt/*/; do
+  # set alacritty to xterm (i3 error, etc.)
+  if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
+    sudo ln -s /usr/bin/alacritty /usr/bin/xterm
+  fi
 
-      match=0
+  # update font cache
+  fc-cache
 
-      # if looped dir from above = an exception, match!
-      for a in "${exceptions[@]}"; do
-        [[ $dir == $D/opt/$a/ ]] && match=1
-      done
+  _s
 
-      # if match is found, skip this iteration
-      [[ "$match" == 1 ]] && continue
+#─────────────────────────────────────────────────────────────  debian  ──────#
 
-      # not a match && stow it :)
-
-      [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] \
-        && _e "$(basename "$dir")"
-
-    done # end of repo directory loop
-
-    # set alacritty to xterm (i3 error, etc.)
-    if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
-      sudo ln -s /usr/bin/alacritty /usr/bin/xterm
-    fi
-
-    # update font cache
-    fc-cache
-
-    _s
-
-  fi # end of [install everything]
-
-else # DEBIAN
+else # not archlinux
 
   # zsh
   izsh
@@ -298,9 +378,10 @@ else # DEBIAN
   # vim
   ivim
 
-  #fzf
+  # fzf
   ifzf
 
+  # title
   _a "${B}symlink: ${GRN}${B}starting${NC}"
   _o distro: "$DISTRO"
   _i minimal install
@@ -309,42 +390,38 @@ else # DEBIAN
   cleanup
 
   # stow /root
-  _a system-wide
+  _a root
 
-  cd "$D"/root/ || (_e unable to cd root/ && exit 1)
+  cd "$D"/root/ \
+    || (_e unable to cd root/ && exit 1)
 
-  _o stowing: root'/'
+  _o symlink: root '/'
   sudo stow -t / -R share
 
-  # stow /home/user/
-  _a user-specific
-  cd "$D" || (_e unable to cd base repo dir && exit 1)
+  # stow ~
+  _a home
 
-  _o stowing: essentials [base dir] "${B}"\~
+  cd "$D" \
+    || (_e unable to cd base repo dir && exit 1)
 
-  _o stowing: home "${B}"\~
-  stow -R "${mini[@]}" && _i stowed: "${mini[@]}"
-
-  _s
+  _o symlink: home "${B}"\~
+  stow -R "${mini[@]}" && _i stowed: "${mini[@]}" && _s
 
   # set repo url
   _a setting origin/main url
-  git remote set-url origin git@github.com:bmilcs/dotfiles.git
-  _s
+  git remote set-url origin git@github.com:bmilcs/dotfiles.git && _s
 
   # check active shell
-  if [[ ! $SHELL == *zsh ]]; then
-    # shell != zsh, ask to swap
+  if [[ ! $SHELL == *zsh* ]]; then
 
       _a directions
       _oy chsh -s /usr/bin/zsh
       _i reboot recommended!
-  fi
 
-# end of debian
+  fi
 fi
 
-_a bootstrap complete
+_s installation complete 
 echo
 
 # exit successfully, despite not having checked lol
