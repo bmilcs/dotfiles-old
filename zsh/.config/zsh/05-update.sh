@@ -13,9 +13,11 @@
 source _bm
 
 #──────────────────────────────────────────────────────────────  traps  ───────
+clean() { rm -rf $running }
+
 ctrlC() {
   echo && _w "${B}now exiting" && _o "cleaning up"
-  rm -rf $running && _s "done\n" && exit 1
+  clean && _s "done\n" && exit 1
   }
 
 error() {
@@ -24,7 +26,8 @@ error() {
 }
 
 trap 'ctrlC' SIGINT
-trap 'error' EXIT
+trap 'error' ERR
+trap 'clean' EXIT
 
 #───────────────────────────────────────────────────────────────  vars  ───────
 
@@ -87,9 +90,6 @@ if [[ ! -f "$running" ]]; then
   if [[ ! "$today" == "$dlast" ]] && [[ "$HOST" == "bm"* ]]; then 
     gp && echo "$today" > "$dstatus"
   fi
-
-  # clean finish
-  rm -rf "$running"
 
 else # update process already exists
 
