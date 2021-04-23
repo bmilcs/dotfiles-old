@@ -9,12 +9,11 @@
 git clone --depth=1 https://dot.bmilcs.com bm && cd bm && ./install.sh
 ```
 
-- [zsh](/zsh/.zsh/) (shell)
-- [vim](/vim/) (text editor)
+- [zsh](/zsh/.config/zsh/) (shell)
+- [vim](/vim/.config/nvim) (text editor)
 - [i3](/opt/i3/.config/i3) (window manager)
-- [polybar](/opt/polybar/.config/polybar/)(/polybar/.config/polybar/) (*task/status bar*)
-- [rofi](/opt/rofi/.config/rofi/config.rasi) (dmenu replacement)
-- [tmux](/opt/tmux/.tmux.conf) (ide )
+- [polybar](/opt/polybar/.config/polybar/) (*task/status bar*)
+- [rofi](/opt/rofi/.config/rofi) (dmenu replacement)
 - [picom](/opt/picom/.config/picom/config) (compositor)
 - [to do](#todo)
 
