@@ -149,7 +149,7 @@ export MOZ_WEBRENDER=1
 export BAT_THEME='Nord'
 
 # gnupg
-export GNUPGHOME='.gpg'
+export GNUPGHOME='.config/gpg'
 
 # forgit
 export FORGIT_COPY_CMD='xclip -selection clipboard'
