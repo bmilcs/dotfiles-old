@@ -1,14 +1,23 @@
-gp: always pull/push if dirty?
+BACKUPS!
+- rsnapshot 
+  - plex
+  - arch
+  - docker
+* ensure all working
 
+secure bitwarden
+
+[www]
+> create vpn for docker access
+> convert subdomains to local nginx
 
 [wtb]
+- 2-cycle 40:1 gas mix
 - e-toothbrush
 - router table mount plate
-- router 
-- 2-cycle 40:1 gas mix
+- yubikey
 - shorts
 - boxer briefs
-- yubikey
 
 [house]
 - install doors & hardware
