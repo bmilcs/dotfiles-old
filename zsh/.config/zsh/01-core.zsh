@@ -219,24 +219,10 @@ bindkey '^k' down-line-or-beginning-search
 #bindkey '^[[3;5~' kill-word
 
 # ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
-
-# find new executables in $PATH
-zshcache_time="$(date +%s%N)"
-autoload -Uz add-zsh-hook
-rehash_precmd() {
-  if [[ -a /var/cache/zsh/pacman ]]; then
-    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
-    if (( zshcache_time < paccache_time )); then
-      rehash
-      zshcache_time="$paccache_time"
-    fi
-  fi
-}
-add-zsh-hook -Uz precmd rehash_precmd
+#if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+#	autoload -Uz add-zle-hook-widget
+#	function zle_application_mode_start { echoti smkx }
+#	function zle_application_mode_stop { echoti rmkx }
+#	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+#	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+#fi
