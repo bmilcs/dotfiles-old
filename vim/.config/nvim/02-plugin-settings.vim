@@ -190,7 +190,7 @@ let g:airline_highlighting_cache = 1
 let $FZF_DEFAULT_OPTS=''
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path './**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4  --bind=ctrl-j:preview-down,ctrl-k:preview-up'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)

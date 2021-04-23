@@ -23,6 +23,7 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " fuzzy finder
   Plug '~/.config/fzf'
     Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+    Plug 'junegunn/fzf.vim'
 
 " completion
   Plug 'neoclide/coc.nvim',
