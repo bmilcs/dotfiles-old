@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 BITWARDEN SESSION [./bws]
+#────────────────────────────────────────────────────────────
+source _bm
+
+session="$(bw unlock)"
+# 
+# _a session
+# echo "$session" > ~/bws
+# 
+# exit 
+# cp ~/{bws,bws.tst}
+# bwvar=$(cat bws.tst)
+
+#echo $bwvar
+
+_a substring
+
+echo "${session:139:-308}" > /tmp/bws
+
+cat /tmp/bws
+
+
+#export BW_SESSION="$session"
+
+
+#eval "$($BW_SESSION)"
+
+
+
