@@ -7,15 +7,12 @@
 #   TODO
 #         split up into separate .zsh files
 #         add working savedir alias > select
-#────────────────────────────────────────────────────────────
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/02-aliases.zsh'
 
-#────────────────────────────────────────────────────────────
-# TEXT
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────────────────────  TEXT  ───────
 
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'
@@ -44,11 +41,10 @@ alias zr='source '$ZDOTDIR'/.zshrc'
 alias polyr='. ~/.config/polybar/launch.sh'
 alias picomr='killall -q picom ; picom -b'
 
-#────────────────────────────────────────────────────────────
-# DISTRO SPECIFIC
-#────────────────────────────────────────────────────────────
-
+# rm auto-update status
 alias rmup='rm -rf ~/.config/up/'
+
+#──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 
 if [[ $DISTRO = "arch"* ]]; then # ARCH
   # aur | yay
@@ -80,7 +76,10 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias cat='bat';compdef cat='bat'
   alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
 
-else # DEBIAN
+else 
+
+#──────────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
+
   # syslog
   alias syslogg='sudo cat /var/log/syslog | grep '
   alias syslogls='sudo cat /var/log/syslog'
@@ -90,9 +89,7 @@ else # DEBIAN
   alias aptls='sudo apt list --installed'
 fi
 
-#────────────────────────────────────────────────────────────
-# APPS
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────────────────────  APPS  ───────
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
@@ -130,33 +127,31 @@ alias bmi='cd $D && ./install.sh'
 alias bme='vim $D/install.sh'
 
 # git
+alias grevp='git rev-parse > /dev/null 2>&1'
 alias gcl='git clone --depth=1'
-alias gs='$(git rev-parse > /dev/null 2>&1) || cd $D && git status -s'
-alias gss='$(git rev-parse > /dev/null 2>&1) || cd $D && git status'
-alias greb='$(git rev-parse > /dev/null 2>&1) || cd $D && git rebase && gp'
-alias grebc='$(git rev-parse > /dev/null 2>&1) || cd $D && git rebase --continue && gp'
-alias gcc='$(git rev-parse > /dev/null 2>&1) || cd $D && git commend --amend --no-edit'
+alias ga='$(grevp)     || cd $D && forgit::add'
+alias gs='$(grevp)     || cd $D && git status -s'
+alias gss='$($grevp)   || cd $D && git status'
+alias greb='$($grevp)  || cd $D && git rebase && gp'
+alias grebc='$($grevp) || cd $D && git rebase --continue && gp'
+alias gcc='$($grevp)   || cd $D && git commend --amend --no-edit'
 alias gca='gcc'
 alias glog='glo'
-alias gps='$(git rev-parse > /dev/null 2>&1) || cd $D && git push'
-alias gpl='$(git rev-parse > /dev/null 2>&1) || {cd $D && git submodule update --remote --merge} && git pull'
-alias gd='$(git rev-parse > /dev/null 2>&1) || cd $D && forgit::diff --staged'
-alias gituser='git config user.name bmilcs \
-  && git config user.email bmilcs@yahoo.com \
-  && git config color.ui auto'
+alias gps='$($grevp)   || cd $D && git push'
+alias gpl='$($grevp)   || {cd $D && git submodule update --remote --merge} && git pull'
+alias gd='$($grevp)    || cd $D && forgit::diff --staged'
+alias guser='git config user.name bmilcs \
+             && git config user.email bmilcs@yahoo.com \
+             && git config color.ui auto'
+
 #   mkdir -m 700 -p ~/.ssh
 #   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
 #   chmod 600 ~/.ssh/authorized_keys
 #   eval "$(ssh-agent -s)"
 #   echo "> enter github private key as follows:"
 #   echo "  ssh-add ~/.ssh/id_github"'
-#alias gd='$(git rev-parse) || cd $D && git diff'
-#alias g='$(git rev-parse) || cd $D && git '
-#alias ga='$(git rev-parse) || cd $D && git add'
 
-#────────────────────────────────────────────────────────────
-# LS
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────────  LS  ───────
 
 alias l='ls' ; compdef l='ls'
 alias ls='LC_ALL=C ls -AlhF \
@@ -177,9 +172,7 @@ alias lst='l -tr' ; compdef lst='ls'
 alias lsg='l | grep'          # search in dir
 alias lsd='l -d */'           # ls: dirs only
 
-#────────────────────────────────────────────────────────────
-# STOCK ENHANCEMENTS
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────  STOCK ENHANCEMENTS  ───────
 
 # fd
 alias fd="fd -E /all/bm -E /all/media -E /backup "
@@ -212,9 +205,7 @@ alias ...='cd ../.. && c && l'
 # fzf
 # alias -g zz='fzf -m'
 
-#────────────────────────────────────────────────────────────
-# FILE SYSTEM
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────  FILE SYSTEM  ───────
 
 # mount | umount
 alias mav="sudo mount" ; compdef mount="mount"
@@ -232,9 +223,7 @@ alias nfsr="sudo systemctl restart nfs-kernel-server"
 # smb
 alias smb='sudo vim /etc/samba/smb.conf'
 
-#────────────────────────────────────────────────────────────
-# SYSTEM
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  SYSTEM  ───────
 
 # reboot, shutdown, etc.
 alias rex="sudo systemctl restart display-manager"
@@ -279,24 +268,21 @@ alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 # pid
 alias pid="cat /etc/passwd"
 
-#────────────────────────────────────────────────────────────
-# SSH SHORTCUTS
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────  SSH SHORTCUTS  ───────
+
 alias doc="ssh docker"
 alias plx="ssh plex"
 alias ans="ssh bmdev@ansible"
 
-#############################################################
-#############################################################
-#     VERSION 1.0 DOTFILES (early days of linux)
-#       debian-based vm's | github.com/bmilcs/linux.git
-#       TODO: review & optimize
-#############################################################
-#############################################################
+###############################################################################
+###############################################################################
+#        VERSION 1.0 DOTFILES (early days of linux)
+#        - debian-based vm's | github.com/bmilcs/linux.git
+#        - TODO: recycle & optimize
+###############################################################################
+###############################################################################
 
-#────────────────────────────────────────────────────────────
-# DOCKER
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 if where docker-compose > /dev/null; then
 
@@ -357,10 +343,6 @@ if where docker-compose > /dev/null; then
 
 fi
 
-#────────────────────────────────────────────────────────────
-# DEBIAN CONFIGURE
-#────────────────────────────────────────────────────────────
-
 if [[ $DISTRO == "debian" ]]; then
   alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
 
@@ -376,60 +358,51 @@ if [[ $DISTRO == "debian" ]]; then
   # install nfs
   # TODO > FUNCTION conversion
 
-  alias infs='
-    sudo apt install nfs-kernel-server
-    echo && echo "====================================================================================================="
-    echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-    echo "sudo vim /etc/exports"
-    echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
-    echo "-----------------------------------------------------------------------------------------------------"'
+# alias infs='
+#   sudo apt install nfs-kernel-server
+#   echo && echo "====================================================================================================="
+#   echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
+#   echo "sudo vim /etc/exports"
+#   echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
+#   echo "-----------------------------------------------------------------------------------------------------"'
 
-  # install smb
-  # TODO > function conversion
+# # install smb
+# # TODO > function conversion
 
-  alias ismb='
-    sudo apt install samba
-    echo && echo "====================================================================================================="
-    echo "====  bmilcs: samba instructions  ==================================================================="
-    echo "=====================================================================================================" && echo
-    echo "sudo vim /etc/samba/smb.conf"
-    echo "#       workgroup = BM"
-    echo "#       interfaces = 192.168.1.0/24 eth0"
-    echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
-    echo "# [docker]"
-    echo "#         comment = docker vm config files"
-    echo "#         path = /home/bmilcs/docker"
-    echo "#         browseable = yes"
-    echo "#         read only = no"
-    echo "#         guest ok = no"
-    echo "#         valid users = bmilcs"
-    echo "-----------------------------------------------------------------------------------------------------"		'
+# alias ismb='
+#   sudo apt install samba
+#   echo && echo "====================================================================================================="
+#   echo "====  bmilcs: samba instructions  ==================================================================="
+#   echo "=====================================================================================================" && echo
+#   echo "sudo vim /etc/samba/smb.conf"
+#   echo "#       workgroup = BM"
+#   echo "#       interfaces = 192.168.1.0/24 eth0"
+#   echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
+#   echo "# [docker]"
+#   echo "#         comment = docker vm config files"
+#   echo "#         path = /home/bmilcs/docker"
+#   echo "#         browseable = yes"
+#   echo "#         read only = no"
+#   echo "#         guest ok = no"
+#   echo "#         valid users = bmilcs"
+#   echo "-----------------------------------------------------------------------------------------------------"		'
 
 fi
-#────────────────────────────────────────────────────────────
-# BACKUP
-#────────────────────────────────────────────────────────────
 
-#────────────────────────────────────────────────────────────
-# DEBIAN NETWORKING
-#────────────────────────────────────────────────────────────
+###############################################################################
+#                                 GRAVEYARD
+###############################################################################
+
+#──────────────────────────────────────────────────  DEBIAN NETWORKING  ───────
 
 #alias rnet="sudo /etc/init.d/networking restart"
 #alias enet="sudo vim /etc/network/interfaces"
 
-#################################################################
-# GRAVEYARD
-#################################################################
-
-#────────────────────────────────────────────────────────────
-# DOCKER
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 # alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
 
-#────────────────────────────────────────────────────────────
-# GIT BARE REPO
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────  GIT BARE REPO  ───────
 
 # alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
 # alias gitp="gitt commit -a -m 'update' && gitt push"

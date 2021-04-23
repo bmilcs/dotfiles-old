@@ -1,18 +1,15 @@
-#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH: CORE [./01-core.zsh]
-#────────────────────────────────────────────────────────────
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/01-core.zsh'
 
-#────────────────────────────────────────────────────────────
-# HISTORY
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────  HISTORY  ───────
 
 HISTSIZE=10000
 SAVEHIST=10000
@@ -27,9 +24,7 @@ setopt HIST_REDUCE_BLANKS     # remove superfluous blanks for each command
 setopt HIST_SAVE_NO_DUPS      # do not write a duplicate evT_EXPIRE_DUPS_FIRST # expire a duplicate event first when trimming history.
 unsetopt HIST_VERIFY          # history expansion, execute the line directly
 
-#────────────────────────────────────────────────────────────
-# ZINIT
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────────  ZINIT  ───────
 
 # custom paths
 declare -A ZINIT
@@ -54,9 +49,7 @@ zinit load wfxr/forgit
 [ -f ${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh" ] \
   && source "$HOME/.config/fzf/fzf.zsh"
 
-#────────────────────────────────────────────────────────────
-# OPTIONS
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────  OPTIONS  ───────
 
 set nocompatible              # not vi-backwards-compatible
 
@@ -111,9 +104,7 @@ setopt interactivecomments    # allow comment in interactive mode
 setopt combining_chars
 #setopt extendedglob          # disabled, breaks git reset HEAD^
 
-#────────────────────────────────────────────────────────────
-# AUTOCORRECT
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────  AUTOCORRECT  ───────
 
 CORRECT_ALL="true"
 ENABLE_CORRECTION="true"
@@ -125,9 +116,7 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'  # increase the number of errors based on the length of the typed word # but make sure to cap (at 7) the max-errors to avoid hanging.
 
-#────────────────────────────────────────────────────────────
-# AUTOCOMPLETE
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────────────  AUTOCOMPLETE  ───────
 
 CASE_SENSITIVE="false"
 zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
@@ -154,9 +143,7 @@ fpath=($ZDOTDIR/completion $fpath)
 # custom script completion
 fpath=(~/bin/completions $fpath)
 
-#────────────────────────────────────────────────────────────
-# '?' SEARCH THROUGH AUTOCOMPLETE OPTIONS
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────  '?' SEARCH THROUGH AUTOCOMPLETE  ───────
 
 #zmodload -i zsh/complist
 zmodload zsh/complist 
@@ -169,9 +156,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-#────────────────────────────────────────────────────────────
-# AUTOLOADS
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────  AUTOLOADS  ───────
 
 # prompt
 autoload -Uz promptinit && promptinit
@@ -197,9 +182,8 @@ if [[ "$DISTRO" == "arch"* ]]; then
   compctl -K _pip_completion pip3
 fi
 
-#────────────────────────────────────────────────────────────
-# PROMPT, COLORS, ETC. 
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────  PROMPT, COLORS, ETC. ────────
+
 setopt prompt_subst
 #RPROMPT=\$vcs_info_msg_0_
 # RPROMPT=\$vcs_info_msg_0_'%# '
@@ -207,9 +191,7 @@ setopt prompt_subst
 # autoload -Uz vcs_info
 # #precmd_vcs_info() { vcs_info }
 
-#────────────────────────────────────────────────────────────
-# KEYBINDINGS
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────  KEYBINDINGS  ───────
 
 typeset -g -A key
 key[Home]="${terminfo[khome]}"
