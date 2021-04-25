@@ -3,6 +3,9 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#   DOCKER backup directories
 
+#   DOCKER exclude directories
 
+exclude		/home/bmilcs/docker/lidarr/MediaCover
+exclude		/home/bmilcs/docker/radarr/MediaCover
+exclude		/home/bmilcs/docker/sonarr/MediaCover
