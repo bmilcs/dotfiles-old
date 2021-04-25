@@ -29,6 +29,8 @@ trap 'ctrlC' SIGINT
 trap 'error' ERR
 trap 'clean' EXIT
 
+pidof -o %PPID -x $0 >/dev/null && echo "ERROR: Script $0 already running" && exit 1
+
 #───────────────────────────────────────────────────────────────  vars  ───────
 
 today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
