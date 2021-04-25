@@ -33,8 +33,8 @@ _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
 
 #──────────────────────────────────────────────────────────  variables  ──────#
 
-# arch exceptions
-exceptions=("img" "opt")
+# exceptions
+exceptions=("img" "opt" "rsnapshot")
 
 # debian vm's
 mini=("bin" "git" "txt" "vim" "zsh" "bash") 
@@ -95,7 +95,7 @@ cleanup() {
 
   _s complete
 
-} # cleanup()
+} 
 
 #
 # fzf: fuzzy finder
@@ -215,12 +215,60 @@ btw() {
   _o all set
 }
 
+#
+# rsnapshot
+#
+
+rsnap() {
+
+  host=${HOSTNAME,,}
+  rpath="$D/backup/"
+  rdest="$HOME/.config/rsnapshot"
+
+  if [ -e "$rpath/backup_$host" ]; then
+    _a rsnapshot
+    _o host: $host \\n
+
+    # add rsnapshot to package list
+    pkgs[${#pkgs[@]}]="rsnapshot"
+
+    # rm old configs
+    rm "$rdest/"*".conf"
+
+    _f making config
+
+    ( 
+    mkdir -p "$rdest" 
+
+    INCLUDE=$(<"$rpath/backup_$host")
+    EXCLUDE=$(<"$rpath/exclude_$host")
+    CONF=$(<"$rpath/rsnapshot.conf")
+
+    RSNAP="${CONF//\#INCLUDE/$INCLUDE}" 
+    RSNAP="${RSNAP//\#EXCLUDE/$EXCLUDE}" 
+    echo "$RSNAP" > "$rdest/rsnapshot.conf"
+    _s
+    ) || (_e "unable to move rsnapshot.conf" && exit)
+
+    _a rsnapshot config test
+    _o output \\n
+
+    rsnapshot -c "$rdest/rsnapshot.conf" configtest
+
+  fi
+
+
+}
+
+rsnap
+
 #───────────────────────────────────────────────────────  dependencies  ──────#
 
 source "./bin/bin/_distro"
 
 _a dependencies
 _o "${pkgs[@]}"
+
 
 #
 # archlinux
