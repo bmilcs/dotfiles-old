@@ -276,6 +276,8 @@ alias plx='ssh plex'
 alias ans='
   if [[ $HOST == ansible ]]; then
     cd ~/ans
+  elif [[ ! $(pwd) == ~/repos/bmilcs-ans* ]]; then
+    cd ~/repos/bmilcs-ans
   else
     ssh bmdev@ansible
   fi
