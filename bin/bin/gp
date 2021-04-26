@@ -10,14 +10,21 @@
 source _bm
 
 D="${D:-/home/bmilcs/bm}"
-g="git --git-dir=$D/.git --work-tree=$D"
+
+if git rev-parse > /dev/null 2>&1; then
+  gdir=$(git rev-parse --show-toplevel)
+  g="git --git-dir=$gdir/.git --work-tree=$gdir"
+else
+  g="git --git-dir=$D/.git --work-tree=$D"
+fi
 
 gremote="$($g remote update 2> /dev/null)"
 gstatus="$($g status -uno 2> /dev/null)"
 
 # debugging
 [ $# -gt 0 ] && _w "${GRN}${B}gstatus${YLW}: $gstatus" \
-             && _w "${RED}${B}gremote${YLW}: $gremote"
+             && _w "${RED}${B}gremote${YLW}: $gremote" \
+             && _w "${BLU}${B}g:${YLW} $g"
 
 _a local repo
 
