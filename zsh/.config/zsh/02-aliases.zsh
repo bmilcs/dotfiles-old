@@ -257,7 +257,7 @@ alias scd="sc disable"                                  ;compdef scud="systemctl
 alias scud="scu disable"                                ;compdef scud="systemctl"
 
 # print outs
-alias a="alias | sed 's/=.*//'"
+# alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 alias hn="echo $HOST"
@@ -280,6 +280,11 @@ alias ans='
     ssh bmdev@ansible
   fi
   '
+
+#────────────────────────────────────────────────────────────  ANSIBLE  ───────
+
+alias a='ansible' ; compdef a='ansible'
+
 
 ###############################################################################
 ###############################################################################
