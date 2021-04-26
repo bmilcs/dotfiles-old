@@ -160,10 +160,29 @@ function colorr() {
 
 # ssh key generate & upload& upload& upload& upload& upload& upload& upload
 function sshgen() {
-  echo '> ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_$@ -N ""'
-  ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_$@ -N ""
-  echo "> ssh-copy-id -i ~/.ssh/id_$@ bmilcs@$@"
-  ssh-copy-id -f -i ~/.ssh/id_$@ bmilcs@$@
+  source _bm
+
+  if [[ $# == 1 ]]; then
+
+    host="${1#'id_'}"
+    path=~/.ssh/id_$host
+
+    if [[ -e "$path" ]]; then
+
+      _a "ssh-keygen: rsa 4096 for ${YLW}$host "
+      ssh-keygen -t rsa -b 4096 -f "$path" -N "" \
+        && _s \
+        && echo "" && _w "copy to host via:" \
+        && _f "ssh-copy-id -i $path bmilcs@$host"
+
+    else
+      _e "$path exists!"
+    fi
+
+  else
+    _w "sshgen <hostname>"
+  fi
+  #ssh-copy-id -f -i $path bmilcs@$host
   # echo "> eval `ssh-agent`"
   # eval `ssh-agent`
   # echo "> ssh-add -l"
