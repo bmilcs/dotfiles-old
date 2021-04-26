@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 SSH KEYGEN [./sshgen]
+#────────────────────────────────────────────────────────────
+source _bm
+_t ssh keygen
+echo
+
+if [[ $# == 1 ]]; then
+
+  host="id_${1#id_}"
+  path=~/.ssh/$host
+
+  if [[ -e $path || -L $path ]] ; then
+    _e "$host exists!"
+    i=0
+
+    while [[ -e $path-$i || -L $path-$i ]] ; do
+        let i++
+    done
+
+    bhost=$host-$i
+    bpath=~/.ssh/$bhost
+    if (mv "$path" "$bpath" && mv "$path.pub" "$bpath.pub" ); then
+      _w "backed up to: ${CYN}$bpath"
+    else
+      _e "unable to backup $host"
+      exit 1
+    fi
+  fi
+
+    _a "creating key pair"
+    _f "rsa 4096"
+    _f "${YLW}$host\n"
+
+    if ssh-keygen -t rsa -b 4096 -f "$path" -N "" &> /dev/null; then
+      _s
+      echo "" && _w "copy to host via:"
+      _i "ssh-copy-id -i $path bmilcs@$host"
+    else
+      _e "something went wrong"
+    fi
+
+else
+  _w "sshgen <hostname>"
+fi
+
+  #ssh-copy-id -f -i $path bmilcs@$host
+  # echo "> eval `ssh-agent`"
+  # eval `ssh-agent`
+  # echo "> ssh-add -l"
+  # ssh-add -l
