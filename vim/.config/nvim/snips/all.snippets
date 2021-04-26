@@ -1,3 +1,16 @@
+snippet bmfileexists "existing file already exists, add +1"
+name=somefile
+if [[ -e $name.ext || -L $name.ext ]] ; then
+    i=0
+    while [[ -e $name-$i.ext || -L $name-$i.ext ]] ; do
+        let i++
+    done
+    name=$name-$i
+fi
+touch -- "$name".ext
+endsnippet
+
+
 snippet bmsnip "new snippet"
 snippet bm-  ""
 
