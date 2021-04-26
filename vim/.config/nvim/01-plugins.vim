@@ -64,6 +64,9 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " i3 wm
   Plug 'mboughaba/i3config.vim',
 
+" ansible
+  Plug 'pearofducks/ansible-vim',
+
 "────────────────────────────────────────────────────────────  the end  ──────"
 
 call plug#end()

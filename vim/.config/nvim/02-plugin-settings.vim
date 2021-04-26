@@ -12,6 +12,10 @@ set rtp+=~/.config/fzf
 " nord theme
 colorscheme nord
 
+
+"────────────────────────────────────────────────────────────  ansible  ───────
+au BufRead,BufNewFile */ans/* set filetype=yaml.ansible
+
 "────────────────────────────────────────────────────────────────  coc  ──────"
 
 let g:coc_disable_startup_warning = 1

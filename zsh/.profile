@@ -154,6 +154,9 @@ export GNUPGHOME='.config/gpg'
 # forgit
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 
+# ansible
+export ANSIBLE_CONFIG='/home/bmdev/ans/ansible.cfg'
+
 #────────────────────────────────────────────────────────────
 # COLOR VAR
 #────────────────────────────────────────────────────────────
