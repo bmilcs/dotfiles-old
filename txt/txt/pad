@@ -54,12 +54,10 @@ secure bitwarden
   - power menu
 
 [homelab]
-- new torrent client:
-  - setup new VPN, wireguard? mulvad?
-  - local docker only network
+- setup new VPN, wireguard? mulvad?
+- local docker only network
 - create local VPN for outside access
   - rpi4? docker? vm?
-- arch>ansible & homelab
 - remote docker dev (rsync compose?)
 - authentication all dockers
   - simplify, harden
@@ -68,15 +66,14 @@ secure bitwarden
 - app.git-simple-login
 domain email forwarding!
 
-[ django/python ]
-  https://docs.djangoproject.com/en/3.1/intro/tutorial01/
-  - begin learning django
-  - optimize vim for python
+[ansible ideas]
+- sshd_config tweaks:
+  - rsa key only
+  - remove 
+    - Banner line
+    - Root login
+    - Password login
 
-[goals]
 - learn advanced bash https://learnxinyminutes.com/docs/bash/
 
-[sleep apnea]
-- March 31, Wednesday
-  3pm Colleen Foley
 
