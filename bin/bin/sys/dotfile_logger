@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOT LOG DEBUGGING UTILITY [./dotlog]
 
-logpath=/tmp/dotfile.log
+logpath="/tmp/dot_$USER.log"
 
 dotc() {
     echo > "$logpath"
