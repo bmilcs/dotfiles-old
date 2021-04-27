@@ -10,14 +10,10 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/03-functions.zsh'
 
-  source _bm
-
-
 function d() {
   home=$(echo $HOME | sed -e 's/[\/]/\\\//g')
   cd $(dirs -v | sed 's/^[0-9 \t]*//' | fzf | sed 's/^[^\/]/'$home'/')
 }
-
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 
@@ -25,7 +21,6 @@ apb() {
   ansible-playbook $1
 }
 compdef '_files -W ~/ans/playbooks' apb
-
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
@@ -39,13 +34,11 @@ function gc() {
 function grs() {
   source _bm
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
-  _t git reset hard
-  _w WILL BE LOST:
-  _a git status
+  _a git reset hard
+  _w ALL WILL BE LOST:
   git status -s
   _a git diff
   git diff
-  echo
   _ask "do you really want to reset --hard? (all changes will be lost)" \
     && git reset --hard \
     && git clean -fdx \
@@ -58,9 +51,7 @@ function gacall() {
   _ask "mass git {add,commit,push} - are you sure?" \
   && _t dotfile repo commit \
   && _a add missing files \& commit \
-  && ga . \
-  && gc "$@" \
-  && _s done.
+  && ga . && gc "$@" && _s done.
   }
 
 endot()
@@ -86,7 +77,6 @@ dedot()
 cdd() {
   cd $(dirname $(which "$1"))
 }
-
 
 # using ripgrep combined with preview
 # find-in-file - usage: fif <searchTerm>
@@ -157,11 +147,7 @@ function colorr() {
   echo
   }
 
-#────────────────────────────────────────────────────────────
-# NETWORKING
-#────────────────────────────────────────────────────────────
-
-# ssh key generate & upload& upload& upload& upload& upload& upload& upload
+#─────────────────────────────────────────────────────────  networking  ───────
 
 # print local ip & wan ip | requires dig
 function myip() {
@@ -177,9 +163,7 @@ function myip() {
   printf "%s\n\n" "           wan:   $wan " 
   }
 
-#────────────────────────────────────────────────────────────
-# DOCKER
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  docker   ──────
 
 # docker 
 function dexec() { 
@@ -204,10 +188,7 @@ function dre() {
   docker logs -f $@
   }
 
-#────────────────────────────────────────────────────────────
-# COMMAND ENHANCEMENT
-#────────────────────────────────────────────────────────────
-
+#────────────────────────────────────────────────────────────────  man  ───────
 function man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \
@@ -218,12 +199,54 @@ function man() {
     command man "$@"
     }
   
-# needed for bin
-compdef vm="where"
+#─────────────────────────────────────────────────  vm masterpiece lol  ───────
 
-#────────────────────────────────────────────────────────────
-# FZF
-#────────────────────────────────────────────────────────────
+compdef vm="which"
+
+function vm() {
+  
+  source _bm
+  source ~/.profile
+  syntax() {_w '${B}syntax${YLW}: vm <bin/sh>'}
+
+  if [ $# -eq 0 ] || [ $# -gt 1 ]; then # arg = 1
+    syntax
+  else 
+    bp="$(which $1 2> /tmp/bm-vm-$1)"
+    error=$(cat /tmp/bm-vm-$1 2> /dev/null)
+    if [[ -z "$bp" ]]; then   # which = empty
+      _e "$1: not found\n" 
+      _o "target: ${GRN}$1" 
+    elif [[ -w "$bp" ]]; then # is it writeable?
+      command nvim "$bp" 
+    elif [[ -e "$bp" ]]; then   # is it even a file?
+      if [[ "$bp" == "/usr/bin"* ]]; then # inside /usr/bin?
+        _o "target:   ${GRN}$1"
+        _o "path:     ${RED}$bp"
+      else  # exists, outside of /usr/bin
+        sudo nvim "$bp"
+      fi
+    else   #  doesn't exist 
+      if [[ $bp == *"aliased to"* ]] && [[ ! $1 == vm ]]; then  # alias?
+        _o "assumed: ${B}02-aliases.zsh"
+        sleep 1
+        ali
+      elif [[ $bp == *"()"* ]]; then # function?
+        _o "assumed: ${B}03-functions.zsh"
+        sleep 1
+        fun
+      elif [[ $bp == *"not found"* ]]; then
+          _ob "${B}$1${RED} not found"
+      else
+          _w "brain overload lol"
+          _ob "${B}error${BLU}: $error"
+          _ob "${B}bp${BLU}: $bp"
+      fi
+    fi
+  fi
+}
+
+#────────────────────────────────────────────────────────────────  FZF  ───────
 fzf_find_edit() {
     local file=$(
       fzf --query="$1" --no-multi --select-1 --exit-0 \
