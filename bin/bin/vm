@@ -8,37 +8,27 @@
 #────────────────────────────────────────────────────────────
 source _bm
 source ~/.profile
+
 unset bp
 
-# no argument, launch nvim
-if [ $# -eq 0 ]; then
-  
-  _a "direct bin editor"
-  _o "target: ${YLW}<empty>\n"
-  _f "launching neovim $PWD"
-  _s all set\\n
-  ( nvim . )
-  exit 0
+syntax() {
+  _w "${B}syntax${YLW}: vm <bin/sh>"
+  exit 1
+}
 
-# multiple arguments, skip
-elif [ $# -gt 1 ]; then
-
-  _a "direct bin editor"
-  _o "target: ${RED}$*\n"
-  _w "multiple arguments detected"
-  _e "unable to process input\n"
-
-# safe to proceed
+if [ $# -eq 0 ] || [ $# -gt 1 ]; then
+  syntax
 else
 
-  vmlog=/tmp/bm-vm
-  bp=$(which "$1" &> /dev/null)
+  bp=$(which "$1" 2> "/tmp/bm-vm-$1")
+  error=`cat "/tmp/bm-vm-$1"`
 
-  # which command produce output?
+  # which command output != empty
   if [[ -n "$bp" ]]; then 
 
     # output: is file writeable?
     if [[ -w "$bp" ]]; then
+
       command nvim "$bp" 
 
     # output, not writeable: is it even a file?
@@ -46,10 +36,8 @@ else
 
       # file exists, inside /usr/bin?
       if [[ "$bp" == "/usr/bin"* ]]; then
-        _a "direct bin editor"
         _o "target:   ${GRN}$1"
-        _o "path: ${RED}$bp"
-        _or "$(bat $vmlog)"
+        _o "path:     ${RED}$bp"
         exit 1
       else
         # exists, not inside /usr/bin
@@ -57,17 +45,16 @@ else
       fi
     # output is not a file:
     else 
-      _a "direct bin editor"
       _o "target: ${GRN}$1"
       _o "path:   ${RED}$bp"
       _w possible alias/function
-      _or "$(bat /tmp/bm_bin_vm)"
+      _ob "${B}error${BLU}: \n$error"
     fi
   # command doesn't exist
   else
-      _a "direct bin editor"
+      _e "$1: doesn't appear to be a command\n"
       _o "target: ${GRN}$1"
       _o "path: ${RED}???\n"
-      _e "$1: doesn't appear to be a command\n"
+      _ob "${B}error${BLU}: \n$error"
   fi  
 fi

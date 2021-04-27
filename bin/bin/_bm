@@ -16,6 +16,9 @@ BLK=${NC}'\033[30m'; RED=${NC}'\033[31m'
 GRN=${NC}'\033[32m'; YLW=${NC}'\033[33m'; BLU=${NC}'\033[34m'
 PUR=${NC}'\033[35m'; CYN=${NC}'\033[36m'; WHT=${NC}'\033[37m'
 
+# bg
+BBC=${NC}'\e[1;36;40m'
+
 # time/date | TODO: fix execution on command run
 TIME=$(date '+%I:%M %P'); DATE=$(date '+%Y-%m-%d')
 MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
