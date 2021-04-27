@@ -34,7 +34,7 @@ _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
 #──────────────────────────────────────────────────────────  variables  ──────#
 
 # exceptions
-exceptions=("img" "opt" "rsnapshot")
+exceptions=("img" "opt" "rsnapshot" "backup")
 
 # debian vm's
 mini=("bin" "git" "txt" "vim" "zsh" "bash") 
