@@ -265,3 +265,5 @@ for_window [instance="padd"] floating enable, resize set 800 600, move absolute 
 for_window [instance="ncmpcpp"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
 for_window [instance="scratchpad"] floating enable, resize set 525 1225, move absolute position 2920 137, border pixel 3
 for_window [instance="windowspy"] floating enable, resize set 985 59, move absolute position 1238 37, border pixel 3
+#for_window [instance="i3spy"] floating enable, resize set 1014 59, move absolute position 1521 4, border pixel 3
+for_window [instance="i3spy"] floating enable, resize set 1002 64, move absolute position 1524 7, border pixel 3
