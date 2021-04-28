@@ -9,90 +9,15 @@
 
 "─────────────────────────────────────────────────────  FILE SHORTCUTS  ──────"
 
-nnoremap <leader>os :tabedit ~/.config/nvim/snips/all.snippets<CR>
-nnoremap <leader>op :tabedit ~/.config/nvim/01-plugins.vim<CR>
-nnoremap <leader>opp :tabedit ~/.config/nvim/01-plugins.vim<CR>
-nnoremap <leader>ops :tabedit ~/.config/nvim/02-plugin-settings.vim<CR>
-nnoremap <leader>ok :tabedit ~/.config/nvim/03-keybinds.vim<CR>
-nnoremap <leader>of :tabedit ~/.config/nvim/04-filetype.vim<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pc :PlugClean<CR>
-
-"─────────────────────────────────────────────────────────  WHITESPACE  ──────"
-
-" Removes trailing spaces
- function TrimWhiteSpace()
-   %s/\s*$//
-   ''
- endfunction
-
-" autocmd FileWritePre * call TrimWhiteSpace()
-" autocmd FileAppendPre * call TrimWhiteSpace()
-" autocmd FilterWritePre * call TrimWhiteSpace()
-" autocmd BufWritePre * call TrimWhiteSpace()
-
-map <F2> :call TrimWhiteSpace()<CR>
-map! <F2> :call TrimWhiteSpace()<CR>
-
-noremap <F3> :set list!<CR>
-inoremap <F3> <C-o>:set list!<CR>
-cnoremap <F3> <C-c>:set list!<CR>
-
-"─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
-
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-
-"────────────────────────────────────────────────────────────────  COC  ──────"
-
-" update CoC
-nnoremap <leader>cu :CocUpdate<CR>
-" show marketplace
-nnoremap <leader>ci :CocList marketplace<CR>
-
-nmap <silent> <leader>K <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>J <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>cr <Plug>(coc-references)
-nmap <silent> <leader>co :<C-u>CocListResume<CR>
-
-"──────────────────────────────────────────────────────────────  FILES  ──────"
-
-" (w)rite (w)indow as sudo
-nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
-
-" reload vimrc config
-nnoremap <silent> <leader>` :source ~/.vimrc<CR>
-
-" expand (e)rror (m)essages
-nnoremap <silent> <leader>em :messages<CR>
-
-" (r)eload (w)indow (document)
-nnoremap <silent> <leader>wr :e!<CR>
-
-" (q)uit current (w)indow
-nnoremap <silent> <leader>wq :close<CR>
-
-" tab navigation
-nnoremap <silent> <C-A-j> :tabprevious<CR>
-nnoremap <silent> <C-A-k> :tabnext<CR>
-
-" vertical (s)plit > explore
-nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
-
-" vertical (s)plit > explore
-nnoremap <silent> <leader>ws :Vexplore<CR>
-
-" vertical (s)plit
-nnoremap <silent> <leader>ss :Vsplit<CR>
-
-" horizontal (S)plit > explore
-nnoremap <silent> <leader>WS :Split<CR>
-
-" horizontal (S)plit
-nnoremap <silent> <leader>SS :Split<CR>
+nnoremap <leader>os  :tabedit         ~/.config/nvim/snips/all.snippets<CR>
+nnoremap <leader>op  :tabedit         ~/.config/nvim/01-plugins.vim<CR>
+nnoremap <leader>opp :tabedit         ~/.config/nvim/01-plugins.vim<CR>
+nnoremap <leader>ops :tabedit         ~/.config/nvim/02-plugin-settings.vim<CR>
+nnoremap <leader>ok  :tabedit         ~/.config/nvim/03-keybinds.vim<CR>
+nnoremap <leader>of  :tabedit         ~/.config/nvim/04-filetype.vim<CR>
+nnoremap <leader>pu  :PlugUpdate<CR>
+nnoremap <leader>pi  :PlugInstall<CR>
+nnoremap <leader>pc  :PlugClean<CR>
 
 "──────────────────────────────────────────────────  TEXT MANIPULATION   ──────
 
@@ -101,10 +26,11 @@ nnoremap <silent> <leader>tr :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>Y
 nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>
 nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>0YpVr─0r#A<esc>Ykkp0
 nnoremap <silent> <leader>tu g$dF x0df x
-nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1─────────────────────────────────────────────────────────────────────────────\1/g<CR>
+nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1──────────────────────────────────────────────────────────────────────────────/g<CR>
 
-" sort paragraph
-nnoremap <silent> <leader>1 :'{,'}sort<CR>
+" visual: sort, column
+vmap <silent> <leader>ss :'<,'>sort<CR>
+vmap <silent> <leader>cc :'<,'>!column -t -o " "<CR>
 
 " (d)elete double white(s)pace lines
 nnoremap          <leader>ds :%s/^\(\s\+\)\?$\n^\(\s\+\)\?$//g<CR><C-o>
@@ -132,6 +58,85 @@ nnoremap <leader>, @@
 
 " convert link to markdown
 nnoremap <leader>l   0Di[]()^[P^[F]i^[
+
+"─────────────────────────────────────────────────────────  WHITESPACE  ──────"
+
+" Removes trailing spaces
+ function TrimWhiteSpace()
+   %s/\s*$//
+   ''
+ endfunction
+
+"autocmd FileWritePre * call TrimWhiteSpace()
+"autocmd FileAppendPre * call TrimWhiteSpace()
+"autocmd FilterWritePre * call TrimWhiteSpace()
+"autocmd BufWritePre * call TrimWhiteSpace()
+
+map <F2> <silent> :call TrimWhiteSpace()<CR>
+map! <F2> <silent> :call TrimWhiteSpace()<CR>
+
+noremap <F3> :set list!<CR>
+inoremap <F3> <C-o>:set list!<CR>
+cnoremap <F3> <C-c>:set list!<CR>
+
+"──────────────────────────────────────────────────────────────  FILES  ──────"
+
+" (w)rite (w)indow as sudo
+fun! SudoW()
+  silent write !sudo tee %
+  edit!
+  echo "SudoW done."
+endfun
+
+"nnoremap <Leader>ww :call SudoW()<CR>
+nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
+
+" reload vimrc config
+nnoremap <silent> <leader>` :source ~/.vimrc<CR>
+
+" expand (e)rror (m)essages
+nnoremap <silent> <leader>m :messages<CR>
+
+" (r)eload (w)indow (document)
+nnoremap <silent> <leader>wr :e!<CR>
+
+" (q)uit current (w)indow
+nnoremap <silent> <leader>wq :close<CR>
+
+" tab navigation
+nnoremap <silent> <C-A-j> :tabprevious<CR>
+nnoremap <silent> <C-A-k> :tabnext<CR>
+
+" vertical (s)plit > explore
+nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
+
+" vertical (s)plit > explore
+nnoremap <silent> <leader>ws :Vexplore<CR>
+
+" vertical (s)plit
+nnoremap <silent> <leader>ss :Vsplit<CR>
+
+" horizontal (S)plit > explore
+nnoremap <silent> <leader>WS :Split<CR>
+
+" horizontal (S)plit
+nnoremap <silent> <leader>SS :Split<CR>
+
+"────────────────────────────────────────────────────────────────  COC  ──────"
+
+" update CoC
+nnoremap <leader>cu :CocUpdate<CR>
+
+" show marketplace
+nnoremap <leader>ci :CocList marketplace<CR>
+
+nmap <silent> <leader>K <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>J <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>cr <Plug>(coc-references)
+nmap <silent> <leader>co :<C-u>CocListResume<CR>
 
 "────────────────────────────────────────────────────────────────  GIT   ──────
 
