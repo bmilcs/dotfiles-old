@@ -12,8 +12,8 @@ set nocompatible  " must be first
 " better autocomplete
 set wildmenu
 
-" ask to save
-set confirm
+" disabled: ask to save
+set noconfirm
 
 " flash if doing something wrong
 set visualbell
