@@ -76,8 +76,14 @@ if grep -F "instance=\"$class\"" "$conf"; then
 fi
 
 cp "$conf"{,.bak}
-sed '/^for_window.*instance=\"'"$class"'\"/ s/^#*/#/' -i "$conf"
+
+# comment out old line
+#sed '/^for_window.*instance=\"'"$class"'\"/ s/^#*/#/' -i "$conf"
+
+sed -i '/^for_window.*instance=\"'"$class"'\"/d'
+
 echo "$line" >> ~/.config/i3/config
+
 if grep -F "instance=\"$class\"" "$conf"; then
   i3-msg "restart"
   _ns "[class=\"$class\"] \na floating rule added successfully!"
