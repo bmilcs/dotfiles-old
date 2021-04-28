@@ -13,7 +13,17 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/02-aliases.zsh'
 
-#───────────────────────────────────────────────────────────────  TEXT  ───────
+#───────────────────────────────────────────────────────────────  text  ───────
+
+# text editors
+alias nano='nvim'                 ; compdef nano='nvim'
+alias vim='nvim'                  ; compdef vim='nvim'
+alias svim='sudo nvim'            ; compdef svim='nvim'
+alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
+
+# dotfiles repo
+alias bmi='cd $D && ./install.sh'
+alias bme='vim $D/install.sh'
 
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'
@@ -46,7 +56,6 @@ alias picomr='killall -q picom ; picom -b'
 alias rmup='rm -rf ~/.config/up/'
 
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
-
 if [[ $DISTRO = "arch"* ]]; then # ARCH
   # aur | yay
   alias pacman='sudo pacman';compdef pacman='pacman'
@@ -75,11 +84,10 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias xcc='xclip -selection primary'
   alias xpp='xclip -selection primary -o'
   alias cat='bat';compdef cat='bat'
-  alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
-
-else 
+  # alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
 
 #──────────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
+else 
 
   # syslog
   alias syslogg='sudo cat /var/log/syslog | grep '
@@ -123,9 +131,6 @@ alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 alias mutt='neomutt'
 alias em='neomutt'
 
-# dotfiles
-alias bmi='cd $D && ./install.sh'
-alias bme='vim $D/install.sh'
 
 # git
 alias grevp='git rev-parse > /dev/null 2>&1'
@@ -145,40 +150,30 @@ alias guser='git config user.name bmilcs \
              && git config user.email bmilcs@yahoo.com \
              && git config color.ui auto'
 
-#─────────────────────────────────────────────────────────────────  LS  ───────
+#─────────────────────────────────────────────────────────────────  ls  ───────
 
 alias l='ls' ; compdef l='ls'
-alias ls='LC_ALL=C ls -AlhF \
-  --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef ls='ls'
-alias ll='LC_ALL=C command ls -AC \
-  --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef lll='ls'
-alias lll='command ls -l \
-  --color=auto --group-directories-first --time-style='+%D %H:%M''
-    compdef ll='ls'
-alias llll='command ls -C \
-  --color=auto --group-directories-first --time-style='+%D %H:%M''
-  compdef llll='ls'
 
-alias lst='l -tr' ; compdef lst='ls'
+alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first \
+  --time-style='+%D %H:%M'' ; compdef ls='ls'
+alias ll='LC_ALL=C command ls -AC --color=auto --group-directories-first \
+  --time-style='+%D %H:%M'' ; compdef ll='ls'
+alias lll='command ls -l --color=auto --group-directories-first \
+  --time-style='+%D %H:%M'' ; compdef lll='ls'
+alias llll='command ls -C --color=auto --group-directories-first \
+  --time-style='+%D %H:%M'' ; compdef llll='ls'
 
+alias lst='l -tr' 
 alias lsg='l | grep'          # search in dir
 alias lsd='l -d */'           # ls: dirs only
 
-#─────────────────────────────────────────────────  STOCK ENHANCEMENTS  ───────
+#─────────────────────────────────────────────────  stock enhancements  ───────
 
 # fd
 alias fd="fd -E /all/bm -E /all/media -E /backup "
 
-# alias
+# rm -rf
 alias rM='rm -rf'
-
-# text editors
-alias nano='nvim'                 ; compdef nano='nvim'
-alias vim='nvim'                  ; compdef vim='nvim'
-alias svim='sudo nvim'            ; compdef svim='nvim'
-alias vmf='nvim $(fzf)'           ; compdef vmf='nvim'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
@@ -189,8 +184,8 @@ alias wget='wget -c'              ; compdef wget='wget'
 
 # confirmations
 alias ln='ln -i'
-  #alias mv='mv -i'
-  #alias cp='cp -i'
+#alias mv='mv -i'
+#alias cp='cp -i'
 
 # shortcuts
 alias c='clear'
@@ -278,8 +273,6 @@ alias ans='
   fi
   '
 
-
-
 #───────────────────────────────────────────────────────  old script  ─────────
 #   mkdir -m 700 -p ~/.ssh
 #   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
@@ -291,7 +284,6 @@ alias ans='
 #────────────────────────────────────────────────────────────  ANSIBLE  ───────
 
 alias a='ansible' ; compdef a='ansible'
-
 
 ###############################################################################
 ###############################################################################

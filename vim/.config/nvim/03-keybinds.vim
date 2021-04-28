@@ -4,10 +4,11 @@
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 "                 VIM CUSTOM KEYBINDS [./03-keybinds.vim]
+
 " TODO  - format/move comments to column #45
 "       - fzf shortcuts, project files, ripgrep project dir
 
-"─────────────────────────────────────────────────────  FILE SHORTCUTS  ──────"
+"─────────────────────────────────────────────────────  file shortcuts  ──────"
 
 nnoremap <leader>os  :tabedit         ~/.config/nvim/snips/all.snippets<CR>
 nnoremap <leader>op  :tabedit         ~/.config/nvim/01-plugins.vim<CR>
@@ -19,9 +20,9 @@ nnoremap <leader>pu  :PlugUpdate<CR>
 nnoremap <leader>pi  :PlugInstall<CR>
 nnoremap <leader>pc  :PlugClean<CR>
 
-"──────────────────────────────────────────────────  TEXT MANIPULATION   ──────
+"──────────────────────────────────────────────────  text manipulation   ──────
 
-" title bar test
+" title bars
 nnoremap <silent> <leader>tr :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
 nnoremap <silent> <leader>tt :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>
 nnoremap <silent> <leader>ty :right 70<cr>3hv0lr─0r#A<space><space><esc>40A─<esc>d79<bar>0YpVr─0r#A<esc>Ykkp0
@@ -32,11 +33,11 @@ nnoremap <silent> <leader>tb :%s/^\(#\<bar>"\<bar>;\)$/\1───────�
 vmap <silent> <leader>ss :'<,'>sort<CR>
 vmap <silent> <leader>cc :'<,'>!column -t -o " "<CR>
 
-" (d)elete double white(s)pace lines
-nnoremap          <leader>ds :%s/^\(\s\+\)\?$\n^\(\s\+\)\?$//g<CR><C-o>
+" delete double+ blank lines: 
+nnoremap <leader>ds :%s/^\(\s\+\)\?$\n^\(\s\+\)\?$//g<CR><C-o>
 
-" (d)elete all white(s)pace lines
-nnoremap          <leader>dS :%s/^\(\s\+\)\?$\n//g<CR><C-o>
+" delete blank lines: all
+nnoremap <leader>dS :%s/^\(\s\+\)\?$\n//g<CR><C-o>
 
 " find/replace all
 nnoremap <leader>r :%s///gc<left><left><left>
@@ -48,9 +49,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " clear highlighted matches
 nnoremap <leader>/ :nohlsearch<CR>
 
-" surround selection: ()
-" xnoremap <leader>( c()<Esc>P
-
 " replay last macro
 nnoremap , @
 nnoremap ,, @@
@@ -59,27 +57,7 @@ nnoremap <leader>, @@
 " convert link to markdown
 nnoremap <leader>l   0Di[]()^[P^[F]i^[
 
-"─────────────────────────────────────────────────────────  WHITESPACE  ──────"
-
-" Removes trailing spaces
- function TrimWhiteSpace()
-   %s/\s*$//
-   ''
- endfunction
-
-"autocmd FileWritePre * call TrimWhiteSpace()
-"autocmd FileAppendPre * call TrimWhiteSpace()
-"autocmd FilterWritePre * call TrimWhiteSpace()
-"autocmd BufWritePre * call TrimWhiteSpace()
-
-map <F2> <silent> :call TrimWhiteSpace()<CR>
-map! <F2> <silent> :call TrimWhiteSpace()<CR>
-
-noremap <F3> :set list!<CR>
-inoremap <F3> <C-o>:set list!<CR>
-cnoremap <F3> <C-c>:set list!<CR>
-
-"──────────────────────────────────────────────────────────────  FILES  ──────"
+"──────────────────────────────────────────────────────────────  files  ───────
 
 " (w)rite (w)indow as sudo
 fun! SudoW()
@@ -122,7 +100,7 @@ nnoremap <silent> <leader>WS :Split<CR>
 " horizontal (S)plit
 nnoremap <silent> <leader>SS :Split<CR>
 
-"────────────────────────────────────────────────────────────────  COC  ──────"
+"────────────────────────────────────────────────────────────────  coc  ───────
 
 " update CoC
 nnoremap <leader>cu :CocUpdate<CR>
@@ -138,41 +116,41 @@ nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <silent> <leader>co :<C-u>CocListResume<CR>
 
-"────────────────────────────────────────────────────────────────  GIT   ──────
-
-" git diff split
-nnoremap <silent> <leader>gd :Gdiffsplit<CR>
-
-" git status
-" nnoremap <silent> <leader>gs :Gstatus<CR>
-
-" open vimagit pane (git status)
-nnoremap <silent> <leader>gs :Magit<CR>
-
-" allow magit to del untracked files
-" let g:magit_discard_untracked_do_delete=1
-
-" highlight changed lines
-nnoremap <silent> <leader>gh :GitGutterLineHighlightsToggle<CR>
-
-" navigate next/prev git hunk
-nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
-nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
-
-" git push  remote
-nnoremap <leader>gP :! git push<CR>
-
-" show commits for all source lines
-nnoremap <Leader>gb :gq<CR>
-
-" open current line in the browser
-nnoremap <Leader>gb :.Gbrowse<CR>
-
-" open visual selection in the browser
-vnoremap <Leader>gb :Gbrowse<CR>
-
-" add the entire file to the staging area
-nnoremap <Leader>gaf :Gw<CR>
+" "────────────────────────────────────────────────────────────────  GIT   ──────
+" 
+" " git diff split
+" nnoremap <silent> <leader>gd :Gdiffsplit<CR>
+" 
+" " git status
+" " nnoremap <silent> <leader>gs :Gstatus<CR>
+" 
+" " open vimagit pane (git status)
+" nnoremap <silent> <leader>gs :Magit<CR>
+" 
+" " allow magit to del untracked files
+" " let g:magit_discard_untracked_do_delete=1
+" 
+" " highlight changed lines
+" nnoremap <silent> <leader>gh :GitGutterLineHighlightsToggle<CR>
+" 
+" " navigate next/prev git hunk
+" nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
+" nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
+" 
+" " git push  remote
+" nnoremap <leader>gP :! git push<CR>
+" 
+" " show commits for all source lines
+" nnoremap <Leader>gb :gq<CR>
+" 
+" " open current line in the browser
+" nnoremap <Leader>gb :.Gbrowse<CR>
+" 
+" " open visual selection in the browser
+" vnoremap <Leader>gb :Gbrowse<CR>
+" 
+" " add the entire file to the staging area
+" nnoremap <Leader>gaf :Gw<CR>
 
 "─────────────────────────────────────────────────────────────  VISUAL    ─────
 
@@ -186,8 +164,6 @@ vmap > >gv
 " remove shift requirement for issuing cmds
 map     ;     :
 noremap ;;    ;
-"noremap K     {
-"noremap J     }
 noremap H     ^
 noremap L     $
 
@@ -240,6 +216,26 @@ function! ToggleVE()
 endfunction
 
 " https://www.hillelwayne.com/post/intermediate-vim/
+
+"─────────────────────────────────────────────────────────  WHITESPACE  ──────"
+
+" Removes trailing spaces
+ function TrimWhiteSpace()
+   %s/\s*$//
+   ''
+ endfunction
+
+"autocmd FileWritePre * call TrimWhiteSpace()
+"autocmd FileAppendPre * call TrimWhiteSpace()
+"autocmd FilterWritePre * call TrimWhiteSpace()
+"autocmd BufWritePre * call TrimWhiteSpace()
+
+map <F2> <silent> :call TrimWhiteSpace()<CR>
+map! <F2> <silent> :call TrimWhiteSpace()<CR>
+
+noremap <F3> :set list!<CR>
+inoremap <F3> <C-o>:set list!<CR>
+cnoremap <F3> <C-c>:set list!<CR>
 
 "─────────────────────────────────────────────────────────  CHEATSHEET  ──────"
 
