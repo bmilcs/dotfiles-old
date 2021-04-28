@@ -12,6 +12,9 @@ set rtp+=~/.config/fzf
 " nord theme
 colorscheme nord
 
+"─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
+
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 "────────────────────────────────────────────────────────────  ansible  ───────
 au BufRead,BufNewFile */ans/* set filetype=yaml.ansible
@@ -220,29 +223,29 @@ endfunction
 "─────────────────────────────────────────────────  G R A V E Y A  R D  ──────"
 
 "───────────────────────────────────────────────────────────  NERDTREE  ──────"
-  
+
 "  set modifiable " allow d
 "  let g:NERDTreeWinSize=20 " column width
-"  
+"
 "  " bind f6: toggle view
 "  nnoremap <silent> <expr> <F6> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
-"  
+"
 "  " start nerdtree, unless a file or session is specified, eg. vim -s session_file.vim.
 "  " autocmd StdinReadPre * let s:std_in=1
 "  " autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
-"  
+"
 "  " if closing last open document, nuke nerdtree
 "  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
 "      \ quit | endif
-"  
+"
 "  " nerdtree clone on every tab
 "  autocmd BufWinEnter * silent NERDTreeMirror
-"  
+"
 "────────────────────────────────────────────────  NERDTREE GIT STATUS  ──────"
-"  
+"
 "  " show untracked & custom icons:
 "  let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
-"  
+"
 "  " custom git icons
 "  let g:NERDTreeGitStatusIndicatorMapCustom = {
 "      \ 'Modified'  :'â¹',
