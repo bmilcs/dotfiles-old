@@ -170,6 +170,9 @@ bindsym $win+$ctrl+$alt+j     gaps   outer   all   plus 2
 bindsym $win+$ctrl+$alt+k     gaps   outer   all   minus 2
 bindsym $win+$ctrl+$alt+l     gaps   inner   all   minus 2
 
+# vim width     720
+# browser width 1024
+
 # splitting
 bindcode $win+47              split v
 bindcode $win+48              split h
@@ -256,7 +259,6 @@ for_window [instance="gtk3-icon-browser"] floating enable, resize set 1466 1218,
 for_window [instance="gtk3-icon-browser"] floating enable, resize set 735 1343, move absolute position 2441 73, border pixel 3
 for_window [instance="roficlone"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
 for_window [instance="picard"] floating enable, resize set 1716 1076, move absolute position 812 199, border pixel 3
-for_window [instance="i3pad"] floating enable, resize set 408 1212, move absolute position 3031 142, border pixel 3
 for_window [instance="nvidia-settings"] floating enable, resize set 1608 996, move absolute position 916 253, border pixel 3
 for_window [instance="font-manager"] floating enable, resize set 1551 977, move absolute position 919 249, border pixel 3
 for_window [instance="rofitxt"] floating enable, resize set 789 1074, move absolute position 2113 200, border pixel 3
@@ -265,5 +267,5 @@ for_window [instance="padd"] floating enable, resize set 800 600, move absolute 
 for_window [instance="ncmpcpp"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
 for_window [instance="scratchpad"] floating enable, resize set 525 1225, move absolute position 2920 137, border pixel 3
 for_window [instance="windowspy"] floating enable, resize set 985 59, move absolute position 1238 37, border pixel 3
-#for_window [instance="i3spy"] floating enable, resize set 1014 59, move absolute position 1521 4, border pixel 3
 for_window [instance="i3spy"] floating enable, resize set 1002 64, move absolute position 1524 7, border pixel 3
+for_window [instance="i3pad"] floating enable, resize set 710 1372, move absolute position 1337 48, border pixel 3
