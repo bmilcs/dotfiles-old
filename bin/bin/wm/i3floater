@@ -43,13 +43,11 @@ else
 
   if [[ -n $skipped ]] ; then
 
-    _e "class: \'$class\' matches predefined '\$prevent' variable"
     _ne  "class: \"$class\" matches predefined '\$prevent' variable"
     exit 1
 
   elif [[ -z "$x" ]] || [[ -z "$y" ]] || [[ -z "$h" ]] || [[ -z "$w" ]] ; then
 
-    _e "unable to extract position or dimensions for class: \'"$class"\'"
     _ne "unable to extract position or dimensions for class: \'"$class"\'"
 
   fi
@@ -70,22 +68,21 @@ echo $line
 conf=~/.config/i3/config
 
 # check if rule exists already
-
-if grep -F "instance=\"$class\"" "$conf"; then
-  _n "[class=\"$class\"] \na floating rule class exists already! "
-fi
-
-cp "$conf"{,.bak}
-
+# if grep -F "instance=\"$class\"" "$conf"; then
+#   _n "[class=\"$class\"] \na floating rule class exists already! "
+# fi
+# 
+# cp "$conf"{,.bak}
+# 
 # comment out old line
 #sed '/^for_window.*instance=\"'"$class"'\"/ s/^#*/#/' -i "$conf"
 
-sed -i '/^for_window.*instance=\"'"$class"'\"/d'
+sed -i '/^for_window.*instance=\"'"$class"'\"/d' "$conf"
 
 echo "$line" >> ~/.config/i3/config
 
 if grep -F "instance=\"$class\"" "$conf"; then
   i3-msg "restart"
-  _ns "[class=\"$class\"] \na floating rule added successfully!"
+  #_ns "[class=\"$class\"] \na floating rule added successfully!"
 fi
 
