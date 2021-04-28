@@ -145,13 +145,6 @@ alias guser='git config user.name bmilcs \
              && git config user.email bmilcs@yahoo.com \
              && git config color.ui auto'
 
-#   mkdir -m 700 -p ~/.ssh
-#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
-#   chmod 600 ~/.ssh/authorized_keys
-#   eval "$(ssh-agent -s)"
-#   echo "> enter github private key as follows:"
-#   echo "  ssh-add ~/.ssh/id_github"'
-
 #─────────────────────────────────────────────────────────────────  LS  ───────
 
 alias l='ls' ; compdef l='ls'
@@ -270,8 +263,9 @@ alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
 # pid
 alias pid='cat /etc/passwd'
 
-#──────────────────────────────────────────────────────  SSH SHORTCUTS  ───────
+#────────────────────────────────────────────────────────────────  ssh  ───────
 
+alias sshe='cd ~/.ssh;nvim ~/.ssh/config'
 alias doc='ssh docker'
 alias plx='ssh plex'
 alias ans='
@@ -283,6 +277,16 @@ alias ans='
     ssh bmdev@ansible
   fi
   '
+
+
+
+#───────────────────────────────────────────────────────  old script  ─────────
+#   mkdir -m 700 -p ~/.ssh
+#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+#   chmod 600 ~/.ssh/authorized_keys
+#   eval "$(ssh-agent -s)"
+#   echo "> enter github private key as follows:"
+#   echo "  ssh-add ~/.ssh/id_github"'
 
 #────────────────────────────────────────────────────────────  ANSIBLE  ───────
 
