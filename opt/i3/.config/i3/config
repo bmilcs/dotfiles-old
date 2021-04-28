@@ -1,49 +1,48 @@
-#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
-#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
-#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
-#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
-#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 I3 GAPS WM [./config]
-#───────────────────────────────────────────────────  WORK IN PROGRESS  ──────#
+#
+#    ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ · 
+#    ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#    ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#    ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#    ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀           dot.bmilcs.com
+#                   I3 GAPS WM [./config]
+#
 
-# install dotfiles
-bindsym $win+ctrl+d      exec --no-startup-id    i3idotfiles
-# readme
-bindsym $win+$ctrl+m     exec --no-startup-id    i3hfr -n i3readme -c i3readme
-# scratchpad
-bindsym $win+n           exec --no-startup-id    i3hfr -n i3pad -c i3pad
-# music
-bindsym $win+m           exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
-# bmclone
-bindsym $win+c           exec --no-startup-id    bmclone
+#──────────────────────────────────────────────────────────  modifiers  ───────
 
-#──────────────────────────────────────────────────────  CORE KEYBINDS  ──────#
-
-# modifiers
+set $win             Mod4
 set $shift           Shift
 set $ctrl            Ctrl
 set $alt             Mod1
 set $tilde           49
 set $backspace       51
-set $win             Mod4
 floating_modifier    Mod4
 
-# exit, restart, reload
+#───────────────────────────────────────────────────────  restart/exit  ───────
+
 bindcode $win+$tilde          exec "source ~/.profile;xrdb -merge ~/.Xresources";restart
 bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh"
 bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
 bindcode $win+$ctrl+$tilde    exec "bootstrap"
 bindcode $win+$alt+$tilde     exec "i3-msg exit"
 
-# audio
+#──────────────────────────────────────────────────────────────  audio  ───────
+
+bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
+bindsym XF86AudioNext         exec --no-startup-id    mpc next
+bindsym XF86AudioStop         exec --no-startup-id    mpc stop
 bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
-bindsym XF86AudioStop         exec --no-startup-id    mpc stop
-bindsym XF86AudioNext         exec --no-startup-id    mpc next
 
-# screenshots
+#───────────────────────────────────────────────────────  applications  ───────
+
+# terminal
+bindsym $win+Return           exec --no-startup-id    alacritty
+# browser
+bindsym $win+a                exec --no-startup-id    firefox
+
+#────────────────────────────────────────────────────────  screenshots  ───────
+
 bindsym Print                 exec --no-startup-id    screenshot sel
 bindsym $ctrl+Print           exec --no-startup-id    screenshot win
 bindsym $shift+Print          exec --no-startup-id    screenshot all
@@ -51,83 +50,39 @@ bindsym Pause                 exec --no-startup-id    screenshot sel up
 bindsym $ctrl+Pause           exec --no-startup-id    screenshot win up
 bindsym $shift+Pause          exec --no-startup-id    screenshot all up
 
-# terminal
-bindsym $win+Return           exec --no-startup-id    alacritty
+#─────────────────────────────────────────────────────  custom scripts  ───────
 
-# browser
-bindsym $win+a                exec --no-startup-id    firefox
-
-#────────────────────────────────────────────────────────────  SCRIPTS  ──────#
-
-# debug
-bindsym $win+$alt+z      exec --no-startup-id    i3kr -f -n i3debug -c i3debug
-
-# spy
-bindsym $win+z           exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
-
-# floater
+# bm debug
+bindsym $win+period      exec --no-startup-id    i3kr -f -n i3debug -c i3debug
+# bm spy
+bindsym $win+slash       exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
+# dunst: reload
+bindsym $win+comma       exec --no-startup-id    "killall dunst ; sleep 0.5 ; th"
+# bm floater
 bindsym $win+i           exec --no-startup-id    i3floater
+# bm dotfiles
+bindsym $win+z           exec --no-startup-id    i3idotfiles
+# bm clone
+bindsym $win+c           exec --no-startup-id    bmclone
+# bm readme
+bindsym $win+$ctrl+m     exec --no-startup-id    i3hfr -n i3readme -c i3readme
+# bm pad
+bindsym $win+n           exec --no-startup-id    i3hfr -n i3pad -c i3pad
+# music
+bindsym $win+m           exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
-# dunst reload
-bindsym $win+$shift+z    exec --no-startup-id    "killall dunst ; sleep 0.5 ; th"
+#───────────────────────────────────────────────────────────────  rofi  ───────
 
-#───────────────────────────────────────────────────────────────  ROFI  ──────#
-
-# rofi: standard
+# standard
 bindsym $win+q           exec --no-startup-id    rofiapp
-
-# rofi: dotfiles
+# dotfiles
 bindsym $win+e           exec --no-startup-id    rofibin
-
-# rofi: dmenu
+# dmenu
 bindsym $win+r           exec --no-startup-id    rofiinput
-
-# rofi: text
+# text
 bindsym $win+t           exec --no-startup-id    rofitxt
 
-#──────────────────────────────────────────────────────  I3 APPEARANCE  ──────#
-
-# font
-font Iosevka 12
-
-# borders
-smart_borders             on
-hide_edge_borders         none
-default_border            pixel 3
-default_floating_border   pixel 5
-
-# gaps
-gaps         inner 10
-gaps         outer 0
-smart_gaps   on
-
-# color vars
-set $black1   #2E3440
-set $black2   #3B4252
-set $black3   #434C5E
-set $black4   #4C566A
-set $white1   #D8DEE9
-set $white2   #E5E9F0
-set $white3   #ECEFF4
-set $green1   #8FBCBB
-set $cyan1    #88C0D0
-set $blue2    #81A1C1
-set $blue1    #5E81AC
-set $red1     #BF616A
-set $orange1  #D08770
-set $yellow1  #EBCB8B
-set $green1   #A3BE8C
-set $purple1  #B48EAD
-
-#class                    border    bg       fg       focus      child_border
-client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
-client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
-client.unfocused          $black1   $blue1   $black2  $blue1     $black4
-client.urgent             $red1     $red1    $blue1   $red1      $yellow1
-client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
-client.background         $white1
-
-#──────────────────────────────────────────────────  I3 WINDOW CONTROL  ──────#
+#──────────────────────────────────────  keybinds: movement & resizing  ───────
 
 # close
 bindsym $win+w kill
@@ -170,8 +125,9 @@ bindsym $win+$ctrl+$alt+j     gaps   outer   all   plus 2
 bindsym $win+$ctrl+$alt+k     gaps   outer   all   minus 2
 bindsym $win+$ctrl+$alt+l     gaps   inner   all   minus 2
 
-# vim width     720
-# browser width 1024
+# TODO: resize tiled window
+#       vim width     720
+#       browser width 1024
 
 # splitting
 bindcode $win+47              split v
@@ -187,7 +143,7 @@ bindsym $win+$ctrl+s          move scratchpad
 # toggle floating
 bindsym $win+$shift+s         floating toggle
 
-#──────────────────────────────────────────────────────  I3 WORKSPACES  ──────#
+#─────────────────────────────────────────────────────────  workspaces   ──────
 
 set     $ws1          "1"
 set     $ws2          "2"
@@ -222,50 +178,84 @@ bindsym $win+$alt+8   move container to workspace number $ws8
 bindsym $win+$alt+9   move container to workspace number $ws9
 bindsym $win+$alt+0   move container to workspace number $ws10
 
-#──────────────────────────────────────────────────────────  AUTOSTART  ──────#
+#─────────────────────────────────────────────────────────  aesthetics  ───────
 
-# launch firefox
+# font
+font pango:Iosevka 12
+
+# borders
+smart_borders             on
+hide_edge_borders         none
+default_border            pixel 3
+default_floating_border   pixel 5
+
+# gaps
+gaps         inner 10
+gaps         outer 0
+smart_gaps   on
+
+# color vars
+set $black1   #2E3440
+set $black2   #3B4252
+set $black3   #434C5E
+set $black4   #4C566A
+set $white1   #D8DEE9
+set $white2   #E5E9F0
+set $white3   #ECEFF4
+set $green1   #8FBCBB
+set $cyan1    #88C0D0
+set $blue2    #81A1C1
+set $blue1    #5E81AC
+set $red1     #BF616A
+set $orange1  #D08770
+set $yellow1  #EBCB8B
+set $green1   #A3BE8C
+set $purple1  #B48EAD
+
+#class                    border    bg       fg       focus      child_border
+client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
+client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
+client.unfocused          $black1   $blue1   $black2  $blue1     $black4
+client.urgent             $red1     $red1    $blue1   $red1      $yellow1
+client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
+client.background         $white1
+
+#─────────────────────────────────────────────────────────  on-startup  ───────
+
+# firefox
 exec --no-startup-id     i3-msg 'workspace 2; exec /usr/bin/env firefox'
 
-#───────────────────────────────────────────────  I3 WINDOW MANAGEMENT  ──────#
+#──────────────────────────────────────────────────  application rules  ───────
 
-# WORKSPACE
+# workspace
 assign        [class="Thunderbird"]        4
 assign        [class="discord"]            3
 assign        [class="android-*"]          3
 assign        [class="Telegram*"]          3
 
-# MISC
+# no_focus
 no_focus      [instance="Navigator"]
 no_focus      [instance="i3debug"]
-#no_focus      [instance="i3spy"]
 
-# FLOATING: APPLICATIONS
-for_window    [class="Galculator"]          floating enable, focus, resize set 1500 1200, move absolute position center
-for_window    [class="Gucharmap"]           floating enable, focus
-for_window    [class="Lxappearance"]        floating enable, focus
+# floating
 for_window    [class='Conky']               floating enable
-for_window    [class="PkgBrowser"]          floating enable, focus, resize set 1558 1254, move absolute position 1214 51
 
-# FLOATING: CUSTOM
-for_window    [instance="i3debug"]          floating enable, resize set 515 309, move absolute position 12 1118, border pixel 3
-for_window    [instance="i3readme"]         floating enable, resize set 564 572, move absolute position 2876 437, border pixel 3
-
-# AUTOMATED FLOATING RULES
-for_window [instance="i3debug"] floating enable, resize set 536 355, move absolute position 14 1070, border pixel 3
-for_window [instance="gitdirty"] floating enable, resize set 708 596, move absolute position 2222 389, border pixel 3
-for_window [instance="lxappearance"] floating enable, resize set 1561 716, move absolute position 927 371, border pixel 3
-for_window [instance="gtk3-icon-browser"] floating enable, resize set 1466 1218, move absolute position 991 123, border pixel 3
-for_window [instance="gtk3-icon-browser"] floating enable, resize set 735 1343, move absolute position 2441 73, border pixel 3
-for_window [instance="roficlone"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
-for_window [instance="picard"] floating enable, resize set 1716 1076, move absolute position 812 199, border pixel 3
-for_window [instance="nvidia-settings"] floating enable, resize set 1608 996, move absolute position 916 253, border pixel 3
-for_window [instance="font-manager"] floating enable, resize set 1551 977, move absolute position 919 249, border pixel 3
-for_window [instance="rofitxt"] floating enable, resize set 789 1074, move absolute position 2113 200, border pixel 3
-for_window [instance="galculator"] floating enable, resize set 416 454, move absolute position 1503 980, border pixel 3
-for_window [instance="padd"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
-for_window [instance="ncmpcpp"] floating enable, resize set 800 600, move absolute position 1320 437, border pixel 3
-for_window [instance="scratchpad"] floating enable, resize set 525 1225, move absolute position 2920 137, border pixel 3
-for_window [instance="windowspy"] floating enable, resize set 985 59, move absolute position 1238 37, border pixel 3
-for_window [instance="i3spy"] floating enable, resize set 1002 64, move absolute position 1524 7, border pixel 3
-for_window [instance="i3pad"] floating enable, resize set 710 1372, move absolute position 1337 48, border pixel 3
+# scripted rules
+for_window [instance="font-manager"]      floating enable, resize set 1551 977,  move absolute position 919  249,  border pixel 3
+for_window [instance="galculator"]        floating enable, resize set 416  454,  move absolute position 1503 980,  border pixel 3
+for_window [instance="gitdirty"]          floating enable, resize set 708  596,  move absolute position 2222 389,  border pixel 3
+for_window [instance="gtk3-icon-browser"] floating enable, resize set 735  1343, move absolute position 2441 73,   border pixel 3
+for_window [instance="i3debug"]           floating enable, resize set 536  355,  move absolute position 14   1070, border pixel 3
+for_window [instance="i3spy"]             floating enable, resize set 1002 64,   move absolute position 1524 7,    border pixel 3
+for_window [instance="lxappearance"]      floating enable, resize set 1561 716,  move absolute position 927  371,  border pixel 3
+for_window [instance="ncmpcpp"]           floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
+for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996,  move absolute position 916  253,  border pixel 3
+for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
+for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812  199,  border pixel 3
+for_window [instance="roficlone"]         floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
+for_window [instance="rofitxt"]           floating enable, resize set 789  1074, move absolute position 2113 200,  border pixel 3
+for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920 137,  border pixel 3
+for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238 37,   border pixel 3
+for_window [instance="i3pad"]             floating enable, resize set 692  925,  move absolute position 2686 512,  border pixel 3
+for_window [instance="gucharmap"]         floating enable, resize set 1260 1335, move absolute position 1153 82,   border pixel 3
+for_window [instance="main.py"]           floating enable, resize set 1552 1323, move absolute position 967  54,   border pixel 3
