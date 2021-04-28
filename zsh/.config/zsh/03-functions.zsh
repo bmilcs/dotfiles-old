@@ -70,8 +70,7 @@ dedot()
   rm encrypted.tar.gz
 }
 
-# SHELL
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────────  SHELL  ───────
 
 # CD BIN
 cdd() {
@@ -88,41 +87,12 @@ fif() {
     || rg --ignore-case --pretty --context 10 '$1' {}" \
     | xargs nvim
 }
+
 fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-# SHELL
-#────────────────────────────────────────────────────────────
-
-# create dir & cd into it
-function mdir() {
-  mkdir -p "$@" && cd "$@";
-  }
-
-# SYSTEM SERVICES
-#────────────────────────────────────────────────────────────
-
-# start service
-function svon() {
-  sudo service $@ start
-  }
-
-# stop service
-function svoff() {
-  sudo service $@ stop
-  }
-
-# restart service
-function svre() {
-  sudo service $@ restart
-  }
-
-# get service status
-function svst() {
-  sudo service $@ status
-  }
-
+# 
 # COLORS
 #────────────────────────────────────────────────────────────
 
@@ -150,18 +120,18 @@ function colorr() {
 #─────────────────────────────────────────────────────────  networking  ───────
 
 # print local ip & wan ip | requires dig
-function myip() {
-  printf "\n%s" "          host:   "
-  echo $HOSTNAME "(.bm.bmilcs.com)"
-  ipp="ip a | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
-  eval ip=\$\($ipp\)
-  printf "%s" "           lan:   " 
-  echo $ip 
-  eval wan=\$\(dig @1.1.1.1 ch txt whoami.cloudflare +short\)
-  wan="${wan%\"}"
-  wan="${wan#\"}"
-  printf "%s\n\n" "           wan:   $wan " 
-  }
+#function myip() {
+#  printf "\n%s" "          host:   "
+#  echo $HOSTNAME "(.bm.bmilcs.com)"
+#  ipp="ip a | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
+#  eval ip=\$\($ipp\)
+#  printf "%s" "           lan:   " 
+#  echo $ip 
+#  eval wan=\$\(dig @1.1.1.1 ch txt whoami.cloudflare +short\)
+#  wan="${wan%\"}"
+#  wan="${wan#\"}"
+#  printf "%s\n\n" "           wan:   $wan " 
+#  }
 
 #─────────────────────────────────────────────────────────────  docker   ──────
 
@@ -246,35 +216,7 @@ function vm() {
   fi
 }
 
-#────────────────────────────────────────────────────────────────  FZF  ───────
-fzf_find_edit() {
-    local file=$(
-      fzf --query="$1" --no-multi --select-1 --exit-0 \
-          --preview 'bat --color=always --line-range :500 {}'
-      )
-    if [[ -n $file ]]; then
-        $EDITOR "$file"
-    fi
-}
-
-alias ffe='fzf_find_edit'
-
-fzf_change_directory() {
-    local directory=$(
-      fd --type d | \
-      fzf --query="$1" --no-multi --select-1 --exit-0 \
-          --preview 'tree -C {} | head -100'
-      )
-    if [[ -n $directory ]]; then
-        cd "$directory"
-    fi
-}
-
-alias fcd='fzf_change_directory'
-
-################################################################################
-#################################### unifi #####################################
-################################################################################
+#───────────────────────────────────────────────────────────  ubiquiti  ───────
 
 upunifi() {
     if [[ $# -eq 0 ]]
@@ -286,14 +228,11 @@ upunifi() {
     fi
     }
 
-#────────────────────────────────────────────────────────────
-#────────────────────────────────────────────────────────────
-# GRAVEYARD
-#────────────────────────────────────────────────────────────
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────  GRAVEYARD  ───────
+#──────────────────────────────────────────────────────────────────────────────
 
-# GITHUB
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  GITHUB  ───────
 
 # # add dir w/ basedir prefix to repo
 # # TODO fix w/ stow format
@@ -312,8 +251,7 @@ upunifi() {
 #     gitt add $@
 #     gitt commit -m "Added $@"
 #     }
-# DOCKER
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  DOCKER  ───────
 # # docker-compose based on host name
 # function drun() {
 # 	if [ "$HOSTNAME" = docker ]; then
@@ -324,9 +262,7 @@ upunifi() {
 # 		echo "error: wrong vm dummy!"
 # 	fi
 # }
-#────────────────────────────────────────────────────────────
-#────────────────────────────────────────────────────────────
-# nvim all-in-one sudo-fier wombo-combo
+#──────────────────────────────  nvim all-in-one sudo-fier wombo-combo  ───────
 # vim() {
 #   if [ $# -eq 0 ]; then   # no argument, launch nvim
 #     nvim
@@ -346,3 +282,25 @@ upunifi() {
 #       fi
 #     fi
 #     }
+
+#────────────────────────────────────────────────────  system services   ──────
+# 
+# # start service
+# function svon() {
+#   sudo service $@ start
+#   }
+# 
+# # stop service
+# function svoff() {
+#   sudo service $@ stop
+#   }
+# 
+# # restart service
+# function svre() {
+#   sudo service $@ restart
+#   }
+# 
+# # get service status
+# function svst() {
+#   sudo service $@ status
+#   }
