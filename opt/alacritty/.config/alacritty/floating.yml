@@ -8,7 +8,7 @@
 #────────────────────────────────────────────────────────────
 
 import:
-  - ~/.config/alacritty/nord.yml
+  - ~/.config/alacritty/dracula.yml
 
 live_config_reload: true
 
