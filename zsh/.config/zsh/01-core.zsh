@@ -121,8 +121,13 @@ CASE_SENSITIVE="false"
 zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' select-prompt '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
+#zstyle ':completion:*' matcher-list '' \
+#  '+m:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' # case insensitive
+#────────────────────────────────────────────────────────────  testing  ───────
 zstyle ':completion:*' matcher-list '' \
-  '+m:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' # case insensitive
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:|?=** m:{a-z\-}={A-Z\_}'
 zstyle ':completion:*' menu select # menu style, tab
 zstyle ':completion:*:*:*:*:*' menu select # always use menu select
 zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
