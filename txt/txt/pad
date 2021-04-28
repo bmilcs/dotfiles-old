@@ -5,6 +5,11 @@ BACKUPS!
   - docker
 * ensure all working
 
+mpd web client
+
+ansible: auto-update all hosts 
+         on 1st login (arch)
+
 secure bitwarden
 
 [www]
