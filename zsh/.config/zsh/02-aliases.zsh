@@ -269,7 +269,7 @@ alias ans='
   elif [[ ! $(pwd) == ~/repos/bmilcs-ans* ]]; then
     cd ~/repos/bmilcs-ans
   else
-    ssh bmdev@ansible
+    ssh ansible
   fi
   '
 
