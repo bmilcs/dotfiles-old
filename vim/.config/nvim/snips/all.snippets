@@ -1,4 +1,17 @@
-snippet bmfileexists "existing file already exists, add +1"
+snippet bm-date-time-sec-unique "2021.10.15-13.56.11"
+$(date +%Y.%m.%d-%H.%M.%S)
+endsnippet
+
+
+snippet bm-date-time-sec-unique2 "2021-10_15-13_56-11"
+$(date +%Y.%m.%d-%H.%M.%S)
+endsnippet
+
+snippet bm-date "2021-10-15"
+$(date +%Y-%m-%d)
+endsnippet
+
+snippet bm-fileexists "existing file already exists, add +1"
 name=somefile
 if [[ -e $name.ext || -L $name.ext ]] ; then
     i=0
@@ -11,13 +24,13 @@ touch -- "$name".ext
 endsnippet
 
 
-snippet bmsnip "new snippet"
+snippet bm-snip "new snippet"
 snippet bm-  ""
 
  endsnippet
 endsnippet
 
-snippet argument_check "check for arguments"
+snippet bm-argument_check "check for arguments"
 if [[ $# -eq 0 ]]; then
   _e "missing arguments"
   _o "arg 1: example"
