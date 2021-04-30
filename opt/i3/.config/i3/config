@@ -193,9 +193,17 @@ default_floating_border   pixel 5
 # gaps
 #gaps            inner 12
 #gaps            outer 12
-
 #smart_gaps      inverse_inner
 #smart_gaps      on
+workspace $ws1  gaps vertical  12
+workspace $ws1  gaps horizontal 12
+workspace $ws1  gaps inner 5
+workspace $ws2  gaps vertical  12
+workspace $ws2  gaps horizontal 12
+workspace $ws2  gaps inner 5
+workspace $ws3  gaps vertical  50
+workspace $ws3  gaps horizontal 150
+workspace $ws3  gaps inner 50
 workspace $ws4  gaps vertical  50
 workspace $ws4  gaps horizontal 200
 workspace $ws4  gaps inner 20
