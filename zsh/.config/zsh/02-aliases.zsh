@@ -310,6 +310,9 @@ if where docker-compose > /dev/null; then
   # letsencrypt restart
   alias le="docker restart swag && docker logs -f swag"
   alias swag="le"
+  alias nginxx="~/docker/swag/config/nginx/"
+  alias wwww="~/docker/swag/config/www/"
+  alias logss="~/docker/swag/config/log/"
 
   # docker-compose
   alias dcup="cd ~/docker && docker-compose up -d" #;compdef dcs='docker'
