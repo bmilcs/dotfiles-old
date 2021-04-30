@@ -1,19 +1,68 @@
-#!/bin/sh
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 [BM] CRYPTO TRACKER [./sh-crypto]
+#
+# ETH   0.39294566 # ADA   174.825 # BTC   0.00399199 # XLM   126.12884882
+# IOTA  19.98 # REQ   121.878 # LTC   0.00007266 
 
-API="https://api.kraken.com/0/public/Ticker"
+multi() { 
+  awk -v num1="${1}"  -v num2="${2}" 'BEGIN{total=(num1*num2); print total;}' 
+}
 
-ethereum=$(curl -sf $API?pair=ETHUSD | jq -r ".result.XETHZUSD.c[0]")
-ethereum=$(LANG=C printf "%.2f" "$ethereum")
-#printf "\$%'.3f\n" $ethereum
+plus() {
+  awk -v num1="${1}"  -v num2="${2}" 'BEGIN{total=(num1+num2); print total;}'
+}
 
-bitcoin=$(curl -sf $API?pair=BTCUSD | jq -r ".result.XXBTZUSD.c[0]")
-bitcoin=$(LANG=C printf "%.2f" "$bitcoin")
+bmval() {
 
-ethereum=$(printf " \$%'.0f\n" $ethereum)
-bitcoin=$(printf " \$%'.0f\n" $bitcoin)
-echo $bitcoin $ethereum 
+  coin="${1^^%USD}USD"
 
-#ethereum=$(curl -sf "$API?pair=ETHUSD" | jq -r ".result.XXETHUSD.c[0]")
-#ethereum=$(LANG=C printf "%.2f" "$ethereum")
+  if [ $# -eq 2 ]; then
+    code="$coin" ; qty="$2"
+  elif [ $# -eq 3 ]; then
+    code="${2^^%USD}USD"
+    qty="$3"
+  fi
 
-#echo " \$$bitcoin" #  \$$ethereum "
+  api="https://api.kraken.com/0/public/Ticker"
+  usd=$(curl -sf $api?pair="$coin")
+  usd=$(echo "$usd" | jq -rC ".result.$code.c[0]")
+  usd=$(LANG=C printf "%.2f" "$usd" 2> /dev/null)
+
+  multi "$usd" "$qty" 2> /dev/null
+# value=$(multi "$usd" "$qty" 2> /dev/null)
+# echo "$value"
+}
+
+eth=0.39294566
+ada=174.825
+btc=0.00399199
+btc=$(plus $btc 0.000696)
+xlm=126.12884882
+iota=19.98
+req=121.878
+ltc=0.00007266
+
+bitcoin=$(printf " \$%'.0f\n" $(bmval BTC XXBTZ $btc))
+ethereum=$(printf " \$%'.0f\n" $(bmval ETH XETHZ $eth))
+cardano=$(printf "﬷ \$%'.0f\n" $(bmval ADA $ada))
+stellar=$(printf " \$%'.0f\n" $(bmval XLM XXLMZ $xlm))
+iota=$(printf "IOTA \$%'.0f\n" $(bmval IOTA $iota))
+
+path=~/priv/log
+echo "$bitcoin" >> $path/bitcoin.log
+#litecoin=$(printf "LTC\$%'.0f\n" $(bmval ltc xltcz $ltc))
+#request=$(printf "REQ \$%'.0f\n" $(bmval REQ $req))
+
+echo "$ethereum $bitcoin $cardano $stellar"
+# unavailable via kraken: $litecoin-$request-$iota
+
+#───────────────────────────────────────────────────────────────  orig  ───────
+
+# ethereum=$(printf " \$%'.0f\n" $ethereum)
+# bitcoin=$(printf " \$%'.0f\n" $bitcoin)
+#echo $bitcoin $ethereum 
