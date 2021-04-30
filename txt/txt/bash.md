@@ -2,6 +2,12 @@
 
 [Source](https://learnxinyminutes.com/docs/bash/)
 
+## Wildcard!
+
+``` bash
+JSONFILE="/tmp/${0##*/}.tmp.json"
+```
+
 ## Parameter Expansion `$ { }`
 
 ``` bash
