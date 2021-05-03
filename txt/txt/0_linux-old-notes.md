@@ -94,39 +94,47 @@ Cron time string 	| Description
             interfaces = 192.168.1.0/24 eth0
             hosts allow = 127.0.0.1/8 192.168.1.0/24
 
+
 # increase partition size / expand hard drive of vm
+### LVM [ubuntu]
 
-# UBUNTU
+      # list info 
+      pvs
+      vgs
+      lvs
 
-# resize the logical volume to use all the existing and free space of the volume group
+      # fdisk (new partition, space added via esxi)
+      fdisk /dev/sda
+      n
+      default ? <enter>
+      ...
+      t   type
+      8e  linux filesystem
+      w   write
 
+      # pvcreate (create physical volume)
+      pvcreate /dev/sdaX
+      pvs
+
+      # vgextend (extend volume group)
+      vgextend <vg-name> /dev/sdaX
+      vgs
+      
+      # resize logical volume
       lvm
       lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
       lvm> exit
 
-# resize the file system to use the new available space in the logical volume
-
+      # resize filesystem
       resize2fs /dev/ubuntu-vg/ubuntu-lv
 
 
 
 
-# DEBIAN
-- fix command not found
-      PATH="/sbin:$PATH"
-
-- list partitions
-
-      $ sudo su
-      $ fdisk -l
-
-      /dev/sda1  *        2048 29362175 29360128  14G 83 Linux
-      /dev/sda2       29364222 33552383  4188162   2G  5 Extended
-      /dev/sda5       29364224 33552383  4188160   2G 82 Linux swap / Solaris
-
-- fdisk into primary partition
+# NON-LVM (Debian), standard
 
       root
+      fdisk -l
       fdisk /dev/sda
       p     #take note of start cylinder sda1
       d     #delete all
