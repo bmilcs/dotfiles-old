@@ -170,7 +170,7 @@ alias lsd='l -d */'           # ls: dirs only
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
 # fd
-alias fd="fd -E /all/bm -E /all/media -E /backup "
+#alias fd="fd -E /all/bm -E /all/media -E /backup "
 
 # rm -rf
 alias rM='rm -rf'
@@ -263,15 +263,7 @@ alias pid='cat /etc/passwd'
 alias sshe='cd ~/.ssh;nvim ~/.ssh/config'
 alias doc='ssh docker'
 alias plx='ssh plex'
-alias ans='
-  if [[ $HOST == ansible ]]; then
-    cd ~/ans
-  elif [[ ! $(pwd) == ~/repos/bmilcs-ans* ]]; then
-    cd ~/repos/bmilcs-ans
-  else
-    ssh ansible
-  fi
-  '
+alias ans='cd ~/ans && l'
 
 #───────────────────────────────────────────────────────  old script  ─────────
 #   mkdir -m 700 -p ~/.ssh
