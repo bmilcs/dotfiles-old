@@ -47,18 +47,27 @@ iota=19.98
 req=121.878
 ltc=0.00007266
 
-bitcoin=$(printf " \$%'.0f\n" $(bmval BTC XXBTZ $btc))
-ethereum=$(printf " \$%'.0f\n" $(bmval ETH XETHZ $eth))
-cardano=$(printf "﬷ \$%'.0f\n" $(bmval ADA $ada))
-stellar=$(printf " \$%'.0f\n" $(bmval XLM XXLMZ $xlm))
-iota=$(printf "IOTA \$%'.0f\n" $(bmval IOTA $iota))
+btc=$(bmval BTC XXBTZ $btc)
+eth=$(bmval ETH XETHZ $eth)
+ada=$(bmval ADA $ada)
+xlm=$(bmval XLM XXLMZ $xlm)
+iota=$(bmval IOTA $iota)
 
-path=~/priv/log
-echo "$bitcoin" >> $path/bitcoin.log
+total=$(plus total $btc)
+total=$(plus total $eth)
+total=$(plus total $ada)
+total=$(plus total $xlm)
+
+bitcoin=$(printf " \$%'.0f\n" $btc)
+ethereum=$(printf " \$%'.0f\n" $eth)
+cardano=$(printf "﬷ \$%'.0f\n" $ada)
+stellar=$(printf " \$%'.0f\n" $xlm)
+#iota=$(printf "IOTA \$%'.0f\n" $iota)
 #litecoin=$(printf "LTC\$%'.0f\n" $(bmval ltc xltcz $ltc))
 #request=$(printf "REQ \$%'.0f\n" $(bmval REQ $req))
 
-echo "$ethereum $bitcoin $cardano $stellar"
+
+echo "$total | $ethereum $bitcoin $cardano $stellar"
 # unavailable via kraken: $litecoin-$request-$iota
 
 #───────────────────────────────────────────────────────────────  orig  ───────
