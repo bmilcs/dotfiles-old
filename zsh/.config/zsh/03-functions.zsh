@@ -18,9 +18,10 @@ function d() {
 #────────────────────────────────────────────────────────────  ansible  ───────
 
 apb() {
+  cd $HOME/ans || return 1
   ansible-playbook $1
 }
-compdef '_files -W ~/ans/playbooks' apb
+compdef '_files -P ~/ans/playbooks/ -W ~/ans/playbooks/' apb
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
