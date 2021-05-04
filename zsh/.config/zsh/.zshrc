@@ -17,4 +17,4 @@ done
 
 # run update script (subprocess to prevent trap from closing term)
 [[ -e $ZDOTDIR/05-update.sh ]] \
-  && (. $ZDOTDIR/05-update.sh)
+  && (. $ZDOTDIR/05-update.sh &> /dev/null &)
