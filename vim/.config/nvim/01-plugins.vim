@@ -35,6 +35,10 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " ssh copy/paste
   Plug 'ojroques/vim-oscyank'
 
+" indentation lines (tab)
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'Yggdroot/indentLine'
+
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 
 " gutter symbols
@@ -62,10 +66,11 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'vim-scripts/indentpython.vim'
 
 " i3 wm
-  Plug 'mboughaba/i3config.vim',
+  Plug 'mboughaba/i3config.vim'
 
 " ansible
-  Plug 'pearofducks/ansible-vim',
+  Plug 'pearofducks/ansible-vim'      " syntax highlighting
+  Plug 'phenomenes/ansible-snippets'  " snippets
 
 "────────────────────────────────────────────────────────────  the end  ──────"
 
