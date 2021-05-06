@@ -8,7 +8,7 @@
 " TODO  - format/move comments to column #45
 "       - fzf shortcuts, project files, ripgrep project dir
 
-"─────────────────────────────────────────────────────  file shortcuts  ──────"
+"───────────────────────────────────────────────────────────────  tabs  ───────
 
 nnoremap <leader>os  :tabedit         ~/.config/nvim/snips/all.snippets<CR>
 nnoremap <leader>op  :tabedit         ~/.config/nvim/01-plugins.vim<CR>
@@ -16,9 +16,22 @@ nnoremap <leader>opp :tabedit         ~/.config/nvim/01-plugins.vim<CR>
 nnoremap <leader>ops :tabedit         ~/.config/nvim/02-plugin-settings.vim<CR>
 nnoremap <leader>ok  :tabedit         ~/.config/nvim/03-keybinds.vim<CR>
 nnoremap <leader>of  :tabedit         ~/.config/nvim/04-filetype.vim<CR>
-nnoremap <leader>pu  :PlugUpdate<CR>
-nnoremap <leader>pi  :PlugInstall<CR>
-nnoremap <leader>pc  :PlugClean<CR>
+
+" tab navigation
+nnoremap <C-S-k> :tabprevious<CR>
+nnoremap <C-S-j> :tabnext<CR>
+nnoremap <C-S-n> :tabnew<CR>
+nnoremap <C-S-e> :Explore<CR>
+"nnoremap <silent> <C-Tab>   :tabprevious<CR>
+"nnoremap <silent> <C-S-Tab> :tabnext<CR>
+
+" vertical (s)plit > explore
+nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
+
+
+nnoremap <leader>up  :PlugUpdate<CR>
+nnoremap <leader>ip  :PlugInstall<CR>
+nnoremap <leader>cp  :PlugClean<CR>
 
 "──────────────────────────────────────────────────  text manipulation   ──────
 
@@ -80,13 +93,6 @@ nnoremap <silent> <leader>wr :e!<CR>
 
 " (q)uit current (w)indow
 nnoremap <silent> <leader>wq :close<CR>
-
-" tab navigation
-nnoremap <silent> <C-A-j> :tabprevious<CR>
-nnoremap <silent> <C-A-k> :tabnext<CR>
-
-" vertical (s)plit > explore
-nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
 
 " vertical (s)plit > explore
 nnoremap <silent> <leader>ws :Vexplore<CR>
