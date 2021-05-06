@@ -1,29 +1,45 @@
-#
 #    ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ · 
 #    ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #    ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #    ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #    ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀           dot.bmilcs.com
+
 #                   I3 GAPS WM [./config]
-#
 
 #──────────────────────────────────────────────────────────  modifiers  ───────
 
-set $win             Mod4
-set $shift           Shift
-set $ctrl            Ctrl
-set $alt             Mod1
-set $tilde           49
-set $backspace       51
 floating_modifier    Mod4
+
+set $w           Mod4
+set $s           Shift
+set $c           Ctrl
+set $a           Mod1
+set $rshift      62
+set $enter       36
+set $escape      9
+set $tilde       49
+set $backspace   51
+set $insert      118
+set $f12         96
+
+# key tester
+bindcode  $rshift+$enter      exec notify-send "key registered!" 
 
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
-bindcode $win+$tilde          exec "source $HOME/.profile;xrdb -merge $HOME/.Xresources";restart
-bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh ; picomr"
-bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
-bindcode $win+$ctrl+$tilde    exec "bootstrap"
-bindcode $win+$alt+$tilde     exec "i3-msg exit"
+# restart: i3, .profile, .xresources, picom 
+bindsym $w+backslash     exec --no-startup-id "source $HOME/.profile ;\
+                         xrdb -merge $HOME/.Xresources ; picomr" ; restart
+# restart: polybar, picom
+bindsym $w+equal         exec --no-startup-id ". ~/.config/polybar/launch.sh ;\
+                         picomr"
+# dunst: reload
+bindsym $w+minus         exec --no-startup-id "killall dunst ; sleep 0.5 ; th"
+# restart: bootstrap
+bindsym $w+0             exec --no-startup-id "bootstrap"
+# exit i3
+bindsym $w+$a+backslash  exec "i3-msg exit"
+
 
 #──────────────────────────────────────────────────────────────  audio  ───────
 
@@ -37,111 +53,109 @@ bindsym XF86AudioMute         exec --no-startup-id    pactl set-sink-mute @DEFAU
 #───────────────────────────────────────────────────────  applications  ───────
 
 # terminal
-bindsym $win+Return           exec --no-startup-id    alacritty
+bindsym $w+Return     exec --no-startup-id    alacritty
 # browser
-bindsym $win+a                exec --no-startup-id    firefox
+bindsym $w+a          exec --no-startup-id    firefox
 
 #────────────────────────────────────────────────────────  screenshots  ───────
 
-bindsym Print                 exec --no-startup-id    screenshot sel
-bindsym $ctrl+Print           exec --no-startup-id    screenshot win
-bindsym $shift+Print          exec --no-startup-id    screenshot all
-bindsym Pause                 exec --no-startup-id    screenshot sel up
-bindsym $ctrl+Pause           exec --no-startup-id    screenshot win up
-bindsym $shift+Pause          exec --no-startup-id    screenshot all up
+bindsym Print         exec --no-startup-id    screenshot sel
+bindsym $c+Print      exec --no-startup-id    screenshot win
+bindsym $s+Print      exec --no-startup-id    screenshot all
+bindsym Pause         exec --no-startup-id    screenshot sel up
+bindsym $c+Pause      exec --no-startup-id    screenshot win up
+bindsym $s+Pause      exec --no-startup-id    screenshot all up
 
 #─────────────────────────────────────────────────────  custom scripts  ───────
 
 # bm debug
-bindsym $win+period      exec --no-startup-id    i3kr -f -n i3debug -c i3debug
+bindsym $w+period      exec --no-startup-id    i3kr -f -n i3debug -c i3debug
 # bm spy
-bindsym $win+slash       exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
-# dunst: reload
-bindsym $win+comma       exec --no-startup-id    "killall dunst ; sleep 0.5 ; th"
+bindsym $w+slash       exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
 # bm floater
-bindsym $win+i           exec --no-startup-id    i3floater
+bindsym $w+i           exec --no-startup-id    i3floater
 # bm dotfiles
-bindsym $win+z           exec --no-startup-id    i3idotfiles
+bindsym $w+z           exec --no-startup-id    i3idotfiles
 # bm clone
-bindsym $win+c           exec --no-startup-id    bmclone
+bindsym $w+c           exec --no-startup-id    bmclone
 # bm readme
-bindsym $win+$ctrl+m     exec --no-startup-id    i3hfr -n i3readme -c i3readme
+bindsym $w+$c+m        exec --no-startup-id    i3hfr -n i3readme -c i3readme
 # bm pad
-bindsym $win+n           exec --no-startup-id    i3hfr -n i3pad -c i3pad
+bindsym $w+n           exec --no-startup-id    i3hfr -n i3pad -c i3pad
 # music
-bindsym $win+m           exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
+bindsym $w+m           exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
 #───────────────────────────────────────────────────────────────  rofi  ───────
 
 # standard
-bindsym $win+q           exec --no-startup-id    rofiapp
+bindsym $w+q           exec --no-startup-id    rofiapp
 # dotfiles
-bindsym $win+e           exec --no-startup-id    rofibin
+bindsym $w+e           exec --no-startup-id    rofibin
 # dmenu
-bindsym $win+r           exec --no-startup-id    rofiinput
+bindsym $w+r           exec --no-startup-id    rofiinput
 # text
-bindsym $win+t           exec --no-startup-id    rofitxt
+bindsym $w+t           exec --no-startup-id    rofitxt
 
 #──────────────────────────────────────  keybinds: movement & resizing  ───────
 
 # close
-bindsym $win+w kill
+bindsym $w+$c+w kill
 
 # focus
-bindsym $win+l                focus right
-bindsym $win+h                focus left
-bindsym $win+k                focus up
-bindsym $win+j                focus down
-bindsym $win+p                focus parent
-bindsym $win+o                focus child
-bindsym $win+$ctrl+space      floating toggle
-bindsym $win+space            focus mode_toggle
+bindsym $w+l          focus right
+bindsym $w+h          focus left
+bindsym $w+k          focus up
+bindsym $w+j          focus down
+bindsym $w+p          focus parent
+bindsym $w+o          focus child
+bindsym $w+space      focus mode_toggle
+bindsym $w+$c+space   floating toggle
 
 # move
-bindsym $win+$ctrl+l          move   right   50 px
-bindsym $win+$ctrl+h          move   left    50 px
-bindsym $win+$ctrl+k          move   up      50 px
-bindsym $win+$ctrl+j          move   down    50 px
+bindsym $w+$c+l       move   right   50 px
+bindsym $w+$c+h       move   left    50 px
+bindsym $w+$c+k       move   up      50 px
+bindsym $w+$c+j       move   down    50 px
 
-bindsym $win+$shift+$ctrl+l   move   right   1 px
-bindsym $win+$shift+$ctrl+h   move   left    1 px
-bindsym $win+$shift+$ctrl+k   move   up      1 px
-bindsym $win+$shift+$ctrl+j   move   down    1 px
+bindsym $w+$s+$c+l    move   right   1 px
+bindsym $w+$s+$c+h    move   left    1 px
+bindsym $w+$s+$c+k    move   up      1 px
+bindsym $w+$s+$c+j    move   down    1 px
 
 # resize
-bindsym $win+$shift+h         resize shrink  width    25 px or 25 ppt
-bindsym $win+$shift+j         resize shrink  height   25 px or 25 ppt
-bindsym $win+$shift+k         resize grow    height   25 px or 25 ppt
-bindsym $win+$shift+l         resize grow    width    25 px or 25 ppt
+bindsym $w+$s+h       resize shrink  width    25 px or 25 ppt
+bindsym $w+$s+j       resize shrink  height   25 px or 25 ppt
+bindsym $w+$s+k       resize grow    height   25 px or 25 ppt
+bindsym $w+$s+l       resize grow    width    25 px or 25 ppt
 
-bindsym $win+$alt+h           resize shrink  width    3 px or 3 ppt
-bindsym $win+$alt+j           resize shrink  height   3 px or 3 ppt
-bindsym $win+$alt+k           resize grow    height   3 px or 3 ppt
-bindsym $win+$alt+l           resize grow    width    3 px or 3 ppt
+bindsym $w+$a+h       resize shrink  width    3 px or 3 ppt
+bindsym $w+$a+j       resize shrink  height   3 px or 3 ppt
+bindsym $w+$a+k       resize grow    height   3 px or 3 ppt
+bindsym $w+$a+l       resize grow    width    3 px or 3 ppt
 
 # gaps
-bindsym $win+$ctrl+$alt+h     gaps   inner   all   plus 2
-bindsym $win+$ctrl+$alt+j     gaps   outer   all   plus 2
-bindsym $win+$ctrl+$alt+k     gaps   outer   all   minus 2
-bindsym $win+$ctrl+$alt+l     gaps   inner   all   minus 2
+bindsym $w+$c+$a+h    gaps   inner   all   plus 2
+bindsym $w+$c+$a+j    gaps   outer   all   plus 2
+bindsym $w+$c+$a+k    gaps   outer   all   minus 2
+bindsym $w+$c+$a+l    gaps   inner   all   minus 2
 
 # TODO: resize tiled window
 #       vim width     720
 #       browser width 1024
 
 # splitting
-bindcode $win+47              split v
-bindcode $win+48              split h
+bindcode $w+47        split v
+bindcode $w+48        split h
 
 # full screen
-bindsym $win+f                fullscreen toggle
+bindsym $w+f          fullscreen toggle
 
 # scratchpad
-bindsym $win+s                scratchpad show
-bindsym $win+$ctrl+s          move scratchpad
+bindsym $w+s          scratchpad show
+bindsym $w+$c+s       move scratchpad
 
 # toggle floating
-bindsym $win+$shift+s         floating toggle
+bindsym $w+$s+s       floating toggle
 
 #─────────────────────────────────────────────────────────  workspaces   ──────
 
@@ -154,30 +168,30 @@ set     $ws6          "6"
 set     $ws7          "7"
 set     $ws8          "8"
 set     $ws9          "9"
-set     $ws10         "10"
+#set     $ws10         "10"
 
 
-bindsym $win+1        workspace number $ws1;     focus tiling
-bindsym $win+2        workspace number $ws2;     focus tiling
-bindsym $win+3        workspace number $ws3;     focus tiling
-bindsym $win+4        workspace number $ws4;     focus tiling
-bindsym $win+5        workspace number $ws5;     focus tiling
-bindsym $win+6        workspace number $ws6;     focus tiling
-bindsym $win+7        workspace number $ws7;     focus tiling
-bindsym $win+8        workspace number $ws8;     focus tiling
-bindsym $win+9        workspace number $ws9;     focus tiling
-bindsym $win+0        workspace number $ws10;    focus tiling
+bindsym $w+1        workspace number $ws1;     focus tiling
+bindsym $w+2        workspace number $ws2;     focus tiling
+bindsym $w+3        workspace number $ws3;     focus tiling
+bindsym $w+4        workspace number $ws4;     focus tiling
+bindsym $w+5        workspace number $ws5;     focus tiling
+bindsym $w+6        workspace number $ws6;     focus tiling
+bindsym $w+7        workspace number $ws7;     focus tiling
+bindsym $w+8        workspace number $ws8;     focus tiling
+bindsym $w+9        workspace number $ws9;     focus tiling
+#bindsym $w+0        workspace number $ws10;    focus tiling
 
-bindsym $win+$alt+1   move container to workspace number $ws1
-bindsym $win+$alt+2   move container to workspace number $ws2
-bindsym $win+$alt+3   move container to workspace number $ws3
-bindsym $win+$alt+4   move container to workspace number $ws4
-bindsym $win+$alt+5   move container to workspace number $ws5
-bindsym $win+$alt+6   move container to workspace number $ws6
-bindsym $win+$alt+7   move container to workspace number $ws7
-bindsym $win+$alt+8   move container to workspace number $ws8
-bindsym $win+$alt+9   move container to workspace number $ws9
-bindsym $win+$alt+0   move container to workspace number $ws10
+bindsym $w+$a+1   move container to workspace number $ws1
+bindsym $w+$a+2   move container to workspace number $ws2
+bindsym $w+$a+3   move container to workspace number $ws3
+bindsym $w+$a+4   move container to workspace number $ws4
+bindsym $w+$a+5   move container to workspace number $ws5
+bindsym $w+$a+6   move container to workspace number $ws6
+bindsym $w+$a+7   move container to workspace number $ws7
+bindsym $w+$a+8   move container to workspace number $ws8
+bindsym $w+$a+9   move container to workspace number $ws9
+#bindsym $w+$a+0   move container to workspace number $ws10
 
 #─────────────────────────────────────────────────────────  aesthetics  ───────
 
