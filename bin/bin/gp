@@ -67,7 +67,7 @@ if [[ $gstatus == *"diverged"* ]]; then
   _ar "repo has ${B}diverged!"
   _a attempting rebase\\n
 
-  if git rebase; then 
+  if $g rebase; then 
 
     _s done\\n
     _ic "push updates (ahead)"
