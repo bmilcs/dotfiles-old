@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
+
 #  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
 #  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+
 #                 [BM] CRYPTO TRACKER [./sh-crypto]
-#
-# ETH   0.39294566 # ADA   174.825 # BTC   0.00399199 # XLM   126.12884882
-# IOTA  19.98 # REQ   121.878 # LTC   0.00007266 
+
+# ETH 0.39294566     ADA  174.825   BTC 0.00399199   LTC 0.00007266      
+# XLM 126.12884882   IOTA 19.98     REQ 121.878    
 
 multi() { 
   awk -v num1="${1}"  -v num2="${2}" 'BEGIN{total=(num1*num2); print total;}' 
@@ -34,8 +36,6 @@ bmval() {
   usd=$(LANG=C printf "%.2f" "$usd" 2> /dev/null)
 
   multi "$usd" "$qty" 2> /dev/null
-# value=$(multi "$usd" "$qty" 2> /dev/null)
-# echo "$value"
 }
 
 eth=0.39294566
@@ -53,25 +53,23 @@ ada=$(bmval ADA $ada)
 xlm=$(bmval XLM XXLMZ $xlm)
 iota=$(bmval IOTA $iota)
 
-total=$(plus total $btc)
-total=$(plus total $eth)
-total=$(plus total $ada)
-total=$(plus total $xlm)
+# TODO fix
+# total=0
+# total=$(plus total $btc)
+# total=$(plus total $eth)
+# total=$(plus total $ada)
+# total=$(plus total $xlm)
 
 bitcoin=$(printf " \$%'.0f\n" $btc)
 ethereum=$(printf " \$%'.0f\n" $eth)
 cardano=$(printf "﬷ \$%'.0f\n" $ada)
 stellar=$(printf " \$%'.0f\n" $xlm)
-#iota=$(printf "IOTA \$%'.0f\n" $iota)
-#litecoin=$(printf "LTC\$%'.0f\n" $(bmval ltc xltcz $ltc))
-#request=$(printf "REQ \$%'.0f\n" $(bmval REQ $req))
+# iota=$(printf "IOTA \$%'.0f\n" $iota)
+# litecoin=$(printf "LTC\$%'.0f\n" $(bmval ltc xltcz $ltc))
+# request=$(printf "REQ \$%'.0f\n" $(bmval REQ $req))
 
 
-echo "$total | $ethereum $bitcoin $cardano $stellar"
-# unavailable via kraken: $litecoin-$request-$iota
+echo "$ethereum $bitcoin $cardano $stellar"
+      # not on kraken: $litecoin-$request-$iota
 
-#───────────────────────────────────────────────────────────────  orig  ───────
 
-# ethereum=$(printf " \$%'.0f\n" $ethereum)
-# bitcoin=$(printf " \$%'.0f\n" $bitcoin)
-#echo $bitcoin $ethereum 
