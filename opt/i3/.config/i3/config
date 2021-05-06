@@ -19,7 +19,7 @@ floating_modifier    Mod4
 
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
-bindcode $win+$tilde          exec "source ~/.profile;xrdb -merge ~/.Xresources";restart
+bindcode $win+$tilde          exec "source $HOME/.profile;xrdb -merge $HOME/.Xresources";restart
 bindcode $alt+$tilde          exec ". ~/.config/polybar/launch.sh ; picomr"
 bindcode $win+$shift+$tilde   exec notify-send "hotkey not configured"
 bindcode $win+$ctrl+$tilde    exec "bootstrap"
