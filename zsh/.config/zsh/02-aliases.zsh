@@ -202,9 +202,8 @@ alias ...='cd ../.. && c && l'
 #────────────────────────────────────────────────────────  FILE SYSTEM  ───────
 
 # mount | umount
-alias mountnfs='sudo mount -a -t nfs -t nfs4 &&\
-  echo "\n\nnfs shares: ${GRN}${B}mounted\n${BLU}$ mount -l | grep nfs\n" &&\
-  mount -l | grep nfs'
+alias nfsls='echo "\n\nnfs shares: ${GRN}${B}mounted\n${BLU}$ mount -l | grep nfs\n" &&\
+  sudo mount -l | grep nfs'
 alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
   echo "\n\nnfs shares: ${RED}${B}unmounted\n${BLU}$ mount -l | grep nfs\n" &&\
   mount -l | grep nfs'
