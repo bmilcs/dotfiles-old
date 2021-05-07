@@ -28,7 +28,7 @@ togssh() {
   fi
 }
 
-if [ -d $ANSIBLE_HOME ]
+if [ -d $ANSIBLE_HOME/roles ]
 then
   # ansible ... shortcut
   a() {
