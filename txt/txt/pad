@@ -1,10 +1,14 @@
-AUTHELIA/NGINX: Update configs
+RSNAPSHOT
+------------
+- configure backup.bm.bmilcs.com
+- automate backups via ssh!
 
-BACKUPS!
-- rsnapshot 
-  - plex
-  - arch
-  - docker
+- configure hosts:
+  1. bmpc
+  2. bmtp
+  3. plex
+  4. docker
+
 * ensure all working
 
 mpd web client
