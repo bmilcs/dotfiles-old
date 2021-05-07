@@ -1,3 +1,6 @@
 [submodule "zsh/.config/ranger/plugins/fzf-marks"]
 	path = zsh/.config/ranger/plugins/fzf-marks
 	url = https://github.com/laggardkernel/ranger-fzf-marks.git
+[submodule "zsh/.config/ranger/plugins/ranger_devicons"]
+	path = zsh/.config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons
