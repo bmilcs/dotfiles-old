@@ -1,10 +1,10 @@
-#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
-#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
-#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
-#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
-#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#              ZSH FUNCTIONS
-#────────────────────────────────────────────────────────────
+#           ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────        #
+#           ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗        #
+#           ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗        #
+#           ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝        #
+#           ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com        #
+
+#                                ZSH FUNCTIONS                                #
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
@@ -17,11 +17,61 @@ function d() {
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 
-apb() {
-  cd $HOME/ans || return 1
-  ansible-playbook $1
+# toggle user ssh config on/off
+togssh() {
+  conf=~/.ssh/config 
+  if [[ -f $conf ]]; then
+    echo "${RED}${B}DISABLED${NC} ~/.ssh/config_off [DEBUG MODE]"
+    mv "$conf"{,_off}
+  else
+    echo "${GRN}${B}ENABLED${NC} ~/.ssh/config"
+    mv "$conf"{_off,}
+  fi
 }
-compdef '_files -P ~/ans/playbooks/ -W ~/ans/playbooks/' apb
+
+# ansible ... shortcut
+a() {
+  cd $HOME/ans && ansible $*
+}
+
+# ansible all ... shortcut
+aa() {
+  [ ! $PWD == "$HOME/ans" ] && cd ~/ans 
+  if [ $# == 0 ]; then
+    l
+  else
+    ansible all $*
+  fi
+}
+
+# ansible playbook ... shortcut
+apb() { 
+  cd ~/ans || return 1
+  if [ -e "$1" ]; then
+    ansible-playbook "$1"
+  else
+    l
+  fi
+}
+
+apbe() {
+  nvim $1
+}
+
+
+
+zstyle ':completion::complete:apb:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
+zstyle ':completion::complete:apbe:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
+compdef a='ansible'
+compdef aa='ansible'
+compdef '_files -W ~/ans/' apb
+compdef '_files -W ~/ans/' apbe
+# complete full paths
+# compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apb
+# compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apbe
+#
+
+
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
