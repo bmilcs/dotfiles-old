@@ -52,9 +52,10 @@ nnoremap <leader>ds :%s/^\(\s\+\)\?$\n^\(\s\+\)\?$//g<CR><C-o>
 " delete blank lines: all
 nnoremap <leader>dS :%s/^\(\s\+\)\?$\n//g<CR><C-o>
 
-" find/replace all
+" find/replace all (from line #1)
 nnoremap <leader>r :%s///gc<left><left><left>
-nnoremap <leader>R :%s///g<left><left>
+" find/replace all (from current line to last)
+nnoremap <leader>R :.,$s///gc<left><left><left>
 
 " search literally
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>

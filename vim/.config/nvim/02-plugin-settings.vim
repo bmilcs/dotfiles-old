@@ -11,6 +11,10 @@ set rtp+=~/.config/fzf
 
 " nord theme
 colorscheme nord
+set nocompatible
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 "─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
 
