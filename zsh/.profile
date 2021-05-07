@@ -5,20 +5,17 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 BASH'S .PROFILE [./.profile]
-#────────────────────────────────────────────────────────────
+#
 #    1) read by all shells, not bash specifically
 #       ie: environment variables, PATH & friends
 #    2) anything that should be available to:
 #       gui apps, sh or bash invoked as sh
-#────────────────────────────────────────────────────────────
 
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ ~/.profile'
 
-#────────────────────────────────────────────────────────────
-# $PATH
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────────  $path  ───────
 
 # path: add ~/bin + subdirs
 [ -d "$HOME/bin" ] && [ -z "$(echo $PATH | grep -o "$HOME/bin")" ] \
@@ -29,26 +26,29 @@ dotlog '+ ~/.profile'
   && [ -z "$(echo $PATH | grep -o "$HOME/.local/bin")" ] \
   && export PATH=$PATH:"$HOME/.local/bin"
 
-#────────────────────────────────────────────────────────────
-# CLEAN $HOME
-#────────────────────────────────────────────────────────────
+# go path (i3keys)
+[ -d "$HOME/.config/go" ] && [ -z "$(echo "$PATH" \
+  | grep -o "$HOME/.config/go")" ] && export GOROOT="$HOME/.config/go" \
+  && export PATH=$PATH:$GOROOT/bin
+
+#────────────────────────────────────────────────────────  clean $home  ───────
 
 # mv gtk files
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
-#────────────────────────────────────────────────────────────
 # DOTFILE
-#────────────────────────────────────────────────────────────
 
 export D=$HOME/bm
 export BAK=$HOME/.backup
 
 [ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
 
-#────────────────────────────────────────────────────────────
-# FZF
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────────  ansible  ───────
+
+export ANSIBLE_HOME=~/ans
+
+#────────────────────────────────────────────────────────────────  fzf  ───────
 
 export FZF_DEFAULT_OPTS="
 
@@ -131,9 +131,7 @@ _fzf_comprun() {
 #   marker             Multi-select marker
 #   spinner             Streaming input indicator
 
-#────────────────────────────────────────────────────────────
-# SOFTWARE
-#────────────────────────────────────────────────────────────
+#───────────────────────────────────────────────────────────  software  ───────
 
 # terminal/text
 export EDITOR=nvim
@@ -157,9 +155,7 @@ export FORGIT_COPY_CMD='xclip -selection clipboard'
 # ansible
 export ANSIBLE_CONFIG='/home/bmdev/ans/ansible.cfg'
 
-#────────────────────────────────────────────────────────────
-# COLOR VAR
-#────────────────────────────────────────────────────────────
+#──────────────────────────────────────────────────────────  color var  ───────
 
 export NC='\033[0m'
 export B='\033[1m'
@@ -183,9 +179,7 @@ export WHT=${NC}'\033[37m'
 #export DAY="$(date '+%d')"
 #export DAYOFWEEK="$(date '+%A')"
 
-#────────────────────────────────────────────────────────────
-# LOCALE
-#────────────────────────────────────────────────────────────
+#─────────────────────────────────────────────────────────────  locale  ───────
 
 LANG="en_US.UTF-8"
 LC_NUMERIC="en_US.UTF-8"
@@ -202,9 +196,7 @@ LC_ALL="en_US.UTF-8"
 #LC_MEASUREMENT="en_US.UTF-8"
 #LC_IDENTIFICATION="en_US.UTF-8"
 
-#────────────────────────────────────────────────────────────
-# SYSTEM MODS
-#────────────────────────────────────────────────────────────
+#────────────────────────────────────────────────────────  system mods  ───────
 
 if [[ $DISTRO == arch* ]]; then
 
