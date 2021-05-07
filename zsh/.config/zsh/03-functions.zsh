@@ -7,8 +7,7 @@
 #                                ZSH FUNCTIONS                                #
 
 # dotfile rc file debugging
-. "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ $ZDOTDIR/03-functions.zsh'
+. "${HOME}/bin/sys/dotfile_logger" && dotlog '+ $ZDOTDIR/03-functions.zsh'
 
 function d() {
   home=$(echo $HOME | sed -e 's/[\/]/\\\//g')
@@ -29,49 +28,49 @@ togssh() {
   fi
 }
 
-# ansible ... shortcut
-a() {
-  cd $HOME/ans && ansible $*
-}
+if [ -d $ANSIBLE_HOME ]
+then
+  # ansible ... shortcut
+  a() {
+    cd $ANSIBLE_HOME && ansible $@
+  }
 
-# ansible all ... shortcut
-aa() {
-  [ ! $PWD == "$HOME/ans" ] && cd ~/ans 
-  if [ $# == 0 ]; then
-    l
-  else
-    ansible all $*
-  fi
-}
+  # ansible all ... shortcut
+  aa() {
+    if [ $# == 0 ]; then
+      l $ANSIBLE_HOME
+    else
+      cd $ANSIBLE_HOME || return 1
+      ansible all $@
+    fi
+  }
 
-# ansible playbook ... shortcut
-apb() { 
-  cd ~/ans || return 1
-  if [ -e "$1" ]; then
-    ansible-playbook "$1"
-  else
-    l
-  fi
-}
+  # ansible playbook ... shortcut
+  apb() { 
+    cd ~/ans || return 1
+    if [ -e "$1" ]; then
+      ansible-playbook "$1"
+    else
+      l
+    fi
+  }
 
-apbe() {
-  nvim $1
-}
+  apbe() {
+    nvim $1
+  }
 
+  zstyle ':completion::complete:apb:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
+  zstyle ':completion::complete:apbe:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
+  compdef a='ansible'
+  compdef aa='ansible'
+  compdef '_files -W ~/ans/' apb
+  compdef '_files -W ~/ans/' apbe
 
+  # complete full paths
+  # compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apb
+  # compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apbe
 
-zstyle ':completion::complete:apb:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
-zstyle ':completion::complete:apbe:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
-compdef a='ansible'
-compdef aa='ansible'
-compdef '_files -W ~/ans/' apb
-compdef '_files -W ~/ans/' apbe
-# complete full paths
-# compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apb
-# compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apbe
-#
-
-
+fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
