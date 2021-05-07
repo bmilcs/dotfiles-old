@@ -10,5 +10,5 @@
 echo "$(tput setaf 4) $1"
 echo -n "$(tput setaf 4)"
 printf "%$(tput cols)s"|tr ' ' '-'
-diff -u "$1" "$2" | tail -n +3 | colordiff
+diff -u "$1" "$2" | tail -n +1 | colordiff
 echo ""
