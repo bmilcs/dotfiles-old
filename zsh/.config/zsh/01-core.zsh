@@ -40,6 +40,7 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
+zinit light nojanath/ansible-zsh-completion 
 zinit load wfxr/forgit
 
 # dir_colors
@@ -118,23 +119,22 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 #───────────────────────────────────────────────────────  AUTOCOMPLETE  ───────
 
 CASE_SENSITIVE="false"
-zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
-zstyle ':completion:*' select-prompt '' # remove warning, 'display all poss..?'
 zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
+
+#zstyle ':completion:*' list-prompt   '' # remove warning, 'display all poss..?'
+#zstyle ':completion:*' select-prompt '' # remove warning, 'display all poss..?'
+
 #zstyle ':completion:*' matcher-list '' \
 #  '+m:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' # case insensitive
-#────────────────────────────────────────────────────────────  testing  ───────
 zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
-zstyle ':completion:*' menu select # menu style, tab
-zstyle ':completion:*:*:*:*:*' menu select # always use menu select
 zstyle ':completion::complete:*' gain-privileges 1 # elevate as needed
 zstyle ':completion:*:matches' group yes # group by type
+zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
 zstyle ':completion:*:options' description yes # show description
 zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 zstyle ':completion:*:messages' format '%F{magenta}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}nothing%f'
@@ -142,21 +142,30 @@ zstyle ':completion:*' format '%I%F{green}%d'
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:git:*' script $ZDOTDIR/completion/git-completion.bash
-fpath=($ZDOTDIR/completion $fpath)
 
-# custom script completion
+# autocomplete paths
+fpath=($ZDOTDIR/completion $fpath)
 fpath=(~/bin/completions $fpath)
 
 #────────────────────────────────────  '?' SEARCH THROUGH AUTOCOMPLETE  ───────
 
-#zmodload -i zsh/complist
+#zstyle ':completion:*' menu yes select
+#zstyle ':completion:*' menu select # menu style, tab
+
+zstyle ':completion:*:*:*:*:*' menu select # always use menu select
+
 zmodload zsh/complist 
-zstyle ':completion:*' menu yes select
-bindkey -M menuselect '?' history-incremental-search-forward
+bindkey -M menuselect '/' history-incremental-search-forward
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
+#zmodload -i zsh/complist
+
+#bindkey '^n' expand-or-complete
+#bindkey '^p' reverse-menu-complete
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
