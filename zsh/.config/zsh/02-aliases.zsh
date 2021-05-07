@@ -210,16 +210,16 @@ alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
   mount -l | grep nfs'
 
 # fstab
-alias fstab='sudo vim /etc/fstab'
+alias fstab='sudoedit /etc/fstab'
 dpkg -s 'findmnt' > /dev/null 2>&1 && (
   alias fstabt='sudo findmnt --verify --verbose' ; compdef fstabt='findmnt')
 
 # nfs shares
-alias nfs='sudo vim /etc/exports'
+alias nfs='sudoedit /etc/exports'
 alias nfsr='sudo systemctl restart nfs-kernel-server'
 
 # smb
-alias smb='sudo vim /etc/samba/smb.conf'
+alias smb='sudoedit /etc/samba/smb.conf'
 
 #─────────────────────────────────────────────────────────────  SYSTEM  ───────
 
@@ -360,7 +360,7 @@ if [[ $DISTRO == "debian" ]]; then
   alias ibak='upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc'
   alias ibakls='sudo cat /etc/rsnapshot.conf | grep ^backup'
   alias ibakadd='sudo /bin/bash ~/.bmilcs/script/backup.sh add'
-  alias rsnap='sudo vim /etc/rsnapshot.conf'
+  alias rsnap='sudoedit /etc/rsnapshot.conf'
 
   # minecraft
 
@@ -373,7 +373,7 @@ if [[ $DISTRO == "debian" ]]; then
 #   sudo apt install nfs-kernel-server
 #   echo && echo "====================================================================================================="
 #   echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-#   echo "sudo vim /etc/exports"
+#   echo "sudoedit /etc/exports"
 #   echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
 #   echo "-----------------------------------------------------------------------------------------------------"'
 
@@ -385,7 +385,7 @@ if [[ $DISTRO == "debian" ]]; then
 #   echo && echo "====================================================================================================="
 #   echo "====  bmilcs: samba instructions  ==================================================================="
 #   echo "=====================================================================================================" && echo
-#   echo "sudo vim /etc/samba/smb.conf"
+#   echo "sudoedit /etc/samba/smb.conf"
 #   echo "#       workgroup = BM"
 #   echo "#       interfaces = 192.168.1.0/24 eth0"
 #   echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
@@ -407,7 +407,7 @@ fi
 #──────────────────────────────────────────────────  DEBIAN NETWORKING  ───────
 
 #alias rnet="sudo /etc/init.d/networking restart"
-#alias enet="sudo vim /etc/network/interfaces"
+#alias enet="sudoedit /etc/network/interfaces"
 
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
