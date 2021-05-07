@@ -86,7 +86,7 @@ export FZF_DEFAULT_OPTS="
   "
 
 # commands
-export FZF_DEFAULT_COMMAND="fd -H -E '{.git,*cache*,*Cache*}' . $HOME"
+export FZF_DEFAULT_COMMAND="fd -H -E '{.git,*cache*,*Cache*}' . "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -H -E .git -E .cache -t d . $HOME"
 

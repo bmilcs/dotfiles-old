@@ -18,7 +18,7 @@ dotlog '+ $ZDOTDIR/02-aliases.zsh'
 # text editors
 alias nano='nvim'                 ; compdef nano='nvim'
 alias vim='nvim'                  ; compdef vim='nvim'
-alias svim='sudo nvim'            ; compdef svim='nvim'
+alias svim='sudoedit'             ; compdef svim='nvim'
 alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
 
 # dotfiles repo
@@ -39,6 +39,7 @@ alias ali='vim "$ZDOTDIR/02-aliases.zsh"'
 alias fun='vim "$ZDOTDIR/03-functions.zsh"'
 alias txs='c ; tail -f ~/.xsession-errors'
 alias readme='vim ~/bm/readme.md'
+alias txt='cd ~/txt && nvim $(fzf)'
 
 # configuration files
 alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'
