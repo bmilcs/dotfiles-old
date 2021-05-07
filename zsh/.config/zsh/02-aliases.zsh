@@ -27,6 +27,7 @@ alias bme='vim $D/install.sh'
 
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'
+alias apad='vim ~/ans/readme.md'
 alias regex='vim $D/txt/txt/regex.md'
 
 # cd path
@@ -74,11 +75,12 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias pmreport='pacreport --unowned-files'
   # arch specific
   # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
-  alias sudo="nocorrect sudo -E ";compdef sudo="sudo"
-  alias s="sudo";compdef s="sudo"
+  alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
+  alias s='sudo';compdef s='sudo'
 
-  alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service}'
+  alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
   alias cdns='sudo systemd-resolve --flush-caches'
+  alias rdns='cdns'
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
@@ -111,7 +113,8 @@ alias ranger='ranger --choosedir=$HOME/.config/ranger/sdir; \
 alias rr='ranger'
 
 # xev keycodes
-alias kc='xev | grep -o "keycode[^\)]\+"'
+alias kc='command xev | grep -o "keycode[^\)]\+"'
+alias xev='kc'
 alias kcc='xmodmap -pke | fzf'
 
 # tmux
@@ -170,7 +173,7 @@ alias lsd='l -d */'           # ls: dirs only
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
 # fd
-#alias fd="fd -E /all/bm -E /all/media -E /backup "
+#alias fd='fd -E /all/bm -E /all/media -E /backup '
 
 # rm -rf
 alias rM='rm -rf'
@@ -198,17 +201,21 @@ alias ...='cd ../.. && c && l'
 #────────────────────────────────────────────────────────  FILE SYSTEM  ───────
 
 # mount | umount
-alias mav="sudo mount" ; compdef mount="mount"
-alias umav="sudo umount" ; compdef umount="umount"
+alias mountnfs='sudo mount -a -t nfs -t nfs4 &&\
+  echo "\n\nnfs shares: ${GRN}${B}mounted\n${BLU}$ mount -l | grep nfs\n" &&\
+  mount -l | grep nfs'
+alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
+  echo "\n\nnfs shares: ${RED}${B}unmounted\n${BLU}$ mount -l | grep nfs\n" &&\
+  mount -l | grep nfs'
 
 # fstab
-alias fstab="sudo vim /etc/fstab"
-dpkg -s "findmnt" > /dev/null 2>&1 && (
-  alias fstabt="sudo findmnt --verify --verbose" ; compdef fstabt="findmnt")
+alias fstab='sudo vim /etc/fstab'
+dpkg -s 'findmnt' > /dev/null 2>&1 && (
+  alias fstabt='sudo findmnt --verify --verbose' ; compdef fstabt='findmnt')
 
 # nfs shares
-alias nfs="sudo vim /etc/exports"
-alias nfsr="sudo systemctl restart nfs-kernel-server"
+alias nfs='sudo vim /etc/exports'
+alias nfsr='sudo systemctl restart nfs-kernel-server'
 
 # smb
 alias smb='sudo vim /etc/samba/smb.conf'
@@ -216,44 +223,46 @@ alias smb='sudo vim /etc/samba/smb.conf'
 #─────────────────────────────────────────────────────────────  SYSTEM  ───────
 
 # reboot, shutdown, etc.
-alias rex="sudo systemctl restart display-manager"
-alias rb="sudo systemctl reboot"
-alias winrb="sudo grub-reboot 2 ; reboot"
-alias reboot="sudo systemctl reboot"
-alias halt="sudo systemctl halt"
-alias shutdown="sudo systemctl poweroff"
+alias rex='sudo systemctl restart display-manager'
+alias rb='sudo systemctl reboot'
+alias winrb='sudo grub-reboot 2 ; reboot'
+alias reboot='sudo systemctl reboot'
+alias halt='sudo systemctl halt'
+alias shutdown='sudo systemctl poweroff'
 
 # systemctl
-alias sc="sudo systemctl"                               ;compdef sc="systemctl"
-alias scu="systemctl --user"                            ;compdef scu="systemctl"
-alias scl="sc list-units --type=service --all"          ;compdef scl="systemctl"
-alias scul="scu list-units --type=service --all"        ;compdef scul="systemctl"
-alias scll="sc list-units --type=service"               ;compdef scll="systemctl"
-alias scull="scu list-units --type=service"             ;compdef scull="systemctl"
-alias scg="sc list-units --type=service --all | grep"   ;compdef scg="systemctl"
-alias scug="scu list-units --type=service --all | grep" ;compdef scug="systemctl"
-alias scon="sc start"                                   ;compdef scup="systemctl"
-alias scuon="scu start"                                 ;compdef scuup="systemctl"
-alias scr="sc restart"                                  ;compdef scup="systemctl"
-alias scur="scu restart"                                ;compdef scuup="systemctl"
-alias scs="sc status"                                   ;compdef scs="systemctl"
-alias scus="scu status"                                 ;compdef scus="systemctl"
-alias scoff="sc stop"                                   ;compdef scd="systemctl"
-alias scuoff="scu stop"                                 ;compdef scud="systemctl"
-alias sce="sc enable"                                   ;compdef scud="systemctl"
-alias scue="scu enable"                                 ;compdef scud="systemctl"
-alias scd="sc disable"                                  ;compdef scud="systemctl"
-alias scud="scu disable"                                ;compdef scud="systemctl"
+alias sc='sudo systemctl'                               ;compdef sc='systemctl'
+alias scu='systemctl --user'                            ;compdef scu='systemctl'
+alias scl='sc list-units --type=service --all | fzf'    ;compdef scl='systemctl'
+alias scul='scu list-units --type=service --all | fzf'  ;compdef scul='systemctl'
+alias scll='sc list-units --type=service | fzf'         ;compdef scll='systemctl'
+alias scull='scu list-units --type=service | fzf'       ;compdef scull='systemctl'
+alias scg='sc list-units --type=service --all | grep'   ;compdef scg='systemctl'
+alias scug='scu list-units --type=service --all | grep' ;compdef scug='systemctl'
+alias scon='sc start'                                   ;compdef scup='systemctl'
+alias scuon='scu start'                                 ;compdef scuup='systemctl'
+alias scr='sc restart'                                  ;compdef scup='systemctl'
+alias scur='scu restart'                                ;compdef scuup='systemctl'
+alias sci='sc cat'                                      ;compdef scs='systemctl'
+alias scui='sc cat'                                     ;compdef scs='systemctl'
+alias scs='sc status'                                   ;compdef scs='systemctl'
+alias scus='scu status'                                 ;compdef scus='systemctl'
+alias scoff='sc stop'                                   ;compdef scd='systemctl'
+alias scuoff='scu stop'                                 ;compdef scud='systemctl'
+alias sce='sc enable'                                   ;compdef scud='systemctl'
+alias scue='scu enable'                                 ;compdef scud='systemctl'
+alias scd='sc disable'                                  ;compdef scud='systemctl'
+alias scud='scu disable'                                ;compdef scud='systemctl'
 
 # print outs
 # alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
-alias hn="echo $HOST"
+alias hn='echo $HOST'
 
 # audio sinks
-alias sinko="pacmd list-sinks | grep -e 'name:' -e 'index:'"
-alias sinki="pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'"
+alias sinko='pacmd list-sinks | grep -e "name:" -e "index:"'
+alias sinki='pacmd list-sources | grep -e "index:" -e device.string -e "name:"'
 
 # pid
 alias pid='cat /etc/passwd'
@@ -263,7 +272,6 @@ alias pid='cat /etc/passwd'
 alias sshe='cd ~/.ssh;nvim ~/.ssh/config'
 alias doc='ssh docker'
 alias plx='ssh plex'
-alias ans='cd ~/ans && l'
 
 #───────────────────────────────────────────────────────  old script  ─────────
 #   mkdir -m 700 -p ~/.ssh
@@ -272,10 +280,6 @@ alias ans='cd ~/ans && l'
 #   eval "$(ssh-agent -s)"
 #   echo "> enter github private key as follows:"
 #   echo "  ssh-add ~/.ssh/id_github"'
-
-#────────────────────────────────────────────────────────────  ANSIBLE  ───────
-
-alias a='ansible' ; compdef a='ansible'
 
 ###############################################################################
 ###############################################################################
@@ -300,17 +304,17 @@ if where docker-compose > /dev/null; then
     -f ~/docker/docker-compose.yaml logs -tf --tail="50"'
 
   # letsencrypt restart
-  alias le="docker restart swag && docker logs -f swag"
-  alias swag="le"
-  alias nginxx="~/docker/swag/config/nginx/"
-  alias wwww="~/docker/swag/config/www/"
-  alias logss="~/docker/swag/config/log/"
+  alias le='docker restart swag && docker logs -f swag'
+  alias swag='le'
+  alias nginxx='~/docker/swag/config/nginx/'
+  alias wwww='~/docker/swag/config/www/'
+  alias logss='~/docker/swag/config/log/'
 
   # docker-compose
-  alias dcup="cd ~/docker && docker-compose up -d" #;compdef dcs='docker'
-  alias dcstop="cd ~/docker && docker-compose stop" #;compdef dcstop='docker stop '
-  alias dcrestart="cd ~/docker && docker-compose restart" #;compdef dcrestart='docker restart '
-  alias dcdown="cd ~/docker && docker-compose down" #;compdef dcdown='docker down'
+  alias dcup='cd ~/docker && docker-compose up -d' #;compdef dcs='docker'
+  alias dcstop='cd ~/docker && docker-compose stop' #;compdef dcstop='docker stop '
+  alias dcrestart='cd ~/docker && docker-compose restart' #;compdef dcrestart='docker restart '
+  alias dcdown='cd ~/docker && docker-compose down' #;compdef dcdown='docker down'
   alias dcinfo='docker system df'
 
   # list all dockers
@@ -342,24 +346,24 @@ if where docker-compose > /dev/null; then
   alias dcnukei='docker rmi $(docker images -a -q)'
 
   # nuke ALL: containers | volumes | images
-  alias dcnukeall="dcstopall ; dcnukec ; dcnukei ; dcnukev"
+  alias dcnukeall='dcstopall ; dcnukec ; dcnukei ; dcnukev'
 
   # beets
-  alias beetsdl="docker exec -u abc -it beets /bin/bash -c 'beet import /downloads/usenet/complete/music'"
+  alias beetsdl='docker exec -u abc -it beets /bin/bash -c "beet import /downloads/usenet/complete/music"'
 
 fi
 
 if [[ $DISTRO == "debian" ]]; then
-  alias ideb="sudo /bin/bash ~/.bmilcs/script/debian.sh"
+  alias ideb='sudo /bin/bash ~/.bmilcs/script/debian.sh'
 
-  alias ibak="upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc"
-  alias ibakls="sudo cat /etc/rsnapshot.conf | grep ^backup"
-  alias ibakadd="sudo /bin/bash ~/.bmilcs/script/backup.sh add"
-  alias rsnap="sudo vim /etc/rsnapshot.conf"
+  alias ibak='upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc'
+  alias ibakls='sudo cat /etc/rsnapshot.conf | grep ^backup'
+  alias ibakadd='sudo /bin/bash ~/.bmilcs/script/backup.sh add'
+  alias rsnap='sudo vim /etc/rsnapshot.conf'
 
   # minecraft
 
-  alias mine="/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t"
+  alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t'
 
   # install nfs
   # TODO > FUNCTION conversion
