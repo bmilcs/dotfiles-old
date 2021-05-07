@@ -221,41 +221,42 @@ btw() {
 
 rsnap() {
 
-  host=${HOSTNAME,,}
-  rpath="$D/backup/"
-  rdest="$HOME/.config/rsnapshot"
+ host=${HOSTNAME,,}
+# rpath="$D/backup/"
+# rdest="$HOME/.config/rsnapshot"
 
-  if [ -e "$rpath/backup_$host" ]; then
-    _a rsnapshot
-    _o host: $host \\n
+# if [ -e "$rpath/backup_$host" ]; then
+#   _a rsnapshot
+#   _o host: $host \\n
 
-    # add rsnapshot to package list
-    pkgs[${#pkgs[@]}]="rsnapshot"
+#   # add rsnapshot to package list
+#   pkgs[${#pkgs[@]}]="rsnapshot"
 
-    # rm old configs
-    rm "$rdest/"*".conf"
+#   # rm old configs
+#   rm "$rdest/"*".conf"
 
-    _f making config
+#   _f making config
 
-    ( 
-    mkdir -p "$rdest" 
+#   ( 
+#   mkdir -p "$rdest" 
 
-    INCLUDE=$(<"$rpath/backup_$host")
-    EXCLUDE=$(<"$rpath/exclude_$host")
-    CONF=$(<"$rpath/rsnapshot.conf")
+#   INCLUDE=$(<"$rpath/backup_$host")
+#   EXCLUDE=$(<"$rpath/exclude_$host")
+#   CONF=$(<"$rpath/rsnapshot.conf")
 
-    RSNAP="${CONF//\#INCLUDE/$INCLUDE}" 
-    RSNAP="${RSNAP//\#EXCLUDE/$EXCLUDE}" 
-    echo "$RSNAP" > "$rdest/rsnapshot.conf"
-    _s
-    ) || (_e "unable to move rsnapshot.conf" && exit)
+#   RSNAP="${CONF//\#INCLUDE/$INCLUDE}" 
+#   RSNAP="${RSNAP//\#EXCLUDE/$EXCLUDE}" 
+#   echo "$RSNAP" > "$rdest/rsnapshot.conf"
+#   chown root:root $rdest/*
+#   _s
+#   ) || (_e "unable to move rsnapshot.conf" && exit)
 
-    _a rsnapshot config test
-    _o output \\n
+#   _a rsnapshot config test
+#   _o output \\n
 
-    rsnapshot -c "$rdest/rsnapshot.conf" configtest
+#   rsnapshot -c "$rdest/rsnapshot.conf" configtest
 
-  fi
+# fi
 
 
 }
