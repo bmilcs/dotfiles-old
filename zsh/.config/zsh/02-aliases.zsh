@@ -291,7 +291,7 @@ alias plx='ssh plex'
 
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
-if where docker-compose > /dev/null; then
+if where docker-compose > /dev/null && [ -d ~/docker ]; then
 
   # edit bmilcs.com
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
