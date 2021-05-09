@@ -128,7 +128,7 @@ cg() {
 
 # CD BIN
 cdd() {
-  cd $(dirname $(which "$1"))
+  cd $(dirname $(realpath $(which "$1")))
 }
 
 # using ripgrep combined with preview
