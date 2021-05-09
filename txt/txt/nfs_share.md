@@ -8,10 +8,6 @@
     /etc/fstab
     host:remotepath /path nfs auto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min 0 0
 
-
-
-
-
 # creating shares
 
       sudo apt install nfs-kernel-server
