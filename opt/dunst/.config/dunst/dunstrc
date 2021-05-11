@@ -82,9 +82,9 @@
 [shortcuts]
 # "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
 # use alias 'kc' | 'xmodmap -pke'
-    close_all = mod1+Tab
-    history = mod4+Tab
-    context = mod1+mod4+Tab
+    close_all = F12
+    history = F11
+    context = F9
 [urgency_low]
     background = "#2e3440"
     foreground = "#81a1c1"
