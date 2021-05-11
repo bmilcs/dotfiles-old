@@ -46,7 +46,10 @@ export BAK=$HOME/.backup
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 
+export ANSIBLE_CONFIG='/home/bmdev/ans/ansible.cfg'
 export ANSIBLE_HOME=~/ans
+[ -d "$ANSIBLE_HOME/bin" ] &&\
+  export PATH=$PATH:$ANSIBLE_HOME/bin
 
 #────────────────────────────────────────────────────────────────  fzf  ───────
 
@@ -151,9 +154,6 @@ export GNUPGHOME='.config/gpg'
 
 # forgit
 export FORGIT_COPY_CMD='xclip -selection clipboard'
-
-# ansible
-export ANSIBLE_CONFIG='/home/bmdev/ans/ansible.cfg'
 
 #──────────────────────────────────────────────────────────  color var  ───────
 
