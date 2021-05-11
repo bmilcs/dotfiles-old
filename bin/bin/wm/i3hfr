@@ -40,7 +40,7 @@ if [ "$(pgrep -fc "$name")" -eq 1  ]; then
 else
   if [ "$(xdotool getactivewindow getwindowname)" = "$name" ]; then
     #i3-msg move scratchpad
-    i3-msg move container to workspace number 5
+    i3-msg move container to workspace number 8
   else
     cws="$(i3-msg -t get_workspaces \
       | jq '.[] | select(.focused==true).name' \
