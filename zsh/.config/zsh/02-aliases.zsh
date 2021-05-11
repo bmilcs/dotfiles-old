@@ -173,11 +173,11 @@ alias lsd='l -d */'           # ls: dirs only
 
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
-# fd
-#alias fd='fd -E /all/bm -E /all/media -E /backup '
+# fd TODO: fix
+# alias fd='fd -E /all/bm -E /all/media -E /backup '
 
 # rm -rf
-alias rM='rm -rf'
+alias rM='rm -rfv'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
@@ -188,8 +188,8 @@ alias wget='wget -c'              ; compdef wget='wget'
 
 # confirmations
 alias ln='ln -i'
-#alias mv='mv -i'
-#alias cp='cp -i'
+alias mv='mv -v'
+alias cp='cp -v'
 
 # shortcuts
 alias c='clear'
