@@ -4,7 +4,8 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 ROFI: LIST OF APPS [./rofiapp]
-#────────────────────────────────────────────────────────────
 
-rofi -config ~/.config/rofi/config.rasi -show drun
+#                 ROFI: LIST OF APPS [./rofiapp]
+
+
+rofi -config ~/.config/rofi/config.rasi -show drun 
