@@ -26,9 +26,9 @@ source _bm
 sel="$(fd . ~/txt | rofi -dmenu )" #-dmenu
 
 if [[ -f "$sel" ]]; then
-  . ~/bin/uniqterm "rofitxt" "i3nvim $sel"
+  uniqterm -f -n "rofitxt" -c "i3nvim $sel"
 #  alacritty -e i3nvim "$sel" &
 elif [[ -n $sel ]]; then
-  dunstify "$sel No such file"
+  _ne "$sel No such file"
 fi
 
