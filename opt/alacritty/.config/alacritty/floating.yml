@@ -32,22 +32,22 @@ working_directory: ~
 #────────────────────────────────────────────────────────────
 
 font:
-  size: 9
   normal:
-    #family: GohuFont Nerd Font
     #family: UbuntuMono Nerd Font
     #family: codenewroman nerd font 
-    #family: bitstreamverasansmono nerd font
+    family: bitstreamverasansmono nerd font
     #family: FantasqueSansMono Nerd Font
     #family: DejaVuSansMono Nerd Font
-    family: Iosevka Nerd Font
+    #family: Iosevka Nerd Font
+    #family: SauceCodePro Nerd Font
+    #family: GohuFont Nerd Font
     #family: TerminessTTF Nerd Font
     #family: Terminus
-    #family: SauceCodePro Nerd Font
     #style: Book
     #style: Medium
     style: Regular
     #style: Medium
+  size: 9
   bold:
     style: Bold
   italic:
