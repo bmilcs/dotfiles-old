@@ -273,6 +273,7 @@ client.background         $white1
 #──────────────────────────────────────────────────  application rules  ───────
 
 # on startup
+exec --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
 exec --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
 exec --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty;
                                               exec /usr/bin/alacritty'
