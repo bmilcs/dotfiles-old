@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
-set -x 
+#set -x 
+#
+#b="2	/usr/share/icons/Papirus/24x24/actions"
+#substr='@"^[\w\-. ]+$";'
+#substr='.*[\w]'
+#
+#expr match "$b" '.*\([\w]*\).*'
+#
+#echo ha
+#
+#set +x
 
-b="2	/usr/share/icons/Papirus/24x24/actions"
-substr='@"^[\w\-. ]+$";'
-substr='.*[\w]'
+while read var; do
+  sudo pacman -S --noconfirm --overwrite "*" "$var"
+done <~/yay_short
 
-expr match "$b" '.*\([\w]*\).*'
-
-echo ha
-
-set +x
