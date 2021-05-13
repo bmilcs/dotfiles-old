@@ -141,6 +141,7 @@ alias em='neomutt'
 # git
 alias grevp='git rev-parse > /dev/null 2>&1'
 alias gcl='git clone --depth=1'
+alias g='grevp         || git' ; compdef g='git'
 alias ga='$(grevp)     || cd $D && forgit::add'
 alias gs='$(grevp)     || cd $D && git status -s'
 alias gss='$($grevp)   || cd $D && git status'
