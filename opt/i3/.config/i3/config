@@ -86,7 +86,7 @@ bindsym $w+slash       exec --no-startup-id    i3kr -f -n i3spy -c i3spy
 # bm floater
 bindsym $w+i           exec --no-startup-id    i3floater
 # bm dotfiles
-bindsym $w+z           exec --no-startup-id    i3idotfiles
+bindsym $w+d           exec --no-startup-id    i3idotfiles
 # bm clone
 bindsym $w+c           exec --no-startup-id    bmclone
 # bm readme
@@ -99,19 +99,19 @@ bindsym $w+m           exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 #───────────────────────────────────────────────────────────────  rofi  ───────
 
 # standard
-bindsym $w+s           exec --no-startup-id    rofiapp
+bindsym $w+a           exec --no-startup-id    rofiapp
 # dotfiles
-bindsym $wc+s          exec --no-startup-id    rofibin
+bindsym $ws+a          exec --no-startup-id    rofibin
 # text
-bindsym $ws+s          exec --no-startup-id    rofitxt
+bindsym $w+s           exec --no-startup-id    rofitxt
 # text input example
-bindsym $wcs+s         exec --no-startup-id    rofiinput
+bindsym $wcs+a         exec --no-startup-id    rofiinput
 
 #──────────────────────────────────────  keybinds: movement & resizing  ───────
 
 # close
-bindsym --release $w+a exec --no-startup-id xdotool key --clearmodifiers ctrl+w
-bindsym $wc+a kill
+# bindsym --release $w+s exec --no-startup-id xdotool key --clearmodifiers ctrl+w
+bindsym $w+z kill
 
 # focus 
 bindsym $w+l       focus right
@@ -181,7 +181,7 @@ bindsym    $w+2       workspace number $ws3;     focus tiling
 bindsym    $w+Tab     workspace number $ws4;     focus tiling
 bindsym    $w+q       workspace number $ws5;     focus tiling
 bindsym    $w+w       workspace number $ws6;     focus tiling
-bindsym    $w+e       workspace number $ws7;     focus tiling
+#bindsym    $w+e       workspace number $ws7;     focus tiling
 #bindsym    $w+8       workspace number $ws8;     focus tiling
 #bindsym    $w+9       workspace number $ws9;     focus tiling
 #bindsym    $w+0       workspace number $ws10;    focus tiling
@@ -192,7 +192,7 @@ bindsym   $wa+2      move container to workspace number $ws3
 bindsym   $wa+Tab    move container to workspace number $ws4
 bindsym   $wa+q      move container to workspace number $ws5
 bindsym   $wa+w      move container to workspace number $ws6
-bindsym   $wa+e      move container to workspace number $ws7
+#bindsym   $wa+e      move container to workspace number $ws7
 #bindsym   $wa+8      move container to workspace number $ws8
 #bindsym   $wa+9      move container to workspace number $ws9
 #bindsym   $wa+0      move container to workspace number $ws10
@@ -264,8 +264,8 @@ set $purple1  #B48EAD
 
 #class                    border    bg       fg       focus      child_border
 client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
-client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black4
-client.unfocused          $black1   $blue1   $black2  $blue1     $black4
+client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black2
+client.unfocused          $black1   $blue1   $black2  $blue1     $black2
 client.urgent             $red1     $red1    $blue1   $red1      $yellow1
 client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
 client.background         $white1
@@ -303,7 +303,6 @@ for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996, 
 for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
 for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812  199,  border pixel 3
 for_window [instance="roficlone"]         floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
-for_window [instance="rofitxt"]           floating enable, resize set 789  1074, move absolute position 2113 200,  border pixel 3
 for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920 137,  border pixel 3
 for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238 37,   border pixel 3
 for_window [instance="i3pad"]             floating enable, resize set 692  925,  move absolute position 2686 512,  border pixel 3
