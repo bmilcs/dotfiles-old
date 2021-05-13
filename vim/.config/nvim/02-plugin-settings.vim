@@ -182,12 +182,13 @@ set updatetime=250
 
 command! Gqf GitGutterQuickFix | copen
 
-"───────────────────────────────────────────────────  MARKDOWN PREVIEW  ──────"
+"───────────────────────────────────────────  INSTANT MARKDOWN PREVIEW   ──────
 
-let g:mkdp_auto_start = 1 " auto-start w/ .md file
+let g:mkdp_auto_start = 0 " auto-start w/ .md file
 let g:mkdp_auto_close = 1 " auto-close on .md exit
-let g:mkdp_refresh_slow = 0 " reduce refresh speed
-let g:mkdp_command_for_global = 0 " md can be used on all files
+let g:mkdp_auto_open = 0  " auto-open on .md 
+let g:mkdp_refresh_slow = 1 " reduce refresh speed
+
 let g:vim_markdown_no_default_key_mappings = 1
 
 "─────────────────────────────────────────────────  AIRLINE STATUS BAR  ──────"
@@ -228,7 +229,9 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 
-"─────────────────────────────────────────────────  G R A V E Y A  R D  ──────"
+" #############################################################################
+" ############################# G R A V E Y A  R D  ###########################
+" #############################################################################
 
 "───────────────────────────────────────────────────────────  NERDTREE  ──────"
 

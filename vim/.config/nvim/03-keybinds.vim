@@ -34,6 +34,8 @@ nnoremap <leader>ip  :PlugInstall<CR>
 nnoremap <leader>cp  :PlugClean<CR>
 
 "──────────────────────────────────────────────────  text manipulation   ──────
+nnoremap <silent> <leader>dd :%s/^\(.*\)\(\n\1\)\+$/\1/
+
 
 " title bars
 nnoremap <silent> <leader>tr :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.
@@ -71,6 +73,10 @@ nnoremap <leader>, @@
 " convert link to markdown
 nnoremap <leader>l   0Di[]()^[P^[F]i^[
 
+"───────────────────────────────────────────────────  markdown preview  ───────
+
+nmap <leader>mp <Plug>MarkdownPreviewToggle
+
 "──────────────────────────────────────────────────────────────  files  ───────
 
 " (w)rite (w)indow as sudo
@@ -87,7 +93,7 @@ nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :ed
 nnoremap <silent> <leader>` :source ~/.vimrc<CR>
 
 " expand (e)rror (m)essages
-nnoremap <silent> <leader>m :messages<CR>
+nnoremap <silent> <leader>mm :messages<CR>
 
 " (r)eload (w)indow (document)
 nnoremap <silent> <leader>wr :e!<CR>
@@ -138,11 +144,11 @@ nmap <silent> <leader>co :<C-u>CocListResume<CR>
 " " let g:magit_discard_untracked_do_delete=1
 " 
 " " highlight changed lines
-" nnoremap <silent> <leader>gh :GitGutterLineHighlightsToggle<CR>
+nnoremap <silent> <leader>gg :GitGutterLineHighlightsToggle<CR>
 " 
 " " navigate next/prev git hunk
-" nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
-" nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
+nmap <silent> <Leader>j <Plug>(GitGutterNextHunk)
+nmap <silent> <Leader>k <Plug>(GitGutterPrevHunk)
 " 
 " " git push  remote
 " nnoremap <leader>gP :! git push<CR>
