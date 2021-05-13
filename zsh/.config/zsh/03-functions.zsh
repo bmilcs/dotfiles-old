@@ -14,6 +14,19 @@ function d() {
   cd $(dirs -v | sed 's/^[0-9 \t]*//' | fzf | sed 's/^[^\/]/'$home'/')
 }
 
+function pacfix() {
+  for var in "$@"
+  do
+    pacman -S --noconfirm --overwrite "*" "$var"
+  done
+}
+
+# fd TODO: fix
+function fdd() {
+  fd -E /all/bm -E /all/media -E /backup $* .
+}
+
+
 #────────────────────────────────────────────────────────────  ansible  ───────
 
 # toggle user ssh config on/off

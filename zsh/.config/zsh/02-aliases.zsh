@@ -44,6 +44,8 @@ alias txt='cd ~/txt && nvim $(fzf)'
 # configuration files
 alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'
 alias gaps='vim $D/opt/i3/.config/i3/config'
+alias i3keys='command i3keys web 8080 & ;\
+              firefox -new-tab http://localhost:8080'
 alias keys='vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc'
 alias picomrc='vim $D/opt/picom/.config/picom/config'
 alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
@@ -173,9 +175,6 @@ alias lsd='l -d */'           # ls: dirs only
 
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
-# fd TODO: fix
-# alias fd='fd -E /all/bm -E /all/media -E /backup '
-
 # rm -rf
 alias rM='rm -rfv'
 
@@ -222,6 +221,7 @@ alias smb='sudoedit /etc/samba/smb.conf'
 
 #─────────────────────────────────────────────────────────────  SYSTEM  ───────
 
+alias pmsize='expac -HM "%m|%n" | sort -h | tail -n 30 | column -s "|" -t -o "___"'
 # reboot, shutdown, etc.
 alias rex='sudo systemctl restart display-manager'
 alias rb='sudo systemctl reboot'
