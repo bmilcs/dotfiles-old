@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 HDD BENCHMARK USING DD [./bench]
+#────────────────────────────────────────────────────────────
+source _bm
+_t "h(dd) benchmark"
+
+trap 'clean' exit
+
+clean() { 
+  _o clean up
+  rm .benchy 
+}
+
+
+# #   sig       definition
+#-----------------------------------------
+# 0		0					on exit from shell: hang up
+# 1		SIGHUP		clean tidyup - controlling terminal has "gone away" - exited
+# 2		SIGINT		interrupt: Ctrl+C,DEL
+# 3		SIGQUIT		quit
+# 6		SIGABRT		abort
+# 9		SIGKILL		die now (cannot be trapped)
+# 14	SIGALRM		alarm clock
+# 15	SIGTERM		terminate
+
+if _ask perform benchmark of "$PWD"; then
+
+for i in {0..4}
+  do
+    dd if=/dev/urandom of=.benchy bs=1M count=1024
+  done 
+
+
+# _a write 
+# dd if=/dev/zero of=bmbench bs=2M count=500 status=progress
+# fio --loops=5 --size=1000m --filename="$PWD/bmbench.tmp" --stonewall --ioengine=libaio --direct=1 \
+#   --name=Seqread --bs=1m --rw=read \
+#   --name=Seqwrite --bs=1m --rw=write \
+#   --name=512Kread --bs=512k --rw=randread \
+#   --name=512Kwrite --bs=512k --rw=randwrite \
+#   --name=4kQD32read --bs=4k --iodepth=32 --rw=randread \
+#   --name=4kQD32write --bs=4k --iodepth=32 --rw=randwrite
+# rm -f "$PWD/bmbench.tmp"
+
+fi 
