@@ -1,14 +1,14 @@
 // Nordic rofi theme: undiabler <undiabler@gmail.com>
 
-//configuration {
-//
-//    display-ssh:    "";
-//    display-run:    "";
-//    display-drun:   "";
-//    display-window: "";
-//    display-combi:  "";
-//    show-icons:     true;
-//}
+configuration {
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
 
 * {
   nord0: #2e3440;
