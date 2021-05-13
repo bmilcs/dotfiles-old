@@ -1,8 +1,6 @@
 # bmilcs linux
 
-> I bit the bullet & moved to Archlinux full-time in December of 2020. The migration from Debian-based VM's to a pacman-centric workstation required a fresh start. Come take a look:
-
-
+> I moved to Archlinux full-time in December of 2020. The migration from Debian-based VM's to a pacman-centric workstation required a fresh start. Come take a look:
 
 ### [dot.bmilcs.com](https://dot.bmilcs.com)
 
@@ -11,10 +9,6 @@
 ###### install dotfiles, scripts, etc.
 
     (sudo apt install git ; rm -rf ~/_bmilcs ~/.bm* ~/.inputr* ; git clone https://github.com/bmilcs/linux.git ~/.bmilcs ; chmod -R +x ~/.bmilcs/* ; /bin/bash ~/.bmilcs/dotfiles/install.sh ; source ~/.bashrc)
-
-
-todo:
-- [ ] varken
 
 # rsync
 
@@ -39,7 +33,6 @@ no-owner | ignore mismatching owners
 no-perms | ignore mismatching perms
 no-times | ignore mismatching times
 
-
 # cron
 
       crontab -e
@@ -58,9 +51,6 @@ Cron time string 	| Description
 0 13 * * 1 |	Execute a command at 1:00 p.m. UTC every Monday.
 */5 * * * * |	Execute a command every five minutes.
 0 */2 * * * |	Execute a command every second hour, on the hour.
-
-
-
 
 # nfs file sharing
 
@@ -94,8 +84,7 @@ Cron time string 	| Description
             interfaces = 192.168.1.0/24 eth0
             hosts allow = 127.0.0.1/8 192.168.1.0/24
 
-
-# increase partition size / expand hard drive of vm
+# resize partitions 
 ### LVM [ubuntu]
 
       # list info 
@@ -121,15 +110,12 @@ Cron time string 	| Description
       vgs
       
       # resize logical volume
-      lvm
-      lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
-      lvm> exit
+      lvm <enter>
+        lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+        exit
 
       # resize filesystem
       resize2fs /dev/ubuntu-vg/ubuntu-lv
-
-
-
 
 # NON-LVM (Debian), standard
 
@@ -156,9 +142,6 @@ Cron time string 	| Description
       sudo nano /etc/fstab
       #comment out swap
 
-
-
-
       use p to list the partitions. Make note of the start cylinder of /dev/sda1
       use d to delete first the swap partition (2) and then the /dev/sda1 partition. This is very scary but is actually harmless as the data is not written to the disk until you write the changes to the disk.
       use n to create a new primary partition. Make sure its start cylinder is exactly the same as the old /dev/sda1 used to have. For the end cylinder agree with the default choice, which is to make the partition to span the whole disk.
@@ -169,9 +152,6 @@ Cron time string 	| Description
       sudo resize2fs /dev/sda1      The next magic command is resize2fs.  this form will default to making the filesystem to take all available space on the partition.
       sudo nano /etc/fstab
       comment out unused swap partition
-
-
-
 
 -
 
@@ -203,7 +183,6 @@ Cron time string 	| Description
            :-:|:-:|:-:|:-:
            **[d]** *rwxrwxrwx* | *d* [**rwx**] *rwxrwx* | *d* *rwx* [**rwx**] *rwx* | *d* *rwx* *rwx* [**rwx**]
 
-
 ### **changing ownership**
 - **chown** command
 
@@ -217,13 +196,10 @@ Cron time string 	| Description
         chown username *
         chown UID *
 
-
   - **everything: current directory & subdirectories** (recursive)
 
         chown -R username *
         chown -R UID *
-
-
 
 ### changing permissions
 - **chmod** command
@@ -249,7 +225,6 @@ Cron time string 	| Description
       6	|Read Write	|rw-
       7	|Read Write Execute |rwx
 
-
       results in: **-rwxrw-r--**
 
       7 | 6 | 4
@@ -257,7 +232,6 @@ Cron time string 	| Description
       owner   |  group |    all
       rwx | rw- | r--
       read write execute|read write|read
-
 
 ## owner & user groups
 
@@ -285,11 +259,6 @@ Cron time string 	| Description
         - **1086** is user's id (left)
         - **1000** is user group's id (right)
 
-
-
-
-
-
 ### change user's PGUID / PUID
 
 - **usermod -u** command changes a user's PUID/PID
@@ -316,8 +285,6 @@ Cron time string 	| Description
 
           find / -group $OLD-GID -exec chgrp -h bmilcs {} \;
           find / -user $OLD-UID -exec chown -h bmilcs {} \;
-
-
 
     - **verify everything**
 
@@ -364,9 +331,6 @@ Cron time string 	| Description
       echo $ip >> /etc/banner
       printf "%s\n\n" "-----------------------------------------------------" >> /etc/banner
       sudo /etc/init.d/ssh restart
-
-
-
 
 #### 2. configure network ####
 
@@ -427,7 +391,6 @@ Cron time string 	| Description
 			cp /boot/config/ssh/authorized_keys /root/.ssh/
 			chmod 600 /root/.ssh/authorized_keys
 
-
 ## mount share
 
 ### vm gui
@@ -448,8 +411,6 @@ Cron time string 	| Description
 	share /home/#share       9p      trans=virtio,version=9p2000.L,_netdev,rw        0 0
 	share /home/#watch       9p      trans=virtio,version=9p2000.L,_netdev,rw        0 0
 
-
-
 ---
 # unattended upgrades
 
@@ -461,7 +422,6 @@ Cron time string 	| Description
             APT::Periodic::Download-Upgradeable-Packages "1";
             APT::Periodic::AutocleanInterval "7";
             APT::Periodic::Verbose "1";
-
 
       sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
             "${distro_id}:${distro_codename}-updates";
@@ -483,15 +443,10 @@ Cron time string 	| Description
 
       sudo unattended-upgrades --dry-run --debug
 
-
-
 ---
 
 # openvpn
       openvpn –config client.ovpn
-
-
-
 
 ---
 # xrdp
@@ -510,18 +465,13 @@ Cron time string 	| Description
       #[rdp-any]
       #[neutrinordp-any]
 
-
-
-
 ### add lan for access
 
       sudo route add -net 10.1.1.0/24 gw 10.1.99.254
 
-
 ### list installed apts
 
 	apt list --installed | grep vnc
-
 
 ### restart network
 
@@ -537,9 +487,7 @@ Cron time string 	| Description
 	xrdp
 	max_bpp 128
 
-
 # clean up | optimize | misc useful commands
-
 
 ### del apps via string
 
@@ -556,7 +504,6 @@ Cron time string 	| Description
 
 replace whole line found in file
       sed -i '/TEXT_TO_BE_REPLACED/c\This line is removed by the admin.' /tmp/foo
-
 
 ---
 
@@ -602,12 +549,7 @@ replace whole line found in file
       209.222.18.222
       209.222.18.218
 
-
-
 # vpn killswitch (current)
-
-
-
 
       #!/bin/bash
       iptables -F
@@ -641,7 +583,6 @@ replace whole line found in file
       # allow dns
       iptables -A INPUT  -p udp --sport 53 -j ACCEPT
       iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
-
 
       # allow vpn traffic
       iptables -A INPUT  -p udp --sport 1194 -j ACCEPT
@@ -692,3 +633,8 @@ replace whole line found in file
       sudo rm /var/lib/dpkg/lock*
       sudo dpkg --configure -a
       sudo apt update
+
+
+todo:
+- [ ] varken
+

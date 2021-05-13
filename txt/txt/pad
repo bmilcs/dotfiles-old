@@ -1,8 +1,14 @@
+chown -R $(whoami) ~/.config/gpg
+find ~/.config/gpg -type f -exec chmod 600 {} \;
+find ~/.config/gpg -type d -exec chmod 700 {} \;
+
+sudo pacman -S --overwrite \* 
+
 RSNAPSHOT
 ------------
-- configure backup.bm.bmilcs.com
-- automate backups via ssh!
-
+- storage
+  1. configure iscsi block for bulk backup storage
+  2. direct pass thru to backup VM for max performance
 - configure hosts:
   1. bmpc
   2. bmtp
