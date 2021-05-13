@@ -1,5 +1,6 @@
 configuration {
-  font: "Iosevka 10";
+  font: "BitstreamVeraSansMono Nerd Font 10";
+
   theme: "nord";
   width: 30;              
   lines: 15;              
@@ -13,7 +14,8 @@ configuration {
 
 element-icon {
   size:                20;
-  border:              0px;
+  border:              5px;
+  border-color:     white;
 }
 
 //  modi: "window,run,ssh"; 
