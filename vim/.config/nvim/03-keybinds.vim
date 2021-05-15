@@ -11,7 +11,7 @@
 "───────────────────────────────────────────────────────────────  tabs  ───────
 
 nnoremap <leader>os  :tabedit         ~/.config/nvim/snips/all.snippets<CR>
-nnoremap <leader>op  :tabedit         ~/.config/nvim/01-plugins.vim<CR>
+nnoremap <leader>oc  :tabedit         ~/.config/nvim/00-general.vim<CR>
 nnoremap <leader>opp :tabedit         ~/.config/nvim/01-plugins.vim<CR>
 nnoremap <leader>ops :tabedit         ~/.config/nvim/02-plugin-settings.vim<CR>
 nnoremap <leader>ok  :tabedit         ~/.config/nvim/03-keybinds.vim<CR>
@@ -81,22 +81,22 @@ nmap <leader>mp <Plug>MarkdownPreviewToggle
 
 " (w)rite (w)indow as sudo
 fun! SudoW()
-  silent write !sudo tee %
+  silent write !sudo tee % > /dev/null
   edit!
   echo "SudoW done."
 endfun
 
-"nnoremap <Leader>ww :call SudoW()<CR>
-nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
+nnoremap <leader>ww :call SudoW()<CR>
+"nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
 
 " reload vimrc config
 nnoremap <silent> <leader>` :source ~/.vimrc<CR>
 
-" expand (e)rror (m)essages
-nnoremap <silent> <leader>mm :messages<CR>
-
 " (r)eload (w)indow (document)
 nnoremap <silent> <leader>wr :e!<CR>
+
+" expand (e)rror (m)essages
+nnoremap <silent> <leader>mm :messages<CR>
 
 " (q)uit current (w)indow
 nnoremap <silent> <leader>wq :close<CR>

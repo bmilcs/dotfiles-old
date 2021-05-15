@@ -9,6 +9,11 @@
 " vim settings (not vi)
 set nocompatible  " must be first
 
+" visuals: true colors
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 " better autocomplete
 set wildmenu
 

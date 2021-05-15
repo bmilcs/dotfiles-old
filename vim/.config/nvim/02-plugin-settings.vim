@@ -6,15 +6,10 @@
 "                VIM PLUGIN SETTINGS
 "───────────────────────────────────────────────────────────────  misc  ──────"
 
-" fzf integration
-set rtp+=~/.config/fzf
+
 
 " nord theme
 colorscheme nord
-set nocompatible
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 "─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
 
@@ -203,31 +198,26 @@ let g:airline_highlighting_cache = 1
 
 "────────────────────────────────────────────────────────────────  FZF   ─────"
 
-let $FZF_DEFAULT_OPTS=''
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path './**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4  --bind=ctrl-j:preview-down,ctrl-k:preview-up'
-"let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+" run time path
+set rtp+=~/.config/fzf
 
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
+"let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path './**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+"let $FZF_DEFAULT_OPTS="--keep-right --preview-window=right:sharp --height 97% --reverse --info=hidden --margin=0 --padding=0 --marker='#' --pointer='-' --color fg:#81a1c1 --color fg+:#88c0d0 --color hl:#d8dee9 --color hl+:#eceff4 --color preview-fg:#d8dee9 --color info:#4c566a --color header:#81a1c1 --color bg:#2e3440 --color bg+:#2e3440 --color preview-bg:#3b4252 --color border:#81a1c1 --color gutter:#2e3440 --color prompt:#5e81ac --color pointer:#eceff4 --color marker:#ebcb8b --color spinner:#b48ead " 
+"" via .profile
+"" let $FZF_DEFAULT_OPTS=" --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} || tree -C {}) 2> /dev/null | head -200' --keep-right --preview-window=right:sharp --height 97% --reverse --info=hidden --margin=0 --padding=0 --marker='#' --pointer='-' --color fg:#81a1c1 --color fg+:#88c0d0 --color hl:#d8dee9 --color hl+:#eceff4 --color preview-fg:#d8dee9 --color info:#4c566a --color header:#81a1c1 --color bg:#2e3440 --color bg+:#2e3440 --color preview-bg:#3b4252 --color border:#81a1c1 --color gutter:#2e3440 --color prompt:#5e81ac --color pointer:#eceff4 --color marker:#ebcb8b --color spinner:#b48ead " 
 
-  let height = float2nr(50)
-  let width = float2nr(80)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 1
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep('rg --column --no-heading --line-number --color=always '.shellescape(<q-args>),
+  \ 1,
+  \ fzf#vim#with_preview(),
+  \ <bang>0)
 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>,
+  \ fzf#vim#with_preview(),
+  \ <bang>0)
 
-  call nvim_open_win(buf, v:true, opts)
-endfunction
+
 
 " #############################################################################
 " ############################# G R A V E Y A  R D  ###########################
