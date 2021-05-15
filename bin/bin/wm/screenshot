@@ -4,57 +4,110 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+
 #                 SCREENSHOT SCRIPT [./screenshot]
-#────────────────────────────────────────────────────────────
 
 source _bm
 
-set -x 
-unset up
+usage() { 
+  ( _oc $(basename $0) 
+  _oy   -t   type
+  _o    -u   upload
+  ) 1>&2
+  exit 1; 
+}
 
-[[ $# -gt 1 ]] && up=1
+while getopts "t:u" opt; do
+    case "${opt}" in
+        t) type=${OPTARG} ;;
+        u) upload=1 ;;
+        *) usage ;;
+    esac
+done
 
-if mount | grep /all/bm > /dev/null; then
+[[ -z "${type}" ]] && usage
+
+if [ -w /all/bm/images/screenshots ]; then
   f="/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
+  _nw "'/all/bm' isn't mounted"
   f="$HOME/img/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 fi
 
-maimsel() {
-  maim -s "$f"
-  if [[ -n $up ]]; then 
+maimfail() {
+  _ne maim fail.
+  exit 1
+}
+
+case $type in
+  all|mon|full)         maim "$f" || maimfail;;
+  sel|select|selection) maim -s "$f" || maimfail;;
+  win|window|active)    maim -i "$(xdotool getactivewindow)" "$f" || maimfail;;
+esac
+
+if [ -e "$f" ]; then
+  if [ -n "$upload" ]; then
     upl "$f"
   else
-    xclip -sel clip -t image/png "$f"
+    xclip -sel clip -t image/png -i "$f"
   fi
-  _ns "$f" "selection"
-}
+  _nimg "$f" "$f"
+fi
 
-maimwin() {
-  maim -i "$(xdotool getactivewindow)" "$f"
-  if [[ -n $up ]]; then
-    upl "$f"
-  else 
-    xclip -sel clip -t image/png "$f"
-  fi
-  _ns "$f" "window"
-}
+rm "$f"
 
-maimall() {
-  maim "$f"
-  if [[ -n $up ]]; then 
-    upl "$f"
-  else 
-    xclip -sel clip -t image/png "$f"
-  fi
-  _ns "$f" "desktop"
-}
+exit
 
-[ "$1" == all ] && maimall
-[ "$1" == win ] && maimwin
-[ "$1" == sel ] && maimsel
+# 
+# maimsel() {
+#   if maim -s "$f"; then
+#     (
+#     if [[ -n $up ]]; then 
+#       upl "$f"
+#     else
+#       xclip -sel clip -t image/png "$f"
+#     fi
+#     ) && _ns "$f" "selection"
+#   else
+#     _ne something went wrong.
+#   fi
+# }
+# 
+# maimwin() {
+#   if maim -i "$(xdotool getactivewindow)" "$f"; then
+#     ( 
+#     if [[ -n $up ]]; then
+#       upl "$f"
+#     else 
+#       xclip -sel clip -t image/png "$f"
+#     fi 
+#     ) && _ns "$f" "window"
+#   else
+#     _ne something went wrong.
+#   fi
+# 
+# }
+# 
+# maimall() {
+#   if maim "$f"; then
+#     (
+#     if [[ -n $up ]]; then 
+#       upl "$f"
+#     else 
+#       xclip -sel clip -t image/png "$f"
+#     fi
+#     ) && _ns "$f" "desktop"
+# 
+#   else
+#     _ne something went wrong.
+#   fi
+# }
 
-set +x
+#[ "$1" == all ] && maimall
+#[ "$1" == win ] && maimwin
+#[ "$1" == sel ] && maimsel
+#
+#set +x
 
 _s
 exit 0
