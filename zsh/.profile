@@ -53,8 +53,9 @@ export ANSIBLE_HOME=~/ans
 
 #────────────────────────────────────────────────────────────────  fzf  ───────
 
-export FZF_DEFAULT_OPTS="
 
+#--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_DEFAULT_OPTS="
   --preview '(highlight -O ansi -l {} 2> /dev/null || bat {} \
     || tree -C {}) 2> /dev/null | head -200'
 
@@ -140,6 +141,7 @@ _fzf_comprun() {
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM=xterm-256color
+export COLORTERM="truecolor"
 
 [[ $HOST == bm* ]] && export TERMINAL=alacritty
 
