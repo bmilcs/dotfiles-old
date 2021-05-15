@@ -44,10 +44,10 @@
     show_indicators = yes
 #   show: urls (u) actions (a).
     icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/places/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/symbolic/actions/:/usr/share/icons/Papirus-Dark/symbolic/apps/:/usr/share/icons/Papirus-Dark/symbolic/categories/:/usr/share/icons/Papirus-Dark/symbolic/devices/:/usr/share/icons/Papirus-Dark/symbolic/emblems/:/usr/share/icons/Papirus-Dark/symbolic/emotes/:/usr/share/icons/Papirus-Dark/symbolic/mimetypes/:/usr/share/icons/Papirus-Dark/symbolic/places/:/usr/share/icons/Papirus-Dark/symbolic/status/
-    icon_position = right
 # left right none
+    icon_position = right
     min_icon_size = 32   # 0
-    max_icon_size = 32   # 64
+    max_icon_size = 1000   # 64
     sticky_history = yes
 # keep reopened notifications stay
     history_length = 1000
@@ -57,14 +57,14 @@
 # dunst window classified as:
     title = Dunst
     class = Dunst
-    startup_notification = true
+    startup_notification = false
     verbosity = mesg
 #   crit: Critical features. Dunst aborts
 #   warn: Only non-fatal warnings
 #   mesg: Important Messages
 #   info: all unimportant stuff
 #   debug: all less than unimportant stuff
-    corner_radius = 10
+    corner_radius = 2
     ignore_dbusclose = false
 #   ignore programs built-in timers
       force_xinerama = false
@@ -80,53 +80,70 @@
 [experimental]
     per_monitor_dpi = true
 [shortcuts]
-# "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
-# use alias 'kc' | 'xmodmap -pke'
     close_all = F12
     history = F11
     context = F9
-[urgency_low]
-    background = "#2e3440"
-    foreground = "#81a1c1"
-    timeout = 120
-[urgency_normal]
-    background = "#2e3440"
-    foreground = "#81a1c1"
-    timeout = 120
-[urgency_critical]
-    background = "#2e3440"
-    foreground = "#ebcb8b"
-    timeout = 120
+# "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
+# use alias 'kc' | 'xmodmap -pke'
+
 #────────────────────────────────────────────────────────────
 # %a appname            %s summary            %b  body
 # %i iconname [path]    %I iconname no path   %%  literal %
 # %p progress [0%-100%] %n progress simple
 #────────────────────────────────────────────────────────────
+
+#────────────────────────────────────────────────────────────  urgency  ───────
+
+[urgency_low]
+    background = "#2e3440"
+    foreground = "#81a1c1"
+    timeout = 60
+[urgency_normal]
+    background = "#2e3440"
+    foreground = "#81a1c1"
+    timeout = 60
+[urgency_critical]
+    background = "#2e3440"
+    foreground = "#ebcb8b"
+    timeout = 60
+
+#───────────────────────────────────────────────────  custom scripting  ───────
+
 [norm]
     category = "bmnormal"
     background = "#2e3440"
     format = "<b><span foreground='#81a1c1'>%s</span></b>\n%b"
-    timeout = 60
+    timeout = 30
+
 [warn]
     category = "bmwarning"
     background = "#ebcb8b"
     foreground = "#2e3440"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 60
+    timeout = 30
+
 [error]
     category = "bmerror"
     background = "#bf616a"
     foreground = "#eceff4"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 60
+    timeout = 30
+
 [success]
     category = "bmsuccess"
     background = "#8fbcbb"
     foreground = "#2e3440"
     format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
-    timeout = 60
-#────────────────────────────────────────────────────────────
-#────────────────────────────────────────────────────────────
+    timeout = 30
+
+[screenshot]
+    category = "bmscreenshot"
+    icon_position = right
+    min_icon_size = 0
+    max_icon_size = 1000
+    format = "<center><span foreground='#2e3440'></span></b>\n%b<center>"
+    timeout = 30
+
 #────────────────────────────────────────────────────────────
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
