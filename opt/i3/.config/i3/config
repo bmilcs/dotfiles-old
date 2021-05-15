@@ -8,8 +8,6 @@
 
 #──────────────────────────────────────────────────────────  modifiers  ───────
 
-floating_modifier    Mod4
-
 set $w           Mod4
 set $c           Ctrl
 set $s           Shift
@@ -28,6 +26,7 @@ set $tilde       49
 set $backspace   22
 set $insert      118
 set $f12         96
+floating_modifier $w
 
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
@@ -70,12 +69,12 @@ bindsym $w+Return       exec --no-startup-id    alacritty
 
 #────────────────────────────────────────────────────────  screenshots  ───────
 
-bindsym Print         exec --no-startup-id    screenshot sel
-bindsym $c+Print      exec --no-startup-id    screenshot win
-bindsym $s+Print      exec --no-startup-id    screenshot all
-bindsym Pause         exec --no-startup-id    screenshot sel up
-bindsym $c+Pause      exec --no-startup-id    screenshot win up
-bindsym $s+Pause      exec --no-startup-id    screenshot all up
+bindsym Print         exec --no-startup-id    screenshot -t sel
+bindsym $c+Print      exec --no-startup-id    screenshot -t win
+bindsym $s+Print      exec --no-startup-id    screenshot -t all
+bindsym Pause         exec --no-startup-id    screenshot -ut sel 
+bindsym $c+Pause      exec --no-startup-id    screenshot -ut win
+bindsym $s+Pause      exec --no-startup-id    screenshot -ut all
 
 #─────────────────────────────────────────────────────  custom scripts  ───────
 
@@ -152,6 +151,8 @@ bindsym $was+j  resize shrink  height   25 px or 25 ppt
 bindsym $was+k  resize grow    height   25 px or 25 ppt
 bindsym $was+l  resize grow    width    25 px or 25 ppt
 
+#bindsym $w+d    resize set     width 500 px or 500 pt
+
 # gaps
 bindsym $wcs+h  gaps   inner   all      plus 2
 bindsym $wcs+j  gaps   outer   all      plus 2
@@ -181,26 +182,26 @@ bindsym    $w+2       workspace number $ws3;     focus tiling
 bindsym    $w+Tab     workspace number $ws4;     focus tiling
 bindsym    $w+q       workspace number $ws5;     focus tiling
 bindsym    $w+w       workspace number $ws6;     focus tiling
-#bindsym    $w+e       workspace number $ws7;     focus tiling
+bindsym    $w+e       workspace number $ws7;     focus tiling
 #bindsym    $w+8       workspace number $ws8;     focus tiling
 #bindsym    $w+9       workspace number $ws9;     focus tiling
 #bindsym    $w+0       workspace number $ws10;    focus tiling
 
-bindcode  $wa+$tilde move container to workspace number $ws1
-bindsym   $wa+1      move container to workspace number $ws2
-bindsym   $wa+2      move container to workspace number $ws3
-bindsym   $wa+Tab    move container to workspace number $ws4
-bindsym   $wa+q      move container to workspace number $ws5
-bindsym   $wa+w      move container to workspace number $ws6
-#bindsym   $wa+e      move container to workspace number $ws7
-#bindsym   $wa+8      move container to workspace number $ws8
-#bindsym   $wa+9      move container to workspace number $ws9
-#bindsym   $wa+0      move container to workspace number $ws10
+bindcode  $wc+$tilde move container to workspace number $ws1
+bindsym   $wc+1      move container to workspace number $ws2
+bindsym   $wc+2      move container to workspace number $ws3
+bindsym   $wc+Tab    move container to workspace number $ws4
+bindsym   $wc+q      move container to workspace number $ws5
+bindsym   $wc+w      move container to workspace number $ws6
+bindsym   $wc+e      move container to workspace number $ws7
+#bindsym   $wc+8      move container to workspace number $ws8
+#bindsym   $wc+9      move container to workspace number $ws9
+#bindsym   $wc+0      move container to workspace number $ws10
 
 # email
 workspace $ws1  gaps vertical  25
 workspace $ws1  gaps horizontal 500
-workspace $ws1  gaps inner 5
+workspace $ws1  gaps inner 10
 
 # chat
 workspace $ws2  gaps vertical  50
@@ -210,21 +211,21 @@ workspace $ws2  gaps inner 10
 # firefox
 workspace $ws3  gaps vertical  12
 workspace $ws3  gaps horizontal 12
-workspace $ws3  gaps inner 5
+workspace $ws3  gaps inner 10
 
 # term, etc.
 workspace $ws4  gaps vertical  12
 workspace $ws4  gaps horizontal 12
-workspace $ws4  gaps inner 5
+workspace $ws4  gaps inner 10
 workspace $ws5  gaps vertical  12
 workspace $ws5  gaps horizontal 12
-workspace $ws5  gaps inner 5
+workspace $ws5  gaps inner 10
 workspace $ws6  gaps vertical  12
 workspace $ws6  gaps horizontal 12
-workspace $ws6  gaps inner 5
+workspace $ws6  gaps inner 10
 workspace $ws7  gaps vertical  12
 workspace $ws7  gaps horizontal 12
-workspace $ws7  gaps inner 5
+workspace $ws7  gaps inner 10
 
 #─────────────────────────────────────────────────────  gui & behavior   ──────
 
@@ -263,7 +264,7 @@ set $green1   #A3BE8C
 set $purple1  #B48EAD
 
 #class                    border    bg       fg       focus      child_border
-client.focused            $yellow1  $blue2   $blue1   $blue2     $cyan1
+client.focused            $yellow1  $blue2   $blue1   $blue2     $blue2
 client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black2
 client.unfocused          $black1   $blue1   $black2  $blue1     $black2
 client.urgent             $red1     $red1    $blue1   $red1      $yellow1
@@ -289,7 +290,7 @@ no_focus      [instance="Navigator"]
 no_focus      [instance="i3debug"]
 
 # floating
-for_window    [class='Conky']               floating enable
+for_window    [class='Conky']              floating enable
 
 # scripted rules
 for_window [instance="font-manager"]      floating enable, resize set 1551 977,  move absolute position 919  249,  border pixel 3
@@ -309,5 +310,6 @@ for_window [instance="windowspy"]         floating enable, resize set 985  59,  
 for_window [instance="i3pad"]             floating enable, resize set 692  925,  move absolute position 2686 512,  border pixel 3
 for_window [instance="gucharmap"]         floating enable, resize set 1260 1335, move absolute position 1153 82,   border pixel 3
 for_window [instance="main.py"]           floating enable, resize set 1552 1323, move absolute position 967  54,   border pixel 3
-for_window [instance="nitrogen"] floating enable, resize set 602 1171, move absolute position 2807 153, border pixel 3
 for_window [instance="urxvt"] floating enable, resize set 818 970, move absolute position 1847 311, border pixel 3
+for_window [instance="feh"] floating enable, move center, border pixel 3
+for_window [instance="nitrogen"] floating enable, resize set 1079 480, move absolute position 1160 956, border pixel 3
