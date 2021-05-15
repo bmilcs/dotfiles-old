@@ -13,9 +13,10 @@ configuration {
 }
 
 element-icon {
-  size:                20;
+  size:                30;
   border:              5px;
-  border-color:     white;
+  border-color:     @nord1;
+  background-color: @nord1;
 }
 
 //  modi: "window,run,ssh"; 
