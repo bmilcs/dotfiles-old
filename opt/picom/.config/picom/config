@@ -99,7 +99,7 @@ frame-opacity = 0.75;
 inactive-opacity-override = false;
 
 opacity-rule = [
-  "100:class_g = 'Rofi'",
+  "99:class_g = 'Rofi'",
   "100:class_g = 'firefox'",
 ]
 

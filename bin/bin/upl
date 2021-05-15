@@ -14,8 +14,10 @@ _t "gk's fancy 0x0.st script"
 [ "$#" -gt 1 ] && _e "too many args present" && exit 1
 
 _a "uploading $1 to 0x0.st"
+
 # prevent filetypes like text/x-shellscript or text/x-diff
 # autodownloading in some browsers
+
 type=
 file -ibL "$1" | grep -q '^text/' && type=';type=text/plain'
 
