@@ -58,6 +58,7 @@ alias picomr='killall -q picom ; picom -b'
 
 # rm auto-update status
 alias rmup='rm -rf ~/.config/up/'
+alias upp='. $ZDOTDIR/05-update.sh'
 
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 if [[ $DISTRO = "arch"* ]]; then # ARCH

@@ -39,8 +39,8 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 # plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zdharma/fast-syntax-highlighting
 zinit light nojanath/ansible-zsh-completion 
+zinit light zdharma/fast-syntax-highlighting
 zinit load wfxr/forgit
 
 # dir_colors
@@ -70,11 +70,11 @@ bindkey -M vicmd 'y' vi-yank-xclip
 setopt autocd                 # cd into dir's w/o cd prefix
 setopt cdable_vars            # autocd, expand non-/path as ~
 [[ $DISTRO == "arch"* ]] \
-&& setopt cd_silent              # don't print dir after cd
+&& setopt cd_silent           # don't print dir after cd
 
 # history
 
-DIRSTACKSIZE=15               # dir stack limit
+DIRSTACKSIZE=100              # dir stack limit
 setopt autopushd              # cd = pushd (dir stack)
 setopt pushdminus             # swaps + and - (dir stack)
 setopt pushdsilent            # don't echo each pushd (dir stack)
