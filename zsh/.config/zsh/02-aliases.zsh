@@ -6,6 +6,7 @@
 #                 ZSH: ALIASES [./02-aliases.zsh]
 
 #   TODO
+
 #         split up into separate .zsh files
 #         add working savedir alias > select
 
@@ -58,9 +59,10 @@ alias picomr='killall -q picom ; picom -b'
 
 # rm auto-update status
 alias rmup='rm -rf ~/.config/up/'
-alias upp='. $ZDOTDIR/05-update.sh'
+alias upp='rmup && . $ZDOTDIR/05-update.sh'
 
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
+
 if [[ $DISTRO = "arch"* ]]; then # ARCH
   # aur | yay
   alias pacman='sudo pacman';compdef pacman='pacman'
@@ -137,7 +139,6 @@ alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 # email
 alias mutt='neomutt'
 alias em='neomutt'
-
 
 # git
 alias grevp='git rev-parse > /dev/null 2>&1'
