@@ -1,7 +1,21 @@
+snippet bm-loop-through-lines-in-file "loop thru file lines"
+while read x; do
+  echo "$x"
+done <"$filename"
+endsnippet
+
+snippet bm-delete-duplicates-in-file "deduplication of txt file"
+# paclist=/tmp/pacman_fix
+# rm "$paclist"
+# up &> "$paclist"
+# sed -i '/exists in filesystem/!d' "$paclist"
+# sed -i 's/\: \/.*//g' "$paclist"
+awk '!seen[$0]++' "$paclist" > "$paclist".final
+endsnippet
+
 snippet bm-date-time-sec-unique "2021.10.15-13.56.11"
 $(date +%Y.%m.%d-%H.%M.%S)
 endsnippet
-
 
 snippet bm-date-time-sec-unique2 "2021-10_15-13_56-11"
 $(date +%Y.%m.%d-%H.%M.%S)
@@ -22,7 +36,6 @@ if [[ -e $name.ext || -L $name.ext ]] ; then
 fi
 touch -- "$name".ext
 endsnippet
-
 
 snippet bm-snip "new snippet"
 snippet bm-  ""
