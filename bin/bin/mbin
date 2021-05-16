@@ -37,6 +37,16 @@ else
   _s
 fi
 
+bpath="$(pwd)/$name"
+
+# in /bin?
+if [[ ! $bpath == */bin/* ]]; then
+  _w "current path: $bpath"
+  _ask "do you want to create this script within ${B}~/bin instead?" \
+    && cd ~/bin || (_e "unable to change dir to ~/bin" && exit 1)
+fi
+
+
 # does it exist already?
 _a existing file check
 if [[ -f $name ]]; then
@@ -56,8 +66,8 @@ if [[ -f $name ]]; then
   fi
 else
   _f all clear\\n
-fi
 
+fi
 # create file
 _oc "creating file"
 touch "$name"
@@ -77,10 +87,38 @@ done
 logo "$name" "$title"
 
 # add header/title
-echo -e "\
+echo -e '
 source _bm
-_a $title\n\n\
-#\n" >> "$name"
+
+#────────────────────────────────────────────────────────  parse input  ───────
+
+usage() { 
+  (_oc "$(basename $0)"
+   _oy   -n   name
+   _oy   -c   cmd
+   _o    -f   config
+  ) 1>&2
+  exit 1
+}
+
+while getopts "n:c:f" opt; do
+  case "${opt}" in
+    n) name=${OPTARG} ;;
+    c) cmd=${OPTARG} ;;
+    f) cfg="1" ;;
+    *) usage ;;
+  esac
+done
+
+if [ -z "${name}" ] || [ -z "${cmd}" ]; then
+  usage
+fi
+
+#──────────────────────────────────────────────────────────────  begin  ───────
+
+_tb '"$title"'
+
+' >> "$name" 
 
 # add shebang
 sed -i '1s/^/\#\!\/usr\/bin\/env bash\n/' "$name"
