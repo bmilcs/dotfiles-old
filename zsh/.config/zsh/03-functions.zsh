@@ -15,10 +15,38 @@ function d() {
 }
 
 function pacfix() {
-  for var in "$@"
-  do
-    pacman -S --noconfirm --overwrite "*" "$var"
-  done
+  source _bm
+  _tb "pacfix"
+  _a "capturing output"
+
+  paclist=/tmp/pacman_fix
+  rm "$paclist"{,.final} 2> /dev/null
+  up &> "$paclist" \
+  && _s done
+
+  _a parsing output for broken packages
+
+  sed -i '/exists in filesystem/!d' "$paclist"
+
+  if [ -s "$paclist".final ]; then
+    _iy "package errors found!"
+  else
+    _i "no errors need fixin'"
+    _s done
+    return 0
+  fi
+
+  sed -i 's/\: \/.*//g' "$paclist"
+  awk '!seen[$0]++' "$paclist" > "$paclist".final 
+  _s done
+
+  _a pacman: forcing overwrite
+  while read x; do
+    echo "fixing $x"
+    pacman -S --noconfirm --overwrite "*" "$x" &> /dev/null \
+      && echo "> done!"
+  done <"$paclist".final
+  rm "$paclist"{,.final}
 }
 
 # fd TODO: fix
@@ -26,10 +54,9 @@ function fdd() {
   fd -E /all/bm -E /all/media -E /backup $* .
 }
 
-
 #────────────────────────────────────────────────────────────  ansible  ───────
 
-# toggle user ssh config on/off
+# ssh: toggle config file on/off
 togssh() {
   conf=~/.ssh/config 
   if [[ -f $conf ]]; then
@@ -244,7 +271,7 @@ function vm() {
   
   source _bm
   source ~/.profile
-  syntax() {_w '${B}syntax${YLW}: vm <bin/sh>'}
+  syntax() {_w "${B}syntax${YLW}: vm <bin/sh>"}
 
   if [ $# -eq 0 ] || [ $# -gt 1 ]; then # arg = 1
     syntax
