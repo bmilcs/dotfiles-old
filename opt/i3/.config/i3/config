@@ -3,7 +3,6 @@
 #    ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #    ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #    ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀           dot.bmilcs.com
-
 #                   I3 GAPS WM [./config]
 
 #──────────────────────────────────────────────────────────  modifiers  ───────
@@ -33,6 +32,7 @@ floating_modifier $w
 # restart: i3, .profile, .xresources, picom 
 bindsym $w+backslash  exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
                             ~/.Xresources " ; restart"
+
 # exit i3
 bindsym $wa+backslash exec  "i3-msg exit"
 
@@ -48,17 +48,23 @@ bindsym $w+0          exec  "bootstrap"
 #──────────────────────────────────────────────────────────────  audio  ───────
 
 # play, pause, stop, next
-bindsym XF86AudioPlay         exec --no-startup-id    mpc toggle
-bindsym XF86AudioStop         exec --no-startup-id    mpc stop
-bindsym XF86AudioNext         exec --no-startup-id    mpc next
+bindsym XF86AudioPlay          exec --no-startup-id    mpc toggle
+bindsym XF86AudioStop          exec --no-startup-id    mpc stop
+bindsym XF86AudioNext          exec --no-startup-id    mpc next
 
 # volume
-bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl \
-    set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl \
-    set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute         exec --no-startup-id    pactl \
-    set-sink-mute @DEFAULT_SINK@ toggle
+bindcode $w+35                 exec --no-startup-id    bmvol up
+bindcode $w+34                 exec --no-startup-id    bmvol down
+bindsym  XF86AudioRaiseVolume  exec --no-startup-id    bmvol up
+bindsym  XF86AudioLowerVolume  exec --no-startup-id    bmvol down
+bindsym  XF86AudioMute         exec --no-startup-id    bmvol down
+
+# bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl \
+#     set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl \
+#     set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym XF86AudioMute         exec --no-startup-id    pactl \
+#     set-sink-mute @DEFAULT_SINK@ toggle
 
 #───────────────────────────────────────────────────────  applications  ───────
 
