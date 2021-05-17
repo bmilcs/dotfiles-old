@@ -14,41 +14,6 @@ function d() {
   cd $(dirs -v | sed 's/^[0-9 \t]*//' | fzf | sed 's/^[^\/]/'$home'/')
 }
 
-function pacfix() {
-  source _bm
-  _tb "pacfix"
-  _a "capturing output"
-
-  paclist=/tmp/pacman_fix
-  rm "$paclist"{,.final} 2> /dev/null
-  up &> "$paclist" \
-  && _s done
-
-  _a parsing output for broken packages
-
-  sed -i '/exists in filesystem/!d' "$paclist"
-
-  if [ -s "$paclist".final ]; then
-    _iy "package errors found!"
-  else
-    _i "no errors need fixin'"
-    _s done
-    return 0
-  fi
-
-  sed -i 's/\: \/.*//g' "$paclist"
-  awk '!seen[$0]++' "$paclist" > "$paclist".final 
-  _s done
-
-  _a pacman: forcing overwrite
-  while read x; do
-    echo "fixing $x"
-    pacman -S --noconfirm --overwrite "*" "$x" &> /dev/null \
-      && echo "> done!"
-  done <"$paclist".final
-  rm "$paclist"{,.final}
-}
-
 # fd TODO: fix
 function fdd() {
   fd -E /all/bm -E /all/media -E /backup $* .
