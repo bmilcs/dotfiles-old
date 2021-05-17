@@ -16,8 +16,10 @@ colorscheme nord
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 "────────────────────────────────────────────────────────────  ansible  ───────
+
   au BufRead,BufNewFile */ans/inventory set filetype yaml.ansible
   au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+
 "─────────────────────────────────────────────────────────  indentline  ───────
 
 "let g:indentLine_setColors = 0

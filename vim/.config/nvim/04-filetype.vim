@@ -10,9 +10,13 @@ filetype off
 syntax on
 augroup filetypedetect
 
+
   " config files
   au BufRead,BufNewFile *.conf set filetype=dosini
   au BufRead,BufNewFile *rc set filetype=dosini
+
+  " rsnapshot
+  au BufRead,BufNewFile rsnapshot.conf set expandtab!     " convert \t to spaces
 
   " notes
   au BufRead,BufNewFile */txt/* set filetype=markdown
