@@ -8,21 +8,22 @@
 #                 PACFIX [./pacfix]
 
 source _bm
+paclist=/tmp/pacman_fix
 
 _tb pacfix
-
 _a "capturing output"
 
-paclist=/tmp/pacman_fix
 rm "$paclist"{,.final} 2> /dev/null
 
 yay -Syyyuuu --noconfirm &> "$paclist" && _s done
+[ $# -gt 0 ] && _w "initial pacman output  [" && cat "$paclist" && _w "]"
 
 _a parsing output for broken packages
 
-sed -i '/exists in filesystem/!d' "$paclist"
+sed -i '/exists in filesystem/!d' "$paclist"  
+[ $# -gt 0 ] && _w "deleted useless lines [" && cat "$paclist" && _w "]"
 
-if [ -s "$paclist".final ]; then
+if [ -s "$paclist" ]; then
   _iy "package errors found!"
 else
   _i "no errors need fixin'"
@@ -31,7 +32,11 @@ else
 fi
 
 sed -i 's/\: \/.*//g' "$paclist"
+[ $# -gt 0 ] && _w "sed: package names [" && cat "$paclist" && _w "]"
+
 awk '!seen[$0]++' "$paclist" > "$paclist".final 
+[ $# -gt 0 ] && _w "final list [" && cat "$paclist" && _w "]"
+
 _s done
 
 _a pacman: forcing overwrite
