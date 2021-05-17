@@ -219,9 +219,9 @@ btw() {
 # rsnapshot
 #
 
-rsnap() {
+#rsnap() {
 
- host=${HOSTNAME,,}
+# host=${HOSTNAME,,}
 # rpath="$D/backup/"
 # rdest="$HOME/.config/rsnapshot"
 
@@ -257,11 +257,9 @@ rsnap() {
 #   rsnapshot -c "$rdest/rsnapshot.conf" configtest
 
 # fi
+#}
 
-
-}
-
-rsnap
+#rsnap
 
 #───────────────────────────────────────────────────────  dependencies  ──────#
 
@@ -269,7 +267,6 @@ source "./bin/bin/_distro"
 
 _a dependencies
 _o "${pkgs[@]}"
-
 
 #
 # archlinux
