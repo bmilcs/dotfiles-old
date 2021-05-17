@@ -33,6 +33,25 @@ nnoremap <leader>up  :PlugUpdate<CR>
 nnoremap <leader>ip  :PlugInstall<CR>
 nnoremap <leader>cp  :PlugClean<CR>
 
+"────────────────────────────────────────────────────────────────  fzf  ───────
+nnoremap <silent> <C-p> :tabnew \| Files!<CR>
+nnoremap <silent> <C-S-p> :tabnew \| ProjectFiles!<CR>
+nnoremap <silent> <C-f> :Rg!<CR>
+nnoremap <silent> <C-g> :RipgrepFzf!<CR>
+
+command! -bang -nargs=? -complete=dir ProjectFiles
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 "──────────────────────────────────────────────────  text manipulation   ──────
 nnoremap <silent> <leader>dd :%s/^\(.*\)\(\n\1\)\+$/\1/
 
@@ -83,14 +102,14 @@ nmap <leader>mp <Plug>MarkdownPreviewToggle
 fun! SudoW()
   silent write !sudo tee % > /dev/null
   edit!
-  echo "SudoW done."
+  echo "sudo: written"
 endfun
 
 nnoremap <leader>ww :call SudoW()<CR>
 "nnoremap <silent> <leader>ww :silent execute ':w !sudo tee % > /dev/null' \| :edit!<CR>
 
 " reload vimrc config
-nnoremap <silent> <leader>` :source ~/.vimrc<CR>
+nnoremap <silent> <leader>` :source ~/.vimrc \| echo "vimrc: reloaded"<CR>
 
 " (r)eload (w)indow (document)
 nnoremap <silent> <leader>wr :e!<CR>
@@ -104,9 +123,9 @@ nnoremap <silent> <leader>wq :close<CR>
 " vertical (s)plit > explore
 nnoremap <silent> <leader>ws :Vexplore<CR>
 
-" vertical (s)plit
 nnoremap <silent> <leader>ss :Vsplit<CR>
 
+" vertical (s)plit
 " horizontal (S)plit > explore
 nnoremap <silent> <leader>WS :Split<CR>
 
