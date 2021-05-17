@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+
+#                 PACFIX [./pacfix]
+
+source _bm
+
+_tb pacfix
+
+_a "capturing output"
+
+paclist=/tmp/pacman_fix
+rm "$paclist"{,.final} 2> /dev/null
+
+yay -Syyyuuu --noconfirm &> "$paclist" && _s done
+
+_a parsing output for broken packages
+
+sed -i '/exists in filesystem/!d' "$paclist"
+
+if [ -s "$paclist".final ]; then
+  _iy "package errors found!"
+else
+  _i "no errors need fixin'"
+  _s done
+  exit 0
+fi
+
+sed -i 's/\: \/.*//g' "$paclist"
+awk '!seen[$0]++' "$paclist" > "$paclist".final 
+_s done
+
+_a pacman: forcing overwrite
+while read x; do
+  echo "fixing $x"
+  sudo pacman -S --noconfirm --overwrite "*" "$x" &> /dev/null \
+    && echo "> done!"
+done <"$paclist".final
+rm "$paclist"{,.final}
