@@ -13,7 +13,12 @@ source _distro
 if [[ $DISTRO == arch* ]]; then
 
   # ARCH
-  _a pacman/aur && yay -Syyyuuu --noconfirm && _s
+  _a pacman/aur 
+  if yay -Syyyuuu --noconfirm; then
+    _s done
+  else
+    pacfix
+  fi
 
 elif [[ $DISTRO =~ raspian*|debian*|ubuntu* ]]; then
 
