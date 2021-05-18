@@ -13,6 +13,12 @@
 
 source _bm
 
+#────────────────────────────────────────────────────────────  ansible  ───────
+if [[ $# -ne 0 ]]; then
+  ansible=1
+fi
+
+
 #──────────────────────────────────────────────────────────────  traps  ───────
 clean() { 
   rm -rf "$running" 
@@ -78,16 +84,19 @@ if [[ ! -f "$running" ]]; then
   fi
 
   # zinit
-  [[ ! "$today" == "$zlast" ]] \
-    && _a "zinit: self update" && zinit self-update && _s \
-    && _a "zinit: plugins" && zinit update --all && _s \
-    && echo "$today" > "$zstatus"
+  if [[ ! "$today" == "$zlast" ]] && [[ -z $ansible ]]; then
+    _a "zinit: self update" && zinit self-update && _s
+    _a "zinit: plugins" && zinit update --all && _s
+    echo "$today" > "$zstatus"
+  fi
 
   # fzf
   [[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
 
   # vim plugins
-  [[ ! "$today" == "$vlast" ]] && upvim && echo "$today" > "$vstatus"
+  if [[ ! "$today" == "$vlast" ]] && [[ -z $ansible ]]; then
+    upvim && echo "$today" > "$vstatus"
+  fi
 
   # dotfiles repo: pc/laptop
   if [[ ! "$today" == "$dlast" ]] && [[ "$HOST" == "bm"* ]]; then 
