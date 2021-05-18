@@ -14,7 +14,9 @@
 source _bm
 
 #──────────────────────────────────────────────────────────────  traps  ───────
-clean() { rm -rf "$running" }
+clean() { 
+  rm -rf "$running" 
+}
 
 ctrlC() {
   echo && _w "${B}now exiting" && _o "cleaning up"
