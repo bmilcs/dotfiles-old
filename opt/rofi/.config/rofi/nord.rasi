@@ -1,14 +1,14 @@
 // Nordic rofi theme: undiabler <undiabler@gmail.com>
 
-configuration {
-
-    display-ssh:    "";
-    display-run:    "";
-    display-drun:   "";
-    display-window: "";
-    display-combi:  "";
-    show-icons:     true;
-}
+// configuration {
+// 
+//     display-ssh:    "";
+//     display-run:    "";
+//     display-drun:   "";
+//     display-window: "";
+//     display-combi:  "";
+//     show-icons:     true;
+// }
 
 * {
   nord0: #2e3440;
@@ -88,16 +88,23 @@ prompt {
 }
 
 listview {
-    padding: 8px;
+    padding: 5px;
     border-radius: 0px 0px 6px 6px;
     border-color: @nord10;
+    vertical-align: 0.5;
     border: 0px 0px 0px 0px;
     background-color: rgba(46,52,64,0.9);
     dynamic: false;
 }
 
+//element-text {
+//vertical-align: 0.5;
+//horizontal-align: 0.5;
+//}
+
 element {
-    padding: 3px;
+//  orientation: vertical;
+    padding: 0px;
     vertical-align: 0.5;
     border-radius: 0px;
     background-color: transparent;

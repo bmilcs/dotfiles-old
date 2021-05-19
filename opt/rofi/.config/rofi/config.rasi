@@ -1,10 +1,9 @@
 configuration {
-  font: "BitstreamVeraSansMono Nerd Font 10";
-
+  font: "DejaVuSansMono Nerd Font 9.5";
   theme: "nord";
-  width: 30;              
-  lines: 15;              
-  columns: 5;             
+  width: 15;              
+  lines: 20;              
+  columns: 1;             
   hide-scrollbar: true;
   combi-modi: "window,ssh,drun,run";
   modi: "window,run,ssh,drun";
@@ -14,16 +13,16 @@ configuration {
 
 element-icon {
   size:                30;
-  border:              5px;
-  border-color:     @nord1;
   background-color: @nord1;
+  //border:              5px;
+  //border-color:     @nord1;
 }
 
 //  modi: "window,run,ssh"; 
 //  width: 50;              
 //  lines: 15;              
-//  columns: 1;             
 //  font: "mono 12";        
+//  columns: 1;             
 //  bw: 1;                  
 //  location: 0;            
 //  padding: 5;             
