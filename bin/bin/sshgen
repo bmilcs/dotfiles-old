@@ -24,8 +24,8 @@ if [[ $# == 1 ]]; then
     done
 
     bhost=$host-$i
-    bpath=~/.ssh/$bhost
-    if (mv "$path" "$bpath" && mv "$path.pub" "$bpath.pub" ); then
+    bpath=~/.ssh/.backup/$bhost
+    if (mkdir -p ~/.ssh/.backup ; mv "$path" "$bpath" && mv "$path.pub" "$bpath.pub" ); then
       _w "backed up to: ${CYN}$bpath"
     else
       _e "unable to backup $host"
