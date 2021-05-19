@@ -40,7 +40,8 @@ if [[ $# == 1 ]]; then
     if ssh-keygen -t rsa -b 4096 -f "$path" -N "" &> /dev/null; then
       _s
       echo "" && _w "copy to host via:"
-      _i "ssh-copy-id -i $path bmilcs@$host"
+      _i "ssh-copy-id -i $path bmilcs@$host\n\n"
+      cat "$path".pub
     else
       _e "something went wrong"
     fi
