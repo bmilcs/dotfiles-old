@@ -35,6 +35,7 @@ togssh() {
 
 if [ -d $ANSIBLE_HOME/roles ]
 then
+
   # ansible ... shortcut
   a() {
     cd $ANSIBLE_HOME && ansible $@

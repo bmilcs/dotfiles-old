@@ -13,28 +13,22 @@
 
 source _bm
 
-#────────────────────────────────────────────────────────────  ansible  ───────
-if [[ $# -ne 0 ]]; then
-  ansible=1
-fi
+# ansible mode
+[[ $# -eq 1 ]] && ansible=1
+[[ $# -eq 2 ]] && auto=1
 
 #──────────────────────────────────────────────────────────────  traps  ───────
+
 clean() { 
   rm -rf "$running" 
-}
+  }
 
 ctrlC() {
-  echo && _w "${B}now exiting" && _o "cleaning up"
+  echo && _w "${B}now exiting cleanly"
   clean && _s "done\n" && exit 1
   }
 
-error() {
-  echo && _e "something went wrong"
-  ctrlC
-}
-
-trap 'ctrlC' SIGINT
-trap 'error' ERR
+trap 'ctrlC' 0 1 2 3 15
 trap 'clean' EXIT
 
 #───────────────────────────────────────────────────────────────  vars  ───────
@@ -74,35 +68,48 @@ if [[ ! -f "$running" ]]; then
   
   # packages
   [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
-
-  # repos
-  if [[ ! "$today" == "$rlast" ]] && [[ -f /usr/local/bin/upr ]]; then
-    upr && echo "$today" > "$rstatus"
-  else # vm's via ssh 
-    echo "$today" > "$rstatus"
+  if [[ "$today" == "$slast" ]] && [[ -n $auto ]]; then
+    _a "update: up script"
+    _s completed today
   fi
 
-  # zinit
-  if [[ ! "$today" == "$zlast" ]] && [[ -z $ansible ]]; then
-    _a "zinit: self update" && zinit self-update && _s
-    _a "zinit: plugins" && zinit update --all && _s
-    echo "$today" > "$zstatus"
+  # repos
+  if [[ -f /usr/local/bin/upr ]]; then
+    if [[ ! "$today" == "$rlast" ]]; then
+      upr && echo "$today" > "$rstatus"
+    elif [[ -n $auto ]]; then
+      _a "update: repos"
+      _s completed today
+    fi
+  else # vm's via ssh 
+    echo "$today" > "$rstatus"
   fi
 
   # fzf
   [[ ! "$today" == "$flast" ]] && upfzf && echo "$today" > "$fstatus"
 
-  # vim plugins
-  if [[ ! "$today" == "$vlast" ]] && [[ -z $ansible ]]; then
-    upvim && echo "$today" > "$vstatus"
-  fi
+  # ansible-unfriendly updates
+  if [[ -z $ansible ]]; then
+
+    # zinit
+    [[ ! "$today" == "$zlast" ]] &&\
+      _a "zinit: self update" && zinit self-update && _s &&\
+      _a "zinit: plugins" && zinit update --all && _s &&\
+      echo "$today" > "$zstatus"
+
+    # vim plugins
+    if [[ ! "$today" == "$vlast" ]] && [[ -z $ansible ]]; then
+      upvim && echo "$today" > "$vstatus"
+    fi
+
+  fi # end of ansible-friendly updates
 
   # dotfiles repo: pc/laptop
   if [[ ! "$today" == "$dlast" ]] && [[ "$HOST" == "bm"* ]]; then 
     gp && echo "$today" > "$dstatus"
   fi
 
-else # update process already exists
+else # update running already
 
   _wb "instance of ${B}auto-update${BLU} running in another terminal."
 
