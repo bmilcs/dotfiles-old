@@ -33,7 +33,7 @@ togssh() {
   fi
 }
 
-if [ -d $ANSIBLE_HOME/roles ]
+if [ -d "$ANSIBLE_HOME"/roles ]
 then
 
   # ansible ... shortcut
@@ -53,7 +53,7 @@ then
 
   # ansible playbook ... shortcut
   apb() { 
-    cd ~/ans || return 1
+    cd $ANSIBLE_HOME || return 1
     if [ -e "$1" ]; then
       ansible-playbook "$1"
     else
@@ -62,19 +62,24 @@ then
   }
 
   apbe() {
-    nvim $1
+    cd $ANSIBLE_HOME || return 1
+    if [ -e "$1" ]; then
+      nvim $1
+    else
+      l
+    fi
   }
 
   zstyle ':completion::complete:apb:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
   zstyle ':completion::complete:apbe:*:*files' ignored-patterns '^*.(#i)(yaml|yml)'
   compdef a='ansible'
   compdef aa='ansible'
-  compdef '_files -W ~/ans/' apb
-  compdef '_files -W ~/ans/' apbe
+  compdef '_files -W $ANSIBLE_HOME/' apb
+  compdef '_files -W $ANSIBLE_HOME/' apbe
+# compdef '_files -P $ANSIBLE_HOME/ -W $ANSIBLE_HOME/ -g "*(.)"' apb
 
   # complete full paths
-  # compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apb
-  # compdef '_files -P ~/ans/ -W ~/ans/ -g "*(.)"' apbe
+  # compdef '_files -P $ANSIBLE_HOME/ -W $ANSIBLE_HOME/ -g "*(.)"' apbe
 
 fi
 

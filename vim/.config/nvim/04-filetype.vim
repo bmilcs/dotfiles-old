@@ -12,8 +12,14 @@ augroup filetypedetect
 
 
   " config files
-  au BufRead,BufNewFile *.conf set filetype=dosini
-  au BufRead,BufNewFile *rc set filetype=dosini
+  au BufRead,BufNewFile *.conf set filetype=config
+  au BufRead,BufNewFile *rc set filetype=config
+
+  " au BufRead,BufNewFile *.conf set filetype=dosini
+" au BufRead,BufNewFile *rc set filetype=dosini
+
+  " rasi (rofi)
+  au BufRead,BufNewFile *.rasi set filetype=config
 
   " rsnapshot
   au BufRead,BufNewFile rsnapshot.conf set expandtab!     " convert \t to spaces
