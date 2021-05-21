@@ -40,8 +40,9 @@ if [[ $# == 1 ]]; then
     if ssh-keygen -t rsa -b 4096 -f "$path" -N "" &> /dev/null; then
       _s
       echo "" && _w "copy to host via:"
-      _i "ssh-copy-id -i $path bmilcs@$host\n\n"
-      cat "$path".pub
+      _i "ssh-copy-id -i $path bmilcs@$host"
+      cat "$path".pub | xclip -sel clip
+      _a clipboard now filled w/ pubkey
     else
       _e "something went wrong"
     fi
