@@ -61,6 +61,9 @@ alias picomr='killall -q picom ; picom -b'
 alias rmup='rm -rf ~/.config/up/'
 alias upp='rmup && . $ZDOTDIR/05-update.sh'
 
+# zsh print registered commands
+alias zall='zle -al | fzf'
+
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 
 if [[ $DISTRO = "arch"* ]]; then # ARCH
@@ -272,7 +275,6 @@ alias pid='cat /etc/passwd'
 
 #────────────────────────────────────────────────────────────────  ssh  ───────
 
-alias sshe='cd ~/.ssh;nvim ~/.ssh/config'
 alias doc='ssh docker'
 alias plx='ssh plex'
 

@@ -19,10 +19,10 @@ function fdd() {
   fd -E /all/bm -E /all/media -E /backup $* .
 }
 
-#────────────────────────────────────────────────────────────  ansible  ───────
+#────────────────────────────────────────────────────────────────  ssh  ───────
 
-# ssh: toggle config file on/off
-togssh() {
+# toggle config file on/off
+ssht() {
   conf=~/.ssh/config 
   if [[ -f $conf ]]; then
     echo "${RED}${B}DISABLED${NC} ~/.ssh/config_off [DEBUG MODE]"
@@ -32,6 +32,14 @@ togssh() {
     mv "$conf"{_off,}
   fi
 }
+
+sshe() {
+  [[ -e ~/.ssh/config ]] && nvim ~/.ssh/config
+  [[ -e ~/.ssh/config_off ]] && nvim ~/.ssh/config
+}
+
+#────────────────────────────────────────────────────────────  ansible  ───────
+
 
 if [ -d "$ANSIBLE_HOME"/roles ]
 then
