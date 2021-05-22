@@ -54,10 +54,6 @@ if [ -e "$f" ]; then
   _nimg "$f" "$f"
 fi
 
-rm "$f"
-
-exit
-
 # 
 # maimsel() {
 #   if maim -s "$f"; then
