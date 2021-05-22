@@ -19,26 +19,50 @@ unset f
 # definitions
 case $1 in
 
-  a ) p="$D/opt/alacritty";; aa) c="$D/opt/alacritty";;
-  b ) p="$D/bin";; bb ) c="$D/bin" ;;
-  d ) p=~/.config/dunst;; dd) c=~/.config/dunst ;;
-  i ) p="$D/opt/i3/.config/i3";; ii) c="$D/opt/i3/.config/i3";;
-  p ) p="$D/opt/polybar/.config/polybar";; pp) c="$D/opt/polybar/.config/polybar/";;
-  r ) p="$D/opt/rofi";; rr) c="$D/opt/rofi/.config/rofi/" ;;
-  s ) p="$D/vim/.config/nvim/snips";; ss) c="$D/vim/.config/nvim/snips";;
-  t ) p=~/txt;; tt) c=$D/txt/txt ;;
-  u ) s="/usr/local/bin";; uu) c="/usr/local/bin" ;;
-  v ) p="$D/vim";; vv) c="$D/vim/.config/nvim/";;
-  z ) p="$D/zsh";; zz) c="$D/zsh/.config/zsh";;
-  x ) s="$D/opt/xorg";; xx) c="$D/opt/xorg" ;;
-  n ) p="$D/opt/ncmpcpp";; nn ) c="$D/opt/ncmpcpp/.config/ncmpcpp";;
-  tm ) f="$D/opt/tmux/.tmux.conf" ;;
-  # e) nvim "$D"/bin/bin/cfg ;;
-  # tm | tmux) nvim "$D"/opt/tmux/.tmux.conf ;;
-  # e) nvim "$D"/bin/bin/cfg ;;
-  # #xterm)    vim ~/.Xresources.d/xterm;;
-  # k) nvim "$D"/opt/sxhkd/.config/sxhkd/sxhkdrc ;;
-  # bsp) nvim "$D"/opt/bspwm/.config/bspwm/bspwmrc ;;
+  a ) p="$D/opt/alacritty" ;;
+  aa) c="$D/opt/alacritty" ;;
+
+  b ) p="$D/bin" ;;
+  bb) c="$D/bin" ;;
+
+  d ) p=~/.config/dunst ;;
+  dd) c=~/.config/dunst ;;
+
+  i ) p="$D/opt/i3/.config/i3" ;;
+  ii) c="$D/opt/i3/.config/i3" ;;
+
+  p ) p="$D/opt/polybar/.config/polybar" ;;
+  pp) c="$D/opt/polybar/.config/polybar/" ;;
+
+  r ) p="$D/opt/rofi/.config/rofi" ;;
+  rr) c="$D/opt/rofi/.config/rofi/" ;;
+
+  s ) p="$D/vim/.config/nvim/snips" ;;
+  ss) c="$D/vim/.config/nvim/snips" ;;
+
+  t ) p=~/txt;;
+  tt) c=$D/txt/txt ;;
+
+  u ) s="/usr/local/bin" ;;
+  uu) c="/usr/local/bin" ;;
+
+  v ) p="$D/vim/.config/nvim" ;;
+  vv) c="$D/vim/.config/nvim/" ;;
+
+  z ) p="$D/zsh/.config/zsh" ;;
+  zz) c="$D/zsh/.config/zsh" ;;
+
+  x ) s="$D/opt/xorg" ;;
+  xx) c="$D/opt/xorg" ;;
+
+  n ) p="$D/opt/ncmpcpp/.config/ncmpcpp" ;;
+  nn) c="$D/opt/ncmpcpp/.config/ncmpcpp" ;;
+
+  tm) f="$D/opt/tmux/.tmux.conf" ;;
+
+  k ) p="$D/opt/sxhkd/.config/sxhkd/sxhkdrc" ;;
+
+  bsp) p="$D/opt/bspwm/.config/bspwm/bspwmrc" ;;
 
   e ) nvim $(which ff) ;;
   * ) _a " opt"
