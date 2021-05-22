@@ -1,26 +1,41 @@
 RSNAPSHOT
-------------
-- storage
-  1. configure iscsi block for bulk backup storage
-  2. direct pass thru to backup VM for max performance
-- configure hosts:
-  1. bmpc
-  2. bmtp
-  3. plex
-  4. docker
+  check to see if rsnapshot schedule is working
+  find more exceptions, reduce weight
+  secure/harden
+    ansible playbook to deploy backup user
+    ssh-key allow rsync command only
 
-* ensure all working
 
-mpd web client
+SPRINKLER
+  MELNOR?
+  HOSES?
+FRENCH DRAIN
+  FABRIC
+  PIPE
+ROCKS/PEBBLES
 
-ansible: auto-update all hosts 
-         on 1st login (arch)
+#────────────────────────────────────────────────────────────────  LAB  ───────
 
-secure bitwarden
+  DOCKER
+    PROWLARR     nzbhydra/jackett alt
+    HOMER        organizar alt
 
-[www]
-> create vpn for docker access
-> convert subdomains to local nginx
+  WEB SITE     home improvement image galleries        
+  ROOT         dotfile solution, neovim, aliases, etc. 
+  BITWARDEN    secure, segment                         
+  UNIFI/UNMS   move both to rpi4 via docker            
+  WEB SERVER   segment, secure                         
+  MPD          Web client                              
+  VPN          Static, always open WG server           
+               Configure phone & laptop                
+               > create vpn for docker access
+               > convert subdomains to local nginx
+  ANSIBLE      auto update all hosts 
+               on 1st login (arch)
+               archlinux installer (repos, infrastructure.git-archlinux)
+
+#────────────────────────────────────────────────────────────────  OLD  ───────
+
 
 [wtb]
 - circular saw & guide
@@ -50,7 +65,6 @@ secure bitwarden
 - paint prime
 
 [ arch ]
-  - fix notification functions w/ 1 arg
   - security pop-up keybind (req https)
   - i3: binding: selection copy/paste
   - research commands w/ examples
