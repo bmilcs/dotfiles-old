@@ -14,10 +14,10 @@ if [[ $DISTRO == arch* ]]; then
 
   # ARCH
   _a pacman/aur 
-  if yay -Syyyuuu --noconfirm; then
+  if yay -Syyyuuu 2>&1 | tee /tmp/pacfix_in; then
     _s done
   else
-    pacfix
+    pacfix /tmp/pacfix_in
   fi
 
 elif [[ $DISTRO =~ raspian*|debian*|ubuntu* ]]; then

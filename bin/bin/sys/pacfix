@@ -20,6 +20,8 @@ if [[ $# == 0 ]]; then
   yay -Syyyuuu --noconfirm 2>&1 | tee "$paclist" && _s done
 elif [[ $* == *"pacman"* ]]; then
   eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s done
+elif [[ -e "$*" ]]; then
+  paclist="$*"
 else
   _e "bee bop. not sure what you're trying to do"
   exit 1
