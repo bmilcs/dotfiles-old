@@ -8,14 +8,23 @@
 #                 PACFIX [./pacfix]
 
 source _bm
-paclist=/tmp/pacman_fix
 
 _tb pacfix
-_a "capturing output"
 
+paclist=/tmp/pacfix
 rm "$paclist"{,.final} 2> /dev/null
 
-yay -Syyyuuu --noconfirm &> "$paclist" && _s done
+# determine command (no args = update)
+_a "capturing output"
+if [[ $# == 0 ]]; then
+  yay -Syyyuuu --noconfirm 2>&1 | tee "$paclist" && _s done
+elif [[ $* == *"pacman"* ]]; then
+  eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s done
+else
+  _e "bee bop. not sure what you're trying to do"
+  exit 1
+fi
+
 [ $# -gt 0 ] && _w "initial pacman output  [" && cat "$paclist" && _w "]"
 
 _a parsing output for broken packages
@@ -36,8 +45,10 @@ sed -i 's/\: \/.*//g' "$paclist"
 
 awk '!seen[$0]++' "$paclist" > "$paclist".final 
 [ $# -gt 0 ] && _w "final list [" && cat "$paclist" && _w "]"
-
 _s done
+
+nvim $paclist
+
 
 _a pacman: forcing overwrite
 while read x; do
