@@ -14,7 +14,7 @@ _t yay install
 #   --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' \
 #   | xargs -ro yay -S
 
-yay -Slq \
+yay -Slq --sortby votes\
   | fzf -m \
   --preview 'yay -Si {1}' \
-  | yay -S -
+  | yay -S --answerclean All --answerdiff None --answeredit None -
