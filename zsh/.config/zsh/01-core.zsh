@@ -6,8 +6,7 @@
 #                 ZSH: CORE [./01-core.zsh]
 
 # dotfile rc file debugging
-. "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ $ZDOTDIR/01-core.zsh'
+. "${HOME}/bin/sys/dotfile_logger" && dotlog '+ $ZDOTDIR/01-core.zsh'
 
 #────────────────────────────────────────────────────────────  HISTORY  ───────
 
@@ -39,9 +38,11 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 # plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light nojanath/ansible-zsh-completion 
 zinit light zdharma/fast-syntax-highlighting
+zinit light nojanath/ansible-zsh-completion 
 zinit load wfxr/forgit
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 # dir_colors
 [[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
@@ -53,17 +54,6 @@ zinit load wfxr/forgit
 #────────────────────────────────────────────────────────────  OPTIONS  ───────
 
 set nocompatible              # not vi-backwards-compatible
-
-# vim
-
-bindkey -v                    # vim mode
-export KEYTIMEOUT=1           # vim speed increase
-function vi-yank-xclip {      # yank to the system clipboard
-    zle vi-yank
-    echo "$CUTBUFFER" | xclip -sel clip # -i
-}
-zle -N vi-yank-xclip
-bindkey -M vicmd 'y' vi-yank-xclip
 
 # directory
 
@@ -126,6 +116,7 @@ zstyle ':completion:*' list-colors “${(s.:.)LS_COLORS}” # colorize output
 
 #zstyle ':completion:*' matcher-list '' \
 #  '+m:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' # case insensitive
+
 zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
@@ -223,20 +214,25 @@ key[Shift-Tab]="${terminfo[kcbt]}"
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  end-of-buffer-or-history
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}" reverse-menu-complete
 
-# TODO: bindkey -> zle -al (show all registered commands)
-# TODO: FIX AUTOSUGGEST-ACCEPT BINDING
-#bindkey '^l' autosuggest-accept 
 bindkey '^\n' autosuggest-accept 
 bindkey '^j' up-line-or-beginning-search
 bindkey '^k' down-line-or-beginning-search
+
+# TODO: bindkey -> zle -al (show all registered commands)
+# TODO: FIX AUTOSUGGEST-ACCEPT BINDING
+
+#bindkey '^l' autosuggest-accept 
 #bindkey '^H' backward-kill-word # ctrl backspace delete word
 #bindkey '^[[3;5~' kill-word
 
-# ensure terminal is in application mode, when zle is active. Only then are the values from $terminfo valid.
-#if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-#	autoload -Uz add-zle-hook-widget
-#	function zle_application_mode_start { echoti smkx }
-#	function zle_application_mode_stop { echoti rmkx }
-#	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-#	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-#fi
+#────────────────────────────────────────────────────────────  vim nav  ───────
+# vim [replaced by plugin]
+# bindkey -v                    # vim mode
+# export KEYTIMEOUT=1           # vim speed increase
+# function vi-yank-xclip {      # yank to the system clipboard
+#     zle vi-yank
+#     echo "$CUTBUFFER" | xclip -sel clip # -i
+# }
+# zle -N vi-yank-xclip
+# bindkey -M vicmd 'y' vi-yank-xclip
+
