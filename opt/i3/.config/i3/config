@@ -224,12 +224,15 @@ workspace $ws3  gaps inner 10
 workspace $ws4  gaps vertical  12
 workspace $ws4  gaps horizontal 12
 workspace $ws4  gaps inner 10
+
 workspace $ws5  gaps vertical  12
 workspace $ws5  gaps horizontal 12
 workspace $ws5  gaps inner 10
+
 workspace $ws6  gaps vertical  12
 workspace $ws6  gaps horizontal 12
 workspace $ws6  gaps inner 10
+
 workspace $ws7  gaps vertical  12
 workspace $ws7  gaps horizontal 12
 workspace $ws7  gaps inner 10

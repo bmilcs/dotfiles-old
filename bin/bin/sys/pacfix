@@ -9,7 +9,7 @@
 
 source _bm
 
-_tb pacfix
+_a pacfix
 
 paclist=/tmp/pacfix
 rm "$paclist"{,.final} 2> /dev/null
