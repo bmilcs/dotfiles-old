@@ -13,6 +13,14 @@ _t docker-compose
 
 cd ~/docker || (_e "~/docker missing!" && exit 1)
 
+# clean up docker system
+dclean() {
+  docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+  docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+}
+
+
+
 _a docker-compose down && docker-compose down && _s
 
 _a docker-compose pull && docker-compose pull && _s
@@ -43,5 +51,8 @@ else
     && _s done
 fi
 
-_ay clean old docker content
-_f run: dclean
+_ay docker cleanup
+_f "$ dclean"
+if _ask run now? ${B}dclean; then
+  dclean
+fi
