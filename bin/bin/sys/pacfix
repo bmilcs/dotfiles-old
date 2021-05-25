@@ -49,9 +49,6 @@ awk '!seen[$0]++' "$paclist" > "$paclist".final
 [ $# -gt 0 ] && _w "final list [" && cat "$paclist" && _w "]"
 _s done
 
-nvim $paclist
-
-
 _a pacman: forcing overwrite
 while read x; do
   echo "fixing $x"
