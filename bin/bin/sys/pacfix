@@ -11,48 +11,91 @@ source _bm
 
 _a pacfix
 
+#───────────────────────────────────────────────────  init output file  ───────
+
 paclist=/tmp/pacfix
 rm "$paclist"{,.final} 2> /dev/null
 
-# determine command (no args = update)
-_a "capturing output"
+#───────────────────────────────────────────────────  course of action  ───────
+
+# no args
 if [[ $# == 0 ]]; then
-  yay -Syyyuuu --noconfirm 2>&1 | tee "$paclist" && _s done
-elif [[ $* == *"pacman"* ]]; then
+
+  _a "capturing output: yay -Syyuu"
+  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s done
+
+# args contain pacman or yay
+elif [[ $* == *"pacman|yay"* ]]; then
+
+  _a "capturing output: \'$*\' (literal) "
   eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s done
+
 elif [[ -e "$*" ]]; then
   paclist="$*"
+
+# args assumed to be package names
 else
-  _e "bee bop. not sure what you're trying to do"
+
+  _a "fixing broken packages: $*"
+  for pkg in "$@"
+  do
+    _a "adding: $pkg"
+    echo "$pkg" >> "$paclist".final
+    _s "done"
+  done
+
+fi
+
+#──────────────────────────────────────────────────  cleanup raw input   ──────
+
+if [ -s "$paclist" ]; then 
+
+  # debug
+  [ $# -gt 0 ] && _w "initial pacman output  [" && cat "$paclist" && _w "]"
+
+  # cleanup pacman/yay output
+  _a parsing output for broken packages
+
+  # delete lines not containing 'exists in filesystem'
+  sed -i '/exists in filesystem/!d' "$paclist"  
+
+  # debug
+  [ $# -gt 0 ] && _w "deleted lines w/o exists in filesystem [" && cat "$paclist" && _w "]"
+
+  # check if any packages remain, after clean-up
+  if [ -s "$paclist" ]; then
+    _iy "package filesystem errors found!"
+  else
+    _i "no errors need fixin'"
+    _s "done"
+    exit 0
+  fi
+
+  sed -i 's/\: \/.*//g' "$paclist"
+  [ $# -gt 0 ] && _w "sed: package names [" && cat "$paclist" && _w "]"
+
+  awk '!seen[$0]++' "$paclist" > "$paclist".final 
+  [ $# -gt 0 ] && _w "final list [" && cat "$paclist".final && _w "]"
+
+  _s "done"
+
+#──────────────────────────────────────────────────  specific packages  ───────
+
+elif [ -n "$paclist".final ]; then
+  echo
+else
+  _e "no output to parse"
   exit 1
 fi
 
-[ $# -gt 0 ] && _w "initial pacman output  [" && cat "$paclist" && _w "]"
+#_a pacman: forcing overwrite
+_a yay time
 
-_a parsing output for broken packages
-
-sed -i '/exists in filesystem/!d' "$paclist"  
-[ $# -gt 0 ] && _w "deleted useless lines [" && cat "$paclist" && _w "]"
-
-if [ -s "$paclist" ]; then
-  _iy "package errors found!"
-else
-  _i "no errors need fixin'"
-  _s done
-  exit 0
-fi
-
-sed -i 's/\: \/.*//g' "$paclist"
-[ $# -gt 0 ] && _w "sed: package names [" && cat "$paclist" && _w "]"
-
-awk '!seen[$0]++' "$paclist" > "$paclist".final 
-[ $# -gt 0 ] && _w "final list [" && cat "$paclist" && _w "]"
-_s done
-
-_a pacman: forcing overwrite
 while read x; do
   echo "fixing $x"
-  sudo pacman -S --noconfirm --overwrite "*" "$x" &> /dev/null \
+  yay -S --noconfirm --overwrite "*" "$x" &> /dev/null \
     && echo "> done!"
 done <"$paclist".final
-rm "$paclist"{,.final}
+
+# clean up
+rm "$paclist"{,.final} 2&>1 /dev/null
