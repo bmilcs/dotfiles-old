@@ -13,8 +13,12 @@ RSNAPSHOT
 
 
 SPRINKLER
-  MELNOR?
-  HOSES?
+  SPRAY BASE   HUNTER PRO 
+  HEAD         MP3000
+  RISER        1/2"
+  SPIKE        1/2"
+  ADJUSTER     TOOLS
+  
 FRENCH DRAIN
   FABRIC
   PIPE
@@ -36,6 +40,8 @@ ROCKS/PEBBLES
                Configure phone & laptop                
                > create vpn for docker access
                > convert subdomains to local nginx
+  ANON         redo privacy vpn
+               headless, x11 browser
   ANSIBLE      auto update all hosts 
                on 1st login (arch)
                archlinux installer (repos, infrastructure.git-archlinux)
