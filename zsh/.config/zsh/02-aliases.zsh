@@ -85,7 +85,6 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   # arch specific
   # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
   alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
-  alias s='sudo';compdef s='sudo'
 
   alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
   alias cdns='sudo systemd-resolve --flush-caches'
@@ -200,6 +199,8 @@ alias cp='cp -v'
 alias c='clear'
 alias ..='cd ..&& c && l'
 alias ...='cd ../.. && c && l'
+alias s='sudo';compdef s='sudo'
+
 
 # fzf
 # alias -g zz='fzf -m'
