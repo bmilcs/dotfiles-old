@@ -292,6 +292,14 @@ alias pid='cat /etc/passwd'
 
 alias doc='ssh docker'
 alias plx='ssh plex'
+alias esxidl='
+scp -r  esxi:/bm         ~/dev/esxi
+scp     esxi:/.profile  ~/dev/esxi/.profile
+'
+alias esxiul='
+scp -r  ~/dev/esxi/bm        esxi:/
+scp     ~/dev/esxi/.profile  esxi:/.profile 
+'
 
 #───────────────────────────────────────────────────────  old script  ─────────
 #   mkdir -m 700 -p ~/.ssh
