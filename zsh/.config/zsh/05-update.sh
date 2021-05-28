@@ -40,6 +40,7 @@ rstatus="$HOME/.config/up/repos.bm"
 ustatus="$HOME/.config/up/system.bm"
 vstatus="$HOME/.config/up/vim.bm"
 zstatus="$HOME/.config/up/zsh.bm"
+astatus="$HOME/.config/up/ansible.bm"
 running="$HOME/.config/up/running.bm"
 
 #──────────────────────────────────────────────────────  history check  ───────
@@ -51,6 +52,7 @@ running="$HOME/.config/up/running.bm"
 [[ -f $ustatus ]] && slast="$(cat "$ustatus")" || slast=00 
 [[ -f $vstatus ]] && vlast="$(cat "$vstatus")" || vlast=00
 [[ -f $zstatus ]] && zlast="$(cat "$zstatus")" || zlast=00
+[[ -f $astatus ]] && alast="$(cat "$astatus")" || alast=00
 
 #──────────────────────────────────────────────────────────────  begin  ───────
 
@@ -117,8 +119,9 @@ fi
 
 #─────────────────────────────────────────────────────  ansible [bmpc]  ───────
 
-if [[ "$HOST" == bmPC ]]; then
+if [[ "$HOST" == bmPC ]] && [[ ! $alast == "$today" ]]; then
   _a ansible-playbook: update
   apb update.yml \
-  && _s "done"
+  && _s "done" \
+  && echo "$today" > "$astatus"
 fi
