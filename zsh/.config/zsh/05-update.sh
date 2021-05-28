@@ -114,3 +114,10 @@ else # update running already
   _wb "instance of ${B}auto-update${BLU} running in another terminal."
 
 fi
+
+#─────────────────────────────────────────────────────  ansible [bmpc]  ───────
+
+[ $HOST == bmPC ] &&\
+  _a ansible-playbook: update &&\
+  apb update.yml &&\
+  _s "done"
