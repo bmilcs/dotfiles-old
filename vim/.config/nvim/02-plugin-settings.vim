@@ -8,7 +8,7 @@
 "───────────────────────────────────────────────────────────────  misc  ──────"
 
 " color theme [nord,gruvbox]
-colorscheme gruvbox
+colorscheme nord
 
 "─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
 
