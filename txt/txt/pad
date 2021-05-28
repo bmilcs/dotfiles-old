@@ -1,8 +1,5 @@
-finish readarr, calibre, calibre-web
-
-
-MEDC465HW0
-
+Dryer
+  MEDC465HW0
 
 RSNAPSHOT
   check to see if rsnapshot schedule is working
@@ -10,7 +7,6 @@ RSNAPSHOT
   secure/harden
     ansible playbook to deploy backup user
     ssh-key allow rsync command only
-
 
 SPRINKLER
   SPRAY BASE   HUNTER PRO 
@@ -29,7 +25,9 @@ ROCKS/PEBBLES
   DOCKER
     PROWLARR     nzbhydra/jackett alt
     HOMER        organizar alt
-
+    READARR
+    CALIBRE
+    CALIBRE-WEB
   WEB SITE     home improvement image galleries        
   ROOT         dotfile solution, neovim, aliases, etc. 
   BITWARDEN    secure, segment                         
@@ -47,7 +45,6 @@ ROCKS/PEBBLES
                archlinux installer (repos, infrastructure.git-archlinux)
 
 #────────────────────────────────────────────────────────────────  OLD  ───────
-
 
 [wtb]
 - circular saw & guide
@@ -116,5 +113,4 @@ domain email forwarding!
     - Password login
 
 - learn advanced bash https://learnxinyminutes.com/docs/bash/
-
 

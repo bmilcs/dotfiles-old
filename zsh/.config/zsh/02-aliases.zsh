@@ -19,7 +19,7 @@ dotlog '+ $ZDOTDIR/02-aliases.zsh'
 # text editors
 alias nano='nvim'                 ; compdef nano='nvim'
 alias vim='nvim'                  ; compdef vim='nvim'
-alias svim='sudoedit'             ; compdef svim='nvim'
+alias svim='sudo nvim'            ; compdef svim='nvim'
 alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
 
 # dotfiles repo
@@ -67,13 +67,17 @@ alias zall='zle -al | fzf'
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 
 if [[ $DISTRO = "arch"* ]]; then # ARCH
-  # aur | yay
+
+  # pacman
   alias pacman='sudo pacman';compdef pacman='pacman'
   alias pm='pacman';compdef pm='pacman'
   alias pms='pacman -S';compdef pms='pacman'
   alias pmls='pacman -Qe|yay';compdef pmls='pacman'
   alias pmg='pacman -Qe|grep';compdef pmg='pacman'
   alias pmgg='pacman -Q|grep';compdef pmgg='pacman'
+  alias pmsize='expac -HM "%m|%n" | sort -h | tail -n 30 | column -s "|" -t -o "___"'
+
+  # yay
   alias yays='yay -S';compdef yays='yay'
   alias yayls='yay -Qe | fzf';compdef yayls='yay'
   alias yayl='yayls';compdef yayl='yay'
@@ -82,30 +86,37 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yaycln='yay -Sc --aur';compdef yayc='yay'
   alias pmreport='pacreport --unowned-files'
+
   # arch specific
   # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
+
   alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
 
   alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
   alias cdns='sudo systemd-resolve --flush-caches'
   alias rdns='cdns'
+
   alias xc='xclip -selection clipboard'
   alias xp='xclip -selection clipboard -o'
   alias xcc='xclip -selection primary'
   alias xpp='xclip -selection primary -o'
+
   alias cat='bat';compdef cat='bat'
+
   # alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
 
-#──────────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
-else 
+else #─────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
 
   # syslog
   alias syslogg='sudo cat /var/log/syslog | grep '
   alias syslogls='sudo cat /var/log/syslog'
+
+  # apt
   alias apti='sudo apt-get install -y'
   alias aptr='sudo apt-get purge -y'
   alias aptg='dpkg --get-selections | grep'
   alias aptls='sudo apt list --installed'
+
 fi
 
 #───────────────────────────────────────────────────────────────  APPS  ───────
@@ -132,7 +143,7 @@ alias tn='t new -t'       ; compdef tn='tmux'       # new session, target name
 alias tls='t ls'          ; compdef tls='tmux'      # list sessions
 
 # ncdu
-alias ncdu='ncdu --exclude /all --exclude /backup '
+alias ncdu='ncdu --exclude /all --exclude /backup --exclude /vault'
 
 # wallpaper
 alias nitro='nitrogen ~/wall'
@@ -142,7 +153,8 @@ alias fehbg='feh -g 640x480 -d -S filename ~/wall'
 alias mutt='neomutt'
 alias em='neomutt'
 
-# git
+#────────────────────────────────────────────────────────────────  git  ───────
+
 alias grevp='git rev-parse > /dev/null 2>&1'
 alias gcl='git clone --depth=1'
 alias g='grevp         || git' ; compdef g='git'
@@ -163,10 +175,11 @@ alias guser='git config user.name bmilcs \
 
 #─────────────────────────────────────────────────────────────────  ls  ───────
 
-alias l='ls' ; compdef l='ls'
 
 alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first \
   --time-style='+%D %H:%M'' ; compdef ls='ls'
+
+alias l='ls' ; compdef l='ls'
 alias ll='LC_ALL=C command ls -AC --color=auto --group-directories-first \
   --time-style='+%D %H:%M'' ; compdef ll='ls'
 alias lll='command ls -l --color=auto --group-directories-first \
@@ -174,13 +187,13 @@ alias lll='command ls -l --color=auto --group-directories-first \
 alias llll='command ls -C --color=auto --group-directories-first \
   --time-style='+%D %H:%M'' ; compdef llll='ls'
 
-alias lst='l -tr' 
-alias lsg='l | grep'          # search in dir
-alias lsd='l -d */'           # ls: dirs only
+alias lst='l -tr'             # modified, reverse
+alias lsg='l | grep'          # grep ls output
+alias lsd='l -d */'           # ls only dirs 
 
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
-# rm -rf
+# rm -rf verbose
 alias rM='rm -rfv'
 
 # colorize
@@ -215,20 +228,19 @@ alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
   mount -l | grep nfs'
 
 # fstab
-alias fstab='sudoedit /etc/fstab'
+alias fstab='svim /etc/fstab'
 dpkg -s 'findmnt' > /dev/null 2>&1 && (
   alias fstabt='sudo findmnt --verify --verbose' ; compdef fstabt='findmnt')
 
 # nfs shares
-alias nfs='sudoedit /etc/exports'
+alias nfs='svim /etc/exports'
 alias nfsr='sudo systemctl restart nfs-kernel-server'
 
 # smb
-alias smb='sudoedit /etc/samba/smb.conf'
+alias smb='svim /etc/samba/smb.conf'
 
 #─────────────────────────────────────────────────────────────  SYSTEM  ───────
 
-alias pmsize='expac -HM "%m|%n" | sort -h | tail -n 30 | column -s "|" -t -o "___"'
 # reboot, shutdown, etc.
 alias rex='sudo systemctl restart display-manager'
 alias rb='sudo systemctl reboot'
@@ -261,7 +273,8 @@ alias scue='scu enable'                                 ;compdef scud='systemctl
 alias scd='sc disable'                                  ;compdef scud='systemctl'
 alias scud='scu disable'                                ;compdef scud='systemctl'
 
-# print outs
+#─────────────────────────────────────────────────────────  print outs   ──────
+
 # alias a="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
@@ -365,7 +378,7 @@ if [[ $DISTRO == "debian" ]]; then
   alias ibak='upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc'
   alias ibakls='sudo cat /etc/rsnapshot.conf | grep ^backup'
   alias ibakadd='sudo /bin/bash ~/.bmilcs/script/backup.sh add'
-  alias rsnap='sudoedit /etc/rsnapshot.conf'
+  alias rsnap='svim /etc/rsnapshot.conf'
 
   # minecraft
 
@@ -378,7 +391,7 @@ if [[ $DISTRO == "debian" ]]; then
 #   sudo apt install nfs-kernel-server
 #   echo && echo "====================================================================================================="
 #   echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-#   echo "sudoedit /etc/exports"
+#   echo "svim /etc/exports"
 #   echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
 #   echo "-----------------------------------------------------------------------------------------------------"'
 
@@ -390,7 +403,7 @@ if [[ $DISTRO == "debian" ]]; then
 #   echo && echo "====================================================================================================="
 #   echo "====  bmilcs: samba instructions  ==================================================================="
 #   echo "=====================================================================================================" && echo
-#   echo "sudoedit /etc/samba/smb.conf"
+#   echo "svim /etc/samba/smb.conf"
 #   echo "#       workgroup = BM"
 #   echo "#       interfaces = 192.168.1.0/24 eth0"
 #   echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
@@ -412,7 +425,7 @@ fi
 #──────────────────────────────────────────────────  DEBIAN NETWORKING  ───────
 
 #alias rnet="sudo /etc/init.d/networking restart"
-#alias enet="sudoedit /etc/network/interfaces"
+#alias enet="svim /etc/network/interfaces"
 
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 

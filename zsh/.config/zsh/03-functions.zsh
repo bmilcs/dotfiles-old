@@ -33,6 +33,7 @@ ssht() {
   fi
 }
 
+# edit ssh config
 sshe() {
   [[ -e ~/.ssh/config ]] && nvim ~/.ssh/config
   [[ -e ~/.ssh/config_off ]] && nvim ~/.ssh/config
@@ -84,9 +85,9 @@ then
   compdef aa='ansible'
   compdef '_files -W $ANSIBLE_HOME/' apb
   compdef '_files -W $ANSIBLE_HOME/' apbe
-# compdef '_files -P $ANSIBLE_HOME/ -W $ANSIBLE_HOME/ -g "*(.)"' apb
-
+  
   # complete full paths
+  # compdef '_files -P $ANSIBLE_HOME/ -W $ANSIBLE_HOME/ -g "*(.)"' apb
   # compdef '_files -P $ANSIBLE_HOME/ -W $ANSIBLE_HOME/ -g "*(.)"' apbe
 
 fi
