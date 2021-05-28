@@ -1,0 +1,119 @@
+#!/bin/sh
+# BMILCS: VMDK THIN CONVERTER 
+
+#──────────────────────────────────────────────────────────  variables  ───────
+
+# default values
+thick="${1%.vmdk}.vmdk"
+thick2="${1%.vmdk}-flat.vmdk"
+thin="${1%.vmdk}-thin.vmdk"
+
+#──────────────────────────────────────────────────────────  functions  ───────
+
+# separator
+dotline() {
+  echo -e "-----------------------------------------------------\n"
+  }
+
+# remove THICC version
+cleanup() {
+  if [ -e "$thick" ] && [ -e "$thin" ]; then
+
+    while true; do
+      dotline
+      read -p "delete old/thick vmdk? [$thick] [$thick2] " yn
+      case $yn in
+        [Yy]* ) rm -rf "$thick" "$thick2" && echo "done!";break;;
+        [Nn]* ) exit;;
+        * ) echo "required! [y/n]: ";;
+    esac
+    done
+
+  else
+
+    echo "error: missing $thick or $thin"
+    echo "- unable to cleanup! / not safe to delete yet"
+    exit 1
+
+  fi
+}
+
+#──────────────────────────────────────────────────────────────  begin  ───────
+
+echo 'vmdk thick -> thin converter [bmilcs]'
+dotline
+
+#────────────────────────────────────────────────────  parse arguments  ───────
+
+# 2+ args
+if [ $# -gt 1 ]; then
+
+  echo "- too many args: 0 (autopilot), 1 (name of vmdk)"
+  exit 1
+
+# 0 args
+elif [ $# -eq 0 ]; then
+
+  echo "[autopilot engaged!]"
+  echo "proceeding with: "
+  echo
+
+  thick="${PWD##*/}.vmdk"
+  thick2="${PWD##*/}-flat.vmdk"
+  thin="${PWD##*/}-thin.vmdk"
+
+  echo "- thick [src] > $thick"
+  echo "-             > $thick2"
+  echo
+  echo "- thin [dest] > $thin"
+
+  dotline
+
+  echo "[running tests]"
+
+  if [ -e "$thick" ]; then
+    if [ -e "$thin" ]; then
+      echo "- ruh oh! $thin already exists!"
+      cleanup
+      exit
+    else
+      echo "- everything looks good!"
+    fi
+  else
+    echo "- fail: unable to locate VMDK"
+    exit 1
+  fi
+
+# 1 arg
+
+elif [ ! -e "$thick" ]; then
+
+  echo "- unable to find $thick"
+  exit 1
+
+elif [ -e "$thin" ]; then
+
+  echo "- thin version found"
+  cleanup
+  exit
+
+fi
+
+dotline
+
+#────────────────────────────────────────────────────  vmdk conversion  ───────
+
+echo "[conversion time]"
+echo 
+
+if vmkfstools -i "$thick" -d thin "$thin"; then
+  echo
+  echo "success!!!"
+  dotline
+  cleanup
+  exit 0
+else
+  dotline
+  echo "error: something went wrong"
+  exit 1
+fi

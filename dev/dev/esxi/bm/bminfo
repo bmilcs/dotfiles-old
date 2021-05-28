@@ -1,0 +1,34 @@
+#!/bin/sh
+# BMILCS: esxi vm scripting actions test
+
+[ ! $# -eq 1 ] && echo "error: vm name required!" && exit 1
+
+# acquire ID of a vim
+ID=$(vim-cmd vmsvc/getallvms | grep "$1" | awk -F " $1" '{print $1}' | xargs) #&> /dev/null
+
+if [ ${#ID} -gt 3 ] || [ ${#ID} -eq 0 ]; then
+  echo "error: something went wrong"
+  exit 1
+fi
+
+# acquire power status of ID
+STATUS=$(vim-cmd vmsvc/power.getstate "$ID" | grep "Powered") #&> /dev/null
+
+# echo VM info:
+echo "vm: '$1'"
+echo "id: '$ID'"
+# echo "st: '$STATUS'"
+
+case "$STATUS" in
+  *off*)  echo "st: off"
+          echo "powering on..."
+          vim-cmd vmsvc/power.on "$ID" &> /dev/null \
+            && echo "done."
+          ;;
+  *on*)   echo "st: on"
+          echo "powering off..."
+          vim-cmd vmsvc/power.shutdown "$ID" \
+            && echo "done."
+          ;;
+  *)      echo "n/a"; exit 1;;
+esac

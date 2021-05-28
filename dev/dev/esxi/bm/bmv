@@ -1,0 +1,68 @@
+#!/bin/sh
+# BMILCS: VM MOVER/RENAMER
+
+if [ ! $# = 2 ]; then
+  echo "useage: ./bmmv 'orig' 'new'"
+  exit 1
+fi
+
+# remove any slashes
+orig="${1%/}"
+new="${2%/}"
+len=$((${#orig}+1))
+
+if [ ! -d "$orig" ]; then
+  echo "error: $orig not found"
+  exit 1
+fi
+
+mv "$orig" "$new" || exit 1
+cd "$new" || exit 1
+
+echo "----------------------------------"
+
+# loop dir, renaming old prefix'ed files
+for name in "$orig"*
+do
+
+  unset newlen
+  case $name in
+    "$orig"_[0-9]* ) newlen=$((len+2)) ;;
+                 * ) newlen=$len       ;;
+  esac
+
+  newname="$new$(echo "$name" | cut -c${newlen}-)"
+  mv "$name" "$newname" 
+  echo "$name: $newname"
+
+done
+
+# correct references in configs
+
+sed -i 's/'"$orig"'/'"$new"'/g' "$new".vmdk
+sed -i 's/'"$new"'_[0-9]/'"$new"'/g' "$new".vmdk
+sed -i 's/'"$orig"'/'"$new"'/g' "$new".vmx
+sed -i 's/'"$new"'_[0-9]/'"$new"'/g' "$new".vmx
+
+echo "----------------------------------"
+
+# print changes made to *.vmdk
+echo "altered lines within: $new.vmdk:"
+cat "$new".vmdk | grep "$new"
+cat "$new".vmdk | grep "$orig"
+
+echo "----------------------------------"
+
+# print changes made to *.vmx
+echo "altered lines within: $new.vmx:"
+cat "$new".vmx | grep "$new"
+cat "$new".vmx | grep "$orig"
+
+echo "----------------------------------"
+
+ls -lat
+
+echo "----------------------------------"
+echo "bmilcs vm renamer done!"
+echo "----------------------------------"
+echo ""
