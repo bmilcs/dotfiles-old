@@ -4,12 +4,11 @@
 "  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 "  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 "                VIM PLUGIN SETTINGS
+"
 "───────────────────────────────────────────────────────────────  misc  ──────"
 
-
-
-" nord theme
-colorscheme nord
+" color theme [nord,gruvbox]
+colorscheme gruvbox
 
 "─────────────────────────────────────────────────────────  VIMSPECTOR  ──────"
 
@@ -218,8 +217,6 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>,
   \ fzf#vim#with_preview(),
   \ <bang>0)
-
-
 
 " #############################################################################
 " ############################# G R A V E Y A  R D  ###########################

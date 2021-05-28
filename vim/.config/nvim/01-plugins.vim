@@ -13,8 +13,9 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 
 "──────────────────────────────────────────────────────────  UNIVERSAL  ──────"
 
-" color scheme
+" color schemes
   Plug 'arcticicestudio/nord-vim'
+  Plug 'morhetz/gruvbox'
 
 " status bar
   Plug 'vim-airline/vim-airline'
