@@ -6,8 +6,8 @@
 #              ALACRITTY TERMINAL
 
 import:
-#  - ~/.config/alacritty/nord.yml
-   - ~/.config/alacritty/gruvbox.yml
+   - ~/.config/alacritty/nord.yml
+#  - ~/.config/alacritty/gruvbox.yml
 
 live_config_reload: true
 # FONT ──────────────────────────────────────────────────────
