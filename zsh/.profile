@@ -28,8 +28,8 @@ dotlog '+ ~/.profile'
 
 # go path (i3keys)
 [ -d "$HOME/.config/go" ] && [ -z "$(echo "$PATH" \
-  | grep -o "$HOME/.config/go")" ] && export GOROOT="$HOME/.config/go" \
-  && export PATH=$PATH:$GOROOT/bin
+  | grep -o "$HOME/.config/go")" ] && export GOPATH="$HOME/.config/go" \
+  && export PATH=$PATH:$GOPATH/bin
 
 #────────────────────────────────────────────────────────  clean $home  ───────
 
