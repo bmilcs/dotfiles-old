@@ -117,7 +117,8 @@ fi
 
 #─────────────────────────────────────────────────────  ansible [bmpc]  ───────
 
-[ $HOST == bmPC ] &&\
-  _a ansible-playbook: update &&\
-  apb update.yml &&\
-  _s "done"
+if [[ "$HOST" == bmPC ]]; then
+  _a ansible-playbook: update
+  apb update.yml \
+  && _s "done"
+fi
