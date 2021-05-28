@@ -4,8 +4,11 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #              ALACRITTY TERMINAL
+
 import:
-  - ~/.config/alacritty/nord.yml
+#  - ~/.config/alacritty/nord.yml
+   - ~/.config/alacritty/sch.yml
+
 live_config_reload: true
 # FONT ──────────────────────────────────────────────────────
 font:
