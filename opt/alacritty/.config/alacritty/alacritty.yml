@@ -66,8 +66,8 @@ window:
   #dynamic_padding: true
   dynamic_title: true
   padding:
-    x: 2
-    y: 2  
+    x: 3
+    y: 3  
   #dimensions:
   #  columns: 0
   #  lines: 0
