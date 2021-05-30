@@ -1,9 +1,13 @@
 
 ### bmilcs/dotfiles
 
+
 <kbd>
 <a href="img/rice-2021-05-30.png"><img src="img/rice-2021-05-30.png"></a>
 </kbd>
+
+
+> taken: sunday, 05/30/2021
 
 ``` bash
 # deploy my dotfiles
