@@ -1,5 +1,5 @@
 <kbd>
-  <img src="img/rice-2020-03-08.png">
+  <a href="img/rice-2021-05-30.png"><img src="img/rice-2021-05-30.png"></a>
 </kbd>
 
 ### bmilcs/dotfiles
