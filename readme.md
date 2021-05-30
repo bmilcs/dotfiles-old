@@ -1,13 +1,14 @@
 
 ### bmilcs/dotfiles
 
+<kbd>
+<a href="img/rice-2021-05-30.png"><img src="img/rice-2021-05-30.png"></a>
+</kbd>
+
 ``` bash
 # deploy my dotfiles
 [ ! -d ~/bm ] && git clone --depth 1 https://dot.bmilcs.com bm && cd bm && ./install.sh
 ```
-<kbd>
-<a href="img/rice-2021-05-30.png"><img src="img/rice-2021-05-30.png"></a>
-</kbd>
 
 - [zsh](/zsh/.config/zsh/) (shell)
 - [vim](/vim/.config/nvim) (text editor)
