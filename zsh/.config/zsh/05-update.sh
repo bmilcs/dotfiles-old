@@ -95,9 +95,9 @@ if [[ ! -f "$running" ]]; then
 
     # zinit
     [[ ! "$today" == "$zlast" ]] &&\
+      echo "$today" > "$zstatus" &&\
       _a "zinit: self update" && zinit self-update && _s &&\
-      _a "zinit: plugins" && zinit update --all && _s &&\
-      echo "$today" > "$zstatus"
+      _a "zinit: plugins" && zinit update --all && _s 
 
     # vim plugins
     if [[ ! "$today" == "$vlast" ]] && [[ -z $ansible ]]; then
@@ -111,17 +111,17 @@ if [[ ! -f "$running" ]]; then
     gp && echo "$today" > "$dstatus"
   fi
 
+  # ansible [bmpc] 
+  if [[ "$HOST" == "bmPC" ]] && [[ ! "$today" == "$alast" ]]; then
+    echo "$today" > "$astatus"
+    _a ansible-playbook: update
+    apb update.yml \
+      && _s "done"
+  fi
+
 else # update running already
 
   _wb "instance of ${B}auto-update${BLU} running in another terminal."
 
 fi
 
-#─────────────────────────────────────────────────────  ansible [bmpc]  ───────
-
-if [[ "$HOST" == bmPC ]] && [[ ! $alast == "$today" ]]; then
-  _a ansible-playbook: update
-  apb update.yml \
-  && _s "done" \
-  && echo "$today" > "$astatus"
-fi
