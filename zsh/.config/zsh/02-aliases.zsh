@@ -116,7 +116,6 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
 
   alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
 
-  alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
   alias cdns='sudo systemd-resolve --flush-caches'
   alias rdns='cdns'
 
@@ -155,6 +154,9 @@ if [[ $HOST == mpd ]]; then
 fi
 
 #───────────────────────────────────────────────────────────────  APPS  ───────
+
+
+alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
