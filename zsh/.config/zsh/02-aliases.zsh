@@ -14,6 +14,11 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/02-aliases.zsh'
 
+#───────────────────────────────────────────────────────────────  misc  ───────
+
+# homebrew switch
+alias nin='./fusee-launcher.py hekate-5.1.1.bin'
+
 #───────────────────────────────────────────────────────────────  text  ───────
 
 # text editors
@@ -96,10 +101,10 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias cdns='sudo systemd-resolve --flush-caches'
   alias rdns='cdns'
 
-  alias xc='xclip -selection clipboard'
-  alias xp='xclip -selection clipboard -o'
-  alias xcc='xclip -selection primary'
-  alias xpp='xclip -selection primary -o'
+  alias xc='xclip -sel clip'
+  alias xp='xclip -sel clip -o'
+  alias xcc='xclip -sel primary'
+  alias xpp='xclip -sel primary -o'
 
   alias cat='bat';compdef cat='bat'
 
