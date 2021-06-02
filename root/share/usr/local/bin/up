@@ -17,7 +17,7 @@ if [[ $DISTRO == arch* ]]; then
   yay -Syyyuuu 2>&1 | tee /tmp/pacfix_in
   pacfix /tmp/pacfix_in
 
-elif [[ $DISTRO =~ raspian*|debian*|ubuntu* ]]; then
+elif [[ $DISTRO =~ raspbian*|debian*|ubuntu* ]]; then
 
   # DEBIAN
   _t apt
