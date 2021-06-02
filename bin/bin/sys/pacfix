@@ -9,8 +9,6 @@
 
 source _bm
 
-_a pacfix
-
 #───────────────────────────────────────────────────  init output file  ───────
 
 paclist=/tmp/pacfix
@@ -21,29 +19,32 @@ rm "$paclist"{,.final} &> /dev/null
 # no args
 if [[ $# == 0 ]]; then
 
-  _a "capturing output: yay -Syyuu"
+  _a "[pacfix] yay -Syyuu"
   yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
 
-elif [[ $* == "1" ]]; then
+# pacfix 1
+elif [[ $1 == "1" ]]; then
 
-  _a "[debug] capturing output: yay -Syyuu"
+  _a "[pacfix] yay -Syyuu ${RED}DEBUG"
   yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
   debug=1
 
-# args contain pacman or yay
+# pacfix ~/list.txt (existing file)
+elif [[ -e "$1" ]]; then
+
+  _a "[pacfix] list file: $1"
+  paclist="$1"
+
+# pacfix yay -S nginx (direct command)
 elif [[ $* == *"pacman|yay"* ]]; then
 
-  _a "capturing output: \'$*\' (literal) "
+  _a "[pacfix] command: \'$*\'"
   eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
 
-elif [[ -e "$*" ]]; then
-
-  paclist="$*"
-
-# args assumed to be package names
+# pacfix package1 package2 package3
 else
 
-  _a "fixing broken packages: $*"
+  _a "[pacfix] package name"
   for pkg in "$@"
   do
     _a "adding: $pkg"
@@ -55,6 +56,7 @@ fi
 
 #──────────────────────────────────────────────────  cleanup raw input   ──────
 
+# 
 if [ -s "$paclist" ]; then 
 
   # debug
