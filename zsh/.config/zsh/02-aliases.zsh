@@ -128,7 +128,8 @@ fi
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
-alias rsmv='rscp --remove-source-files'
+alias rsmv='rscp -zahv --progress --remove-source-files'
+#$ rsync -a --progress --remove-source-files src/test/ dest
 alias rsdirstructure='rsync -av -f"+ */" -f"- *"'
 
 # ranger
@@ -231,6 +232,8 @@ alias nfsls='echo "\n\nnfs shares: ${GRN}${B}mounted\n${BLU}$ mount -l | grep nf
 alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
   echo "\n\nnfs shares: ${RED}${B}unmounted\n${BLU}$ mount -l | grep nfs\n" &&\
   mount -l | grep nfs'
+alias smnt='sudo mount -av'
+alias sumnt='sudo umount -av'
 
 # fstab
 alias fstab='svim /etc/fstab'
