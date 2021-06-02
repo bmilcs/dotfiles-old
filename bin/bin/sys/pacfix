@@ -14,7 +14,7 @@ _a pacfix
 #───────────────────────────────────────────────────  init output file  ───────
 
 paclist=/tmp/pacfix
-rm "$paclist"{,.final} 2> /dev/null
+rm "$paclist"{,.final} &> /dev/null
 
 #───────────────────────────────────────────────────  course of action  ───────
 
@@ -22,15 +22,22 @@ rm "$paclist"{,.final} 2> /dev/null
 if [[ $# == 0 ]]; then
 
   _a "capturing output: yay -Syyuu"
-  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s done
+  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
+
+elif [[ $* == "1" ]]; then
+
+  _a "[debug] capturing output: yay -Syyuu"
+  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
+  debug=1
 
 # args contain pacman or yay
 elif [[ $* == *"pacman|yay"* ]]; then
 
   _a "capturing output: \'$*\' (literal) "
-  eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s done
+  eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
 
 elif [[ -e "$*" ]]; then
+
   paclist="$*"
 
 # args assumed to be package names
@@ -51,7 +58,8 @@ fi
 if [ -s "$paclist" ]; then 
 
   # debug
-  [ $# -gt 0 ] && _w "initial pacman output  [" && cat "$paclist" && _w "]"
+  [[ $debug == "1" ]] && _wb "initial pacman output  [\n" && cat "$paclist" \
+    && echo && _wb "]"
 
   # cleanup pacman/yay output
   _a parsing output for broken packages
@@ -59,23 +67,27 @@ if [ -s "$paclist" ]; then
   # delete lines not containing 'exists in filesystem'
   sed -i '/exists in filesystem/!d' "$paclist"  
 
-  # debug
-  [ $# -gt 0 ] && _w "deleted lines w/o exists in filesystem [" && cat "$paclist" && _w "]"
+  [[ $debug == "1" ]] && echo && _w "deleted lines w/o exists in filesystem \
+    [\n" && cat "$paclist" && echo && _w "]\n"
 
   # check if any packages remain, after clean-up
   if [ -s "$paclist" ]; then
-    _iy "package filesystem errors found!"
+    _iy "errors found!\n"
   else
-    _i "no errors need fixin'"
-    _s "done"
+    _i "no errors found"
+    _s "done\n"
     exit 0
   fi
 
   sed -i 's/\: \/.*//g' "$paclist"
-  [ $# -gt 0 ] && _w "sed: package names [" && cat "$paclist" && _w "]"
+
+  [[ $debug == "1" ]] && _wg "sed: package names [\n" && cat "$paclist" \
+    && echo && _wg "]"
 
   awk '!seen[$0]++' "$paclist" > "$paclist".final 
-  [ $# -gt 0 ] && _w "final list [" && cat "$paclist".final && _w "]"
+
+  [[ $debug -eq 1 ]] && _wc "final list [\n" && cat "$paclist".final \
+    && echo && _wc "]"
 
   _s "done"
 
