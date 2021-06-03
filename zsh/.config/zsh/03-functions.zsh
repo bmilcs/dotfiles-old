@@ -97,13 +97,14 @@ fi
 
 function ga() {
   #converted ga='$(grevp)     || cd $D && forgit::add'
-  # git dir?
+  source _bm
   grevp || cd $D 
   forgit::add
-  gd
   _a git commit message:
   read gc
-  gc $gc
+  [ -n $gc ] \
+  && gc $gc \
+  && gp
 
 }
 
