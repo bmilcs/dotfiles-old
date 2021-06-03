@@ -332,4 +332,4 @@ for_window [instance="main.py"]           floating enable, resize set 1552 1323,
 for_window [instance="urxvt"] floating enable, resize set 818 970, move absolute position 1847 311, border pixel 3
 for_window [instance="feh"] floating enable, move center, border pixel 3
 for_window [instance="nitrogen"] floating enable, resize set 1079 480, move absolute position 1160 956, border pixel 3
-for_window [instance="i3pad"] floating enable, resize set 686 919, move absolute position 1439 515, border pixel 3
+for_window [instance="i3pad"] floating enable, resize set 728 1255, move absolute position 1345 121, border pixel 3

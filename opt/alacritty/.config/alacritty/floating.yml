@@ -9,6 +9,7 @@
 
 import:
   - ~/.config/alacritty/dracula.yml
+# - ~/.config/alacritty/gruvbox.yml
 
 live_config_reload: true
 
