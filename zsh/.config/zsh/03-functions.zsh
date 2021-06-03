@@ -94,6 +94,19 @@ fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
+
+function ga() {
+  #converted ga='$(grevp)     || cd $D && forgit::add'
+  # git dir?
+  grevp || cd $D 
+  forgit::add
+  gd
+  _a git commit message:
+  read gc
+  gc $gc
+
+}
+
 # commit
 function gc() {
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
