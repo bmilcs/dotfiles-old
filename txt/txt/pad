@@ -1,10 +1,8 @@
-SUBTITLES FIX !!!! BAZAAR
 fix time on Dockers/vm's
 
-
-PAINTERS TAPE ( 3 pack frog )
-FLOOR PAPER ROLL?
-
+[HOUSE WTB]
+  - PAINTERS TAPE ( 3 pack frog )
+  - FLOOR PAPER ROLL?
 
 GUTTERS
   REMOVE BACKYARD GUARDS
@@ -13,10 +11,6 @@ GUTTERS
     GUTTER GUARDS
       costco?
       more research needed
-
-
-Dryer
-  MEDC465HW0
 
 RSNAPSHOT
   check to see if rsnapshot schedule is working
@@ -64,7 +58,6 @@ ROCKS/PEBBLES
 #────────────────────────────────────────────────────────────────  OLD  ───────
 
 [wtb]
-- circular saw & guide
 - extension cord reel
 - hose reel
 - e-toothbrush
@@ -93,20 +86,14 @@ ROCKS/PEBBLES
 [ arch ]
   - security pop-up keybind (req https)
   - i3: binding: selection copy/paste
-  - research commands w/ examples
-  - cut
-  - awk
-  - xargs
-
-  [ vim ]
-  - auto-titlebars --- hi ---
+  - research:
+    - awk
+    - cut
+    - xargs
 
   [ ncmpcpp ]
   - autosave playlist
   - hotkeys
-
-  [ rofi ]
-  - power menu
 
 [homelab]
 - setup new VPN, wireguard? mulvad?
@@ -131,5 +118,10 @@ domain email forwarding!
 
 - learn advanced bash https://learnxinyminutes.com/docs/bash/
 
+#──────────────────────────────────────────────────────────────  notes  ───────
+
 [switch]
-10.0.4 | AMS 0.13.0| E
+  10.0.4|AMS 0.13.0|E
+
+[dryer]
+  MEDC465HW0
