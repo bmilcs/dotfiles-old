@@ -19,6 +19,12 @@ dotlog '+ $ZDOTDIR/02-aliases.zsh'
 # homebrew switch
 alias nin='./fusee-launcher.py hekate-5.1.1.bin'
 
+# cloudflare
+alias cfdc='sh ~/.ssh/cloudflare/nginx'
+alias cfadd='sh ~/.ssh/cloudflare/add'
+alias cfdel='sh ~/.ssh/cloudflare/del'
+alias cfinfo='sh ~/.ssh/cloudflare/info'
+
 #───────────────────────────────────────────────────────────────  text  ───────
 
 # text editors
