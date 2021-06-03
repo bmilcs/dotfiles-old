@@ -1,3 +1,8 @@
+snippet bm-get-script-path "acquire path of script"
+mypath="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+endsnippet
+
+
 snippet bm-loop-through-lines-in-file "loop thru file lines"
 while read x; do
   echo "$x"

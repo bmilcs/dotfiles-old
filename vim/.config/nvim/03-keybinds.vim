@@ -34,6 +34,7 @@ nnoremap <leader>ip  :PlugInstall<CR>
 nnoremap <leader>cp  :PlugClean<CR>
 
 "────────────────────────────────────────────────────────────────  fzf  ───────
+
 nnoremap <silent> <C-p> :tabnew \| Files!<CR>
 nnoremap <silent> <C-S-p> :tabnew \| ProjectFiles!<CR>
 nnoremap <silent> <C-f> :Rg!<CR>
@@ -52,8 +53,11 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
 "──────────────────────────────────────────────────  text manipulation   ──────
+
 nnoremap <silent> <leader>dd :%s/^\(.*\)\(\n\1\)\+$/\1/
+nnoremap <silent> <leader>q ciW"<c-R>""<esc>
 
 
 " title bars
