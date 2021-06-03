@@ -81,6 +81,7 @@ if [ -s "$paclist" ]; then
     exit 0
   fi
 
+  # del text after ": " on all lines
   sed -i 's/\: \/.*//g' "$paclist"
 
   [[ $debug == "1" ]] && _wg "sed: package names [\n" && cat "$paclist" \
