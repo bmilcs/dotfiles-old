@@ -33,9 +33,11 @@ set -x
 
 if [ "$(pgrep -fc "$name")" -eq 1  ]; then
   if [ -n "$cfg" ]; then
-    alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e "$cmd" &
+    #alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e "$cmd" &
+    alacritty --class="$name" --title="$name" --config-file=/home/bmilcs/bm/opt/alacritty/.config/alacritty/floating.yml -e zsh -c "sleep .1; $cmd"
   else
-    alacritty --class="$name" --title="$name" -e $cmd &
+    #alacritty --class="$name" --title="$name" -e "$cmd" &
+    alacritty --class="$name" --title="$name" -e zsh -c "sleep .1; $cmd"
   fi
 else
   if [ "$(xdotool getactivewindow getwindowname)" = "$name" ]; then

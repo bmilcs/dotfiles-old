@@ -108,7 +108,7 @@ bindsym $w+c            exec --no-startup-id    bmclone
 # bm readme
 bindsym $wc+m           exec --no-startup-id    i3hfr -n i3readme -c i3readme
 # bm pad
-bindsym $w+n            exec --no-startup-id    i3hfr -n i3pad -c i3pad
+bindsym $w+n            exec --no-startup-id    i3hfr -n i3pad -c "nvim +'Gruvbox' ~/txt/pad"
 # music
 bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
