@@ -135,7 +135,6 @@ fi
 # rsync
 alias rscp='rsync -zahv --progress --partial'
 alias rsmv='rscp -zahv --progress --remove-source-files'
-#$ rsync -a --progress --remove-source-files src/test/ dest
 alias rsdirstructure='rsync -av -f"+ */" -f"- *"'
 
 # ranger
