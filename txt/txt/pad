@@ -1,4 +1,9 @@
-fix time on Dockers/vm's
+[SERVARR]
+  - MUSICBRAINZ / PICARD
+    fix, get working, on backup music folder
+  - MPD: add to BACKUP
+  - MPD WEB FRONTEND!
+
 
 [HOUSE WTB]
   - PAINTERS TAPE ( 3 pack frog )
