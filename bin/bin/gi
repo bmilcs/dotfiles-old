@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+
+#                 GIT IGNORER [./gi]
+
+source _bm
+
+usage() { 
+  ( _oc $(basename $0) 
+  _oy   -a   add
+  _oy   -r   rm
+  ) 1>&2
+  exit 1; 
+}
+
+while getopts "arl" opt; do
+    case "${opt}" in
+        a) action="add" ;;
+        r) action="rm" ;;
+        l) action="list" ;;
+        *) usage ;;
+    esac
+done
+
+if [ -z "$action" ]; then
+    usage
+fi
+
+_tb git ignore utility
+
+#────────────────────────────────────────────────────────────────  add   ──────
+
+if [ "$action" = "add" ]; then
+
+  # git ignore
+  git rev-parse > /dev/null 2>&1 || cd "$D"
+
+  ignore=$(git status -s | fzf -m)
+  ignore=$(sed 's/.* \(.*$\)/\1/g' <<< $ignore)
+
+  [ -z "$ignore" ] &&\
+    _o no selections made &&\
+    _s now exiting &&\
+
+  _a .gitignore additions:
+
+  while IFS= read -r line 
+  do 
+
+    _o "adding: ${GRN}${B}'$line'"
+
+    if ! grep -Fxq "$line" ".gitignore" &> /dev/null; then
+
+      echo "$line" >> .gitignore
+
+      if grep "$line" .gitignore; then
+        _s "done\n"
+      else
+        _e "failed adding: $line"
+        exit
+      fi
+
+    else
+
+      _e "$line already exists"
+      continue
+
+    fi
+  done <<< "$ignore"
+
+#─────────────────────────────────────────────────────────────  remove   ──────
+
+elif [ "$action" = "rm" ]; then 
+
+  [ ! -e ".gitignore" ] \
+    && _e ".gitignore not found: navigate to repo base dir" \
+    && exit
+
+  ignore=$(cat .gitignore | fzf -m)
+
+  [ -z "$ignore" ] \
+    && _o no selections made \
+    && _s now exiting \
+    && exit
+
+  _a "removing the following:\n"
+
+  while IFS= read -r line 
+  do 
+
+    _o "removing: ${RED}${B}'$line'"
+
+    sed -i '/^'"$line"'$/Id' .gitignore
+
+    if ! grep "$line" .gitignore &> /dev/null; then
+      _s "done\n"
+    else
+      _e "failed removing: $line"
+      exit
+    fi
+
+  done <<< "$ignore"
+
+#───────────────────────────────────────────────────────────────  list  ───────
+
+elif [ "$action" = "list" ]; then
+
+  _a gitignore ls
+  cat .gitignore
+
+fi
+
