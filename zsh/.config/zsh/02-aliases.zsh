@@ -14,6 +14,11 @@
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ $ZDOTDIR/02-aliases.zsh'
 
+#───────────────────────────────────────────────────  disable built-in  ───────
+
+unalias gi 
+unalias ga
+
 #───────────────────────────────────────────────────────────────  misc  ───────
 
 # homebrew switch
@@ -170,7 +175,6 @@ alias grevp='git rev-parse > /dev/null 2>&1'
 alias gcl='git clone --depth=1'
 alias g='grevp         || git' ; compdef g='git'
 #alias ga='$(grevp)     || cd $D && forgit::add'
-alias ga='ga'
 alias gs='$(grevp)     || cd $D && git status -s'
 alias gss='$($grevp)   || cd $D && git status'
 alias greb='$($grevp)  || cd $D && git rebase && gp'

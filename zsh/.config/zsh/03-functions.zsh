@@ -94,31 +94,12 @@ fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
-unalias gi
-
-# git ignore
-function gi() {
-  source _bm
-  grevp || cd $D 
-  ignore=$(gs | fzf -m)
-  _a .gitignore additions:
-# echo "$ignore" | sed '/(.* )//g'
-  ignore=$(sed 's/^.* \(.*\)",/\1/g' <<< $ignore)
-  echo $ignore
-  return
-# _a git commit message:
-# read gc
-# [ -n $gc ] \
-# && gc $gc \
-# && gp
-
-}
-
 function ga() {
   #converted ga='$(grevp)     || cd $D && forgit::add'
   source _bm
   grevp || cd $D 
   forgit::add
+  git diff --staged
   _a git commit message:
   read gc
   [ -n $gc ] \
