@@ -1,10 +1,14 @@
-eval "`pip completion --zsh`"
-compctl -K _pip_completion pip3
+if command -v pip &> /dev/null; then
+  eval "`pip completion --zsh`"
+  compctl -K _pip_completion pip3
+fi
 
-_get_comp_words_by_ref() { :; }
-compopt() { :; }
-_filedir() { :; }
-eval "$(beet completion)"
+if command -v beet &> /dev/null; then
+  _get_comp_words_by_ref() { :; }
+  compopt() { :; }
+  _filedir() { :; }
+  eval "$(beet completion)"
+fi
 
 #────────────────────────────────────────────────────────────  example  ───────
 
