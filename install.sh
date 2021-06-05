@@ -42,7 +42,7 @@ mini=("bin" "git" "txt" "vim" "zsh" "bash")
 # all: req packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find" "nodejs" "npm") # "bat"
-pacpkg=("fd" "bat" "unzip")
+pacpkg=("fd" "unzip")
 
 # backup location
 backup=~/.backup/dotfiles
