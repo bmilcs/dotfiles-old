@@ -30,6 +30,9 @@ alias cfadd='sh ~/.ssh/cloudflare/add'
 alias cfdel='sh ~/.ssh/cloudflare/del'
 alias cfinfo='sh ~/.ssh/cloudflare/info'
 
+# beets test
+alias cdbeet='cd /all/media/audio/beets'
+
 #───────────────────────────────────────────────────────────────  text  ───────
 
 # text editors
@@ -396,7 +399,6 @@ if where docker-compose > /dev/null && [ -d ~/docker ]; then
 
   # beets
   alias beetsdl='docker exec -u abc -it beets /bin/bash -c "beet import /downloads/usenet/complete/music"'
-  alias cdbeet='cd /all/media/audio/beets'
 
 fi
 

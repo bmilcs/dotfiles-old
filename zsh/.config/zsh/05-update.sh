@@ -129,12 +129,8 @@ fi
 #──────────────────────────────────────────────────────────  vm's only  ───────
 
 if [[ ! "$HOST" == "bm"* ]]; then
-  {
-    #gp &> /dev/null \
-    gp \
-    && source ~/.config/zsh/.zshrc \
-    && source ~/.profile
-  } &
+  gp &> /dev/null &
+  _ob dotfile refresh inbound
   upped "$dstatus"
 fi
 
