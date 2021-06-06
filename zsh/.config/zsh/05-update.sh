@@ -37,8 +37,13 @@ mkdir -p "$shpath"
 
 exec 9>"$lockpid"
 if ! flock -n 9; then
-  _w "${B}auto-update${YLW} duplicate prevented"
-   exit 1
+  if [[ $HOST == bm* ]]; then
+    _w "${B}auto-update${YLW} duplicate prevented"
+     exit 1
+  else
+    _wg "${B}dotfiles:${YLW} press ${B}ENTER${YLW} to refresh."
+    exit 0
+  fi
 fi
 
 #──────────────────────────────────────────────────────  history check  ───────
@@ -125,7 +130,8 @@ fi
 
 if [[ ! "$HOST" == "bm"* ]]; then
   {
-    gp &> /dev/null \
+    #gp &> /dev/null \
+    gp \
     && source ~/.config/zsh/.zshrc \
     && source ~/.profile
   } &
