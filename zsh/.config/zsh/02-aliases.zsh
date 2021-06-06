@@ -30,9 +30,6 @@ alias cfadd='sh ~/.ssh/cloudflare/add'
 alias cfdel='sh ~/.ssh/cloudflare/del'
 alias cfinfo='sh ~/.ssh/cloudflare/info'
 
-# beets test
-alias cdbeet='cd /all/media/audio/beets'
-
 #───────────────────────────────────────────────────────────────  text  ───────
 
 # text editors
@@ -138,7 +135,20 @@ else #────────────────────────�
 
 fi
 
+#──────────────────────────────────────────────────────  HOST SPECIFIC  ───────
+
+if [[ $HOST == mpd ]]; then
+
+  # beets
+  beete='vim ~/.config/beets/config.yaml'
+  beeti='beet import -ql bm-date'
+
+fi
+
 #───────────────────────────────────────────────────────────────  APPS  ───────
+
+# beets
+alias cdbeet='cd /all/media/audio/beets'
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
@@ -194,7 +204,6 @@ alias guser='git config user.name bmilcs \
 
 #─────────────────────────────────────────────────────────────────  ls  ───────
 
-
 alias ls='LC_ALL=C ls -AlhF --color=auto --group-directories-first \
   --time-style='+%D %H:%M'' ; compdef ls='ls'
 
@@ -232,7 +241,6 @@ alias c='clear'
 alias ..='cd ..&& c && l'
 alias ...='cd ../.. && c && l'
 alias s='sudo';compdef s='sudo'
-
 
 # fzf
 # alias -g zz='fzf -m'
@@ -322,22 +330,6 @@ scp -r  ~/dev/esxi/bm        esxi:/
 scp     ~/dev/esxi/.profile  esxi:/.profile 
 '
 
-#───────────────────────────────────────────────────────  old script  ─────────
-#   mkdir -m 700 -p ~/.ssh
-#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
-#   chmod 600 ~/.ssh/authorized_keys
-#   eval "$(ssh-agent -s)"
-#   echo "> enter github private key as follows:"
-#   echo "  ssh-add ~/.ssh/id_github"'
-
-###############################################################################
-###############################################################################
-#        VERSION 1.0 DOTFILES (early days of linux)
-#        - debian-based vm's | github.com/bmilcs/linux.git
-#        - TODO: recycle & optimize
-###############################################################################
-###############################################################################
-
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 if where docker-compose > /dev/null && [ -d ~/docker ]; then
@@ -413,6 +405,18 @@ if [[ $DISTRO == "debian" ]]; then
   # minecraft
 
   alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t'
+
+################################################################################
+################################### archive ####################################
+################################################################################
+
+#───────────────────────────────────────────────────────  old script  ─────────
+#   mkdir -m 700 -p ~/.ssh
+#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+#   chmod 600 ~/.ssh/authorized_keys
+#   eval "$(ssh-agent -s)"
+#   echo "> enter github private key as follows:"
+#   echo "  ssh-add ~/.ssh/id_github"'
 
   # install nfs
   # TODO > FUNCTION conversion
