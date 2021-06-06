@@ -8,40 +8,54 @@
 #                 DAILY AUTO-UPDATE [./10-update.zsh]
 
 # dotfile rc file debugging
-. ~/bin/sys/dotfile_logger
-  dotlog '+ $ZDOTDIR/05-update.sh'
+. ~/bin/sys/dotfile_logger && dotlog '+ $ZDOTDIR/05-update.sh'
 
 source _bm
+
+#───────────────────────────────────────────────────────────────  vars  ───────
 
 # ansible mode
 [[ $# -eq 1 ]] && ansible=1
 [[ $# -eq 2 ]] && auto=1
 
+# primary vars
+today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
+shpath="$HOME/.config/up"
+dstatus="$shpath/dotfiles.bm"
+fstatus="$shpath/fzf.bm"
+rstatus="$shpath/repos.bm"
+ustatus="$shpath/system.bm"
+vstatus="$shpath/vim.bm"
+zstatus="$shpath/zsh.bm"
+astatus="$shpath/ansible.bm"
+#running="$shpath/running.bm"
+pid_file="$shpath/lock.pid"
+
+[ ! -d "$shpath" ] && mkdir -p "$shpath"
+
+exec 9>"$pid_file"
+if ! flock -n 9  ; then
+  _w "${B}auto-update${YLW} duplicate prevented"
+   exit 1
+fi
+# this now runs under the lock until 9 is closed (it will be closed automatically when the script ends)
+
+# script running?
+#[[ -s $pid_file ]] && exit
+
+# no, create pid_file
+#echo $BASHPID > $pid_file
+
 #──────────────────────────────────────────────────────────────  traps  ───────
 
-clean() { 
-  rm -rf "$running" 
-  }
+#ctrlC() {
+#  echo && _w "${B}now exiting cleanly"
+#  rm -rf "$running" \
+#  && _s "done\n" 
+#  exit
+#  }
 
-ctrlC() {
-  echo && _w "${B}now exiting cleanly"
-  clean && _s "done\n" && exit 1
-  }
-
-trap 'ctrlC' 0 1 2 3 15
-trap 'clean' EXIT
-
-#───────────────────────────────────────────────────────────────  vars  ───────
-
-today="$(date +"%Y-%m-%d" | cut -d'-' -f 3)"
-dstatus="$HOME/.config/up/dotfiles.bm"
-fstatus="$HOME/.config/up/fzf.bm"
-rstatus="$HOME/.config/up/repos.bm"
-ustatus="$HOME/.config/up/system.bm"
-vstatus="$HOME/.config/up/vim.bm"
-zstatus="$HOME/.config/up/zsh.bm"
-astatus="$HOME/.config/up/ansible.bm"
-running="$HOME/.config/up/running.bm"
+#trap 'ctrlC' 0 1 2 3 15
 
 #──────────────────────────────────────────────────────  history check  ───────
 
@@ -56,17 +70,17 @@ running="$HOME/.config/up/running.bm"
 
 #──────────────────────────────────────────────────────────────  begin  ───────
 
-# force non-workstations to update repo everytime (vm's, etc)
-if [[ ! "$HOST" == "bm"* ]]; then
-  gp &> /dev/null & 
-  echo "$today" > "$dstatus"
-fi
-
 # process check
-if [[ ! -f "$running" ]]; then
+#if [[ ! -f "$running" ]]; then
 
-  # create $running
-  touch "$running"
+# # create $running
+# touch "$running"
+
+  # force non-workstations to update repo everytime (vm's, etc)
+  if [[ ! "$HOST" == "bm"* ]]; then
+    gp &> /dev/null & 
+    echo "$today" > "$dstatus"
+  fi
   
   # packages
   [[ ! "$today" == "$slast" ]] && up && echo "$today" > "$ustatus"
@@ -119,9 +133,9 @@ if [[ ! -f "$running" ]]; then
       && _s "done"
   fi
 
-else # update running already
+#else # update running already
 
-  _wb "instance of ${B}auto-update${BLU} running in another terminal."
+  #_wb "instance of ${B}auto-update${BLU} running in another terminal."
 
-fi
+#fi
 
