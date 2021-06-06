@@ -19,3 +19,7 @@ vim/.config/nvim/plugged/
 vim/.config/nvim/undo/
 root/workstation/usr/share/fonts/TTF/JetBrainsMono/.uuid
 zsh/.config/ranger/sdir
+zsh/.config/ranger/plugins/__pycache__/__init__.cpython-37.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/archives_utils.cpython-37.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/compress.cpython-37.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/extract.cpython-37.opt-1.pyc
