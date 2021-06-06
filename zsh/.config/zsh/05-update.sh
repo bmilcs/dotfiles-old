@@ -41,7 +41,7 @@ if ! flock -n 9; then
     _w "${B}auto-update${YLW} duplicate prevented"
      exit 1
   else
-    _wg "${B}dotfiles:${YLW} press ${B}ENTER${YLW} to refresh."
+    _wg "${B}dotfiles:${YLW} run ${GRN}${B}zr${YLW} to refresh"
     exit 0
   fi
 fi
