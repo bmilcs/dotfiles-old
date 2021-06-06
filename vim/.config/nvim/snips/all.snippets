@@ -1,28 +1,39 @@
-snippet bm-get-script-path "acquire path of script"
-mypath="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+#───────────────────────────────────────────────────────  process lock  ───────
+
+snippet bm-pid-lock-process "pid process locker for scripts"
+lockpid="$path/lock.pid"
+
+# duplicate process prevention
+exec 9>"$lockpid"
+if ! flock -n 9  ; then
+	_w "${B}auto-update${YLW} duplicate prevented"
+	exit 1
+fi
 endsnippet
 
+#────────────────────────────────────────────────────────  script path  ───────
+
+snippet bm-basename-of-script "acquire path of script"
+shpath="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+endsnippet
 
 snippet bm-loop-through-lines-in-file "loop thru file lines"
 while read x; do
-  echo "$x"
+	echo "$x"
 done <"$filename"
 endsnippet
 
-snippet bm-delete-duplicates-in-file "deduplication of txt file"
-# paclist=/tmp/pacman_fix
-# rm "$paclist"
-# up &> "$paclist"
-# sed -i '/exists in filesystem/!d' "$paclist"
-# sed -i 's/\: \/.*//g' "$paclist"
-awk '!seen[$0]++' "$paclist" > "$paclist".final
+#─────────────────────────────────────────────────  rm duplicate lines  ───────
+snippet bm-file-rm-duplicate-lines "deduplication of txt file"
+awk '!seen[$0]++' /path/file > /path/newfile
 endsnippet
 
-snippet bm-date-time-sec-unique "2021.10.15-13.56.11"
+#──────────────────────────────────────────────────────────  date/time  ───────
+snippet bm-date.time.sec.unique "2021.10.15-13.56.11"
 $(date +%Y.%m.%d-%H.%M.%S)
 endsnippet
 
-snippet bm-date-time-sec-unique2 "2021-10_15-13_56-11"
+snippet bm-date_time_sec_unique2 "2021-10_15-13_56-11"
 $(date +%Y.%m.%d-%H.%M.%S)
 endsnippet
 
@@ -30,72 +41,88 @@ snippet bm-date "2021-10-15"
 $(date +%Y-%m-%d)
 endsnippet
 
-snippet bm-fileexists "existing file already exists, add +1"
+#───────────────────────────────────  overwrite prevention/unique name  ───────
+snippet bm-filename-duplicate-overwrite-prevention "file, file-1, file-2, etc."
 name=somefile
 if [[ -e $name.ext || -L $name.ext ]] ; then
-    i=0
-    while [[ -e $name-$i.ext || -L $name-$i.ext ]] ; do
-        let i++
-    done
-    name=$name-$i
+	i=0
+	while [[ -e $name-$i.ext || -L $name-$i.ext ]] ; do
+		let i++
+	done
+	name=$name-$i
 fi
-touch -- "$name".ext
 endsnippet
 
-snippet bm-snip "new snippet"
-snippet bm-  ""
-
- endsnippet
-endsnippet
-
-snippet bm-argument_check "check for arguments"
+#───────────────────────────────────────────────────  script arguments  ───────
+snippet bm-argument_parse "check for arguments"
 if [[ $# -eq 0 ]]; then
-  _e "missing arguments"
-  _o "arg 1: example"
-  exit 1
+	_e "missing arguments"
+	_o "arg 1: example"
+	exit 1
 elif [[ $# -gt 1 ]]; then
-  _e "too many arguments"
-  _o "arg 1: example"
-  exit 1
+	_e "too many arguments"
+	_o "arg 1: example"
+	exit 1
 fi
 endsnippet
 
-snippet bm-arrays "basic array example"
+#──────────────────────────────	 array  ───────────────────────────────────────
+snippet bm-array-template "basic array example"
+# declare array
 declare -n arrayName=$1
 
+# populate array
 for i in $*
 do
-  arrayName+=("new item $i")
+	arrayName+=("new item $i")
 done
 
+# total items in array
 echo "Tot items in function: ${#arrayName[@]}"
+
+# loop: array items
 for item in "${arrayName[@]}"
 do
-  echo $item
+	echo $item
 done
-echo
 endsnippet
 
-snippet bm-substring-brace-exansion-delete-suffix-prefix "remove predetermined suffix/prefix"
+#─────────────────────────	 array: for loop  ─────────────────────────────────
+snippet bm-loop-thru-vars-array "for loop, exceptions, install script"
+list=("img" "opt" "root")
+match=0
+
+for a in "${list[@]}"; do
+	[[ $dir == $a ]] && match=1
+done
+endsnippet
+
+#─────────────────────────		bash substring  ─────────────────────────────────
+snippet bm-bash-substring-braces "remove predetermined suffix/prefix"
 string="hello-world"
 prefix="hell"
 suffix="ld"
+
+# remove prefix
 foo=${string#"$prefix"}
 foo=${foo%"$suffix"}
-echo "${foo}"
+
 endsnippet
 
-snippet bm-alacritty-launch-cmd "launch alacritty, execute command, keep open"
+#────────────────────	 alacritty unique/commands  ─────────────────────────────
+snippet bm-alacritty-launch-cmds "launch alacritty, execute command, keep open"
 alacritty --class=roficlone --title=roficlone -e $SHELL -c 'cd '$path' && echo && ls -lA && echo && $SHELL'  # works
 endsnippet
 
+#─────────────────────────	 rofi: input bar  ─────────────────────────────────
 snippet bm-rofi-anyinput "rofi single blank input line"
-# giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
+giturl=$( (echo ) | rofi  -show "" -dmenu -matching fuzzy )
 endsnippet
 
+#───────────────────────────	 traps: long   ──────────────────────────────────
 snippet bm-traps-short-exit-error "trap command examples"
 on_event() {
-  _w "something happened"
+	_w "something happened"
 	_s
 	exit 1
 }
@@ -113,63 +140,54 @@ trap 'on_event' ERR		 # error
 # 9		SIGKILL		die now (cannot be trapped)
 # 14	SIGALRM		alarm clock
 # 15	SIGTERM		terminate
-
 endsnippet
 
+#────────────────────────	 trap: warn ctrl+c  ─────────────────────────────────
 snippet "bm-traps-long-examples"
 ctrlc_count=0
 
-function no_ctrlc()
-{
-    let ctrlc_count++
-    echo
-    if [[ $ctrlc_count == 1 ]]; then
-        echo "Stop that."
-    elif [[ $ctrlc_count == 2 ]]; then
-        echo "Once more and I quit."
-    else
-        echo "That's it.  I quit."
-        exit
-    fi
+function no_ctrlc() {
+	let ctrlc_count++
+	if [[ $ctrlc_count == 1 ]]; then
+		echo "Stop that."
+	elif [[ $ctrlc_count == 2 ]]; then
+		echo "Once more and I quit."
+	else
+		echo "That's it.  I quit."
+		exit
+	fi
 }
 trap no_ctrlc SIGINT
 
 while true
 do
-    echo Sleeping
-    sleep 10
+		echo Sleeping
+		sleep 10
 done
 endsnippet
 
+#──────────────────────		trap: prevent ctrl-c  ───────────────────────────────
 snippet bm-traps-prevent-ctrl-c "prevent cancellation of important cmd"
-# Run something important, no Ctrl-C allowed.
+# run something important, no ctrl-c allowed.
 trap "" SIGINT
 important_command
 
-# Less important stuff from here on out, Ctrl-C allowed.
+# less important stuff from here on out, ctrl-c allowed.
 trap - SIGINT
 not_so_important_command
-
 endsnippet
 
+#───────────────────────	 printf: right align  ───────────────────────────────
 snippet bm-printf-right-align-text "printf: right align" 
 printf "%80s\n" "$text"
 endsnippet
 
-snippet bm-array-for-loop "for loop, exceptions, install script"
-list=("img" "opt" "root")
-match=0
-
-for a in "${list[@]}"; do
-  [[ $dir == $a ]] && match=1
-done
-endsnippet
-
+#──────────────────────────────────────────────────────────────  xclip  ───────
 snippet bm-xclip "pipe x to system clipboard"
-xclip -sel clip
+echo "hi" | xclip -sel clip
 endsnippet
 
-snippet bm-regex-substring-extract "extract line containing a string"
+snippet bm-regex-substring-cut-example "extract line containing a string"
 _o extracting class
 class="$(xprop -id "$(xdotool getactivewindow)" \
   | grep -hn "WM_CLASS" \
