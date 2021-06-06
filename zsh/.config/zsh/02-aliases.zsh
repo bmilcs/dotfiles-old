@@ -24,6 +24,8 @@ unalias ga
 # homebrew switch
 alias nin='./fusee-launcher.py hekate-5.1.1.bin'
 
+alias testy='echo yayyyy'
+
 # cloudflare
 alias cfdc='sh ~/.ssh/cloudflare/nginx'
 alias cfadd='sh ~/.ssh/cloudflare/add'
