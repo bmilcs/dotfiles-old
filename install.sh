@@ -91,7 +91,8 @@ cleanup() {
   done
 
   _f "changing /etc/banner"
-  [[ -f "/etc/banner" ]] && echo "welcome to: $HOST" | sudo tee /etc/banner
+  [[ -f "/etc/banner" ]] \
+    && sudo cat "/etc/hostname" | sudo tee /etc/banner
 
   _s complete
 
