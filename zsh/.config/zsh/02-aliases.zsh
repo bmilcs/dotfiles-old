@@ -243,7 +243,7 @@ alias umountnfs='sudo umount -t nfs -t nfs4 -av &&\
   echo "\n\nnfs shares: ${RED}${B}unmounted\n${BLU}$ mount -l | grep nfs\n" &&\
   mount -l | grep nfs'
 alias smnt='sudo mount -av'
-alias sumnt='sudo umount -av'
+alias sumnt='sudo umount'
 
 # fstab
 alias fstab='svim /etc/fstab'
