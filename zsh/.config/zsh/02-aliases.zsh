@@ -332,12 +332,11 @@ scp     ~/dev/esxi/.profile  esxi:/.profile
 
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
-if where docker-compose > /dev/null && [ -d ~/docker ]; then
+#if where docker-compose > /dev/null && [ -d ~/docker ]; then
+if [[ $HOST == "docker" ]]; then
 
-  # edit bmilcs.com
+  # editor
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
-
-  # edit docker-compose
   alias dce='vim ~/docker/docker-compose.yaml'
 
   # docker logs
@@ -347,8 +346,9 @@ if where docker-compose > /dev/null && [ -d ~/docker ]; then
   # letsencrypt restart
   alias le='docker restart swag && docker logs -f swag'
   alias swag='le'
-  alias nginxx='~/docker/swag/config/nginx/'
+  alias wwwr='le'
   alias wwww='~/docker/swag/config/www/'
+  alias nginxx='~/docker/swag/config/nginx/'
   alias logss='~/docker/swag/config/log/'
 
   # docker-compose
@@ -363,8 +363,6 @@ if where docker-compose > /dev/null && [ -d ~/docker ]; then
     --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" \
     | (read -r; printf "%s\n" "$REPLY"; sort -k 2  )'
   alias dnet='docker network ls'
-
-  # CLEANING
 
   # clean up docker system
   alias dclean='dcleani && dcleane'
@@ -393,6 +391,8 @@ if where docker-compose > /dev/null && [ -d ~/docker ]; then
   alias beetsdl='docker exec -u abc -it beets /bin/bash -c "beet import /downloads/usenet/complete/music"'
 
 fi
+
+#────────────────────────────────────────────────────  DEBIAN: ARCHIVE  ───────
 
 if [[ $DISTRO == "debian" ]]; then
   alias ideb='sudo /bin/bash ~/.bmilcs/script/debian.sh'
