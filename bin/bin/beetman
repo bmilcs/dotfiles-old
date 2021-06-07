@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 BEET MANUAL IMPORT VIA LOG [./beetman]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_tb beet manual import via log
+
+[[ ! $# -eq 1 ]] \
+  && _y "useage: beetman <logfile>" \
+  && exit 1
+
+[[ ! -e "$1" ]] \
+  && _e "$1 doesn't exist" \
+  && exit 1
+
+cat "$1" > /tmp/"$1"
+
+sed -i '/^skip /!d' "$1"
+sed -i 's/^skip //g' "$1"
+
+#while read x; do
+#  _a importing "$x"
+#  beet import "$x"
+#done </tmp/"$1"
+
+line=$(head -n 1 "$1")
+beet import "$line" \
+  && sed -i '/'$line'/d' "$1"
+
+

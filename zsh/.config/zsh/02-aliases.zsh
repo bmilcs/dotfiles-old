@@ -140,15 +140,13 @@ fi
 if [[ $HOST == mpd ]]; then
 
   # beets
-  beete='vim ~/.config/beets/config.yaml'
-  beeti='beet import -ql bm-date'
+  alias beete='vim ~/.config/beets/config.yaml'
+  alias beetcd='cd /all/media/audio'
+  alias beeti='beet import -ql /all/media/audio/beets/$(date %m.%d-%H.%M.%S).log '
 
 fi
 
 #───────────────────────────────────────────────────────────────  APPS  ───────
-
-# beets
-alias cdbeet='cd /all/media/audio/beets'
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
@@ -303,9 +301,11 @@ alias scue='scu enable'                                 ;compdef scud='systemctl
 alias scd='sc disable'                                  ;compdef scud='systemctl'
 alias scud='scu disable'                                ;compdef scud='systemctl'
 
-#─────────────────────────────────────────────────────────  print outs   ──────
+alias jx='sudo journalctl -xe'
 
-# alias a="alias | sed 's/=.*//'"
+#─────────────────────────────────────────────────────────  PRINT OUTS   ──────
+
+alias aliass="alias | sed 's/=.*//'"
 alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 alias hn='echo $HOST'
@@ -317,7 +317,7 @@ alias sinki='pacmd list-sources | grep -e "index:" -e device.string -e "name:"'
 # pid
 alias pid='cat /etc/passwd'
 
-#────────────────────────────────────────────────────────────────  ssh  ───────
+#────────────────────────────────────────────────────────────────  SSH  ───────
 
 alias doc='ssh docker'
 alias plx='ssh plex'
@@ -450,7 +450,6 @@ if [[ $DISTRO == "debian" ]]; then
 #   echo "#         valid users = bmilcs"
 #   echo "-----------------------------------------------------------------------------------------------------"		'
 
-fi
 
 ###############################################################################
 #                                 GRAVEYARD
@@ -471,3 +470,5 @@ fi
 # alias gitp="gitt commit -a -m 'update' && gitt push"
 # compdef gitt="git"
 # compdef gitp="git"
+
+fi 
