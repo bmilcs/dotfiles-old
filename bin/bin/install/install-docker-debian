@@ -58,4 +58,25 @@ _a ensure dockers installed correctly
 sudo docker run hello-world \
   && _s "done"
 
+#─────────────────────────────────────────────────────  docker-comopse  ───────
+
+_tb docker-compose install
+
+# download current stable release 
+_a download current stable release 
+sudo curl -L \
+  "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" \
+  -o /usr/local/bin/docker-compose \
+  && _s "done"
+
+# apply exectable perms
+_a apply exectable perms
+sudo chmod +x /usr/local/bin/docker-compose \
+  && _s "done"
+
+# ensure no issues arise:
+_a ensure no issues arise:
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose \
+  && _s "done"
+
 

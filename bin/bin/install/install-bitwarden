@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 INSTALL BITWARDEN [./install-bitwarden]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_tb bitwarden: post docker installation
+
+# source: https://bitwarden.com/help/article/install-on-premise/
+
+if _ask "setup user?"; then
+  _a "create a bitwarden user:" 
+  sudo adduser bitwarden \
+    && _s "done"
+
+  _a "set password for bitwarden user (strong password):" 
+  sudo passwd bitwarden \
+    && _s "done"
+
+  _a "create a docker group (if it doesn’t already exist):" 
+  sudo groupadd docker \
+    && _s "done"
+
+  _a "add the bitwarden user to the docker group:" 
+  sudo usermod -aG docker bitwarden \
+    && _s "done"
+
+  _a "create a bitwarden directory:" 
+  sudo mkdir /opt/bitwarden \
+    && _s "done"
+
+  _a "set permissions for the /opt/bitwarden directory:" 
+  sudo chmod -R 700 /opt/bitwarden \
+    && _s "done"
+
+  _a "set the bitwarden user ownership of the /opt/bitwarden directory:" 
+  sudo chown -R bitwarden:bitwarden /opt/bitwarden \
+    && _s "done"
+fi
+
+if _ask "begin install?"; then
+  _tb install bitwarden 
+
+  _a "manual for reference:"
+  _w https://bitwarden.com/help/article/install-on-premise/<Paste>
+
+  cd /tmp || ( _e "unable to cd /tmp" && exit 1 )
+
+  _a "download bitwarden script (bitwarden.sh)"
+  curl -Lso bitwarden.sh https://go.btwrdn.co/bw-sh \
+      && chmod 700 bitwarden.sh
+
+  _a "running installer"
+  ./bitwarden.sh install
+fi
