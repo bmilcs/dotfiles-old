@@ -15,7 +15,7 @@ cd ~/docker || (_e "~/docker missing!" && exit 1)
 
 # clean up docker system
 dclean() {
-  docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+  docker rm $(docker ps -qa --no-trunc --filter "status=exited") 2> /dev/null
   docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 }
 
