@@ -39,7 +39,9 @@ if [ "$action" = "add" ]; then
   # git ignore
   git rev-parse > /dev/null 2>&1 || cd "$D"
 
-  ignore=$(git status -s | fzf -m)
+  ignore=$(git status -s)
+  [ -z "$ignore" ] && ignore=$(git ls-tree -r master --name-only)
+  ignore=$(echo "$ignore" | fzf -m)
   ignore=$(sed 's/.* \(.*$\)/\1/g' <<< $ignore)
 
   [ -z "$ignore" ] &&\
