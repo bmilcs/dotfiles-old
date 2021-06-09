@@ -79,8 +79,6 @@ pgrep -f android-messages || plog android_sms && android-messages-desktop &>> "$
 # discord
 pgrep -f discord || plog discord && discord &>> "$log"_discord &
 
-# polybar (giving apps a second to load)
-pgrep -f polybar || plog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
 
 # kde connect
 pgrep -f kdeconnectd || plog kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_connect &
@@ -88,6 +86,10 @@ pgrep -f kdeconnectd || plog kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_
 # kde connect indicator
 #plog kde_connect_indicator
 #pgrep -f kdeconnect-indicator || kdeconnect-indicator &>> "$log"_kde_connect_indicator
+
+# polybar (giving apps a second to load)
+sleep 0.5
+pgrep -f polybar || plog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
 
 #───────────────────────────────────────────────────  concatenate logs  ──────#
 
