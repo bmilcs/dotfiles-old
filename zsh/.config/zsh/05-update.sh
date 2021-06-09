@@ -29,7 +29,7 @@ ustatus="$shpath/system.bm"
 vstatus="$shpath/vim.bm"
 zstatus="$shpath/zsh.bm"
 astatus="$shpath/ansible.bm"
-lockpid="$shpath/lock.pid"
+lockpid="$shpath/lock.bm"
 
 #───────────────────────────────────────────────────────  process lock  ───────
 
@@ -97,7 +97,6 @@ fi
 [[ ! "$today" == "$flast" ]] \
   && upfzf \
   && upped "$fstatus"
-
 
 #─────────────────────────────────────────────────  ansible unfriendly  ───────
 
