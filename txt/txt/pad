@@ -1,3 +1,8 @@
+bitwarden vm:
+  - nginx bw2 to new host
+  - update bitwarden.sh subdomain
+
+
 [SERVARR]
   - MUSICBRAINZ / PICARD
     fix, get working, on backup music folder
@@ -31,6 +36,12 @@ FRENCH DRAIN
   FABRIC
   PIPE
 ROCKS/PEBBLES
+
+#────────────────────────────────────────────────────────────  FREENAS  ───────
+
+SLOG 
+  - DC S3500/3700
+
 
 #────────────────────────────────────────────────────────────────  LAB  ───────
 

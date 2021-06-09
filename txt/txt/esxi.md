@@ -1,5 +1,15 @@
 # esxi
 
+### freenas integration
+``` bash
+# utility-scripts-for-freenas-and-vmware-esxi 
+# https://github.com/Spearfoot/utility-scripts-for-freenas-and-vmware-esxi
+
+
+
+
+```
+
 ### renaming folders & vmdisks
 
 ``` bash

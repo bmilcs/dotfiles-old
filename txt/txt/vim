@@ -1,0 +1,7 @@
+# insert prefix to regex search
+
+:%s/<search>\?/<prefix>&/g
+
+  example:
+  :%s/^.****.pdf$\?/pdf-&/g
+
