@@ -72,6 +72,7 @@ alias trc='tmux source ~/.tmux.conf'
 alias zr='source '$ZDOTDIR'/.zshrc'
 alias polyr='. ~/.config/polybar/launch.sh'
 alias picomr='killall -q picom ; picom -b'
+alias mpdr='[ ! -s ~/.config/mpd/pid ] && plog mpd && mpd &>> "$log"_mpd &'
 
 # rm auto-update status
 alias rmup='rm -rf ~/.config/up/'
