@@ -78,6 +78,7 @@ bindsym  $mute         exec --no-startup-id    bmvol mute
 
 # browser
 bindsym  $wc+Return     exec --no-startup-id    firefox
+bindsym  $wcs+Return    exec --no-startup-id    chromium
 # terminal
 bindsym  $w+Return      exec --no-startup-id    alacritty
 
