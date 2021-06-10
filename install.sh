@@ -8,7 +8,7 @@
 
 source ./bin/bin/_bm
 
-#─────────────────────────────────────────────────────────  disclaimer  ──────#
+#─────────────────────────────────────────────────────────────  header  ───────
 
 _t [bmilcs] dotfile installer && echo
 
@@ -33,29 +33,28 @@ _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
 
 #──────────────────────────────────────────────────────────  variables  ──────#
 
-# exceptions
+# path exceptions
 exceptions=("img" "opt" "rsnapshot" "backup")
 
-# debian vm's
+# debian/raspbian/ubuntu (vm's, raspberry pi's, etc)
 mini=("bin" "git" "txt" "vim" "zsh" "bash") 
 
-# all: req packages
+# required packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find" "nodejs" "npm") # "bat"
 pacpkg=("fd" "unzip")
 
-# backup location
+# backup path (cleanup function)
 backup=~/.backup/dotfiles
 
-# repo path
+# repo path (env var)
 D=$HOME/bm
 
-#──────────────────────────────────────────────────────────  functions   ─────#
+################################################################################
+################################## functions   #################################
+################################################################################
 
-#
-# cleanup (dotfile remnants, git cfg, broken symlinks, etc)
-#
-
+#─────────────────────────────────────────────────────  cleanup/backup  ───────
 cleanup() { 
 
   _a clean-up time
@@ -99,10 +98,7 @@ cleanup() {
 
 } 
 
-#
-# fzf: fuzzy finder
-#
-
+#──────────────────────────────────────────────────  fzf: fuzzy finder  ───────
 ifzf() { 
 
   _a fzf
@@ -121,9 +117,7 @@ ifzf() {
 
 } 
 
-#
-# zsh: shell
-#
+#─────────────────────────────────────────────────────────  zsh: shell  ───────
 
 izsh() {
 
@@ -166,9 +160,7 @@ izsh() {
   _o all set
 }
 
-#
-# (n)vim: neovim
-#
+#───────────────────────────────────────────────────────  nvim: editor  ───────
 
 ivim() {
   _a vim
@@ -194,9 +186,7 @@ ivim() {
   fi
 }
 
-#
-# bitwarden (cli)
-#
+#──────────────────────────────────────────  bitwarden cli: pw manager  ───────
 
 btw() {
   _a bw
@@ -217,62 +207,16 @@ btw() {
   _o all set
 }
 
-#
-# rsnapshot
-#
-
-#rsnap() {
-
-# host=${HOSTNAME,,}
-# rpath="$D/backup/"
-# rdest="$HOME/.config/rsnapshot"
-
-# if [ -e "$rpath/backup_$host" ]; then
-#   _a rsnapshot
-#   _o host: $host \\n
-
-#   # add rsnapshot to package list
-#   pkgs[${#pkgs[@]}]="rsnapshot"
-
-#   # rm old configs
-#   rm "$rdest/"*".conf"
-
-#   _f making config
-
-#   ( 
-#   mkdir -p "$rdest" 
-
-#   INCLUDE=$(<"$rpath/backup_$host")
-#   EXCLUDE=$(<"$rpath/exclude_$host")
-#   CONF=$(<"$rpath/rsnapshot.conf")
-
-#   RSNAP="${CONF//\#INCLUDE/$INCLUDE}" 
-#   RSNAP="${RSNAP//\#EXCLUDE/$EXCLUDE}" 
-#   echo "$RSNAP" > "$rdest/rsnapshot.conf"
-#   chown root:root $rdest/*
-#   _s
-#   ) || (_e "unable to move rsnapshot.conf" && exit)
-
-#   _a rsnapshot config test
-#   _o output \\n
-
-#   rsnapshot -c "$rdest/rsnapshot.conf" configtest
-
-# fi
-#}
-
-#rsnap
-
-#───────────────────────────────────────────────────────  dependencies  ──────#
+################################################################################
+################################## dependies  ##################################
+################################################################################
 
 source "./bin/bin/_distro"
 
 _a dependencies
 _o "${pkgs[@]}"
 
-#
-# archlinux
-#
+#──────────────────────────────────────────────────────────  archlinux  ───────
 
 if [[ ${DISTRO} == arch* ]]; then
 
@@ -284,9 +228,7 @@ if [[ ${DISTRO} == arch* ]]; then
   pacman -Qi "${pacpkg[@]}" > /dev/null 2>&1 \
     || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
 
-#
-# debian, raspbian, ubuntu
-#
+#───────────────────────────────────────────  debian, raspbian, ubuntu  ───────
 
 elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
 
@@ -304,9 +246,7 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
   # link fdfind to fd
   [[ ! -L ~/.local/bin/fd ]] && ln -s "$(which fdfind)" ~/.local/bin/fd
 
-#
-# unknown distros
-#
+#───────────────────────────────────────────────  unconfigured distros   ──────
 
 else
 
@@ -318,11 +258,13 @@ fi
 
 _s all set
 
-#──────────────────────────────────────────────────────────  archlinux  ──────#
+################################################################################
+################################## archlinux  ##################################
+################################################################################
 
 if [[ ${DISTRO} == arch* ]]; then
 
-  # ask permission to procede
+  # permission to procede?
   if  _ask "archlinux: install everything?"; then
     _a "${U}"symlink: starting
     _o distro: "$DISTRO"
@@ -331,12 +273,10 @@ if [[ ${DISTRO} == arch* ]]; then
     exit 0
   fi
 
-  # prep for install
+  # function: rm broken symlinks, backup conflicting files, etc.
   cleanup
 
-  #
-  # tweaks
-  #
+#────────────────────────────────────────────────────────  misc tweaks  ───────
 
   # make x11 folder [xsession-errors] TODO FIX .xsessions-error, still in ~
   [ -d ~/.config/x11 ] || mkdir -p ~/.config/x11
@@ -347,20 +287,16 @@ if [[ ${DISTRO} == arch* ]]; then
   # remove diff menu [yay]
   yay --editmenu --nodiffmenu --save
 
-  #
-  # install core dependencies
-  #
+#────────────────────────────────────────────────  setup core software  ───────
 
   izsh
   ivim
   ifzf
   btw 
 
-  #
-  # move repo content into place
-  #
+#───────────────────────────────────────────────────────────────  ROOT  ───────
 
-  # stow /root
+  # stow root stuff: /
   _a root
   cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
@@ -370,7 +306,10 @@ if [[ ${DISTRO} == arch* ]]; then
   _o symlink: root/workstation to "${B}"/
   sudo stow -t / -R workstation && _s
 
-  # stow /home
+#───────────────────────────────────────────────────────────────  HOME  ───────
+
+
+  # stow home stuff: ~
   cd "$D" || (_e unable to cd base repo dir && exit 1)
 
   _a home
@@ -417,26 +356,27 @@ if [[ ${DISTRO} == arch* ]]; then
 
   _s
 
-#─────────────────────────────────────────────────────────────  debian  ──────#
-
 else # not archlinux
 
-  # zsh
-  izsh
-
-  # vim
-  ivim
-
-  # fzf
-  ifzf
+################################################################################
+#################################### debian  ###################################
+################################################################################
 
   # title
   _a "${B}symlink: ${GRN}${B}starting${NC}"
   _o distro: "$DISTRO"
   _i minimal install
 
-  # remove old dotfile stuff
+  # function: rm broken symlinks, backup conflicting files, etc.
   cleanup
+
+#────────────────────────────────────────────────  setup core software  ───────
+
+  izsh
+  ivim
+  ifzf
+
+#───────────────────────────────────────────────────────────────  root  ───────
 
   # stow /root
   _a root
@@ -447,6 +387,8 @@ else # not archlinux
   _o symlink: root '/'
   sudo stow -t / -R share
 
+#───────────────────────────────────────────────────────────────  home  ───────
+
   # stow ~
   _a home
 
@@ -455,6 +397,8 @@ else # not archlinux
 
   _o symlink: home "${B}"\~
   stow -R "${mini[@]}" && _i stowed: "${mini[@]}" && _s
+
+#───────────────────────────────────────────────────────────────  misc  ───────
 
   # set repo url
   _a setting origin/main url
@@ -471,7 +415,3 @@ else # not archlinux
 fi
 
 _s installation complete 
-echo
-
-# exit successfully, despite not having checked lol
-exit 0
