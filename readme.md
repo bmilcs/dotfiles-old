@@ -54,7 +54,7 @@ and installed Arch as my primary OS in December of 2020:
 
 <a name="todo"/>
 
-## TODO
+## MISC reminders
 
 - [ ] pywal
 - [ ] **sxiv - image viewer**
@@ -64,23 +64,16 @@ and installed Arch as my primary OS in December of 2020:
 - [ ] github.com/chubin/rate.sx
 - [x] udisk2 / udiskie automount
   - [ ] android phone 
-- [x] dunst notifications
-
 **rust**
 
 - [ ] tldr
 - [ ] prox
 - [ ] exa
-- [x] fd
-- [x] bat
-- [x] ripgrep
-- [x] github aliases
 
 **misc**
 - [ ] ssh keys > private repo
-- [x] autocomplete git status > diff > to add workflow
 
-**VIM** [ref: youtube vim super powers]
+**vim** [ref: youtube vim super powers]
 - [ ] npm
 - [ ] nettree
 - [ ] ctrlsf - 'command line searching"
@@ -89,11 +82,6 @@ and installed Arch as my primary OS in December of 2020:
 - [ ] bcommits? git history-like plugin
 - [ ] lazygit, lazydocker, lazynpm
 - [ ] anyjump search across workspace
-- [x] vim autocomplete
-    - [x]  all stuff within file 
-    - [x]  /path/to autocomplete
-    - [x] coc.vim [visual studio-like]
-
 ---
 
 ### inspirations & help
