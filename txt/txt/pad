@@ -1,11 +1,6 @@
-bitwarden vm:
-  - nginx bw2 to new host
-  - update bitwarden.sh subdomain
-
-
 [SERVARR]
+  - LIDARR DOCKER > BEETS INTEGRATION
   - MUSICBRAINZ / PICARD
-    fix, get working, on backup music folder
   - MPD: add to BACKUP
   - MPD WEB FRONTEND!
 
