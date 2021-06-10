@@ -1,0 +1,49 @@
+#Note: These are based on Linuxserver.io images
+
+1. Add these volumes to lidarr server in docker-compose
+	- /docker/containers/configs/lidarr/90-config:/etc/cont-init.d/90-config
+    - /var/run/docker.sock:/var/run/docker.sock
+
+-----------------------------90-config----------------------------------
+
+#!/usr/bin/with-contenv bash
+
+DOCKERVERSION=18.09.6
+curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
+  && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
+                 -C /usr/local/bin docker/docker \
+  && rm docker-${DOCKERVERSION}.tgz
+
+------------------------------------------------------------------------
+
+2. Add this in the lidarr container somehow (I just have mine in the config folder)
+
+-----------------------------beet_import.sh----------------------------------
+#!/bin/bash
+
+echo "$lidarr_addedtrackpaths"
+lidarr_first_track=$(echo "$lidarr_addedtrackpaths" | cut -d '|' -f1)
+lidarr_album_path=$(dirname "$lidarr_first_track")
+echo "Path: $lidarr_album_path"
+echo "Album MBID: $lidarr_album_mbid"
+echo "Release MBID: $lidarr_albumrelease_mbid"
+echo "Running beet import"
+
+docker --config "/config/.docker" exec -u abc beets /bin/bash -c "beet update"
+docker --config "/config/.docker" exec -u abc beets /bin/bash -c "beet import -q '$lidarr_album_path'"
+------------------------------------------------------------------------
+
+3. In lidarr, go to Settings > Connect > Add > Custom Script. Select On Release Import. Point the path to beet_import.sh
+
+4. I'm using linuxserver.io's containers so /music is both the base volume of beets and lidarr. Whatever you set it, the both need to have the same path in their respective containers so what when lidarr calls beets, its the same path structure.
+
+5. In Lidarr I have it Renaming tracks with an additional underscore in the track name
+{track:00}_{Track Title}
+
+6. In Beets I have Import set to auto and move to yes with track name being structured like 
+$track - $title 
+I also have convert set up in beets which is why I add the additional underscore in lidarr so that when it converts it doesn't accidently remove the wrong file. I think it might be overkill since beets converts to temp folder and then copies.
+
+7. (Optional) I was having issues with the docker socket permissions in a container. Looked online and people said that this was one of the better ways to handle it. I added this to my host's crontab
+
+@reboot setfacl -m user:MY_USER_THAT_RUNS_DOCKERS:rw /var/run/docker.sock
