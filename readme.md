@@ -3,7 +3,7 @@
 
 
 <kbd>
-<a href="img/rice-2021-05-30.png"><img src="img/rice-2021-05-30.png"></a>
+<a href="img/rice-2021-06-10.png"><img src="img/rice-2021-05-30.png"></a>
 </kbd>
 
 
