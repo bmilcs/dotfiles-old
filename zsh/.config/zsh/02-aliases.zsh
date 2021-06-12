@@ -143,7 +143,7 @@ if [[ $HOST == mpd ]]; then
   # beets
   alias beete='vim ~/.config/beets/config.yaml'
   alias beetcd='cd /all/media/audio'
-  alias beeti='beet import -ql /all/media/audio/beets/$(date %m.%d-%H.%M.%S).log '
+  alias beeti='beet import -ql /all/media/audio/beets/$(date +%m.%d-%H.%M.%S).log '
 
 fi
 
