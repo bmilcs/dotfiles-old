@@ -13,7 +13,7 @@ live_config_reload: true
 # FONT ──────────────────────────────────────────────────────
 font:
   normal:
-    family: DejaVuSansMono Nerd Font
+    #family: DejaVuSansMono Nerd Font
     #family: GohuFont Nerd Font
     #family: InconsolataGo Nerd Font
     #family: Iosevka Nerd Font
@@ -27,7 +27,7 @@ font:
     #family: codenewroman nerd font 
     #family: mononoki Nerd Font
     #family: FantasqueSansMono Nerd Font
-    #family: BitstreamVeraSansMono Nerd Font
+    family: BitstreamVeraSansMono Nerd Font
     #style: Regular
     #style: Book
     #family: JetBrainsMono
