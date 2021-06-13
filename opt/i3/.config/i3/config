@@ -140,10 +140,10 @@ bindsym $w+o       focus child
 bindsym $w+space   focus mode_toggle
 
 # views
-bindsym $wc+space  floating toggle
 bindsym $ws+space  fullscreen toggle 
-bindsym $wa+space  scratchpad show
-bindsym $wac+space move scratchpad
+bindsym $wc+space  floating toggle
+bindsym $wcs+space scratchpad show
+bindsym $wa+space  move scratchpad
 
 # move (regular)
 bindsym $wc+l   move   right   50 px
