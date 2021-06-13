@@ -138,23 +138,25 @@ function gacall() {
   && ga . && gc "$@" && _s done.
   }
 
-endot()
+function endot()
 {
-  priv="$BM/.priv"
-  cd $priv || return
-  tar -czvf $priv/encrypted.tar.gz $priv
-  gpg -er bmilcs@yahoo.com $priv/encrypted.tar.gz
-  rm $priv/encrypted.tar.gz
-  mv encrypted.tar.gz.gpg data
+  norm="bm.priv.tar.gz"
+  cd ${BMP} || return
+  chmod -R 700 *
+  tar --exclude='bm.priv.tar.*' -czvf "$norm" -C "${BMP}" .
+  gpg -er bmilcs@yahoo.com "$norm"
+  rm "$norm"
 }
 
-dedot()
+function dedot()
 {
-  priv="$BM/.priv"
-  cd $priv || return
-  gpg -do $priv/encrypted.tar.gz data
-  tar -xzvf $priv/encrypted.tar.gz
-  rm $priv/encrypted.tar.gz
+  norm="bm.priv.tar.gz"
+  safe="bm.priv.tar.gz.gpg"
+  cd ${BMP} || return
+  gpg -do "$norm" "$safe"
+  mkdir -p "${BMP}/dedot_test"
+  tar -xzvf "$norm" -C "${BMP}/dedot_test"
+  rm "$norm"
 }
 
 #──────────────────────────────────────────────────────────────  SHELL  ───────
