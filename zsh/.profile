@@ -5,7 +5,7 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 BASH'S .PROFILE [./.profile]
-#
+
 #    1) read by all shells, not bash specifically
 #       ie: environment variables, PATH & friends
 #    2) anything that should be available to:
@@ -14,6 +14,15 @@
 # dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger"
 dotlog '+ ~/.profile'
+
+#───────────────────────────────────────────────────────────  dotfiles  ───────
+
+# dotfile
+export D=$HOME/bm
+export BM=$HOME/bm
+export BAK=$HOME/.backup
+
+[ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
 
 #──────────────────────────────────────────────────────────────  $path  ───────
 
@@ -37,22 +46,61 @@ dotlog '+ ~/.profile'
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
-# DOTFILE
+# gpg
+export GNUPGHOME="${BM:-~/bm}/.priv/gpg"
+# export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/gpg"
 
-export D=$HOME/bm
-export BAK=$HOME/.backup
-
-[ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
+# password store
+export PASSWORD_STORE_DIR="${BM:-~/bm}/.priv/pw"
+# export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/password"
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 
-export ANSIBLE_CONFIG='/home/bmdev/ans/ansible.cfg'
+export ANSIBLE_CONFIG=~/ans/ansible.cfg
 export ANSIBLE_HOME=~/ans
-[ -d "$ANSIBLE_HOME/bin" ] &&\
-  export PATH=$PATH:$ANSIBLE_HOME/bin
+[ -d "$ANSIBLE_HOME/bin" ] \
+  && export PATH=$PATH:$ANSIBLE_HOME/bin
+
+#───────────────────────────────────────────────────────────  software  ───────
+
+# terminal/text
+export EDITOR=nvim
+export VISUAL=nvim
+export TERM=xterm-256color
+export COLORTERM="truecolor"
+
+# bmpc/bmtp
+[[ $HOST == bm* ]] \
+  && export TERMINAL=alacritty
+
+# firefox [webrender compositor test]
+export MOZ_WEBRENDER=1
+
+# bat
+export BAT_THEME='Nord'
+
+# forgit
+export FORGIT_COPY_CMD='xclip -selection clipboard'
+
+#─────────────────────────────────────────────────────────────  locale  ───────
+
+LANG="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+
+#LC_PAPER="en_US.UTF-8"
+#LC_NAME="en_US.UTF-8"
+#LC_ADDRESS="en_US.UTF-8"
+#LC_TELEPHONE="en_US.UTF-8"
+#LC_MEASUREMENT="en_US.UTF-8"
+#LC_IDENTIFICATION="en_US.UTF-8"
 
 #────────────────────────────────────────────────────────────────  fzf  ───────
-
 
 #--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="
@@ -135,28 +183,6 @@ _fzf_comprun() {
 #   marker             Multi-select marker
 #   spinner             Streaming input indicator
 
-#───────────────────────────────────────────────────────────  software  ───────
-
-# terminal/text
-export EDITOR=nvim
-export VISUAL=nvim
-export TERM=xterm-256color
-export COLORTERM="truecolor"
-
-[[ $HOST == bm* ]] && export TERMINAL=alacritty
-
-# firefox [webrender compositor test]
-export MOZ_WEBRENDER=1
-
-# bat
-export BAT_THEME='Nord'
-
-# gnupg
-export GNUPGHOME='.config/gpg'
-
-# forgit
-export FORGIT_COPY_CMD='xclip -selection clipboard'
-
 #──────────────────────────────────────────────────────────  color var  ───────
 
 export NC='\033[0m'
@@ -180,24 +206,6 @@ export WHT=${NC}'\033[37m'
 #export MONTH="$(date '+%B')"
 #export DAY="$(date '+%d')"
 #export DAYOFWEEK="$(date '+%A')"
-
-#─────────────────────────────────────────────────────────────  locale  ───────
-
-LANG="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-
-#LC_PAPER="en_US.UTF-8"
-#LC_NAME="en_US.UTF-8"
-#LC_ADDRESS="en_US.UTF-8"
-#LC_TELEPHONE="en_US.UTF-8"
-#LC_MEASUREMENT="en_US.UTF-8"
-#LC_IDENTIFICATION="en_US.UTF-8"
 
 #────────────────────────────────────────────────────────  system mods  ───────
 
