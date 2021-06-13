@@ -21,6 +21,7 @@ export D=$HOME/bm
 export BM=$HOME/bm
 export BMP=$HOME/bmP
 export BAK=$HOME/.backup
+export BMSSH=$BMP/ssh
 
 [ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
 

@@ -140,29 +140,48 @@ function gacall() {
 
 function endot()
 {
+  source _bm
+  _a bmilcs encryption
   cd "${BMP}" || return
 
   norm="bm.priv.tar.gz"
   tar="$D/.priv"
 
+  _fc chmod 700
   chmod -R 700 ${BMP}/*
+
+  _fc compression
   tar --exclude='bm.priv.tar.*' -czvf "$norm" -C "${BMP}" .
 
+  _fc encryption
   gpg -er bmilcs@yahoo.com "$norm" \
     && rm "$norm" \
     && mv "${norm}.gpg" "$tar"
-  ls "$tar"
+
+  _fc test
+  results=$(file "$tar/$norm.gpg")
+  if [[ $results == *encrypted* ]]; then
+    _s "encryption: complete!"
+    gp
+  else
+    _e "encryption not found"
+  fi
 }
 
 function dedot()
 {
+  source _bm
+  _a bmilcs decryption
+
   norm="bm.priv.tar.gz"
   safe="bm.priv.tar.gz.gpg"
-  cd ${BMP} || return
-  gpg -do "$norm" "$safe"
-  mkdir -p "${BMP}/dedot_test"
-  tar -xzvf "$norm" -C "${BMP}/dedot_test"
-  rm "$norm"
+
+  cd "${BMP}" || return
+  gpg -do "${BMP}/$norm" "${BM}/.priv/$safe"
+  tar -xzvf "${BMP}/$norm" -C "${BMP}/"
+
+  rm "${BMP}/$norm"
+  . ${BMP}/install.sh
 }
 
 #──────────────────────────────────────────────────────────────  SHELL  ───────
