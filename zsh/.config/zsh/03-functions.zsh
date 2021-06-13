@@ -140,12 +140,18 @@ function gacall() {
 
 function endot()
 {
+  cd "${BMP}" || return
+
   norm="bm.priv.tar.gz"
-  cd ${BMP} || return
-  chmod -R 700 *
+  tar="$D/.priv"
+
+  chmod -R 700 ${BMP}/*
   tar --exclude='bm.priv.tar.*' -czvf "$norm" -C "${BMP}" .
-  gpg -er bmilcs@yahoo.com "$norm"
-  rm "$norm"
+
+  gpg -er bmilcs@yahoo.com "$norm" \
+    && rm "$norm" \
+    && mv "${norm}.gpg" "$tar"
+  ls "$tar"
 }
 
 function dedot()
