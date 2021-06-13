@@ -44,11 +44,11 @@ pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
 aptpkg=("fd-find" "nodejs" "npm") # "bat"
 pacpkg=("fd" "unzip")
 
-# backup path (cleanup function)
-backup=~/.backup/dotfiles
-
 # repo path (env var)
 D=$HOME/bm
+BM=$HOME/bm
+BMP=$HOME/bmP
+BAK=$HOME/.backup/dotfiles/
 
 ################################################################################
 ################################## functions   #################################
@@ -58,19 +58,20 @@ D=$HOME/bm
 cleanup() { 
 
   _a clean-up time
-  _w "content will be moved to $backup"
+  _w "content will be moved to $BAK"
 
-  mkdir -p "$backup"
+  mkdir -p "$BAK"
+  mkdir -p "${BMP}"
 
   _f "backup: ~/.dotfiles"
-  mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,.zcompdump} "$backup" 2> /dev/null
+  mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,.zcompdump} "$BAK" 2> /dev/null
 
   _f "backup: old up & upp scripts"
-  sudo mv /usr/local/bin/{up,upp} "$backup" 2> /dev/null
+  sudo mv /usr/local/bin/{up,upp} "$BAK" 2> /dev/null
 
   _f "backup: git config"
-  rm -rf "$backup/git"
-  mv ~/{.config/git,.gitconfig} "$backup/git" 2> /dev/null
+  rm -rf "$BAK/git"
+  mv ~/{.config/git,.gitconfig} "$BAK/git" 2> /dev/null
 
   _f "deleting: old zsh configs"
   rm -rf ~/{.zsh,.zinit,.zplugin} 2> /dev/null
@@ -307,7 +308,6 @@ if [[ ${DISTRO} == arch* ]]; then
   sudo stow -t / -R workstation && _s
 
 #───────────────────────────────────────────────────────────────  HOME  ───────
-
 
   # stow home stuff: ~
   cd "$D" || (_e unable to cd base repo dir && exit 1)

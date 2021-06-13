@@ -12,8 +12,7 @@
 #       gui apps, sh or bash invoked as sh
 
 # dotfile rc file debugging
-. "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ ~/.profile'
+. "${HOME}/bin/sys/dotfile_logger" && dotlog '+ ~/.profile'
 
 #───────────────────────────────────────────────────────────  dotfiles  ───────
 
