@@ -20,6 +20,7 @@ dotlog '+ ~/.profile'
 # dotfile
 export D=$HOME/bm
 export BM=$HOME/bm
+export BMP=$BM/.priv
 export BAK=$HOME/.backup
 
 [ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
@@ -47,11 +48,11 @@ export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
 # gpg
-export GNUPGHOME="${BM:-~/bm}/.priv/gpg"
+export GNUPGHOME="${BMP:-~/bm/priv}/gpg"
 # export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/gpg"
 
 # password store
-export PASSWORD_STORE_DIR="${BM:-~/bm}/.priv/pw"
+export PASSWORD_STORE_DIR="${BMP:-~/bm/.priv}/pw"
 # export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/password"
 
 #────────────────────────────────────────────────────────────  ansible  ───────

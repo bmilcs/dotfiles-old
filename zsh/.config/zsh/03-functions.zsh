@@ -140,18 +140,21 @@ function gacall() {
 
 endot()
 {
-  cd ~/$D
-  tar czf encrypted.tar.gz etc/.local/share/misc
-  gpg -er abdullah@abdullah.today encrypted.tar.gz
-  rm encrypted.tar.gz
+  priv="$BM/.priv"
+  cd $priv || return
+  tar -czvf $priv/encrypted.tar.gz $priv
+  gpg -er bmilcs@yahoo.com $priv/encrypted.tar.gz
+  rm $priv/encrypted.tar.gz
+  mv encrypted.tar.gz.gpg data
 }
 
 dedot()
 {
-  cd ~/$D
-  gpg -do encrypted.tar.gz encrypted.tar.gz.gpg
-  tar xvf encrypted.tar.gz
-  rm encrypted.tar.gz
+  priv="$BM/.priv"
+  cd $priv || return
+  gpg -do $priv/encrypted.tar.gz data
+  tar -xzvf $priv/encrypted.tar.gz
+  rm $priv/encrypted.tar.gz
 }
 
 #──────────────────────────────────────────────────────────────  SHELL  ───────
