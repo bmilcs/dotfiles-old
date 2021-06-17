@@ -1,51 +1,79 @@
-[SERVARR]
-  - LIDARR DOCKER > BEETS INTEGRATION
-  - MUSICBRAINZ / PICARD
-  - MPD: add to BACKUP
-  - MPD WEB FRONTEND!
+#──────────────────────────────────────────────────────────  [HOMELAB]   ──────
 
-[HOUSE] 
-  WTB
+fix backup
+  - log rotate?
+  - rsnapreport
+
+bulk golf balls dad
+driver
+
+  [ANSIBLE]
+    DEBIAN DEPLOYMENT
+      sshd_config
+      authorized_keys
+      change user/group id
+      git clone dotfiles
+      install essentials
+
+  [CERTIFICATE AUTHORITY]
+    vault hashicorp
+
+  [DOTFILES]
+    BREAK DOWN INTO COMPONENTS
+      git
+      vim/zsh
+      opt, etc
+
+  [SERVARR]
+    LIDARR DOCKER > BEETS INTEGRATION
+    MUSICBRAINZ / PICARD
+    MPD: add to BACKUP
+
+#────────────────────────────────────────────────────────────  [HOUSE]   ──────
+
+  [INTERIOR]
+    CEILING EXTENSION CORD GARAGE
     PAINTERS TAPE ( 3 pack frog )
     FLOOR PAPER ROLL?
+
+  [GUTTERS]
     GUTTER FASTENERS
     GUTTER GUARDS
-  GUTTERS
     REMOVE BACKYARD GUARDS
 
-[RSNAPSHOT]
-  check to see if rsnapshot schedule is working
-  find more exceptions, reduce weight
-  secure/harden
-    ansible playbook to deploy backup user
-    ssh-key allow rsync command only
+  [SPRINKLER]
+    SPRAY BASE   HUNTER PRO 
+    HEAD         MP3000
+    RISER        1/2"
+    SPIKE        1/2"
+    ADJUSTER     TOOLS
+    
+  [FRENCH DRAIN]
+    FABRIC
+    PIPE
+    ROCKS/PEBBLES
 
-SPRINKLER
-  SPRAY BASE   HUNTER PRO 
-  HEAD         MP3000
-  RISER        1/2"
-  SPIKE        1/2"
-  ADJUSTER     TOOLS
-  
-FRENCH DRAIN
-  FABRIC
-  PIPE
-ROCKS/PEBBLES
+#──────────────────────────────────────────────────────────  [FREENAS]  ───────
 
-#────────────────────────────────────────────────────────────  FREENAS  ───────
-
-SLOG 
+[SLOG]
   - DC S3500/3700
 
+#───────────────────────────────────────────────────────  [HOMELAB_-2]  ───────
 
-#────────────────────────────────────────────────────────────────  LAB  ───────
+  [RSNAPSHOT]
+    check to see if rsnapshot schedule is working
+    find more exceptions, reduce weight
+    secure/harden
+      ansible playbook to deploy backup user
+      ssh-key allow rsync command only
 
-  DOCKER
+  [DOCKER]
     PROWLARR     nzbhydra/jackett alt
     HOMER        organizar alt
     READARR
     CALIBRE
     CALIBRE-WEB
+
   WEB SITE     home improvement image galleries        
   ROOT         dotfile solution, neovim, aliases, etc. 
   BITWARDEN    secure, segment                         
