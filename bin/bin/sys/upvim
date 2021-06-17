@@ -8,11 +8,15 @@
 #────────────────────────────────────────────────────────────
 
 source _bm
+
 _a vim
 _o plugins: clean, install, update
-  nvim \
-    +'PlugClean!' \
-    +'PlugInstall --sync' \
-    +'PlugUpdate' +qa \
-    +'CocInstall coc-marketplace' \
-    && _s
+
+nvim \
+  +'PlugClean!' \
+  +'PlugInstall --sync' \
+  +'PlugUpdate' \
+  +'CocInstall coc-marketplace' \
+  && _s
+
+# plugupdate  +qa 

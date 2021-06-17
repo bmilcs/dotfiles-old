@@ -37,8 +37,8 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'ojroques/vim-oscyank'
 
 " indentation lines (tab)
-  Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'Yggdroot/indentLine'
+" Plug 'lukas-reineke/indent-blankline.nvim'
 
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 
@@ -64,7 +64,7 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " python
-  Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
 
 " i3 wm
   Plug 'mboughaba/i3config.vim'
