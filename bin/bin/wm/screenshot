@@ -27,7 +27,9 @@ done
 
 [[ -z "${type}" ]] && usage
 
-if [ -w /all/bm/images/screenshots ]; then
+is_mounted=$(mount -l | grep nfs)
+
+if [[ -n $is_mounted ]]; then
   f="/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
   _nw "'/all/bm' isn't mounted"
@@ -54,56 +56,3 @@ if [ -e "$f" ]; then
   _nimg "$f" "$f"
 fi
 
-# 
-# maimsel() {
-#   if maim -s "$f"; then
-#     (
-#     if [[ -n $up ]]; then 
-#       upl "$f"
-#     else
-#       xclip -sel clip -t image/png "$f"
-#     fi
-#     ) && _ns "$f" "selection"
-#   else
-#     _ne something went wrong.
-#   fi
-# }
-# 
-# maimwin() {
-#   if maim -i "$(xdotool getactivewindow)" "$f"; then
-#     ( 
-#     if [[ -n $up ]]; then
-#       upl "$f"
-#     else 
-#       xclip -sel clip -t image/png "$f"
-#     fi 
-#     ) && _ns "$f" "window"
-#   else
-#     _ne something went wrong.
-#   fi
-# 
-# }
-# 
-# maimall() {
-#   if maim "$f"; then
-#     (
-#     if [[ -n $up ]]; then 
-#       upl "$f"
-#     else 
-#       xclip -sel clip -t image/png "$f"
-#     fi
-#     ) && _ns "$f" "desktop"
-# 
-#   else
-#     _ne something went wrong.
-#   fi
-# }
-
-#[ "$1" == all ] && maimall
-#[ "$1" == win ] && maimwin
-#[ "$1" == sel ] && maimsel
-#
-#set +x
-
-_s
-exit 0
