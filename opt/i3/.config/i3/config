@@ -85,10 +85,10 @@ bindsym  $w+Return      exec --no-startup-id    alacritty
 #────────────────────────────────────────────────────────  screenshots  ───────
 
 bindsym  Print          exec --no-startup-id    screenshot -t sel
-bindsym  $c+Print       exec --no-startup-id    screenshot -t win
+bindsym  $a+Print       exec --no-startup-id    screenshot -t win
 bindsym  $s+Print       exec --no-startup-id    screenshot -t all
 bindsym  Pause          exec --no-startup-id    screenshot -ut sel 
-bindsym  $c+Pause       exec --no-startup-id    screenshot -ut win
+bindsym  $a+Pause       exec --no-startup-id    screenshot -ut win
 bindsym  $s+Pause       exec --no-startup-id    screenshot -ut all
 
 #─────────────────────────────────────────────────────  custom scripts  ───────
@@ -116,13 +116,13 @@ bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 #───────────────────────────────────────────────────────────────  rofi  ───────
 
 # standard
-bindsym $w+d           exec --no-startup-id    rofiapp
+bindsym $w+2           exec --no-startup-id    rofiapp
 # dotfiles
-bindsym $ws+d          exec --no-startup-id    rofibin
+bindsym $ws+2          exec --no-startup-id    rofibin
 # text
-bindsym $wc+d          exec --no-startup-id    rofitxt
+bindsym $wc+2          exec --no-startup-id    rofitxt
 # text input example
-bindsym $wcs+d         exec --no-startup-id    rofiinput
+bindsym $wcs+2         exec --no-startup-id    rofiinput
 
 #──────────────────────────────────────  keybinds: movement & resizing  ───────
 
