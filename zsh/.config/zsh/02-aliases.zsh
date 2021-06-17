@@ -30,6 +30,11 @@ alias cfadd='sh ~/.ssh/cloudflare/add'
 alias cfdel='sh ~/.ssh/cloudflare/del'
 alias cfinfo='sh ~/.ssh/cloudflare/info'
 
+# generate pw hash
+alias pwhash='openssl passwd -6 '
+
+alias fdd='fd -H -E /all -E /vault '
+
 #───────────────────────────────────────────────────────────────  text  ───────
 
 # text editors
@@ -39,8 +44,10 @@ alias svim='sudo nvim'            ; compdef svim='nvim'
 alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
 
 # dotfiles repo
-alias bmi='cd $D && ./install.sh'
-alias bme='vim $D/install.sh'
+alias bmi='cd $BM && ./install.sh'
+alias bmPi='cd $BMP && ./install.sh'
+alias bme='vim $BM/install.sh'
+alias bmPe='vim $BMP/install.sh'
 
 # scratchpad
 alias pad='vim $D/txt/txt/pad.md'

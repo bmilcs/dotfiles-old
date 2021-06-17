@@ -39,6 +39,10 @@ sshe() {
   [[ -e ~/.ssh/config_off ]] && nvim ~/.ssh/config
 }
 
+scp-dl() {
+  scp "$1" docker:/home/bmilcs/docker/swag/config/www/dl
+}
+
 #────────────────────────────────────────────────────────────  ansible  ───────
 
 
@@ -64,7 +68,7 @@ then
   apb() { 
     cd $ANSIBLE_HOME || return 1
     if [ -e "$1" ]; then
-      ansible-playbook "$1"
+      ansible-playbook -v "$1"
     else
       l
     fi
@@ -98,13 +102,17 @@ function ga() {
   #converted ga='$(grevp)     || cd $D && forgit::add'
   source _bm
   grevp || cd $D 
-  forgit::add
-  git diff --staged
-  _a git commit message:
-  read gc
-  [ -n $gc ] \
-  && gc $gc \
-  && gp
+  if [[ $# -eq 0 ]]; then
+    forgit::add
+  else
+    git add "$*"
+  fi \
+    && git diff --staged \
+    && _a git commit message: \
+    && read gc \
+    && [ -n $gc ] \
+    && gc $gc \
+    && gp
 
 }
 
@@ -138,51 +146,55 @@ function gacall() {
   && ga . && gc "$@" && _s done.
   }
 
-function endot()
-{
-  source _bm
-  _a bmilcs encryption
-  cd "${BMP}" || return
-
-  norm="bm.priv.tar.gz"
-  tar="$D/.priv"
-
-  _fc chmod 700
-  chmod -R 700 ${BMP}/*
-
-  _fc compression
-  tar --exclude='bm.priv.tar.*' -czvf "$norm" -C "${BMP}" .
-
-  _fc encryption
-  gpg -er bmilcs@yahoo.com "$norm" \
-    && rm "$norm" \
-    && mv "${norm}.gpg" "$tar"
-
-  _fc test
-  results=$(file "$tar/$norm.gpg")
-  if [[ $results == *encrypted* ]]; then
-    _s "encryption: complete!"
-    gp
-  else
-    _e "encryption not found"
-  fi
-}
-
-function dedot()
-{
-  source _bm
-  _a bmilcs decryption
-
-  norm="bm.priv.tar.gz"
-  safe="bm.priv.tar.gz.gpg"
-
-  cd "${BMP}" || return
-  gpg -do "${BMP}/$norm" "${BM}/.priv/$safe"
-  tar -xzvf "${BMP}/$norm" -C "${BMP}/"
-
-  rm "${BMP}/$norm"
-  . ${BMP}/install.sh
-}
+#function endot()
+#{
+#  source _bm
+#  _a bmilcs encryption
+#  cd "${BMP}" || return
+#
+#  norm="bm.priv.tar.gz"
+#  tar="$D/.priv"
+#
+#  _fc chmod 700
+#  chmod -R 700 ${BMP}/*
+#
+#  _fc compression
+#  tar --exclude='bm.priv.tar.*' -czvf "$norm" -C "${BMP}" .
+#
+#  _fc encryption
+#  gpg -er bmilcs@yahoo.com "$norm" \
+#    && rm "$norm" \
+#    && mv "${norm}.gpg" "$tar"
+#
+#  _fc test
+#  results=$(file "$tar/$norm.gpg")
+#  if [[ $results == *encrypted* ]]; then
+#    _s "encryption: complete!"
+#    cd $BM || exit
+#    _a "git add changes"
+#    git add .priv/bm.priv.tar.gz.gpg
+#    git commit -m "update"
+#    gp
+#  else
+#    _e "encryption not found"
+#  fi
+#}
+#
+#function dedot()
+#{
+#  source _bm
+#  _a bmilcs decryption
+#
+#  norm="bm.priv.tar.gz"
+#  safe="bm.priv.tar.gz.gpg"
+#
+#  cd "${BMP}" || return
+#  gpg -do "${BMP}/$norm" "${BM}/.priv/$safe"
+#  tar -xzvf "${BMP}/$norm" -C "${BMP}/"
+#
+#  rm "${BMP}/$norm"
+#  . ${BMP}/install.sh
+#}
 
 #──────────────────────────────────────────────────────────────  SHELL  ───────
 
