@@ -108,7 +108,7 @@ _a yay time
 
 while read x; do
   echo "fixing $x"
-  yay -S --noconfirm --overwrite "*" "$x" &> /dev/null \
+  yay -S --noconfirm --overwrite "*" "$x" 2&1> /dev/null \
     && echo "> done!"
 done <"$paclist".final
 
