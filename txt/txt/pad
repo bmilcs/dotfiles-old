@@ -1,4 +1,10 @@
 #──────────────────────────────────────────────────────────  [HOMELAB]   ──────
+[NEXTCLOUD]
+- https://www.linuxbabe.com/ubuntu/install-nextcloud-ubuntu-20-04-nginx-lemp-stack
+
+[DATABASE VM]
+- Consolidate homelab databases into a single VM
+
 
 fix backup
   - log rotate?
