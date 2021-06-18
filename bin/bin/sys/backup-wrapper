@@ -8,5 +8,5 @@
 #                 RSNAPSHOT BACKUP WRAPPER [./backup_wrapper]
 
  
-logger -t backup $@
+#logger -t backup $@
 /usr/bin/sudo /usr/bin/rsync "$@";
