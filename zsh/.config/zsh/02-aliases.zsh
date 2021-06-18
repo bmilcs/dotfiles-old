@@ -343,7 +343,12 @@ scp     ~/dev/esxi/.profile  esxi:/.profile
 if [[ $HOST == "cloud" ]]; then
  
   # reload services
-  alias wwwr='scr redis-server php7.3-fpm nginx'
+  alias wwwr='
+  _a "restarting webserver: ${YLW}nginx | php | redis"
+  scr redis-server php7.3-fpm nginx
+  
+  _a "status check"
+  scs nginx php7.3-fpm redis-server'
 
   # cloudflare
   alias nce='svim /usr/share/nginx/nextcloud/config/config.php'
