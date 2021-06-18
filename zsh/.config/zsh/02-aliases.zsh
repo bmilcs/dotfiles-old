@@ -338,6 +338,27 @@ scp -r  ~/dev/esxi/bm        esxi:/
 scp     ~/dev/esxi/.profile  esxi:/.profile 
 '
 
+#──────────────────────────────────────────────────────────────  CLOUD   ──────
+
+if [[ $HOST == "cloud" ]]; then
+ 
+  # reload services
+  alias wwwr='scr redis-server php7.3-fpm nginx'
+
+  # cloudflare
+  alias nce='sudo nvim /usr/share/nginx/nextcloud/config/config.php'
+  alias ncc='cd /usr/share/nginx/nextcloud'
+
+  alias nginxe='sudo nvim /etc/nginx/conf.d/nextcloud.conf'
+  alias nginxx='cd /etc/nginx'
+  alias nginxxx='cd /usr/share/nginx'
+  alias logg='cd /var/log'
+
+  alias phpe='sudo nvim /etc/php/7.3/fpm/php.ini'
+  alias phpe='cd /etc/php/7.3'
+
+fi
+
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 #if where docker-compose > /dev/null && [ -d ~/docker ]; then
