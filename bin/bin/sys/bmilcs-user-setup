@@ -10,21 +10,41 @@
 source _bm
 _tb bmilcs user uid/gid setup
 
-UID=$(id -u bmilcs)
-GID=$(id -g bmilcs)
+bmUID=$(id -u bmilcs)
+bmGID=$(id -g bmilcs)
 
-[[ $UID == "1086" ]] \
-  && fixUID="1" \
-  && _e "bmilcs user id: $UID"
+if [[ $bmUID -ne "1086" ]]; then
+  fixUID="1"
+  _e "bmilcs user id: ${B}$bmUID"
+else
+  fixUID="0"
+  _s "bmilcs user id: ${B}$bmUID"
 
-[[ $GID == "1190" ]] \
-  && fixGID="1" \
-  && _e "bmilcs group id: $UID"
+fi
 
-exit 0
+if [[ $bmGID -ne "1190" ]]; then
+  fixGID="1"
+  _e "bmilcs group id: ${B}$bmGID"
+else
+  fixGID="0"
+  _s "bmilcs group id: ${B}$bmGID"
+fi
 
-usermod -u 2005 bmilcs
-groupmod -g 1190 bmilcs
+[[ $fixGID -eq 1 ]] \
+  && _a "fixing bmilcs UID" \
+  && usermod -u 1086 bmilcs \
+  && _s "done"
+[[ $fixUID -eq 1 ]] \
+  && _a "fixing bmilcs GID" \
+  && groupmod -G 1190 bmilcs \
+  && _s "done"
 
-find / -group 2000 -exec chgrp -h foo {} \;
- find / -user 1005 -exec chown -h foo {} \;
+if _ask "would you like to manually fix an old USER id?"; then
+  manUID=$(_prompt "original USER id?")
+  echo $manUID
+fi
+#manGID
+exit
+
+find / -group "$bmGID" -exec chgrp -h bmilcs {} \;
+find / -user "$bmUID" -exec chown -h bmilcs {} :w\;
