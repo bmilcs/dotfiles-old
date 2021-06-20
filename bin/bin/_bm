@@ -27,18 +27,24 @@ MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
 # INPUT
 #────────────────────────────────────────────────────────────
 
+_prompt() {
+    _qq "$1 ${color}[$prompt]${NC}"
+    read -r reply #< /dev/tty
+    echo "$reply"
+}
+
 _askk() {
-    local prompt default reply
-    if [[ ${2:-} = 'Y' ]]; then
-        prompt="${NC}${B}Y${color}|n"
-        default='Y'
-    elif [[ ${2:-} = 'N' ]]; then
-        prompt="y|${NC}${B}N${color}"
-        default='N'
-    else
-        prompt="y/n"
-        default=''
-    fi
+  local prompt default reply
+  if [[ ${2:-} = 'Y' ]]; then
+      prompt="${NC}${B}Y${color}|n"
+      default='Y'
+  elif [[ ${2:-} = 'N' ]]; then
+      prompt="y|${NC}${B}N${color}"
+      default='N'
+  else
+      prompt="y/n"
+      default=''
+  fi
   while true; do
     # ask the question
     _qq "$1 ${color}[$prompt]${NC}"
