@@ -23,7 +23,11 @@
 sudo apt update
 sudo apt upgrade
 sudo apt install -y nginx ufw
-sudo ufw allow http
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw allow ssh
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
 sudo chown www-data:www-data /usr/share/nginx/html -R
 
 # MARIADB
@@ -39,12 +43,16 @@ sudo mysql_secure_installation
   # ENTER
 
 # PHP7.3
-# https://www.vultr.com/docs/how-to-install-nextcloud-on-debian-10
-sudo apt install php-fpm php-curl php-cli php-mysql php-gd php-common php-xml php-json php-intl php-pear php-imagick php-dev php-common php-mbstring php-zip php-soap php-bz2 php-bcmath php-gmp -y
+  # https://www.vultr.com/docs/how-to-install-nextcloud-on-debian-10
+
+  # debian
+  sudo apt -y install php-fpm php-curl php-cli php-mysql php-gd php-common php-xml php-json php-intl php-pear php-imagick php-dev php-common php-mbstring php-zip php-soap php-bz2 php-bcmath php-gmp php-imagick libmagickcore-6.q16-6-extra
 
 # NGINX
+
 sudo rm /etc/nginx/sites-enabled/default
 sudo vim /etc/nginx/conf.d/default.conmf
+
   server {
     listen 80;
     listen [::]:80;
@@ -331,3 +339,42 @@ sudo systemctl restart nginx php7.3-fpm.service
 
 cd /usr/share/nginx/nextcloud/
 sudo -u www-data php occ db:add-missing-indices
+
+#────────────────────────────────────────────────────  LOCAL DNS ENTRY  ───────
+
+sudoedit /etc/hosts
+
+  127.0.0.1   localhost focal ubuntu nextcloud.example.com collabora.example.com
+
+#────────────────────────────────────────────────────  TOO MANY LOGINS  ───────
+
+sudo mariadb
+  DELETE FROM oc_bruteforce_attempts;
+
+################################################################################
+############################# LETSENCRYPT CERTBOT ##############################
+################################################################################
+
+sudo apt install python-certbot-nginx python-certbot-dns-cloudflare
+
+# ~/bin/lab/certs
+
+  sudo certbot \
+    certonly \
+    --agree-tos \
+    --hsts \
+    --staple-ocsp \
+    --dns-cloudflare \
+    --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini \
+    -d "$1.bmilcs.com"
+  # --redirect \
+  # --nginx \
+
+  sudo certbot \
+    --reinstall \
+    --hsts \
+    --agree-tos \
+    --staple-ocsp \
+    -d "$1.bmilcs.com" \
+    -i nginx
+

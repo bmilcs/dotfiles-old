@@ -1,6 +1,12 @@
 #──────────────────────────────────────────────────────────  [HOMELAB]   ──────
+
+[ORIGIN CA certs via CLOUDFLARE]
+  - install to NGINX
+    https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
+
 [NEXTCLOUD]
 - https://www.linuxbabe.com/ubuntu/install-nextcloud-ubuntu-20-04-nginx-lemp-stack
+
 
 [DATABASE VM]
 - Consolidate homelab databases into a single VM
