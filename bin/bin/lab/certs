@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 CERTIFICATE RENEWAL [./certs]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_tb certificate renewal
+
+[[ $# -ne 1 ]] \
+  && _e "subdomain required" \
+  && exit 1
+
+sudo certbot \
+  certonly \
+  --agree-tos \
+  --hsts \
+  --staple-ocsp \
+  --dns-cloudflare \
+  --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini \
+  -d "$1.bmilcs.com"
+# --redirect \
+# --nginx \
+
+
+sudo certbot \
+  --reinstall \
+  --hsts \
+  --agree-tos \
+  --staple-ocsp \
+  -d "$1.bmilcs.com" \
+  -i nginx
