@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 BMILCS USER UID/GID SETUP [./bmilcs-user-setup]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_tb bmilcs user uid/gid setup
+
+UID=$(id -u bmilcs)
+GID=$(id -g bmilcs)
+
+[[ $UID == "1086" ]] \
+  && fixUID="1" \
+  && _e "bmilcs user id: $UID"
+
+[[ $GID == "1190" ]] \
+  && fixGID="1" \
+  && _e "bmilcs group id: $UID"
+
+exit 0
+
+usermod -u 2005 bmilcs
+groupmod -g 1190 bmilcs
+
+find / -group 2000 -exec chgrp -h foo {} \;
+ find / -user 1005 -exec chown -h foo {} \;
