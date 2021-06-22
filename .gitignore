@@ -25,3 +25,8 @@ zsh/.config/ranger/plugins/__pycache__/compress.cpython-37.opt-1.pyc
 zsh/.config/ranger/plugins/__pycache__/extract.cpython-37.opt-1.pyc
 .priv/**
 
+opt/mpd/.config/mpd/state
+zsh/.config/ranger/plugins/__pycache__/__init__.cpython-39.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/archives_utils.cpython-39.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/compress.cpython-39.opt-1.pyc
+zsh/.config/ranger/plugins/__pycache__/extract.cpython-39.opt-1.pyc
