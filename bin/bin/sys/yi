@@ -18,11 +18,13 @@ yi_list=/tmp/yi_list
 rm -rf "$yi_list"
 
 {
+set -x
 yay -Slq --sortby votes\
   | fzf -m \
   --preview 'yay -Si {1}' \
-  | yay -S --answerclean All --answerdiff None --answeredit None - | \
+  | yay -S --answerclean None --answerdiff None --answeredit None - | \
     tee "$yi_list"
+set +x
 } || {
   pacfix "$yi_list"
 }

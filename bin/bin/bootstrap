@@ -42,8 +42,15 @@ plog xmodmap caps rshift etc
 xmodmap ~/.config/xorg/xmodmap
 
 # keyboard: disable caps altogether
-plog xset_disablecaps
-xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock &>> "$log"_xset_disablecaps
+if [[ $HOST == "bmPC" ]]; then
+  plog xset_disablecaps
+  xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock &>> "$log"_xset_disablecaps
+else
+  # make CapsLock behave like Ctrl:
+  setxkbmap -option ctrl:nocaps
+  # make short-pressed Ctrl behave like Escape:
+  xcape -e 'Control_L=Escape'
+fi
 
 # keyboard: caps = esc (tap)
 pgrep -f xcape || plog xcape_ctrl_escape && xcape -e 'Control_L=Escape' &>> "$log"_xcape_ctrl_escape
