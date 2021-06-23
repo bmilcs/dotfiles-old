@@ -269,7 +269,7 @@ elif [[ ${DISTRO} =~ centos ]]; then
     || (sudo yum install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
 
   # apt specific
-  rpm -q "${apt[@]}" > /dev/null 2>&1 \
+  rpm -q "${yum[@]}" > /dev/null 2>&1 \
     || (sudo yum install -y "${apt[@]}" && _o installed "${apt[@]}")
 
   # create path if not exists
@@ -277,7 +277,6 @@ elif [[ ${DISTRO} =~ centos ]]; then
 
   # link fdfind to fd
   #[[ ! -L ~/.local/bin/fd ]] && ln -s "$(which fdfind)" ~/.local/bin/fd
-  exit 0
 
 #───────────────────────────────────────────────  unconfigured distros   ──────
 
@@ -391,7 +390,7 @@ if [[ ${DISTRO} == arch* ]]; then
 else # not archlinux
 
 ################################################################################
-#################################### debian  ###################################
+############################ debian ubuntu raspbian ############################
 ################################################################################
 
   # title
