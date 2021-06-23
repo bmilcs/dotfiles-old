@@ -10,16 +10,25 @@
 source _bm
 source _distro
 
+#───────────────────────────────────────────────────────────────  ARCH  ───────
+
 if [[ $DISTRO == arch* ]]; then
 
-  # ARCH
   _a pacman/aur 
   yay -Syyyuuu --noconfirm 2>&1 | tee /tmp/pacfix_in
   pacfix /tmp/pacfix_in
 
+
+#─────────────────────────────────────────────────────────────  CENTOS  ───────
+elif [[ $DISTRO =~ centos ]]; then
+
+  _w "configure me!"
+  exit
+
+#─────────────────────────────────────────────  DEBIAN RASPBIAN UBUNTU  ───────
+
 elif [[ $DISTRO =~ raspbian*|debian*|ubuntu* ]]; then
 
-  # DEBIAN
   _t apt
   _a update && \
     sudo apt update -y && _s
