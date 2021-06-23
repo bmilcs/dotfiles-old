@@ -29,22 +29,28 @@ _i "${CYN}${B}archlinux${NC}"\\n \
 _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
   --  ${B}my virtual machine setup${NC} \\n \
   --  installs: minimal setup: \\n \
-  --  defined by \$mini in the variable section.
+  --  defined by \$deb in the variable section.
+
+_i "${CYN}${B}centos users${NC}" \\n \
+  --  ${B}web host setup${NC} \\n \
+  --  installs: minimal setup \\n \
+  --  defined by \$centos in the variable section.
 
 #──────────────────────────────────────────────────────────  variables  ──────#
 
-# path exceptions
+# global path exceptions
 exceptions=("img" "opt" "rsnapshot" "backup")
 
-# debian/raspbian/ubuntu (vm's, raspberry pi's, etc)
-mini=("bin" "git" "txt" "vim" "zsh" "bash") 
+# minimal: [debian/raspbian/ubuntu]
+deb=("bin" "git" "txt" "vim" "zsh" "bash") 
 
-# required packages
-pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "colordiff")
-aptpkg=("fd-find" "nodejs" "npm") # "bat"
-pacpkg=("fd" "unzip")
+# packages
+pkgs=("curl" "wget" "zsh" "neovim" "git" "stow")
+apt=("fd-find" "nodejs" "npm" "colordiff") # "bat" mia
+pacman=("fd" "unzip" "colordiff")
+yum=("") # missing: fd, bat, colordiff
 
-# repo path (env var)
+# repo related
 D=$HOME/bm
 BM=$HOME/bm
 BMP=$HOME/bmP
@@ -221,13 +227,20 @@ _o "${pkgs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
 
+  sudo rm -rf /tmp/bm-install.sh #2>&1 /dev/null
+
   # universal packages
   pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
-    || (sudo pacman -Syyy "${pkgs[@]}" && _o installed "${pkgs[@]}")
+    || (sudo pacman -Syu "${pkgs[@]}" | tee /tmp/bm-install.sh \
+    && _o installed "${pkgs[@]}")
 
   # pacman specific
-  pacman -Qi "${pacpkg[@]}" > /dev/null 2>&1 \
-    || (sudo pacman -Syyy "${pacpkg[@]}" && _o installed "${pacpkg[@]}")
+  pacman -Qi "${pacman[@]}" > /dev/null 2>&1 \
+    || (sudo pacman -Syu "${pacman[@]}" | tee -a /tmp/bm-install.sh \
+    && _o installed "${pacman[@]}")
+
+  # --noconfirm 
+  # ./bin/bin/sys/pacfix /tmp/bm-install.sh
 
 #───────────────────────────────────────────  debian, raspbian, ubuntu  ───────
 
@@ -238,14 +251,33 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
     || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
 
   # apt specific
-  dpkg -s "${aptpkg[@]}" > /dev/null 2>&1 \
-    || (sudo apt-get install -y "${aptpkg[@]}" && _o installed "${aptpkg[@]}")
+  dpkg -s "${apt[@]}" > /dev/null 2>&1 \
+    || (sudo apt-get install -y "${apt[@]}" && _o installed "${apt[@]}")
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
 
   # link fdfind to fd
   [[ ! -L ~/.local/bin/fd ]] && ln -s "$(which fdfind)" ~/.local/bin/fd
+
+#─────────────────────────────────────────────────────────────  centos  ───────
+
+elif [[ ${DISTRO} =~ centos ]]; then
+
+  # universal packages
+  rpm -q "${pkgs[@]}" > /dev/null 2>&1 \
+    || (sudo yum install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
+
+  # apt specific
+  rpm -q "${apt[@]}" > /dev/null 2>&1 \
+    || (sudo yum install -y "${apt[@]}" && _o installed "${apt[@]}")
+
+  # create path if not exists
+  [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
+
+  # link fdfind to fd
+  #[[ ! -L ~/.local/bin/fd ]] && ln -s "$(which fdfind)" ~/.local/bin/fd
+  exit 0
 
 #───────────────────────────────────────────────  unconfigured distros   ──────
 
@@ -396,7 +428,7 @@ else # not archlinux
     || (_e unable to cd base repo dir && exit 1)
 
   _o symlink: home "${B}"\~
-  stow -R "${mini[@]}" && _i stowed: "${mini[@]}" && _s
+  stow -R "${deb[@]}" && _i stowed: "${deb[@]}" && _s
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
