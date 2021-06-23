@@ -70,7 +70,7 @@ cleanup() {
   mkdir -p "${BMP}"
 
   _f "backup: ~/.dotfiles"
-  mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bashrc*,.zcompdump} "$BAK" 2> /dev/null
+  mv ~/{_bmilcs,.bm*,.inputrc*,.dir_color*,.aliases,.functions,.profile,.bash*,.zcompdump} "$BAK" 2> /dev/null
 
   _f "backup: old up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$BAK" 2> /dev/null
