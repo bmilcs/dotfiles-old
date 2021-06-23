@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 USERADD COMMAND [./i3iuser]
+#────────────────────────────────────────────────────────────
+source _bm
+_a "useradd'er"
+
+cmd='
+groupadd -g 1190 bmilcs \
+  && useradd -u 1086 -g 1190 -G wheel bmilcs \
+  && passwd bmilcs'
+
+echo "$cmd" | xclip -sel clip
+sleep 0.25
+xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel clip -o)"
+

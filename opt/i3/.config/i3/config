@@ -101,6 +101,7 @@ bindsym $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy
 bindsym $w+i            exec --no-startup-id    i3floater
 # bm dotfiles
 bindsym $w+e            exec --no-startup-id    i3idotfiles
+bindsym $wc+e           exec --no-startup-id    i3iuser
 # bm paste clipboard
 bindsym $w+v            exec --no-startup-id    xdotool type --clearmodifiers \
                                            --delay 0 -- "$(xclip -sel clip -o)"
