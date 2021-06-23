@@ -1,15 +1,18 @@
 #──────────────────────────────────────────────────────────  [HOMELAB]   ──────
 
+CONTINUE USERADD/GROUP NOTES:
+  0_linux.md
+
+
 [ORIGIN CA certs via CLOUDFLARE]
   - install to NGINX
     https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
 
 [NEXTCLOUD]
-- https://www.linuxbabe.com/ubuntu/install-nextcloud-ubuntu-20-04-nginx-lemp-stack
+  MariaDB -> PostgreSQL? (https://www.reddit.com/r/unRAID/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
 
-
-[DATABASE VM]
-- Consolidate homelab databases into a single VM
+  [DATABASE VM]
+  - Consolidate homelab databases into a single VM
 
 
 fix backup

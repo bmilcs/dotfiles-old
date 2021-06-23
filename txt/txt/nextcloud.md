@@ -315,10 +315,11 @@ sudo nvim /etc/php/7.4/fpm/pool.d/www.conf
 
 #────────────────────────────────────────────────────  NO MEMORY CACHE  ───────
 
-sudo apt -y install redis-server
-sudo apt -y install php-redis
+sudo apt -y install redis-server php-redis
 
 # enable both services
+
+sudo usermod -a -G redis www-data
 
 sudo nvim /usr/share/nginx/nextcloud/config/config.php
 
@@ -378,3 +379,25 @@ sudo apt install python-certbot-nginx python-certbot-dns-cloudflare
     -d "$1.bmilcs.com" \
     -i nginx
 
+#───────────────────────────────────────────────────  PHP OPTIMIZATION  ───────
+
+# testing out:
+
+  svim /etc/php/7.3/pool.d/www.conf
+
+  pm = static                # was dynamic
+  pm.max_children = 512      # was 5
+  pm.start_servers = 32      # was 2
+  pm.min_spare_servers = 32  # was 1
+  pm.max_spare_servers = 64  # was 3
+
+#────────────────────────────────────────────────────────  PHP OPCACHE  ───────
+
+# /etc/php/7.3/fpm/conf.d/10-opcache.ini
+opcache.enable=1
+opcache.enable_cli=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
+opcache.save_comments=1
+opcache.revalidate_freq=1

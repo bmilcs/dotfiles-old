@@ -503,6 +503,14 @@ bash has a few things that break posix sh (one example that comes to mind is ech
       # lists everything
       compdef '_files -g "$HOME/bm/*"' stw
 
+### useradd
+
+  `useradd` arguments:
+  `-u 1086` specify user id
+  `-g 1190` specify group id
+  `-G wheel,etc` specify supplementary groups 
+
+
 #### REFERENCES
 
 - [**Linuxize: Bash Functions**](https://linuxize.com/post/bash-functions/)
