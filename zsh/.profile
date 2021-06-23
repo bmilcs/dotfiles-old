@@ -67,7 +67,7 @@ export ANSIBLE_HOME=~/ans
 # terminal/text
 export EDITOR=nvim
 export VISUAL=nvim
-export TERM=xterm-256color
+export TERM=xterm # test, was: xterm-256color
 export COLORTERM="truecolor"
 
 # bmpc/bmtp
