@@ -4,22 +4,19 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 USERADD COMMAND [./i3iuser]
+#                 SSHD_CONFIG MOD [./i3isshd]
 #────────────────────────────────────────────────────────────
 source _bm
-_a "useradd'er"
+_a i3 sshd config setup
 
 cmd="
-echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel ; \
-groupadd -g 1190 bmilcs 2> /dev/null ; \
-groupadd -g 998 wheel 2> /dev/null ; \
-useradd -m -u 1086 -g 1190 -G wheel bmilcs ; \
-mkdir -p /home/bmilcs/.ssh ; \
-chown bmilcs:bmilcs /home/bmilcs/.ssh
-passwd bmilcs
+sed -i -e '/^#\?PermitRootLogin/c\PermitRootLogin yes
+/^#\?PubkeyAuthentication/c\PubkeyAuthentication yes
+/^#\?PasswordAuthentication/c\PasswordAuthentication yes
+/^#\?AuthorizedKeysFile/c\AuthorizedKeysFile %h/.ssh/authorized_keys
+' /etc/ssh/sshd_config
 "
 
 echo "$cmd" | xclip -sel clip
-sleep 0.25
-xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel clip -o)"
-
+sleep 0.2
+xdotool type --clearmodifiers --delay 0.2 -- "$(xclip -sel clip -o)"

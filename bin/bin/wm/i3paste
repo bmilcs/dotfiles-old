@@ -4,22 +4,7 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 USERADD COMMAND [./i3iuser]
+#                 I3 PASTE [./i3paste]
 #────────────────────────────────────────────────────────────
-source _bm
-_a "useradd'er"
 
-cmd="
-echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel ; \
-groupadd -g 1190 bmilcs 2> /dev/null ; \
-groupadd -g 998 wheel 2> /dev/null ; \
-useradd -m -u 1086 -g 1190 -G wheel bmilcs ; \
-mkdir -p /home/bmilcs/.ssh ; \
-chown bmilcs:bmilcs /home/bmilcs/.ssh
-passwd bmilcs
-"
-
-echo "$cmd" | xclip -sel clip
-sleep 0.25
 xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel clip -o)"
-
