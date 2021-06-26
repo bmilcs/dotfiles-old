@@ -28,7 +28,7 @@ alias cp='cp -v'
 
 # original
 alias ali='vi ~/.profile'
-alias zr='source ~/.profile'
+alias zr='. ~/.profile'
 
 # ls
 alias l='ls'

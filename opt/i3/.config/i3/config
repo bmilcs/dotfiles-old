@@ -62,7 +62,7 @@ bindsym $next          exec --no-startup-id    mpc next
 # volume
 bindcode $w+35         exec --no-startup-id    bmvol up
 bindcode $w+34         exec --no-startup-id    bmvol down
-bindcode $w+backspace  exec --no-startup-id    mpc toggle
+#bindsym  $w+backspace  exec --no-startup-id    mpc toggle
 bindsym  $volup        exec --no-startup-id    bmvol up
 bindsym  $voldn        exec --no-startup-id    bmvol down
 bindsym  $mute         exec --no-startup-id    bmvol mute
@@ -99,12 +99,12 @@ bindsym $w+period       exec --no-startup-id    i3kr -f -n i3debug -c i3debug
 bindsym $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
 # bm floater
 bindsym $w+i            exec --no-startup-id    i3floater
-# bm dotfiles
+# bm direct type
 bindsym $w+e            exec --no-startup-id    i3idotfiles
 bindsym $wc+e           exec --no-startup-id    i3iuser
+bindsym $wa+e           exec --no-startup-id    i3isshd
 # bm paste clipboard
-bindsym $w+v            exec --no-startup-id    xdotool type --clearmodifiers \
-                                           --delay 0 -- "$(xclip -sel clip -o)"
+bindsym $w+v            exec --no-startup-id    i3paste
 # bm clone
 bindsym $w+c            exec --no-startup-id    bmclone
 # bm readme
@@ -117,13 +117,13 @@ bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 #───────────────────────────────────────────────────────────────  rofi  ───────
 
 # standard
-bindsym $w+2           exec --no-startup-id    rofiapp
+bindcode $w+$backspace   exec --no-startup-id    rofiapp
 # dotfiles
-bindsym $ws+2          exec --no-startup-id    rofibin
+bindcode $ws+$backspace  exec --no-startup-id    rofibin
 # text
-bindsym $wc+2          exec --no-startup-id    rofitxt
+bindcode $wc+$backspace  exec --no-startup-id    rofitxt
 # text input example
-bindsym $wcs+2         exec --no-startup-id    rofiinput
+bindcode $wcs+$backspace exec --no-startup-id    rofiinput
 
 #──────────────────────────────────────  keybinds: movement & resizing  ───────
 
@@ -228,26 +228,48 @@ workspace $ws2  gaps horizontal 150
 workspace $ws2  gaps inner 10
 
 # firefox
-workspace $ws3  gaps vertical  12
-workspace $ws3  gaps horizontal 12
-workspace $ws3  gaps inner 10
+workspace $ws3  gaps vertical  0
+workspace $ws3  gaps horizontal 0
+workspace $ws3  gaps inner 0
 
 # term, etc.
-workspace $ws4  gaps vertical  12
-workspace $ws4  gaps horizontal 12
-workspace $ws4  gaps inner 10
+workspace $ws4  gaps vertical  0
+workspace $ws4  gaps horizontal 0
+workspace $ws4  gaps inner 0
 
-workspace $ws5  gaps vertical  12
-workspace $ws5  gaps horizontal 12
-workspace $ws5  gaps inner 10
+workspace $ws5  gaps vertical  0
+workspace $ws5  gaps horizontal 0
+workspace $ws5  gaps inner 0
 
-workspace $ws6  gaps vertical  12
-workspace $ws6  gaps horizontal 12
-workspace $ws6  gaps inner 10
+workspace $ws6  gaps vertical  0
+workspace $ws6  gaps horizontal 0
+workspace $ws6  gaps inner 0
 
-workspace $ws7  gaps vertical  12
-workspace $ws7  gaps horizontal 12
-workspace $ws7  gaps inner 10
+workspace $ws7  gaps vertical  0
+workspace $ws7  gaps horizontal 0
+workspace $ws7  gaps inner 0
+
+# # firefox
+# workspace $ws3  gaps vertical  12
+# workspace $ws3  gaps horizontal 12
+# workspace $ws3  gaps inner 10
+# 
+# # term, etc.
+# workspace $ws4  gaps vertical  12
+# workspace $ws4  gaps horizontal 12
+# workspace $ws4  gaps inner 10
+# 
+# workspace $ws5  gaps vertical  12
+# workspace $ws5  gaps horizontal 12
+# workspace $ws5  gaps inner 10
+# 
+# workspace $ws6  gaps vertical  12
+# workspace $ws6  gaps horizontal 12
+# workspace $ws6  gaps inner 10
+# 
+# workspace $ws7  gaps vertical  12
+# workspace $ws7  gaps horizontal 12
+# workspace $ws7  gaps inner 10
 
 #─────────────────────────────────────────────────────  gui & behavior   ──────
 
