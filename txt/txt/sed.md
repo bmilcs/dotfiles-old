@@ -4,6 +4,15 @@
 ``` bash
 
 
+# find 1st match, swap 2nd match with value
+# ex: find ^PermitRootLogin, swap yes match with no, retaining rest of line
+sed -i '/^PermitRootLogin/s/yes/no/' /etc/ssh/sshd_config
+
+sed -i '/^#\?PermitRootLogin/c\PermitRootLogin no' /etc/ssh/sshd_config
+sed -i '/^#\?PubkeyAuthentication/c\PubkeyAuthentication yes' /etc/ssh/sshd_config
+sed -i '/^#\?PasswordAuthentication/c\PasswordAuthentication no' /etc/ssh/sshd_config
+sed -i '/^#\?AuthorizedKeysFile/c\AuthorizedKeysFile %h/.ssh/authorized_keys' /etc/ssh/sshd_config
+
 
 ```
 

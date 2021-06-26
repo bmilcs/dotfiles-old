@@ -18,8 +18,16 @@ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarc
 # chsh -s
 yum install -y util-linux-user git
 
-# yum mirror
-sudo rm /var/cache/yum/timedhosts.txt
-sudo yum --disableplugin=fastestmirror install 
+# yum conf /etc/yum.conf
+  [main]
+  cachedir=/var/cache/yum/$basearch/$releasever
+  keepcache=0
+  debuglevel=2
+  logfile=/var/log/yum.log
+  exactarch=1
+  obsoletes=1
+  gpgcheck=1
+  plugins=1 installonly_limit=5
+
 
 ```
