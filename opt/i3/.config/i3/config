@@ -4,8 +4,9 @@
 #    ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #    ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀           dot.bmilcs.com
 #                   I3 GAPS WM [./config]
-
 #──────────────────────────────────────────────────────────  modifiers  ───────
+
+floating_modifier $w
 
 set $w           Mod4
 set $c           Ctrl
@@ -31,8 +32,6 @@ set $next        XF86AudioNext
 set $volup       XF86AudioRaiseVolume 
 set $voldn       XF86AudioLowerVolume 
 set $mute        XF86AudioMute        
-
-floating_modifier $w
 
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
@@ -66,13 +65,6 @@ bindcode $w+34         exec --no-startup-id    bmvol down
 bindsym  $volup        exec --no-startup-id    bmvol up
 bindsym  $voldn        exec --no-startup-id    bmvol down
 bindsym  $mute         exec --no-startup-id    bmvol mute
-
-# bindsym XF86AudioRaiseVolume  exec --no-startup-id    pactl \
-#     set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
-# bindsym XF86AudioLowerVolume  exec --no-startup-id    pactl \
-#     set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bindsym XF86AudioMute         exec --no-startup-id    pactl \
-#     set-sink-mute @DEFAULT_SINK@ toggle
 
 #───────────────────────────────────────────────────────  applications  ───────
 
@@ -202,9 +194,6 @@ bindsym    $w+q       workspace number $ws4;     focus tiling
 bindsym    $w+w       workspace number $ws5;     focus tiling
 bindsym    $w+a       workspace number $ws6;     focus tiling
 bindsym    $w+s       workspace number $ws7;     focus tiling
-#bindsym    $w+8       workspace number $ws8;     focus tiling
-#bindsym    $w+9       workspace number $ws9;     focus tiling
-#bindsym    $w+0       workspace number $ws10;    focus tiling
 
 bindcode  $wa+$tilde move container to workspace number $ws1
 bindsym   $wa+1      move container to workspace number $ws2
@@ -213,72 +202,56 @@ bindsym   $wa+q      move container to workspace number $ws4
 bindsym   $wa+w      move container to workspace number $ws5
 bindsym   $wa+a      move container to workspace number $ws6
 bindsym   $wa+s      move container to workspace number $ws7
-#bindsym   $wc+8      move container to workspace number $ws8
-#bindsym   $wc+9      move container to workspace number $ws9
-#bindsym   $wc+0      move container to workspace number $ws10
+
+#──────────────────────────────────────────────────────────  interface  ───────
 
 # email
-workspace $ws1  gaps vertical  25
-workspace $ws1  gaps horizontal 500
-workspace $ws1  gaps inner 10
+workspace $ws1  gaps top 30
+workspace $ws1  gaps bottom 4
+workspace $ws1  gaps inner 4
+workspace $ws1  gaps horizontal 100
+workspace $ws1  gaps vertical 50
 
 # chat
-workspace $ws2  gaps vertical  50
-workspace $ws2  gaps horizontal 150
-workspace $ws2  gaps inner 10
+workspace $ws2  gaps top 30
+workspace $ws2  gaps bottom 4
+workspace $ws2  gaps inner 4
+workspace $ws2  gaps horizontal 100
+workspace $ws2  gaps vertical 50
 
 # firefox
-workspace $ws3  gaps vertical  0
-workspace $ws3  gaps horizontal 0
-workspace $ws3  gaps inner 0
+workspace $ws3  gaps top 30
+workspace $ws3  gaps bottom 4
+workspace $ws3  gaps inner 4
+workspace $ws3  gaps horizontal 4
 
-# term, etc.
-workspace $ws4  gaps vertical  0
-workspace $ws4  gaps horizontal 0
-workspace $ws4  gaps inner 0
+# misc
+workspace $ws4  gaps top 30
+workspace $ws4  gaps bottom 4
+workspace $ws4  gaps inner 4
+workspace $ws4  gaps horizontal 4
 
-workspace $ws5  gaps vertical  0
-workspace $ws5  gaps horizontal 0
-workspace $ws5  gaps inner 0
+workspace $ws5  gaps top 30
+workspace $ws5  gaps bottom 4
+workspace $ws5  gaps inner 4
+workspace $ws5  gaps horizontal 4
 
-workspace $ws6  gaps vertical  0
-workspace $ws6  gaps horizontal 0
-workspace $ws6  gaps inner 0
+workspace $ws6  gaps top 30
+workspace $ws6  gaps bottom 4
+workspace $ws6  gaps inner 4
+workspace $ws6  gaps horizontal 4
 
-workspace $ws7  gaps vertical  0
-workspace $ws7  gaps horizontal 0
-workspace $ws7  gaps inner 0
-
-# # firefox
-# workspace $ws3  gaps vertical  12
-# workspace $ws3  gaps horizontal 12
-# workspace $ws3  gaps inner 10
-# 
-# # term, etc.
-# workspace $ws4  gaps vertical  12
-# workspace $ws4  gaps horizontal 12
-# workspace $ws4  gaps inner 10
-# 
-# workspace $ws5  gaps vertical  12
-# workspace $ws5  gaps horizontal 12
-# workspace $ws5  gaps inner 10
-# 
-# workspace $ws6  gaps vertical  12
-# workspace $ws6  gaps horizontal 12
-# workspace $ws6  gaps inner 10
-# 
-# workspace $ws7  gaps vertical  12
-# workspace $ws7  gaps horizontal 12
-# workspace $ws7  gaps inner 10
-
-#─────────────────────────────────────────────────────  gui & behavior   ──────
+workspace $ws7  gaps top 30
+workspace $ws7  gaps bottom 4
+workspace $ws7  gaps inner 4
+workspace $ws7  gaps horizontal 4
 
 focus_wrapping            no
 
 # gaps & borders
 hide_edge_borders         none
-default_border            pixel 3
-default_floating_border   pixel 5
+default_border            pixel 2
+default_floating_border   pixel 3
 
 #smart_borders            off
 #smart_gaps               on
@@ -307,21 +280,20 @@ set $yellow1  #EBCB8B
 set $green1   #A3BE8C
 set $purple1  #B48EAD
 
-#class                    border    bg       fg       focus      child_border
-client.focused            $yellow1  $blue2   $blue1   $blue2     $blue2
-client.focused_inactive   $black1   $blue1   $blue1   $blue1     $black2
-client.unfocused          $black1   $blue1   $black2  $blue1     $black2
-client.urgent             $red1     $red1    $blue1   $red1      $yellow1
-client.placeholder        $black1   $black1  $yellow1 $black1    $yellow1
-client.background         $white1
+#class                  border  bg      fg       focus   child_border
+client.focused          $white1 $blue2  $blue1   $white1 $white1
+client.focused_inactive $black1 $blue1  $blue1   $blue1  $black2
+client.unfocused        $black1 $blue1  $black2  $blue1  $black2
+client.urgent           $red1   $red1   $blue1   $red1   $yellow1
+client.placeholder      $black1 $black1 $yellow1 $black1 $yellow1
+client.background       $white1                          
 
 #──────────────────────────────────────────────────  application rules  ───────
 
 # on startup
 exec --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
 exec --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
-exec --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty;
-                                              exec /usr/bin/alacritty'
+exec --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty'
 
 # workspace
 assign        [class="Thunderbird"]        1
