@@ -188,6 +188,9 @@ ivim() {
 
     # bm - auto-update itself:
     ln -s $plugvim ~/.config/nvim/autoload && _s
+
+    # run upvim to install plugins, etc.
+    ./bin/bin/sys/upvim
   else
     _o all set
   fi
