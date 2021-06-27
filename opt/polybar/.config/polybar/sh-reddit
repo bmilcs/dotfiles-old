@@ -7,5 +7,5 @@ notifications=$(curl -sf --user-agent "$USERAGENT" "$URL" | jq '.["data"]["child
 if [ -n "$notifications" ] && [ "$notifications" -gt 0 ]; then
     echo "$notifications"
 else
-    echo "0"
+    echo " "
 fi

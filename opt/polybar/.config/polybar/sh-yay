@@ -13,5 +13,5 @@ num=$(("$pm" + "$aur"))
 if [ "$num" -gt 0 ]; then
     echo "$num"
 else
-    echo "0"
+    echo " "
 fi

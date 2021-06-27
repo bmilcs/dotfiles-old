@@ -165,10 +165,10 @@ bindsym $was+l  resize grow    width    25 px or 25 ppt
 #bindsym $w+d    resize set     width 500 px or 500 pt
 
 # gaps
-bindsym $wcs+h  gaps   inner   current  plus 2
-bindsym $wcs+j  gaps   outer   current  plus 2
-bindsym $wcs+k  gaps   outer   current  minus 2
-bindsym $wcs+l  gaps   inner   current  minus 2
+bindsym $wcs+h  gaps   inner   current  plus 1
+bindsym $wcs+j  gaps   outer   current  plus 1
+bindsym $wcs+k  gaps   outer   current  minus 1
+bindsym $wcs+l  gaps   inner   current  minus 1
 
 # splitting
 bindcode $w+47  split v
@@ -207,17 +207,15 @@ bindsym   $wa+s      move container to workspace number $ws7
 
 # email
 workspace $ws1  gaps top 30
-workspace $ws1  gaps bottom 4
 workspace $ws1  gaps inner 4
-workspace $ws1  gaps horizontal 100
-workspace $ws1  gaps vertical 50
+workspace $ws1  gaps horizontal 200
+#workspace $ws1  gaps vertical 50
 
 # chat
 workspace $ws2  gaps top 30
-workspace $ws2  gaps bottom 4
-workspace $ws2  gaps inner 4
-workspace $ws2  gaps horizontal 100
-workspace $ws2  gaps vertical 50
+workspace $ws2  gaps inner 20
+workspace $ws2  gaps horizontal 200
+#workspace $ws2  gaps vertical 50
 
 # firefox
 workspace $ws3  gaps top 30
@@ -280,13 +278,13 @@ set $yellow1  #EBCB8B
 set $green1   #A3BE8C
 set $purple1  #B48EAD
 
-#class                  border  bg      fg       focus   child_border
-client.focused          $white1 $blue2  $blue1   $white1 $white1
-client.focused_inactive $black1 $blue1  $blue1   $blue1  $black2
-client.unfocused        $black1 $blue1  $black2  $blue1  $black2
-client.urgent           $red1   $red1   $blue1   $red1   $yellow1
-client.placeholder      $black1 $black1 $yellow1 $black1 $yellow1
-client.background       $white1                          
+#class                  border  bg      fg      focus   child_border
+client.focused          $white1 $blue2  $blue1  $white1 $white1
+client.focused_inactive $black1 $blue1  $blue1  $blue1  $black4
+client.unfocused        $black1 $blue1  $black4 $blue1  $black4
+client.urgent           $red1   $red1   $blue1  $red1   $green1
+client.placeholder      $black1 $black1 $green1 $black1 $green1
+client.background       $black1                         
 
 #──────────────────────────────────────────────────  application rules  ───────
 
