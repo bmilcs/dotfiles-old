@@ -287,7 +287,7 @@ alias halt='sudo systemctl halt'
 alias shutdown='sudo systemctl poweroff'
 
 # systemctl
-alias fzn='fzf --no-preview --keep-left'
+alias fzn='fzf --no-preview'
 alias sc='sudo systemctl'                               ;compdef sc='systemctl'
 alias scu='systemctl --user'                            ;compdef scu='systemctl'
 alias scl='sc list-units --type=service --all | fzn'    ;compdef scl='systemctl'
