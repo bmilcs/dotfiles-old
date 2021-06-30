@@ -206,6 +206,7 @@ alias glog='glo'
 alias gps='$($grevp)   || cd $D && git push'
 alias gpl='$($grevp)   || {cd $D && git submodule update --remote --merge} && git pull'
 alias gd='$($grevp)    || cd $D && forgit::diff --staged'
+alias gdd='$($grevp)    || cd $D && forgit::diff'
 alias guser='git config user.name bmilcs \
              && git config user.email bmilcs@yahoo.com \
              && git config color.ui auto'
