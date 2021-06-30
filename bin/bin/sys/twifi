@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 TOGGLE WIFI [./twifi]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+if [[ $# -eq 0 ]]; then
+  ssid="puscifer"
+elif [[ $# -eq 1 ]]; then
+  ssid="$1"
+else
+  _e "unable to parse input."
+  _ob "useage: $0 OR $0 <ssid>"
+  exit 1
+fi
+
+_tb toggle wifi
+
+status=$(ip a | grep wlan0)
+
+_a status
+if [[ $status == *"state UP"* ]]; then
+  _o "currently: ${GRN}active"
+  _ar "wifi: disconnecting"
+  iwctl station wlan0 disconnect puscifer
+  _s "done"
+elif [[ $status == *"state DOWN"* ]]; then
+  _o "currently: ${RED}inactive"
+  _ag "wifi: connecting"
+  iwctl station wlan0 connect puscifer
+  _s "done"
+else
+  _e "wlan0: wirelass lan adapter not found"
+  exit 1
+fi
+
