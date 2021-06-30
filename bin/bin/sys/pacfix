@@ -20,38 +20,35 @@ rm "$paclist"{,.final} &> /dev/null
 if [[ $# == 0 ]]; then
 
   _a "[pacfix] yay -Syyuu"
-  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
+  yay -Syyuu --noconfirm | tee -a "$paclist" && _s "done\n"
 
 # pacfix 1
 elif [[ $1 == "1" ]]; then
 
   _a "[pacfix] yay -Syyuu ${RED}DEBUG"
-  yay -Syyuu --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
   debug=1
+  yay -Syyuu --noconfirm | tee -a "$paclist" && _s "done\n"
 
 # pacfix ~/list.txt (existing file)
 elif [[ -e "$1" ]]; then
 
   _a "[pacfix] list file: $1"
+  debug=1
   paclist="$1"
 
 # pacfix yay -S nginx (direct command)
 elif [[ $* == *"pacman|yay"* ]]; then
 
   _a "[pacfix] command: \'$*\'"
-  eval "$*" --noconfirm 2>&1 | tee "$paclist" && _s "done\n"
+  debug=1
+  eval "$*" --noconfirm | tee "$paclist" && _s "done\n"
 
-# pacfix package1 package2 package3
-else
+# pacfix <packagename>
+elif [[ $# -eq 1 ]]; then
 
-  _a "[pacfix] package name"
-  for pkg in "$@"
-  do
-    _a "adding: $pkg"
-    echo "$pkg" >> "$paclist".final
-    _s "done"
-  done
-
+  _a "[pacfix] package: $1"
+  debug=1
+  yay -S --noconfirm "$1" | tee "$paclist" && _s "done\n"
 fi
 
 #──────────────────────────────────────────────────  cleanup raw input   ──────
@@ -107,10 +104,12 @@ fi
 _a yay time
 
 while read x; do
-  echo "fixing $x"
-  yay -S --noconfirm --overwrite "*" "$x" 2&1> /dev/null \
-    && echo "> done!"
+  _a "fixing $x"
+# yay -S --noconfirm --overwrite "*" "$x" 2&1> /dev/null \
+  sudo pacman -S --noconfirm --overwrite "*" "$x" \
+    && _s "> done!"
+  sleep 0.5
 done <"$paclist".final
 
 # clean up
-rm "$paclist"{,.final} 2&>1 /dev/null
+rm "$paclist"{,.final} 
