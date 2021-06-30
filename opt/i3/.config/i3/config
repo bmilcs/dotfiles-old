@@ -71,16 +71,18 @@ bindsym  $mute         exec --no-startup-id    bmvol mute
 # browser
 bindsym  $wc+Return     exec --no-startup-id    firefox
 bindsym  $wcs+Return    exec --no-startup-id    chromium
+bindsym  $ws+Return     exec --no-startup-id    bitwarden
+
 # terminal
 bindsym  $w+Return      exec --no-startup-id    alacritty
 
 #────────────────────────────────────────────────────────  screenshots  ───────
 
 bindsym  Print          exec --no-startup-id    screenshot -t sel
-bindsym  $a+Print       exec --no-startup-id    screenshot -t win
+bindsym  $w+Print       exec --no-startup-id    screenshot -t win
 bindsym  $s+Print       exec --no-startup-id    screenshot -t all
 bindsym  Pause          exec --no-startup-id    screenshot -ut sel 
-bindsym  $a+Pause       exec --no-startup-id    screenshot -ut win
+bindsym  $w+Pause       exec --no-startup-id    screenshot -ut win
 bindsym  $s+Pause       exec --no-startup-id    screenshot -ut all
 
 #─────────────────────────────────────────────────────  custom scripts  ───────
@@ -314,7 +316,6 @@ for_window [instance="gtk3-icon-browser"] floating enable, resize set 735  1343,
 for_window [instance="i3debug"]           floating enable, resize set 536  355,  move absolute position 14   1070, border pixel 3
 for_window [instance="i3spy"]             floating enable, resize set 1002 64,   move absolute position 1524 7,    border pixel 3
 for_window [instance="lxappearance"]      floating enable, resize set 1561 716,  move absolute position 927  371,  border pixel 3
-for_window [instance="ncmpcpp"]           floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
 for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996,  move absolute position 916  253,  border pixel 3
 for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
 for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812  199,  border pixel 3
@@ -327,3 +328,5 @@ for_window [instance="urxvt"] floating enable, resize set 818 970, move absolute
 for_window [instance="feh"] floating enable, move center, border pixel 3
 for_window [instance="nitrogen"] floating enable, resize set 1079 480, move absolute position 1160 956, border pixel 3
 for_window [instance="i3pad"] floating enable, resize set 728 1255, move absolute position 1345 121, border pixel 3
+for_window [instance="bitwarden"] floating enable, resize set 1075 1125, move absolute position 1189 154, border pixel 3
+for_window [instance="ncmpcpp"] floating enable, resize set 796 785, move absolute position 1322 289, border pixel 3
