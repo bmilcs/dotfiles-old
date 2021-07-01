@@ -15,16 +15,21 @@ killall -q polybar
 # note: disabled wait until killed
 # while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# env var for script path
-export PBS="$HOME/.config/polybar-scripts/polybar-scripts"
-
 # i3 config (workstation)
 if [[ $(pgrep -x "i3") ]]; then
 
   # launch polybar, custom conf, forward output to log
-  echo ">>> i3 polybar launched..." >> ~/.config/polybar/log
-  polybar -l info -c ~/.config/polybar/bars.ini -r i3 2> /home/bmilcs/.config/polybar/log &
-  polybar -l info -c ~/.config/polybar/bars.ini -r dummy 2> /home/bmilcs/.config/polybar/log &
+  echo ">>> i3 polybar launching..." >> ~/.config/polybar/log
+  if [[ $HOST == bmPC ]]; then
+    polybar -l info -c ~/.config/polybar/bmPC.ini -r i3 | tee /home/bmilcs/.config/polybar/log &
+  elif [[ $HOST == bmTP ]]; then
+    polybar -l info -c ~/.config/polybar/bmTP.ini -r i3 | tee /home/bmilcs/.config/polybar/log &
+  else
+    echo "error"
+    exit 1
+  fi
+      
+# polybar -l info -c ~/.config/polybar/bars.ini -r dummy 2> /home/bmilcs/.config/polybar/log &
 
 # bspwm config (laptop)
 elif [[ $(pgrep -x "bspwm") ]]; then
