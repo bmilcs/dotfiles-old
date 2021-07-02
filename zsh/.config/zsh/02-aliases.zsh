@@ -326,7 +326,7 @@ alias sinko='pacmd list-sinks | grep -e "name:" -e "index:"'
 alias sinki='pacmd list-sources | grep -e "index:" -e device.string -e "name:"'
 
 # pid
-alias pid='cat /etc/passwd | sort'
+alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 
 #────────────────────────────────────────────────────────────────  SSH  ───────
 
