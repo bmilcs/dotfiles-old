@@ -130,6 +130,9 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
 
 else #─────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
 
+  # ufw
+  alias ufw='sudo ufw'; compdef ufw='ufw'
+
   # syslog
   alias syslogg='sudo cat /var/log/syslog | grep '
   alias syslogls='sudo cat /var/log/syslog'
