@@ -144,6 +144,14 @@ fi
 
 #──────────────────────────────────────────────────────  HOST SPECIFIC  ───────
 
+if [[ $HOST == mc ]]; then
+  alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p <password> -t'
+  alias mce='svim /etc/systemd/system/minecraft.service'
+  alias mcr='scr minecraft.service'
+  alias mcs='scs minecraft.service'
+fi
+
+
 if [[ $HOST == mpd ]]; then
 
   # beets
@@ -442,7 +450,6 @@ if [[ $DISTRO == "debian" ]]; then
 
   # minecraft
 
-  alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p nFkA_vKG8FTP2v@K9YdPA6utw -t'
 
 ################################################################################
 ################################### archive ####################################
