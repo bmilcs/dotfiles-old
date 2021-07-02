@@ -173,8 +173,8 @@ bindsym $wcs+k  gaps   outer   current  minus 1
 bindsym $wcs+l  gaps   inner   current  minus 1
 
 # splitting
-bindcode $w+47  split v
-bindcode $w+48  split h
+bindcode $w+47  split h
+bindcode $w+48  split v
 
 #─────────────────────────────────────────────────────────  workspaces   ──────
 
