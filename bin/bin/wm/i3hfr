@@ -17,16 +17,16 @@ usage() {
 }
 
 while getopts "n:c:f" opt; do
-    case "${opt}" in
-        n) name=${OPTARG} ;;
-        c) cmd=${OPTARG} ;;
-        f) cfg="1" ;;
-        *) usage ;;
-    esac
+  case "${opt}" in
+    n) name=${OPTARG} ;;
+    c) cmd=${OPTARG} ;;
+    f) cfg="1" ;;
+    *) usage ;;
+  esac
 done
 
 if [ -z "${name}" ] || [ -z "${cmd}" ]; then
-    usage
+  usage
 fi
 
 set -x
