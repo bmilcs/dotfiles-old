@@ -43,7 +43,7 @@ bindsym $w+backslash   exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
 bindsym $wa+backslash  exec  "i3-msg exit; exit"
 
 # restart: polybar, picom
-bindsym $w+equal       exec  ". ~/.config/polybar/launch.sh ; picomr"
+bindsym $w+equal       exec  ". ~/.config/polybar/launch.sh | tee -a ~/.config/polybar/log; picomr"
 
 # dunst: reload
 bindsym $w+minus       exec  "killall dunst ; sleep 0.5 ; th"
