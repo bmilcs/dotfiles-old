@@ -1,0 +1,106 @@
+[BITWARDEN]
+
+- https://www.reddit.com/r/bitwarden/comments/d4h4aj/best_way_to_mass_edit_bw_vault_data/
+- export to csv
+- reorganize into folders
+- deduplication
+- all lower case
+
+[LAPTOP]
+
+- reinstall
+- make it user friendly for nana
+- remove encryption
+
+[NEOMUTT SERVER]
+
+- create hfr: gui interfaces/applications: bitwarden
+
+[LOCAL NGINX]
+
+- important local hosts/services
+
+[ORIGIN CA certs via CLOUDFLARE]
+
+- install to nginx
+  https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
+
+[NEXTCLOUD]
+
+- fix public url
+- mariadb -> postgresql? (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
+
+[DATABASE VM]
+
+- consolidate homelab databases into a single vm
+
+[BACKUP]
+
+- log rotate?
+- rsnapreport
+
+[ANSIBLE]
+
+- debian deployment
+- sshd_config
+- authorized_keys
+- change user/group id
+- git clone dotfiles
+- install essentials
+
+[CERTIFICATE AUTHORITY]
+
+- vault hashicorp
+
+[DOTFILES]
+
+- break down into components
+- git
+- vim/zsh
+- opt, etc
+
+[SERVARR]
+
+- lidarr docker > beets integration
+- musicbrainz / picard
+- mpd: add to backup
+
+[ arch ]
+
+- security pop-up keybind (req https)
+- i3: binding: selection copy/paste
+- research:
+  - awk
+  - cut
+  - xargs
+
+[ ncmpcpp ]
+
+- autosave playlist
+- hotkeys
+
+[homelab]
+
+- setup new VPN, wireguard? mulvad?
+- local docker only network
+- create local VPN for outside access
+  - rpi4? docker? vm?
+- remote docker dev (rsync compose?)
+- authentication all dockers
+  - simplify, harden
+- bmilcs.com > it's own VM
+- email server: postfix+dovecot+spamassassin
+- app.git-simple-login
+  domain email forwarding!
+
+[ansible ideas]
+
+- sshd_config tweaks:
+
+  - rsa key only
+  - remove
+    - Banner line
+    - Root login
+    - Password login
+
+- learn advanced bash https://learnxinyminutes.com/docs/bash/

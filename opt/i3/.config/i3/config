@@ -90,22 +90,33 @@ bindsym  $s+Pause       exec --no-startup-id    screenshot -ut all
 
 # bm debug
 bindsym $w+period       exec --no-startup-id    i3kr -f -n i3debug -c i3debug
+
 # bm spy
 bindsym $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
+
 # bm floater
 bindsym $w+i            exec --no-startup-id    i3floater
+
 # bm direct type
 bindsym $w+e            exec --no-startup-id    i3idotfiles
 bindsym $wc+e           exec --no-startup-id    i3iuser
 bindsym $wa+e           exec --no-startup-id    i3isshd
+
 # bm paste clipboard
 bindsym $w+v            exec --no-startup-id    i3paste
+
 # bm clone
 bindsym $w+c            exec --no-startup-id    bmclone
+
 # bm readme
-bindsym $wc+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
-# bm pad
-bindsym $w+n            exec --no-startup-id    i3hfr -n bm_pad -c 'i3nvim ~/txt/pad'
+bindsym $ws+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
+
+# lab notepad
+bindsym $w+n            exec --no-startup-id    i3hfr -n bm-notes-lab -c 'i3nvim ~/txt/bm-notes-lab'
+
+# life notepad
+bindsym $w+b            exec --no-startup-id    i3hfr -n bm-notes-life -c 'i3nvim ~/txt/bm-notes-life'
+
 # music
 bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
@@ -113,10 +124,13 @@ bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
 # standard
 bindcode $w+$backspace   exec --no-startup-id    rofiapp
+
 # dotfiles
 bindcode $ws+$backspace  exec --no-startup-id    rofibin
+
 # text
 bindcode $wc+$backspace  exec --no-startup-id    rofitxt
+
 # text input example
 bindcode $wcs+$backspace exec --no-startup-id    rofiinput
 
