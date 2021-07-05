@@ -61,6 +61,7 @@ bindsym $next          exec --no-startup-id    mpc next
 # volume
 bindcode $w+35         exec --no-startup-id    bmvol up
 bindcode $w+34         exec --no-startup-id    bmvol down
+
 #bindsym  $w+backspace  exec --no-startup-id    mpc toggle
 bindsym  $volup        exec --no-startup-id    bmvol up
 bindsym  $voldn        exec --no-startup-id    bmvol down
@@ -102,9 +103,9 @@ bindsym $w+v            exec --no-startup-id    i3paste
 # bm clone
 bindsym $w+c            exec --no-startup-id    bmclone
 # bm readme
-bindsym $wc+m           exec --no-startup-id    i3hfr -n i3readme -c i3readme
+bindsym $wc+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
 # bm pad
-bindsym $w+n            exec --no-startup-id    i3hfr -n i3pad -c "nvim +'Gruvbox' ~/txt/pad"
+bindsym $w+n            exec --no-startup-id    i3hfr -n bm_pad -c 'i3nvim ~/txt/pad'
 # music
 bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
