@@ -39,7 +39,7 @@ xset r rate 300 50 &>> "$log"_xsetrate
 # plog setxkbmap
 # setxkbmap -option ctrl:nocaps &>> "$log"_
 plog xmodmap caps rshift etc
-xmodmap ~/.config/xorg/xmodmap
+xmodmap ~/.xmodmap
 
 # keyboard: disable caps altogether
 if [[ $HOST == "bmPC" ]]; then
