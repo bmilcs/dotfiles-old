@@ -1,124 +1,139 @@
-lusrmgr
+[BITWARDEN]
+https://www.reddit.com/r/Bitwarden/comments/d4h4aj/best_way_to_mass_edit_bw_vault_data/
 
+- Export to CSV
+- Reorganize into folders
+- Deduplication
+- All lower case
 
-#──────────────────────────────────────────────────────────  [HOMELAB]   ──────
+[LAPTOP]
+
+- Reinstall
+- Make it user friendly for nana
+- Remove encryption
+
+#────────────────────────────────────────────────────────── [HOMELAB] ──────
+
 Setup Neomutt server
 Create HFR for non-term based apps: Bitwarden
 
 [CLEANING SUPPLIES]
-  Spray Bottles
-  Multipurpose concentrate
-    Mean Green Super Strength Cleaner & Degreaser, 128 oz
-  Glass concentrate
-    Invisible Glass
-    
-  Microfiber cloths
+Spray Bottles
+Multipurpose concentrate
+Mean Green Super Strength Cleaner & Degreaser, 128 oz
+Glass concentrate
+Invisible Glass
 
+Microfiber cloths
 
 [ORIGIN CA certs via CLOUDFLARE]
-  - install to NGINX
-    https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
+
+- install to NGINX
+  https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
 
 [NEXTCLOUD]
-  MariaDB -> PostgreSQL? (https://www.reddit.com/r/unRAID/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
+MariaDB -> PostgreSQL? (https://www.reddit.com/r/unRAID/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
 
-  [DATABASE VM]
-  - Consolidate homelab databases into a single VM
+[DATABASE VM]
 
+- Consolidate homelab databases into a single VM
 
 fix backup
-  - log rotate?
-  - rsnapreport
+
+- log rotate?
+- rsnapreport
 
 bulk golf balls dad
 driver
 
-  [ANSIBLE]
-    DEBIAN DEPLOYMENT
-      sshd_config
-      authorized_keys
-      change user/group id
-      git clone dotfiles
-      install essentials
+[ANSIBLE]
+DEBIAN DEPLOYMENT
+sshd_config
+authorized_keys
+change user/group id
+git clone dotfiles
+install essentials
 
-  [CERTIFICATE AUTHORITY]
-    vault hashicorp
+[CERTIFICATE AUTHORITY]
+vault hashicorp
 
-  [DOTFILES]
-    BREAK DOWN INTO COMPONENTS
-      git
-      vim/zsh
-      opt, etc
+[DOTFILES]
+BREAK DOWN INTO COMPONENTS
+git
+vim/zsh
+opt, etc
 
-  [SERVARR]
-    LIDARR DOCKER > BEETS INTEGRATION
-    MUSICBRAINZ / PICARD
-    MPD: add to BACKUP
+[SERVARR]
+LIDARR DOCKER > BEETS INTEGRATION
+MUSICBRAINZ / PICARD
+MPD: add to BACKUP
 
-#────────────────────────────────────────────────────────────  [HOUSE]   ──────
+#──────────────────────────────────────────────────────────── [HOUSE] ──────
 
-  [INTERIOR]
-    CEILING EXTENSION CORD GARAGE
-    PAINTERS TAPE ( 3 pack frog )
-    FLOOR PAPER ROLL?
+[INTERIOR]
+CEILING EXTENSION CORD GARAGE
+PAINTERS TAPE ( 3 pack frog )
+FLOOR PAPER ROLL?
 
-  [GUTTERS]
-    GUTTER FASTENERS
-    GUTTER GUARDS
-    REMOVE BACKYARD GUARDS
+[GUTTERS]
+GUTTER FASTENERS
+GUTTER GUARDS
+REMOVE BACKYARD GUARDS
 
-  [SPRINKLER]
-    SPRAY BASE   HUNTER PRO 
-    HEAD         MP3000
-    RISER        1/2"
-    SPIKE        1/2"
-    ADJUSTER     TOOLS
-    
-  [FRENCH DRAIN]
-    FABRIC
-    PIPE
-    ROCKS/PEBBLES
+[SPRINKLER]
+SPRAY BASE HUNTER PRO
+HEAD MP3000
+RISER 1/2"
+SPIKE 1/2"
+ADJUSTER TOOLS
 
-#──────────────────────────────────────────────────────────  [FREENAS]  ───────
+[FRENCH DRAIN]
+FABRIC
+PIPE
+ROCKS/PEBBLES
+
+#────────────────────────────────────────────────────────── [FREENAS] ───────
 
 [SLOG]
-  - DC S3500/3700
 
-#───────────────────────────────────────────────────────  [HOMELAB_-2]  ───────
+- DC S3500/3700
 
-  [RSNAPSHOT]
-    check to see if rsnapshot schedule is working
-    find more exceptions, reduce weight
-    secure/harden
-      ansible playbook to deploy backup user
-      ssh-key allow rsync command only
+#─────────────────────────────────────────────────────── [HOMELAB_-2] ───────
 
-  [DOCKER]
-    PROWLARR     nzbhydra/jackett alt
-    HOMER        organizar alt
-    READARR
-    CALIBRE
-    CALIBRE-WEB
+[RSNAPSHOT]
+check to see if rsnapshot schedule is working
+find more exceptions, reduce weight
+secure/harden
+ansible playbook to deploy backup user
+ssh-key allow rsync command only
 
-  WEB SITE     home improvement image galleries        
-  ROOT         dotfile solution, neovim, aliases, etc. 
-  BITWARDEN    secure, segment                         
-  UNIFI/UNMS   move both to rpi4 via docker            
-  WEB SERVER   segment, secure                         
-  MPD          Web client                              
-  VPN          Static, always open WG server           
-               Configure phone & laptop                
-               > create vpn for docker access
-               > convert subdomains to local nginx
-  ANON         redo privacy vpn
-               headless, x11 browser
-  ANSIBLE      auto update all hosts 
-               on 1st login (arch)
-               archlinux installer (repos, infrastructure.git-archlinux)
+[DOCKER]
+PROWLARR nzbhydra/jackett alt
+HOMER organizar alt
+READARR
+CALIBRE
+CALIBRE-WEB
 
-#────────────────────────────────────────────────────────────────  OLD  ───────
+WEB SITE home improvement image galleries  
+ ROOT dotfile solution, neovim, aliases, etc.
+BITWARDEN secure, segment  
+ UNIFI/UNMS move both to rpi4 via docker  
+ WEB SERVER segment, secure  
+ MPD Web client  
+ VPN Static, always open WG server  
+ Configure phone & laptop
+
+> create vpn for docker access > convert subdomains to local nginx
+> ANON redo privacy vpn
+> headless, x11 browser
+> ANSIBLE auto update all hosts
+> on 1st login (arch)
+> archlinux installer (repos, infrastructure.git-archlinux)
+
+#──────────────────────────────────────────────────────────────── OLD ───────
 
 [wtb]
+
 - extension cord reel
 - hose reel
 - e-toothbrush
@@ -128,12 +143,14 @@ driver
 - yubikey
 
 [windows]
+
 - scrape/sand: living room windows
 - prime sills
 - caulk & install
 - paint, 2x layers
 
 [doors]
+
 - build jambs
 - cut door to size
 - route jambs & door
@@ -145,18 +162,21 @@ driver
 - paint prime
 
 [ arch ]
-  - security pop-up keybind (req https)
-  - i3: binding: selection copy/paste
-  - research:
-    - awk
-    - cut
-    - xargs
 
-  [ ncmpcpp ]
-  - autosave playlist
-  - hotkeys
+- security pop-up keybind (req https)
+- i3: binding: selection copy/paste
+- research:
+  - awk
+  - cut
+  - xargs
+
+[ ncmpcpp ]
+
+- autosave playlist
+- hotkeys
 
 [homelab]
+
 - setup new VPN, wireguard? mulvad?
 - local docker only network
 - create local VPN for outside access
@@ -167,22 +187,24 @@ driver
 - bmilcs.com > it's own VM
 - email server: postfix+dovecot+spamassassin
 - app.git-simple-login
-domain email forwarding!
+  domain email forwarding!
 
 [ansible ideas]
+
 - sshd_config tweaks:
+
   - rsa key only
-  - remove 
+  - remove
     - Banner line
     - Root login
     - Password login
 
 - learn advanced bash https://learnxinyminutes.com/docs/bash/
 
-#──────────────────────────────────────────────────────────────  notes  ───────
+#────────────────────────────────────────────────────────────── notes ───────
 
 [switch]
-  10.0.4|AMS 0.13.0|E
+10.0.4|AMS 0.13.0|E
 
 [dryer]
-  MEDC465HW0
+MEDC465HW0
