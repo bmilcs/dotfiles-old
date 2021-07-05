@@ -15,24 +15,24 @@ _t [bmilcs] dotfile installer && echo
 _w disclaimer: this script can be destructive! \\n
 
 _o i attempt to preserve existing configuration files \\n \
-  within ${B}\'~/.backup\'${NC} but procede with caution. \\n 
+  within "${B}"\'~/.backup\'"${NC}" but procede with caution. \\n 
 
 _o thoroughly review this script before proceding. \\n 
 
 _oc installation type is determined by your distro:\\n
 
 _i "${CYN}${B}archlinux${NC}"\\n \
-  --  ${B}my workstation setup${NC} \\n \
+  --  "${B}"my workstation setup"${NC}" \\n \
   --  installs: everything \\n \
   --  home \& sys configs, networkd, iwctl, etc. \\n
 
 _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
-  --  ${B}my virtual machine setup${NC} \\n \
+  --  "${B}my virtual machine setup ${NC}" \\n \
   --  installs: minimal setup: \\n \
   --  defined by \$deb in the variable section.
 
 _i "${CYN}${B}centos users${NC}" \\n \
-  --  ${B}web host setup${NC} \\n \
+  --  "${B}web host setup${NC}" \\n \
   --  installs: minimal setup \\n \
   --  defined by \$centos in the variable section.
 
@@ -47,7 +47,7 @@ deb=("bin" "git" "txt" "vim" "zsh" "bash")
 # packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow")
 apt=("fd-find" "nodejs" "npm" "colordiff") # "bat" mia
-pacman=("fd" "unzip" "colordiff")
+pacman=("fd" "unzip" "colordiff" "xdotool")
 yum=("") # missing: fd, bat, colordiff
 
 # repo related
@@ -223,24 +223,31 @@ btw() {
 
 source "./bin/bin/_distro"
 
-_a dependencies
+_a standard dependencies
 _o "${pkgs[@]}"
 
 #──────────────────────────────────────────────────────────  archlinux  ───────
 
 if [[ ${DISTRO} == arch* ]]; then
 
+  _a archlinux dependencies
+  _o "${pkgs[@]}"
+
   sudo rm -rf /tmp/bm-install.sh #2>&1 /dev/null
 
-  # universal packages
-  pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
-    || (sudo pacman -Syu "${pkgs[@]}" | tee /tmp/bm-install.sh \
-    && _o installed "${pkgs[@]}")
+  if _ask "install necessary packages?"; then
 
-  # pacman specific
-  pacman -Qi "${pacman[@]}" > /dev/null 2>&1 \
-    || (sudo pacman -Syu "${pacman[@]}" | tee -a /tmp/bm-install.sh \
-    && _o installed "${pacman[@]}")
+    # 
+    pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
+      || (sudo pacman -Syu "${pkgs[@]}" | tee /tmp/bm-install.sh \
+      && _o installed "${pkgs[@]}")
+
+    # pacman
+    pacman -Qi "${pacman[@]}" > /dev/null 2>&1 \
+      || (sudo pacman -Syu "${pacman[@]}" | tee -a /tmp/bm-install.sh \
+      && _o installed "${pacman[@]}")
+
+  fi
 
   # --noconfirm 
   # ./bin/bin/sys/pacfix /tmp/bm-install.sh
