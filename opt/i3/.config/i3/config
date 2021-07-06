@@ -23,7 +23,8 @@ set $rs          62
 set $enter       36
 set $escape      9
 set $tilde       49
-set $backspace   22
+set $bsp         22
+set $bsl         51
 set $insert      118
 set $f12         96
 set $play        XF86AudioPlay         
@@ -36,46 +37,42 @@ set $mute        XF86AudioMute
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
 # restart: i3, .profile, .xresources, picom 
-bindsym $w+backslash   exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
-                            ~/.Xresources " ; restart"
+bindcode $w+$bsl   exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
+                         ~/.Xresources " ; restart"
 
 # exit i3
-bindsym $wa+backslash  exec  "i3-msg exit; exit"
+bindcode $wa+$bsl  exec  "i3-msg exit; exit"
 
-# restart: polybar, picom
-bindsym $w+equal       exec  ". ~/.config/polybar/launch.sh | tee -a ~/.config/polybar/log; picomr"
+# restart: polybar,ic om
+bindsym  $w+equal  exec  ". ~/.config/polybar/launch.sh | \
+                         tee -a ~/.config/polybar/log; picomr"
 
 # dunst: reload
-bindsym $w+minus       exec  "killall dunst ; sleep 0.5 ; th"
+bindsym  $w+minus  exec  "killall dunst ; sleep 0.5 ; th"
 
-# restart: bootstrap
-bindsym $w+0           exec  "bootstrap"
+# restart: bootstra
+bindsym  $w+0      exec  "bootstrap"
 
 #──────────────────────────────────────────────────────────────  audio  ───────
 
-# play, pause, stop, next
-bindsym $play          exec --no-startup-id    mpc toggle
-bindsym $stop          exec --no-startup-id    mpc stop
-bindsym $next          exec --no-startup-id    mpc next
+bindsym  $play          exec --no-startup-id    mpc toggle
+bindsym  $stop          exec --no-startup-id    mpc stop
+bindsym  $next          exec --no-startup-id    mpc next
 
 # volume
-bindcode $w+35         exec --no-startup-id    bmvol up
-bindcode $w+34         exec --no-startup-id    bmvol down
+bindcode $w+35          exec --no-startup-id    bmvol up
+bindcode $w+34          exec --no-startup-id    bmvol down
 
-#bindsym  $w+backspace  exec --no-startup-id    mpc toggle
-bindsym  $volup        exec --no-startup-id    bmvol up
-bindsym  $voldn        exec --no-startup-id    bmvol down
-bindsym  $mute         exec --no-startup-id    bmvol mute
+bindsym  $volup         exec --no-startup-id    bmvol up
+bindsym  $voldn         exec --no-startup-id    bmvol down
+bindsym  $mute          exec --no-startup-id    bmvol mute
 
 #───────────────────────────────────────────────────────  applications  ───────
 
-# browser
-bindsym  $wc+Return     exec --no-startup-id    firefox
-bindsym  $wcs+Return    exec --no-startup-id    chromium
-bindsym  $ws+Return     exec --no-startup-id    bitwarden
-
-# terminal
 bindsym  $w+Return      exec --no-startup-id    alacritty
+bindsym  $ws+Return     exec --no-startup-id    bitwarden
+bindsym  $wcs+Return    exec --no-startup-id    chromium
+bindsym  $wc+Return     exec --no-startup-id    firefox
 
 #────────────────────────────────────────────────────────  screenshots  ───────
 
@@ -89,107 +86,107 @@ bindsym  $s+Pause       exec --no-startup-id    screenshot -ut all
 #─────────────────────────────────────────────────────  custom scripts  ───────
 
 # bm debug
-bindsym $w+period       exec --no-startup-id    i3kr -f -n i3debug -c i3debug
+bindsym  $w+period       exec --no-startup-id    i3kr -f -n i3debug -c i3debug
 
-# bm spy
-bindsym $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
+# bm spy 
+bindsym  $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
 
 # bm floater
-bindsym $w+i            exec --no-startup-id    i3floater
+bindsym  $w+comma        exec --no-startup-id    i3floater
 
 # bm direct type
-bindsym $w+e            exec --no-startup-id    i3idotfiles
-bindsym $wc+e           exec --no-startup-id    i3iuser
-bindsym $wa+e           exec --no-startup-id    i3isshd
+bindsym  $w+e            exec --no-startup-id    i3idotfiles
+bindsym  $wc+e           exec --no-startup-id    i3iuser
+bindsym  $wa+e           exec --no-startup-id    i3isshd
 
 # bm paste clipboard
-bindsym $w+v            exec --no-startup-id    i3paste
+bindsym  $w+v            exec --no-startup-id    i3paste
 
 # bm clone
-bindsym $w+c            exec --no-startup-id    bmclone
+bindsym  $w+c            exec --no-startup-id    bmclone
 
 # bm readme
-bindsym $ws+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
+bindsym  $ws+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
 
 # lab notepad
-bindsym $w+n            exec --no-startup-id    i3hfr -n bm-notes-lab -c 'i3nvim ~/txt/bm-notes-lab'
+bindsym  $w+n            exec --no-startup-id    i3hfr -n bm-notes-lab -c 'i3nvim ~/txt/bm-notes-lab'
 
 # life notepad
-bindsym $w+b            exec --no-startup-id    i3hfr -n bm-notes-life -c 'i3nvim ~/txt/bm-notes-life'
+bindsym  $w+b            exec --no-startup-id    i3hfr -n bm-notes-life -c 'i3nvim ~/txt/bm-notes-life'
 
 # music
-bindsym $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
+bindsym  $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
 
 #───────────────────────────────────────────────────────────────  rofi  ───────
 
 # standard
-bindcode $w+$backspace   exec --no-startup-id    rofiapp
+bindcode $w+$bsp        exec --no-startup-id    rofiapp
 
 # dotfiles
-bindcode $ws+$backspace  exec --no-startup-id    rofibin
+bindcode $ws+$bsp       exec --no-startup-id    rofibin
 
 # text
-bindcode $wc+$backspace  exec --no-startup-id    rofitxt
+bindcode $wc+$bsp       exec --no-startup-id    rofitxt
 
-# text input example
-bindcode $wcs+$backspace exec --no-startup-id    rofiinput
+# text input example     
+bindcode $wcs+$bsp      exec --no-startup-id    rofiinput
 
 #──────────────────────────────────────  keybinds: movement & resizing  ───────
 
 # close
 # bindsym --release $w+s exec --no-startup-id xdotool key --clearmodifiers ctrl+w
-bindsym $w+z kill
+bindsym  $w+z       kill
 
-# focus 
-bindsym $w+l       focus right
-bindsym $w+h       focus left
-bindsym $w+k       focus up
-bindsym $w+j       focus down
-bindsym $w+p       focus parent
-bindsym $w+o       focus child
-bindsym $w+space   focus mode_toggle
+# focus  
+bindsym  $w+l       focus right
+bindsym  $w+h       focus left
+bindsym  $w+k       focus up
+bindsym  $w+j       focus down
+bindsym  $w+p       focus parent
+bindsym  $w+o       focus child
+bindsym  $w+space   focus mode_toggle
 
 # views
-bindsym $ws+space  fullscreen toggle 
-bindsym $wc+space  floating toggle
-bindsym $wcs+space scratchpad show
-bindsym $wa+space  move scratchpad
+bindsym  $ws+space  fullscreen toggle 
+bindsym  $wc+space  floating toggle
+bindsym  $wcs+space scratchpad show
+bindsym  $wa+space  move scratchpad
 
-# move (regular)
-bindsym $wc+l   move   right   50 px
-bindsym $wc+h   move   left    50 px
-bindsym $wc+k   move   up      50 px
-bindsym $wc+j   move   down    50 px
+# move ( regular)
+bindsym  $wc+l      move   right   50 px
+bindsym  $wc+h      move   left    50 px
+bindsym  $wc+k      move   up      50 px
+bindsym  $wc+j      move   down    50 px
 
-# move (precise)
-bindsym $wac+l  move   right   1 px
-bindsym $wac+h  move   left    1 px
-bindsym $wac+k  move   up      1 px
-bindsym $wac+j  move   down    1 px
+# move ( precise)   
+bindsym  $wac+l     move   right   1 px
+bindsym  $wac+h     move   left    1 px
+bindsym  $wac+k     move   up      1 px
+bindsym  $wac+j     move   down    1 px
 
-# resize (regular)
-bindsym $ws+h   resize shrink  width    3  px or 3  ppt
-bindsym $ws+j   resize shrink  height   3  px or 3  ppt
-bindsym $ws+k   resize grow    height   3  px or 3  ppt
-bindsym $ws+l   resize grow    width    3  px or 3  ppt
+# resize  (regular)
+bindsym  $ws+h      resize shrink  width    3  px or 3  ppt
+bindsym  $ws+j      resize shrink  height   3  px or 3  ppt
+bindsym  $ws+k      resize grow    height   3  px or 3  ppt
+bindsym  $ws+l      resize grow    width    3  px or 3  ppt
 
-# resize (large)
-bindsym $was+h  resize shrink  width    25 px or 25 ppt
-bindsym $was+j  resize shrink  height   25 px or 25 ppt
-bindsym $was+k  resize grow    height   25 px or 25 ppt
-bindsym $was+l  resize grow    width    25 px or 25 ppt
+# resize  (large)   
+bindsym  $was+h     resize shrink  width    25 px or 25 ppt
+bindsym  $was+j     resize shrink  height   25 px or 25 ppt
+bindsym  $was+k     resize grow    height   25 px or 25 ppt
+bindsym  $was+l     resize grow    width    25 px or 25 ppt
 
-#bindsym $w+d    resize set     width 500 px or 500 pt
+#bindsym  $w+d       resize set     width 500 px or 500 pt
 
 # gaps
-bindsym $wcs+h  gaps   inner   current  plus 1
-bindsym $wcs+j  gaps   outer   current  plus 1
-bindsym $wcs+k  gaps   outer   current  minus 1
-bindsym $wcs+l  gaps   inner   current  minus 1
+bindsym  $wcs+h     gaps   inner   current  plus 1
+bindsym  $wcs+j     gaps   outer   current  plus 1
+bindsym  $wcs+k     gaps   outer   current  minus 1
+bindsym  $wcs+l     gaps   inner   current  minus 1
 
-# splitting
-bindcode $w+47  split h
-bindcode $w+48  split v
+# splitt ing
+bindcode $w+47      split h
+bindcode $w+48      split v
 
 #─────────────────────────────────────────────────────────  workspaces   ──────
 
@@ -212,62 +209,21 @@ bindsym    $w+w       workspace number $ws5;     focus tiling
 bindsym    $w+a       workspace number $ws6;     focus tiling
 bindsym    $w+s       workspace number $ws7;     focus tiling
 
-bindcode  $wa+$tilde move container to workspace number $ws1
-bindsym   $wa+1      move container to workspace number $ws2
-bindsym   $wa+Tab    move container to workspace number $ws3
-bindsym   $wa+q      move container to workspace number $ws4
-bindsym   $wa+w      move container to workspace number $ws5
-bindsym   $wa+a      move container to workspace number $ws6
-bindsym   $wa+s      move container to workspace number $ws7
+bindcode   $wa+$tilde move container to workspace number $ws1
+bindsym    $wa+1      move container to workspace number $ws2
+bindsym    $wa+Tab    move container to workspace number $ws3
+bindsym    $wa+q      move container to workspace number $ws4
+bindsym    $wa+w      move container to workspace number $ws5
+bindsym    $wa+a      move container to workspace number $ws6
+bindsym    $wa+s      move container to workspace number $ws7
 
 #──────────────────────────────────────────────────────────  interface  ───────
 
-# email
-workspace $ws1  gaps top 30
-workspace $ws1  gaps inner 4
-workspace $ws1  gaps horizontal 200
-#workspace $ws1  gaps vertical 50
-
-# chat
-workspace $ws2  gaps top 30
-workspace $ws2  gaps inner 20
-workspace $ws2  gaps horizontal 200
-#workspace $ws2  gaps vertical 50
-
-# firefox
-workspace $ws3  gaps top 30
-workspace $ws3  gaps bottom 4
-workspace $ws3  gaps inner 4
-workspace $ws3  gaps horizontal 4
-
-# misc
-workspace $ws4  gaps top 30
-workspace $ws4  gaps bottom 4
-workspace $ws4  gaps inner 4
-workspace $ws4  gaps horizontal 4
-
-workspace $ws5  gaps top 30
-workspace $ws5  gaps bottom 4
-workspace $ws5  gaps inner 4
-workspace $ws5  gaps horizontal 4
-
-workspace $ws6  gaps top 30
-workspace $ws6  gaps bottom 4
-workspace $ws6  gaps inner 4
-workspace $ws6  gaps horizontal 4
-
-workspace $ws7  gaps top 30
-workspace $ws7  gaps bottom 4
-workspace $ws7  gaps inner 4
-workspace $ws7  gaps horizontal 4
-
+# gaps, borders, etc.
 focus_wrapping            no
-
-# gaps & borders
 hide_edge_borders         none
 default_border            pixel 2
 default_floating_border   pixel 3
-
 #smart_borders            off
 #smart_gaps               on
 #smart_gaps               inverse_inner
@@ -303,45 +259,86 @@ client.urgent           $red1   $red1   $blue1  $red1   $green1
 client.placeholder      $black1 $black1 $green1 $black1 $green1
 client.background       $black1                         
 
+#─────────────────────────────────────────────────────────  workspaces  ───────
+
+# email
+workspace $ws1  gaps top 30
+workspace $ws1  gaps inner 4
+workspace $ws1  gaps horizontal 200
+
+# chat
+workspace $ws2  gaps top 30
+workspace $ws2  gaps inner 20
+workspace $ws2  gaps horizontal 200
+
+# firefox
+workspace $ws3  gaps top 30
+workspace $ws3  gaps bottom 4
+workspace $ws3  gaps inner 4
+workspace $ws3  gaps horizontal 4
+
+# misc
+workspace $ws4  gaps top 30
+workspace $ws4  gaps bottom 4
+workspace $ws4  gaps inner 4
+workspace $ws4  gaps horizontal 4
+
+workspace $ws5  gaps top 30
+workspace $ws5  gaps bottom 4
+workspace $ws5  gaps inner 4
+workspace $ws5  gaps horizontal 4
+
+workspace $ws6  gaps top 30
+workspace $ws6  gaps bottom 4
+workspace $ws6  gaps inner 4
+workspace $ws6  gaps horizontal 4
+
+workspace $ws7  gaps top 30
+workspace $ws7  gaps bottom 4
+workspace $ws7  gaps inner 4
+workspace $ws7  gaps horizontal 4
+
 #──────────────────────────────────────────────────  application rules  ───────
 
 # on startup
-exec --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
-exec --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
-exec --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty'
+exec       --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
+exec       --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
+exec       --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty'
 
 # workspace
-assign        [class="Thunderbird"]        1
-assign        [class="discord"]            2
-assign        [class="android-*"]          2
-assign        [class="Telegram*"]          2
+assign     [class="Thunderbird"]  1        
+assign     [class="discord"]      2        
+assign     [class="android-*"]    2        
+assign     [class="Telegram*"]    2        
 
-# no_focus
-no_focus      [instance="Navigator"]
-no_focus      [instance="i3debug"]
+# floating                        
+for_window [class='Conky']        floating enable
 
-# floating
-for_window    [class='Conky']              floating enable
+# no_focus                        
+no_focus   [instance="Navigator"]          
+no_focus   [instance="i3debug"]            
 
-# scripted rules
-for_window [instance="font-manager"]      floating enable, resize set 1551 977,  move absolute position 919  249,  border pixel 3
-for_window [instance="galculator"]        floating enable, resize set 416  454,  move absolute position 1503 980,  border pixel 3
-for_window [instance="gitdirty"]          floating enable, resize set 708  596,  move absolute position 2222 389,  border pixel 3
-for_window [instance="gtk3-icon-browser"] floating enable, resize set 735  1343, move absolute position 2441 73,   border pixel 3
-for_window [instance="i3debug"]           floating enable, resize set 536  355,  move absolute position 14   1070, border pixel 3
-for_window [instance="i3spy"]             floating enable, resize set 1002 64,   move absolute position 1524 7,    border pixel 3
-for_window [instance="lxappearance"]      floating enable, resize set 1561 716,  move absolute position 927  371,  border pixel 3
-for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996,  move absolute position 916  253,  border pixel 3
-for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
-for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812  199,  border pixel 3
-for_window [instance="roficlone"]         floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
-for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920 137,  border pixel 3
-for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238 37,   border pixel 3
-for_window [instance="gucharmap"]         floating enable, resize set 1260 1335, move absolute position 1153 82,   border pixel 3
-for_window [instance="main.py"]           floating enable, resize set 1552 1323, move absolute position 967  54,   border pixel 3
-for_window [instance="urxvt"] floating enable, resize set 818 970, move absolute position 1847 311, border pixel 3
-for_window [instance="feh"] floating enable, move center, border pixel 3
-for_window [instance="nitrogen"] floating enable, resize set 1079 480, move absolute position 1160 956, border pixel 3
-for_window [instance="i3pad"] floating enable, resize set 728 1255, move absolute position 1345 121, border pixel 3
-for_window [instance="bitwarden"] floating enable, resize set 1075 1125, move absolute position 1189 154, border pixel 3
-for_window [instance="ncmpcpp"] floating enable, resize set 796 785, move absolute position 1322 289, border pixel 3
+#──────────────────────────────────────────────────────────  i3floater  ───────
+
+for_window [instance="font-manager"]      floating enable, resize set 1551 977,  move absolute position 919   249,  border pixel 3
+for_window [instance="galculator"]        floating enable, resize set 416  454,  move absolute position 1503  980,  border pixel 3
+for_window [instance="gitdirty"]          floating enable, resize set 708  596,  move absolute position 2222  389,  border pixel 3
+for_window [instance="gtk3-icon-browser"] floating enable, resize set 735  1343, move absolute position 2441  73,   border pixel 3
+for_window [instance="i3debug"]           floating enable, resize set 536  355,  move absolute position 14    1070, border pixel 3
+for_window [instance="i3spy"]             floating enable, resize set 1002 64,   move absolute position 1524  7,    border pixel 3
+for_window [instance="lxappearance"]      floating enable, resize set 1561 716,  move absolute position 927   371,  border pixel 3
+for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996,  move absolute position 916   253,  border pixel 3
+for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320  437,  border pixel 3
+for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812   199,  border pixel 3
+for_window [instance="roficlone"]         floating enable, resize set 800  600,  move absolute position 1320  437,  border pixel 3
+for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920  137,  border pixel 3
+for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238  37,   border pixel 3
+for_window [instance="gucharmap"]         floating enable, resize set 1260 1335, move absolute position 1153  82,   border pixel 3
+for_window [instance="main.py"]           floating enable, resize set 1552 1323, move absolute position 967   54,   border pixel 3
+for_window [instance="urxvt"]             floating enable, resize set 818  970,  move absolute position 1847  311,  border pixel 3
+for_window [instance="nitrogen"]          floating enable, resize set 1079 480,  move absolute position 1160  956,  border pixel 3
+for_window [instance="i3pad"]             floating enable, resize set 728  1255, move absolute position 1345  121,  border pixel 3
+for_window [instance="bitwarden"]         floating enable, resize set 1075 1125, move absolute position 1189  154,  border pixel 3
+for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322  289,  border pixel 3
+for_window [instance="bm-notes-lab"]      floating enable, resize set 725  1110, move center,  border   pixel 3                  
+for_window [instance="bm-notes-life"]     floating enable, resize set 725  1110, move center,  border   pixel 3                  
