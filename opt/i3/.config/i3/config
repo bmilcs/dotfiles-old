@@ -341,4 +341,4 @@ for_window [instance="i3pad"]             floating enable, resize set 728  1255,
 for_window [instance="bitwarden"]         floating enable, resize set 1075 1125, move absolute position 1189  154,  border pixel 3
 for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322  289,  border pixel 3
 for_window [instance="bm-notes-lab"]      floating enable, resize set 725  1110, move center,  border   pixel 3                  
-for_window [instance="bm-notes-life"]     floating enable, resize set 725  1110, move center,  border   pixel 3                  
+for_window [instance="bm-notes-life"] floating enable, resize set 721 1106, move absolute position 1320 170, border pixel 3

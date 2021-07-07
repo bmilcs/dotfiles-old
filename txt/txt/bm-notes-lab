@@ -1,3 +1,14 @@
+[NVIM]
+- vimwiki 
+  - https://github.com/vimwiki/vimwiki
+
+
+[VMS]
+- nextcloud, ubuntu
+  - mariadb -> postgresql? (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
+- nginx, ubuntu, public or private
+- vault, CA
+
 [BITWARDEN]
 
 - https://www.reddit.com/r/bitwarden/comments/d4h4aj/best_way_to_mass_edit_bw_vault_data/
@@ -16,19 +27,10 @@
 
 - create hfr: gui interfaces/applications: bitwarden
 
-[LOCAL NGINX]
-
-- important local hosts/services
-
 [ORIGIN CA certs via CLOUDFLARE]
 
 - install to nginx
   https://developers.cloudflare.com/ssl/origin-configuration/origin-ca
-
-[NEXTCLOUD]
-
-- fix public url
-- mariadb -> postgresql? (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
 
 [DATABASE VM]
 
