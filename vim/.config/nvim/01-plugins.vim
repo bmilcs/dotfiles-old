@@ -38,7 +38,10 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 
 " indentation lines (tab)
   Plug 'Yggdroot/indentLine'
-" Plug 'lukas-reineke/indent-blankline.nvim'
+  " Plug 'lukas-reineke/indent-blankline.nvim'
+
+" wiki note taking
+  Plug 'vimwiki/vimwiki'
 
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 
