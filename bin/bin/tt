@@ -41,11 +41,15 @@
 #done <~/yay_short
 
 #──────────────────────────────  pacman acquire permission package fix  ───────
-paclist=/tmp/pacman_fix
-rm "$paclist"
-up &> "$paclist"
-sed -i '/exists in filesystem/!d' "$paclist"
-sed -i 's/\: \/.*//g' "$paclist"
-#awk '!seen[$0]++' "$paclist"
-awk '!seen[$0]++' "$paclist" > "$paclist".final
-cat "$paclist".final
+#paclist=/tmp/pacman_fix
+#rm "$paclist"
+#up &> "$paclist"
+#sed -i '/exists in filesystem/!d' "$paclist"
+#sed -i 's/\: \/.*//g' "$paclist"
+##awk '!seen[$0]++' "$paclist"
+#awk '!seen[$0]++' "$paclist" > "$paclist".final
+#cat "$paclist".final
+
+#───────────────────────────────────  extract commands from vim manual  ───────
+file=~/vimwiki
+sed -i '/Remap command/!d' $file

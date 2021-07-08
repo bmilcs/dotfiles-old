@@ -9,10 +9,9 @@
 #────────────────────────────────────────────────────────────  logging  ──────#
 
 log="/tmp/bootstrap.log"
-
 [ -f "$log" ] && rm "$log"
 
-plog() {
+LOG() {
   unset len extra str
   str="#---> $* "
   len=${#str}
@@ -27,76 +26,78 @@ plog() {
 
 #──────────────────────────────────────────────────────────────  audio  ──────#
 
-pgrep -f pulseaudio || plog pulse && pulseaudio --start &>> "$log"_pulse &
+pgrep -f pulseaudio || LOG pulse && pulseaudio --start &>> "$log"_pulse &
 
 #──────────────────────────────────────────────────────────────  input  ──────#
 
 # keyboard: repeat rate
-plog xset_repeat
+LOG xset_repeat
 xset r rate 300 50 &>> "$log"_xsetrate
 
 # keyboard: caps = ctrl (hold)
-# plog setxkbmap
+# LOG setxkbmap
 # setxkbmap -option ctrl:nocaps &>> "$log"_
-plog xmodmap caps rshift etc
-xmodmap ~/.xmodmap
+#LOG xmodmap caps rshift etc
+#xmodmap ~/.xmodmap
 
 # keyboard: disable caps altogether
 if [[ $HOST == "bmPC" ]]; then
-  plog xset_disablecaps
-  xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock &>> "$log"_xset_disablecaps
+  LOG xset_disablecaps
+  xset -q | grep "Caps Lock:\s*on" \
+    && xdotool key Caps_Lock &>> "$log"_xset_disablecaps
 else
   # make CapsLock behave like Ctrl:
   setxkbmap -option ctrl:nocaps
-  # make short-pressed Ctrl behave like Escape:
-  xcape -e 'Control_L=Escape'
 fi
 
+# make short-pressed Ctrl behave like Escape:
+xcape -e 'Control_L=Escape'
+
 # keyboard: caps = esc (tap)
-pgrep -f xcape || plog xcape_ctrl_escape && xcape -e 'Control_L=Escape' &>> "$log"_xcape_ctrl_escape
+pgrep -f xcape || LOG xcape_ctrl_escape && xcape -e 'Control_L=Escape' &>> "$log"_xcape_ctrl_escape
 
 #─────────────────────────────────────────────────────────────  system  ──────#
 
 # usb automount (TODO FIX)
-pgrep -f udiskie || plog udiskie && udiskie &>> "$log"_udiskie &
+pgrep -f udiskie || LOG udiskie && udiskie &>> "$log"_udiskie &
 
 # compositor
-pgrep -f picom || plog picom && picom -b &>> "$log"_picom &
+pgrep -f picom || LOG picom && picom -b &>> "$log"_picom &
 
 # wallpaper
-pgrep -f nitrogen || plog nitrogen && nitrogen --restore &>> "$log"_nitrogen &
+pgrep -f nitrogen || LOG nitrogen && nitrogen --restore &>> "$log"_nitrogen &
 
 # mouse: autohide
-pgrep -f unclutter || plog unclutter && unclutter &>> "$log"_unclutter &
+pgrep -f unclutter || LOG unclutter && unclutter &>> "$log"_unclutter &
 
 #───────────────────────────────────────────────────────────  software  ──────#
 
 # music
-[ ! -s ~/.config/mpd/pid ] && plog mpd && mpd &>> "$log"_mpd &
+[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
 
 # email
-pgrep -f thunderbird || plog thunderbird && thunderbird &>> "$log"_thunderbird &
+pgrep -f thunderbird || LOG thunderbird && thunderbird &>> "$log"_thunderbird &
 
 # telegram
-pgrep -f telegram || plog telegram && telegram-desktop &>> "$log"_telegram &
+pgrep -f telegram || LOG telegram && telegram-desktop &>> "$log"_telegram &
 
 # sms
-pgrep -f android-messages || plog android_sms && android-messages-desktop &>> "$log"_android_sms &
+pgrep -f android-messages || LOG android_sms && android-messages-desktop &>> "$log"_android_sms &
 
 # discord
-pgrep -f discord || plog discord && discord &>> "$log"_discord &
+pgrep -f discord || LOG discord && discord &>> "$log"_discord &
 
 
 # kde connect
-pgrep -f kdeconnectd || plog kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_connect &
+pgrep -f kdeconnectd || LOG kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_connect &
 
 # kde connect indicator
-#plog kde_connect_indicator
+#LOG kde_connect_indicator
 #pgrep -f kdeconnect-indicator || kdeconnect-indicator &>> "$log"_kde_connect_indicator
 
 # polybar (giving apps a second to load)
 sleep 0.5
-pgrep -f polybar || plog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+pgrep -f polybar || LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
 
 #───────────────────────────────────────────────────  concatenate logs  ──────#
 
