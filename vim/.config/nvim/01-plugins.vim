@@ -40,8 +40,9 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'Yggdroot/indentLine'
   " Plug 'lukas-reineke/indent-blankline.nvim'
 
-" wiki note taking
+" note taking stack: vimwiki, taskwiki, taskwarrior
   Plug 'vimwiki/vimwiki'
+" Plug 'tbabej/taskwiki'
 
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 

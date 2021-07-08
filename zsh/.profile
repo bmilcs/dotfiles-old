@@ -5,18 +5,17 @@
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 BASH'S .PROFILE [./.profile]
-
+#───────────────────────────────────────────────────────────
 #    1) read by all shells, not bash specifically
 #       ie: environment variables, PATH & friends
 #    2) anything that should be available to:
 #       gui apps, sh or bash invoked as sh
+#───────────────────────────────────────────────────────────
 
-# dotfile rc file debugging
 . "${HOME}/bin/sys/dotfile_logger" && dotlog '+ ~/.profile'
 
 #───────────────────────────────────────────────────────────  dotfiles  ───────
 
-# dotfile
 export D=$HOME/bm
 export BM=$HOME/bm
 export BMP=$HOME/bmP
@@ -43,17 +42,20 @@ export BMSSH=$BMP/ssh
 
 #────────────────────────────────────────────────────────  clean $home  ───────
 
-# mv gtk files
+# GTK 
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
-# gpg
+# GPG
 export GNUPGHOME="${BMP}/gpg"
-# export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/gpg"
+#export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/gpg"
 
-# password store
+# PASS
 export PASSWORD_STORE_DIR="${BMP}/pw"
-# export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/password"
+#export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/password"
+
+#export TASKRC=~/.config/taskwarrior/.taskrc
+#export TASKDATA=~/txt/.tasks
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 

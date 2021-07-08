@@ -1,20 +1,18 @@
-### bmilcs/firefox
+# archlinux: firefox settings
 
-#####  Change Performance settings
+## CHANGE PERFORMANCE SETTINGS
 
-``` bash
+``` sh
 browser.preferences.defaultPerformanceSettings.enabled    false
 dom.ipc.processCount                                      8
-
 
 media.hardware-video-decoding.force-enabled               true
 
 ```
 
+## RAM CACHE SETUP
 
-##### ram cache setup
-
-``` bash
+``` sh
 # url:
 about:config
 
@@ -52,8 +50,5 @@ ls /run/user/1086
 ... user-qutebrowser/
 ... psd.pid
 
-
 ```
-
-
 

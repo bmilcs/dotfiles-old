@@ -109,10 +109,7 @@ bindsym  $w+c            exec --no-startup-id    bmclone
 bindsym  $ws+n           exec --no-startup-id    i3hfr -n bm_readme -c 'i3nvim $BM/readme.md'
 
 # lab notepad
-bindsym  $w+n            exec --no-startup-id    i3hfr -n bm-notes-lab -c 'i3nvim ~/txt/bm-notes-lab'
-
-# life notepad
-bindsym  $w+b            exec --no-startup-id    i3hfr -n bm-notes-life -c 'i3nvim ~/txt/bm-notes-life'
+bindsym  $w+n            exec --no-startup-id    i3hfr -n notepad -c 'i3nvim ~/txt/index.md'
 
 # music
 bindsym  $w+m            exec --no-startup-id    i3hfr -n ncmpcpp -c ncmpcpp
@@ -342,3 +339,4 @@ for_window [instance="bitwarden"]         floating enable, resize set 1075 1125,
 for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322  289,  border pixel 3
 for_window [instance="bm-notes-lab"]      floating enable, resize set 725  1110, move center,  border   pixel 3                  
 for_window [instance="bm-notes-life"] floating enable, resize set 721 1106, move absolute position 1320 170, border pixel 3
+for_window [instance="notepad"] floating enable, resize set 800 600, move absolute position 1320 420, border pixel 3

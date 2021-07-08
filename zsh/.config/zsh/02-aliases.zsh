@@ -63,7 +63,9 @@ alias ali='vim "$ZDOTDIR/02-aliases.zsh"'
 alias fun='vim "$ZDOTDIR/03-functions.zsh"'
 alias txs='c ; tail -f ~/.xsession-errors'
 alias readme='vim ~/bm/readme.md'
-alias txt='cd ~/txt && nvim $(fzf)'
+alias txt='nvim -c VimwikiIndex'
+alias wiki='txt'
+#alias txt='cd ~/txt && nvim $(fzf)'
 
 # configuration files
 alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'

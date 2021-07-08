@@ -1,3 +1,71 @@
+
+### thinkpad t14
+
+
+[Building from files in memory ](https://wiki.archlinux.org/index.php/makepkg#Parallel_compilation)
+
+``` sh
+$ BUILDDIR=/tmp/makepkg makepkg
+```
+/tmp to ram
+
+    tmpfs   /tmp         tmpfs   rw,nodev,nosuid,size=2G          0  0
+
+https://wiki.archlinux.org/index.php/makepkg#Utilizing_multiple_cores_on_compression
+
+    $ lspci -knn|grep -iA2 audio
+
+### archive
+
+**removed software**
+- rxvt-unicode-pixbuf 9.22-2
+- urxvt-perls 2.3-1
+
+#### zsh & bash dotfiles
+
+Both Bash and Zsh use several startup scripts: profile, bashrc, zlogin, zshrc, etc.
+
+The existence of several startup scripts exists to allow you to apply specific actions for interactive or login shells. For instance, you may want to set up a fancy colour prompt or to enable a powerful completion system for interactive shells only, as it would be pointless to apply it to non-interactive shells (that is, for shell scripts). Or you may want to display a joke and the weather forecast at login, but not each time you spawn a shell by other means.
+Common
+
+Both Bash and Zsh first execute a system-wide file, then the corresponding user-specific one. For instance, /etc/profile then ~/.profile. For simplicity I shall only mention the files' base names.
+Bash
+
+At startup, depending on the case:
+
+  run as a login shell (or with the option --login), it executes profile (or bash_profile instead if it exists (only user-specific version));
+  run as an interactive, non-login shell, it executes bashrc (the system-wide version is called bash.bashrc).
+
+At exit, it executes ~/.bash_logout (the system-wide version is called bash.bash_logout).
+
+Note the funny (read: insane) non-login condition for executing bashrc: it is often worked around by having the profile execute bashrc anyway.
+Zsh
+
+Zsh always executes zshenv. Then, depending on the case:
+
+    run as a login shell, it executes zprofile;
+    run as an interactive, it executes zshrc;
+    run as a login shell, it executes zlogin.
+
+At the end of a login session, it executes zlogout, but in reverse order, the user-specific file first, then the system-wide one, constituting a chiasmus with the zlogin files.
+Summary
+Bash 	login
+yes 	no
+interactive	yes	profile	bashrc
+no 	profile	-
+Zsh 	login
+yes 	no
+interactive	yes	zshenv zprofile zshrc zlogin	zshenv zshrc
+no 	zshenv zprofile zlogin 	zshenv
+
+I personally find the Zsh process much saner. To be honest I should rather say that I find Bash's behaviour insane, with an absurd process (bashrc for interactive, non-login shells…) that needs to be worked around, and an inconsistent naming and search convention (~/.bashrc vs. /etc/bash.bashrc, no system-wide version of bash_logout).
+
+# personal reminders
+river valley counseling    feb 10, 3:30pm
+
+https://wiki.archlinux.org/index.php/PulseAudio/Examples#Set_default_input_source
+
+
 ### scratchpad 
 
 https://www.reddit.com/r/unixporn/comments/8giij5/guide_defining_program_colors_through_xresources/

@@ -8,6 +8,77 @@
 " TODO  - format/move comments to column #45
 "       - fzf shortcuts, project files, ripgrep project dir
 
+"────────────────────────────────────────────────────────────  vimwiki  ───────
+"
+"
+nmap <leader>nn           <CR> <Plug>VimwikiTabIndex
+nmap <leader>n<leader>n   <CR> <Plug>VimwikiTabMakeDiaryNote
+nmap <leader>N<leader>N   <CR> <Plug>VimwikiTabDiaryIndex
+nmap <leader>nh           <CR> <Plug>Vimwiki2HTMLBrowse
+nmap <leader>nr           <CR> <Plug>VimwikiRenameFile
+nmap <leader>nd           <CR> <Plug>VimwikiDeleteFile
+
+"<Plug>VimwikiIndex
+"<Plug>VimwikiTabIndex
+"<Plug>VimwikiUISelect
+"<Plug>VimwikiDiaryIndex
+"<Plug>VimwikiMakeDiaryNote
+"<Plug>VimwikiTabMakeDiaryNote
+"<Plug>VimwikiMakeYesterdayDiaryNote
+"<Plug>VimwikiMakeTomorrowDiaryNote
+"<Plug>Vimwiki2HTML
+"<Plug>Vimwiki2HTMLBrowse
+"<Plug>VimwikiDiaryGenerateLinks
+"<Plug>VimwikiFollowLink
+"<Plug>VimwikiSplitLink
+"<Plug>VimwikiVSplitLink
+"<Plug>VimwikiTabnewLink
+"<Plug>VimwikiGoBackLink
+"<Plug>VimwikiNextLink
+"<Plug>VimwikiPrevLink
+"<Plug>VimwikiGoto
+"<Plug>VimwikiDeleteFile
+"<Plug>VimwikiRenameFile
+"<Plug>VimwikiAddHeaderLevel
+"<Plug>VimwikiRemoveHeaderLevel
+"<Plug>VimwikiGoToPrevHeader
+"<Plug>VimwikiGoToNextHeader
+"<Plug>VimwikiGoToPrevSiblingHeader
+"<Plug>VimwikiGoToNextSiblingHeader
+"<Plug>VimwikiGoToParentHeader
+"<Plug>VimwikiToggleListItem
+"<Plug>VimwikiNextTask
+"<Plug>VimwikiRemoveSingleCB
+"<Plug>VimwikiRemoveCBInList
+"<Plug>VimwikiIncrementListItem
+"<Plug>VimwikiIncreaseLvlWholeItem
+"<Plug>VimwikiDecreaseLvlSingleItem
+"<Plug>VimwikiDecreaseLvlWholeItem
+"<Plug>VimwikiRenumberList
+"<Plug>VimwikiRenumberAllLists
+"<Plug>VimwikiToggleRejectedListItem
+"<Plug>VimwikiTableAlignQ
+"<Plug>VimwikiTableAlignW
+"<Plug>VimwikiTableAlignQ1
+"<Plug>VimwikiTableAlignW1
+"<Plug>VimwikiTableMoveColumnLeft
+"<Plug>VimwikiTableMoveColumnRight
+"<Plug>VimwikiDiaryPrevDay
+"<Plug>VimwikiDiaryNextDay
+"<Plug>VimwikiIncreaseLvlSingleItem
+"<Plug>VimwikiDecreaseLvlSingleItem
+"<Plug>VimwikiListNextSymbol
+"<Plug>VimwikiListPrevSymbol
+"<Plug>VimwikiListToggle
+
+
+let g:vim_markdown_conceal = 1 
+let g:vim_markdown_conceal_code_blocks = 1 
+
+autocmd FileType vimwiki    nnoremap <leader>c  I```sh<CR><CR>```<esc>k
+"autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<CR>
+
+
 "───────────────────────────────────────────────────────────────  tabs  ───────
 
 nnoremap <leader>os  :tabedit         ~/.config/nvim/snips/all.snippets<CR>
@@ -18,16 +89,13 @@ nnoremap <leader>ok  :tabedit         ~/.config/nvim/03-keybinds.vim<CR>
 nnoremap <leader>of  :tabedit         ~/.config/nvim/04-filetype.vim<CR>
 
 " tab navigation
-nnoremap <C-S-k> :tabprevious<CR>
-nnoremap <C-S-j> :tabnext<CR>
-nnoremap <C-S-n> :tabnew<CR>
-nnoremap <C-S-e> :Explore<CR>
-"nnoremap <silent> <C-Tab>   :tabprevious<CR>
-"nnoremap <silent> <C-S-Tab> :tabnext<CR>
+nmap <C-S-k> :tabprevious<CR>
+nmap <C-S-j> :tabnext<CR>
+nmap <C-S-n> :tabnew<CR>
+nmap <C-S-e> :Explore<CR>
 
 " vertical (s)plit > explore
 nnoremap <silent> <leader>we :tabe<CR>:Explore<CR>
-
 
 nnoremap <leader>up  :PlugUpdate<CR>
 nnoremap <leader>ip  :PlugInstall<CR>
@@ -58,7 +126,6 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 nnoremap <silent> <leader>dd :%s/^\(.*\)\(\n\1\)\+$/\1/
 nnoremap <silent> <leader>q ciW"<c-R>""<esc>
-
 
 " title bars
 nnoremap <silent> <leader>tr :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.

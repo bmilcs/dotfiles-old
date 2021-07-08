@@ -1,26 +1,33 @@
-## bmilcs/arch-install-cheatsheet
-- [Official Installation guide](https://wiki.archlinux.org/index.php/Installation_guide#Prepare_the_storage_devices)
+# archlinux: installation
+ 
+source: **[official installation guide](https://wiki.archlinux.org/index.php/installation_guide#prepare_the_storage_devices)**
 
-**CHECK BOOTMODE**: ``ls /sys/firmware/efi/efivars`` (error = CSM/BIOS, else UEFI)
+## PRE-INSTALL
 
-**WIFI**: ``iwctl --passphrase *** station wlan0 connect SSID`` (verify w/ ``ip link`` and``ping archlinux.org``)
+1. **CHECK BOOTMODE**: ``ls /sys/firmware/efi/efivars`` (error = CSM/BIOS, else UEFI)
 
-**FONT**: ``pacman -S terminus-font`` then ``setfont /usr/share/kbd/consolefonts/ter-122b.psf.gz``
+2. **ENABLE WIFI**: ``iwctl --passphrase *** station wlan0 connect SSID`` (verify w/ ``ip link`` and``ping archlinux.org``)
+
+3. **CHANGE FONT**: ``pacman -S terminus-font`` then ``setfont /usr/share/kbd/consolefonts/ter-122b.psf.gz``
+
+## BEGIN
 
 **SYSTEM CLOCK**: ``timedatectl set-ntp true``
 
-        pacman -Syyy
-        # uncomment desired mirrors
-        vim /etc/pacman.d/mirrorlist
-        # re-update repository index
-        pacman -Syyy
+```sh
+pacman -Syyy
 
+# uncomment desired mirrors
+vim /etc/pacman.d/mirrorlist
 
-**PARTITIONING**:
+# re-update repository index
+pacman -Syyy
+```
+
+## **PARTITIONING**:
 
         (c)fdisk -l
         (c)fdisk /dev/nvme0n1
-
 
  https://tonisagrista.com/blog/2020/arch-encryption/
  initcp = wrong. 
@@ -31,14 +38,12 @@
 https://wiki.archlinux.org/index.php/makepkg#Parallel_compilation
 https://wiki.archlinux.org/index.php/makepkg#Utilizing_multiple_cores_on_compression
 
-
 Building from files in memory
 
   /etc/fstab
   tmpfs   /tmp         tmpfs   rw,nodev,nosuid,size=2G          0  0
 
   $ BUILDDIR=/tmp/makepkg makepkg
-
 
 Use other compression algorithms
 
@@ -48,19 +53,11 @@ Use other compression algorithms
   As another example, the following uses the lzop algorithm, with the lzop package required:
   $ PKGEXT='.pkg.tar.lzo' makepkg
 
-
 Utilizing multiple cores on compression
 
   yay -S xz
   makepkg use as many CPU cores as possible to compress packages
   COMPRESSXZ=(xz -c -z - --threads=0)
-
-
-
-
-
-
-
 
 /etc/iwd/main.conf
 
@@ -88,7 +85,6 @@ systemctl start  wtctl.service
 ---
 
 dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s installed ${reqs[@]})
-
 
 ## bluetooth
 
@@ -129,6 +125,4 @@ dpkg -s "${reqs[@]}" >/dev/null 2>&1 || ( sudo apt-get install ${reqs[@]} && _s 
           if not isinstance(obj.ip4_address, str) and obj.ip4_address is not None:
       AttributeError: 'NetConf' object has no attribute 'ip4_address'
        (0)
-
-    
 
