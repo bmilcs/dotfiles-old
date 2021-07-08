@@ -235,7 +235,7 @@ if [[ ${DISTRO} == arch* ]]; then
 
   sudo rm -rf /tmp/bm-install.sh #2>&1 /dev/null
 
-  if _ask "install necessary packages?"; then
+  if _askn "install necessary packages?"; then
 
     # 
     pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
