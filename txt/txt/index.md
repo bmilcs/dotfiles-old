@@ -6,7 +6,7 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [life](life.md):              personal
 
 ### general
-* [linux](linux.md):             mass linux notes
+* [linux](linux.md)
 * [centos](centos.md)
 * [markdown](markdown.md)
 * [nfs](nfs.md)

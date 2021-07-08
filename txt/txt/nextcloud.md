@@ -402,3 +402,8 @@ opcache.max_accelerated_files=10000
 opcache.memory_consumption=128
 opcache.save_comments=1
 opcache.revalidate_freq=1
+
+#──────────────────────────────────────────────  moving nextcloud data  ───────
+
+# original
+drwxrwx---   7 www-data www-data 4096 Jul  8 16:45 nextcloud-data
