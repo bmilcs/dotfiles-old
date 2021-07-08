@@ -32,19 +32,67 @@ fi
 
 [[ $fixGID -eq 1 ]] \
   && _a "fixing bmilcs UID" \
-  && usermod -u 1086 bmilcs \
+  && sudo usermod -u 1086 bmilcs \
   && _s "done"
 [[ $fixUID -eq 1 ]] \
   && _a "fixing bmilcs GID" \
-  && groupmod -G 1190 bmilcs \
+  && sudo groupmod -G 1190 bmilcs \
   && _s "done"
 
-if _ask "would you like to manually fix an old USER id?"; then
-  manUID=$(_prompt "original USER id?")
-  echo $manUID
-fi
-#manGID
-exit
+numreg='^[0-9]+$'
 
-find / -group "$bmGID" -exec chgrp -h bmilcs {} \;
-find / -user "$bmUID" -exec chown -h bmilcs {} :w\;
+if _ask "fix files owned by original USER id?"; then
+
+  _q "original USER id?"
+  read origUID
+
+  if ! [[ $origUID =~ $numreg ]]; then
+    _e "manual id override ($origUID): NOT a number"
+    exit 1
+  fi
+
+  _a USER id file ownership
+  _o "old: $origUID"
+  _o "new: $bmUID"
+  _f starting now...
+
+# for i in `find / -user $origUID`; do 
+#   chown $bmUID $i
+# done
+
+  sudo find / -user "$origUID" \
+    -path /cloud -prune -o \
+    -path /cloud2 -prune -o \
+    -path /all -prune -o \
+    -path /vault -prune -o \
+    -exec chown -h bmilcs {} \;
+  fi
+
+if _ask "fix files owned by original GROUP id?"; then
+
+  _q "original GROUP id?"
+  read origGID
+
+  if ! [[ $origGID =~ $numreg ]]; then
+    _e "manual id override ($origGID): NOT a number"
+    exit 1
+  fi
+
+  _a GROUP id file ownership
+  _o "old: $origGID"
+  _o "new: $bmGID"
+  _f starting now...
+
+# for i in `find / -user $origUID`; do 
+#   chown $bmUID $i
+# done
+
+  sudo find / -group "$origGID" \
+    -path /cloud -prune -o \
+    -path /cloud2 -prune -o \
+    -path /all -prune -o \
+    -path /vault -prune -o \
+    -exec chgrp -h bmilcs {} \;
+fi
+
+

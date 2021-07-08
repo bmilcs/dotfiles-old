@@ -308,20 +308,22 @@ alias scll='sc list-units --type=service | fzn'         ;compdef scll='systemctl
 alias scull='scu list-units --type=service | fzn'       ;compdef scull='systemctl'
 alias scg='sc list-units --type=service --all | grep'   ;compdef scg='systemctl'
 alias scug='scu list-units --type=service --all | grep' ;compdef scug='systemctl'
-alias scstart='sc start'                                ;compdef scup='systemctl'
-alias scustart='scu start'                              ;compdef scuup='systemctl'
-alias scr='sc restart'                                  ;compdef scup='systemctl'
-alias scur='scu restart'                                ;compdef scuup='systemctl'
-alias sci='sc cat'                                      ;compdef scs='systemctl'
-alias scui='sc cat'                                     ;compdef scs='systemctl'
+alias scstart='sc start'                                ;compdef scstart='systemctl'
+alias scustart='scu start'                              ;compdef scustart='systemctl'
+alias scr='sc restart'                                  ;compdef scr='systemctl'
+alias scur='scu restart'                                ;compdef scur='systemctl'
+alias sci='sc cat'                                      ;compdef sci='systemctl'
+alias scui='scu cat'                                    ;compdef scui='systemctl'
 alias scs='sc status'                                   ;compdef scs='systemctl'
 alias scus='scu status'                                 ;compdef scus='systemctl'
-alias scstop='sc stop'                                  ;compdef scd='systemctl'
-alias scustop='scu stop'                                ;compdef scud='systemctl'
-alias sce='sc enable'                                   ;compdef scud='systemctl'
-alias scue='scu enable'                                 ;compdef scud='systemctl'
-alias scd='sc disable'                                  ;compdef scud='systemctl'
+alias scstop='sc stop'                                  ;compdef scstop='systemctl'
+alias scustop='scu stop'                                ;compdef scustop='systemctl'
+alias sce='sc enable'                                   ;compdef sce='systemctl'
+alias scue='scu enable'                                 ;compdef scue='systemctl'
+alias scd='sc disable'                                  ;compdef scd='systemctl'
 alias scud='scu disable'                                ;compdef scud='systemctl'
+alias scf='sc list-units --failed'                      ;compdef scf='systemctl'
+alias scuf='scu list-units --failed'                    ;compdef scuf='systemctl'
 
 alias jx='sudo journalctl -xe'
 
@@ -358,6 +360,7 @@ if [[ $HOST == "cloud" ]]; then
  
   # reload services
   alias wwwr='
+  source _bm
   _a "restarting webserver: ${YLW}nginx | php | redis"
   scr redis-server php7.3-fpm nginx
   
@@ -368,7 +371,10 @@ if [[ $HOST == "cloud" ]]; then
   # cloudflare
   alias nce='svim /usr/share/nginx/nextcloud/config/config.php'
   alias ncc='cd /usr/share/nginx/nextcloud'
+  alias ncd='sudo su && cd /usr/share/nginx/nextcloud-data'
+  alias logg='sudo su && cd /var/log/nginx'
 
+  alias nginx='sudo nginx '
   alias nginxe='svim /etc/nginx/conf.d/nextcloud.conf'
   alias nginxx='cd /etc/nginx'
   alias nginxxx='cd /usr/share/nginx'
@@ -497,7 +503,6 @@ if [[ $DISTRO == "debian" ]]; then
 #   echo "#         guest ok = no"
 #   echo "#         valid users = bmilcs"
 #   echo "-----------------------------------------------------------------------------------------------------"		'
-
 
 ###############################################################################
 #                                 GRAVEYARD

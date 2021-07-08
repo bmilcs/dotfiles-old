@@ -349,7 +349,8 @@ sudoedit /etc/hosts
 
 #────────────────────────────────────────────────────  TOO MANY LOGINS  ───────
 
-sudo mariadb
+sudo mysql -u root -p
+  use nextcloud;
   DELETE FROM oc_bruteforce_attempts;
 
 ################################################################################

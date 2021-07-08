@@ -27,12 +27,6 @@ MONTH=$(date '+%B');      DAY=$(date '+%d');       DAYOFWEEK=$(date '+%A')
 # INPUT
 #────────────────────────────────────────────────────────────
 
-_prompt() {
-    _qq "$1 ${color}[$prompt]${NC}"
-    read -r reply #< /dev/tty
-    echo "$reply"
-}
-
 _askk() {
   local prompt default reply
   if [[ ${2:-} = 'Y' ]]; then
@@ -60,8 +54,15 @@ _askk() {
   done
 }
 
-#_qq() { printf "\n%b%b  %b%s%b " "${color}" "${B}" "${color}" "${1}" "${NC}" ;}
-_qq() { echo -e "\n${B}${color}  ${1}" ;}
+_qq() { 
+  echo -e "\n${B}${color}  ${1}" 
+}
+
+_pp() {
+  echo -e "${B}${color}  $*" 
+  read reply
+  echo $reply
+}
 
 _askn()  { color="${PUR}"; _askk "$*" N; }
 _asknr() { color="${RED}"; _askk "$*" N; }
@@ -86,6 +87,14 @@ _qg()    { color="${GRN}"; _qq "$*"; }
 _qb()    { color="${BLU}"; _qq "$*"; }
 _qc()    { color="${CYN}"; _qq "$*"; }
 _qw()    { color="${WHT}"; _qq "$*"; }
+
+_p()     { color="${PUR}"; _pp "$*"; }
+_pr()    { color="${RED}"; _pp "$*"; }
+_py()    { color="${YLW}"; _pp "$*"; }
+_pg()    { color="${GRN}"; _pp "$*"; }
+_pb()    { color="${BLU}"; _pp "$*"; }
+_pc()    { color="${CYN}"; _pp "$*"; }
+_pw()    { color="${WHT}"; _pp "$*"; }
 
 #────────────────────────────────────────────────────────────
 # OUTPUT
