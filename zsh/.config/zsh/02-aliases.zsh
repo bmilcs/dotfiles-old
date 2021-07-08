@@ -90,6 +90,8 @@ alias upp='rmup && . $ZDOTDIR/05-update.sh'
 # zsh print registered commands
 alias zall='zle -al | fzf'
 
+# nocorrect [zsh autocorrect > sudo] -E [respect orig env]
+alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
 #──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 
 if [[ $DISTRO = "arch"* ]]; then # ARCH
@@ -112,11 +114,6 @@ if [[ $DISTRO = "arch"* ]]; then # ARCH
   alias yaygg='yay -Qe | grep';compdef yaygg='yay'
   alias yaycln='yay -Sc --aur';compdef yayc='yay'
   alias pmreport='pacreport --unowned-files'
-
-  # arch specific
-  # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
-
-  alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
 
   alias cdns='sudo systemd-resolve --flush-caches'
   alias rdns='cdns'
@@ -156,7 +153,6 @@ if [[ $HOST == mc ]]; then
   alias mcs='scs minecraft.service'
 fi
 
-
 if [[ $HOST == mpd ]]; then
 
   # beets
@@ -167,7 +163,6 @@ if [[ $HOST == mpd ]]; then
 fi
 
 #───────────────────────────────────────────────────────────────  APPS  ───────
-
 
 alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
 
@@ -460,7 +455,6 @@ if [[ $DISTRO == "debian" ]]; then
   alias rsnap='svim /etc/rsnapshot.conf'
 
   # minecraft
-
 
 ################################################################################
 ################################### archive ####################################
