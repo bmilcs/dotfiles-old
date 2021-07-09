@@ -137,10 +137,10 @@ else #────────────────────────�
   alias syslogls='sudo cat /var/log/syslog'
 
   # apt
-  alias apti='sudo apt-get install -y'
-  alias aptr='sudo apt-get purge -y'
-  alias aptg='dpkg --get-selections | grep'
-  alias aptls='sudo apt list --installed'
+# alias apti='sudo apt-get install -y'
+# alias aptr='sudo apt-get purge -y'
+# alias aptg='dpkg --get-selections | grep'
+# alias aptls='sudo apt list --installed'
 
 fi
 
