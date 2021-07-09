@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 APT INSTALLER [./yi]
+
+source _bm
+_t apt install 
+
+
+#sudo apt list\
+#  | fzf -m \
+#  --preview 'sudo apt-cache show {1}' \
+#  | sudo apt install -y -
+
+sudo apt-cache search '' \
+  | sort \
+  | cut --delimiter ' ' --fields 1 \
+  | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' \
+  | xargs -r sudo apt install -y
