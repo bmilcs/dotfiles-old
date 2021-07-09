@@ -2,8 +2,12 @@
 my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
 ### todo
-* [homelab](homelab.md):           pc/homelab
 * [life](life.md):              personal
+* [homelab](homelab.md):           pc/homelab
+
+### research/contacts
+* [landscaping](landscaping.md)
+
 
 ### general
 * [linux](linux.md)
