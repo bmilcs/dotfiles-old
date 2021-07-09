@@ -385,7 +385,7 @@ fi
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 #if where docker-compose > /dev/null && [ -d ~/docker ]; then
-if [[ $HOST == "docker" ]]; then
+if [[ $HOST =~ docker\|nginx ]]; then
 
   # editor
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
