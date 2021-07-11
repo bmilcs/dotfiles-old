@@ -19,9 +19,10 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [sed](sed.md)
 * [shells](shells.md)
 * [usb_automount](usb_automount.md)
-
+ 
 ### homelab
 * [esxi](esxi.md)
+* [docker](docker.md)
 * [minecraft](minecraft.md)
 * [nextcloud](nextcloud.md)
 * [windows](windows.md)

@@ -52,7 +52,16 @@
 #### CLEANING
 - [ ] spray bottles
 - [ ] multipurpose concentrate
-- [ ] mean green super strength cleaner & degreaser, 128 oz
+  - [ ] simple green
+  - [ ] tsp
+  - [ ] zep fast 505 (505 industrial cleaner)
+  - [ ] professional (reddit)
+    - [ ] caldrea
+    - [ ] method
+    - [ ] dr bronner’s
+    - [ ] meyers
+    - [ ] citrasolv
+  - [ ] mean green super strength cleaner & degreaser, 128 oz
 - [ ] glass concentrate
 - [ ] invisible glass
 - [ ] microfiber cloths
