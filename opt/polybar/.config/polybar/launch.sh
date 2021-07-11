@@ -20,8 +20,12 @@ LOG -----------------------------------------------
 
 LOG killing polybar
 
-polybar-msg cmd quit > /dev/null 2>&1
+#polybar-msg cmd quit > /dev/null 2>&1
 killall -q polybar
+killall -9 polybar
+
+
+[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
 
 #─────────────────────────────────────────────────────────────────  i3  ───────
 

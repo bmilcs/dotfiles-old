@@ -73,7 +73,9 @@ pgrep -f unclutter || LOG unclutter && unclutter &>> "$log"_unclutter &
 #───────────────────────────────────────────────────────────  software  ──────#
 
 # music
-[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
+#[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
+#pgrep -f mpd && LOG mpd && mpd &>> "$log"_mpd &
+# replaced by systemd user service
 
 # email
 pgrep -f thunderbird || LOG thunderbird && thunderbird &>> "$log"_thunderbird &

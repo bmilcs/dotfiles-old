@@ -221,3 +221,9 @@ if [[ $DISTRO == arch* ]]; then
   export BUILDDIR=/tmp/makepkg makepkg
 
 fi
+
+#───────────────────────────────────────────────────  laptop autostart  ───────
+
+if [[ $HOST == bmTP ]]; then
+  startx
+fi
