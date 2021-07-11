@@ -97,7 +97,8 @@ pgrep -f kdeconnectd || LOG kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_c
 
 # polybar (giving apps a second to load)
 sleep 0.5
-pgrep -f polybar || LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+#pgrep -f polybar || LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+plog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
 
 #───────────────────────────────────────────────────  concatenate logs  ──────#
 
