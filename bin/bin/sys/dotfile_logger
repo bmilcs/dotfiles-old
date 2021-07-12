@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOT LOG DEBUGGING UTILITY [./dotlog]
 
-log="$BMLOGS/dotfile_$USER.log"
+log="${BMLOGS:-$HOME/.config/bmilcs}/dotfile_$USER.log"
 
 dotc() {
     echo > "$log"
@@ -15,7 +15,7 @@ dotc() {
 }
 
 dotls() {
-  sed -i -e 's/\/home\/bmilcs/~/g' $log
+  sed -i -e 's/\/home\/bmilcs/~/g' "$log"
   cat "$log"
 }
 

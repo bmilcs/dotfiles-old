@@ -225,6 +225,6 @@ fi
 
 #───────────────────────────────────────────────────  laptop autostart  ───────
 
-if [[ $HOST == bmTP ]]; then
+if [[ $HOST == bmTP ]] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   startx
 fi
