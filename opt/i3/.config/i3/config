@@ -37,21 +37,21 @@ set $mute        XF86AudioMute
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
 # restart: i3, .profile, .xresources, picom 
-bindcode $w+$bsl   exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
+bindsym $w+equal   exec  "source $HOME/.profile ; picomr ; xrdb -merge ;\
                          ~/.Xresources " ; restart"
 
 # exit i3
-bindcode $wa+$bsl  exec  "i3-msg exit; exit"
+bindsym $wa+equal  exec  "i3-msg exit; exit"
 
 # restart: polybar,ic om
-bindsym  $w+equal  exec  ". ~/.config/polybar/launch.sh | \
+bindsym  $w+minus  exec  ". ~/.config/polybar/launch.sh | \
                          tee -a ~/.config/polybar/log; picomr"
 
 # dunst: reload
-bindsym  $w+minus  exec  "killall dunst ; sleep 0.5 ; th"
+bindsym  $w+0      exec  "killall dunst ; sleep 0.5 ; th"
 
 # restart: bootstra
-bindsym  $w+0      exec  "bootstrap"
+bindsym  $w+9      exec  "bootstrap"
 
 #──────────────────────────────────────────────────────────────  audio  ───────
 
@@ -100,7 +100,7 @@ bindsym  $wc+e           exec --no-startup-id    i3iuser
 bindsym  $wa+e           exec --no-startup-id    i3isshd
 
 # bm paste clipboard
-bindsym  $w+v            exec --no-startup-id    i3paste
+bindsym  $w+p            exec --no-startup-id    i3paste
 
 # bm clone
 bindsym  $w+c            exec --no-startup-id    bmclone
@@ -139,8 +139,8 @@ bindsym  $w+l       focus right
 bindsym  $w+h       focus left
 bindsym  $w+k       focus up
 bindsym  $w+j       focus down
-bindsym  $w+p       focus parent
-bindsym  $w+o       focus child
+bindsym  $w+F12     focus parent
+bindsym  $w+F11     focus child
 bindsym  $w+space   focus mode_toggle
 
 # views
@@ -337,6 +337,3 @@ for_window [instance="nitrogen"]          floating enable, resize set 1079 480, 
 for_window [instance="i3pad"]             floating enable, resize set 728  1255, move absolute position 1345  121,  border pixel 3
 for_window [instance="bitwarden"]         floating enable, resize set 1075 1125, move absolute position 1189  154,  border pixel 3
 for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322  289,  border pixel 3
-for_window [instance="bm-notes-lab"]      floating enable, resize set 725  1110, move center,  border   pixel 3                  
-for_window [instance="bm-notes-life"] floating enable, resize set 721 1106, move absolute position 1320 170, border pixel 3
-for_window [instance="notepad"] floating enable, resize set 800 600, move absolute position 1320 420, border pixel 3

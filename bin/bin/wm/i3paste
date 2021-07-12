@@ -7,4 +7,6 @@
 #                 I3 PASTE [./i3paste]
 #────────────────────────────────────────────────────────────
 
-xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel clip -o)"
+sleep 0.25
+xdotool type --clearmodifiers --delay 0 -- "$(xclip -sel primary -o)"
+
