@@ -110,9 +110,9 @@ function ga() {
     && git diff --staged \
     && _a git commit message: \
     && read gc \
-    && [ -n $gc ] \
-    && gc $gc \
-    && gp
+    && [ ! -z $gc ] \
+    && gc $gc & \
+    && gp &
 
 }
 
