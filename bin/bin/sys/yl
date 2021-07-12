@@ -17,6 +17,11 @@ yay -Qq \
     --preview 'yay -Qil {}' \
     --bind 'enter:execute(yay -Qil {} | less)'
 
+pacman -Qq \
+  | fzf --multi \
+    --preview 'pacman -Qil {}' \
+    --bind 'enter:execute(pacman -Qil {} | less)'
+
 
 # 'cat <(yay -Si {1}) <(yay -Fl {1} \
 #   | awk "{print \$2}")'
