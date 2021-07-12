@@ -297,30 +297,48 @@ alias shutdown='sudo systemctl poweroff'
 
 # systemctl
 alias fzn='fzf --no-preview'
+
 alias sc='sudo systemctl'                               ;compdef sc='systemctl'
 alias scu='systemctl --user'                            ;compdef scu='systemctl'
-alias scl='sc list-units --type=service --all | fzn'    ;compdef scl='systemctl'
-alias scul='scu list-units --type=service --all | fzn'  ;compdef scul='systemctl'
-alias scll='sc list-units --type=service | fzn'         ;compdef scll='systemctl'
-alias scull='scu list-units --type=service | fzn'       ;compdef scull='systemctl'
-alias scg='sc list-units --type=service --all | grep'   ;compdef scg='systemctl'
-alias scug='scu list-units --type=service --all | grep' ;compdef scug='systemctl'
-alias scstart='sc start'                                ;compdef scstart='systemctl'
-alias scustart='scu start'                              ;compdef scustart='systemctl'
-alias scr='sc restart'                                  ;compdef scr='systemctl'
-alias scur='scu restart'                                ;compdef scur='systemctl'
-alias sci='sc cat'                                      ;compdef sci='systemctl'
-alias scui='scu cat'                                    ;compdef scui='systemctl'
-alias scs='sc status'                                   ;compdef scs='systemctl'
-alias scus='scu status'                                 ;compdef scus='systemctl'
-alias scstop='sc stop'                                  ;compdef scstop='systemctl'
-alias scustop='scu stop'                                ;compdef scustop='systemctl'
-alias sce='sc enable'                                   ;compdef sce='systemctl'
-alias scue='scu enable'                                 ;compdef scue='systemctl'
-alias scd='sc disable'                                  ;compdef scd='systemctl'
-alias scud='scu disable'                                ;compdef scud='systemctl'
+
+alias scl='sc list-units --type=service --all'          ;compdef scl='systemctl'
+alias scul='scu list-units --type=service --all'        ;compdef scul='systemctl'
+
+alias scll='sc list-units --type=service'               ;compdef scll='systemctl'
+alias scull='scu list-units --type=service'             ;compdef scull='systemctl'
+
 alias scf='sc list-units --failed'                      ;compdef scf='systemctl'
 alias scuf='scu list-units --failed'                    ;compdef scuf='systemctl'
+
+alias scg='sc list-units --type=service --all | grep'   ;compdef scg='systemctl'
+alias scug='scu list-units --type=service --all | grep' ;compdef scug='systemctl'
+
+alias scstart='sc start'                                ;compdef scstart='systemctl'
+alias scustart='scu start'                              ;compdef scustart='systemctl'
+
+alias scr='sc restart'                                  ;compdef scr='systemctl'
+alias scur='scu restart'                                ;compdef scur='systemctl'
+
+alias sci='sc cat'                                      ;compdef sci='systemctl'
+alias scui='scu cat'                                    ;compdef scui='systemctl'
+
+alias scs='sc status'                                   ;compdef scs='systemctl'
+alias scus='scu status'                                 ;compdef scus='systemctl'
+
+alias scstop='sc stop'                                  ;compdef scstop='systemctl'
+alias scustop='scu stop'                                ;compdef scustop='systemctl'
+
+alias sce='sc enable'                                   ;compdef sce='systemctl'
+alias scue='scu enable'                                 ;compdef scue='systemctl'
+
+alias scedit='sc edit'                                  ;compdef scedit='systemctl'
+alias scuedit='scu edit'                                ;compdef scuedit='systemctl'
+
+alias scd='sc disable'                                  ;compdef scd='systemctl'
+alias scud='scu disable'                                ;compdef scud='systemctl'
+
+alias scdr='sc daemon-reload'                           ;compdef scdr='systemctl'
+alias scudr='scu daemon-reload'                         ;compdef scudr='systemctl'
 
 alias jx='sudo journalctl -xe'
 
