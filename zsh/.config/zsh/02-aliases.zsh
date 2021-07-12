@@ -340,7 +340,10 @@ alias scud='scu disable'                                ;compdef scud='systemctl
 alias scdr='sc daemon-reload'                           ;compdef scdr='systemctl'
 alias scudr='scu daemon-reload'                         ;compdef scudr='systemctl'
 
-alias jx='sudo journalctl -xe'
+alias jc='sudo journalctl '                             ;compdef jc='journalctl'
+alias jcx='sudo journalctl -xe'                         ;compdef jcx='journalctl'
+alias jcs='sudo journalctl -eu '                      ;compdef jcs='systemctl'
+alias jcus='journalctl --user -eu '                          ;compdef jcus='systemctl'
 
 #─────────────────────────────────────────────────────────  PRINT OUTS   ──────
 
