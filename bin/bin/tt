@@ -1,4 +1,7 @@
-#set -x 
+#───────────────────────────────────  extract commands from vim manual  ───────
+file=~/vimwiki
+sed -i '/Remap command/!d' $file
+
 #──────────────────────────────────────────────────────────  substring  ───────
 #!/usr/bin/env bash
 #
@@ -49,7 +52,3 @@
 ##awk '!seen[$0]++' "$paclist"
 #awk '!seen[$0]++' "$paclist" > "$paclist".final
 #cat "$paclist".final
-
-#───────────────────────────────────  extract commands from vim manual  ───────
-file=~/vimwiki
-sed -i '/Remap command/!d' $file

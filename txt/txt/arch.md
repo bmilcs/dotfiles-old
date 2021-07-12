@@ -1,3 +1,19 @@
+### pacman/aur
+
+Fixing GPG keyserver receive error... example output:
+
+```sh 
+:: PGP keys need importing:
+ -> CD0A6E3CBB6768800B0736A8E7677380F54FD8A9, required by: autofs
+==> Import? [Y/n] Y
+:: Importing keys with gpg...
+gpg: keyserver receive failed: No name
+problem importing keys
+```
+
+**Solution**:
+
+`gpg --keyserver keyserver.ubuntu.com --recv-key CD0A6E3CBB6768800B0736A8E7677380F54FD8A9 `
 
 ### thinkpad t14
 
