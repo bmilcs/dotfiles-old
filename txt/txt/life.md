@@ -14,6 +14,7 @@
   - [ ] drainage/concrete removal for front
 
 #### OUTDOORS
+- [ ] mushrooms in yard
 - [ ] garage door seal: install
 - [ ] lawn: mix & spray more bifenthrin
 
