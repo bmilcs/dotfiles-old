@@ -8,7 +8,7 @@
 
 #────────────────────────────────────────────────────────────  logging  ──────#
 
-log="/tmp/bootstrap.log"
+log="$BMLOGS/bootstrap.log"
 [ -f "$log" ] && rm "$log"
 
 LOG() {
@@ -26,7 +26,14 @@ LOG() {
 
 #──────────────────────────────────────────────────────────────  audio  ──────#
 
+# note: attempting swap to user services via systemd
+
+# pulseaudio
 pgrep -f pulseaudio || LOG pulse && pulseaudio --start &>> "$log"_pulse &
+
+# mpd
+# [ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
+pgrep -f mpd && LOG mpd && mpd &
 
 #──────────────────────────────────────────────────────────────  input  ──────#
 
@@ -72,10 +79,6 @@ pgrep -f unclutter || LOG unclutter && unclutter &>> "$log"_unclutter &
 
 #───────────────────────────────────────────────────────────  software  ──────#
 
-# music
-#[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
-#pgrep -f mpd && LOG mpd && mpd &>> "$log"_mpd &
-# replaced by systemd user service
 
 # email
 pgrep -f thunderbird || LOG thunderbird && thunderbird &>> "$log"_thunderbird &

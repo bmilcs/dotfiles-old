@@ -7,9 +7,9 @@
 #────────────────────────────────────────────────────────────
 # CORE
 #────────────────────────────────────────────────────────────
-#mpd_music_dir = "/all/media/audio/music"
+#mpd_music_dir = "/a/media/audio/music"
 #mpd_host = "127.0.0.1"
-lyrics_directory = "/all/media/audio/lyrics"
+lyrics_directory = "/a/media/audio/lyrics"
 ncmpcpp_directory = "/home/bmilcs/.config/ncmpcpp"
 mpd_host = "mpd.bm.bmilcs.com"
 mpd_port = "6600"
@@ -26,7 +26,7 @@ lines_scrolled = "5"
 visualizer_type = "spectrum"
 visualizer_look = "▋▋"
 visualizer_in_stereo = "yes"
-visualizer_data_source = "/all/media/audio/mpd/mpd.fifo"
+visualizer_data_source = "/a/media/audio/mpd/mpd.fifo"
 visualizer_output_name = "my_fifo"
 visualizer_fps = 60
 visualizer_autoscale = "yes"
