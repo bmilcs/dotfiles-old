@@ -28,13 +28,13 @@ LOG() {
 
 # note: attempting swap to user services via systemd
 
-# pulseaudio
-pgrep -f pulseaudio \
-  || LOG "pulseaudio" \
-  && pulseaudio --start | tee -a "$log"_pulse &
-
-# mpd
-[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
+## pulseaudio
+#pgrep -f pulseaudio \
+#  || LOG "pulseaudio" \
+#  && pulseaudio --start | tee -a "$log"_pulse &
+#
+## mpd
+#[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
 # pgrep -f mpd && LOG mpd && mpd &
 
 #──────────────────────────────────────────────────────────────  input  ──────#
