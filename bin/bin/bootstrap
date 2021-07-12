@@ -16,7 +16,7 @@ LOG() {
   str="#---> $* "
   len=${#str}
   len=$((35-len))
-  for ((i=0; i<$len; i++))
+  for ((i=0; i<"$len"; i++))
   do
     extra+="-"
   done
@@ -29,11 +29,13 @@ LOG() {
 # note: attempting swap to user services via systemd
 
 # pulseaudio
-pgrep -f pulseaudio || LOG pulse && pulseaudio --start &>> "$log"_pulse &
+pgrep -f pulseaudio \
+  || LOG "pulseaudio" \
+  && pulseaudio --start | tee -a "$log"_pulse &
 
 # mpd
-# [ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
-pgrep -f mpd && LOG mpd && mpd &
+[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
+# pgrep -f mpd && LOG mpd && mpd &
 
 #──────────────────────────────────────────────────────────────  input  ──────#
 
@@ -103,7 +105,7 @@ pgrep -f kdeconnectd || LOG kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_c
 # polybar (giving apps a second to load)
 sleep 0.5
 #pgrep -f polybar || LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
-plog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
 
 #───────────────────────────────────────────────────  concatenate logs  ──────#
 
