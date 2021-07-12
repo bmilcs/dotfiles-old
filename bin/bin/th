@@ -45,6 +45,7 @@ _n "normal notification"
 _ns "success notification"
 _nw "warning notification"
 _ne "error notification"
+_nimg "/a/bm/images/roof measurement error proof.png" "/a/bm/images/roof measurement error proof.png"
 #notify-send "basic" "example"
 
 if _askn "repeat test?"; then

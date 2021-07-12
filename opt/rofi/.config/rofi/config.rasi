@@ -1,5 +1,5 @@
 configuration {
-  font: "DejaVuSansMono Nerd Font 9.5";
+  font: "BitstreamVeraSansMono Nerd Font 10";
   theme: "nord";
   width: 15;              
   lines: 20;              

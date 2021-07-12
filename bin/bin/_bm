@@ -223,7 +223,7 @@ notify-send \
   --category="bmnormal"       \
   --urgency="low"             \
   --icon="pan-start-symbolic" \
-  "$(basename $0) [normal]"   \
+  " $(basename $0) "   \
   "$1"
 }
 
@@ -232,7 +232,7 @@ notify-send                        \
   --category="bmwarning"           \
   --urgency="low"                  \
   --icon="mail-mark-junk-symbolic" \
-  "$(basename $0) [warning]"       \
+  " $(basename $0) "               \
   "$1"
 }
 
@@ -241,7 +241,7 @@ notify-send                      \
   --category="bmerror"           \
   --urgency="low"                \
   --icon="window-close-symbolic" \
-  "$(basename $0) [error]"       \
+  " $(basename $0) "             \
   "$*"
 }
 
@@ -250,7 +250,7 @@ notify-send                       \
   --category="bmsuccess"          \
   --urgency="low"                 \
   --icon="object-select-symbolic" \
-  "$(basename $0) [success]"      \
+  " $(basename $0) "              \
   "$*"
 }
 
@@ -258,7 +258,7 @@ _nimg() {
 notify-send \
   --category="bmscreenshot"   \
   --icon="$1"                 \
-  "$2"                 \
+  "$2"                        \
   "$3"
 }
 

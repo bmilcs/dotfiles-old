@@ -53,6 +53,6 @@ if [ -e "$f" ]; then
   else
     xclip -sel clip -t image/png -i "$f"
   fi
-  _nimg "$f" "$f"
+  _nimg "$f" "screenie" "screenshot taken"
 fi
 

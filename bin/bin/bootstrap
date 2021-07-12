@@ -71,7 +71,7 @@ pgrep -f xcape || LOG xcape_ctrl_escape && xcape -e 'Control_L=Escape' &>> "$log
 pgrep -f udiskie || LOG udiskie && udiskie &>> "$log"_udiskie &
 
 # compositor
-pgrep -f picom || LOG picom && picom -b &>> "$log"_picom &
+pgrep -f picom || LOG picom && picom -bc --config ~/.config/picom/config &>> "$log"_picom &
 
 # wallpaper
 pgrep -f nitrogen || LOG nitrogen && nitrogen --restore &>> "$log"_nitrogen &

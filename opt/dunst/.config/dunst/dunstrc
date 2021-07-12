@@ -1,90 +1,96 @@
-[global]
-    monitor = 0
-    follow = mouse
-# w x h +-x +-y
-    geometry = "500x8-20+40"
-    indicate_hidden = yes
-    shrink = yes
-    transparency = 5
-    notification_height = 0
-    separator_height = 1
-# text & separator
-    padding = 8
-# horizontal padding
-    horizontal_padding = 10
-# border
-    frame_width = 2
-    frame_color = "#4c566a"
-# separator
-    separator_color = frame
-# auto, foreground, frame, anything
-# urgency sort
-    sort = yes
-# if idle, keep open
-    idle_threshold = 960
-    show_age_threshold = 120
-# text font name
-    font = Iosevka 10
-    line_height = 2
-    markup = full
-    alignment = left
-    vertical_alignment = center
-    show_age_threshold = 60
-    ignore_newline = no
-# word wrap or ellipsize
-    word_wrap = yes
-    ellipsize = start
-#   start, middle, end
-    format = "<b>%s</b><i>%p</i>\n%b"
+# *_color options: auto, foreground, frame, anything
+
 #   %a appname            %s summary            %b  body
 #   %i iconname [path]    %I iconname no path   %%  literal %
 #   %p progress [0%-100%] %n progress simple
+
+[global]
+
+    monitor = 0
+    font = BitstreamVeraSansMono Nerd Font 9
+
+#   geometry = "400x10-40+50" # w x h +-x +-y # geometry = "350x8-30+20"
+    geometry = "400x100-40-25"
+    notification_height = 0
+    transparency = 0
+    shrink = no
+
+#   format = "<b>%s</b><i>%p</i>\n%b"
+    format = "<b><span background='#81a1c1' foreground='#2e3440'> %s </span></b>\n%b"
+    frame_width = 3 # border
+    frame_color = "#4c566a"
+    highlight = "#8fbcbb"
+    separator_color = "#3b4252"
+    separator_height = 2
+    line_height = 0
+    corner_radius = 8
+
+#   progress_bar_max_width = 120
+
+    icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/places/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/symbolic/actions/:/usr/share/icons/Papirus-Dark/symbolic/apps/:/usr/share/icons/Papirus-Dark/symbolic/categories/:/usr/share/icons/Papirus-Dark/symbolic/devices/:/usr/share/icons/Papirus-Dark/symbolic/emblems/:/usr/share/icons/Papirus-Dark/symbolic/emotes/:/usr/share/icons/Papirus-Dark/symbolic/mimetypes/:/usr/share/icons/Papirus-Dark/symbolic/places/:/usr/share/icons/Papirus-Dark/symbolic/status/
+    icon_position = left # left right none
+    min_icon_size = 32   # 0
+    max_icon_size = 128   # 64
+
+    markup = full
+    alignment = left
+    vertical_alignment = center
+
+    padding = 5
+    text_icon_padding = 6
+    horizontal_padding = 3
+
+    idle_threshold = 960   # if idle, keep open
+    show_age_threshold = 60
+
+    follow = mouse
+    sort = no
+    ignore_newline = no
+
+    word_wrap = yes
+    ellipsize = start
+
     stack_duplicates = true
     hide_duplicate_count = false
-    show_indicators = yes
-#   show: urls (u) actions (a).
-    icon_path = /usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes/:/usr/share/icons/Papirus-Dark/32x32/places/:/usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/symbolic/actions/:/usr/share/icons/Papirus-Dark/symbolic/apps/:/usr/share/icons/Papirus-Dark/symbolic/categories/:/usr/share/icons/Papirus-Dark/symbolic/devices/:/usr/share/icons/Papirus-Dark/symbolic/emblems/:/usr/share/icons/Papirus-Dark/symbolic/emotes/:/usr/share/icons/Papirus-Dark/symbolic/mimetypes/:/usr/share/icons/Papirus-Dark/symbolic/places/:/usr/share/icons/Papirus-Dark/symbolic/status/
-# left right none
-    icon_position = right
-    min_icon_size = 32   # 0
-    max_icon_size = 1000   # 64
-    sticky_history = yes
-# keep reopened notifications stay
+    show_indicators = yes #   show: urls (u) actions (a).
+    indicate_hidden = yes
+
+    sticky_history = yes # keep reopened notifications stay
     history_length = 1000
+
+    always_run_script = true
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/firefox -new-tab
-    always_run_script = true
-# dunst window classified as:
-    title = Dunst
+
+    title = Dunst # dunst window classified as:
     class = Dunst
-    startup_notification = false
-    verbosity = mesg
-#   crit: Critical features. Dunst aborts
-#   warn: Only non-fatal warnings
-#   mesg: Important Messages
-#   info: all unimportant stuff
-#   debug: all less than unimportant stuff
-    corner_radius = 2
-    ignore_dbusclose = false
-#   ignore programs built-in timers
-      force_xinerama = false
-#   old nvidia, multi-monitor
+    startup_notification = true
+    verbosity = mesg # crit, warn, mesg: important, info: all unimportant, debug: all 
+    ignore_dbusclose = false #   ignore programs built-in timers
+    force_xinerama = false #   old nvidia, multi-monitor
+
+    #   none:          don't do anything.
+    #   do_action:     if the notification has exactly one action, or one is marked as default,
+    #                  invoke it. if there are multiple and no default, open the context menu.
+    #   close_current: close current notification.
+    #   close_all:     close all notifications.
+
     mouse_left_click = do_action
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_current
-#   none:          don't do anything.
-#   do_action:     if the notification has exactly one action, or one is marked as default,
-#                  invoke it. if there are multiple and no default, open the context menu.
-#   close_current: close current notification.
-#   close_all:     close all notifications.
+
 [experimental]
+
     per_monitor_dpi = true
+
 [shortcuts]
+
+    # "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
+    # use alias 'kc' | 'xmodmap -pke'
+
     close_all = F12
     history = F11
     context = F9
-# "ctrl" | "mod1" (alt) | "mod2" | "mod3" | "mod4" (win)
-# use alias 'kc' | 'xmodmap -pke'
 
 #────────────────────────────────────────────────────────────
 # %a appname            %s summary            %b  body
@@ -98,10 +104,12 @@
     background = "#2e3440"
     foreground = "#81a1c1"
     timeout = 60
+
 [urgency_normal]
     background = "#2e3440"
     foreground = "#81a1c1"
     timeout = 60
+
 [urgency_critical]
     background = "#2e3440"
     foreground = "#ebcb8b"
@@ -111,37 +119,41 @@
 
 [norm]
     category = "bmnormal"
-    background = "#2e3440"
-    format = "<b><span foreground='#81a1c1'>%s</span></b>\n%b"
+    foreground = "#d8dee9"
+    format = "<b><span background='#81a1c1' foreground='#2e3440'>%s</span></b>\n%b"
     timeout = 30
+    #   background = "#2e3440"
+    #   frame_color = "#2e3440"
 
 [warn]
     category = "bmwarning"
-    background = "#ebcb8b"
-    foreground = "#2e3440"
-    format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
+    foreground = "#d8dee9"
+    format = "<b><span background='#ebcb8b' foreground='#2e3440'>%s</span></b>\n%b"
     timeout = 30
+    #   background = "#ebcb8b"
+    #   frame_color = "#ebcb8b"
 
 [error]
     category = "bmerror"
-    background = "#bf616a"
-    foreground = "#eceff4"
-    format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
+    foreground = "#d8dee9"
+    format = "<b><span background='#bf616a' foreground='#2e3440'>%s</span></b>\n%b"
     timeout = 30
+    #   background = "#bf616a"
+    #   frame_color = "#bf616a"
+    #   foreground = "#bf616a"
 
 [success]
     category = "bmsuccess"
-    background = "#8fbcbb"
-    foreground = "#2e3440"
-    format = "<b><span foreground='#2e3440'>%s</span></b>\n%b"
+    foreground = "#d8dee9"
+    format = "<b><span background='#a3be8c' foreground='#2e3440'>%s</span></b>\n%b"
     timeout = 30
+    #   background = "#8fbcbb"
+    #   foreground = "#a3be8c"
 
 [screenshot]
     category = "bmscreenshot"
-    icon_position = right
-    min_icon_size = 0
-    max_icon_size = 1000
-    format = "<center><span foreground='#2e3440'></span></b>\n%b<center>"
+    foreground = "#d8dee9"
+    format = "<b><span background='#2e3440' foreground='#2e3440'>%s</span></b>\n%b"
     timeout = 30
 
 #────────────────────────────────────────────────────────────
