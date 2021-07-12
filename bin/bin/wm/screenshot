@@ -30,9 +30,9 @@ done
 is_mounted=$(mount -l | grep nfs)
 
 if [[ -n $is_mounted ]]; then
-  f="/all/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
+  f="/a/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
-  _nw "'/all/bm' isn't mounted"
+  _nw "'/a/bm' isn't mounted"
   f="$HOME/img/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 fi
 
