@@ -123,7 +123,7 @@ function gc() {
   }
 
 # git reset hard
-function grs() {
+function grsh() {
   source _bm
   [[ $(git rev-parse --is-inside-work-tree) ]] || cd "$D"
   _a git reset hard
