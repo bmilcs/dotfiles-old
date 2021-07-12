@@ -6,20 +6,20 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOT LOG DEBUGGING UTILITY [./dotlog]
 
-logpath="/tmp/dot_$USER.log"
+log="$BMLOGS/dotfile_$USER.log"
 
 dotc() {
-    echo > "$logpath"
+    echo > "$log"
     _a dotlog
     _i cleared
 }
 
 dotls() {
-    sed -i -e 's/\/home\/bmilcs/~/g' $logpath
-    cat "$logpath"
+  sed -i -e 's/\/home\/bmilcs/~/g' $log
+  cat "$log"
 }
 
 dotlog() {
-    echo "[$(date "+%m.%d.%G | %r")] $*" >> "$logpath"
+  echo "[$(date "+%m.%d.%G | %r")] $*" >> "$log"
 }
 

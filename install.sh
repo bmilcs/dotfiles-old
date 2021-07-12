@@ -201,18 +201,19 @@ ivim() {
 btw() {
   _a bw
 
-  tmp=/tmp/bw.zip
+  tmp="$BMLOGS/bw.zip"
   bwp=/usr/local/bin/bw
 
   [[ -f "$bwp" ]] && sudo rm "$bwp"
 
   (sudo curl -L -o "$tmp" \
     'https://vault.bitwarden.com/download/?app=cli&platform=linux' \
-    && sudo unzip $tmp -d /usr/local/bin) &> /dev/null
+    && sudo unzip "$tmp" -d /usr/local/bin) &> /dev/null
 
   sudo chmod +x "$bwp"
 
   bw completion --shell zsh > ~/.config/zsh/completion/_bw
+  rm "$tmp"
 
   _o all set
 }
@@ -299,6 +300,12 @@ else
 fi
 
 _s all set
+
+#───────────────────────────────────────────────────────────────  misc  ───────
+
+_a "global customizations [misc]"
+_f "creating ~/.config/bmilcs [used for logging purposes]"
+mkdir -p ~/.config/bmilcs
 
 ################################################################################
 ################################## archlinux  ##################################

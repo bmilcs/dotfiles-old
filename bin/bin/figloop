@@ -10,7 +10,7 @@ source _bm
 _a figlet 
 
 string="$*"
-path="/tmp/figgy.bmilcs"
+path="$BMLOGS/figloop.log"
 echo > $path
 
 [ -z "$string" ] && string="bmilcs BMILCS"

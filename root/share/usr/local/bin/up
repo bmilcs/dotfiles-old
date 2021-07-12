@@ -14,10 +14,10 @@ source _distro
 
 if [[ $DISTRO == arch* ]]; then
 
+  log="$BMLOGS/pacfix_in.log"
   _a pacman/aur 
-  yay -Syyyuuu --noconfirm 2>&1 | tee /tmp/pacfix_in
-  pacfix /tmp/pacfix_in
-
+  yay -Syyyuuu --noconfirm 2>&1 | tee "$log"
+  pacfix "$log"
 
 #─────────────────────────────────────────────────────────────  CENTOS  ───────
 elif [[ $DISTRO =~ centos ]]; then

@@ -4,20 +4,20 @@
 #  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
 #  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
-#                 FSTAB MOUNT CHECK [./mntchk]
+#                 MNTS: FSTAB MOUNT CHECK [./mntchk]
 #────────────────────────────────────────────────────────────
 source _bm
 
+log="$BMLOGS/mnts.log"
+
 _a nfs mnt check
 
-sudo mount -l | grep nfs > /tmp/mnts
+sudo mount -l | grep nfs > "$log"
 
-sed -i 's/type nfs.\?.\?(.*)//g' /tmp/mnts
+sed -i 's/type nfs.\?.\?(.*)//g' "$log"
 
-sed -i 's/ on \(.*$\)/\ \1/g' /tmp/mnts
-sed -i 's/:/\ /g' /tmp/mnts
-mnts=$(column -t /tmp/mnts)
+sed -i 's/ on \(.*$\)/\ \1/g' "$log"
+sed -i 's/:/\ /g' "$log"
+mnts=$(column -t "$log")
 
 _og "\n$mnts\n"
-
-rm /tmp/mnts

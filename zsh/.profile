@@ -18,6 +18,7 @@
 
 export D=$HOME/bm
 export BM=$HOME/bm
+export BMLOGS=$HOME/.config/bmilcs
 export BMP=$HOME/bmP
 export BAK=$HOME/.backup
 export BMSSH=$BMP/ssh

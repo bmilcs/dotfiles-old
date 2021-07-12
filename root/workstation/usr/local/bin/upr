@@ -12,19 +12,23 @@ _a repos
 exceptions=("nerd-fonts-2.0.0")
 autostash=("zafiro-icons")
 
-rm -rf /tmp/{upno,upyes,uperror}
+upno="$BMLOGS/upr_no.log"
+upyes="$BMLOGS/upr_yes.log"
+uperror="$BMLOGS/upr_error.log"
+
+rm -rf "$upno" "$upyes" "$uperror"
 
 chkout(){
   out=$($1 2>&1)
   if [[ $out == *"Already up to date"* ]]; then
     if [[ "$stash" == 1 ]]; then _ob "- ${ITAL}$sdir [${B}stash${BLU}]"
-      else _ob "- ${ITAL}$sdir"; fi; echo "$sdir" >> /tmp/upno
+      else _ob "- ${ITAL}$sdir"; fi; echo "$sdir" >> "$upno"
   elif [[ $out == *"error"* ]]; then
     if [[ "$stash" == 1 ]]; then _w "${B}$sdir [${B}stash${BLU}]"
-      else _w "$sdir "; fi; echo "$sdir" >> /tmp/uperror
+      else _w "$sdir "; fi; echo "$sdir" >> "$uperror"
   else 
     if [[ "$stash" == 1 ]]; then _s "$sdir [${B}stash${BLU}]"
-      else _s "$sdir"; fi; echo "$sdir" >> /tmp/upyes
+      else _s "$sdir"; fi; echo "$sdir" >> "$upyes"
   fi
 }
 
@@ -51,9 +55,9 @@ updaterepo() {
 }
 
 [ -d ~/repos ] && cd ~/repos && updaterepo 
-[ -f /tmp/upyes ] && _a successfully updated && cat /tmp/upyes 
+[ -f "$upyes" ] && _a successfully updated && cat "$upyes" 
 
-if [ -f /tmp/uperror ] ; then
+if [ -f "$uperror" ] ; then
   _a repo update failure
   _wb "cleaning required: "
   while read repo; do
@@ -61,6 +65,6 @@ if [ -f /tmp/uperror ] ; then
     alacritty --class=gitdirty --working-directory=$HOME/repos/$repo --config-file=$HOME/.config/alacritty/gitadd.yml -e zsh -c "cd ~/repos/$repo && git status && exec zsh" &
     cd ~/repos/"$repo" || _e "can't find repo"
     git status -s
-  done </tmp/uperror
+  done <"$uperror"
 fi    
 _s

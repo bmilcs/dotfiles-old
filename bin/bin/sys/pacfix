@@ -11,7 +11,7 @@ source _bm
 
 #───────────────────────────────────────────────────  init output file  ───────
 
-paclist=/tmp/pacfix
+paclist="$BMLOGS/pacfix.log"
 rm "$paclist"{,.final} &> /dev/null
 
 #───────────────────────────────────────────────────  course of action  ───────
