@@ -111,8 +111,9 @@ function ga() {
     && _a git commit message: \
     && read gc \
     && [ ! -z $gc ] \
-    && gc $gc & \
-    && gp &
+    && { 
+    gc $gc \
+    && gp } &
 
 }
 
