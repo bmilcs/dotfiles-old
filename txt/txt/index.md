@@ -31,10 +31,10 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 ### arch
 * [arch](arch.md):              archlinux
 * [arch_audio](arch_audio.md):        audio 
-* [arch_install](arch_install.md):      installation
-* [arch_firefox](arch_firefox.md):      firefox
-* [arch_networking](arch_networking.md):   networking
 * [arch_autofs](arch_autofs.md):       nfs on demand
+* [arch_firefox](arch_firefox.md):      firefox
+* [arch_install](arch_install.md):      installation
+* [arch_networking](arch_networking.md):   networking
 * [arch_vm](arch_vm.md):           virtual machine
 
 ### vim

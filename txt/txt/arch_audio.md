@@ -3,6 +3,34 @@
 - configure archlinux with a scarlet 2i2 audio interface.
 - **note**: alsa is not enough for firefox to play audio.
 
+## SETUP
+
+```sh
+# 1. install packages
+yay -S pulseaudio mpd
+     # libpulse - optional (?)
+
+# 2. install dotfiles 
+#    audio settings stored @ ~/.config/{mpd,pulse}
+#    *** ignore: /etc/pulse, /etc/mpd ***
+
+# 3. enable user services via systemd
+
+systemctl --user enable pulseaudio.service mpd.service
+systemctl --user start pulseaudio.service mpd.service
+
+# OR
+
+scue pulseaudio.service mpd.service
+scustart pulseaudio.service mpd.service
+
+```
+
+# ARCHIVE
+
+- original notes
+- have since changed to systemd management
+
 ## pulseaudio & alsa
  
 ``` sh
@@ -37,7 +65,6 @@ cat /proc/asound/cards
 systemctl list-units --type=target
 ```
 
-  
 ## pulseaudio
 
 ``` sh
