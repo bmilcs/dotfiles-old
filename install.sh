@@ -333,9 +333,6 @@ if [[ ${DISTRO} == arch* ]]; then
   # allow dmesg as user [notifications]
   sudo sysctl kernel.dmesg_restrict=0 > /dev/null
 
-  # remove diff menu [yay]
-  yay --editmenu --nodiffmenu --save
-
 #────────────────────────────────────────────────  setup core software  ───────
 
   izsh
@@ -349,10 +346,10 @@ if [[ ${DISTRO} == arch* ]]; then
   _a root
   cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
-  _o symlink: root/share to "${B}"/
+  _o "symlink: ./root/share to "${B}"/"
   sudo stow -t / -R share
 
-  _o symlink: root/workstation to "${B}"/
+  _o "symlink: ./root/workstation to "${B}"/"
   sudo stow -t / -R workstation && _s
 
 #───────────────────────────────────────────────────────────────  HOME  ───────
