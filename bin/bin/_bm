@@ -195,7 +195,7 @@ _wp() { color="$PUR";   _www "$*"; }
 _wc() { color="$CYN";   _www "$*"; }
 
 # success
-_scs() { echo -e "$spaces${color}  ${*:-done} ${NC}"; } # √
+_scs() { echo -e "$spaces${color}  ${*:-done} \n${NC}"; } # √
 _s()  { color="$GRN";   _scs "$*"; }
 _sr() { color="$RED";   _scs "$*"; }
 _sw() { color="$WHT";   _scs "$*"; }

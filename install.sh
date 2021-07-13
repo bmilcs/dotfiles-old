@@ -17,9 +17,7 @@ _w disclaimer: this script can be destructive! \\n
 _o i attempt to preserve existing configuration files \\n \
   within "${B}"\'~/.backup\'"${NC}" but procede with caution. \\n 
 
-_o thoroughly review this script before proceding. \\n 
-
-_oc installation type is determined by your distro:\\n
+_op installation type is determined by your distro:\\n
 
 _i "${CYN}${B}archlinux${NC}"\\n \
   --  "${B}"my workstation setup"${NC}" \\n \
@@ -29,7 +27,7 @@ _i "${CYN}${B}archlinux${NC}"\\n \
 _i "${CYN}${B}debian/ubuntu users${NC}" \\n \
   --  "${B}my virtual machine setup ${NC}" \\n \
   --  installs: minimal setup: \\n \
-  --  defined by \$deb in the variable section.
+  --  defined by \$deb in the variable section. \\n
 
 _i "${CYN}${B}centos users${NC}" \\n \
   --  "${B}web host setup${NC}" \\n \
@@ -52,7 +50,7 @@ yum=("") # missing: fd, bat, colordiff
 
 # repo related
 D=$HOME/bm
-BM=$HOME/bm
+BM=$D
 BMP=$HOME/bmP
 BAK=$HOME/.backup/dotfiles/
 
@@ -119,7 +117,7 @@ ifzf() {
     ~/.config/fzf/install --xdg --no-update-rc --completion --key-bindings
 
   else
-    _o all set
+    _s 
   fi
 
 } 
@@ -164,7 +162,7 @@ izsh() {
     fi
   fi
 
-  _o all set
+  _s
 }
 
 #───────────────────────────────────────────────────────  nvim: editor  ───────
@@ -192,7 +190,7 @@ ivim() {
     # run upvim to install plugins, etc.
     ./bin/bin/sys/upvim
   else
-    _o all set
+    _s
   fi
 }
 
@@ -215,7 +213,7 @@ btw() {
   bw completion --shell zsh > ~/.config/zsh/completion/_bw
   rm -f "$tmp"
 
-  _o all set
+  _s
 }
 
 ################################################################################
@@ -231,14 +229,15 @@ _o "${pkgs[@]}"
 
 if [[ ${DISTRO} == arch* ]]; then
 
+  _t archlinux
   _a archlinux dependencies
-  _o "${pkgs[@]}"
+  _o "${pacman[@]}"
 
   sudo rm -rf /tmp/bm-install.sh #2>&1 /dev/null
 
   if _askn "install necessary packages?"; then
 
-    # 
+    # universal
     pacman -Qi "${pkgs[@]}" > /dev/null 2>&1 \
       || (sudo pacman -Syu "${pkgs[@]}" | tee /tmp/bm-install.sh \
       && _o installed "${pkgs[@]}")
@@ -257,11 +256,13 @@ if [[ ${DISTRO} == arch* ]]; then
 
 elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
 
-  # universal packages
+  _t "${DISTRO}"
+
+  # universal
   dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
 
-  # apt specific
+  # apt
   dpkg -s "${apt[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${apt[@]}" && _o installed "${apt[@]}")
 
@@ -303,9 +304,9 @@ _s all set
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
-_a "global customizations [misc]"
-_f "creating ~/.config/bmilcs [used for logging purposes]"
-mkdir -p ~/.config/bmilcs
+_a "dotfile logging"
+_f "creating ~/.config/bmilcs"
+mkdir -p ~/.config/bmilcs && _s 
 
 ################################################################################
 ################################## archlinux  ##################################
@@ -315,6 +316,7 @@ if [[ ${DISTRO} == arch* ]]; then
 
   # permission to procede?
   if  _ask "archlinux: install everything?"; then
+    _t archlinux deployment
     _a "${U}"symlink: starting
     _o distro: "$DISTRO"
   else
@@ -324,6 +326,15 @@ if [[ ${DISTRO} == arch* ]]; then
 
   # function: rm broken symlinks, backup conflicting files, etc.
   cleanup
+
+  # set alacritty to xterm (i3 error, etc.)
+  if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
+    sudo ln -s /usr/bin/alacritty /usr/bin/xterm
+  fi
+
+  # update font cache
+  fc-cache
+
 
 #────────────────────────────────────────────────────────  misc tweaks  ───────
 
@@ -346,10 +357,10 @@ if [[ ${DISTRO} == arch* ]]; then
   _a root
   cd "$D"/root/ || (_e unable to cd root/ && exit 1)
 
-  _o "symlink: ./root/share to "${B}"/"
-  sudo stow -t / -R share
+  _o "symlink: ./root/share"
+  sudo stow -t / -R share && _s
 
-  _o "symlink: ./root/workstation to "${B}"/"
+  _o "symlink: ./root/workstation"
   sudo stow -t / -R workstation && _s
 
 #───────────────────────────────────────────────────────────────  HOME  ───────
@@ -358,7 +369,7 @@ if [[ ${DISTRO} == arch* ]]; then
   cd "$D" || (_e unable to cd base repo dir && exit 1)
 
   _a home
-  _o symlink: [base dir] "${B}"\~
+  _o "symlink: base dir" 
 
   # repo: / (base dir)
   for dir in "$D"/*/; do
@@ -376,12 +387,12 @@ if [[ ${DISTRO} == arch* ]]; then
     # not a match && stow it :)
     stow -R "$(basename "$dir")" || _e "$(basename "$dir")"
 
-  done # end of repo directory loop
+  done && _s # end of repo directory loop
 
   # repo: opt/
   cd "$D"/opt || (_e unable to cd into opt && exit 1)
 
-  _o symlink: opt [rice cfg] "${B}"\~
+  _o "symlink: opt" && _s
 
   # repo: /opt/
   for dir in "$D"/opt/*/; do
@@ -395,17 +406,7 @@ if [[ ${DISTRO} == arch* ]]; then
 
     stow -t "$HOME" -R "$(basename "$dir")" || _e "$(basename "$dir")"
 
-  done 
-
-  # set alacritty to xterm (i3 error, etc.)
-  if [[ ! -f /usr/bin/xterm ]] && [[ ! -L /usr/bin/xterm ]]; then
-    sudo ln -s /usr/bin/alacritty /usr/bin/xterm
-  fi
-
-  # update font cache
-  fc-cache
-
-  _s
+  done && _s
 
 else # not archlinux
 
@@ -414,6 +415,7 @@ else # not archlinux
 ################################################################################
 
   # title
+  _t apt-based deployment
   _a "${B}symlink: ${GRN}${B}starting${NC}"
   _o distro: "$DISTRO"
   _i minimal install
@@ -470,4 +472,7 @@ else # not archlinux
   fi
 fi
 
-_s installation complete 
+_t "installation complete"
+
+echo
+
