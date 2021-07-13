@@ -213,7 +213,7 @@ btw() {
   sudo chmod +x "$bwp"
 
   bw completion --shell zsh > ~/.config/zsh/completion/_bw
-  rm "$tmp"
+  rm -f "$tmp"
 
   _o all set
 }
@@ -377,7 +377,7 @@ if [[ ${DISTRO} == arch* ]]; then
     [[ "$match" == 1 ]] && continue
 
     # not a match && stow it :)
-    [[ $(stow -R "$(basename "$dir")") -gt 0 ]] && _e "$(basename "$dir")"
+    stow -R "$(basename "$dir")" || _e "$(basename "$dir")"
 
   done # end of repo directory loop
 
@@ -389,8 +389,14 @@ if [[ ${DISTRO} == arch* ]]; then
   # repo: /opt/
   for dir in "$D"/opt/*/; do
 
-    [[ $(stow -t "$HOME" -R "$(basename "$dir")") -gt 0 ]] \
-      && _e "$(basename "$dir")"
+    if [[ $(basename "$dir") == yay ]]; then
+      if [[ ${DISTRO} == arch* ]] && [[ ! -L ~/.config/yay/config.json ]]; then 
+        _f "rm yay config [resolve conflict for stow]"
+        rm -f ~/.config/yay/config.json 
+      fi
+    fi
+
+    stow -t "$HOME" -R "$(basename "$dir")" || _e "$(basename "$dir")"
 
   done 
 
@@ -444,7 +450,12 @@ else # not archlinux
     || (_e unable to cd base repo dir && exit 1)
 
   _o symlink: home "${B}"\~
-  stow -R "${deb[@]}" && _i stowed: "${deb[@]}" && _s
+
+  if stow -R "${deb[@]}"; then 
+    _i stowed: "${deb[@]}" && _s
+  else
+    _e error: "${deb[@]}" 
+  fi
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
