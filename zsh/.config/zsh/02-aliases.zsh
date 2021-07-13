@@ -425,7 +425,7 @@ if [[ $HOST =~ docker\|nginx ]]; then
   alias logss='~/docker/swag/config/log/'
 
   # docker-compose
-  alias dcup='cd ~/docker && docker-compose up -d' #;compdef dcs='docker'
+  alias dcup='cd ~/docker && docker-compose up -d --remove-orphans' #;compdef dcs='docker'
   alias dcstop='cd ~/docker && docker-compose stop' #;compdef dcstop='docker stop '
   alias dcrestart='cd ~/docker && docker-compose restart' #;compdef dcrestart='docker restart '
   alias dcdown='cd ~/docker && docker-compose down' #;compdef dcdown='docker down'
