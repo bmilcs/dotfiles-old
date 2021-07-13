@@ -337,3 +337,4 @@ for_window [instance="nitrogen"]          floating enable, resize set 1079 480, 
 for_window [instance="i3pad"]             floating enable, resize set 728  1255, move absolute position 1345  121,  border pixel 3
 for_window [instance="bitwarden"]         floating enable, resize set 1075 1125, move absolute position 1189  154,  border pixel 3
 for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322  289,  border pixel 3
+for_window [instance="notepad"] floating enable, resize set 731 933, move absolute position 1770 270, border pixel 3

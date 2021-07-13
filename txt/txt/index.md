@@ -2,9 +2,9 @@
 my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
 ### todo
-* [scratch](scratch.md):           misc
-* [life](life.md):              personal
 * [homelab](homelab.md):           pc/homelab
+* [life](life.md):              personal
+* [scratchpad](scratchpad.md):        notes, scribblings
 
 ### research/contacts
 * [landscaping](landscaping.md)
