@@ -409,6 +409,7 @@ fi
 if [[ $HOST =~ docker\|nginx ]]; then
 
   # editor
+  alias dc='docker'
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
   alias dce='vim ~/docker/docker-compose.yaml'
 
