@@ -6,6 +6,9 @@
 * [ ] security camera: front yard
   * [ ] find position
   * [ ] install
+* [ ] auto-update
+  * [ ] on login: disable
+  * [ ] implement cron job or ansible script
 
 ## VIRTUALIZATION
 
