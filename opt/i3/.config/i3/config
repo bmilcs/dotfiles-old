@@ -70,9 +70,9 @@ bindsym  $mute          exec --no-startup-id    bmvol mute
 #───────────────────────────────────────────────────────  applications  ───────
 
 bindsym  $w+Return      exec --no-startup-id    alacritty
-bindsym  $ws+Return     exec --no-startup-id    bitwarden
-bindsym  $wcs+Return    exec --no-startup-id    chromium
 bindsym  $wc+Return     exec --no-startup-id    firefox
+bindsym  $ws+Return     exec --no-startup-id    chromium
+bindsym  $wa+Return     exec --no-startup-id    bitwarden
 
 #────────────────────────────────────────────────────────  screenshots  ───────
 
