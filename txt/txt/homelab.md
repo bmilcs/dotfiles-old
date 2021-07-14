@@ -12,12 +12,12 @@
 
 ## VIRTUALIZATION
 
-* [ ] nginx project
-  * [ ] personal site
-    * [ ] create vm
+* [O] nginx project
+  * [O] personal site: WWW
     * [ ] setup lemp
-    * [ ] move content over
-    * [ ] create npm redirect
+    * [X] create vm
+    * [X] move content over
+    * [X] create npm redirect
 
 * [ ] nextcloud
   * [ ] create ubuntu vm
