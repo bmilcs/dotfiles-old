@@ -43,10 +43,13 @@ if [[ $# == 1 ]]; then
       host="${1#id_}"
       _i "ssh-copy-id -i $path bmilcs@$host"
       _ay enter password of host:
-      ssh-copy-id -i $path bmilcs@$host
-      cat "$path".pub | xclip -sel clip
-      _a clipboard now filled w/ pubkey
-      cat "$path".pub 
+      if ssh-copy-id -i $path bmilcs@$host; then
+        scp-ssh -h "$host"
+      else
+        cat "$path".pub | xclip -sel clip
+        _a clipboard now filled w/ pubkey
+        cat "$path".pub 
+      fi
     else
       _e "something went wrong"
     fi
@@ -54,6 +57,7 @@ if [[ $# == 1 ]]; then
 else
   _w "sshgen <hostname>"
 fi
+
 
   #ssh-copy-id -f -i $path bmilcs@$host
   # echo "> eval `ssh-agent`"
