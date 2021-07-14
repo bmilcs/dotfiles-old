@@ -2,7 +2,19 @@
 
 > HOMELAB TODO: workstations, laptops, servers, docker, virtualization and so forth.
 
+## MISC
+* [ ] security camera: front yard
+  * [ ] find position
+  * [ ] install
+
 ## VIRTUALIZATION
+
+* [ ] nginx project
+  * [ ] personal site
+    * [ ] create vm
+    * [ ] setup lemp
+    * [ ] move content over
+    * [ ] create npm redirect
 
 * [ ] nextcloud
   * [ ] create ubuntu vm
