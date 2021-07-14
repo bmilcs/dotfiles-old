@@ -372,6 +372,18 @@ scp -r  ~/dev/esxi/bm        esxi:/
 scp     ~/dev/esxi/.profile  esxi:/.profile 
 '
 
+#──────────────────────────────────────────────────────────  bmPC|bmTP  ───────
+
+if [[ $HOST == bm* ]]; then
+  alias dcup='
+  _a updating docker repo
+  dcpath=~/repos/bmilcs-docker
+  cd "$dcpath" || return 1
+  git pull && _s'
+  alias dce='dcup && vim ~/repos/bmilcs-docker/docker-compose.yaml'
+  alias dcee='dcup && vim ~/repos/bmilcs-docker/.env'
+fi
+
 #──────────────────────────────────────────────────────────────  CLOUD   ──────
 
 if [[ $HOST == "cloud" ]]; then
@@ -412,6 +424,7 @@ if [[ $HOST =~ docker\|nginx ]]; then
   alias dc='docker'
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
   alias dce='vim ~/docker/docker-compose.yaml'
+  alias dcee='vim ~/docker/.env'
 
   # docker logs
   alias dclog='cd ~/docker && docker-compose \
