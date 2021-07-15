@@ -97,22 +97,37 @@ fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
+function gadd() {
+  if [[ $# -eq 0 ]]; then
+    out=$(forgit::add)
+    echo "--> out: $out"
+    if [[ $out == "Nothing to add." ]]; then
+      _w git add aborted
+      return 1
+    fi
+  else
+    if $(git add "$*"); then
+      _s
+    else
+      _w git add aborted
+      return 1
+    fi
+  fi
+}
+
+#orig alias: ga='$(grevp)     || cd $D && forgit::add'
 function ga() {
-  #converted ga='$(grevp)     || cd $D && forgit::add'
   source _bm
   grevp || cd $D 
-  if [[ $# -eq 0 ]]; then
-    forgit::add
-  else
-    git add "$*"
-  fi \
-    && git diff --staged \
-    && _a git commit message: \
-    && read gc \
-    && [ ! -z $gc ] \
-    && { 
-    gc $gc \
-    && gp } &
+  if gadd $*; then
+    git diff --staged
+    _a git commit message:
+    read gc
+    if [ ! -z $gc ]; then
+      gc $gc # TODO: if git status contains no unstaged changes
+      gp     # then push
+    fi
+  fi
 
 }
 
