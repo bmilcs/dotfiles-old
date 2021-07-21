@@ -15,6 +15,7 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [centos](centos.md)
 * [markdown](markdown.md)
 * [nfs](nfs.md)
+* [nginx](nginx.md)
 * [python](python.md)
 * [rsync](rsync.md)
 * [sed](sed.md)
