@@ -1,10 +1,23 @@
 # bmilcs:life
 
+MAKE SHANNA ON TELEGRAM NOTIFICATIONS = PURPLE
+
+
 ## TODO: 07/2021
 
+## BEDROOM: WTB
+
+- Blinds
+- 2x Decor plate
+
 #### INDOOR
-- [ ] bedroom baseboards: paint
+- [X] bedroom baseboards: paint
 - [ ] bedroom door: test fit, prime, paint
+
+#### OUTDOORS
+- [ ] mushrooms in yard
+- [ ] garage door seal: install
+- [X] lawn: mix & spray more bifenthrin
 - [ ] order outdoor supplies:
   - [ ] 1.5" to 2" round rock
   - [ ] non-woven geotextile fabric
@@ -13,23 +26,18 @@
   - [ ] tree removal: front & back
   - [ ] drainage/concrete removal for front
 
-#### OUTDOORS
-- [ ] mushrooms in yard
-- [ ] garage door seal: install
-- [ ] lawn: mix & spray more bifenthrin
-
-## WTB 
+## WTB EXTENDED
 
 #### EXTERIOR
 - [ ] pebbles: [1.5" to 2" round rock](https://www.youtube.com/watch?v=mgyLjwvS5a8)
-  - not crushed
+      - not crushed
 - [ ] lawn fabric
 - [ ] french drain pipe
 - [ ] lawncare products
   - [ ] seed
   - [ ] fertilizer
   - [ ] lime
-- [X] garage door seal
+- [ ] garage door seal
 - [X] hose reel
 - [X] basic starter sprinkler: melnor
 - [ ] sprinkler system
@@ -51,36 +59,34 @@
 - [ ] yubikey
  
 #### CLEANING
-- [ ] spray bottles
-- [ ] multipurpose concentrate
-  - [ ] simple green
-  - [ ] tsp
-  - [ ] zep fast 505 (505 industrial cleaner)
-  - [ ] professional (reddit)
-    - [ ] caldrea
-    - [ ] method
-    - [ ] dr bronner’s
-    - [ ] meyers
-    - [ ] citrasolv
-  - [ ] mean green super strength cleaner & degreaser, 128 oz
 - [ ] glass concentrate
 - [ ] invisible glass
-- [ ] microfiber cloths
+- [X] spray bottles
+- [X] multipurpose concentrate
+  - [X] simple green
+  - [X] tsp
+  - [X] zep fast 505 (505 industrial cleaner)
+  - [X] professional (reddit)
+    - [X] caldrea
+    - [X] method
+    - [X] dr bronner’s
+    - [X] meyers
+    - [X] citrasolv
+  - [X] mean green super strength cleaner & degreaser, 128 oz
+- [X] microfiber cloths
 
 ## WINDOWS
 
-- [o] scrape/sand
-  - [ ] living room
-  - [X] bedroom
-- [ ] prime sills
-  - [ ] living room
-  - [X] bedroom
-- [ ] caulk & install
-  - [ ] living room
-  - [X] bedroom
-- [ ] paint, 2x layers
-  - [ ] living room
-  - [X] bedroom
+- [ ] living room
+  - [ ] scrape/sand
+  - [ ] prime sills
+  - [ ] caulk & install
+  - [ ] paint, 2x layers
+- [O] bedroom
+  - [X] scrape/sand
+  - [X] prime sills
+  - [X] caulk & install
+  - [ ] paint, 2x layers
 
 ## DOORS
 

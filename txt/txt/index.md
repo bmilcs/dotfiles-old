@@ -25,7 +25,11 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [esxi](esxi.md)
 * [docker](docker.md)
 * [minecraft](minecraft.md)
+* [lemp_stack](lemp_stack.md)
+* [lamp_stack](lamp_stack.md)
+* [mariadb](mariadb.md)
 * [nextcloud](nextcloud.md)
+* [wordpress](wordpress.md)
 * [windows](windows.md)
  
 ### arch
