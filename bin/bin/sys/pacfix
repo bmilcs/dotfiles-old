@@ -48,7 +48,10 @@ elif [[ $# -eq 1 ]]; then
 
   _a "[pacfix] package: $1"
   debug=1
-  yay -S --noconfirm "$1" | tee "$paclist" && _s "done\n"
+  pkg="$1"
+  yay -S --noconfirm "$pkg" | tee "$paclist" && _s "done\n"
+  
+
 fi
 
 #──────────────────────────────────────────────────  cleanup raw input   ──────
@@ -113,3 +116,5 @@ done <"$paclist".final
 
 # clean up
 rm "$paclist"{,.final} 
+
+[ -n "$pkg" ] && yay -S --noconfirm "$pkg"
