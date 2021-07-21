@@ -10,15 +10,13 @@
   dotlog '+ $ZDOTDIR/04-prompt.zsh'
 
 git_prompt() {
-  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
+  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
   if [ ! -z $BRANCH ]; then
     echo -n "%F{yellow}$BRANCH"
-
-    if [ ! -z "$(git status --short)" ]; then
-      echo " %F{red}✗"
-    fi
+    [ ! -z "$(git status --short)" ] && echo " %F{red}✗"
   fi
+
 }
 
 # set up the prompt (with git branch name)
