@@ -219,7 +219,7 @@ bindsym    $wa+s      move container to workspace number $ws7
 # gaps, borders, etc.
 focus_wrapping            no
 hide_edge_borders         none
-default_border            pixel 2
+default_border            pixel 3
 default_floating_border   pixel 3
 #smart_borders            off
 #smart_gaps               on
@@ -245,11 +245,11 @@ set $blue1    #5E81AC
 set $red1     #BF616A
 set $orange1  #D08770
 set $yellow1  #EBCB8B
-set $green1   #A3BE8C
+set $green2   #A3BE8C
 set $purple1  #B48EAD
 
 #class                  border  bg      fg      focus   child_border
-client.focused          $white1 $blue2  $blue1  $white1 $white1
+client.focused          $green1 $blue2  $blue1  $green1 $green1
 client.focused_inactive $black1 $blue1  $blue1  $blue1  $black4
 client.unfocused        $black1 $blue1  $black4 $blue1  $black4
 client.urgent           $red1   $red1   $blue1  $red1   $green1
