@@ -27,9 +27,10 @@ done
 
 [[ -z "${type}" ]] && usage
 
-is_mounted=$(mount -l | grep nfs)
+#is_mounted=$(mount -l | grep nfs)
 
-if [[ -n $is_mounted ]]; then
+#if [[ -n $is_mounted ]]; then
+if [[ -e /a/bm/images/screenshots ]]; then
   f="/a/bm/images/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png"
 else
   _nw "'/a/bm' isn't mounted"
