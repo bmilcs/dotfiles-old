@@ -364,8 +364,8 @@ alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 ################################ host specific #################################
 ################################################################################
 
+# nginx aliases
 ali_nginx() {
-  # nginx aliases
   alias nginx='ngx'
   alias ngx='sudo nginx '
 
@@ -413,7 +413,7 @@ fi
 
 #──────────────────────────────────────────────────────────────  nginx  ───────
 
-if [[ $HOST =~ nginx|wp ]]; then
+if [[ $HOST =~ nginx\|wp ]]; then
 
   alias wwwr='
   source _bm
