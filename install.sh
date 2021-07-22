@@ -199,7 +199,6 @@ nodejs() {
   ver=${ver:1:4}
   ver=${ver/./}
   if [[ $ver -le 120 ]] || [[ $ver == "" ]]; then
-    sudo apt remove nodejs
     curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
     sudo apt -y install nodejs
   fi
