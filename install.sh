@@ -195,13 +195,11 @@ ivim() {
 }
 
 nodejs() {
-  #ver=${${$(node -v)/v/}//./}
   ver=$(node -v)
   ver=${ver:1:4}
   ver=${ver/./}
-  _w $ver
-  
-  if [[ $ver -le 120 ]]; then
+  if [[ $ver -le 120 ]] || [[ $ver == "" ]]; then
+    sudo apt remove nodejs
     curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
     sudo apt -y install nodejs
   fi
