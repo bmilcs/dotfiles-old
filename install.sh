@@ -195,10 +195,13 @@ ivim() {
 }
 
 nodejs() {
-  ver=${${"$(node -v)"/v/}//./}
-  ver=$(echo "${ver:0:3}")
+  #ver=${${$(node -v)/v/}//./}
+  ver=$(node -v)
+  ver=${ver:1:4}
+  ver=${ver/./}
+  _w $ver
+  
   if [[ $ver -le 120 ]]; then
-    sudo apt update
     curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
     sudo apt -y install nodejs
   fi
@@ -278,6 +281,7 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
 
   # nodejs (coc.nvim)
   nodejs
+  exit
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
