@@ -368,6 +368,7 @@ alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 ali_nginx() {
   alias ngx='sudo nginx '
 
+  alias ngs='scs nginx.service'
   alias ngr='ngx -s reload'
   alias ngt='ngx -t'
   alias nge='svim /etc/nginx/sites-available/bmilcs'
