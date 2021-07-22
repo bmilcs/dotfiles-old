@@ -414,7 +414,7 @@ fi
 
 #──────────────────────────────────────────────────────────────  nginx  ───────
 
-if [[ $HOST =~ nginx\|wp ]]; then
+if [[ $HOST =~ nginx\|wp\|www ]]; then
 
   alias wwwr='
   source _bm
