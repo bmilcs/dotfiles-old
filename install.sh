@@ -279,7 +279,6 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
 
   # nodejs (coc.nvim)
   nodejs
-  exit
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
