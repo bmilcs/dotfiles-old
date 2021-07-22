@@ -24,11 +24,18 @@
   * [ ] consider postgresql over mariadb
     * [ ] (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
 
-* [ ] nginx
-  * [ ] public
-    * [ ] create ubuntu vm
+* [.] nginx
+  * [.] public
+    * [X] create ubuntu vm
     * [ ] copy & convert swag to new config
     * [ ] change port forwarding
+    * [ ] harden security
+    * [ ] https://www.cyberciti.biz/tips/linux-unix-bsd-nginx-webserver-security.html
+      * [ ] selinux?
+      * [ ] log monitoring?
+      * [ ] notifications?
+    * [ ] custom logging format
+    * [ ] setup git repo
 
 * [.] certificate authority (ca)
   * [ ] create ubuntu vm

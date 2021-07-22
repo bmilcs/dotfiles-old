@@ -381,8 +381,9 @@ if [[ $HOST == bm* ]]; then
   dcpath=~/repos/bmilcs-docker
   cd "$dcpath" || return 1
   git pull && _s'
-  alias dce='dcup && vim ~/repos/bmilcs-docker/docker-compose.yaml'
-  alias dcee='dcup && vim ~/repos/bmilcs-docker/.env'
+  alias dce='vim ~/repos/bmilcs-docker/docker-compose.yaml'
+  alias dcee='vim ~/repos/bmilcs-docker/.env'
+  alias wwwe='vim ~/repos/bmilcs-docker/swag/config/nginx/site-confs/bmilcs.conf'
 fi
 
 #──────────────────────────────────────────────────────────────  nginx  ───────
