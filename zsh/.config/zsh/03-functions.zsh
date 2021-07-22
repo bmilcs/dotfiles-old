@@ -97,6 +97,26 @@ fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
+
+function gaf() {
+# TODO: fzf completion of git repo, without .git/
+# if [[ $# -eq 0 ]]; then
+#   out=$(git add $(fzf))
+#   echo "--> out: $out"
+#   if [[ $out == "Nothing to add." ]]; then
+#     _w git add aborted
+#     return 1
+#   fi
+# else
+if $(git add -f "$*"); then
+  _s
+else
+  _w git add aborted
+  return 1
+fi
+# fi
+}
+
 function gadd() {
   if [[ $# -eq 0 ]]; then
     out=$(forgit::add)

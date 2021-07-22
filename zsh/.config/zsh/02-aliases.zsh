@@ -384,6 +384,20 @@ if [[ $HOST == bm* ]]; then
   alias dcee='dcup && vim ~/repos/bmilcs-docker/.env'
 fi
 
+#──────────────────────────────────────────────────────────────  nginx  ───────
+
+if [[ $HOST == nginx ]]; then
+  alias wwwr='
+  source _bm
+  _a "restarting webserver: ${YLW}nginx | php"
+  scr php7.4-fpm nginx
+  
+  _a "status check"
+  scs nginx php7.4-fpm
+  '
+  alias ngr='s nginx -s reload'
+fi
+
 #──────────────────────────────────────────────────────────────  CLOUD   ──────
 
 if [[ $HOST == "cloud" ]]; then
@@ -419,6 +433,7 @@ fi
 
 #if where docker-compose > /dev/null && [ -d ~/docker ]; then
 if [[ $HOST =~ docker\|nginx ]]; then
+#if [[ $HOST =~ docker ]]; then
 
   # editor
   alias dc='docker'
@@ -432,8 +447,8 @@ if [[ $HOST =~ docker\|nginx ]]; then
 
   # letsencrypt restart
   alias le='docker restart swag && docker logs -f swag'
-  alias swag='le'
   alias wwwr='le'
+  alias swag='le'
   alias wwww='~/docker/swag/config/www/'
   alias nginxx='~/docker/swag/config/nginx/'
   alias logss='~/docker/swag/config/log/'
