@@ -40,7 +40,8 @@ alias fdd='fd -H -E /all -E /vault '
 # text editors
 alias nano='nvim'                 ; compdef nano='nvim'
 alias vim='nvim'                  ; compdef vim='nvim'
-alias svim='sudoedit'             ; compdef svim='nvim'
+alias svim='s vim'                ; compdef svim='nvim'
+#alias svim='sudoedit'             ; compdef svim='nvim'
 alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
 
 # dotfiles repo
@@ -396,6 +397,8 @@ if [[ $HOST == nginx ]]; then
   scs nginx php7.4-fpm
   '
   alias ngr='s nginx -s reload'
+  alias ngt='s nginx -t'
+  alias nge='svim /etc/nginx/sites-available/bmilcs'
 fi
 
 #──────────────────────────────────────────────────────────────  CLOUD   ──────

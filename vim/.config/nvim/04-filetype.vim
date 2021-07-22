@@ -44,29 +44,29 @@ augroup filetypedetect
 
   " nginx
   au BufRead,BufNewFile *nginx* set filetype=nginx
-  au BufRead,BufNewFile *nginx* set filetype=nginx
+  au BufRead,BufNewFile /etc/nginx/** set filetype=nginx
 
 augroup END
 filetype on
 
-"─────────────────────────────────────────────────────────  theme swap  ───────
-
-" gruvbox
-function! Gruvbox() abort
-  colorscheme gruvbox 
-  let g:gruvbox_contrast_dark = 'soft'
-endfunction
-
-" nord 
-function! Nord() abort
-  colorscheme nord
-endfunction
-
-" dracula
-function! Dracula() abort
-  colorscheme dracula
-endfunction
-
-command Gruvbox call Gruvbox()
-command Nord call Nord()
-command Dracula call Dracula()
+""─────────────────────────────────────────────────────────  theme swap  ───────
+"
+"" gruvbox
+"function! Gruvbox() abort
+"  colorscheme gruvbox 
+"  let g:gruvbox_contrast_dark = 'soft'
+"endfunction
+"
+"" nord 
+"function! Nord() abort
+"  colorscheme nord
+"endfunction
+"
+"" dracula
+"function! Dracula() abort
+"  colorscheme dracula
+"endfunction
+"
+"command Gruvbox call Gruvbox()
+"command Nord call Nord()
+"command Dracula call Dracula()
