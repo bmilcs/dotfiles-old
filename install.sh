@@ -44,7 +44,7 @@ deb=("bin" "git" "txt" "vim" "zsh" "bash")
 
 # packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow")
-apt=("fd-find" "nodejs" "npm" "colordiff") # "bat" mia
+apt=("fd-find" "npm" "colordiff") # "bat" mia
 pacman=("fd" "unzip" "colordiff" "xdotool")
 yum=("") # missing: fd, bat, colordiff
 
@@ -194,6 +194,16 @@ ivim() {
   fi
 }
 
+nodejs() {
+  ver=${${"$(node -v)"/v/}//./}
+  ver=$(echo "${ver:0:3}")
+  if [[ $ver -le 120 ]]; then
+    sudo apt update
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+    sudo apt -y install nodejs
+  fi
+}
+
 #──────────────────────────────────────────  bitwarden cli: pw manager  ───────
 
 btw() {
@@ -265,6 +275,9 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
   # apt
   dpkg -s "${apt[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${apt[@]}" && _o installed "${apt[@]}")
+
+  # nodejs (coc.nvim)
+  nodejs
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
