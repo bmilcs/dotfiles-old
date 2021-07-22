@@ -25,10 +25,10 @@ unalias ga
 alias nin='./fusee-launcher.py hekate-5.1.1.bin'
 
 # cloudflare
-alias cfdc='sh ~/.ssh/cloudflare/nginx'
-alias cfadd='sh ~/.ssh/cloudflare/add'
-alias cfdel='sh ~/.ssh/cloudflare/del'
-alias cfinfo='sh ~/.ssh/cloudflare/info'
+alias cfdc='sh ~/bmP/bin/cloudflared/nginx'
+alias cfadd='sh ~/bmP/bin/cloudflared/add'
+alias cfdel='sh ~/bmP/bin/cloudflared//del'
+alias cfinfo='sh ~/bmP/bin/cloudflared/info'
 
 # generate pw hash
 alias pwhash='openssl passwd -6 '
@@ -376,19 +376,23 @@ scp     ~/dev/esxi/.profile  esxi:/.profile
 #──────────────────────────────────────────────────────────  bmPC|bmTP  ───────
 
 if [[ $HOST == bm* ]]; then
+
   alias dcup='
-  _a updating docker repo
-  dcpath=~/repos/bmilcs-docker
-  cd "$dcpath" || return 1
-  git pull && _s'
+    _a updating docker repo
+    dcpath=~/repos/bmilcs-docker
+    cd "$dcpath" || return 1
+    git pull && _s'
+
   alias dce='vim ~/repos/bmilcs-docker/docker-compose.yaml'
   alias dcee='vim ~/repos/bmilcs-docker/.env'
   alias wwwe='vim ~/repos/bmilcs-docker/swag/config/nginx/site-confs/bmilcs.conf'
+
 fi
 
 #──────────────────────────────────────────────────────────────  nginx  ───────
 
 if [[ $HOST == nginx ]]; then
+
   alias wwwr='
   source _bm
   _a "restarting webserver: ${YLW}nginx | php"
@@ -397,16 +401,17 @@ if [[ $HOST == nginx ]]; then
   _a "status check"
   scs nginx php7.4-fpm
   '
+
   alias ngr='s nginx -s reload'
   alias ngt='s nginx -t'
   alias nge='svim /etc/nginx/sites-available/bmilcs'
+
 fi
 
 #──────────────────────────────────────────────────────────────  CLOUD   ──────
 
 if [[ $HOST == "cloud" ]]; then
  
-  # reload services
   alias wwwr='
   source _bm
   _a "restarting webserver: ${YLW}nginx | php | redis"
@@ -416,32 +421,40 @@ if [[ $HOST == "cloud" ]]; then
   scs nginx php7.3-fpm redis-server
   '
 
-  # cloudflare
+  # nextcloud
   alias nce='svim /usr/share/nginx/nextcloud/config/config.php'
   alias ncc='cd /usr/share/nginx/nextcloud'
   alias ncd='sudo su && cd /usr/share/nginx/nextcloud-data'
-  alias logg='sudo su && cd /var/log/nginx'
 
-  alias nginx='sudo nginx '
-  alias nginxe='svim /etc/nginx/conf.d/nextcloud.conf'
-  alias nginxx='cd /etc/nginx'
-  alias nginxxx='cd /usr/share/nginx'
-  alias logg='cd /var/log'
+  # nginx
+  alias nglog='sudo su && cd /var/log/nginx'
+
+  alias nginx='ngx'
+  alias ngx='sudo nginx '
+
+  alias ngr='ngx -s reload'
+  alias ngt='ngx -t'
+  alias nge='svim /etc/nginx/conf.d/nextcloud.conf'
+  alias wwwe='nge'
+
+  alias ngg='cd /etc/nginx'
+  alias nggg='cd /usr/share/nginx'
+  alias nglog='cd /var/log'
 
   alias phpe='svim /etc/php/7.3/fpm/php.ini'
-  alias phpe='cd /etc/php/7.3'
+  alias phpp='cd /etc/php/7.3'
 
 fi
 
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 #if where docker-compose > /dev/null && [ -d ~/docker ]; then
-if [[ $HOST =~ docker\|nginx ]]; then
-#if [[ $HOST =~ docker ]]; then
+if [[ $HOST =~ docker ]]; then
 
   # editor
   alias dc='docker'
   alias wwwe='vim ~/docker/swag/config/nginx/site-confs/bmilcs.conf'
+  alias nge='wwwe'
   alias dce='vim ~/docker/docker-compose.yaml'
   alias dcee='vim ~/docker/.env'
 
@@ -453,8 +466,9 @@ if [[ $HOST =~ docker\|nginx ]]; then
   alias le='docker restart swag && docker logs -f swag'
   alias wwwr='le'
   alias swag='le'
+  alias ngr='le'
   alias wwww='~/docker/swag/config/www/'
-  alias nginxx='~/docker/swag/config/nginx/'
+  alias ngg='~/docker/swag/config/nginx/'
   alias logss='~/docker/swag/config/log/'
 
   # docker-compose
