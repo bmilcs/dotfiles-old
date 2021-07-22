@@ -85,7 +85,7 @@ set noshiftround
 set nowrap                                    " no word wrap
 set number                                    " show line numbers
 set relativenumber                            " line numbers move up/down
-set scrolloff=10                               " display 5 lines above/below the cursor when scrolling with a mouse.
+set scrolloff=999999                          " display 5 lines above/below the cursor when scrolling with a mouse.
 set shell=zsh\ -l
 set showcmd                                   " display command
 set showmode                                  " display options
