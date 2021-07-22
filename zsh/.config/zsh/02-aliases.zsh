@@ -376,9 +376,9 @@ ali_nginx() {
 
   alias ngg='cd /etc/nginx'
   alias nggg='cd /usr/share/nginx'
-  alias ngla='sudo su && svim /var/log/ng-access.log'
+  alias ngla='svim /var/log/ng-access.log'
   alias nglaa='sudo tail -f /var/log/ng-access.log'
-  alias ngle='sudo su && svim /var/log/ng-error.log'
+  alias ngle='svim /var/log/ng-error.log'
   alias nglee='sudo tail -f /var/log/ng-error.log'
   }
 
@@ -413,7 +413,7 @@ fi
 
 #──────────────────────────────────────────────────────────────  nginx  ───────
 
-if [[ $HOST == nginx ]]; then
+if [[ $HOST =~ nginx|wp ]]; then
 
   alias wwwr='
   source _bm
