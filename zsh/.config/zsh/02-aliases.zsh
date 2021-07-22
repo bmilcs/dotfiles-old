@@ -366,7 +366,6 @@ alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 
 # nginx aliases
 ali_nginx() {
-  alias nginx='ngx'
   alias ngx='sudo nginx '
 
   alias ngr='ngx -s reload'
