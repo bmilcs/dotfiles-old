@@ -372,6 +372,7 @@ ali_nginx() {
   alias ngr='ngx -s reload'
   alias ngt='ngx -t'
   alias nge='svim /etc/nginx/sites-available/bmilcs'
+  alias ngee='svim /etc/nginx/nginx.conf'
   alias wwwe='nge'
 
   alias ngg='cd /etc/nginx'
