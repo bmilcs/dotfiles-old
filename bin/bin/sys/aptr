@@ -8,12 +8,12 @@
 #                 APT GREP [./yi]
 
 source _bm
-_t apt search
+_t apt remove
 
 sudo apt list --installed \
   | sort \
   | cut --delimiter '/' --fields 1 \
   | fzf --multi --cycle --reverse --preview 'apt show {1}' \
-  | xargs -r sudo apt purge -y
+  | xargs -r sudo apt remove -y
 
 sudo apt autoremove
