@@ -360,6 +360,28 @@ alias sinki='pacmd list-sources | grep -e "index:" -e device.string -e "name:"'
 # pid
 alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 
+################################################################################
+################################ host specific #################################
+################################################################################
+
+ali_nginx() {
+  # nginx aliases
+  alias nginx='ngx'
+  alias ngx='sudo nginx '
+
+  alias ngr='ngx -s reload'
+  alias ngt='ngx -t'
+  alias nge='svim /etc/nginx/sites-available/bmilcs'
+  alias wwwe='nge'
+
+  alias ngg='cd /etc/nginx'
+  alias nggg='cd /usr/share/nginx'
+  alias ngla='sudo su && svim /var/log/ng-access.log'
+  alias nglaa='sudo tail -f /var/log/ng-access.log'
+  alias ngle='sudo su && svim /var/log/ng-error.log'
+  alias nglee='sudo tail -f /var/log/ng-error.log'
+  }
+
 #────────────────────────────────────────────────────────────────  SSH  ───────
 
 alias doc='ssh docker'
@@ -402,9 +424,8 @@ if [[ $HOST == nginx ]]; then
   scs nginx php7.4-fpm
   '
 
-  alias ngr='s nginx -s reload'
-  alias ngt='s nginx -t'
-  alias nge='svim /etc/nginx/sites-available/bmilcs'
+  # import nginx aliases
+  ali_nginx
 
 fi
 
@@ -426,20 +447,9 @@ if [[ $HOST == "cloud" ]]; then
   alias ncc='cd /usr/share/nginx/nextcloud'
   alias ncd='sudo su && cd /usr/share/nginx/nextcloud-data'
 
-  # nginx
-  alias nglog='sudo su && cd /var/log/nginx'
-
-  alias nginx='ngx'
-  alias ngx='sudo nginx '
-
-  alias ngr='ngx -s reload'
-  alias ngt='ngx -t'
+  # import nginx aliases
+  ali_nginx
   alias nge='svim /etc/nginx/conf.d/nextcloud.conf'
-  alias wwwe='nge'
-
-  alias ngg='cd /etc/nginx'
-  alias nggg='cd /usr/share/nginx'
-  alias nglog='cd /var/log'
 
   alias phpe='svim /etc/php/7.3/fpm/php.ini'
   alias phpp='cd /etc/php/7.3'
@@ -469,7 +479,8 @@ if [[ $HOST =~ docker ]]; then
   alias ngr='le'
   alias wwww='~/docker/swag/config/www/'
   alias ngg='~/docker/swag/config/nginx/'
-  alias logss='~/docker/swag/config/log/'
+  alias ngla='~/docker/swag/config/log/'
+  alias ngle='~/docker/swag/config/log/'
 
   # docker-compose
   alias dcup='cd ~/docker && docker-compose up -d --remove-orphans' #;compdef dcs='docker'
