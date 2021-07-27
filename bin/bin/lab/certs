@@ -21,7 +21,7 @@ sudo certbot \
   --staple-ocsp \
   --dns-cloudflare \
   --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini \
-  -d "$1.bmilcs.com"
+  -d "$1.bm.bmilcs.com"
 # --redirect \
 # --nginx \
 
@@ -31,5 +31,5 @@ sudo certbot \
   --hsts \
   --agree-tos \
   --staple-ocsp \
-  -d "$1.bmilcs.com" \
+  -d "$1.bm.bmilcs.com" \
   -i nginx
