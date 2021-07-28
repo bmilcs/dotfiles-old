@@ -95,9 +95,9 @@ bindsym  $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy
 bindsym  $w+comma        exec --no-startup-id    i3floater
 
 # bm direct type
-bindsym  $w+e            exec --no-startup-id    i3idotfiles
-bindsym  $wc+e           exec --no-startup-id    i3iuser
-bindsym  $wa+e           exec --no-startup-id    i3isshd
+bindsym  $w+d            exec --no-startup-id    i3idotfiles
+bindsym  $wc+d           exec --no-startup-id    i3iuser
+bindsym  $wa+d           exec --no-startup-id    i3isshd
 
 # bm paste clipboard
 bindsym  $w+p            exec --no-startup-id    i3paste
@@ -200,19 +200,23 @@ set $ws10  "10"
 
 bindcode   $w+$tilde  workspace number $ws1;     focus tiling
 bindsym    $w+1       workspace number $ws2;     focus tiling
-bindsym    $w+Tab     workspace number $ws3;     focus tiling
-bindsym    $w+q       workspace number $ws4;     focus tiling
-bindsym    $w+w       workspace number $ws5;     focus tiling
-bindsym    $w+a       workspace number $ws6;     focus tiling
-bindsym    $w+s       workspace number $ws7;     focus tiling
+bindsym    $w+2       workspace number $ws3;     focus tiling
+bindsym    $w+Tab     workspace number $ws4;     focus tiling
+bindsym    $w+q       workspace number $ws5;     focus tiling
+bindsym    $w+w       workspace number $ws6;     focus tiling
+bindsym    $w+e       workspace number $ws7;     focus tiling
+bindsym    $w+a       workspace number $ws8;     focus tiling
+bindsym    $w+s       workspace number $ws9;     focus tiling
 
 bindcode   $wa+$tilde move container to workspace number $ws1
 bindsym    $wa+1      move container to workspace number $ws2
-bindsym    $wa+Tab    move container to workspace number $ws3
-bindsym    $wa+q      move container to workspace number $ws4
-bindsym    $wa+w      move container to workspace number $ws5
-bindsym    $wa+a      move container to workspace number $ws6
-bindsym    $wa+s      move container to workspace number $ws7
+bindsym    $wa+2      move container to workspace number $ws3
+bindsym    $wa+Tab    move container to workspace number $ws4
+bindsym    $wa+q      move container to workspace number $ws5
+bindsym    $wa+w      move container to workspace number $ws6
+bindsym    $wa+e      move container to workspace number $ws7
+bindsym    $wa+a      move container to workspace number $ws8
+bindsym    $wa+s      move container to workspace number $ws9
 
 #──────────────────────────────────────────────────────────  interface  ───────
 
