@@ -1,5 +1,10 @@
 ## BMILCS:HOMELAB
 
+# BACKUP IRREPLACABLE CONTENT 
+# FIX MULTI-MONITOR I3/XRANDR
+
+MAKE SHANNA ON TELEGRAM NOTIFICATIONS = PURPLE
+
 > HOMELAB TODO: workstations, laptops, servers, docker, virtualization and so forth.
 
 ## MISC
@@ -107,7 +112,6 @@
   * [ ] awk
   * [ ] cut
   * [ ] xargs
-
 
 ## RESEARCH:
 * [ ] swap to mullvad vpn ?
