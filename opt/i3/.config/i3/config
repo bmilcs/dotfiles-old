@@ -299,6 +299,16 @@ workspace $ws7  gaps bottom 4
 workspace $ws7  gaps inner 4
 workspace $ws7  gaps horizontal 4
 
+workspace $ws8  gaps top 30
+workspace $ws8  gaps bottom 4
+workspace $ws8  gaps inner 4
+workspace $ws8  gaps horizontal 4
+
+workspace $ws9  gaps top 30
+workspace $ws9  gaps bottom 4
+workspace $ws9  gaps inner 4
+workspace $ws9  gaps horizontal 4
+
 #──────────────────────────────────────────────────  application rules  ───────
 
 # on startup
