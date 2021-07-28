@@ -96,7 +96,7 @@ if [ -s "$paclist" ]; then
 
 #──────────────────────────────────────────────────  specific packages  ───────
 
-elif [ -n "$paclist".final ]; then
+elif [ -n "$paclist"".final" ]; then
   echo
 else
   _e "no output to parse"
