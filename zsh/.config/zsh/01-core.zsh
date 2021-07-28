@@ -42,7 +42,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light nojanath/ansible-zsh-completion 
 zinit load wfxr/forgit
 zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+#zinit light jeffreytse/zsh-vi-mode
 
 # dir_colors
 [[ -f "$ZDOTDIR/dir_colors" ]] && eval $(dircolors $ZDOTDIR/dir_colors) 
@@ -227,12 +227,12 @@ bindkey '^k' down-line-or-beginning-search
 
 #────────────────────────────────────────────────────────────  vim nav  ───────
 # vim [replaced by plugin]
-# bindkey -v                    # vim mode
-# export KEYTIMEOUT=1           # vim speed increase
-# function vi-yank-xclip {      # yank to the system clipboard
-#     zle vi-yank
-#     echo "$CUTBUFFER" | xclip -sel clip # -i
-# }
-# zle -N vi-yank-xclip
-# bindkey -M vicmd 'y' vi-yank-xclip
+bindkey -v                    # vim mode
+export KEYTIMEOUT=1           # vim speed increase
+function vi-yank-xclip {      # yank to the system clipboard
+    zle vi-yank
+    echo "$CUTBUFFER" | xclip -sel clip # -i
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
 
