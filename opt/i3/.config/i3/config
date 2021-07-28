@@ -225,11 +225,11 @@ focus_wrapping            no
 hide_edge_borders         none
 default_border            pixel 3
 default_floating_border   pixel 3
-#smart_borders            off
-#smart_gaps               on
-#smart_gaps               inverse_inner
-#gaps                     inner 12
-#gaps                     outer 12
+# smart_borders           off
+# smart_gaps              on
+# smart_gaps              inverse_inner
+# gaps                    inner 12
+# gaps                    outer 12
 
 # font
 font pango:Iosevka 10
@@ -253,7 +253,7 @@ set $green2   #A3BE8C
 set $purple1  #B48EAD
 
 #class                  border  bg      fg      focus   child_border
-client.focused          $green1 $blue2  $blue1  $green1 $green1
+client.focused          $yellow1 $blue2  $blue1  $yellow1 $yellow1
 client.focused_inactive $black1 $blue1  $blue1  $blue1  $black4
 client.unfocused        $black1 $blue1  $black4 $blue1  $black4
 client.urgent           $red1   $red1   $blue1  $red1   $green1
