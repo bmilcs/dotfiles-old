@@ -5,14 +5,11 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 ZSH: ALIASES [./02-aliases.zsh]
 
-#   TODO
-
 #         split up into separate .zsh files
 #         add working savedir alias > select
 
 # dotfile rc file debugging
-. "${HOME}/bin/sys/dotfile_logger"
-dotlog '+ $ZDOTDIR/02-aliases.zsh'
+. "${HOME}/bin/sys/dotfile_logger" && dotlog '+ $ZDOTDIR/02-aliases.zsh'
 
 #───────────────────────────────────────────────────  disable built-in  ───────
 
@@ -33,16 +30,17 @@ alias cfinfo='sh ~/bmP/bin/cloudflared/info'
 # generate pw hash
 alias pwhash='openssl passwd -6 '
 
-alias fdd='fd -H -E /all -E /vault '
+# fd w/ exclusions
+alias fdd='fd -H -E /a '
 
 #───────────────────────────────────────────────────────────────  text  ───────
 
-# text editors
+# text editor
 alias nano='nvim'                 ; compdef nano='nvim'
 alias vim='nvim'                  ; compdef vim='nvim'
-alias svim='s vim'                ; compdef svim='nvim'
-#alias svim='sudoedit'             ; compdef svim='nvim'
 alias vmf='nvim $(fzf --exit-0)'  ; compdef vmf='nvim'
+alias svim='s vim'                ; compdef svim='nvim'
+#alias svim='sudoedit'            ; compdef svim='nvim'
 
 # dotfiles repo
 alias bmi='cd $BM && ./install.sh'
@@ -66,7 +64,6 @@ alias txs='c ; tail -f ~/.xsession-errors'
 alias readme='vim ~/bm/readme.md'
 alias txt='nvim -c VimwikiIndex'
 alias wiki='txt'
-#alias txt='cd ~/txt && nvim $(fzf)'
 
 # configuration files
 alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'
@@ -76,6 +73,8 @@ alias i3keys='command i3keys web 8080 & ;\
 alias keys='vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc'
 alias picomrc='vim $D/opt/picom/.config/picom/config'
 alias termrc='vim $D/opt/alacritty/.config/alacritty/alacritty.yml'
+
+#───────────────────────────────────────────────────────────────  misc  ───────
 
 # restarting
 alias trc='tmux source ~/.tmux.conf'
@@ -93,79 +92,23 @@ alias zall='zle -al | fzf'
 
 # nocorrect [zsh autocorrect > sudo] -E [respect orig env]
 alias sudo='nocorrect sudo -E ';compdef sudo='sudo'
-#──────────────────────────────────────────────────────────  ARCHLINUX  ───────
 
-if [[ $DISTRO = "arch"* ]]; then # ARCH
+#─────────────────────────────────────────────────  networking ssh etc  ───────
 
-  # pacman
-  alias pacman='sudo pacman';compdef pacman='pacman'
-  alias pm='pacman';compdef pm='pacman'
-  alias pms='pacman -S';compdef pms='pacman'
-  alias pmls='pacman -Qe|yay';compdef pmls='pacman'
-  alias pmg='pacman -Qe|grep';compdef pmg='pacman'
-  alias pmgg='pacman -Q|grep';compdef pmgg='pacman'
-  alias pmsize='expac -HM "%m|%n" | sort -h | tail -n 30 | column -s "|" -t -o "___"'
+alias doc='ssh docker'
+alias plx='ssh plex'
 
-  # yay
-  alias yays='yay -S';compdef yays='yay'
-  alias yayls='yay -Qe | fzf';compdef yayls='yay'
-  alias yayl='yayls';compdef yayl='yay'
-  alias yayll='yay -Q | fzf';compdef yayll='yay'
-  alias yayg='yay -Q | grep';compdef yayg='yay'
-  alias yaygg='yay -Qe | grep';compdef yaygg='yay'
-  alias yaycln='yay -Sc --aur';compdef yayc='yay'
-  alias pmreport='pacreport --unowned-files'
+alias esxidl='
+  scp -r  esxi:/bm         ~/dev/esxi
+  scp     esxi:/.profile  ~/dev/esxi/.profile'
+alias esxiul='
+  scp -r  ~/dev/esxi/bm        esxi:/
+  scp     ~/dev/esxi/.profile  esxi:/.profile'
 
-  alias cdns='sudo systemd-resolve --flush-caches'
-  alias rdns='cdns'
+alias rnet='sudo systemctl restart \
+  {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
 
-  alias xc='xclip -sel clip'
-  alias xp='xclip -sel clip -o'
-  alias xcc='xclip -sel primary'
-  alias xpp='xclip -sel primary -o'
-
-  alias cat='bat';compdef cat='bat'
-
-  # alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
-
-else #─────────────────────────────────────────────────  DEBIAN UBUNTU  ───────
-
-  # ufw
-  alias ufw='sudo ufw'; compdef ufw='ufw'
-
-  # syslog
-  alias syslogg='sudo cat /var/log/syslog | grep '
-  alias syslogls='sudo cat /var/log/syslog'
-
-  # apt
-# alias apti='sudo apt-get install -y'
-# alias aptr='sudo apt-get purge -y'
-# alias aptg='dpkg --get-selections | grep'
-# alias aptls='sudo apt list --installed'
-
-fi
-
-#──────────────────────────────────────────────────────  HOST SPECIFIC  ───────
-
-if [[ $HOST == mc ]]; then
-  alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p <password> -t'
-  alias mce='svim /etc/systemd/system/minecraft.service'
-  alias mcr='scr minecraft.service'
-  alias mcs='scs minecraft.service'
-fi
-
-if [[ $HOST == mpd ]]; then
-
-  # beets
-  alias beete='vim ~/.config/beets/config.yaml'
-  alias beetcd='cd /all/media/audio'
-  alias beeti='beet import -ql /all/media/audio/beets/$(date +%m.%d-%H.%M.%S).log '
-
-fi
-
-#───────────────────────────────────────────────────────────────  APPS  ───────
-
-alias rnet='sudo systemctl restart {systemd-networkd.service,systemd-resolved.service,iwd.service} && ip a'
+#───────────────────────────────────────────────────────────────  apps  ───────
 
 # rsync
 alias rscp='rsync -zahv --progress --partial'
@@ -174,10 +117,10 @@ alias rsdirstructure='rsync -av -f"+ */" -f"- *"'
 
 # ranger
 alias ranger='ranger --choosedir=$HOME/.config/ranger/sdir; \
-  LASTDIR=`cat $HOME/.config/ranger/sdir`; cd "$LASTDIR"'
+              LASTDIR=`cat $HOME/.config/ranger/sdir`; cd "$LASTDIR"'
 alias rr='ranger'
 
-# xev keycodes
+# i3 xev keycodes
 alias kc='command xev | grep -o "keycode[^\)]\+"'
 alias xev='kc'
 alias kcc='xmodmap -pke | fzf'
@@ -263,7 +206,7 @@ alias s='sudo';compdef s='sudo'
 # fzf
 # alias -g zz='fzf -m'
 
-#────────────────────────────────────────────────────────  FILE SYSTEM  ───────
+#────────────────────────────────────────────────────────  file system  ───────
 
 # mount | umount
 alias nfsls='echo "\n\nnfs shares: ${GRN}${B}mounted\n${BLU}$ mount -l | grep nfs\n" &&\
@@ -286,7 +229,7 @@ alias nfsr='sudo systemctl restart nfs-kernel-server'
 # smb
 alias smb='svim /etc/samba/smb.conf'
 
-#─────────────────────────────────────────────────────────────  SYSTEM  ───────
+#───────────────────────────────────────────────────────  system power  ───────
 
 # reboot, shutdown, etc.
 alias rex='sudo systemctl restart display-manager'
@@ -295,6 +238,8 @@ alias winrb='sudo grub-reboot 2 ; reboot'
 alias reboot='sudo systemctl reboot'
 alias halt='sudo systemctl halt'
 alias shutdown='sudo systemctl poweroff'
+
+#────────────────────────────────────────────────────────────  systemd  ───────
 
 # systemctl
 alias fzn='fzf --no-preview'
@@ -348,9 +293,9 @@ alias jcus='journalctl --user -eu '                          ;compdef jcus='syst
 
 #─────────────────────────────────────────────────────────  PRINT OUTS   ──────
 
-alias aliass="alias | sed 's/=.*//'"
-alias func="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo -e ${PATH//:/\\n}'
+alias alii="alias | sed 's/=.*//'"
+alias funn="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias pathh='echo -e ${PATH//:/\\n}'
 alias hn='echo $HOST'
 
 # audio sinks
@@ -361,8 +306,68 @@ alias sinki='pacmd list-sources | grep -e "index:" -e device.string -e "name:"'
 alias pid='cat /etc/passwd | sort | column -t -s ":" -o " "'
 
 ################################################################################
+############################### distro specific ################################
+################################################################################
+
+#──────────────────────────────────────────────────────────  archlinux  ───────
+
+if [[ $DISTRO = "arch"* ]]; then # ARCH
+
+  # pacman
+  alias pacman='sudo pacman';compdef pacman='pacman'
+  alias pm='pacman';compdef pm='pacman'
+  alias pms='pacman -S';compdef pms='pacman'
+  alias pmls='pacman -Qe|yay';compdef pmls='pacman'
+  alias pmg='pacman -Qe|grep';compdef pmg='pacman'
+  alias pmgg='pacman -Q|grep';compdef pmgg='pacman'
+  alias pmsize='expac -HM "%m|%n" | sort -h | tail -n 30 | column -s "|" -t -o "___"'
+
+  # yay
+  alias yays='yay -S';compdef yays='yay'
+  alias yayls='yay -Qe | fzf';compdef yayls='yay'
+  alias yayl='yayls';compdef yayl='yay'
+  alias yayll='yay -Q | fzf';compdef yayll='yay'
+  alias yayg='yay -Q | grep';compdef yayg='yay'
+  alias yaygg='yay -Qe | grep';compdef yaygg='yay'
+  alias yaycln='yay -Sc --aur';compdef yayc='yay'
+  alias pmreport='pacreport --unowned-files'
+
+  alias cdns='sudo systemd-resolve --flush-caches'
+  alias rdns='cdns'
+
+  alias xc='xclip -sel clip'
+  alias xp='xclip -sel clip -o'
+  alias xcc='xclip -sel primary'
+  alias xpp='xclip -sel primary -o'
+
+  alias cat='bat';compdef cat='bat'
+
+  # alias g6='go-mtpfs ~/.android & ; cd ~/.android/Internal shared storage/DCIM'
+
+#──────────────────────────────────────────────────────  debian ubuntu   ──────
+#
+else 
+
+  # ufw
+  alias ufw='sudo ufw'; compdef ufw='ufw'
+
+  # syslog
+  alias syslogg='sudo cat /var/log/syslog | grep '
+  alias syslogls='sudo cat /var/log/syslog'
+
+  # apt
+  # alias apti='sudo apt-get install -y'
+  # alias aptr='sudo apt-get purge -y'
+  # alias aptg='dpkg --get-selections | grep'
+  # alias aptls='sudo apt list --installed'
+
+fi
+
+################################################################################
 ################################ host specific #################################
 ################################################################################
+
+#───────────────────────────────────────────────  nginx stack function  ───────
 
 # nginx aliases
 ali_nginx() {
@@ -383,22 +388,25 @@ ali_nginx() {
   alias nglee='sudo tail -f /var/log/ng-error.log'
   }
 
-#────────────────────────────────────────────────────────────────  SSH  ───────
+#──────────────────────────────────────────────────────────  minecraft  ───────
 
-alias doc='ssh docker'
-alias plx='ssh plex'
-alias esxidl='
-scp -r  esxi:/bm         ~/dev/esxi
-scp     esxi:/.profile  ~/dev/esxi/.profile
-'
-alias esxiul='
-scp -r  ~/dev/esxi/bm        esxi:/
-scp     ~/dev/esxi/.profile  esxi:/.profile 
-'
+if [[ $HOST == mc ]]; then
+  alias mine='/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p <password> -t'
+  alias mce='svim /etc/systemd/system/minecraft.service'
+  alias mcr='scr minecraft.service'
+  alias mcs='scs minecraft.service'
+
+#────────────────────────────────────────────────────────────────  mpd  ───────
+
+elif [[ $HOST == mpd ]]; then
+  # beets
+  alias beete='vim ~/.config/beets/config.yaml'
+  alias beetcd='cd /all/media/audio'
+  alias beeti='beet import -ql /all/media/audio/beets/$(date +%m.%d-%H.%M.%S).log '
 
 #──────────────────────────────────────────────────────────  bmPC|bmTP  ───────
 
-if [[ $HOST == bm* ]]; then
+elif [[ $HOST == bm* ]]; then
 
   alias dcup='
     _a updating docker repo
@@ -410,11 +418,9 @@ if [[ $HOST == bm* ]]; then
   alias dcee='vim ~/repos/bmilcs-docker/.env'
   alias wwwe='vim ~/repos/bmilcs-docker/swag/config/nginx/site-confs/bmilcs.conf'
 
-fi
-
 #──────────────────────────────────────────────────────────────  nginx  ───────
 
-if [[ $HOST =~ nginx\|wp\|www ]]; then
+elif [[ $HOST =~ nginx\|wp\|www ]]; then
 
   alias wwwr='
   source _bm
@@ -428,11 +434,9 @@ if [[ $HOST =~ nginx\|wp\|www ]]; then
   # import nginx aliases
   ali_nginx
 
-fi
-
 #──────────────────────────────────────────────────────────────  CLOUD   ──────
 
-if [[ $HOST == "cloud" ]]; then
+elif [[ $HOST == "cloud" ]]; then
  
   alias wwwr='
   source _bm
@@ -455,12 +459,10 @@ if [[ $HOST == "cloud" ]]; then
   alias phpe='svim /etc/php/7.3/fpm/php.ini'
   alias phpp='cd /etc/php/7.3'
 
-fi
-
 #─────────────────────────────────────────────────────────────  DOCKER  ───────
 
 #if where docker-compose > /dev/null && [ -d ~/docker ]; then
-if [[ $HOST =~ docker ]]; then
+elif [[ $HOST =~ docker ]]; then
 
   # editor
   alias dc='docker'
@@ -523,81 +525,3 @@ if [[ $HOST =~ docker ]]; then
   alias beetsdl='docker exec -u abc -it beets /bin/bash -c "beet import /downloads/usenet/complete/music"'
 
 fi
-
-#────────────────────────────────────────────────────  DEBIAN: ARCHIVE  ───────
-
-if [[ $DISTRO == "debian" ]]; then
-  alias ideb='sudo /bin/bash ~/.bmilcs/script/debian.sh'
-
-  alias ibak='upp ; sudo /bin/bash ~/.bmilcs/script/backup.sh install $USER ; source ~/.bashrc'
-  alias ibakls='sudo cat /etc/rsnapshot.conf | grep ^backup'
-  alias ibakadd='sudo /bin/bash ~/.bmilcs/script/backup.sh add'
-  alias rsnap='svim /etc/rsnapshot.conf'
-
-  # minecraft
-
-################################################################################
-################################### archive ####################################
-################################################################################
-
-#───────────────────────────────────────────────────────  old script  ─────────
-#   mkdir -m 700 -p ~/.ssh
-#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
-#   chmod 600 ~/.ssh/authorized_keys
-#   eval "$(ssh-agent -s)"
-#   echo "> enter github private key as follows:"
-#   echo "  ssh-add ~/.ssh/id_github"'
-
-  # install nfs
-  # TODO > FUNCTION conversion
-
-# alias infs='
-#   sudo apt install nfs-kernel-server
-#   echo && echo "====================================================================================================="
-#   echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
-#   echo "svim /etc/exports"
-#   echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
-#   echo "-----------------------------------------------------------------------------------------------------"'
-
-# # install smb
-# # TODO > function conversion
-
-# alias ismb='
-#   sudo apt install samba
-#   echo && echo "====================================================================================================="
-#   echo "====  bmilcs: samba instructions  ==================================================================="
-#   echo "=====================================================================================================" && echo
-#   echo "svim /etc/samba/smb.conf"
-#   echo "#       workgroup = BM"
-#   echo "#       interfaces = 192.168.1.0/24 eth0"
-#   echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
-#   echo "# [docker]"
-#   echo "#         comment = docker vm config files"
-#   echo "#         path = /home/bmilcs/docker"
-#   echo "#         browseable = yes"
-#   echo "#         read only = no"
-#   echo "#         guest ok = no"
-#   echo "#         valid users = bmilcs"
-#   echo "-----------------------------------------------------------------------------------------------------"		'
-
-###############################################################################
-#                                 GRAVEYARD
-###############################################################################
-
-#──────────────────────────────────────────────────  DEBIAN NETWORKING  ───────
-
-#alias rnet="sudo /etc/init.d/networking restart"
-#alias enet="svim /etc/network/interfaces"
-
-#─────────────────────────────────────────────────────────────  DOCKER  ───────
-
-# alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
-
-#──────────────────────────────────────────────────────  GIT BARE REPO  ───────
-
-# alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
-# alias gitp="gitt commit -a -m 'update' && gitt push"
-# compdef gitt="git"
-# compdef gitp="git"
-
-fi 

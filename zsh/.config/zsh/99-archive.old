@@ -1,0 +1,64 @@
+################################################################################
+################################### archive ####################################
+################################################################################
+
+#───────────────────────────────────────────────────────  old script  ─────────
+#   mkdir -m 700 -p ~/.ssh
+#   curl -s https://github.com/bmilcs.keys >> ~/.ssh/authorized_keys
+#   chmod 600 ~/.ssh/authorized_keys
+#   eval "$(ssh-agent -s)"
+#   echo "> enter github private key as follows:"
+#   echo "  ssh-add ~/.ssh/id_github"'
+
+# install nfs
+# TODO > FUNCTION conversion
+
+# alias infs='
+#   sudo apt install nfs-kernel-server
+#   echo && echo "====================================================================================================="
+#   echo "====  bmilcs: nfs instructions  ====================================================================="  && necho "=====================================================================================================" && echo
+#   echo "svim /etc/exports"
+#   echo "#path/to/dir          10.0.0.0/8(ro,sync)\"
+#   echo "-----------------------------------------------------------------------------------------------------"'
+
+# # install smb
+# # TODO > function conversion
+
+# alias ismb='
+#   sudo apt install samba
+#   echo && echo "====================================================================================================="
+#   echo "====  bmilcs: samba instructions  ==================================================================="
+#   echo "=====================================================================================================" && echo
+#   echo "svim /etc/samba/smb.conf"
+#   echo "#       workgroup = BM"
+#   echo "#       interfaces = 192.168.1.0/24 eth0"
+#   echo "#       hosts allow = 127.0.0.1/8 192.168.1.0/24"
+#   echo "# [docker]"
+#   echo "#         comment = docker vm config files"
+#   echo "#         path = /home/bmilcs/docker"
+#   echo "#         browseable = yes"
+#   echo "#         read only = no"
+#   echo "#         guest ok = no"
+#   echo "#         valid users = bmilcs"
+#   echo "-----------------------------------------------------------------------------------------------------"		'
+
+###############################################################################
+#                                 GRAVEYARD
+###############################################################################
+
+#──────────────────────────────────────────────────  DEBIAN NETWORKING  ───────
+
+#alias rnet="sudo /etc/init.d/networking restart"
+#alias enet="svim /etc/network/interfaces"
+
+#─────────────────────────────────────────────────────────────  DOCKER  ───────
+
+# alias dcr='cd /tmp && rm -rf /tmp/docker && git clone git@github.com:bmilcs/docker.git /tmp/docker && cd /tmp/docker && rm -f ~/docker/docker-compose.yaml ~/docker/.env && cp 1docker-compose.yaml .env ~/docker/ && cd ~/docker && mv 1docker-compose.yaml docker-compose.yaml &&  docker-compose up -d --remove-orphans'
+
+#──────────────────────────────────────────────────────  GIT BARE REPO  ───────
+
+# alias gitt="/usr/bin/git --git-dir=$HOME/.git/ --work-tree=$HOME"
+# alias gitp="gitt commit -a -m 'update' && gitt push"
+# compdef gitt="git"
+# compdef gitp="git"
+
