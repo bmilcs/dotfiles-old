@@ -1,9 +1,10 @@
 ## BMILCS:HOMELAB
 
-# BACKUP IRREPLACABLE CONTENT 
-# FIX MULTI-MONITOR I3/XRANDR
-
-MAKE SHANNA ON TELEGRAM NOTIFICATIONS = PURPLE
+- [ ] backup irreplacable content 
+- [ ] fix multi-monitor i3/xrandr
+      [arch_multimonitor](arch_multimonitor.md): multi-monitor
+- [ ] make shanna on telegram notifications = purple
+- [ ] freenas > kids vlan (erics nes roms)
 
 > HOMELAB TODO: workstations, laptops, servers, docker, virtualization and so forth.
 
@@ -17,17 +18,17 @@ MAKE SHANNA ON TELEGRAM NOTIFICATIONS = PURPLE
 
 ## VIRTUALIZATION
 
-* [O] nginx project
-  * [O] personal site: WWW
-    * [ ] setup lemp
+* [X] nginx project
+  * [X] personal site: WWW
+    * [X] setup lemp
     * [X] create vm
     * [X] move content over
     * [X] create npm redirect
 
-* [ ] nextcloud
-  * [ ] create ubuntu vm
-  * [ ] consider postgresql over mariadb
-    * [ ] (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
+* [X] nextcloud
+  * [X] create ubuntu vm
+  * [X] consider postgresql over mariadb
+    * [X] (https://www.reddit.com/r/unraid/comments/fy7na5/nextcloud_login_and_navigation_extremely_slow/)
 
 * [.] nginx
   * [.] public

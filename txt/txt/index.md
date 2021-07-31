@@ -7,10 +7,10 @@ bmilcs = bryan miller creations
 * [homelab](homelab.md):           pc/homelab
 * [life](life.md):              personal
 * [scratchpad](scratchpad.md):        notes, scribblings
+* [wtb](wtb.md)
 
 ### research/contacts
 * [landscaping](landscaping.md)
-
 
 ### general
 * [linux](linux.md)
@@ -42,6 +42,7 @@ bmilcs = bryan miller creations
 * [arch_autofs](arch_autofs.md):       nfs on demand
 * [arch_firefox](arch_firefox.md):      firefox
 * [arch_install](arch_install.md):      installation
+* [arch_multimonitor](arch_multimonitor.md): multi-monitor
 * [arch_networking](arch_networking.md):   networking
 * [arch_vm](arch_vm.md):           virtual machine
 
