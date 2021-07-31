@@ -1,6 +1,8 @@
 ### bmilcs:wiki
 my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
+bmilcs = bryan miller creations
+
 ### todo
 * [homelab](homelab.md):           pc/homelab
 * [life](life.md):              personal
