@@ -315,12 +315,14 @@ workspace $ws9  gaps horizontal 4
 exec       --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
 exec       --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
 exec       --no-startup-id     i3-msg 'workspace 4; exec /usr/bin/alacritty'
+exec       --no-startup-id     xrandr --output HDMI-0 --above DP-0 --auto --noprimary
 
 # workspace
 assign     [class="Thunderbird"]  1        
 assign     [class="discord"]      2        
 assign     [class="android-*"]    2        
 assign     [class="Telegram*"]    2        
+assign     [class="yakyak*"]      2        
 
 # floating                        
 for_window [class='Conky']        floating enable
