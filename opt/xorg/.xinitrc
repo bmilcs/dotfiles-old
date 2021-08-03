@@ -29,8 +29,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# essentials
-~/bin/bootstrap &
+# bootstrap 1: essentials
+~/bin/wm/bootstrap1 &> "$BMLOGS/boot.log" &
 
 # window manager
 session=${1:-i3}
@@ -39,6 +39,10 @@ case $session in
   bsp | bspwm) exec bspwm ;;
   *) exec $1 ;;
 esac
+ 
+# bootstrap 1: essentials
+~/bin/wm/bootstrap1 &> "$BMLOGS/boot.log" &
 
 # disable beep sound
 set bell-style none
+

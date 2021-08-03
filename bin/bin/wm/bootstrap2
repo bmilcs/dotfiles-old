@@ -1,0 +1,58 @@
+# bootstrap #2
+# post i3-wm
+
+#────────────────────────────────────────────────────────────  logging  ───────
+
+log="$BMLOGS/bootstrap2.log"
+#[ -f "$log" ] && rm "$log"
+
+bmlog() {
+  unset len extra str
+  str="#---> $* "
+  len=${#str}
+  len=$((35-len))
+  for ((i=0; i<"$len"; i++))
+  do
+    extra+="-"
+  done
+  echo "$str $extra $(date +%Y.%m.%d-%H-%M-%S)"
+  echo "$str $extra $(date +%Y.%m.%d-%H-%M-%S)" >> "$log"_"$1"
+}
+
+bmlog "BOOTSTRAP2 START"
+
+#───────────────────────────────────────────────────────────  software  ──────#
+
+# email
+pgrep -f thunderbird \
+  || bmlog "thunderbird" \
+  && thunderbird &>> "$log"_thunderbird &
+
+# telegram
+pgrep -f telegram \
+  || bmlog "telegram" \
+  && telegram-desktop &>> "$log"_telegram &
+
+# android messages
+pgrep -f android-messages \
+  || bmlog "android_sms" \
+  && android-messages-desktop &>> "$log"_android_sms &
+
+# discord
+pgrep -f discord \
+  || bmlog "discord" \
+  && discord &>> "$log"_discord &
+
+# yakyak (hangouts)
+pgrep -f yakyak \
+  || bmlog "yakyak" \
+  && yakyak &>> "$log"_discord &
+
+# kde connect
+pgrep -f kdeconnectd \
+  || bmlog "kde_connect" \
+  && /usr/lib/kdeconnectd &>> "$log"_kde_connect &
+
+
+bmlog "BOOTSTRAP2 END"
+exit 0

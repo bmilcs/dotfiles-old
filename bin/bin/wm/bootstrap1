@@ -6,12 +6,11 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #               GLOBAL BOOTSTRAP
 
-#────────────────────────────────────────────────────────────  logging  ──────#
+#───────────────────────────────────────────────────────────────  init  ───────
 
-log="$BMLOGS/bootstrap.log"
-[ -f "$log" ] && rm "$log"
+log="$BMLOGS/bootstrap1.log"
 
-LOG() {
+bmlog() {
   unset len extra str
   str="#---> $* "
   len=${#str}
@@ -24,38 +23,35 @@ LOG() {
   echo "$str $extra $(date +%Y.%m.%d-%H-%M-%S)" >> "$log"_"$1"
 }
 
+bmlog "BOOSTRAP1 START"
+
 #──────────────────────────────────────────────────────────────  audio  ──────#
 
 # note: attempting swap to user services via systemd
 
 ## pulseaudio
 #pgrep -f pulseaudio \
-#  || LOG "pulseaudio" \
+#  || bmlog "pulseaudio" \
 #  && pulseaudio --start | tee -a "$log"_pulse &
 #
 ## mpd
-#[ ! -s ~/.config/mpd/pid ] && LOG mpd && mpd &>> "$log"_mpd &
-# pgrep -f mpd && LOG mpd && mpd &
+#[ ! -s ~/.config/mpd/pid ] && bmlog mpd && mpd &>> "$log"_mpd &
+# pgrep -f mpd && bmlog mpd && mpd &
 
 #──────────────────────────────────────────────────────────────  input  ──────#
 
 # keyboard: repeat rate
-LOG xset_repeat
-xset r rate 300 50 &>> "$log"_xsetrate
-
-# keyboard: caps = ctrl (hold)
-# LOG setxkbmap
-# setxkbmap -option ctrl:nocaps &>> "$log"_
-#LOG xmodmap caps rshift etc
-#xmodmap ~/.xmodmap
+bmlog "xset_repeat"
+xset r rate 300 50 &>> "$bmlog"_xsetrate
 
 # keyboard: disable caps altogether
-if [[ $HOST == "bmPC" ]]; then
-  LOG xset_disablecaps
+if [[ $(hostname) == "bmPC" ]]; then
+  bmlog "xset_disablecaps"
   xset -q | grep "Caps Lock:\s*on" \
-    && xdotool key Caps_Lock &>> "$log"_xset_disablecaps
+    && xdotool key Caps_Lock &>> "$bmlog"_xset_disablecaps
 else
-  # make CapsLock behave like Ctrl:
+  # make capslock behave like ctrl:
+  bmlog "setxkbmap -option ctrl:nocaps"
   setxkbmap -option ctrl:nocaps
 fi
 
@@ -63,49 +59,40 @@ fi
 xcape -e 'Control_L=Escape'
 
 # keyboard: caps = esc (tap)
-pgrep -f xcape || LOG xcape_ctrl_escape && xcape -e 'Control_L=Escape' &>> "$log"_xcape_ctrl_escape
+pgrep -f xcape \
+  || bmlog "xcape_ctrl_escape" \
+  && xcape -e 'Control_L=Escape' &>> "$log"_xcape_ctrl_escape
 
 #─────────────────────────────────────────────────────────────  system  ──────#
 
 # usb automount (TODO FIX)
-pgrep -f udiskie || LOG udiskie && udiskie &>> "$log"_udiskie &
+pgrep -f udiskie \
+  || bmlog "udiskie" \
+  && udiskie &>> "$log"_udiskie &
 
 # compositor
-pgrep -f picom || LOG picom && picom -bc --config ~/.config/picom/config &>> "$log"_picom &
+pgrep -f picom \
+  || bmlog "picom" \
+  && picom -bc --config ~/.config/picom/config &>> "$log"_picom &
 
 # wallpaper
-pgrep -f nitrogen || LOG nitrogen && nitrogen --restore &>> "$log"_nitrogen &
+pgrep -f nitrogen \
+  || bmlog "nitrogen" \
+  && nitrogen --restore &>> "$log"_nitrogen &
 
 # mouse: autohide
-pgrep -f unclutter || LOG unclutter && unclutter &>> "$log"_unclutter &
-
-#───────────────────────────────────────────────────────────  software  ──────#
-
-
-# email
-pgrep -f thunderbird || LOG thunderbird && thunderbird &>> "$log"_thunderbird &
-
-# telegram
-pgrep -f telegram || LOG telegram && telegram-desktop &>> "$log"_telegram &
-
-# sms
-pgrep -f android-messages || LOG android_sms && android-messages-desktop &>> "$log"_android_sms &
-
-# discord
-pgrep -f discord || LOG discord && discord &>> "$log"_discord &
-
-
-# kde connect
-pgrep -f kdeconnectd || LOG kde_connect && /usr/lib/kdeconnectd &>> "$log"_kde_connect &
-
-# kde connect indicator
-#LOG kde_connect_indicator
-#pgrep -f kdeconnect-indicator || kdeconnect-indicator &>> "$log"_kde_connect_indicator
+pgrep -f unclutter \
+  || bmlog "unclutter" \
+  && unclutter &>> "$log"_unclutter &
 
 # polybar (giving apps a second to load)
 sleep 0.5
-#pgrep -f polybar || LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
-LOG polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+bmlog "polybar" \
+  && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+
+# pgrep -f polybar || bmlog polybar && sh "$HOME/.config/polybar/launch.sh" &>> "$log"_polybar &
+
+bmlog "BOOSTRAP1_STOP"
 
 #───────────────────────────────────────────────────  concatenate logs  ──────#
 
@@ -115,8 +102,21 @@ do
   rm "$file"
 done
 
+exit 0
+
 #──────────────────────────────────────────────────────────  graveyard  ──────#
 
 # pgrep -f pulseaudio || pulseaudio --start &
 # pgrep -f picom || picom --experimental-backends --config ~/.config/picom/config &
 # pgrep -f blueman-tray || blueman-applet &
+
+# # keyboard: caps = ctrl (hold)
+# bmlog setxkbmap
+# setxkbmap -option ctrl:nocaps &>> "$log"_
+# bmlog xmodmap caps rshift etc
+# xmodmap ~/.xmodmap
+
+# # kde connect indicator
+# bmlog kde_connect_indicator
+# pgrep -f kdeconnect-indicator || kdeconnect-indicator &>> "$log"_kde_connect_indicator
+
