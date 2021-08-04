@@ -44,7 +44,7 @@ deb=("bin" "git" "txt" "vim" "zsh" "bash")
 
 # packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow")
-apt=("fd-find" "npm" "colordiff") # "bat" mia
+apt=("fd-find" "colordiff" "ranger") # "bat" mia
 pacman=("fd" "unzip" "colordiff" "xdotool")
 yum=("") # missing: fd, bat, colordiff
 
