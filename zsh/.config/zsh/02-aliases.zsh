@@ -67,7 +67,9 @@ alias wiki='txt'
 
 # configuration files
 alias bsp='vim $D/opt/bspwm/.config/bspwm/bspwmrc'
-alias gaps='vim $D/opt/i3/.config/i3/config'
+alias gaps='vim $D/opt/i3/.config/i3/global'
+alias gapspc='vim $D/opt/i3/.config/i3/bmPC'
+alias gapstp='vim $D/opt/i3/.config/i3/bmTP'
 alias i3keys='command i3keys web 8080 & ;\
               firefox -new-tab http://localhost:8080'
 alias keys='vim $D/opt/sxhkd/.config/sxhkd/sxhkdrc'
