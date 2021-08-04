@@ -1,9 +1,9 @@
-file:///all/bm/backup/windows/2009-01-01%20priceless/archives/image/screenshots
-file:///all/win-b
-file:///all/media
-file:///all/bm
-file:///all/bm/images/Images
-file:///all/bm/scans
-file:///all/bm/images/screenshots Screenshots
-file:///all/bm/house/Images House
-file:///home/bmilcs/wall
+file:///home/bmilcs/wall ~/wall
+file:///a/media /a/media
+file:///a/bm /a/bm
+file:///a/bm/house/Images img: house
+file:///a/bm/images/screenshots img: screenshots
+file:///a/bm/scans scans
+file:///a/win-b win: b:/
+file:///a/win-c win: c:/
+file:///home/bmilcs/dl ~/dl
