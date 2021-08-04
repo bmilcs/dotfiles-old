@@ -1,5 +1,6 @@
 ## BMILCS:HOMELAB
 
+- [ ] fix dotfile log rotate bmlogger
 - [ ] backup irreplacable content 
 - [ ] fix multi-monitor i3/xrandr
       [[arch_multimonitor](arch_multimonitor.md)](arch_multimonitor.md): multi-monitor
