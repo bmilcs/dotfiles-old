@@ -17,12 +17,10 @@ _t yay install
 yi_list=/tmp/yi_list
 rm -rf "$yi_list"
 
-{
 yay -Slq --sortby votes\
   | fzf -m \
   --preview 'yay -Si {1}' \
-  | yay -S --answerclean None --answerdiff None --answeredit None - | \
-    tee "$yi_list"
-} || {
-  pacfix "$yi_list"
-}
+  | yay -S --noconfirm --answerclean None --answerdiff None --answeredit None - | \
+    tee "$yi_list" \
+
+pacfix "$yi_list"
