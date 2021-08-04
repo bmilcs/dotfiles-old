@@ -22,6 +22,7 @@ export BMLOGS=$HOME/.config/bmilcs
 export BMP=$HOME/bmP
 export BAK=$HOME/.backup
 export BMSSH=$BMP/ssh
+export BMDEBUG=0
 
 [ -f "$HOME/bin/_distro" ] && . "$HOME/bin/_distro"
 
