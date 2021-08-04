@@ -1,5 +1,9 @@
 # HOME
 
+## FUN
+- [ ] bike tubes (2x)
+  - [ ] 42-622 (700x40c 28x1-5/8)
+
 ## INDOOR
 - [ ] Blinds
 - [ ] painters tape (3 pack frog)

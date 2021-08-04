@@ -5,6 +5,7 @@ bmilcs = bryan miller creations
 
 ### todo
 * [homelab](homelab.md):           pc/homelab
+* [script](script.md):            scripting ideas
 * [life](life.md):              personal
 * [scratchpad](scratchpad.md):        notes, scribblings
 * [wtb](wtb.md)

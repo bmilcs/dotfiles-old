@@ -2,7 +2,7 @@
 
 - [ ] backup irreplacable content 
 - [ ] fix multi-monitor i3/xrandr
-      [arch_multimonitor](arch_multimonitor.md): multi-monitor
+      [[arch_multimonitor](arch_multimonitor.md)](arch_multimonitor.md): multi-monitor
 - [ ] make shanna on telegram notifications = purple
 - [ ] freenas > kids vlan (erics nes roms)
 

@@ -1,4 +1,4 @@
-# ARCH MULTI-MONITOR
+# I3 MULTI-MONITOR
 
 ## I3 GAPS
 
@@ -14,3 +14,8 @@
 cat ~/.config/i3/config.1 > ~/.config/i3/config
 cat ~/.config/i3/config.2 >> ~/.config/i3/config
 ```
+
+### bmTP && bmPC
+
+- workspace settings
+- floating window settings
