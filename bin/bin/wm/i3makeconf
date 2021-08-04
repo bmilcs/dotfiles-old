@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 I3 MAKE CONF [./i3makeconf]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+i3_path=~/.config/i3
+backup_path="$i3_path"/backup
+backup_file=$(date +%Y-%m-%d)
+host=$(hostname)
+
+_t i3 make conf
+_o customized i3wm config generator
+
+_a checking hostname
+if [[ $host == bmPC ]]; then
+  _o host: bmPC   [bmilcs PC]
+  cfg="$i3_path"/bmPC
+elif [[ $host == bmTP ]]; then
+  _o host: bmTP   [bmilcs thinkpad]
+  cfg="$i3_path"/bmTP
+else
+  _o host: unknown
+  _e unable to proceed
+  exit 1
+fi && _s
+
+_a config file check
+if [[ -e "$cfg" ]] && [[ -e "$i3_path"/global ]]; then
+  _o "yes: dependcies present"
+  _s
+else
+  _e "missing one of the following:\n\
+    $cfg\n\
+    $i3_path/global"
+  exit 1
+fi
+
+mkdir -p "$backup_path"
+
+if [[ -e "$backup_file".bak || -L "$backup_file".bak ]] ; then
+  i=0
+  while [[ -e $backup_file-$i.bak || -L $backup_file-$i.bak ]] ; do
+    let i++
+  done
+  backup_file=$backup_file-$i.bak
+fi
+
+backup_file=${backup_file%".bak"}.bak
+
+_a "attempting backup"
+if [[ ! -w "$i3_path" ]] ||\
+  [[ ! -w "$backup_path" ]]; then
+
+  _e "i3 and/or backup path aren't writeable"
+  _o "now exiting..." 
+  exit 1
+
+elif [[ ! -e "$i3_path/config" ]]; then
+
+  _w "i3 & backup paths exist, but no config found to backup"
+  _o "proceeding anyways"
+
+else
+
+  mv "$i3_path"/config "$backup_path"/"$backup_file" && _s
+
+fi
+
+_a "creating i3 config"
+_f "host: $host"
+_f "add:  $cfg"
+
+
+_ob "adding base config: $i3_path/global"
+cat "$i3_path/global" > "$i3_path/config" \
+  && _s
+_ob "adding host config: $i3_path/$cfg"
+cat "$cfg" >> "$i3_path/config" \
+  && _s
+

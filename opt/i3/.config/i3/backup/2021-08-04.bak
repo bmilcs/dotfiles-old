@@ -396,5 +396,5 @@ for_window [instance="roficlone"]         floating enable, resize set 800  600, 
 for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920 137,  border pixel 3
 for_window [instance="urxvt"]             floating enable, resize set 818  970,  move absolute position 1847 311,  border pixel 3
 for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238 37,   border pixel 3
+for_window [instance="notepad"] floating enable, resize set 719 921, move absolute position 1476 1726, border pixel 3
 for_window [instance="ncmpcpp"] floating enable, resize set 784 773, move absolute position 1278 1795, border pixel 3
-for_window [instance="notepad"] floating enable, resize set 713 915, move absolute position 1379 1729, border pixel 3

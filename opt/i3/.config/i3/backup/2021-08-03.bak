@@ -89,10 +89,10 @@ bindsym  $s+Pause       exec --no-startup-id    screenshot -ut all
 bindsym  $w+period       exec --no-startup-id    i3kr -f -n i3debug -c i3debug
 
 # bm spy 
-bindsym  $w+comma        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
+bindsym  $w+slash        exec --no-startup-id    i3kr -f -n i3spy -c i3spy 
 
 # bm floater
-bindsym  $w+slash        exec --no-startup-id    i3floater
+bindsym  $w+comma        exec --no-startup-id    i3floater
 
 # bm direct type
 bindsym  $w+d            exec --no-startup-id    i3idotfiles
@@ -388,7 +388,9 @@ for_window [instance="i3pad"]             floating enable, resize set 728  1255,
 for_window [instance="i3spy"]             floating enable, resize set 1002 64,   move absolute position 1524 7,    border pixel 3
 for_window [instance="lxappearance"]      floating enable, resize set 1561 716,  move absolute position 927  371,  border pixel 3
 for_window [instance="main.py"]           floating enable, resize set 1552 1323, move absolute position 967  54,   border pixel 3
+for_window [instance="ncmpcpp"]           floating enable, resize set 796  785,  move absolute position 1322 289,  border pixel 3
 for_window [instance="nitrogen"]          floating enable, resize set 1079 480,  move absolute position 1160 956,  border pixel 3
+for_window [instance="notepad"]           floating enable, resize set 731  933,  move absolute position 1770 270,  border pixel 3
 for_window [instance="nvidia-settings"]   floating enable, resize set 1608 996,  move absolute position 916  253,  border pixel 3
 for_window [instance="padd"]              floating enable, resize set 800  600,  move absolute position 1320 437,  border pixel 3
 for_window [instance="picard"]            floating enable, resize set 1716 1076, move absolute position 812  199,  border pixel 3
@@ -396,5 +398,3 @@ for_window [instance="roficlone"]         floating enable, resize set 800  600, 
 for_window [instance="scratchpad"]        floating enable, resize set 525  1225, move absolute position 2920 137,  border pixel 3
 for_window [instance="urxvt"]             floating enable, resize set 818  970,  move absolute position 1847 311,  border pixel 3
 for_window [instance="windowspy"]         floating enable, resize set 985  59,   move absolute position 1238 37,   border pixel 3
-for_window [instance="ncmpcpp"] floating enable, resize set 784 773, move absolute position 1278 1795, border pixel 3
-for_window [instance="notepad"] floating enable, resize set 713 915, move absolute position 1379 1729, border pixel 3

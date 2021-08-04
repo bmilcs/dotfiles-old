@@ -10,6 +10,7 @@
 source _bm 
 _a i3 floater
 
+who=$(hostname)
 prevent=("Navigator" "Alacritty")
 
 _o extracting class
@@ -46,13 +47,15 @@ else
     _ne  "class: \"$class\" matches predefined '\$prevent' variable"
     exit 1
 
-  elif [[ -z "$x" ]] || [[ -z "$y" ]] || [[ -z "$h" ]] || [[ -z "$w" ]] ; then
+  elif [[ -z "$x" ]] || [[ -z "$y" ]] \
+    || [[ -z "$h" ]] || [[ -z "$w" ]] \
+    || [[ -z "$class" ]]; then
 
     _ne "unable to extract position or dimensions for class: \'"$class"\'"
-
   fi
 fi
 
+_n "class = $class"
 _o class: \""$class"\"
 _s 
 
@@ -65,7 +68,19 @@ border pixel 3"
 
 echo $line
 
-conf=~/.config/i3/config
+[[ $who == "bmPC" ]] \
+  && _a "bmPC recognized." \
+  && [[ -w ~/.config/i3/bmPC ]] \
+  && conf=~/.config/i3/bmPC \
+  && _n "bmPC conf set"
+
+[[ -z "$conf" ]] \
+  && _e "$who, you're not bmPC." \
+  && _w "assuming you don\'t have an ultrawide and 27\" vertical stack setup" \
+  && _a "bmTP mode it is, then." \
+  && [[ -w ~/.config/i3/bmTP ]] \
+  && conf=~/.config/i3/bmTP \
+  && _n "bmTP conf set"
 
 # check if rule exists already
 # if grep -F "instance=\"$class\"" "$conf"; then
@@ -79,9 +94,11 @@ conf=~/.config/i3/config
 
 sed -i '/^for_window.*instance=\"'"$class"'\"/d' "$conf"
 
-echo "$line" >> ~/.config/i3/config
+echo "$line" >> "$conf" #|| _ne "unable to insert i3 conf line to config!" && exit 0
 
 if grep -F "instance=\"$class\"" "$conf"; then
+  i3makeconf && _ns "i3 config mods inserted successfully for: $class.\n\
+    Now restarting for changes to take effect"
   i3-msg "restart"
   #_ns "[class=\"$class\"] \na floating rule added successfully!"
 fi
