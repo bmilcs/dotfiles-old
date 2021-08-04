@@ -33,8 +33,8 @@ augroup filetypedetect
   au BufRead,BufNewFile */bin/* set syntax=sh
 
   " i3 config
-  au BufRead,BufNewFile */.config/i3/config set filetype=i3config
-  au BufRead,BufNewFile */.config/i3/config set syntax=i3config
+  au BufRead,BufNewFile */.config/i3/* set filetype=i3config
+  au BufRead,BufNewFile */.config/i3/* set syntax=i3config
 
   " docker-compose
   au BufRead,BufNewFile *docker-compose* set filetype=docker-compose.yaml
