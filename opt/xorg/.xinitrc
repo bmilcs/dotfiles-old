@@ -40,9 +40,6 @@ case $session in
   *) exec $1 ;;
 esac
  
-# bootstrap 1: essentials
-~/bin/wm/bootstrap1 &> "$BMLOGS/boot.log" &
-
 # disable beep sound
 set bell-style none
 

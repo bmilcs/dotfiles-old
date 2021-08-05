@@ -54,7 +54,8 @@ bindsym  $w+minus  exec  ". ~/.config/polybar/launch.sh | \
 bindsym  $w+0      exec  "killall dunst ; sleep 0.5 ; th"
 
 # restart: bootstra
-bindsym  $w+9      exec  "bootstrap"
+bindsym  $w+9      exec  "bootstrap1"
+bindsym  $w+8      exec  "bootstrap2"
 
 #──────────────────────────────────────────────────────────────  audio  ───────
 
@@ -260,6 +261,9 @@ exec       --no-startup-id     pactl set-sink-volume @DEFAULT_SINK@ 50%
 
 # layout: chat workspace
 exec       --no-startup-id     i3-msg 'workspace 2; append_layout ~/.config/i3/layouts/ws2.json'
+
+# launch bootstrap2
+exec       --no-startup-id     i3-msg 'workspace 3; exec ~/bin/wm/bootstrap2'
 
 # launch firefox on ws3
 exec       --no-startup-id     i3-msg 'workspace 3; exec /usr/bin/env firefox'
