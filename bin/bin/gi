@@ -13,15 +13,18 @@ usage() {
   ( _oc $(basename $0) 
   _oy   -a   add
   _oy   -r   rm
+  _oy   -l   ls
+  _oy   -e   edit
   ) 1>&2
   exit 1; 
 }
 
-while getopts "arl" opt; do
+while getopts "arle" opt; do
     case "${opt}" in
         a) action="add" ;;
         r) action="rm" ;;
         l) action="list" ;;
+        e) action="edit" ;;
         *) usage ;;
     esac
 done
@@ -113,6 +116,10 @@ elif [ "$action" = "list" ]; then
 
   _a gitignore ls
   cat .gitignore
+
+elif [ "$action" = "edit" ]; then
+
+  vim ".gitignore"
 
 fi
 
