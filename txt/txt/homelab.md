@@ -1,11 +1,14 @@
 ## BMILCS:HOMELAB
 
-- [ ] fix dotfile log rotate bmlogger
 - [ ] backup irreplacable content 
+- [ ] arch: add tty shortcut from display manager
 - [ ] fix multi-monitor i3/xrandr
       [[arch_multimonitor](arch_multimonitor.md)](arch_multimonitor.md): multi-monitor
 - [ ] make shanna on telegram notifications = purple
 - [ ] freenas > kids vlan (erics nes roms)
+- [ ] fix dotfile log rotate bmlogger
+- [ ] vpn from arch
+  - [ ] https://github.com/pia-foss/manual-connections
 
 > HOMELAB TODO: workstations, laptops, servers, docker, virtualization and so forth.
 
