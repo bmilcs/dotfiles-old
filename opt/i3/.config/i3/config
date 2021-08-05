@@ -40,6 +40,9 @@ set $mute        XF86AudioMute
 bindsym $w+equal   exec  "i3makeconf; source $HOME/.profile ; picomr ; xrdb -merge ;\
                          ~/.Xresources " ; restart"
 
+# lock: i3
+bindsym $w+Prior   exec  "dm-tool lock"
+
 # exit i3
 bindsym $wa+equal  exec  "i3makeconf; i3-msg exit; exit"
 
