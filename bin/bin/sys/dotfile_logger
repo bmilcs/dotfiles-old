@@ -9,34 +9,37 @@
 log="${BMLOGS:-~/.config/bmilcs}/dotfile_$USER.log"
 
 # env var override
-if [[ $BMDEBUG == "1" ]]; then
-  #. ~/bin/sys/bmlogger "$log"
-  #sh $BM/bin/bin/sys/bmlogger "$log"
+#if [[ $BMDEBUG == "1" ]]; then
+  # . ~/bin/sys/bmlogger "$log"
+  # sh $BM/bin/bin/sys/bmlogger "$log"
 
-  dotc() {
-      echo > "$log"
-      _a dotlog
-      _i cleared
-  }
+   dotc() {
+       echo > "$log"
+       _a dotlog
+       _i cleared
+   }
 
-  dotls() {
-    sed -i -e 's/\/home\/bmilcs/~/g' "$log"
-    cat "$log"
-  }
+   dotls() {
+     sed -i -e 's/\/home\/bmilcs/~/g' "$log"
+     cat "$log"
+   }
 
-  dotlog() {
-    echo "[$(date "+%m.%d.%G | %r")] $*" >> "$log"
-  }
-else
+   dotlog() {
+     echo "[$(date "+%m.%d.%G | %r")] $*" >> "$log"
+   }
+#else
 
-  dotc() { 
-    }
+# dotc() { 
+#   echo hi
+#   }
 
-  dotls() {
-    }
+# dotls() {
+#   echo hi
+#   }
 
-  dotlog() {
-    } 
+# dotlog() {
+#   echo hi
+#   } 
 
-fi
+#fi
 

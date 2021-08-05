@@ -7,35 +7,36 @@
 #                 BM LOG FUNCTION TOOL [./bmlogger]
 #────────────────────────────────────────────────────────────
 
-  source _bm
-
-  [[ ! $# == 1 ]] && \
-    _ne "bmlogrotate function requires 1 argument: log filename w/ full path" \
-    && return 1
-
-  log="$1"
-  maxsize=2048
-
-  touch "$log"
-
-    file_size=`du -b "$log" | tr -s '\t' ' ' | cut -d' ' -f1`
-
-    if [ $file_size -gt $maxsize ]; then   
-
-        timestamp=`$(date +%Y-%m-%d)`
-        mv "$log" "$log"."$timestamp"
-        touch "$log"  
-
-        _ap "log rotate"
-        _ob "file: ${B}$log"
-
-        if [[ -s "$log" ]]; then
-          _o  "max size of $maxsize was reached & new log was created"
-          _s
-        else
-          _e "something went wrong: new log size is not 0."
-          _w "manual intervention required!"
-          _o now exiting
-        fi
-    fi
-
+#  source _bm
+#
+#  [[ ! $# == 1 ]] && \
+#    _ne "bmlogrotate function requires 1 argument: log filename w/ full path" \
+#    && return 1
+#
+#  log="$1"
+#  maxsize=2048
+#
+#  touch "$log"
+#
+#    file_size=`du -b "$log" | tr -s '\t' ' ' | cut -d' ' -f1`
+#
+#    if [ $file_size -gt $maxsize ]; then   
+#
+#        timestamp=`$(date +%Y-%m-%d)`
+#        mv "$log" "$log"."$timestamp"
+#        touch "$log"  
+#
+#        _ap "log rotate"
+#        _ob "file: ${B}$log"
+#
+#        if [[ -s "$log" ]]; then
+#          _o  "max size of $maxsize was reached & new log was created"
+#          _s
+#        else
+#          _e "something went wrong: new log size is not 0."
+#          _w "manual intervention required!"
+#          _o now exiting
+#        fi
+#    fi
+#
+#
