@@ -7,6 +7,7 @@
 #                 DOT LOG DEBUGGING UTILITY [./dotlog]
 
 log="${BMLOGS:-~/.config/bmilcs}/dotfile_$USER.log"
+touch "$log"
 
 # env var override
 #if [[ $BMDEBUG == "1" ]]; then
