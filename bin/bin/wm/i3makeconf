@@ -12,10 +12,11 @@ source _bm
 i3_path=~/.config/i3
 backup_path="$i3_path"/backup
 backup_file=$(date +%Y-%m-%d)
-host=$(hostname)
+host=$(cat /etc/hostname)
 
 _t i3 make conf
 _o customized i3wm config generator
+_o host: $host
 
 _a checking hostname
 if [[ $host == bmPC ]]; then

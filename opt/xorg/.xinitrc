@@ -32,10 +32,14 @@ fi
 # bootstrap 1: essentials
 ~/bin/wm/bootstrap1 &> "$BMLOGS/boot.log" &
 
+# makeconf if not exist
+[[ ! -e ~/.config/i3/config ]] && . ~/bin/wm/i3makeconf
+
 # window manager
 session=${1:-i3}
 case $session in
-  i3 | i3wm) exec i3 -V -d all &> "$HOME/.config/i3/log";;
+  i3 | i3wm)
+    exec i3 -V -d all &> "$HOME/.config/i3/log";;
   bsp | bspwm) exec bspwm ;;
   *) exec $1 ;;
 esac
