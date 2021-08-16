@@ -1,7 +1,9 @@
 ### bmilcs:wiki
+
 my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
-bmilcs = bryan miller creations
+- setup bw vm, auto backup & nginx proxy it
+
 
 ### todo
 * [homelab](homelab.md):           pc/homelab
