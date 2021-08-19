@@ -75,17 +75,17 @@ precmd() {
   # RIGHT
   #────────────────────────────────────────────────────────────
 
-  # operating system
-  [[ ! "$DISTRO" == "arch"* ]]   \
-    &&  RPROMPT+="%F{black}"       \
-    &&  RPROMPT+="${DISTRO} "
+# # operating system
+# [[ ! "$DISTRO" == "arch"* ]]   \
+#   &&  RPROMPT+="%F{black}"       \
+#   &&  RPROMPT+="${DISTRO} "
 
-  # exit status
-  RPROMPT+="%F{black}"
-  RPROMPT+="❬%?❭"
+# # exit status
+# RPROMPT+="%F{black}"
+# RPROMPT+="❬%?❭"
 
-  # minimalist git 
-  RPROMPT+="$(git_prompt)"
+# # minimalist git 
+# RPROMPT+="$(git_prompt)"
 }
 
 #────────────────────────────────────────────────────────────
