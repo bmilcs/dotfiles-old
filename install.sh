@@ -160,6 +160,11 @@ izsh() {
       curl -o ~/.config/zsh/completion/_docker-compose \
         https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
     fi
+
+    _a "dotfile logging"
+    _f "creating ~/.config/bmilcs"
+    mkdir -p ~/.config/bmilcs && _s 
+
   fi
 
   _s
@@ -316,10 +321,6 @@ fi
 _s all set
 
 #───────────────────────────────────────────────────────────────  misc  ───────
-
-_a "dotfile logging"
-_f "creating ~/.config/bmilcs"
-mkdir -p ~/.config/bmilcs && _s 
 
 ################################################################################
 ################################## archlinux  ##################################
