@@ -6,7 +6,7 @@
 #  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
 #                 DOT LOG DEBUGGING UTILITY [./dotlog]
 
-log="${BMLOGS:-~/.config/bmilcs}/dotfile_$USER.log"
+log="${BMLOGS:-$HOME/.config/bmilcs}/dotfile_$USER.log"
 touch "$log"
 
 # env var override
