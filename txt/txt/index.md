@@ -47,6 +47,7 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [arch_install](arch_install.md):      installation
 * [arch_multimonitor](arch_multimonitor.md): multi-monitor
 * [arch_networking](arch_networking.md):   networking
+* [arch_thinkpad](arch_thinkpad.md):     thinkpad t14 cfg
 * [arch_vm](arch_vm.md):           virtual machine
 
 ### vim

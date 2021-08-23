@@ -37,7 +37,7 @@ set $mute        XF86AudioMute
 #───────────────────────────────────────────────────────  restart/exit  ───────
 
 # restart: i3, .profile, .xresources, picom 
-bindsym $w+equal   exec  "i3makeconf; source $HOME/.profile ; picomr ; xrdb -merge ;\
+bindsym $w+equal   exec  "i3makeconf && source $HOME/.profile ; picomr ; xrdb -merge ;\
                          ~/.Xresources " ; restart"
 
 # lock: i3

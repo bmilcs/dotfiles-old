@@ -77,7 +77,6 @@ bindsym    $w+e       workspace number $ws7;     focus tiling
 bindsym    $w+a       workspace number $ws8;     focus tiling
 bindsym    $w+s       workspace number $ws9;     focus tiling
 
-
 #───────────────────────────────────────────────────────  bmPC startup   ──────
 
 exec       --no-startup-id     xrandr --output HDMI-0 --above DP-0 --auto --noprimary
