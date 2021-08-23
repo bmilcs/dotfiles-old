@@ -36,14 +36,14 @@ _i "${CYN}${B}centos users${NC}" \\n \
 
 #──────────────────────────────────────────────────────────  variables  ──────#
 
-# global path exceptions
+# stow: global exceptions
 exceptions=("img" "opt" "rsnapshot" "backup")
 
-# minimal: [debian/raspbian/ubuntu]
+# stow: minimal (debian/raspbian/ubuntu)
 deb=("bin" "git" "txt" "vim" "zsh" "bash") 
 
-# packages
-pkgs=("curl" "wget" "zsh" "neovim" "git" "stow")
+# dependencies: packages
+pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "ripgrep")
 apt=("fd-find" "colordiff" "ranger") # "bat" mia
 pacman=("fd" "unzip" "colordiff" "xdotool")
 yum=("") # missing: fd, bat, colordiff
