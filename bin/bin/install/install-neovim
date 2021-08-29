@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 NEOVIM INSTALLER: BUILD > SOURCE [./install-neovim]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+repo_path=~/repos/neovim/
+bin_path=~/.local/bin/neovim
+
+pkgs=("ninja-build" "gettext" "libtool" "libtool-bin" "autoconf" "automake" "cmake" "g++" "pkg-config" "unzip" "curl")
+
+_t neovim installer
+_o build from source [github]
+
+_a dependencies
+_o pkgs: ${pkgs[@]}
+
+sudo apt install ${pkgs[@]}
+
+#  dpkg -s "${pkgs[@]}" > /dev/null 2>&1 \
+#    || (sudo apt-get install -y "${pkgs[@]}" && _o installed "${pkgs[@]}")
+
+_a cloning repo
+_o path: "$repo_path"
+
+mkdir -p "$repo_path"
+mkdir -p "$bin_path"
+
+git clone --depth=1 https://github.com/neovim/neovim.git "$repo_path" || _w "repo already exists"
+
+cd "$repo_path" || (_e "unable to cd to: $repo_path. now exiting." && exit 1)
+
+_s 
+
+_a building from src
+_o path: "$bin_path"
+
+make CMAKE_INSTALL_PREFIX="$bin_path"
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+make install

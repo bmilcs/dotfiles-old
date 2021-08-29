@@ -20,6 +20,7 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [centos](centos.md)
 * [cloudflare](cloudflare.md)
 * [markdown](markdown.md)
+* [neovim](neovim.md)
 * [nfs](nfs.md)
 * [nginx](nginx.md)
 * [python](python.md)
