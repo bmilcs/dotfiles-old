@@ -398,6 +398,11 @@ if [[ $HOST == mc ]]; then
   alias mcr='scr minecraft.service'
   alias mcs='scs minecraft.service'
 
+elif [[ $HOST == wg ]]; then
+
+  alias qrmoto='sudo qrencode -t ansiutf8 < /etc/wireguard/wg0-bmMoto.conf'
+  alias qrmoto='sudo qrencode -t ansiutf8 < /etc/wireguard/wg0-bmTP.conf'
+
 #────────────────────────────────────────────────────────────────  mpd  ───────
 
 elif [[ $HOST == mpd ]]; then
