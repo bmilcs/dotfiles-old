@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 NEXTCLOUD UPDATER [./upcloud]
+#────────────────────────────────────────────────────────────
+
+source _bm
+_t "nextcloud updater"
+
+source ~/bmP/nextcloud.env
+nc_path=/usr/share/nginx/nextcloud
+ncdata_path=/usr/share/nginx/nextcloud-data
+backup_path=/cloud/Backup/
+
+_a "backup: mariadb"
+mysqldump --single-transaction -u bmilcs -p'7gf!*9DW67nqAZQMSKu93HdNV$2hZ65J*q&EU$WF83jWu3%*qm' nextcloud > "$backup_path"/nextcloud-mariadb_`date +"%Y%m%d"`.bak \
+    && _s
+
+_a "enabling maintenance mode"
+sudo -u www-data php "$nc_path"/occ maintenance:mode --on \
+  && _s
+
+_a "backup: ./nextcloud"
+sudo rsync -zahv --progress --partial $nc_path $backup_path/nextcloud \
+  && _s
+
+_a "backup: ./nextcloud-data"
+sudo rsync -zahv --progress --partial $ncdata_path $backup_path/nextcloud \
+  && _s
+
