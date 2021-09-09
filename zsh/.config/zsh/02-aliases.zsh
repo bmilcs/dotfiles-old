@@ -22,10 +22,11 @@ unalias ga
 alias nin='./fusee-launcher.py hekate-5.1.1.bin'
 
 # cloudflare
-alias cfdc='sh ~/bmP/bin/cloudflared/nginx'
-alias cfadd='sh ~/bmP/bin/cloudflared/add'
-alias cfdel='sh ~/bmP/bin/cloudflared//del'
-alias cfinfo='sh ~/bmP/bin/cloudflared/info'
+export CFLARED=~/bmP/bin/cloudflared/
+alias cfdc='cd "$CFLARED" && sh "$CFLARED"/nginx'
+alias cfadd='cd "$CFLARED" && sh "$CFLARED"/add'
+alias cfdel='cd "$CFLARED" && sh "$CFLARED"/del'
+alias cfinfo='cd "$CFLARED" && sh "$CFLARED"/info'
 
 # generate pw hash
 alias pwhash='openssl passwd -6 '
@@ -431,11 +432,17 @@ elif [[ $HOST =~ nginx\|wp\|www ]]; then
 
   alias wwwr='
   source _bm
-  _a "restarting webserver: ${YLW}nginx | php"
-  scr php7.4-fpm nginx
+  _a "restarting webserver: ${YLW}nginx | php | fail2ban"
+  scr php7.4-fpm nginx fail2ban
   
   _a "status check"
-  scs nginx php7.4-fpm
+  scs nginx php7.4-fpm fail2ban
+  '
+
+  alias wwws='
+  source _bm
+  _a "web server status: ${YLW} nginx | php | fail2ban"
+  scs php7.4-fpm nginx fail2ban
   '
 
   # import nginx aliases
