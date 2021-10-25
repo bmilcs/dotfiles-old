@@ -389,9 +389,9 @@ function vm() {
 
 upunifi() {
     [[ $# -eq 0 ]] && echo "error: please suppy version #" && return 1
-    [[ $1 =~ ^[0-9.]*$ ]] && echo "yes!!" && return 1
-      # curl -o "unifi_$1" "https://dl.ui.com/unifi/$1/unifi_sysvinit_all.deb" \
-      # && sudo dpkg -i "unifi_$1"
+    [[ $* =~ ^[0-9.]*$ ]] \
+      && curl -o "unifi_$1" "https://dl.ui.com/unifi/$1/unifi_sysvinit_all.deb" \
+      && sudo dpkg -i "unifi_$1"
       echo "wronggg: please enter version # only"
     }
 
