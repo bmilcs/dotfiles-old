@@ -513,6 +513,7 @@ elif [[ $HOST =~ docker ]]; then
   alias dnet='docker network ls'
 
   # clean up docker system
+  alias dclean='docker system prune --volumes'
   alias dclean='dcleani && dcleane'
   alias dcleani='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
   alias dcleane='docker rm $(docker ps -qa --no-trunc --filter "status=exited")'
