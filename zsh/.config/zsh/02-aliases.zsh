@@ -402,7 +402,12 @@ if [[ $HOST == mc ]]; then
 elif [[ $HOST == wg ]]; then
 
   alias qrmoto='sudo qrencode -t ansiutf8 < /etc/wireguard/wg0-bmMoto.conf'
-  alias qrmoto='sudo qrencode -t ansiutf8 < /etc/wireguard/wg0-bmTP.conf'
+  alias qrtp='sudo qrencode -t ansiutf8 < /etc/wireguard/wg0-bmTP.conf'
+  alias wg0='svim /etc/wireguard/wg0.conf'
+  alias wgmoto='svim /etc/wireguard/wg0-bmMoto.conf'
+  alias wgtp='svim /etc/wireguard/wg0-bmTP.conf'
+  alias wgdown='sudo wg-quick down wg0'
+  alias wgup='sudo wg-quick up wg0'
 
 #────────────────────────────────────────────────────────────────  mpd  ───────
 
