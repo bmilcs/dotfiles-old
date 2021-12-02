@@ -25,15 +25,18 @@ export BMDEBUG=0
 #──────────────────────────────────────────────────────────────  $path  ───────
 
 # path: add ~/bin + subdirs
+
 [ -d "$HOME/bin" ] && [ -z "$(echo $PATH | grep -o "$HOME/bin")" ] \
   && export PATH=$PATH$(find $HOME/bin/ -type d -printf ":%p")
 
 # path: add ~/.local/bin/
+
 [ -d "$HOME/.local/bin" ] \
   && [ -z "$(echo $PATH | grep -o "$HOME/.local/bin")" ] \
   && export PATH=$PATH$(find $HOME/.local/bin/ -type d -printf ":%p")
 
 # go path (i3keys)
+
 [ -d "$HOME/.config/go" ] && [ -z "$(echo "$PATH" \
   | grep -o "$HOME/.config/go")" ] && export GOPATH="$HOME/.config/go" \
   && export PATH=$PATH:$GOPATH/bin
@@ -41,14 +44,17 @@ export BMDEBUG=0
 #────────────────────────────────────────────────────────  clean $home  ───────
 
 # GTK 
+
 export GTK2_RC_FILES=~/.config/gtk-2.0/gtkrc-2.0
 export __GL_SHADER_DISK_CACHE_PATH=~/.cache/.nv
 
 # GPG
+
 export GNUPGHOME="${BMP}/gpg"
 #export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/gpg"
 
 # PASS
+
 export PASSWORD_STORE_DIR="${BMP}/pw"
 #export GNUPGHOME="${XDG_CONFIG_HOME:-~/.config}/password"
 
@@ -225,5 +231,9 @@ fi
 if [[ $HOST == bmTP ]] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   startx
 fi
+
+#────────────────────────────────────────────────────  wsl2: tab title  ───────
+
+echo -ne "\033]0;$HOST\a"
 
 

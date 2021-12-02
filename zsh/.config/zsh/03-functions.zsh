@@ -45,7 +45,7 @@ scp-dl() {
 
 #────────────────────────────────────────────────────────────  ansible  ───────
 
-if [ -d "$ANSIBLE_HOME"/roles ]
+if [ -d "$ANSIBLE_HOME" ]
 then
 
   # ansible ... shortcut
