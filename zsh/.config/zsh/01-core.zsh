@@ -38,10 +38,11 @@ source ${ZINIT[BIN_DIR]}/zinit.zsh
 # plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light nojanath/ansible-zsh-completion 
 zinit load wfxr/forgit
 zinit ice depth=1
+#zinit light zdharma/fast-syntax-highlighting
 #zinit light jeffreytse/zsh-vi-mode
 
 # dir_colors

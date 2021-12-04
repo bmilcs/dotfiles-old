@@ -144,7 +144,7 @@ izsh() {
 
     # install zinit
     _o zsh: zinit plugin manager
-    git clone https://github.com/zdharma/zinit.git ~/.config/zinit/bin
+    git clone https://github.com/zdharma-continuum/zinit.git ~/.config/zinit/bin
 
     # install zsh git completion
     _o zsh: git autocompletion
