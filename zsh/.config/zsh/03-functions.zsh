@@ -148,8 +148,22 @@ function ga() {
       gp     # then push
     fi
   fi
-
 }
+
+function gaa() {
+  source _bm
+  grevp || cd $D 
+  if gadd .; then
+    git diff --staged
+    _a git commit message:
+    read gc
+    if [ ! -z $gc ]; then
+      gc $gc # TODO: if git status contains no unstaged changes
+      gp     # then push
+    fi
+  fi
+}
+
 
 # commit
 function gc() {
