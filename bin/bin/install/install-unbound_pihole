@@ -18,7 +18,14 @@ _o  "(port: 5335)"
 _blank 5
 _o "starting in 5 seconds..."
 
-sleep 5
+if _ask "start now?" ; then
+  _s "let's begin!"
+else
+  _w "alrighty then. later."
+  exit
+fi
+
+#sleep 5
 
 #────────────────────────────────────────────────────────────  unbound  ───────
 
@@ -122,5 +129,12 @@ while IFS= read -r url ; do
   sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (address, enabled, comment) VALUES ('$url', 1, 'bmilcs script');"
 done <<< "$adlists"
 
+#─────────────────────────────────────────────────────  update gravity  ───────
+
+_a pihole: update gravity
+sudo pihole -g && _s
+
 _s "all set :)"
+
+
 
