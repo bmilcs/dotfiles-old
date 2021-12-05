@@ -60,6 +60,13 @@ _a pihole: install from source
 
 sudo bash "$pi_temp/automated install/basic-install.sh" && _s
 
+#─────────────────────────────────────────────────────  clear defaults  ───────
+
+_a delete: built-in adlist
+
+sudo sqlite3 /etc/pihole/gravity.db "DELETE FROM adlist;" \
+  && _s
+
 #─────────────────────────────────────────────────────────  whitelists  ───────
 
 _a pihole: add whitelists
