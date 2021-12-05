@@ -9,9 +9,55 @@
 
 source _bm
 
-_tb unbound pihole setup
+_tb "unbound"
 
-sudo apt install unbound
+_o "for the ${B}upstream dns server${NC}, use the following:"
+_blank 5
+_ay "127.0.0.1#5335"
+_o  "(port: 5335)"
+_blank 5
+_o "starting in 5 seconds..."
 
-wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
+sleep 5
+
+#────────────────────────────────────────────────────────────  unbound  ───────
+
+_a install: unbound 
+
+sudo apt install -y unbound && _s
+
+_a unbound: root hints install
+wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints \
+  && _s
+
+_a unbound: customize pi-conf.conf
+sudo mv $(dirname $(readlink -f $0))/unbound_pihole.conf /etc/unbound/unbound.conf.d/pi-hole.conf \
+  && _s
+
+_a unbound: disable resolveconf
+sudo systemctl disable unbound-resolvconf.service
+sudo systemctl stop unbound-resolvconf.service
+sudo service unbound restart
+_s
+
+_a unbound: final test
+dig pi-hole.net @127.0.0.1 -p 5335 && _s
+
+#─────────────────────────────────────────────────────────────  pihole  ───────
+
+_tb pihole
+
+_a pihole: clone repo
+pi_temp=/tmp/_pihole
+sudo rm -rf "$pi_temp"
+git clone --depth 1 https://github.com/pi-hole/pi-hole.git "$pi_temp" \
+  && _s
+
+_a pihole: install from source
+
+sudo bash "$pi_temp/automated install/basic-install.sh"
+
+_s done
+
+
 
