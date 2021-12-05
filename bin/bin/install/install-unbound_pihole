@@ -44,9 +44,10 @@ https://urlhaus.abuse.ch/downloads/hostfile/
 https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
 "
 
-while IFS= read -r line ; do echo $line; done <<< "$adlists"
+while IFS= read -r url ; do
+  sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (address, enabled, comment) VALUES ('" $url "', 1, 'bmilcs script');"
+done <<< "$adlists"
 
-#sudo sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (address, enabled, comment) VALUES ('" $adlist "', 1, '" $comment "');"
 exit
 
 _tb "unbound"
