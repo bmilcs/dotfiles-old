@@ -191,9 +191,8 @@ alias lsd='l -d */'           # ls only dirs
 
 #─────────────────────────────────────────────────  stock enhancements  ───────
 
-# rm -rf verbose
+# rm: -rf verbose
 alias rM='rm -rfv'
-alias srm='s rM'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
@@ -204,8 +203,15 @@ alias wget='wget -c'              ; compdef wget='wget'
 
 # confirmations
 alias ln='ln -i'
-alias mv='mv -v'
 alias cp='cp -v'
+alias mv='mv -v'
+
+# sudo'ified
+alias srm='s rM'
+alias srmd='s rmdir'
+alias smv='s mv'
+alias scp='s cp'
+# alias smkdir= [function]
 
 # shortcuts
 alias c='clear'

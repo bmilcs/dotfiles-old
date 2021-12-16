@@ -97,7 +97,6 @@ fi
 
 #────────────────────────────────────────────────────────────────  git  ───────
 
-
 function gaf() {
 # TODO: fzf completion of git repo, without .git/
 # if [[ $# -eq 0 ]]; then
@@ -163,7 +162,6 @@ function gaa() {
     fi
   fi
 }
-
 
 # commit
 function gc() {
@@ -246,6 +244,8 @@ function gacall() {
 #}
 
 #──────────────────────────────────────────────────────────────  SHELL  ───────
+
+smkdir() { sudo mkdir -p "$*" ; }
 
 diff() {
   command diff -u $* | colordiff
