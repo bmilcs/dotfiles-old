@@ -193,6 +193,7 @@ alias lsd='l -d */'           # ls only dirs
 
 # rm -rf verbose
 alias rM='rm -rfv'
+alias srm='s rM'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
