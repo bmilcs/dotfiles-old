@@ -30,15 +30,16 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 * [usb_automount](usb_automount.md)
  
 ### homelab
-* [esxi](esxi.md)
 * [docker](docker.md)
-* [minecraft](minecraft.md)
-* [lemp_stack](lemp_stack.md)
+* [esxi](esxi.md)
 * [lamp_stack](lamp_stack.md)
+* [lemp_stack](lemp_stack.md)
 * [mariadb](mariadb.md)
+* [minecraft](minecraft.md)
 * [nextcloud](nextcloud.md)
-* [wordpress](wordpress.md)
 * [windows](windows.md)
+* [wireguard](wireguard.md)
+* [wordpress](wordpress.md)
  
 ### arch
 * [arch](arch.md):              archlinux
