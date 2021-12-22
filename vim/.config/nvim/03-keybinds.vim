@@ -18,64 +18,10 @@ nmap <leader>nh           <CR> <Plug>Vimwiki2HTMLBrowse
 nmap <leader>nr           <CR> <Plug>VimwikiRenameFile
 nmap <leader>nd           <CR> <Plug>VimwikiDeleteFile
 
-"<Plug>VimwikiIndex
-"<Plug>VimwikiTabIndex
-"<Plug>VimwikiUISelect
-"<Plug>VimwikiDiaryIndex
-"<Plug>VimwikiMakeDiaryNote
-"<Plug>VimwikiTabMakeDiaryNote
-"<Plug>VimwikiMakeYesterdayDiaryNote
-"<Plug>VimwikiMakeTomorrowDiaryNote
-"<Plug>Vimwiki2HTML
-"<Plug>Vimwiki2HTMLBrowse
-"<Plug>VimwikiDiaryGenerateLinks
-"<Plug>VimwikiFollowLink
-"<Plug>VimwikiSplitLink
-"<Plug>VimwikiVSplitLink
-"<Plug>VimwikiTabnewLink
-"<Plug>VimwikiGoBackLink
-"<Plug>VimwikiNextLink
-"<Plug>VimwikiPrevLink
-"<Plug>VimwikiGoto
-"<Plug>VimwikiDeleteFile
-"<Plug>VimwikiRenameFile
-"<Plug>VimwikiAddHeaderLevel
-"<Plug>VimwikiRemoveHeaderLevel
-"<Plug>VimwikiGoToPrevHeader
-"<Plug>VimwikiGoToNextHeader
-"<Plug>VimwikiGoToPrevSiblingHeader
-"<Plug>VimwikiGoToNextSiblingHeader
-"<Plug>VimwikiGoToParentHeader
-"<Plug>VimwikiToggleListItem
-"<Plug>VimwikiNextTask
-"<Plug>VimwikiRemoveSingleCB
-"<Plug>VimwikiRemoveCBInList
-"<Plug>VimwikiIncrementListItem
-"<Plug>VimwikiIncreaseLvlWholeItem
-"<Plug>VimwikiDecreaseLvlSingleItem
-"<Plug>VimwikiDecreaseLvlWholeItem
-"<Plug>VimwikiRenumberList
-"<Plug>VimwikiRenumberAllLists
-"<Plug>VimwikiToggleRejectedListItem
-"<Plug>VimwikiTableAlignQ
-"<Plug>VimwikiTableAlignW
-"<Plug>VimwikiTableAlignQ1
-"<Plug>VimwikiTableAlignW1
-"<Plug>VimwikiTableMoveColumnLeft
-"<Plug>VimwikiTableMoveColumnRight
-"<Plug>VimwikiDiaryPrevDay
-"<Plug>VimwikiDiaryNextDay
-"<Plug>VimwikiIncreaseLvlSingleItem
-"<Plug>VimwikiDecreaseLvlSingleItem
-"<Plug>VimwikiListNextSymbol
-"<Plug>VimwikiListPrevSymbol
-"<Plug>VimwikiListToggle
-
 let g:vim_markdown_conceal = 1 
 let g:vim_markdown_conceal_code_blocks = 1 
 
 autocmd FileType vimwiki    nnoremap <leader>c  I```sh<CR><CR>```<esc>k
-"autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<CR>
 
 "───────────────────────────────────────────────────────────────  tabs  ───────
 

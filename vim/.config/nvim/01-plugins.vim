@@ -33,9 +33,6 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
-" ssh copy/paste
-  Plug 'ojroques/vim-oscyank'
-
 " indentation lines (tab)
   Plug 'Yggdroot/indentLine'
   " Plug 'lukas-reineke/indent-blankline.nvim'
