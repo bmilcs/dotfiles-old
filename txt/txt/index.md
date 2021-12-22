@@ -1,4 +1,4 @@
-### bmilcs:wiki
+[###](###.md) bmilcs:wiki
 
 my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
@@ -14,6 +14,9 @@ my personal wikipedia of thoughts, goals, and chaos [created: 2021-07-07]
 
 ### research/contacts
 * [landscaping](landscaping.md)
+
+### linux
+* [new_system](new_system.md)
 
 ### general
 * [linux](linux.md)

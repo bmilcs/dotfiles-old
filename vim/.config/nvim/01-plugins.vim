@@ -44,6 +44,9 @@ Plug 'junegunn/vim-plug'                      " plugin manager
   Plug 'vimwiki/vimwiki'
 " Plug 'tbabej/taskwiki'
 
+" windows terminal / ws2 clipboard
+  Plug 'ojroques/vim-oscyank'
+
 "────────────────────────────────────────────────────────────────  GIT  ──────"
 
 " gutter symbols

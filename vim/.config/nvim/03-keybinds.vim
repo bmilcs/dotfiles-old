@@ -71,13 +71,11 @@ nmap <leader>nd           <CR> <Plug>VimwikiDeleteFile
 "<Plug>VimwikiListPrevSymbol
 "<Plug>VimwikiListToggle
 
-
 let g:vim_markdown_conceal = 1 
 let g:vim_markdown_conceal_code_blocks = 1 
 
 autocmd FileType vimwiki    nnoremap <leader>c  I```sh<CR><CR>```<esc>k
 "autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<CR>
-
 
 "───────────────────────────────────────────────────────────────  tabs  ───────
 
@@ -289,21 +287,28 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "───────────────────────────────────────────────────  SYSTEM CLIPBOARD  ──────"
 
-" yank to system clipboard (copy)
+" " linux: yank to system clipboard (copy)
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+y$
 nnoremap <leader>y "+y
 
-" delete to system clipboard (cut)
-vnoremap <leader>d "+d
-nnoremap <leader>D "+d$
-nnoremap <leader>d "+d
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 
-" put from system clipboard (paste)
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+" " linux: yank to system clipboard (copy)
+" vnoremap <leader>y "+y
+" nnoremap <leader>Y "+y$
+" nnoremap <leader>y "+y
+" 
+" " linux: delete to system clipboard (cut)
+" vnoremap <leader>d "+d
+" nnoremap <leader>D "+d$
+" nnoremap <leader>d "+d
+" 
+" " linux: put from system clipboard (paste)
+" nnoremap <leader>p "+p
+" nnoremap <leader>P "+P
+" vnoremap <leader>p "+p
+" vnoremap <leader>P "+P
 
 "────────────────────────────────────────────────  TOGGLE VE=BLOCK|ALL  ──────"
 

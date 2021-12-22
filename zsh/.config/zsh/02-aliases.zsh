@@ -35,7 +35,7 @@ alias cfdel='cd "$CFLARED" && sh "$CFLARED"/del'
 alias cfinfo='cd "$CFLARED" && sh "$CFLARED"/info'
 
 # generate pw hash
-alias pwhash='openssl passwd -6 '
+alias encryptpw='openssl passwd -6 '
 
 # fd w/ exclusions
 alias fdd='fd -H -E /a '
@@ -210,7 +210,6 @@ alias mv='mv -v'
 alias srm='s rM'
 alias srmd='s rmdir'
 alias smv='s mv'
-alias scp='s cp'
 # alias smkdir= [function]
 
 # shortcuts
