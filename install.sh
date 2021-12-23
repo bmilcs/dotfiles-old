@@ -43,7 +43,7 @@ exceptions=("img" "opt" "rsnapshot" "backup")
 deb=("bin" "git" "txt" "vim" "zsh" "bash") 
 
 # dependencies: packages
-pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "ripgrep")
+pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "ripgrep" "ntp")
 apt=("fd-find" "colordiff" "ranger") # "bat" mia
 pacman=("fd" "unzip" "colordiff" "xdotool")
 yum=("") # missing: fd, bat, colordiff
@@ -72,6 +72,9 @@ cleanup() {
 
   _f "backup: old up & upp scripts"
   sudo mv /usr/local/bin/{up,upp} "$BAK" 2> /dev/null
+
+  _f "backup: ntp.conf"
+  sudo mv /etc/ntp.conf "$BAK" 2> /dev/null
 
   _f "backup: git config"
   rm -rf "$BAK/git"
@@ -469,6 +472,12 @@ else # not archlinux
   else
     _e error: "${deb[@]}" 
   fi
+
+#────────────────────────────────────────────────────────────────  ntp   ──────
+
+  _a ntp setup
+  sudo mv "$D"/etc/ntp.conf /etc/ntp.conf \
+    _s
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
