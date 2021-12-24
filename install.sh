@@ -476,8 +476,10 @@ else # not archlinux
 #────────────────────────────────────────────────────────────────  ntp   ──────
 
   _a ntp setup
-  sudo mv "$D"/etc/ntp.conf /etc/ntp.conf \
-    _s
+  sudo cp "$D"/etc/ntp.conf /etc/ntp.conf \
+    && _s
+
+  sudo service npt restart
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
