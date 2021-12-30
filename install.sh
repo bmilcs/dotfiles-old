@@ -284,8 +284,18 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
   dpkg -s "${apt[@]}" > /dev/null 2>&1 \
     || (sudo apt-get install -y "${apt[@]}" && _o installed "${apt[@]}")
 
-  # nodejs (coc.nvim)
+  # coc depdencies
   nodejs
+
+  dpkg -s yarn > /dev/null 2>&1 \
+    || (curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | \
+    gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
+    && \
+    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] \
+    https://dl.yarnpkg.com/debian stable main" \
+    | sudo tee /etc/apt/sources.list.d/yarn.list \
+    && sudo apt update && sudo apt install -y yarn)
+  
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin

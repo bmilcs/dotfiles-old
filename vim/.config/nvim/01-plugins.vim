@@ -26,8 +26,8 @@ Plug 'junegunn/vim-plug'                      " plugin manager
     Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
     Plug 'junegunn/fzf.vim'
 
-" completion
-  Plug 'neoclide/coc.nvim',
+" auto-completion * TEST
+  Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 " snippets w/ library
   Plug 'SirVer/ultisnips'
@@ -67,15 +67,15 @@ Plug 'junegunn/vim-plug'                      " plugin manager
 " .md markdown
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" python
-" Plug 'vim-scripts/indentpython.vim'
-
 " i3 wm
-  Plug 'mboughaba/i3config.vim'
+" Plug 'mboughaba/i3config.vim'
 
 " ansible
   Plug 'pearofducks/ansible-vim'      " syntax highlighting
   Plug 'phenomenes/ansible-snippets'  " snippets
+
+" python
+" Plug 'vim-scripts/indentpython.vim'
 
 "────────────────────────────────────────────────────────────  the end  ──────"
 
