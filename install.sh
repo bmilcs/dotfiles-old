@@ -489,7 +489,7 @@ else # not archlinux
   sudo cp "$D"/etc/ntp.conf /etc/ntp.conf \
     && _s
 
-  sudo service npt restart
+  sudo service ntp restart
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
