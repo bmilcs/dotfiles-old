@@ -8,9 +8,11 @@
 " TODO  - format/move comments to column #45
 "       - fzf shortcuts, project files, ripgrep project dir
 
+" format document / fix indentation / prettify
+map <F7> gg=G<C-o><C-o>
+
 "────────────────────────────────────────────────────────────  vimwiki  ───────
-"
-"
+
 nmap <leader>nn           <CR> <Plug>VimwikiTabIndex
 nmap <leader>n<leader>n   <CR> <Plug>VimwikiTabMakeDiaryNote
 nmap <leader>N<leader>N   <CR> <Plug>VimwikiTabDiaryIndex

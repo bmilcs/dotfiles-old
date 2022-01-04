@@ -75,9 +75,9 @@ _qq() {
 }
 
 _pp() {
-  echo -e "${B}${color}  $*" 
-  read reply
-  echo $reply
+  echo -e "${B}${color}  $@" 
+  read -p "$*"":  " value
+  echo $value
 }
 
 _askn()  { color="${PUR}"; _askk "$*" N; }

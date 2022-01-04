@@ -9,20 +9,36 @@
 
 source _bm
 
-_tb sudoers.d config file
+_tb "sudoers.d config file generator"
+_w "this utilizes sudo option nopasswd and it is NOT secure"
 
-user_name=$(_pp "user name?")
+read -p "user name: " user_name
+user_file=/etc/sudoers.d/"$user_name"
 
-if $user_name; then
-  [[ -e /etc/sudoers.d/"$user_name ]] && \
-    _w "sudoers.d config already exists" && \
-    exit 1
+[[ -z "$user_name" ]] && \
+  _e "user name required" && \
+  exit 1
 
-  _s "it doesn't exist ;)"
+[[ -e $user_file ]] && \
+  _w "sudoers.d config already exists" && \
+  _o "opening: $userfile" && \
+  sleep 3 && \
+  sudo nvim "$user_file" && \
+  exit 1
 
+_a "adding user \"$user_name\" to the passwordless sudo status"
+echo "# auto-generated via add-sudoers script [bm]" | sudo tee -a "$user_file"
+echo "$user_name   ALL=(ALL)   NOPASSWD: ALL" | sudo tee -a "$user_file"
+_s 
+
+_y "$user_file created. here's what it looks like:"
+sudo cat "$user_file"
+
+if _asky "are you sure you want to keep this?!"; then
+  _s done!
+else
+  sudo rm "$user_file" && \
+    _w "sudoers.d/custom removed!"
+      exit
 fi
-
-
-
-
 
