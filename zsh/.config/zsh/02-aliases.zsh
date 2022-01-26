@@ -196,6 +196,7 @@ alias rM='rm -rfv'
 
 # colorize
 alias ip='ip -color=auto'         ; compdef ip='ip'
+alias ipa='ip -brief a'           ; compdef ip='ip'
 alias grep='grep --color=auto'    ; compdef grep='grep'
 
 # autoresume

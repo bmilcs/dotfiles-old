@@ -45,8 +45,8 @@ deb=("bin" "git" "txt" "vim" "zsh" "bash")
 # dependencies: packages
 pkgs=("curl" "wget" "zsh" "neovim" "git" "stow" "ripgrep" "ntp")
 apt=("fd-find" "colordiff" "ranger") # "bat" mia
-pacman=("fd" "unzip" "colordiff" "xdotool")
-yum=("") # missing: fd, bat, colordiff
+  pacman=("fd" "unzip" "colordiff" "xdotool")
+  yum=("") # missing: fd, bat, colordiff
 
 # repo related
 D=$HOME/bm
@@ -85,24 +85,24 @@ cleanup() {
 
   _f "broken symlink removal: ${B}\$HOME"
   find ~ -xtype l 2> /dev/null | while read -r line; do
-    if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]] \
-      && [[ ! $line == "$HOME/plex/"* ]]
+  if [[ ! $line == "$HOME/bm/"* ]] && [[ ! $line == "$HOME/.backup/"* ]] \
+    && [[ ! $line == "$HOME/plex/"* ]]
     then
-    _fb removing: "$line" && sudo rm "$line"
-    fi
-  done
+      _fb removing: "$line" && sudo rm "$line"
+  fi
+done
 
-  _f "broken symlink removal: ${B}/etc"
-  sudo find /etc -xtype l 2> /dev/null | while read -r line; do
-    _fb removing: "$line" && sudo rm "$line"
-  done
+_f "broken symlink removal: ${B}/etc"
+sudo find /etc -xtype l 2> /dev/null | while read -r line; do
+_fb removing: "$line" && sudo rm "$line"
+done
 
-  _f "changing /etc/banner"
-  [[ -f "/etc/banner" ]] \
-    && me=$(sudo cat "/etc/hostname") \
-    && echo "${me^^}: welcomes you" | sudo tee /etc/banner
+_f "changing /etc/banner"
+[[ -f "/etc/banner" ]] \
+  && me=$(sudo cat "/etc/hostname") \
+  && echo "${me^^}: welcomes you" | sudo tee /etc/banner
 
-  _s complete
+_s complete
 
 } 
 
@@ -140,7 +140,7 @@ izsh() {
     || [[ ! -d $ZDOTDIR/completion ]] \
     || [[ ! -f $ZDOTDIR/completion/_git ]] \
     || [[ ! -f $ZDOTDIR/completion/git-completion.bash ]]
-  then
+    then
 
     # create directories
     mkdir -p $ZINITDIR $ZDOTDIR/{completion,compdump,history}
@@ -153,20 +153,20 @@ izsh() {
     _o zsh: git autocompletion
     curl -o ~/.config/zsh/completion/git-completion.bash \
       https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    curl -o ~/.config/zsh/completion/_git \
-      https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+          curl -o ~/.config/zsh/completion/_git \
+            https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 
-    if $(which docker-compose); then
-      _o zsh: docker-compose autocompletion
-      curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose \
-        > ~/.zsh/completion/_docker-compose
-      curl -o ~/.config/zsh/completion/_docker-compose \
-        https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
-    fi
+          if $(which docker-compose); then
+            _o zsh: docker-compose autocompletion
+            curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose --version | awk 'NR==1{print $NF}')/contrib/completion/zsh/_docker-compose \
+              > ~/.zsh/completion/_docker-compose
+                          curl -o ~/.config/zsh/completion/_docker-compose \
+                            https://raw.githubusercontent.com/docker/compose/1.28.5/contrib/completion/zsh/_docker-compose
+          fi
 
-    _a "dotfile logging"
-    _f "creating ~/.config/bmilcs"
-    mkdir -p ~/.config/bmilcs && _s 
+          _a "dotfile logging"
+          _f "creating ~/.config/bmilcs"
+          mkdir -p ~/.config/bmilcs && _s 
 
   fi
 
@@ -197,8 +197,8 @@ ivim() {
 
 #   # run upvim to install plugins, etc.
 #   ./bin/bin/sys/upvim
-  else
-    _s
+else
+  _s
   fi
 }
 
@@ -295,7 +295,7 @@ elif [[ ${DISTRO} =~ raspbian*|debian*|ubuntu* ]]; then
     https://dl.yarnpkg.com/debian stable main" \
     | sudo tee /etc/apt/sources.list.d/yarn.list \
     && sudo apt update && sudo apt install -y yarn)
-  
+
 
   # create path if not exists
   [[ ! -d  ~/.local/bin/ ]] && mkdir -p ~/.local/bin
@@ -373,10 +373,10 @@ if [[ ${DISTRO} == arch* ]]; then
 
 #────────────────────────────────────────────────  setup core software  ───────
 
-  izsh
-  ivim
-  ifzf
-  btw 
+izsh
+ivim
+ifzf
+btw 
 
 #───────────────────────────────────────────────────────────────  ROOT  ───────
 
@@ -452,9 +452,9 @@ else # not archlinux
 
 #────────────────────────────────────────────────  setup core software  ───────
 
-  izsh
-  ivim
-  ifzf
+izsh
+ivim
+ifzf
 
 #───────────────────────────────────────────────────────────────  root  ───────
 
@@ -485,11 +485,16 @@ else # not archlinux
 
 #────────────────────────────────────────────────────────────────  ntp   ──────
 
-  _a ntp setup
-  sudo cp "$D"/etc/ntp.conf /etc/ntp.conf \
-    && _s
+_a ntp setup
+sudo cp "$D"/etc/ntp.conf /etc/ntp.conf \
+  && _s
 
-  sudo service ntp restart
+sudo service ntp restart
+
+if [[ $(uname -a) =~ ^.*WSL2.*$ ]]; then
+  _a wsl2 fixes
+  sudo sysctl -w net.ipv4.ping_group_range="0 1000"
+fi
 
 #───────────────────────────────────────────────────────────────  misc  ───────
 
@@ -500,9 +505,9 @@ else # not archlinux
   # check active shell
   if [[ ! $SHELL == *zsh* ]]; then
 
-      _a directions
-      _oy chsh -s /usr/bin/zsh
-      _i reboot recommended!
+    _a directions
+    _oy chsh -s /usr/bin/zsh
+    _i reboot recommended!
 
   fi
 fi
