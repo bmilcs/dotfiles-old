@@ -74,7 +74,7 @@ nnoremap <SPACE> <Nop>
 
 set pumheight=50                              " auto-complete drop down menu size
 set completeopt=longest,menuone               " view full error msg pumheight?
-set directory=$HOME/.config/nvim/swap//    " vim swap file location
+set directory=$HOME/.config/nvim/swap//       " vim swap file location
 set encoding=utf-8                            " encoding
 set formatoptions=tcqrn1                      " set textwidth=79
 set hidden                                    " hide buffers when they are abandoned

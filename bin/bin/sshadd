@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#  ▄▄▄▄· • ▌ ▄ ·. ▪  ▄▄▌   ▄▄· .▄▄ ·   ──────────────────────
+#  ▐█ ▀█▪·██ ▐███▪██ ██•  ▐█ ▌▪▐█ ▀.   ╔╦╗╔═╗╔╦╗╔═╗╦╦  ╔═╗╔═╗
+#  ▐█▀▀█▄▐█ ▌▐▌▐█·▐█·██ ▪ ██ ▄▄▄▀▀▀█▄   ║║║ ║ ║ ╠╣ ║║  ║╣ ╚═╗
+#  ██▄▪▐███ ██▌▐█▌▐█▌▐█▌ ▄▐███▌▐█▄▪▐█  ═╩╝╚═╝ ╩ ╚  ╩╩═╝╚═╝╚═╝
+#  ·▀▀▀▀ ▀▀  █▪▀▀▀▀▀▀.▀▀▀ ·▀▀▀  ▀▀▀▀   https://dot.bmilcs.com
+#                 SSH ADD'ER'ER [./sshadd]
+#────────────────────────────────────────────────────────────
+
+source _bm
+
+_tb ssh add'er'er
+_o ssh-copy-id & git key xfer
+
+_a ssh-copy-id
+ssh-copy-id -i ~/.ssh/id_bryan.pub bmilcs@"$1" \
+  && _s
+
+_a ssh config
+scp ~/.ssh/config bmilcs@"$1":/home/bmilcs/.ssh/ \
+  && _s
+
+_a git key
+scp ~/.ssh/id_git bmilcs@"$1":/home/bmilcs/.ssh/ \
+  && _s
+
