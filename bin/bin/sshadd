@@ -21,6 +21,6 @@ scp ~/.ssh/config bmilcs@"$1":/home/bmilcs/.ssh/ \
   && _s
 
 _a git key
-scp ~/.ssh/id_git bmilcs@"$1":/home/bmilcs/.ssh/ \
+scp ~/.ssh/id_github.com bmilcs@"$1":/home/bmilcs/.ssh/ \
   && _s
 
