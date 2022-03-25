@@ -390,6 +390,11 @@ btw
   _o "symlink: ./root/workstation"
   sudo stow -t / -R workstation && _s
 
+  _o "cp: ./root/sudoers.d/bmilcs.conf"
+  sudo cp sudoers.d/bmilcs /etc/sudoers.d/bmilcs \
+    && sudo chmod 644 /etc/sudoers.d/bmilcs \
+    && _s
+
 #───────────────────────────────────────────────────────────────  HOME  ───────
 
   # stow home stuff: ~
@@ -466,6 +471,11 @@ ifzf
 
   _o symlink: root '/'
   sudo stow -t / -R share
+
+  _o "cp: ./root/sudoers.d/bmilcs.conf"
+  sudo cp sudoers.d/bmilcs /etc/sudoers.d/bmilcs \
+    && sudo chmod 644 /etc/sudoers.d/bmilcs \
+    && _s
 
 #───────────────────────────────────────────────────────────────  home  ───────
 
