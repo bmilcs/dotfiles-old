@@ -406,7 +406,6 @@ upunifi() {
     [[ $* =~ ^[0-9.]*$ ]] \
       && curl -o "unifi_$1" "https://dl.ui.com/unifi/$1/unifi_sysvinit_all.deb" \
       && sudo dpkg -i "unifi_$1"
-      echo "wronggg: please enter version # only"
     }
 
 #──────────────────────────────────────────────────────────────────────────────
