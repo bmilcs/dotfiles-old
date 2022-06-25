@@ -11,7 +11,7 @@
 
 ``` bash
 # deploy my dotfiles
-[ ! -d ~/bm ] && git clone --depth 1 https://dot.bmilcs.com bm && cd bm && ./install.sh
+[ ! -d ~/bm ] && git clone --depth 1 git@github.com:bmilcs/dotfiles.git bm && cd bm && ./install.sh
 ```
 
 - [zsh](/zsh/.config/zsh/) (shell)
